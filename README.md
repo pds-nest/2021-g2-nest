@@ -17,7 +17,7 @@ Un raccoglitore e analizzatore di statistiche dei Tweet
 - Giorgio Minoccari (134293)
   - Analyst
   - Developer 
-- Lorenzo Balugani (...)
+- Lorenzo Balugani (128991)
   - Database Architect
   - Developer  
 - Stefano Pigozzi (128570)
