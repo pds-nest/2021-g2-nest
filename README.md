@@ -11,7 +11,7 @@ Un raccoglitore e analizzatore di statistiche dei Tweet
 - Stefano Goldoni (152581)
   - Product Owner
   - Tester
-- Flavia Cocca (...)
+- Flavia Cocca (128500)
   - Scrum Master
   - UI Designer
 - Giorgio Minoccari (134293)
@@ -26,6 +26,6 @@ Un raccoglitore e analizzatore di statistiche dei Tweet
 - Chiara Calzolari (130565)
   - UI Designer
   - Developer  
-- Giovanni Anniballi (...)
+- Giovanni Anniballi (128593)
   - Tester
   - Developer
