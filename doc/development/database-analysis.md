@@ -2,7 +2,7 @@
 
 ## Glossario generale
 
-> [Vedi `glossary.md`](/doc/glossary.md)
+> [Vedi `glossary.md`](glossary.md)
 
 
 ## Glossario specifico

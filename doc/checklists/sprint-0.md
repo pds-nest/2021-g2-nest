@@ -1,7 +1,7 @@
 # Checklist dello Sprint 0
 
 - [ ] Documento generale con tutti i seguenti elementi:
-  - [x] [Schema architetturale](../design-pattern.pdf)
+  - [x] [Schema architetturale](../development/design-pattern.pdf)
   - [ ] _(opzionale)_ Diagramma comportamentale
   - [ ] Backlog / SRS
     - [ ] Segnalare visivamente le Epic
