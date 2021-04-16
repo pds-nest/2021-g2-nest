@@ -8,8 +8,7 @@
   - [ ] Burndown chart
   - [ ] Sprint 1 Goal
   - [ ] _(opzionale)_ Sprint 1 Backlog
-  - [ ] Definition of ready
-  - [ ] Definition of done
+  - [x] Definition of ready and done
   - [ ] Partita di Scrumble
     - [ ] Resoconto partita
   - [ ] Breve video di presentazione (3 minuti)
