@@ -3,10 +3,10 @@
 - [ ] Documento generale con tutti i seguenti elementi:
   - [x] [Schema architetturale](../development/design-pattern.pdf)
   - [ ] _(opzionale)_ Diagramma comportamentale
-  - [ ] Backlog / SRS
-    - [ ] Segnalare visivamente le Epic
-  - [ ] Burndown chart
-  - [ ] Sprint 1 Goal
+  - [x] Backlog / SRS
+    - [x] Segnalare visivamente le Epic
+  - [x] Burndown chart
+  - [x] Sprint 1 Goal
   - [ ] _(opzionale)_ Sprint 1 Backlog
   - [x] Definition of ready and done
   - [ ] Partita di Scrumble
