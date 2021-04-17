@@ -7,7 +7,7 @@
     - [x] Segnalare visivamente le Epic
   - [x] Burndown chart
   - [x] Sprint 1 Goal
-  - [ ] _(opzionale)_ Sprint 1 Backlog
+  - [x] _(opzionale)_ Sprint 1 Backlog
   - [x] Definition of ready and done
   - [ ] Partita di Scrumble
     - [ ] Resoconto partita
