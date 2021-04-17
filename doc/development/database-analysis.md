@@ -11,10 +11,11 @@
 |-------------------|-------------------------------------------------------|-----------------------------|
 | **User**          | email, username, password                             | Repository                  |
 | **Repository**    | id, name, start, end, status                          | User, Tweet, Alert, Keyword |
-| **Tweet**         | snowflake, content, location, poster                  | Repository                  |
+| **Tweet**         | snowflake, content, location, poster                  | Repository, Condition       |
 | **Condition**     | id, type, param                                       | BoolOperation               |
-| **BoolOperation** | id, operation, condition_id, alert_id, node_1, node_2 |                             |
-| **Alert**         | id, repository_id, name, limit, window_size           |                             |
+| **BoolOperation** | id, operation, condition_id, alert_id, node_1, node_2 | Alert, BoolOperation, Condition|
+| **Alert**         | id, repository_id, name, limit, window_size           | BoolOperation, Norifica, Repository|
+| **Notifica**      | id, ora, alert_id                                     | Alert|
 
 
 ## Elementi
@@ -101,3 +102,8 @@ Un elemento di un [Repository](#repository) a cui è legata una [BoolOperation](
 
 Se i [Tweet](#tweet) di un [Repository](#repository) che rispettano la [BoolOperation](#booloperation) superano un certo
 `limit` in un lasso di tempo, si attiva e notifica l'utente.
+
+
+### Notifica
+
+Una notifica legata ad un Alert che viene creata quando l'alert viene innescato.
