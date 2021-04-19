@@ -6,7 +6,6 @@
       <sourceFolder url="file://$MODULE_DIR$/nest-frontend" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/test" isTestSource="true" />
     </content>
-    <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>

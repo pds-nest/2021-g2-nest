@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PipelineViewerConfig">
+    <option name="gitlabAuthToken" value="" />
+    <option name="gitlabProjectId" value="0" />
+    <option name="gitlabUrl" value="" />
+    <option name="showLightsForBranch" value="" />
+  </component>
+</project>

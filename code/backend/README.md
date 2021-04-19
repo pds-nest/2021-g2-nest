@@ -3,6 +3,7 @@
 ## Installazione
 
 ## Configurazione
+`export COOKIE_SECRET=hippityhoppity`
 
 ## Sviluppo
 

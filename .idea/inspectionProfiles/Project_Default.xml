@@ -20,7 +20,7 @@
     <inspection_tool class="PyFromFutureImportInspection" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="PyGlobalUndefinedInspection" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="PyInconsistentIndentationInspection" enabled="true" level="ERROR" enabled_by_default="true" />
-    <inspection_tool class="PyInterpreterInspection" enabled="true" level="SERVER PROBLEM" enabled_by_default="true" />
+    <inspection_tool class="PyInterpreterInspection" enabled="false" level="SERVER PROBLEM" enabled_by_default="false" />
     <inspection_tool class="PyMandatoryEncodingInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true" />
     <inspection_tool class="PyMethodMayBeStaticInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
     <inspection_tool class="PyMissingTypeHintsInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true" />
