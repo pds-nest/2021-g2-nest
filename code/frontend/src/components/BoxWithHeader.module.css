@@ -1,0 +1,27 @@
+.BoxWithHeader {
+    margin: 25px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.BoxHeader {
+    padding: 10px 40px;
+    border-radius: 25px 25px 0 0;
+
+    background-color: var(--bg-light);
+
+    font-size: x-large;
+    font-family: var(--font-title);
+}
+
+.BoxBody {
+    min-height: 40px;
+    padding: 10px 40px;
+    border-radius: 0 0 25px 25px;
+
+    background-color: var(--bg-dark);
+
+    font-size: medium;
+    font-family: var(--font-regular);
+}

@@ -1,16 +1,17 @@
-@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Poppins&display=swap');
 
 * {
     box-sizing: border-box;
 }
 
 body {
+    --font-title: "Bree Serif", serif;
+    --font-regular: "Poppins", sans-serif;
+
     margin: 0;
 
     min-height: 100%;
     min-width: 100%;
-
-    font-family: "Bree Serif", serif;
 }
 
 .ThemeDark {
