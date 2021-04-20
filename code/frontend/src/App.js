@@ -11,17 +11,16 @@ export default function App() {
         <div className={classNames(Style.App, theme)}>
             <BoxWithHeader
                 header={"Ciao mondo!"}
-                body={
+            >
+                <div>
                     <div>
-                        <div>
-                            Il CSS è pura magia.
-                        </div>
-                        <div>
-                            Change my mind.
-                        </div>
+                        Il CSS è pura magia.
                     </div>
-                }
-            />
+                    <div>
+                        Change my mind.
+                    </div>
+                </div>
+            </BoxWithHeader>
             <BoxWithHeader
                 header={"Questa è un'altra Box."}
                 body={
