@@ -9,7 +9,7 @@ body {
     min-width: 100%;
 }
 
-.theme-dark {
+.ThemeDark {
     --bg-primary: #3B7097;
     --bg-light: #34607A;
     --bg-dark: #254D61;
@@ -24,7 +24,7 @@ body {
     --cmp-dark: #7C7C7C;
 }
 
-.theme-light {
+.ThemeLight {
     --bg-primary: #CAE4F6;
     --bg-light: #B2CEDF;
     --bg-dark: #7292AF;

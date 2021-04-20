@@ -5,7 +5,7 @@ import Box from "./components/Box"
 
 
 export default function App() {
-    const [theme, ] = useState("theme-dark");
+    const [theme, ] = useState("ThemeDark");
 
     return (
         <div className={classNames(Style["app"], theme)}>
