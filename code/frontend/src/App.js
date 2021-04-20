@@ -1,14 +1,22 @@
 import {useState} from "react"
 import classNames from "classnames"
 import Style from "./App.module.css"
+import Box from "./components/Box"
 
 
 export default function App() {
-    const [theme, setTheme] = useState("theme-dark");
+    const [theme, ] = useState("theme-dark");
 
     return (
         <div className={classNames(Style["app"], theme)}>
-            Ciao mondo!
+            <Box direction={"column"}>
+                <div>
+                    Ciao
+                </div>
+                <div>
+                    mondo!
+                </div>
+            </Box>
         </div>
     )
 }
