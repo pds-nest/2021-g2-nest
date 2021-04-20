@@ -1,7 +1,0 @@
-.Box {
-    display: flex;
-
-    background-color: var(--bg-light);
-    border-radius: 999999px;
-}
-
