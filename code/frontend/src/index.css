@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap');
+
 * {
     box-sizing: border-box;
 }
@@ -7,6 +9,8 @@ body {
 
     min-height: 100%;
     min-width: 100%;
+
+    font-family: "Bree Serif", serif;
 }
 
 .ThemeDark {
