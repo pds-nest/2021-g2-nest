@@ -20,7 +20,6 @@ body {
     --bg-dark: #254D61;
 
     --fg-primary: #FFFFFF;
-    --fg-secondary: #536841;
 
     --btn-on: #5D815C;
     --btn-off: #F6E2BC;
@@ -32,10 +31,9 @@ body {
 .ThemeLight {
     --bg-primary: #CAE4F6;
     --bg-light: #B2CEDF;
-    --bg-dark: #7292AF;
+    --bg-dark: #92B5D5;
 
-    --fg-primary: #536841;
-    --fg-secondary: #FFFFFF;
+    --fg-primary: #336582;
 
     --btn-on: #A3BDA2;
     --btn-off: #FFFFFF;
