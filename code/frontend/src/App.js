@@ -9,6 +9,11 @@ import InputWithIcon from "./components/InputWithIcon"
 import Layout from "./components/Layout"
 import ContextTheme from "./contexts/ContextTheme"
 import { BrowserRouter } from "react-router-dom"
+import { Route, Switch } from "react-router"
+import PageHome from "./routes/PageHome"
+import PageRepositories from "./routes/PageRepositories"
+import PageAlerts from "./routes/PageAlerts"
+import PageSettings from "./routes/PageSettings"
 
 
 export default function App() {
@@ -20,27 +25,20 @@ export default function App() {
 
             <div className={classNames(Style.App, theme)}>
                 <Layout>
-                    <BoxWithHeader
-                        header={"Sto provando i bottoni!"}
-                    >
-                        <div>
-                            <div>
-                                Ammirate:
-                            </div>
-                            <div>
-                                <Button color={"Green"} icon={faArrowRight}>Verde</Button>
-                                <Button color={"Grey"} icon={faArchive}>Grigio</Button>
-                                <Button color={"Yellow"} icon={faExclamationTriangle}>Giallo</Button>
-                                <Button color={"Red"} icon={faTrash}>Rosso</Button>
-                            </div>
-                            <div>
-                                E già che ci siamo, un Input, con e senza icona:
-                            </div>
-                            <div>
-                                <Input/> <InputWithIcon icon={faSearch}/>
-                            </div>
-                        </div>
-                    </BoxWithHeader>
+                    <Switch>
+                        <Route path={"/"}>
+                            <PageHome/>
+                        </Route>
+                        <Route path={"/repositories"}>
+                            <PageRepositories/>
+                        </Route>
+                        <Route path={"/alerts"}>
+                            <PageAlerts/>
+                        </Route>
+                        <Route path={"/settings"}>
+                            <PageSettings/>
+                        </Route>
+                    </Switch>
                 </Layout>
             </div>
 
