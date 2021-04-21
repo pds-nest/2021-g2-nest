@@ -2,6 +2,8 @@ import {useState} from "react"
 import classNames from "classnames"
 import Style from "./App.module.css"
 import BoxWithHeader from "./components/BoxWithHeader"
+import Button from "./components/Button"
+import { faArchive, faArrowRight, faExclamationTriangle, faTrash } from "@fortawesome/free-solid-svg-icons"
 
 
 export default function App() {
@@ -10,29 +12,20 @@ export default function App() {
     return (
         <div className={classNames(Style.App, theme)}>
             <BoxWithHeader
-                header={"Ciao mondo!"}
+                header={"Sto provando i bottoni!"}
             >
                 <div>
                     <div>
-                        Il CSS è pura magia.
+                        Ammirate:
                     </div>
                     <div>
-                        Change my mind.
+                        <Button color={"Green"} icon={faArrowRight}>Verde</Button>
+                        <Button color={"Grey"} icon={faArchive}>Grigio</Button>
+                        <Button color={"Yellow"} icon={faExclamationTriangle}>Giallo</Button>
+                        <Button color={"Red"} icon={faTrash}>Rosso</Button>
                     </div>
                 </div>
             </BoxWithHeader>
-            <BoxWithHeader
-                header={"Questa è un'altra Box."}
-                body={
-                    <div>
-                        E altro testo.
-                    </div>
-                }
-            />
-            <BoxWithHeader
-                header={"Ecco, così va meglio."}
-                body={"No."}
-            />
         </div>
     )
 }

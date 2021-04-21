@@ -1,0 +1,44 @@
+.Button {
+    font-family: var(--font-regular);
+
+    border-width: 0;
+    border-radius: 25px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+
+    padding: 10px;
+    margin: 0 2px;
+
+    cursor: pointer;
+}
+
+.ButtonGreen {
+    color: var(--fg-green);
+    background-color: var(--bg-green);
+    border-color: var(--bg-green);
+}
+
+.ButtonGrey {
+    color: var(--fg-grey);
+    background-color: var(--bg-grey);
+    border-color: var(--bg-grey);
+}
+
+.ButtonYellow {
+    color: var(--fg-yellow);
+    background-color: var(--bg-yellow);
+    border-color: var(--bg-yellow);
+}
+
+.ButtonRed {
+    color: var(--fg-red);
+    background-color: var(--bg-red);
+    border-color: var(--bg-red);
+}
+
+.Icon {
+    font-size: large;
+
+    /* TODO: non so quanto sia una buona idea, ma funziona accettabilmente */
+    line-height: 0;
+    vertical-align: sub;
+}
