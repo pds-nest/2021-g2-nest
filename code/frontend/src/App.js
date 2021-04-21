@@ -1,11 +1,6 @@
 import {useState} from "react"
 import classNames from "classnames"
 import Style from "./App.module.css"
-import BoxWithHeader from "./components/BoxWithHeader"
-import Button from "./components/Button"
-import { faArchive, faArrowRight, faExclamationTriangle, faSearch, faTrash } from "@fortawesome/free-solid-svg-icons"
-import Input from "./components/Input"
-import InputWithIcon from "./components/InputWithIcon"
 import Layout from "./components/Layout"
 import ContextTheme from "./contexts/ContextTheme"
 import { BrowserRouter } from "react-router-dom"
@@ -26,9 +21,6 @@ export default function App() {
             <div className={classNames(Style.App, theme)}>
                 <Layout>
                     <Switch>
-                        <Route path={"/"}>
-                            <PageHome/>
-                        </Route>
                         <Route path={"/repositories"}>
                             <PageRepositories/>
                         </Route>
@@ -37,6 +29,9 @@ export default function App() {
                         </Route>
                         <Route path={"/settings"}>
                             <PageSettings/>
+                        </Route>
+                        <Route path={"/"}>
+                            <PageHome/>
                         </Route>
                     </Switch>
                 </Layout>
