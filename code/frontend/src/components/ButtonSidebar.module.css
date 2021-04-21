@@ -1,3 +1,7 @@
+.ButtonLink {
+    text-decoration: none;
+}
+
 .ButtonSidebar {
     font-family: var(--font-title);
 

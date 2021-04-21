@@ -8,6 +8,7 @@ import Input from "./components/Input"
 import InputWithIcon from "./components/InputWithIcon"
 import Layout from "./components/Layout"
 import ContextTheme from "./contexts/ContextTheme"
+import { BrowserRouter } from "react-router-dom"
 
 
 export default function App() {
@@ -15,6 +16,8 @@ export default function App() {
 
     return (
         <ContextTheme.Provider value={theme}>
+        <BrowserRouter>
+
             <div className={classNames(Style.App, theme)}>
                 <Layout>
                     <BoxWithHeader
@@ -40,6 +43,8 @@ export default function App() {
                     </BoxWithHeader>
                 </Layout>
             </div>
+
+        </BrowserRouter>
         </ContextTheme.Provider>
     )
 }

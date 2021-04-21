@@ -11,10 +11,10 @@ export default function Sidebar({ children, className, ...props }) {
         <div className={classNames(Style.Sidebar, className)} {...props}>
             {/* TODO: Aggiungere il logo qui! */}
             <Logo/>
-            <ButtonSidebar icon={faHome}>Dashboard</ButtonSidebar>
-            <ButtonSidebar icon={faFolder}>Repositories</ButtonSidebar>
-            <ButtonSidebar icon={faExclamationTriangle}>Alerts</ButtonSidebar>
-            <ButtonSidebar icon={faCog}>Settings</ButtonSidebar>
+            <ButtonSidebar to={"/"} icon={faHome}>Dashboard</ButtonSidebar>
+            <ButtonSidebar to={"/repositories"} icon={faFolder}>Repositories</ButtonSidebar>
+            <ButtonSidebar to={"/alerts"} icon={faExclamationTriangle}>Alerts</ButtonSidebar>
+            <ButtonSidebar to={"/settings"} icon={faCog}>Settings</ButtonSidebar>
             {children}
         </div>
     )
