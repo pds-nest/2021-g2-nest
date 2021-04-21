@@ -7,36 +7,39 @@ import { faArchive, faArrowRight, faExclamationTriangle, faSearch, faTrash } fro
 import Input from "./components/Input"
 import InputWithIcon from "./components/InputWithIcon"
 import Layout from "./components/Layout"
+import ContextTheme from "./contexts/ContextTheme"
 
 
 export default function App() {
-    const [theme, ] = useState("ThemeDark");
+    const [theme, ] = useState("ThemeLight");
 
     return (
-        <div className={classNames(Style.App, theme)}>
-            <Layout>
-                <BoxWithHeader
-                    header={"Sto provando i bottoni!"}
-                >
-                    <div>
+        <ContextTheme.Provider value={theme}>
+            <div className={classNames(Style.App, theme)}>
+                <Layout>
+                    <BoxWithHeader
+                        header={"Sto provando i bottoni!"}
+                    >
                         <div>
-                            Ammirate:
+                            <div>
+                                Ammirate:
+                            </div>
+                            <div>
+                                <Button color={"Green"} icon={faArrowRight}>Verde</Button>
+                                <Button color={"Grey"} icon={faArchive}>Grigio</Button>
+                                <Button color={"Yellow"} icon={faExclamationTriangle}>Giallo</Button>
+                                <Button color={"Red"} icon={faTrash}>Rosso</Button>
+                            </div>
+                            <div>
+                                E già che ci siamo, un Input, con e senza icona:
+                            </div>
+                            <div>
+                                <Input/> <InputWithIcon icon={faSearch}/>
+                            </div>
                         </div>
-                        <div>
-                            <Button color={"Green"} icon={faArrowRight}>Verde</Button>
-                            <Button color={"Grey"} icon={faArchive}>Grigio</Button>
-                            <Button color={"Yellow"} icon={faExclamationTriangle}>Giallo</Button>
-                            <Button color={"Red"} icon={faTrash}>Rosso</Button>
-                        </div>
-                        <div>
-                            E già che ci siamo, un Input, con e senza icona:
-                        </div>
-                        <div>
-                            <Input/> <InputWithIcon icon={faSearch}/>
-                        </div>
-                    </div>
-                </BoxWithHeader>
-            </Layout>
-        </div>
+                    </BoxWithHeader>
+                </Layout>
+            </div>
+        </ContextTheme.Provider>
     )
 }
