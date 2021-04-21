@@ -12,11 +12,12 @@
 
     background-color: var(--bg-button-off);
     color: var(--fg-button-off);
-    font-size: large;
 
     display: flex;
     flex-direction: row;
-    gap: 10px;
+    gap: 20px;
+
+    font-size: large;
 
     /* Hackerino per ignorare il padding */
     width: calc(100% + 10px);
@@ -32,11 +33,13 @@
 .ButtonIcon {
     font-size: x-large;
 
-    /* TODO: non so quanto sia una buona idea, ma funziona accettabilmente */
     line-height: 0;
-    vertical-align: sub;
+
+    /* Hackerino per centrare le icone */
+    position: relative;
+    top: 2px;
 }
 
 .ButtonText {
-    text-align: center;
+
 }
