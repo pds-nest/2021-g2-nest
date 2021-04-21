@@ -11,7 +11,7 @@ import ContextTheme from "./contexts/ContextTheme"
 
 
 export default function App() {
-    const [theme, ] = useState("ThemeLight");
+    const [theme, ] = useState("ThemeDark");
 
     return (
         <ContextTheme.Provider value={theme}>
