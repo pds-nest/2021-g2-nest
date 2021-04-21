@@ -18,7 +18,16 @@ export default function BoxWithHeader({ header, body, children, className, ...pr
         }
     }
 
+    if(header === undefined) {
+        header = {}
+    }
+
+    if(body === undefined) {
+        body = {}
+    }
+
     if(children) {
+
         if(body.children) {
             throw new Error("If directly passing `children` to BoxWithHeader, body.children should not be set.")
         }
