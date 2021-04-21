@@ -8,6 +8,12 @@ body {
     --font-title: "Bree Serif", serif;
     --font-regular: "Poppins", sans-serif;
 
+    --bg-field-on: #FFFFFF;
+    --bg-field-off: #C4C4C4;
+
+    --fg-field-on: #777777;
+    --fg-field-off: #626262;
+
     margin: 0;
 
     min-height: 100%;
@@ -16,28 +22,50 @@ body {
 
 .ThemeDark {
     --bg-primary: #3B7097;
+    --fg-primary: #FFFFFF;
+
     --bg-light: #34607A;
     --bg-dark: #254D61;
 
-    --fg-primary: #FFFFFF;
+    --bg-button-on: #5D815C;
+    --bg-button-off: #F6E2BC;
+    --fg-button-on: #FFFFFF;
+    --fg-button-off: #536841;
 
-    --btn-on: #5D815C;
-    --btn-off: #F6E2BC;
+    --bg-green: #536841;
+    --fg-green: #FFFFFF;
 
-    --cmp-light: #C4C4C4;
-    --cmp-dark: #7C7C7C;
+    --bg-grey: #555555;
+    --fg-grey: #FFFFFF;
+
+    --bg-yellow: #B28000;
+    --fg-yellow: #FFFFFF;
+
+    --bg-red: #863821;
+    --fg-red: #FFFFFF;
 }
 
 .ThemeLight {
     --bg-primary: #CAE4F6;
+    --fg-primary: #336582;
+
     --bg-light: #B2CEDF;
     --bg-dark: #92B5D5;
 
-    --fg-primary: #336582;
+    --bg-button-on: #A3BDA2;
+    --bg-button-off: #FFFFFF; /* TODO: Change this, it's too light! */
+    --fg-button-on: #FFFFFF;
+    --fg-button-off: #536841;
 
-    --btn-on: #A3BDA2;
-    --btn-off: #FFFFFF;
+    --bg-green: #A9D09E;
+    --fg-green: #536841;
 
-    --cmp-light: #FFFFFF;
-    --cmp-dark: #AAAAAA;
+    --bg-grey: #cccccc;
+    --fg-grey: #7a7a7a;
+
+    --bg-yellow: #F6E2BC;
+    --fg-yellow: #B28100;
+
+    --bg-red: #FF8866;
+    --fg-red: #863821;
 }
