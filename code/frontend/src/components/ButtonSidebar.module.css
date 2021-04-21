@@ -1,0 +1,42 @@
+.ButtonSidebar {
+    font-family: var(--font-title);
+
+    border-width: 0;
+    border-radius: 0 25px 25px 0;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+
+    padding: 10px;
+    margin: 0;
+
+    cursor: pointer;
+
+    background-color: var(--bg-button-off);
+    color: var(--fg-button-off);
+    font-size: large;
+
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+
+    /* Hackerino per ignorare il padding */
+    width: calc(100% + 10px);
+    position: relative;
+    left: -10px;
+}
+
+.ButtonSidebar.Active {
+    background-color: var(--bg-button-on);
+    color: var(--fg-button-on);
+}
+
+.ButtonIcon {
+    font-size: x-large;
+
+    /* TODO: non so quanto sia una buona idea, ma funziona accettabilmente */
+    line-height: 0;
+    vertical-align: sub;
+}
+
+.ButtonText {
+    text-align: center;
+}
