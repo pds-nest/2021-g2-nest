@@ -6,4 +6,6 @@
 
     background-color: var(--bg-light);
     border-radius: 25px;
+
+    padding: 10px;
 }
