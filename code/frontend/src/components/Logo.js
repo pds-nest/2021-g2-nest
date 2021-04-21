@@ -1,6 +1,4 @@
 import React, {useContext} from "react"
-import Style from "./Logo.module.css"
-import classNames from "classnames"
 import LogoDark from "../media/LogoDark.png"
 import LogoLight from "../media/LogoLight.png"
 import ContextTheme from "../contexts/ContextTheme"
@@ -21,6 +19,6 @@ export default function Logo({ children, className, ...props }) {
     }
 
     return (
-        <img src={logo} alt={"N.E.S.T."}/>
+        <img src={logo} alt={"N.E.S.T."} {...props}/>
     )
 }
