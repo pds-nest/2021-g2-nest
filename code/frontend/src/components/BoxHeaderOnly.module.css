@@ -1,0 +1,9 @@
+.BoxHeaderOnly {
+    padding: 10px 40px;
+    border-radius: 25px;
+
+    background-color: var(--bg-light);
+
+    font-size: x-large;
+    font-family: var(--font-title);
+}
