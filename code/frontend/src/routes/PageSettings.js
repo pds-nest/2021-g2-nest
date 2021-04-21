@@ -3,6 +3,8 @@ import Style from "./PageSettings.module.css"
 import classNames from "classnames"
 import BoxHeaderOnly from "../components/BoxHeaderOnly"
 import BoxWithHeader from "../components/BoxWithHeader"
+import Select from "../components/Select"
+import SelectTheme from "../components/SelectTheme"
 
 
 export default function PageSettings({ children, className, ...props }) {
@@ -12,7 +14,7 @@ export default function PageSettings({ children, className, ...props }) {
                 You are currently logged in as:
             </BoxHeaderOnly>
             <BoxHeaderOnly>
-                Switch theme:
+                Switch theme: <SelectTheme/>
             </BoxHeaderOnly>
             <BoxWithHeader header={"Change your email address"}>
 

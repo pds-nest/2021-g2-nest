@@ -1,4 +1,4 @@
-.Input {
+.Select {
     border-radius: 25px;
     border-width: 0;
 
@@ -10,9 +10,12 @@
     background-color: var(--bg-field-off);
 
     font-family: var(--font-regular);
+
+    /* Non ho idea di perchè serva */
+    vertical-align: bottom;
 }
 
-.Input:focus {
+.Select:focus {
     outline: 0; /* TODO: Questo è sconsigliato dalle linee guida sull'accessibilità! */
 
     color: var(--fg-field-on);

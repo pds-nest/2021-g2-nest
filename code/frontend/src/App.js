@@ -12,10 +12,10 @@ import PageSettings from "./routes/PageSettings"
 
 
 export default function App() {
-    const [theme, ] = useState("ThemeDark");
+    const [theme, setTheme] = useState("ThemeDark");
 
     return (
-        <ContextTheme.Provider value={theme}>
+        <ContextTheme.Provider value={[theme, setTheme]}>
         <BrowserRouter>
 
             <div className={classNames(Style.App, theme)}>

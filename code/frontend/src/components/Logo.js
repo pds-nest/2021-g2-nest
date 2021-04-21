@@ -5,7 +5,7 @@ import ContextTheme from "../contexts/ContextTheme"
 
 
 export default function Logo({ children, className, ...props }) {
-    const theme = useContext(ContextTheme)
+    const [theme, ] = useContext(ContextTheme)
 
     let logo;
     if(theme === "ThemeDark") {
