@@ -34,6 +34,10 @@
     color: var(--fg-button-on);
 }
 
+.ButtonLink:focus-visible .ButtonSidebar {
+    outline: 2px solid var(--outline);
+}
+
 .ButtonIcon {
     font-size: x-large;
 

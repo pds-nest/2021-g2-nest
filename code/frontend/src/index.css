@@ -43,6 +43,8 @@ body {
 
     --bg-red: #863821;
     --fg-red: #FFFFFF;
+
+    --outline: white;
 }
 
 .ThemeLight {
@@ -68,4 +70,6 @@ body {
 
     --bg-red: #FF8866;
     --fg-red: #863821;
+
+    --outline: black;
 }
