@@ -1,0 +1,11 @@
+.LabelledForm {
+    display: grid;
+
+    grid-template-columns: auto 1fr;
+    grid-auto-rows: auto;
+
+    grid-gap: 10px;
+
+    justify-content: center;
+    align-items: center;
+}

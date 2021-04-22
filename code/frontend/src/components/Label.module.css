@@ -1,0 +1,13 @@
+.LabelText {
+    grid-column: 1;
+    text-align: right;
+}
+
+.LabelContent {
+    grid-column: 2;
+}
+
+.LabelContent > * {
+    height: 100%;
+    width: 100%;
+}
