@@ -10,6 +10,8 @@
     background-color: var(--bg-field-off);
 
     font-family: var(--font-regular);
+
+    width: 300px;
 }
 
 .Input:focus {

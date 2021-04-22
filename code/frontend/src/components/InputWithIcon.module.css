@@ -4,38 +4,42 @@
 
     color: var(--fg-field-off);
     margin: 2px;
+
+    width: 300px;
 }
 
 .InputWithIcon.Focused {
     color: var(--fg-field-on);
 }
 
-.InputWithIcon .IconPart {
+.IconPart {
     border-radius: 25px 0 0 25px;
     padding: 2px 4px;
 
     background-color: var(--bg-field-off);
 }
 
-.InputWithIcon.Focused .IconPart {
+.Focused .IconPart {
     background-color: var(--bg-field-on);
 }
 
-.InputWithIcon .InputPart {
+.InputPart {
     border-radius: 0 25px 25px 0;
     padding: 2px;
+    flex-grow: 1;
 
     background-color: var(--bg-field-off);
     border-width: 0;
 
     outline: 0; /* TODO: Questo è sconsigliato dalle linee guida sull'accessibilità! */
 
-    /* Repeat the color, as it is overridden by <input> */
+    /* Repeat properties overridden by <input> */
+    font-family: var(--font-regular);
     color: var(--fg-field-off);
 }
 
 
-.InputWithIcon.Focused .InputPart {
+.Focused .InputPart {
     background-color: var(--bg-field-on);
     color: var(--fg-field-on);
 }
