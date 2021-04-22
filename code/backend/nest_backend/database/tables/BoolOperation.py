@@ -19,7 +19,7 @@ class BoolOperation(Base.Model):
     # Relationships
     condition = Base.relationship("Condition", back_populates="operations")
     node_1 = Base.relationship("BoolOperation", primaryjoin=("bool_operation.c.node_1_id==bool_operation.c.id"),
-                               remote_side="BoolOperation.id", backref=backref("father", uselist=False))
+                               remote_side="BoolOperation.id", backref=backref("father_1", uselist=False))
     node_2 = Base.relationship("BoolOperation", primaryjoin=("bool_operation.c.node_2_id==bool_operation.c.id"),
-                               remote_side="BoolOperation.id", backref=backref("father", uselist=False))
+                               remote_side="BoolOperation.id", backref=backref("father_2", uselist=False))
     alert = Base.relationship("Alert", back_populates="operations")

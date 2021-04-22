@@ -18,3 +18,4 @@ class Repository(Base.Model):
     authorizations = Base.relationship("Authorization", back_populates="repository")
     tweets = Base.relationship("Composed", back_populates="repository")
     alerts = Base.relationship("Alert", back_populates="repository")
+    uses = Base.relationship("Uses", back_populates="repository")

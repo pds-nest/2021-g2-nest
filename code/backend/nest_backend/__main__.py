@@ -5,7 +5,7 @@ from flask import Flask
 import os
 import werkzeug.middleware.proxy_fix
 from .routes import *
-from database import Base, tables
+from .database import Base, tables
 import psycopg2
 
 
@@ -19,7 +19,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:password@localhos
 Base.app = app
 Base.init_app(app)
 # Routes setup
-app.add_url_rule("/doa", view_func=page_doa, methods=["GET"])
+app.add_url_rule("/doa", view_func=page_doa, methods=["GET", "POST"])
 
 if __name__ == "__main__":
     Base.create_all()
