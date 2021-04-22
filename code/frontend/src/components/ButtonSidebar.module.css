@@ -35,7 +35,7 @@
 }
 
 .ButtonLink:focus-visible .ButtonSidebar {
-    outline: 2px solid var(--outline);
+    outline: 4px solid var(--outline);
 }
 
 .ButtonIcon {
