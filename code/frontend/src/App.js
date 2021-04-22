@@ -9,6 +9,7 @@ import PageHome from "./routes/PageHome"
 import PageRepositories from "./routes/PageRepositories"
 import PageAlerts from "./routes/PageAlerts"
 import PageSettings from "./routes/PageSettings"
+import PageSandbox from "./routes/PageSandbox"
 
 
 export default function App() {
@@ -61,16 +62,19 @@ export default function App() {
             <div className={classNames(Style.App, theme)}>
                 <Layout>
                     <Switch>
-                        <Route path={"/repositories"}>
+                        <Route path={"/repositories"} exact={true}>
                             <PageRepositories/>
                         </Route>
-                        <Route path={"/alerts"}>
+                        <Route path={"/alerts"} exact={true}>
                             <PageAlerts/>
                         </Route>
-                        <Route path={"/settings"}>
+                        <Route path={"/settings"} exact={true}>
                             <PageSettings/>
                         </Route>
-                        <Route path={"/"}>
+                        <Route path={"/sandbox"} exact={true}>
+                            <PageSandbox/>
+                        </Route>
+                        <Route path={"/"} exact={true}>
                             <PageHome/>
                         </Route>
                     </Switch>
