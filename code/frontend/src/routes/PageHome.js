@@ -34,7 +34,7 @@ export default function PageHome({ children, className, ...props }) {
 
             </BoxFull>
             <BoxFull className={Style.CreateDialog} header={"Create repository"}>
-                <LabelledForm action={""}>
+                <LabelledForm>
                     <Label for_={"repo-name"} text={"Repository name"}>
                         <InputWithIcon id={"repo-name"} icon={faFolder}/>
                     </Label>
