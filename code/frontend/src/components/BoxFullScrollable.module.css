@@ -1,0 +1,5 @@
+.ScrollableBody {
+    flex-grow: 0;
+
+    overflow-y: scroll;
+}
