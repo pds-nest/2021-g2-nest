@@ -1,5 +1,5 @@
 import React from "react"
-import Style from "./BoxHeaderOnly.module.css"
+import Style from "./BoxHeader.module.css"
 import classNames from "classnames"
 
 
@@ -12,7 +12,7 @@ import classNames from "classnames"
  * @returns {JSX.Element}
  * @constructor
  */
-export default function BoxHeaderOnly({ children, className, ...props }) {
+export default function BoxHeader({ children, className, ...props }) {
     return (
         <div className={classNames(Style.BoxHeaderOnly, className)} {...props}>
             {children}

@@ -1,7 +1,7 @@
 import React from "react"
 import Style from "./PageHome.module.css"
 import classNames from "classnames"
-import BoxHeaderOnly from "../components/BoxHeaderOnly"
+import BoxHeader from "../components/BoxHeader"
 import BoxWithHeader from "../components/BoxWithHeader"
 import Checkbox from "../components/Checkbox"
 import InputWithIcon from "../components/InputWithIcon"
@@ -15,9 +15,9 @@ import Label from "../components/Label"
 export default function PageHome({ children, className, ...props }) {
     return (
         <div className={classNames(Style.PageHome, className)} {...props}>
-            <BoxHeaderOnly className={Style.Header}>
+            <BoxHeader className={Style.Header}>
                 Create a new repository
-            </BoxHeaderOnly>
+            </BoxHeader>
             <BoxWithHeader className={Style.SearchByZone} header={
                 <span><Checkbox/> Search by zone</span>
             }>
