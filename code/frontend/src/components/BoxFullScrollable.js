@@ -11,19 +11,16 @@ import BoxFull from "./BoxFull"
  *
  * @param children - The contents of the box body.
  * @param childrenClassName - Additional class(es) added to the inner `<div>` acting as the body.
- * @param height - The fixed height of the box body.
  * @param props - Additional props to pass to the box.
  * @returns {JSX.Element}
  * @constructor
  */
-export default function BoxFullScrollable({ children, childrenClassName, height, ...props }) {
+export default function BoxFullScrollable({ children, childrenClassName, ...props }) {
     return (
-        <BoxFull
-            childrenClassName={classNames(Style.ScrollableBody, childrenClassName)}
-            childrenProps={{"style": {"height": height}}}
-            {...props}
-        >
-            {children}
+        <BoxFull childrenClassName={classNames(Style.BoxScrollableBody, childrenClassName)} {...props}>
+            <div className={classNames(Style.ScrollContainer)}>
+                {children}
+            </div>
         </BoxFull>
     )
 }

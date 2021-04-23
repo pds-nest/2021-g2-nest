@@ -1,5 +1,23 @@
-.ScrollableBody {
-    flex-grow: 0;
+.BoxScrollableBody {
+    position: relative;
+
+    border-bottom-right-radius: 0;
+}
+
+
+.ScrollContainer {
+    position: absolute;
+
+    padding: 10px 40px;
+
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
 
     overflow-y: scroll;
+
+    /* Custom scrollbar (firefox only!) */
+    scrollbar-color: var(--bg-light) var(--bg-dark);
+    scrollbar-width: auto;
 }
