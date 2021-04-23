@@ -3,7 +3,15 @@ import Select from "./Select"
 import ContextTheme from "../contexts/ContextTheme"
 
 
-export default function SelectTheme({ children, ...props }) {
+/**
+ * A {@link Select} which allows the user to choose between the various available themes, switching between them as soon
+ * as the user selects a different one.
+ *
+ * @param props - Additional props to pass to the {@link Select}.
+ * @returns {JSX.Element}
+ * @constructor
+ */
+export default function SelectTheme({ ...props }) {
     const [theme, setTheme] = useContext(ContextTheme);
 
     return (

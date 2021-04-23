@@ -1,47 +1,26 @@
-import React, {isValidElement} from "react"
+import React from "react"
 import Style from "./BoxWithHeader.module.css"
 import classNames from "classnames"
-import isString from "is-string"
 
 
-export default function BoxWithHeader({ header, body, children, className, ...props }) {
-
-    if(isValidElement(header) || isString(header)) {
-        header = {
-            children: header
-        }
-    }
-
-    if(isValidElement(body) || isString(body)) {
-        body = {
-            children: body
-        }
-    }
-
-    if(header === undefined) {
-        header = {}
-    }
-
-    if(body === undefined) {
-        body = {}
-    }
-
-    if(children) {
-
-        if(body.children) {
-            throw new Error("If directly passing `children` to BoxWithHeader, body.children should not be set.")
-        }
-
-        body["children"] = children
-    }
-
+/**
+ * A box with both a header and a body.
+ *
+ * @param header - The contents of the box header.
+ * @param children - The contents of the box body.
+ * @param className - Additional class(es) that should be added to the outer `<div>` of the box.
+ * @param props - Additional props to pass to the box.
+ * @returns {JSX.Element}
+ * @constructor
+ */
+export default function BoxWithHeader({ header, children, className, ...props }) {
     return (
         <div className={classNames(Style.BoxWithHeader, className)} {...props}>
-            <div className={classNames(Style.BoxHeader, header.className)}>
-                {header.children}
+            <div className={Style.BoxHeader}>
+                {header}
             </div>
-            <div className={classNames(Style.BoxBody, body.className)}>
-                {body.children}
+            <div className={Style.BoxBody}>
+                {children}
             </div>
         </div>
     )

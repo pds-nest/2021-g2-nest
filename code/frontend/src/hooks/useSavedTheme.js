@@ -1,6 +1,13 @@
 import { useState } from "react"
 
 
+/**
+ * Hook with the same API as {@link React.useState} which stores the user's current theme setting, and syncs it to the
+ * browser's {@link localStorage}.
+ *
+ * @todo Perhaps this could be refactored into a general "useLocalStorageState" component?
+ * @returns {[string, function]}
+ */
 export default function useSavedTheme() {
     const loadTheme = () => {
         if(localStorage) {

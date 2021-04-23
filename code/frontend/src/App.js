@@ -13,6 +13,12 @@ import PageSandbox from "./routes/PageSandbox"
 import useSavedTheme from "./hooks/useSavedTheme"
 
 
+/**
+ * The main component of the webapp, the root of the render tree, what is displayed when the web page is visited.
+ *
+ * @returns {JSX.Element}
+ * @constructor
+ */
 export default function App() {
     const [theme, setAndSaveTheme] = useSavedTheme();
 
