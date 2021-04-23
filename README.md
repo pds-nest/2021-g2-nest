@@ -29,3 +29,10 @@ Un raccoglitore e analizzatore di statistiche dei Tweet
 - Giovanni Anniballi (128593)
   - Tester
   - Developer
+  
+## IDE
+
+Per lo sviluppo è consigliato utilizzare [**IntelliJ IDEA Ultimate**](https://www.jetbrains.com/idea/download/).
+
+PyCharm purtroppo __non è sufficiente__, in quanto non supporta i _moduli .iml_.
+
