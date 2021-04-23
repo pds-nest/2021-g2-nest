@@ -3,7 +3,6 @@ import Style from "./PageSettings.module.css"
 import classNames from "classnames"
 import BoxHeader from "../components/BoxHeader"
 import BoxFull from "../components/BoxFull"
-import Select from "../components/Select"
 import SelectTheme from "../components/SelectTheme"
 
 
