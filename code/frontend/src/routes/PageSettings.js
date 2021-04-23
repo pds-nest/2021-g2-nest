@@ -2,7 +2,7 @@ import React from "react"
 import Style from "./PageSettings.module.css"
 import classNames from "classnames"
 import BoxHeader from "../components/BoxHeader"
-import BoxWithHeader from "../components/BoxWithHeader"
+import BoxFull from "../components/BoxFull"
 import Select from "../components/Select"
 import SelectTheme from "../components/SelectTheme"
 
@@ -16,15 +16,15 @@ export default function PageSettings({ children, className, ...props }) {
             <BoxHeader>
                 Switch theme: <SelectTheme/>
             </BoxHeader>
-            <BoxWithHeader header={"Change your email address"}>
+            <BoxFull header={"Change your email address"}>
 
-            </BoxWithHeader>
-            <BoxWithHeader header={"Alert settings"}>
+            </BoxFull>
+            <BoxFull header={"Alert settings"}>
 
-            </BoxWithHeader>
-            <BoxWithHeader header={"Change your password"}>
+            </BoxFull>
+            <BoxFull header={"Change your password"}>
 
-            </BoxWithHeader>
+            </BoxFull>
         </div>
     )
 }

@@ -2,7 +2,7 @@ import React from "react"
 import Style from "./PageHome.module.css"
 import classNames from "classnames"
 import BoxHeader from "../components/BoxHeader"
-import BoxWithHeader from "../components/BoxWithHeader"
+import BoxFull from "../components/BoxFull"
 import Checkbox from "../components/Checkbox"
 import InputWithIcon from "../components/InputWithIcon"
 import { faFolder, faPlus } from "@fortawesome/free-solid-svg-icons"
@@ -18,22 +18,22 @@ export default function PageHome({ children, className, ...props }) {
             <BoxHeader className={Style.Header}>
                 Create a new repository
             </BoxHeader>
-            <BoxWithHeader className={Style.SearchByZone} header={
+            <BoxFull className={Style.SearchByZone} header={
                 <span><Checkbox/> Search by zone</span>
             }>
 
-            </BoxWithHeader>
-            <BoxWithHeader className={Style.SearchByHashtags} header={
+            </BoxFull>
+            <BoxFull className={Style.SearchByHashtags} header={
                 <span><Checkbox/> Search by hashtag</span>
             }>
 
-            </BoxWithHeader>
-            <BoxWithHeader className={Style.SearchByTimePeriod} header={
+            </BoxFull>
+            <BoxFull className={Style.SearchByTimePeriod} header={
                 <span><Checkbox/> Search by time period</span>
             }>
 
-            </BoxWithHeader>
-            <BoxWithHeader className={Style.CreateDialog} header={"Create repository"}>
+            </BoxFull>
+            <BoxFull className={Style.CreateDialog} header={"Create repository"}>
                 <LabelledForm action={""}>
                     <Label for_={"repo-name"} text={"Repository name"}>
                         <InputWithIcon id={"repo-name"} icon={faFolder}/>
@@ -51,7 +51,7 @@ export default function PageHome({ children, className, ...props }) {
                         Create repository
                     </Button>
                 </LabelledForm>
-            </BoxWithHeader>
+            </BoxFull>
         </div>
     )
 }
