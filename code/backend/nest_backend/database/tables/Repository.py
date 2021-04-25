@@ -10,7 +10,7 @@ class Repository(Base.Model):
     id = Base.Column(Base.Integer, primary_key=True)
     name = Base.Column(Base.String, nullable=False)
     start = Base.Column(Base.DateTime, nullable=False)
-    end = Base.Column(Base.DateTime, nullable=False)
+    end = Base.Column(Base.DateTime, nullable=True)
     # Foreign Keys
     owner_id = Base.Column(Base.String, Base.ForeignKey("user.email"), nullable=False)
     # Relationships
@@ -19,3 +19,6 @@ class Repository(Base.Model):
     tweets = Base.relationship("Composed", back_populates="repository")
     alerts = Base.relationship("Alert", back_populates="repository")
     uses = Base.relationship("Uses", back_populates="repository")
+
+    def to_json(self):
+        return {"id": self.id, "name": self.name, "start": self.start.isoformat(), "owner": self.owner.to_json()}

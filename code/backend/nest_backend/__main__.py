@@ -8,6 +8,7 @@ from .routes import *
 from .database import Base, tables
 import psycopg2
 from .gestione import *
+from flask_cors import CORS
 from flask_jwt_extended import *
 
 app = Flask(__name__)
@@ -25,6 +26,8 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:password@localhos
 Base.app = app
 Base.init_app(app)
 jwt = JWTManager(app)
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 # Routes setup
 
 app.add_url_rule("/doa", view_func=page_doa, methods=["GET", "POST"])
