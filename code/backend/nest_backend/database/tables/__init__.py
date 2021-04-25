@@ -13,3 +13,4 @@ from .Repository import Repository
 from .Tweet import Tweet
 from .User import User
 from .Uses import Uses
+from .Enums import ConditionType, OperationType

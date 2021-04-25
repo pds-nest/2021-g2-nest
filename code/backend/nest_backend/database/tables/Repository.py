@@ -9,8 +9,9 @@ class Repository(Base.Model):
     __tablename__ = "repository"
     id = Base.Column(Base.Integer, primary_key=True)
     name = Base.Column(Base.String, nullable=False)
-    start = Base.Column(Base.DateTime, nullable=False)
+    start = Base.Column(Base.DateTime, nullable=True)
     end = Base.Column(Base.DateTime, nullable=True)
+    isActive = Base.Column(Base.Boolean, nullable=False, default=False)
     # Foreign Keys
     owner_id = Base.Column(Base.String, Base.ForeignKey("user.email"), nullable=False)
     # Relationships
