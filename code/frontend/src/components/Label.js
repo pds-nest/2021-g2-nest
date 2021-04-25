@@ -8,14 +8,14 @@ import Style from "./Label.module.css"
  *
  * @param children - The labelled element.
  * @param text - Text to be displayed in the label.
- * @param for_ - The `[id]` of the labelled element.
+ * @param htmlFor - The `[id]` of the labelled element.
  * @returns {JSX.Element}
  * @constructor
  */
-export default function Label({ children, text, for_ }) {
+export default function Label({ children, text, htmlFor }) {
     return (
         <Fragment>
-            <label for={for_} className={Style.LabelText} >
+            <label htmlFor={htmlFor} className={Style.LabelText} >
                 {text}
             </label>
             <div className={Style.LabelContent}>

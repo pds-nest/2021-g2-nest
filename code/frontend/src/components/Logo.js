@@ -29,7 +29,7 @@ export default function Logo({ className, ...props }) {
         logo = LogoLight
     }
     else {
-        throw new Error(`Unknown theme: ${theme}`)
+        logo = "#"
     }
 
     return (

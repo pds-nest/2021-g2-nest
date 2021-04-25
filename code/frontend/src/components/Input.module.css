@@ -15,7 +15,7 @@
 }
 
 .Input:focus {
-    outline: 0; /* TODO: Questo è sconsigliato dalle linee guida sull'accessibilità! */
+    outline: 0;
 
     color: var(--fg-field-on);
     background-color: var(--bg-field-on);

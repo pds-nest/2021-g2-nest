@@ -4,12 +4,16 @@ import Layout from "./components/Layout"
 import ContextTheme from "./contexts/ContextTheme"
 import { BrowserRouter } from "react-router-dom"
 import { Route, Switch } from "react-router"
-import PageHome from "./routes/PageHome"
+import PageDashboard from "./routes/PageDashboard"
 import PageRepositories from "./routes/PageRepositories"
 import PageAlerts from "./routes/PageAlerts"
 import PageSettings from "./routes/PageSettings"
 import PageSandbox from "./routes/PageSandbox"
 import useSavedTheme from "./hooks/useSavedTheme"
+import PageLogin from "./routes/PageLogin"
+import useSavedLogin from "./hooks/useSavedLogin"
+import ContextLogin from "./contexts/ContextLogin"
+import PageRoot from "./routes/PageRoot"
 
 
 /**
@@ -19,15 +23,20 @@ import useSavedTheme from "./hooks/useSavedTheme"
  * @constructor
  */
 export default function App() {
-    const [theme, setAndSaveTheme] = useSavedTheme();
+    const theme = useSavedTheme();
+    const login = useSavedLogin();
 
     return (
-        <ContextTheme.Provider value={[theme, setAndSaveTheme]}>
+        <ContextTheme.Provider value={theme}>
+        <ContextLogin.Provider value={login}>
         <BrowserRouter>
 
             <div className={classNames(Style.App, theme)}>
                 <Layout>
                     <Switch>
+                        <Route path={"/login"} exact={true}>
+                            <PageLogin/>
+                        </Route>
                         <Route path={"/repositories"} exact={true}>
                             <PageRepositories/>
                         </Route>
@@ -40,14 +49,18 @@ export default function App() {
                         <Route path={"/sandbox"} exact={true}>
                             <PageSandbox/>
                         </Route>
-                        <Route path={"/"} exact={true}>
-                            <PageHome/>
+                        <Route path={"/dashboard"} exact={true}>
+                            <PageDashboard/>
+                        </Route>
+                        <Route path={"/"}>
+                            <PageRoot/>
                         </Route>
                     </Switch>
                 </Layout>
             </div>
 
         </BrowserRouter>
+        </ContextLogin.Provider>
         </ContextTheme.Provider>
     )
 }

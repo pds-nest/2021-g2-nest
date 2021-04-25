@@ -7,8 +7,6 @@ import BoxFull from "./BoxFull"
 /**
  * A {@link BoxFull} whose body does not grow automatically but instead supports scrolling.
  *
- * @todo Is there a way to allow the box body to grow automatically...?
- *
  * @param children - The contents of the box body.
  * @param childrenClassName - Additional class(es) added to the inner `<div>` acting as the body.
  * @param props - Additional props to pass to the box.

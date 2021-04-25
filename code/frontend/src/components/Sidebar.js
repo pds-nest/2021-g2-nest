@@ -1,9 +1,10 @@
-import React from "react"
+import React, { Fragment, useContext } from "react"
 import Style from "./Sidebar.module.css"
 import classNames from "classnames"
 import Logo from "./Logo"
 import ButtonSidebar from "./ButtonSidebar"
-import { faCog, faExclamationTriangle, faFolder, faHome, faWrench } from "@fortawesome/free-solid-svg-icons"
+import { faCog, faExclamationTriangle, faFolder, faHome, faKey, faWrench } from "@fortawesome/free-solid-svg-icons"
+import ContextLogin from "../contexts/ContextLogin"
 
 
 /**
@@ -16,13 +17,24 @@ import { faCog, faExclamationTriangle, faFolder, faHome, faWrench } from "@forta
  * @constructor
  */
 export default function Sidebar({ className, ...props }) {
+    const {state} = useContext(ContextLogin)
+
     return (
         <div className={classNames(Style.Sidebar, className)} {...props}>
             <Logo/>
-            <ButtonSidebar to={"/"} icon={faHome}>Dashboard</ButtonSidebar>
-            <ButtonSidebar to={"/repositories"} icon={faFolder}>Repositories</ButtonSidebar>
-            <ButtonSidebar to={"/alerts"} icon={faExclamationTriangle}>Alerts</ButtonSidebar>
-            <ButtonSidebar to={"/settings"} icon={faCog}>Settings</ButtonSidebar>
+            {
+                state ?
+                <Fragment>
+                    <ButtonSidebar to={"/dashboard"} icon={faHome}>Dashboard</ButtonSidebar>
+                    <ButtonSidebar to={"/repositories"} icon={faFolder}>Repositories</ButtonSidebar>
+                    <ButtonSidebar to={"/alerts"} icon={faExclamationTriangle}>Alerts</ButtonSidebar>
+                    <ButtonSidebar to={"/settings"} icon={faCog}>Settings</ButtonSidebar>
+                </Fragment>
+                :
+                <Fragment>
+                    <ButtonSidebar to={"/login"} icon={faKey}>Login</ButtonSidebar>
+                </Fragment>
+            }
             {
                 process.env.NODE_ENV === "development" ?
                 <ButtonSidebar to={"/sandbox"} icon={faWrench}>Sandbox</ButtonSidebar>

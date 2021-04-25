@@ -8,10 +8,10 @@ export default function PageRepositories({ children, className, ...props }) {
     return (
         <div className={classNames(Style.PageRepositories, className)} {...props}>
             <BoxFull header={"Your active repositories"} className={Style.ActiveRepositories}>
-                a
+                🚧 Not implemented.
             </BoxFull>
             <BoxFull header={"Your archived repositories"} className={Style.ArchivedRepositories}>
-                b
+                🚧 Not implemented.
             </BoxFull>
         </div>
     )

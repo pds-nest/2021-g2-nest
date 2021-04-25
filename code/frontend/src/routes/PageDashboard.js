@@ -1,5 +1,5 @@
 import React from "react"
-import Style from "./PageHome.module.css"
+import Style from "./PageDashboard.module.css"
 import classNames from "classnames"
 import BoxHeader from "../components/BoxHeader"
 import BoxFull from "../components/BoxFull"
@@ -12,7 +12,7 @@ import LabelledForm from "../components/LabelledForm"
 import Label from "../components/Label"
 
 
-export default function PageHome({ children, className, ...props }) {
+export default function PageDashboard({ children, className, ...props }) {
     return (
         <div className={classNames(Style.PageHome, className)} {...props}>
             <BoxHeader className={Style.Header}>
@@ -21,24 +21,24 @@ export default function PageHome({ children, className, ...props }) {
             <BoxFull className={Style.SearchByZone} header={
                 <span><Checkbox/> Search by zone</span>
             }>
-
+                🚧 Not implemented.
             </BoxFull>
             <BoxFull className={Style.SearchByHashtags} header={
                 <span><Checkbox/> Search by hashtag</span>
             }>
-
+                🚧 Not implemented.
             </BoxFull>
             <BoxFull className={Style.SearchByTimePeriod} header={
                 <span><Checkbox/> Search by time period</span>
             }>
-
+                🚧 Not implemented.
             </BoxFull>
             <BoxFull className={Style.CreateDialog} header={"Create repository"}>
                 <LabelledForm>
-                    <Label for_={"repo-name"} text={"Repository name"}>
+                    <Label htmlFor={"repo-name"} text={"Repository name"}>
                         <InputWithIcon id={"repo-name"} icon={faFolder}/>
                     </Label>
-                    <Label for={"filter-mode"} text={"Add tweets if they satisfy"}>
+                    <Label htmlFor={"filter-mode"} text={"Add tweets if they satisfy"}>
                         <label>
                             <Radio name={"filter-mode"} value={"or"}/> At least one filter
                         </label>
@@ -47,7 +47,7 @@ export default function PageHome({ children, className, ...props }) {
                             <Radio name={"filter-mode"} value={"and"}/> Every filter
                         </label>
                     </Label>
-                    <Button style={{"grid-column": "1 / 3"}} icon={faPlus} color={"Green"}>
+                    <Button style={{"gridColumn": "1 / 3"}} icon={faPlus} color={"Green"}>
                         Create repository
                     </Button>
                 </LabelledForm>

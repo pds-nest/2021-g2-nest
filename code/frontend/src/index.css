@@ -60,8 +60,8 @@ h1, h2, h3, h4, h5, h6 {
     --bg-dark: #92B5D5;
     --bg-accent: #D1DEE8;
 
-    --bg-button-on: #A3BDA2;
-    --bg-button-off: #FFFFFF; /* TODO: Change this, it's too light! */
+    --bg-button-on: #536841;
+    --bg-button-off: #FFFFFF;
     --fg-button-on: #FFFFFF;
     --fg-button-off: #536841;
 
