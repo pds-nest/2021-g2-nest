@@ -12,6 +12,8 @@ Flask-SQLAlchemy = "^2.5.1"
 bcrypt = "^3.2.0"
 Flask-JWT-Extended = "^4.1.0"
 Flask-Cors = "^3.0.10"
+pytest = "^6.2.3"
+requests = "^2.25.1"
 
 [tool.poetry.dev-dependencies]
 
