@@ -9,6 +9,7 @@ from .database import *
 import bcrypt
 import functools
 from flask_jwt_extended import get_jwt_identity
+from flask import request, jsonify
 
 
 def authenticate(username, password):
@@ -60,4 +61,21 @@ def admin_or_403(f):
         current_user = get_jwt_identity()
         return f(*args, **kwargs)
 
+    return func
+
+
+def repository_auth(f):
+    @functools.wraps(f)
+    def func(*args, **kwargs):
+        user = find_user(get_jwt_identity())
+        repository_id = request.json.get("id")
+        if not repository_id:
+            return jsonify({"result": "failure", "msg": "Missing one or more parameters."}), 400
+        repository = Repository.query.filter_by(id=repository_id)
+        if not repository:
+            return jsonify({"result": "failure", "msg": "Can't find repository."}), 404
+        if repository.owner_id != user.email:
+            return jsonify({"result": "failure",
+                            "msg": "Stop right there, criminal scum! Nobody accesses protected data under MY watch!"}), 403
+        return f(*args, **kwargs)
     return func

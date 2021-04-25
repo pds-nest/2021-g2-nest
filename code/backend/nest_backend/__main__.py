@@ -33,6 +33,11 @@ app.config['CORS_HEADERS'] = 'Content-Type'
 app.add_url_rule("/doa", view_func=page_doa, methods=["GET", "POST"])
 app.add_url_rule("/api/login", view_func=page_login, methods=["POST"])
 app.add_url_rule("/api/user/create", view_func=page_user_create, methods=["POST"])
+app.add_url_rule("/api/user/remove", view_func=page_user_delete, methods=["POST"])
+app.add_url_rule("/api/repository/list", view_func=page_repository_list, methods=["POST"])
+app.add_url_rule("/api/repository/create", view_func=page_repository_create, methods=["POST"])
+app.add_url_rule("/api/repository/edit", view_func=page_repository_edit, methods=["POST"])
+app.add_url_rule("/api/repository/add_condition", view_func=page_repository_add_condition, methods=["POST"])
 
 if __name__ == "__main__":
     Base.create_all()
