@@ -11,6 +11,7 @@ Per eseguire `nest_backend`, è necessario avere installato:
 - [Poetry ^1.0.0](https://python-poetry.org/docs/)
   - Se possibile non seguire le istruzioni disponibili sul sito, ma installarlo dal proprio package manager!
     - [{Arch Linux}](https://archlinux.org/packages/community/any/python-poetry/)
+- [Postgres ^13.2](https://www.postgresql.org/download/)
 
 ## Installazione
 
@@ -23,6 +24,8 @@ poetry install
 Questo creerà un nuovo venv nelle cartelle interne di Poetry e vi installerà all'interno le dipendenze necessarie.
 
 ## Configurazione
+
+<!-- TODO: Configurazione del database -->
 
 Perchè il backend gestisca correttamente i cookie <!-- TODO: ma noi non usiamo cookies...? -->, è necessario che la
 seguente variabile di ambiente sia settata a una stringa casuale:
