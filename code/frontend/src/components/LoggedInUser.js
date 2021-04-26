@@ -1,25 +1,30 @@
 import React, { useContext } from "react"
-import Style from "./LoggedInUser.module.css"
-import classNames from "classnames"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faUser } from "@fortawesome/free-solid-svg-icons"
-import ContextLogin from "../contexts/ContextLogin"
+import ContextUser from "../contexts/ContextUser"
 
 
-export default function LoggedInUser({ children, className, ...props }) {
-    const {state} = useContext(ContextLogin);
+/**
+ * An element displaying inline the currently logged in user.
+ *
+ * @param props - Additional props to pass to the element.
+ * @returns {JSX.Element}
+ * @constructor
+ */
+export default function LoggedInUser({ ...props }) {
+    const {user} = useContext(ContextUser);
 
-    if(!state) {
+    if(!user) {
         return (
-            <i className={classNames(Style.LoggedInUser, className)} {...props}>
+            <i {...props}>
                 Not logged in
             </i>
         )
     }
 
     return (
-        <b className={classNames(Style.LoggedInUser, className)} {...props}>
-            <FontAwesomeIcon icon={faUser}/> {state.username}
+        <b {...props}>
+            <FontAwesomeIcon icon={faUser}/> {user.username}
         </b>
     )
 }

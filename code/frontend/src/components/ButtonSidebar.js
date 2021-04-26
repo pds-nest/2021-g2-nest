@@ -7,7 +7,7 @@ import { useRouteMatch } from "react-router"
 
 
 /**
- * A button residing in the sidebar, used to switch between pages.
+ * A button residing in the {@link Sidebar}, used to switch between pages.
  *
  * @param icon - The FontAwesome IconDefinition of the icon that should be rendered in the button.
  * @param children - The contents of the button.

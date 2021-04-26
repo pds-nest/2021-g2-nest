@@ -19,7 +19,7 @@ import classNames from "classnames"
 export default function Logo({ className, ...props }) {
     // I have no idea why IntelliJ is complaining about this line
     // It's perfectly fine!
-    const [theme, ] = useContext(ContextTheme)
+    const {theme} = useContext(ContextTheme)
 
     let logo;
     if(theme === "ThemeDark") {
