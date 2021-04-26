@@ -11,6 +11,7 @@ import PageRoot from "./routes/PageRoot"
 import GlobalTheme from "./components/GlobalTheme"
 import GlobalServer from "./components/GlobalServer"
 import GlobalUser from "./components/GlobalUser"
+import PageSwitcher from "./PageSwitcher"
 
 
 /**
@@ -25,33 +26,9 @@ export default function App() {
             <GlobalUser>
                 <GlobalTheme>
                     <BrowserRouter>
-
-        <Layout>
-            <Switch>
-                <Route path={"/login"} exact={true}>
-                    <PageLogin/>
-                </Route>
-                <Route path={"/repositories"} exact={true}>
-                    <PageRepositories/>
-                </Route>
-                <Route path={"/alerts"} exact={true}>
-                    <PageAlerts/>
-                </Route>
-                <Route path={"/settings"} exact={true}>
-                    <PageSettings/>
-                </Route>
-                <Route path={"/sandbox"} exact={true}>
-                    <PageSandbox/>
-                </Route>
-                <Route path={"/dashboard"} exact={true}>
-                    <PageDashboard/>
-                </Route>
-                <Route path={"/"}>
-                    <PageRoot/>
-                </Route>
-            </Switch>
-        </Layout>
-
+                        <Layout>
+                            <PageSwitcher/>
+                        </Layout>
                     </BrowserRouter>
                 </GlobalTheme>
             </GlobalUser>
