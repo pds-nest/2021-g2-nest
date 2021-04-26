@@ -22,4 +22,5 @@ class Repository(Base.Model):
     uses = Base.relationship("Uses", back_populates="repository")
 
     def to_json(self):
-        return {"id": self.id, "name": self.name, "start": self.start.isoformat(), "owner": self.owner.to_json()}
+        return {"id": self.id, "name": self.name, "start": self.start.isoformat(), "isActive":self.isActive,
+                "end":self.end.isoformat(),"owner": self.owner.to_json()}
