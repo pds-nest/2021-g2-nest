@@ -9,6 +9,9 @@ def test_login():
     r = requests.post('http://localhost:5000/api/login', json={'email': 'admin@admin.com', 'password': 'amogus'})
     j = json.loads(r.text)
     assert j['result'] == "failure"
+    r = requests.post('http://localhost:5000/api/login', json={'email': '', 'password': ''})
+    j = json.loads(r.text)
+    assert j['result'] == "failure"
     r = requests.post('http://localhost:5000/api/login', json={'email': 'admin@admin.com', 'password': 'password'})
     j = json.loads(r.text)
     assert j['result'] == "success"
