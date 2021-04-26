@@ -2,11 +2,18 @@ import {createContext} from "react";
 
 
 /**
- * A context containing a list with the currently selected theme and the function to set a different one.
+ * A context containing an object with the following elements:
+ * - `theme` - A string containing the name of the current theme.
+ * - `setTheme` - A function that allows changing the `theme`.
  *
- * The function can be `undefined` if run outside a provider.
+ * If trying to access the context from outside a provider, the theme will be `ThemeDark`, and the function will display
+ * an error in the console.
  *
  * @type {React.Context}
  */
-const ContextTheme = createContext(["ThemeDark", undefined])
+const ContextTheme = createContext({
+    isSet: false,
+    theme: "ThemeDark",
+    setTheme: () => console.error("Trying to setTheme while outside a ContextTheme.Provider!")
+})
 export default ContextTheme

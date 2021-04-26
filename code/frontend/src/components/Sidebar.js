@@ -4,7 +4,7 @@ import classNames from "classnames"
 import Logo from "./Logo"
 import ButtonSidebar from "./ButtonSidebar"
 import { faCog, faExclamationTriangle, faFolder, faHome, faKey, faWrench } from "@fortawesome/free-solid-svg-icons"
-import ContextLogin from "../contexts/ContextLogin"
+import ContextUser from "../contexts/ContextUser"
 
 
 /**
@@ -17,13 +17,13 @@ import ContextLogin from "../contexts/ContextLogin"
  * @constructor
  */
 export default function Sidebar({ className, ...props }) {
-    const {state} = useContext(ContextLogin)
+    const {user} = useContext(ContextUser)
 
     return (
-        <div className={classNames(Style.Sidebar, className)} {...props}>
+        <aside className={classNames(Style.Sidebar, className)} {...props}>
             <Logo/>
             {
-                state ?
+                user ?
                 <Fragment>
                     <ButtonSidebar to={"/dashboard"} icon={faHome}>Dashboard</ButtonSidebar>
                     <ButtonSidebar to={"/repositories"} icon={faFolder}>Repositories</ButtonSidebar>
@@ -40,6 +40,6 @@ export default function Sidebar({ className, ...props }) {
                 <ButtonSidebar to={"/sandbox"} icon={faWrench}>Sandbox</ButtonSidebar>
                 : null
             }
-        </div>
+        </aside>
     )
 }

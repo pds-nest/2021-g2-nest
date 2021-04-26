@@ -1,9 +1,12 @@
 .Layout {
-    width: 100%;
-    height: 100%;
+    height: 100vh;
+    width: 100vw;
+    padding: 16px;
+
+    background-color: var(--bg-primary);
+    color: var(--fg-primary);
 
     display: grid;
-
     grid-template-areas:
         "a b"
     ;

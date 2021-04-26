@@ -1,7 +1,8 @@
-import React from "react"
+import React, { useContext } from "react"
 import Style from "./Layout.module.css"
 import classNames from "classnames"
 import Sidebar from "./Sidebar"
+import ContextTheme from "../contexts/ContextTheme"
 
 
 /**
@@ -14,12 +15,14 @@ import Sidebar from "./Sidebar"
  * @constructor
  */
 export default function Layout({ children, className, ...props }) {
+    const { theme } = useContext(ContextTheme)
+
     return (
-        <div className={classNames(Style.Layout, className)} {...props}>
+        <div className={classNames(theme, Style.Layout, className)} {...props}>
             <Sidebar className={Style.LayoutSidebar}/>
-            <div className={Style.LayoutContent}>
+            <main className={Style.LayoutContent}>
                 {children}
-            </div>
+            </main>
         </div>
     )
 }

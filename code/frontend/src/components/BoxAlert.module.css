@@ -1,0 +1,25 @@
+.BoxAlert {
+    padding: 5px 20px;
+    border-radius: 25px;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.BoxAlertRed {
+    color: var(--fg-red);
+    background-color: var(--bg-red);
+}
+
+.BoxAlertGreen {
+    color: var(--fg-green);
+    background-color: var(--bg-green);
+}
+
+.BoxAlertYellow {
+    color: var(--fg-yellow);
+    background-color: var(--bg-yellow);
+}
+
+.BoxAlertGrey {
+    color: var(--fg-grey);
+    background-color: var(--bg-grey);
+}

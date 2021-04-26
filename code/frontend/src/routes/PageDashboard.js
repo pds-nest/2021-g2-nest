@@ -8,8 +8,8 @@ import InputWithIcon from "../components/InputWithIcon"
 import { faFolder, faPlus } from "@fortawesome/free-solid-svg-icons"
 import Radio from "../components/Radio"
 import Button from "../components/Button"
-import LabelledForm from "../components/LabelledForm"
-import Label from "../components/Label"
+import FormLabelled from "../components/FormLabelled"
+import FormLabel from "../components/FormLabel"
 
 
 export default function PageDashboard({ children, className, ...props }) {
@@ -34,11 +34,11 @@ export default function PageDashboard({ children, className, ...props }) {
                 🚧 Not implemented.
             </BoxFull>
             <BoxFull className={Style.CreateDialog} header={"Create repository"}>
-                <LabelledForm>
-                    <Label htmlFor={"repo-name"} text={"Repository name"}>
+                <FormLabelled>
+                    <FormLabel htmlFor={"repo-name"} text={"Repository name"}>
                         <InputWithIcon id={"repo-name"} icon={faFolder}/>
-                    </Label>
-                    <Label htmlFor={"filter-mode"} text={"Add tweets if they satisfy"}>
+                    </FormLabel>
+                    <FormLabel htmlFor={"filter-mode"} text={"Add tweets if they satisfy"}>
                         <label>
                             <Radio name={"filter-mode"} value={"or"}/> At least one filter
                         </label>
@@ -46,11 +46,11 @@ export default function PageDashboard({ children, className, ...props }) {
                         <label>
                             <Radio name={"filter-mode"} value={"and"}/> Every filter
                         </label>
-                    </Label>
+                    </FormLabel>
                     <Button style={{"gridColumn": "1 / 3"}} icon={faPlus} color={"Green"}>
                         Create repository
                     </Button>
-                </LabelledForm>
+                </FormLabelled>
             </BoxFull>
         </div>
     )

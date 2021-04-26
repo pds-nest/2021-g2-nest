@@ -1,9 +1,10 @@
 import React, { Fragment } from "react"
-import Style from "./Label.module.css"
+import Style from "./FormLabel.module.css"
 
 
 /**
- * A row of a {@link LabelledForm}.
+ * A row of a {@link FormLabelled}.
+ *
  * It displays a label on the first column and a container for the labelled element on the second column.
  *
  * @param children - The labelled element.
@@ -12,7 +13,7 @@ import Style from "./Label.module.css"
  * @returns {JSX.Element}
  * @constructor
  */
-export default function Label({ children, text, htmlFor }) {
+export default function FormLabel({ children, text, htmlFor }) {
     return (
         <Fragment>
             <label htmlFor={htmlFor} className={Style.LabelText} >
