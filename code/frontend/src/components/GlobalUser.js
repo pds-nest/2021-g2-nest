@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React, { useCallback, useContext } from "react"
 import useLocalStorageState from "../hooks/useLocalStorageState"
 import ContextServer from "../contexts/ContextServer"
 import ContextUser from "../contexts/ContextUser"
@@ -26,7 +26,7 @@ export default function GlobalUser({ children }) {
      * @param init - Additional arguments to pass to the `init` parameter of {@link fetch}.
      * @returns {Promise<*>}
      */
-    const fetchDataAuth = async (method, path, body, init) => {
+    const fetchDataAuth = useCallback(async (method, path, body, init) => {
         if(!user) {
             throw new Error("Not logged in")
         }
@@ -39,8 +39,8 @@ export default function GlobalUser({ children }) {
         }
         init["headers"]["Authorization"] = `Bearer ${user["token"]}`
 
-        return await fetchData(path, init)
-    }
+        return await fetchData(method, path, body, init)
+    }, [fetchData, user])
 
     /**
      * Try to login to the active server with the passed credentials.
@@ -49,7 +49,7 @@ export default function GlobalUser({ children }) {
      * @param password - The user's password.
      * @returns {Promise<void>}
      */
-    const login = async (email, password) => {
+    const login = useCallback(async (email, password) => {
         console.debug("Contacting server to login...")
         const data = await fetchData("POST", `/api/login`, {
             "email": email,
@@ -65,18 +65,18 @@ export default function GlobalUser({ children }) {
         })
 
         console.info("Login successful!")
-    }
+    }, [fetchData, setUser])
 
     /**
      * Logout from the currently active server.
      */
-    const logout = () => {
+    const logout = useCallback(() => {
         console.debug("Clearing login state...")
         setUser(null)
         console.debug("Cleared login state!")
 
         console.info("Logout successful!")
-    }
+    }, [setUser])
 
     return (
         <ContextUser.Provider value={{user, login, logout, fetchDataAuth}}>

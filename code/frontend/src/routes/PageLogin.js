@@ -1,9 +1,6 @@
-import React, { useContext, useState } from "react"
+import React from "react"
 import Style from "./PageLogin.module.css"
 import classNames from "classnames"
-import BoxFull from "../components/BoxFull"
-import ContextUser from "../contexts/ContextUser"
-import { useHistory } from "react-router"
 import BoxSetServer from "../components/BoxSetServer"
 import BoxLogin from "../components/BoxLogin"
 
