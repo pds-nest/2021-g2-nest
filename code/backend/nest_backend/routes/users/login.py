@@ -9,9 +9,9 @@ from flask_cors import cross_origin
 def page_login():
     """
     The API call that allows to log-in. It requires:
-    :form email: The user's email
-    :form password: The users's password
-    :return: Json-formatted data. If the login is successful, it will contain the access_token and the users data.
+    :parameter email: The user's email
+    :parameter password: The users's password
+    :returns: Json-formatted data. If the login is successful, it will contain the access_token and the users data.
 
     The access_token must be included in the Authorization header, using the format Bearer <token>.
     """

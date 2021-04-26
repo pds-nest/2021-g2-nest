@@ -11,9 +11,9 @@ from flask_cors import cross_origin
 def page_repository_add_condition():
     """
     API call that allows to add conditions to a repository.
-    :form id: Repository ID
-    :form type: The type of the condition. It can either be an 'hashtag', a 'location' or 'time'
-    :form content: The content of the condition (#PdS2021, Roma, 18:00)
+    :parameter id: Repository ID
+    :parameter type: The type of the condition. It can either be an 'hashtag', a 'location' or 'time'
+    :parameter content: The content of the condition (#PdS2021, Roma, 18:00)
     :returns: a JSON string that tells whether or not the procedure was a success.
     """
     type = request.json.get("type")

@@ -10,7 +10,7 @@ from flask_cors import cross_origin
 def page_user_delete():
     """
     API call that allows an user to be deleted from NEST.
-    :form email: The email of the user that needs to be removed.
+    :parameter email: The email of the user that needs to be removed.
     :return: JSON-formatted data. If the user has the privilege, the target user exists and differs from the current
     user, the target gets deleted and a json containing the field "result":"success" is returned.
     """

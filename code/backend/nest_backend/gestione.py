@@ -70,21 +70,29 @@ def repository_auth(f):
         user = find_user(get_jwt_identity())
         repository_id = request.json.get("id")
         if not repository_id:
-            return jsonify({"result": "failure", "msg": "Missing one or more parameters."}), 400
+            return json_error("Missing one or more parameters."), 400
         repository = Repository.query.filter_by(id=repository_id)
         if not repository:
-            return jsonify({"result": "failure", "msg": "Can't find repository."}), 404
+            return json_error("Cant't find the repository."), 404
         if repository.owner_id != user.email:
-            return jsonify({"result": "failure",
-                            "msg": "Stop right there, criminal scum! Nobody accesses protected data under MY watch!"}), 403
+            return json_error("Stop right there, criminal scum! Nobody accesses protected data under MY watch!"), 403
         return f(*args, **kwargs)
-
     return func
 
 
 def json_error(msg):
+    """
+    Returns an error in json format
+    :param msg: the error message.
+    :return: a json formatted string.
+    """
     return jsonify({"result": "failure", 'msg': msg})
 
 
 def json_success(data):
+    """
+    An happy little function. Its happy because the operation was successful.
+    :param data: the thing you want to be returned
+    :return: a json formatted string
+    """
     return jsonify({"result": "success", "data": data})

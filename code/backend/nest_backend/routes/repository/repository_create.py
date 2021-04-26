@@ -11,7 +11,7 @@ from flask_cors import cross_origin
 def page_repository_create():
     """
     API call that allows an user to create a new repository.
-    :form name: The name of the repository.
+    :parameter name: The name of the repository.
     :returns: If the user is logged in and has provided the repository name, a JSON string is returned containing
     the return status of the operation and the repository in json format.
     """

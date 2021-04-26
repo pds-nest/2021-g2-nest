@@ -12,8 +12,8 @@ import datetime
 def page_repository_edit():
     """
     This API call allows to edit a repository.
-    :form name: If present, it changes the repository name.
-    :form close: If present, it closes the repository.
+    :parameter name: If present, it changes the repository name.
+    :parameter close: If present, it closes the repository.
     :returns: A JSON formatted string that either contains an error or the updated representation of the repository.
     """
     repository = Repository.query.filter_by(id=request.json['id'])
