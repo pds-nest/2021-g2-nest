@@ -25,14 +25,30 @@ Questo creerà un nuovo venv nelle cartelle interne di Poetry e vi installerà a
 
 ## Configurazione
 
-<!-- TODO: Configurazione del database -->
-
-Perchè il backend gestisca correttamente i cookie <!-- TODO: ma noi non usiamo cookies...? -->, è necessario che la
-seguente variabile di ambiente sia settata a una stringa casuale:
+### Configurazione del Database
+Dopo aver installato Postgres, è necessario creare un database dedicato all'applicazione (ad esempio PdSTest).  
+Se si desidera, si può anche creare un utente dedicato (l'utente postgres di default va benissimo).  
+Per configurare l'URI del database che N.E.S.T. andrà a impiegare, è necessario eseguire
 
 ```bash
-export COOKIE_SECRET=hippityhoppity
+export DATABASE_URI=postgresql://[postgresUser]:[postgresPassword]@localhost:[port, default 5432]/[DatabaseName]
 ```
+
+Ora il database è pronto per l'uso.
+
+### Altre variabili d'ambiente
+Questo ultimo passaggio è importante solo in un ambiente non-dev. La configurazione andrà a valore di default nel caso
+in cui queste variabili non siano definite.  
+Per terminare la configurazione, eseguire:
+
+```bash
+export COOKIE_SECRET=[cookiepass]
+export JWT_SECRET_KEY=[jwtsecret]
+export DISABLE_DEBUG=[farts]
+```
+
+Queste due variabili d'ambiente conterranno le chiavi con cui i cookie e le key di autorizzazione JWT saranno 
+cifrate.
 
 ## Avvio
 
@@ -53,7 +69,7 @@ python -m nest_backend
 Le pagine web del server sono disponibili a http://127.0.0.1:5000 .
 
 Mentre il development server è avviato, _buona parte_ delle modifiche saranno rilevate e applicate automaticamente
-senza dover riavviare il server.
+senza dover riavviare il server. Per testare la connettività, visitare http://127.0.0.1:5000/doa.
 
 ## Deployment
 

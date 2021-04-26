@@ -22,7 +22,10 @@ else:
     app.config["JWT_SECRET_KEY"] = "testing"
 
 reverse_proxy_app = werkzeug.middleware.proxy_fix.ProxyFix(app=app, x_for=1, x_proto=0, x_host=1, x_port=0, x_prefix=0)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:password@localhost:5432/PdSDev'
+if os.getenv("DATABASE_URI"):
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URI')
+else:
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:password@localhost:5432/PdSDev'
 Base.app = app
 Base.init_app(app)
 jwt = JWTManager(app)
@@ -44,4 +47,7 @@ if __name__ == "__main__":
     if not User.query.filter_by(isAdmin=True).all():
         Base.session.add(User(email="admin@admin.com", password=gen_password("password"), username="admin", isAdmin=True))
         Base.session.commit()
-    app.run(debug=True)
+    debug = True
+    if os.getenv("DISABLE_DEBUG"):
+        debug = False
+    app.run(debug=debug)

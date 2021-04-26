@@ -23,4 +23,4 @@ def page_user_create():
                  username=request.json.get("username"))
     Base.session.add(nUser)
     Base.session.commit()
-    return jsonify({"result": "success", "content": user.to_json()})
+    return json_success(user.to_json())

@@ -25,4 +25,4 @@ def page_repository_edit():
     if 'open' in request.json and not repository.isActive and not repository.end:
         repository.isActive = True
     Base.session.commit()
-    return jsonify({"result": "success", "content":repository.to_json()})
+    return json_success(repository.to_json())

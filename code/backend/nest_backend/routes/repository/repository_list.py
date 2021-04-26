@@ -14,5 +14,5 @@ def page_repository_list():
     the user ("owner") and a list of repositories that he can spectate ("spectator").
     """
     user = find_user(get_jwt_identity())
-    return {"result": "success", "content": {"owner": [r.to_json() for r in user.owner_of],
-                                             "spectator": [r.repository.to_json() for r in user.authorizations]}}
+    return json_success({"owner": [r.to_json() for r in user.owner_of],
+                         "spectator": [r.repository.to_json() for r in user.authorizations]})

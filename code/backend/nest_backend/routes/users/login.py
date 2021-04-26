@@ -15,12 +15,10 @@ def page_login():
 
     The access_token must be included in the Authorization header, using the format Bearer <token>.
     """
-    if not request.json:
-        abort(400)
     email = request.json.get("email", None)
     password = request.json.get("password", None)
     if authenticate(email, password):
         access_token = create_access_token(identity=email)
         user = find_user(email)
-        return jsonify({"result": "success", "access_token": access_token, 'user': user.to_json()}), 201
-    return jsonify({"result": "failure", "msg": "Bad username or password."}), 401
+        return json_success({"access_token": access_token, 'user': user.to_json()}), 201
+    return json_error("Bad username or password."), 401
