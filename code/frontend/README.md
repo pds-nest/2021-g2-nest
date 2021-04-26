@@ -34,7 +34,7 @@ Questo avvierà un webserver su `localhost` legato alla porta TCP `3000`.
 ## Sviluppo
 
 Mentre il development server è avviato, qualsiasi modifica verrà immediatamente applicata sulla 
-[pagina web di anteprima](https://localhost:3000).
+pagina web di anteprima a http://localhost:3000 .
 
 ## Documentazione
 

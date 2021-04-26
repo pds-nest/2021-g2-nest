@@ -1,10 +1,58 @@
 # `nest_backend`
 
+Un server WSGI in Flask che fornisce una web API per interfacciarsi a N.E.S.T.
+
+## Requisiti
+
+Per eseguire `nest_backend`, è necessario avere installato:
+
+- [Python ^3.8.5](https://www.python.org/downloads/)
+  - Deve includere anche 
+- [Poetry ^1.0.0](https://python-poetry.org/docs/)
+  - Se possibile non seguire le istruzioni disponibili sul sito, ma installarlo dal proprio package manager!
+    - [{Arch Linux}](https://archlinux.org/packages/community/any/python-poetry/)
+
 ## Installazione
 
+Per installare le dipendenze del backend, è necessario eseguire in questa cartella:
+
+```bash
+poetry install
+```
+
+Questo creerà un nuovo venv nelle cartelle interne di Poetry e vi installerà all'interno le dipendenze necessarie.
+
 ## Configurazione
-`export COOKIE_SECRET=hippityhoppity`
+
+Perchè il backend gestisca correttamente i cookie <!-- TODO: ma noi non usiamo cookies...? -->, è necessario che la
+seguente variabile di ambiente sia settata a una stringa casuale:
+
+```bash
+export COOKIE_SECRET=hippityhoppity
+```
+
+## Avvio
+
+Per avviare il backend, è innanzitutto necessario attivare il venv contenente le dipendenze con il seguente comando:
+
+```bash
+poetry shell
+```
+
+In seguito, è possibile avviare il backend con:
+
+```bash
+python -m nest_backend
+```
 
 ## Sviluppo
 
+Le pagine web del server sono disponibili a http://127.0.0.1:5000 .
+
+Mentre il development server è avviato, _buona parte_ delle modifiche saranno rilevate e applicate automaticamente
+senza dover riavviare il server.
+
 ## Deployment
+
+Per effettuare il deployment in production, 
+seguire [la guida ufficiale di Flask](https://flask.palletsprojects.com/en/1.1.x/deploying/).
