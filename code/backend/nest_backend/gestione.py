@@ -78,4 +78,13 @@ def repository_auth(f):
             return jsonify({"result": "failure",
                             "msg": "Stop right there, criminal scum! Nobody accesses protected data under MY watch!"}), 403
         return f(*args, **kwargs)
+
     return func
+
+
+def json_error(msg):
+    return jsonify({"result": "failure", 'msg': msg})
+
+
+def json_success(data):
+    return jsonify({"result": "success", "data": data})

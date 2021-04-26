@@ -18,8 +18,8 @@ def page_repository_create():
     user = find_user(get_jwt_identity())
     name = request.json.get("name")
     if not name:
-        return jsonify({"result": "failure", "msg": "Missing one or more parameters"}), 400
+        return json_error("Missing one or more parameters"), 400
     repository = Repository(name=name, owner_id=user.email)
     Base.session.add(repository)
     Base.session.commit()
-    return jsonify({"result": "success", "content": repository.to_json()}), 200
+    return json_success(repository.to_json()), 200
