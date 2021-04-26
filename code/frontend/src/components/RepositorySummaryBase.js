@@ -1,5 +1,5 @@
 import React from "react"
-import Style from "./RepositorySummary.module.css"
+import Style from "./RepositorySummaryBase.module.css"
 import classNames from "classnames"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import Button from "./Button"
