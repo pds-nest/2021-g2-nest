@@ -10,9 +10,9 @@ from flask_cors import cross_origin
 def page_user_create():
     """
     The API call that allows to create new users. It requires:
-    :form email: The user's email
-    :form password: The users's password
-    :form username: The users's username
+    :parameter email: The user's email
+    :parameter password: The users's password
+    :parameter username: The users's username
     :return: Json-formatted data. If something goes wrong, it returns a
     {'result':'failure', 'content':'something blew up'}, else it returns {'result':'success', 'content':newUser.to_json().
     """
