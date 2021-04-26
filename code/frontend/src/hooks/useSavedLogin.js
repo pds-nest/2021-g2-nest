@@ -1,3 +1,4 @@
+import {useState} from "react"
 import useLocalStorageState from "./useLocalStorageState"
 
 
@@ -6,41 +7,53 @@ import useLocalStorageState from "./useLocalStorageState"
  */
 export default function useSavedLogin() {
     const [state, setState] = useLocalStorageState("login", null)
+    const [working, setWorking] = useState(false)
+    const [error, setError] = useState(null)
 
     const login = async (server, email, password) => {
-        console.debug("Contacting server to login...")
-        const response = await fetch(`${server}/api/login`, {
-            method: "POST",
-            cache: "no-cache",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                "email": email,
-                "password": password,
+        setWorking(true)
+        try {
+            console.debug("Contacting server to login...")
+            const response = await fetch(`${server}/api/login`, {
+                method: "POST",
+                cache: "no-cache",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    "email": email,
+                    "password": password,
+                })
             })
-        })
 
-        console.debug("Decoding server response...")
-        const data = await response.json()
+            console.debug("Decoding server response...")
+            const data = await response.json()
 
-        console.debug("Ensuring the request was a success...")
-        if(data["result"] !== "success") {
-            console.error(`Login failed: ${data["msg"]}`)
-            return
+            console.debug("Ensuring the request was a success...")
+            if(data["result"] !== "success") {
+                // noinspection ExceptionCaughtLocallyJS
+                throw new Error(data["msg"])
+            }
+
+            console.debug("Storing login state...")
+            setState({
+                server: server,
+                email: data["user"]["email"],
+                isAdmin: data["user"]["isAdmin"],
+                username: data["user"]["username"],
+                token: data["access_token"],
+            })
+
+            console.debug("Clearing error...")
+            setError(null)
+
+            console.info("Login successful!")
+        } catch(e) {
+            console.error(`Caught error while trying to login: ${e}`)
+            setError(e)
+        } finally {
+            setWorking(false)
         }
-
-        console.debug("Storing login state...")
-        setState({
-            server: server,
-            email: data["user"]["email"],
-            isAdmin: data["user"]["isAdmin"],
-            username: data["user"]["username"],
-            token: data["access_token"],
-        })
-        console.debug("Stored login state!")
-
-        console.info("Login successful!")
     }
 
     const logout = () => {
@@ -65,5 +78,5 @@ export default function useSavedLogin() {
         return await fetch_unauth(path, init)
     }
 
-    return {state, login, logout, fetch_unauth, fetch_auth}
+    return {state, working, error, login, logout, fetch_unauth, fetch_auth}
 }
