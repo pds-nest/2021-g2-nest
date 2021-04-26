@@ -16,7 +16,7 @@ export default function PageLogin({ className, ...props }) {
     const [server, setServer] = useState("http://localhost:5000")
     const [email, setEmail] = useState("admin@admin.com")
     const [password, setPassword] = useState("password")
-    const {login} = useContext(ContextLogin)
+    const {login, working, error} = useContext(ContextLogin)
     const history = useHistory()
 
     return (
@@ -60,7 +60,8 @@ export default function PageLogin({ className, ...props }) {
                             history.push("/dashboard")
                         }}
                         icon={faArrowRight}
-                        color={"Green"}
+                        color={error ? "Green" : "Red"}
+                        disabled={working}
                     >
                         Login
                     </Button>
