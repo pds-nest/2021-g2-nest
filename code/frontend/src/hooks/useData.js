@@ -1,5 +1,4 @@
-import { useCallback, useContext, useEffect, useState } from "react"
-import ContextUser from "../contexts/ContextUser"
+import { useCallback, useEffect, useState } from "react"
 
 
 /**
