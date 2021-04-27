@@ -5,10 +5,11 @@
     <option name="PARENT_ENVS" value="true" />
     <envs>
       <env name="PYTHONUNBUFFERED" value="1" />
+      <env name="DATABASE_URI" value="postgresql://nest:NaniEstraggonoSmeraldiTopazi@zero.ryg.one/nest" />
     </envs>
-    <option name="SDK_HOME" value="C:\Users\loren\AppData\Local\pypoetry\Cache\virtualenvs\g2-progetto-pFEbXYE_-py3.8\Scripts\python.exe" />
+    <option name="SDK_HOME" value="" />
     <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/code/backend/nest_backend" />
-    <option name="IS_MODULE_SDK" value="true" />
+    <option name="IS_MODULE_SDK" value="false" />
     <option name="ADD_CONTENT_ROOTS" value="true" />
     <option name="ADD_SOURCE_ROOTS" value="true" />
     <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
