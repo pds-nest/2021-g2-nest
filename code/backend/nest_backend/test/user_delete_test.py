@@ -4,7 +4,7 @@ import json
 auth_code = ""
 
 
-def test_user_create():
+def test_user_delete():
     global auth_code
 
     r = requests.post('http://localhost:5000/api/login', json={'email': 'admin@admin.com', 'password': 'password'})
@@ -12,13 +12,13 @@ def test_user_create():
     assert j['result'] == "success"
     auth_code = j['data']['access_token']
 
-    r = requests.post(f'http://localhost:5000/api/user/create', headers={'authorization': "Bearer " + auth_code},
-                      json={'email': 'utente12@nest.com', 'password': '1234', 'username': 'utente12'})
+    r = requests.post(f'http://localhost:5000/api/user/remove', headers={'authorization': "Bearer " + auth_code},
+                      json={'email': 'utente10@nest.com'})
     j = json.loads(r.text)
     assert j['result'] == "success"
 
-    print("User_create eseguito correttamente!")
+    print("User_delete eseguito correttamente!")
 
 
-print("Testing del metodo user_create")
-test_user_create()
+print("Testing del metodo user_delete")
+test_user_delete()
