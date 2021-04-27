@@ -19,17 +19,17 @@ export default function PageDashboard({ children, className, ...props }) {
                 Create a new repository
             </BoxHeader>
             <BoxFull className={Style.SearchByZone} header={
-                <span><Checkbox/> Search by zone</span>
+                <label><Checkbox/> Search by zone</label>
             }>
                 🚧 Not implemented.
             </BoxFull>
             <BoxFull className={Style.SearchByHashtags} header={
-                <span><Checkbox/> Search by hashtag</span>
+                <label><Checkbox/> Search by hashtag</label>
             }>
                 🚧 Not implemented.
             </BoxFull>
             <BoxFull className={Style.SearchByTimePeriod} header={
-                <span><Checkbox/> Search by time period</span>
+                <label><Checkbox/> Search by time period</label>
             }>
                 🚧 Not implemented.
             </BoxFull>
