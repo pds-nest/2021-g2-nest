@@ -1,0 +1,36 @@
+.Slider {
+    width: 100%;
+}
+
+@-moz-document url-prefix() {
+    .Slider {
+        outline: none;
+        background-color: transparent;
+    }
+
+    .Slider::-moz-range-track {
+        background-color: var(--bg-field-off);
+        height: 10px;
+        border-radius: 5px;
+    }
+
+    .Slider:focus::-moz-range-track {
+        background-color: var(--bg-field-on);
+    }
+
+    .Slider::-moz-range-progress {
+        height: 10px;
+        border-radius: 5px;
+    }
+
+    .Slider::-moz-range-thumb {
+        background-color: var(--fg-field-off);
+        border-width: 0;
+        height: 25px;
+        width: 10px;
+    }
+
+    .Slider:focus::-moz-range-thumb {
+        background-color: var(--fg-field-on);
+    }
+}
