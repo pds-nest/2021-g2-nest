@@ -1,5 +1,6 @@
 .Checkbox {
-    height: 25px;
-    width: 25px;
-    vertical-align: bottom;
+    font-size: inherit;
+    width: 1em;
+    height: 1em;
+    border-radius: 0.25em;
 }
