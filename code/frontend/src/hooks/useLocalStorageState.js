@@ -1,37 +1,34 @@
-import { useCallback, useEffect, useState } from "react"
+import { useCallback, useState } from "react"
 
 
 /**
  * Hook with the same API as {@link React.useState} which stores its value in the browser's {@link localStorage}.
  */
 export default function useLocalStorageState(key, def) {
-    const [value, setValue] = useState(null);
-
     /**
      * Load the `key` from the {@link localStorage} into `value`, defaulting to `def` if it is not found.
      */
-    const load = useCallback(
-        () => {
-            if(localStorage) {
-                console.debug(`Loading ${key} from localStorage...`)
-                let _value = JSON.parse(localStorage.getItem(key))
+    const load = () => {
+        if(localStorage) {
+            console.debug(`Loading ${key} from localStorage...`)
+            let _value = JSON.parse(localStorage.getItem(key))
 
-                if(_value) {
-                    console.info(`Loaded ${key} from localStorage!`)
-                    return _value
-                }
-                else {
-                    console.info(`There is no value ${key} stored, defaulting...`)
-                    return def
-                }
+            if(_value) {
+                console.info(`Loaded ${key} from localStorage!`)
+                return _value
             }
             else {
-                console.warn(`Can't load value as localStorage doesn't seem to be available, defaulting...`)
+                console.info(`There is no value ${key} stored, defaulting...`)
                 return def
             }
-        },
-        [key, def]
-    )
+        }
+        else {
+            console.warn(`Can't load value as localStorage doesn't seem to be available, defaulting...`)
+            return def
+        }
+    }
+
+    const [value, setValue] = useState(load());
 
     /**
      * Save a value to the {@link localStorage}.
@@ -58,19 +55,6 @@ export default function useLocalStorageState(key, def) {
             save(value)
         },
         [setValue, save]
-    )
-
-    /*
-     * When the component first renders, try to load the value from the localStorage.
-     */
-    useEffect(
-        () => {
-            if(!value) {
-                console.debug(`This is the first render, loading ${key} from the localStorage...`)
-                setValue(load())
-            }
-        },
-        [value, setValue, load, key],
     )
 
     return [value, setAndSave]
