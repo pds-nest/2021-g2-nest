@@ -19,8 +19,8 @@ def page_user_create():
     user = find_user(get_jwt_identity())
     if not user.isAdmin:
         abort(403)
-    nUser = User(email=request.json.get("email"), password=gen_password(request.json.get("password")),
+    new_user = User(email=request.json.get("email"), password=gen_password(request.json.get("password")),
                  username=request.json.get("username"))
-    Base.session.add(nUser)
+    Base.session.add(new_user)
     Base.session.commit()
-    return json_success(user.to_json())
+    return json_success(new_user.to_json())
