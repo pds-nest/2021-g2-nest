@@ -18,7 +18,7 @@ def page_user_create():
     """
     user = find_user(get_jwt_identity())
     if not user.isAdmin:
-        abort(403)
+        json_error("User is not admin. Thou art not authorized."), 403
     new_user = User(email=request.json.get("email"), password=gen_password(request.json.get("password")),
                     username=request.json.get("username"))
     Base.session.add(new_user)

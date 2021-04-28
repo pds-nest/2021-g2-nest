@@ -96,3 +96,8 @@ def json_success(data):
     :return: a json formatted string
     """
     return jsonify({"result": "success", "data": data})
+
+
+def error_handler(e):
+    print(f"{e.description} - {e.code}")
+    return json_error(f"{e.description} - {e.code}")
