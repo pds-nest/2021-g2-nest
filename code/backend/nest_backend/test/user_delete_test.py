@@ -15,7 +15,7 @@ class MyTestCase(unittest.TestCase):
         auth_code = j['data']['access_token']
 
         r = requests.post(f'http://localhost:5000/api/user/remove', headers={'authorization': "Bearer " + auth_code},
-                          json={'email': 'utente15@nest.com'})
+                          json={'email': 'utente_test@nest.com'})
         j = json.loads(r.text)
         assert j['result'] == "success"
 
