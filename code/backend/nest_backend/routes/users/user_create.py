@@ -17,8 +17,10 @@ def page_user_create():
     {'result':'failure', 'content':'something blew up'}, else it returns {'result':'success', 'content':newUser.to_json().
     """
     user = find_user(get_jwt_identity())
+    print(user)
+    print(user.isAdmin)
     if not user.isAdmin:
-        json_error("User is not admin. Thou art not authorized."), 403
+        return json_error("User is not admin. Thou are not authorized."), 403
     new_user = User(email=request.json.get("email"), password=gen_password(request.json.get("password")),
                     username=request.json.get("username"))
     Base.session.add(new_user)
