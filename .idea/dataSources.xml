@@ -6,7 +6,12 @@
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://localhost:5432/PdSDev</jdbc-url>
-      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
+    <data-source source="LOCAL" name="nest@zero.ryg.one" uuid="78c48f2a-dd96-4b7f-942c-1e3346ac2c26">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://zero.ryg.one:5432/nest</jdbc-url>
     </data-source>
   </component>
 </project>
