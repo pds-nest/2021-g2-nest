@@ -1,11 +1,14 @@
+import unittest
 import requests
 import json
+
 
 auth_code = ""
 
 
-def test_user_create():
-    global auth_code
+class MyTestCase(unittest.TestCase):
+    def test_user_create(self):
+        global auth_code
 
     r = requests.post('http://localhost:5000/api/login', json={'email': 'admin@admin.com', 'password': 'password'})
     j = json.loads(r.text)
@@ -13,7 +16,7 @@ def test_user_create():
     auth_code = j['data']['access_token']
 
     r = requests.post(f'http://localhost:5000/api/user/create', headers={'authorization': "Bearer " + auth_code},
-                      json={'email': 'utente12@nest.com', 'password': '1234', 'username': 'utente12'})
+                      json={'email': 'utente16@nest.com', 'password': '', 'username': 'utente16'})
     j = json.loads(r.text)
     assert j['result'] == "success"
 
@@ -21,4 +24,8 @@ def test_user_create():
 
 
 print("Testing del metodo user_create")
-test_user_create()
+
+
+if __name__ == '__main__':
+    unittest.main()
+

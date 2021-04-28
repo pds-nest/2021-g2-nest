@@ -20,7 +20,7 @@ def page_user_create():
     if not user.isAdmin:
         abort(403)
     new_user = User(email=request.json.get("email"), password=gen_password(request.json.get("password")),
-                 username=request.json.get("username"))
+                    username=request.json.get("username"))
     Base.session.add(new_user)
     Base.session.commit()
     return json_success(new_user.to_json())
