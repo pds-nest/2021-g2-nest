@@ -51,8 +51,20 @@ export default function BoxConditionHashtag({ ...props }) {
     return (
         <BoxFull header={<span>Search by <FontAwesomeIcon icon={faHashtag}/> hashtag</span>} {...props}>
             <FormInline>
-                <InputWithIcon className={Style.Input} id={"condition-hashtag"} icon={faHashtag} value={hashtag} onChange={onInputChange} placeholder={"hashtag"}/>
-                <ButtonIconOnly className={Style.Button} icon={faPlus} color={"Green"} onClick={onButtonClick}/>
+                <InputWithIcon
+                    className={Style.Input}
+                    id={"condition-hashtag"}
+                    icon={faHashtag}
+                    value={hashtag}
+                    onChange={onInputChange}
+                    placeholder={"hashtag"}
+                />
+                <ButtonIconOnly
+                    className={Style.Button}
+                    icon={faPlus}
+                    color={"Green"}
+                    onClick={onButtonClick}
+                />
             </FormInline>
         </BoxFull>
     )
