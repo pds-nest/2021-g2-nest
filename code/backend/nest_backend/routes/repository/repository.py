@@ -17,7 +17,7 @@ def page_repository(rid):
         + DELETE: deletes the specified repository.
     """
     user = find_user(get_jwt_identity())
-    repository = Repository.query.filter_by(id=request.json['id']).first()
+    repository = Repository.query.filter_by(id=rid).first()
     if request.method == "GET":
         return json_success(repository.to_json()), 200
     elif request.method == "PATCH":
