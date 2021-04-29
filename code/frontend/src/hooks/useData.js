@@ -35,7 +35,7 @@ export default function useData(fetchData, method, path, body, init) {
                 setLoading(false)
             }
         },
-        [fetchData, method, path, body, init, setData, setError, setLoading]
+        [fetchData, method, path, body, init]
     )
 
     /**
@@ -51,7 +51,7 @@ export default function useData(fetchData, method, path, body, init) {
 
             await load()
         },
-        [load, setData, setError]
+        [load]
     )
 
     useEffect(

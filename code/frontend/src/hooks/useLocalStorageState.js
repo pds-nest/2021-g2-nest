@@ -54,7 +54,7 @@ export default function useLocalStorageState(key, def) {
             setValue(value)
             save(value)
         },
-        [setValue, save]
+        [save]
     )
 
     return [value, setAndSave]

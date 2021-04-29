@@ -10,10 +10,10 @@ export default function useArrayState(def) {
                 oldArray => [...oldArray, newSingle]
             )
         },
-        [value, setValue]
+        []
     )
 
-    const removeValue = useCallback(
+    const spliceValue = useCallback(
         position => {
             setValue(
                 oldArray => {
@@ -22,8 +22,18 @@ export default function useArrayState(def) {
                     return oldArray
                 }
             )
-        }
+        },
+        []
     )
 
-    return {value, setValue, appendValue, removeValue}
+    const removeValue = useCallback(
+        remValue => {
+            setValue(
+                oldArray => oldArray.filter(item => item !== remValue)
+            )
+        },
+        []
+    )
+
+    return {value, setValue, appendValue, spliceValue, removeValue}
 }
