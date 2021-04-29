@@ -6,10 +6,12 @@
     <envs>
       <env name="PYTHONUNBUFFERED" value="1" />
       <env name="DATABASE_URI" value="postgresql://nest:NaniEstraggonoSmeraldiTopazi@zero.ryg.one/nest" />
+      <env name="COOKIE_SECRET" value="CAMBIAMI-IN-PRODUCTION" />
+      <env name="JWT_SECRET_KEY" value="CAMBIAMI-IN-PRODUCTION" />
     </envs>
     <option name="SDK_HOME" value="" />
     <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/code/backend/nest_backend" />
-    <option name="IS_MODULE_SDK" value="false" />
+    <option name="IS_MODULE_SDK" value="true" />
     <option name="ADD_CONTENT_ROOTS" value="true" />
     <option name="ADD_SOURCE_ROOTS" value="true" />
     <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
