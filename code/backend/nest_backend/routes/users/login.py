@@ -9,12 +9,8 @@ from datetime import timedelta, datetime
 @cross_origin()
 def page_login():
     """
-    The API call that allows to log-in. It requires:
-    :parameter email: The user's email
-    :parameter password: The users's password
-    :returns: Json-formatted data. If the login is successful, it will contain the access_token and the users data.
-
-    The access_token must be included in the Authorization header, using the format Bearer <token>.
+    Login:
+        + POST: email, password -> Sends a response containing the JWT token
     """
     email = request.json.get("email", None)
     password = request.json.get("password", None)

@@ -74,7 +74,7 @@ def repository_auth(f):
         repository = Repository.query.filter_by(id=repository_id)
         if not repository:
             return json_error("Cant't find the repository."), 404
-        if repository.owner_id != user.email:
+        if repository.owner_id != user.email and user.email not in [a.email for a in repository.authorizations]:
             return json_error("Stop right there, criminal scum! Nobody accesses protected data under MY watch!"), 403
         return f(*args, **kwargs)
     return func

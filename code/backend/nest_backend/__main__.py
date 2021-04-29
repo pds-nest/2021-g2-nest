@@ -20,13 +20,12 @@ reverse_proxy_app = werkzeug.middleware.proxy_fix.ProxyFix(app=app, x_for=1, x_p
 # Routes setup
 
 app.add_url_rule("/doa", view_func=page_doa, methods=["GET", "POST"])
-app.add_url_rule("/api/login", view_func=page_login, methods=["POST"])
-app.add_url_rule("/api/user/create", view_func=page_user_create, methods=["POST"])
-app.add_url_rule("/api/user/remove", view_func=page_user_delete, methods=["POST"])
-app.add_url_rule("/api/repository/list", view_func=page_repository_list, methods=["GET"])
-app.add_url_rule("/api/repository/create", view_func=page_repository_create, methods=["POST"])
-app.add_url_rule("/api/repository/edit", view_func=page_repository_edit, methods=["PUT"])
-app.add_url_rule("/api/repository/add_condition", view_func=page_repository_add_condition, methods=["POST"])
+app.add_url_rule("/api/v1/login", view_func=page_login, methods=["POST"])
+app.add_url_rule("/api/v1/users", view_func=page_users, methods=["GET", "POST"])
+app.add_url_rule("/api/v1/users/<string:email>", view_func=page_user, methods=["GET", "PATCH", "DELETE"])
+app.add_url_rule("/api/v1/repositories/", view_func=page_repositories, methods=["GET", "POST"])
+app.add_url_rule("/api/v1/repositories/<int:rid>", view_func=page_repository, methods=["GET", "PATCH", "DELETE"])
+app.add_url_rule("/api/v1/repositories/<int:rid>/conditions", view_func=page_repository_conditions, methods=["GET", "POST"])
 
 app.register_error_handler(Exception, error_handler)
 

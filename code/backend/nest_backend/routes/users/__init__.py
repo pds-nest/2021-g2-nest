@@ -1,3 +1,3 @@
-from .user_create import page_user_create
+from .users import page_users
 from .login import page_login
-from .user_delete import page_user_delete
+from .user import page_user

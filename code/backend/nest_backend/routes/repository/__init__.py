@@ -1,4 +1,3 @@
-from .repository_add_condition import page_repository_add_condition
-from .repository_edit import page_repository_edit
-from .repository_create import page_repository_create
-from .repository_list import page_repository_list
+from .repository_conditions import page_repository_conditions
+from .repository import page_repository
+from .repositories import page_repositories
