@@ -1,0 +1,23 @@
+.ButtonSmallX {
+    border-width: 0;
+    border-radius: 9999px;
+    line-height: 0;
+    height: 18px;
+    width: 18px;
+    vertical-align: baseline;
+    background-color: var(--bg-field-off);
+    color: var(--fg-field-off);
+    cursor: pointer;
+    position: relative;
+    top: -1px;
+}
+
+.ButtonSmallX:focus {
+    outline: none;
+    background-color: var(--bg-field-on);
+    color: var(--fg-field-on);
+}
+
+.ButtonSmallX:focus-visible {
+    outline: 2px dashed var(--outline);
+}
