@@ -15,3 +15,10 @@ class Condition(Base.Model):
     used = Base.relationship("Uses", back_populates="condition")
     tweets = Base.relationship("Contains", back_populates="condition")
     operations = Base.relationship("BoolOperation", back_populates="condition")
+
+    def to_json(self):
+        return {
+            "id": self.id,
+            "type": self.type,
+            "content": self.content,
+        }
