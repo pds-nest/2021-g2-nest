@@ -6,3 +6,7 @@
 /dataSources.local.xml
 # Editor-based HTTP Client requests
 /httpRequests/
+# Database Navigator
+dbnavigator.xml
+# Pipeline Viewer
+PipelineViewerConfig.xml
