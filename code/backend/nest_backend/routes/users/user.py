@@ -25,8 +25,7 @@ def page_user(email):
     elif request.method == "DELETE":
         if not user.isAdmin:
             return json_error("User is not admin."), 403
-        deluser = request.json.get('email')
-        target = find_user(deluser)
+        target = find_user(email)
         if not target:
             return json_error("User not found."), 404
         if user == target:
