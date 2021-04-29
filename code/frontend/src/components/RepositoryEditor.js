@@ -7,7 +7,12 @@ export default function RepositoryEditor({ children, id, name, start, end, condi
     const [_name, setName] = useState(name)
     const [_start, setStart] = useState(start)
     const [_end, setEnd] = useState(end)
-    const {_conditions, appendCondition, removeCondition} = useArrayState(conditions)
+    const {
+        value: _conditions,
+        appendValue: appendCondition,
+        removeValue: removeCondition,
+        spliceValue: spliceCondition,
+    } = useArrayState(conditions)
 
     return (
         <ContextRepositoryEditor.Provider value={{
@@ -21,6 +26,7 @@ export default function RepositoryEditor({ children, id, name, start, end, condi
             conditions: _conditions,
             appendCondition,
             removeCondition,
+            spliceCondition,
         }}>
             {children}
         </ContextRepositoryEditor.Provider>
