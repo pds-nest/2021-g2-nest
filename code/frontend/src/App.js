@@ -1,8 +1,8 @@
-import Layout from "./components/Layout"
+import Layout from "./components/interactive/Layout"
 import { BrowserRouter } from "react-router-dom"
-import GlobalTheme from "./components/GlobalTheme"
-import GlobalServer from "./components/GlobalServer"
-import GlobalUser from "./components/GlobalUser"
+import GlobalTheme from "./components/providers/GlobalTheme"
+import GlobalServer from "./components/providers/GlobalServer"
+import GlobalUser from "./components/providers/GlobalUser"
 import PageSwitcher from "./PageSwitcher"
 
 

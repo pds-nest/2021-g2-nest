@@ -1,6 +1,12 @@
 import { useCallback, useState } from "react"
 
 
+/**
+ * An hook similar to {@link useState} which stores an array of values.
+ *
+ * @param def - The starting value of the hook.
+ * @returns {{spliceValue, removeValue, setValue, appendValue, value}}
+ */
 export default function useArrayState(def) {
     const [value, setValue] = useState(def ?? [])
 

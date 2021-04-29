@@ -1,5 +1,7 @@
 import {createContext} from "react";
 
 
-const ContextRepositoryEditor = createContext(null)
-export default ContextRepositoryEditor
+/**
+ * @todo Document this.
+ */
+export default createContext(null)

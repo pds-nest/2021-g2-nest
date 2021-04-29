@@ -1,7 +1,7 @@
 import React from "react"
 import Style from "./PageAlerts.module.css"
 import classNames from "classnames"
-import BoxFull from "../components/BoxFull"
+import BoxFull from "../components/base/BoxFull"
 
 
 export default function PageAlerts({ children, className, ...props }) {

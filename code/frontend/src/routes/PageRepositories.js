@@ -1,8 +1,8 @@
 import React from "react"
 import Style from "./PageRepositories.module.css"
 import classNames from "classnames"
-import BoxRepositoriesActive from "../components/BoxRepositoriesActive"
-import BoxRepositoriesArchived from "../components/BoxRepositoriesArchived"
+import BoxRepositoriesActive from "../components/interactive/BoxRepositoriesActive"
+import BoxRepositoriesArchived from "../components/interactive/BoxRepositoriesArchived"
 
 
 export default function PageRepositories({ children, className, ...props }) {

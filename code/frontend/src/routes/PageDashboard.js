@@ -1,15 +1,15 @@
 import React from "react"
 import Style from "./PageDashboard.module.css"
 import classNames from "classnames"
-import BoxHeader from "../components/BoxHeader"
-import BoxFull from "../components/BoxFull"
-import Checkbox from "../components/Checkbox"
-import InputWithIcon from "../components/InputWithIcon"
+import BoxHeader from "../components/base/BoxHeader"
+import BoxFull from "../components/base/BoxFull"
+import Checkbox from "../components/base/Checkbox"
+import InputWithIcon from "../components/base/InputWithIcon"
 import { faFolder, faPlus } from "@fortawesome/free-solid-svg-icons"
-import Radio from "../components/Radio"
-import Button from "../components/Button"
-import FormLabelled from "../components/FormLabelled"
-import FormLabel from "../components/FormLabel"
+import Radio from "../components/base/Radio"
+import Button from "../components/base/Button"
+import FormLabelled from "../components/base/FormLabelled"
+import FormLabel from "../components/base/formparts/FormLabel"
 
 
 export default function PageDashboard({ children, className, ...props }) {
