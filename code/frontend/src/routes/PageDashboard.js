@@ -10,48 +10,50 @@ import Radio from "../components/base/Radio"
 import Button from "../components/base/Button"
 import FormLabelled from "../components/base/FormLabelled"
 import FormLabel from "../components/base/formparts/FormLabel"
+import RepositoryEditor from "../components/providers/RepositoryEditor"
+import BoxConditionHashtag from "../components/interactive/BoxConditionHashtag"
+import BoxConditions from "../components/interactive/BoxConditions"
 
 
 export default function PageDashboard({ children, className, ...props }) {
     return (
         <div className={classNames(Style.PageHome, className)} {...props}>
-            <BoxHeader className={Style.Header}>
-                Create a new repository
-            </BoxHeader>
-            <BoxFull className={Style.SearchByZone} header={
-                <label><Checkbox/> Search by zone</label>
-            }>
-                🚧 Not implemented.
-            </BoxFull>
-            <BoxFull className={Style.SearchByHashtags} header={
-                <label><Checkbox/> Search by hashtag</label>
-            }>
-                🚧 Not implemented.
-            </BoxFull>
-            <BoxFull className={Style.SearchByTimePeriod} header={
-                <label><Checkbox/> Search by time period</label>
-            }>
-                🚧 Not implemented.
-            </BoxFull>
-            <BoxFull className={Style.CreateDialog} header={"Create repository"}>
-                <FormLabelled>
-                    <FormLabel htmlFor={"repo-name"} text={"Repository name"}>
-                        <InputWithIcon id={"repo-name"} icon={faFolder}/>
-                    </FormLabel>
-                    <FormLabel htmlFor={"filter-mode"} text={"Add tweets if they satisfy"}>
-                        <label>
-                            <Radio name={"filter-mode"} value={"or"}/> At least one filter
-                        </label>
-                        &nbsp;
-                        <label>
-                            <Radio name={"filter-mode"} value={"and"}/> Every filter
-                        </label>
-                    </FormLabel>
-                    <Button style={{"gridColumn": "1 / 3"}} icon={faPlus} color={"Green"}>
-                        Create repository
-                    </Button>
-                </FormLabelled>
-            </BoxFull>
+            <RepositoryEditor>
+                <BoxHeader className={Style.Header}>
+                    Create a new repository
+                </BoxHeader>
+                <BoxFull className={Style.SearchByZone} header={
+                    <label><Checkbox/> Search by zone</label>
+                }>
+                    🚧 Not implemented.
+                </BoxFull>
+                <BoxConditionHashtag className={Style.SearchByHashtags}/>
+                <BoxFull className={Style.SearchByTimePeriod} header={
+                    <label><Checkbox/> Search by time period</label>
+                }>
+                    🚧 Not implemented.
+                </BoxFull>
+                <BoxConditions className={Style.Conditions}/>
+                <BoxFull className={Style.CreateDialog} header={"Create repository"}>
+                    <FormLabelled>
+                        <FormLabel htmlFor={"repo-name"} text={"Repository name"}>
+                            <InputWithIcon id={"repo-name"} icon={faFolder}/>
+                        </FormLabel>
+                        <FormLabel htmlFor={"filter-mode"} text={"Add tweets if they satisfy"}>
+                            <label>
+                                <Radio name={"filter-mode"} value={"or"}/> At least one filter
+                            </label>
+                            &nbsp;
+                            <label>
+                                <Radio name={"filter-mode"} value={"and"}/> Every filter
+                            </label>
+                        </FormLabel>
+                        <Button style={{"gridColumn": "1 / 3"}} icon={faPlus} color={"Green"}>
+                            Create repository
+                        </Button>
+                    </FormLabelled>
+                </BoxFull>
+            </RepositoryEditor>
         </div>
     )
 }

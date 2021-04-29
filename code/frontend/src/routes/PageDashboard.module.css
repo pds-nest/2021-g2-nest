@@ -6,8 +6,9 @@
         "b c"
         "b d"
         "b e"
+        "b f"
     ;
-    grid-template-rows: auto 1fr 1fr auto;
+    grid-template-rows: auto auto auto 1fr auto;
 
     grid-gap: 10px;
 
@@ -31,6 +32,10 @@
     grid-area: d;
 }
 
-.CreateDialog {
+.Conditions {
     grid-area: e;
+}
+
+.CreateDialog {
+    grid-area: f;
 }
