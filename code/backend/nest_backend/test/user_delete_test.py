@@ -44,13 +44,13 @@ class MyTestCase(unittest.TestCase):
 
         print("delete User NON eseguito correttamente!")
 
-        r = requests.delete(f'http://localhost:5000/api/v1/users/utente12@nest.com',
+        r = requests.delete(f'http://localhost:5000/api/v1/users/utente3@nest.com',
                             headers={'authorization': "Bearer " + auth_code},)
         j = json.loads(r.text)
         assert j['result'] == "success"
 
         print("User_delete eseguito correttamente!")
 
-    print("Testing del metodo user_delete")
+    print("Testing del metodo user delete")
 
 
