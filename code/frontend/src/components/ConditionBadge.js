@@ -3,7 +3,7 @@ import Style from "./ConditionBadge.module.css"
 import classNames from "classnames"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import ButtonSmallX from "./ButtonSmallX"
-import { faClock, faHashtag, faMapPin, faUser } from "@fortawesome/free-solid-svg-icons"
+import { faAt, faClock, faHashtag, faMapPin } from "@fortawesome/free-solid-svg-icons"
 import ContextRepositoryEditor from "../contexts/ContextRepositoryEditor"
 
 
@@ -19,7 +19,7 @@ const CONDITION_ICONS = {
     0: faHashtag,  // Hashtag
     1: faMapPin,  // Location
     2: faClock,  // Time
-    3: faUser,  // User
+    3: faAt,  // User
 }
 
 
