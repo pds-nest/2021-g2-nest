@@ -30,7 +30,7 @@ const CONDITION_ICONS = {
  * @returns {JSX.Element}
  * @constructor
  */
-export default function ConditionBadge(condition) {
+export default function ConditionBadge({ ...condition }) {
     const { id, type, content } = condition
     const color = CONDITION_COLORS[type]
     const icon = CONDITION_ICONS[type]
@@ -48,7 +48,10 @@ export default function ConditionBadge(condition) {
                 {content}
             </div>
             <div>
-                <ButtonSmallX onClick={() => removeCondition(condition)}/>
+                <ButtonSmallX onClick={() => {
+                    console.debug(`Removing Condition: `, condition)
+                    removeCondition(condition)
+                }}/>
             </div>
         </div>
     )

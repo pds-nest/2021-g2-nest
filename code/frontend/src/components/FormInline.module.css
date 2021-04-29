@@ -1,0 +1,9 @@
+.FormInline {
+    display: flex;
+    flex-direction: row;
+
+    gap: 10px;
+
+    justify-content: space-between;
+    align-items: center;
+}

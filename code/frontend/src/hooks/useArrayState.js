@@ -6,6 +6,7 @@ export default function useArrayState(def) {
 
     const appendValue = useCallback(
         newSingle => {
+            console.debug("Appending ", newSingle, " to ArrayState")
             setValue(
                 oldArray => [...oldArray, newSingle]
             )
@@ -15,6 +16,7 @@ export default function useArrayState(def) {
 
     const spliceValue = useCallback(
         position => {
+            console.debug("Splicing ", position, " from ArrayState")
             setValue(
                 oldArray => {
                     // TODO: Hope this doesn't break anything...
@@ -28,8 +30,9 @@ export default function useArrayState(def) {
 
     const removeValue = useCallback(
         remValue => {
+            console.debug("Removing ", remValue, " from ArrayState")
             setValue(
-                oldArray => oldArray.filter(item => item !== remValue)
+                oldArray => oldArray.filter(item => JSON.stringify(item) !== JSON.stringify(remValue))
             )
         },
         []

@@ -11,7 +11,7 @@
 
     font-family: var(--font-regular);
 
-    width: 300px;
+    width: 100%;
 }
 
 .Input:focus {

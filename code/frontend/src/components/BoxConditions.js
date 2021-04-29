@@ -7,7 +7,7 @@ import ConditionBadge from "./ConditionBadge"
 export default function BoxConditions({ ...props }) {
     const {conditions} = useContext(ContextRepositoryEditor)
 
-    const badges = conditions.map((cond) => <ConditionBadge key={cond.id} {...cond}/>)
+    const badges = conditions.map((cond, pos) => <ConditionBadge key={pos} {...cond}/>)
 
     return (
         <BoxFull header={"Conditions"} {...props}>
