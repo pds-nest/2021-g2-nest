@@ -13,6 +13,7 @@ import FormLabel from "../components/base/formparts/FormLabel"
 import RepositoryEditor from "../components/providers/RepositoryEditor"
 import BoxConditionHashtag from "../components/interactive/BoxConditionHashtag"
 import BoxConditions from "../components/interactive/BoxConditions"
+import BoxConditionDatetime from "../components/interactive/BoxConditionDatetime"
 
 
 export default function PageDashboard({ children, className, ...props }) {
@@ -28,11 +29,7 @@ export default function PageDashboard({ children, className, ...props }) {
                     🚧 Not implemented.
                 </BoxFull>
                 <BoxConditionHashtag className={Style.SearchByHashtags}/>
-                <BoxFull className={Style.SearchByTimePeriod} header={
-                    <label><Checkbox/> Search by time period</label>
-                }>
-                    🚧 Not implemented.
-                </BoxFull>
+                <BoxConditionDatetime classNmae={Style.SearchByTimePeriod}/>
                 <BoxConditions className={Style.Conditions}/>
                 <BoxFull className={Style.CreateDialog} header={"Create repository"}>
                     <FormLabelled>
