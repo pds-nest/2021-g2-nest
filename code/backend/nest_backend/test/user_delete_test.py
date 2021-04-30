@@ -49,6 +49,7 @@ class MyTestCase(unittest.TestCase):
         j = json.loads(r.text)
         assert j['result'] == "success"
 
+        # TODO AGGIUNGERE TESTING DI GET E PATCH
         print("User_delete eseguito correttamente!")
 
     print("Testing del metodo user delete")
