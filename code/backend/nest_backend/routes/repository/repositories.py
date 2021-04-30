@@ -18,10 +18,10 @@ def page_repositories():
     if request.method == "GET":
         owner = Repository.query.filter_by(owner_id=user.email)
         spectator = Authorization.query.filter_by(email=user.email).join(Repository)
-        if request.json.get("onlyActive"):
+        if request.args.get("onlyActive"):
             owner = owner.filter_by(isActive=True)
             spectator = spectator.filter(Repository.isActive)
-        elif request.json.get("onlyDead"):
+        elif request.args.get("onlyDead"):
             owner = owner.filter_by(isActive=False)
             spectator = spectator.filter(not Repository.isActive)
         owner = owner.all()
