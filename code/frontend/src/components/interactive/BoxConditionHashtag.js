@@ -37,6 +37,12 @@ export default function BoxConditionHashtag({ ...props }) {
             "type": 0,
             "content": hashtag
         }
+
+        if(hashtag === "") {
+            console.debug("Refusing to append ", newCond, " to the Conditions list, as it is empty.")
+            return
+        }
+
         let duplicate = null;
         for(const oldCond of conditions) {
             if(newCond.type === oldCond.type && newCond.content === oldCond.content) {

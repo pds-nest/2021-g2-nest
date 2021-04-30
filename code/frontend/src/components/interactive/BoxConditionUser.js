@@ -36,6 +36,12 @@ export default function BoxConditionUser({ ...props }) {
             "type": 3,
             "content": user
         }
+
+        if(user === "") {
+            console.debug("Refusing to append ", newCond, " to the Conditions list, as it is empty.")
+            return
+        }
+
         let duplicate = null;
         for(const oldCond of conditions) {
             if(newCond.type === oldCond.type && newCond.content === oldCond.content) {
