@@ -51,7 +51,7 @@ export default function GlobalUser({ children }) {
      */
     const login = useCallback(async (email, password) => {
         console.debug("Contacting server to login...")
-        const data = await fetchData("POST", `/api/login`, {
+        const data = await fetchData("POST", `/api/v1/login`, {
             "email": email,
             "password": password,
         })

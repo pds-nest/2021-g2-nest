@@ -16,7 +16,7 @@ import BoxAlert from "../base/BoxAlert"
  */
 export default function BoxRepositoriesArchived({ ...props }) {
     const {fetchDataAuth} = useContext(ContextUser)
-    const {data, started, loading, error} = useData(fetchDataAuth, "GET", "/api/repository/list", {
+    const {data, started, loading, error} = useData(fetchDataAuth, "GET", "/api/v1/repositories/", {
         "onlyDead": true,
     })
 
