@@ -3,7 +3,6 @@ import Style from "./PageDashboard.module.css"
 import classNames from "classnames"
 import BoxHeader from "../components/base/BoxHeader"
 import BoxFull from "../components/base/BoxFull"
-import Checkbox from "../components/base/Checkbox"
 import InputWithIcon from "../components/base/InputWithIcon"
 import { faFolder, faPlus } from "@fortawesome/free-solid-svg-icons"
 import Radio from "../components/base/Radio"
@@ -14,6 +13,7 @@ import RepositoryEditor from "../components/providers/RepositoryEditor"
 import BoxConditionHashtag from "../components/interactive/BoxConditionHashtag"
 import BoxConditions from "../components/interactive/BoxConditions"
 import BoxConditionDatetime from "../components/interactive/BoxConditionDatetime"
+import BoxConditionMap from "../components/interactive/BoxConditionMap"
 
 
 export default function PageDashboard({ children, className, ...props }) {
@@ -23,13 +23,9 @@ export default function PageDashboard({ children, className, ...props }) {
                 <BoxHeader className={Style.Header}>
                     Create a new repository
                 </BoxHeader>
-                <BoxFull className={Style.SearchByZone} header={
-                    <label><Checkbox/> Search by zone</label>
-                }>
-                    🚧 Not implemented.
-                </BoxFull>
+                <BoxConditionMap className={Style.SearchByZone}/>
                 <BoxConditionHashtag className={Style.SearchByHashtags}/>
-                <BoxConditionDatetime classNmae={Style.SearchByTimePeriod}/>
+                <BoxConditionDatetime className={Style.SearchByTimePeriod}/>
                 <BoxConditions className={Style.Conditions}/>
                 <BoxFull className={Style.CreateDialog} header={"Create repository"}>
                     <FormLabelled>

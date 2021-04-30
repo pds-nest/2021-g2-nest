@@ -1,40 +1,30 @@
 import React, { useState } from "react"
 import BoxFull from "../base/BoxFull"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
-import { faAt, faPlus } from "@fortawesome/free-solid-svg-icons"
-import InputWithIcon from "../base/InputWithIcon"
+import { faMapPin, faPlus } from "@fortawesome/free-solid-svg-icons"
 import FormInline from "../base/FormInline"
-import Style from "./BoxConditionUser.module.css"
+import Style from "./BoxConditionMap.module.css"
 import ButtonIconOnly from "../base/ButtonIconOnly"
+import {MapContainer, TileLayer} from "react-leaflet"
 import useRepositoryEditor from "../../hooks/useRepositoryEditor"
 
 
-const INVALID_USER_CHARACTERS = /[^a-zA-Z0-9]/g
-
-
 /**
- * A {@link BoxFull} that allows the user to select a Twitter user to search for, and then to add it as a Condition
- * to the {@link ContextRepositoryEditor}.
+ * A {@link BoxFull} that allows the user to select a geographical location to use to filter tweets.
  *
  * @param props - Additional props to pass to the box.
  * @returns {JSX.Element}
  * @constructor
  */
-export default function BoxConditionUser({ ...props }) {
+export default function BoxConditionMap({ ...props }) {
     const [user, setUser] = useState("")
     const {conditions, appendCondition} = useRepositoryEditor()
-
-    const onInputChange = event => {
-        let text = event.target.value
-        text = text.replace(INVALID_USER_CHARACTERS, "")
-        return setUser(text)
-    }
 
     const onButtonClick = () => {
         const newCond = {
             "id": null,
-            "type": 3,
-            "content": user
+            "type": 1,
+            "content": null
         }
 
         if(user === "") {
@@ -62,16 +52,14 @@ export default function BoxConditionUser({ ...props }) {
     }
 
     return (
-        <BoxFull header={<span>Search by <FontAwesomeIcon icon={faAt}/> user</span>} {...props}>
-            <FormInline>
-                <InputWithIcon
-                    className={Style.Input}
-                    id={"condition-hashtag"}
-                    icon={faAt}
-                    value={user}
-                    onChange={onInputChange}
-                    placeholder={"jack"}
+        <BoxFull header={<span>Search by <FontAwesomeIcon icon={faMapPin}/> zone</span>} {...props}>
+            <MapContainer center={[41.89309, 12.48289]} zoom={3} style={{"height": "400px"}}>
+                <TileLayer
+                    attribution='(c) <a href="https://osm.org/copyright">OpenStreetMap</a> contributors'
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
+            </MapContainer>
+            <FormInline>
                 <ButtonIconOnly
                     className={Style.Button}
                     icon={faPlus}
