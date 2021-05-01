@@ -15,32 +15,32 @@ def page_user(email):
         + DELETE: deletes the specified user.
     """
     user = find_user(get_jwt_identity())
+    target = find_user(email)
+    if not target:
+        return json_error("Could not locate the user."), 404
     if request.method == "GET":
         if not email == user.email and not user.isAdmin:
             return json_error("Thou art not authorized."), 403
-        target = find_user(email).to_json()
-        if not target:
-            return json_error("Could not locate the user."), 404
-        return json_success(target)
+        return json_success(target.to_json())
     elif request.method == "DELETE":
         if not user.isAdmin:
             return json_error("User is not admin."), 403
-        target = find_user(email)
-        if not target:
-            return json_error("User not found."), 404
         if user == target:
             return json_error("The user cant delete himself. Its a sin."), 406
         Base.session.delete(target)
-        Base.session.commit()
+        try:
+            Base.session.commit()
+        except Exception:
+            Base.session.rollback()
+            return json_error("Could not delete the user."), 500
         return json_success("The user has been deleted.")
     elif request.method == "PATCH":
         if not email == user.email and not user.isAdmin:
             return json_error("Thou art not authorized."), 403
         target = find_user(email)
-        if not target:
-            return json_error("Could not locate the user."), 404
         if request.json.get("username"):
             target.username = request.json.get("username")
         if request.json.get("password"):
             target.password = gen_password(request.json.get("password"))
         Base.session.commit()
+        return json_success(target.to_json())

@@ -12,7 +12,7 @@ class Condition(Base.Model):
     type = Base.Column(Base.Enum(ConditionType), nullable=False)
     content = Base.Column(Base.String, nullable=False)
     # Relationships
-    used = Base.relationship("Uses", back_populates="condition")
+    used = Base.relationship("Uses", back_populates="condition", cascade="all, delete")
     tweets = Base.relationship("Contains", back_populates="condition")
     operations = Base.relationship("BoolOperation", back_populates="condition")
 

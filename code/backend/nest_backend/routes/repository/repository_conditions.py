@@ -16,6 +16,8 @@ def page_repository_conditions(rid):
     """
 
     repository = Repository.query.filter_by(rid=rid).first()
+    if not repository:
+        return json_error("Could not find repository"), 404
     user = find_user(get_jwt_identity())
 
     if user.email != repository.owner_id:

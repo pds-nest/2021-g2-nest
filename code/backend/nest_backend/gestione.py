@@ -68,15 +68,17 @@ def repository_auth(f):
     @functools.wraps(f)
     def func(*args, **kwargs):
         user = find_user(get_jwt_identity())
-        repository_id = request.json.get("id")
+        repository_id = kwargs["rid"]
         if not repository_id:
             return json_error("Missing one or more parameters."), 400
-        repository = Repository.query.filter_by(id=repository_id)
+        repository = Repository.query.filter_by(id=repository_id).first()
         if not repository:
             return json_error("Cant't find the repository."), 404
-        if repository.owner_id != user.email and user.email not in [a.email for a in repository.authorizations]:
+        if repository.owner_id != user.email and user.email not in [a.email for a in
+                                                                    repository.authorizations] and not user.isAdmin:
             return json_error("Stop right there, criminal scum! Nobody accesses protected data under MY watch!"), 403
         return f(*args, **kwargs)
+
     return func
 
 
@@ -99,5 +101,9 @@ def json_success(data):
 
 
 def error_handler(e):
-    print(f"{e.description} - {e.code}")
-    return json_error(f"{e.description} - {e.code}")
+    try:
+        print(f"{e.description} - {e.code}")
+        return json_error(f"{e.description} - {e.code}"), 500
+    except Exception:
+        print(e)
+        return json_error(f"{e.__repr__()}"), 500

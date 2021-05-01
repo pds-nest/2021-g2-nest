@@ -15,5 +15,5 @@ class Alert(Base.Model):
     repository_id = Base.Column(Base.Integer, Base.ForeignKey("repository.id"), nullable=False)
     # Relationships
     repository = Base.relationship("Repository", back_populates="alerts")
-    notifications = Base.relationship("Notification", back_populates="alert")
-    operations = Base.relationship("BoolOperation", back_populates="alert")
+    notifications = Base.relationship("Notification", back_populates="alert", cascade="all, delete")
+    operations = Base.relationship("BoolOperation", back_populates="alert", cascade="all, delete")

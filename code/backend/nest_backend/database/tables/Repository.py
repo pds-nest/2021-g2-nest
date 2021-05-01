@@ -20,10 +20,10 @@ class Repository(Base.Model):
 
     # Relationships
     owner = Base.relationship("User", back_populates="owner_of")
-    authorizations = Base.relationship("Authorization", back_populates="repository")
-    tweets = Base.relationship("Composed", back_populates="repository")
-    alerts = Base.relationship("Alert", back_populates="repository")
-    uses = Base.relationship("Uses", back_populates="repository")
+    authorizations = Base.relationship("Authorization", back_populates="repository", cascade="all, delete")
+    tweets = Base.relationship("Composed", back_populates="repository", cascade="all, delete")
+    alerts = Base.relationship("Alert", back_populates="repository", cascade="all, delete")
+    uses = Base.relationship("Uses", back_populates="repository", cascade="all, delete")
 
     def to_json(self):
         return {

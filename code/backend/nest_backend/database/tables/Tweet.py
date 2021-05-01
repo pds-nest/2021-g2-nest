@@ -12,5 +12,5 @@ class Tweet(Base.Model):
     location = Base.Column(Base.String)  # Todo: see if a dedicated class for locations is needed. This is likely.
     poster = Base.Column(Base.String)  # Todo: see if a dedicated class for posters is needed.
     # Relationships
-    repositories = Base.relationship("Composed", back_populates="tweet")
-    conditions = Base.relationship("Contains", back_populates="tweet")
+    repositories = Base.relationship("Composed", back_populates="tweet", cascade="all, delete")
+    conditions = Base.relationship("Contains", back_populates="tweet", cascade="all, delete")

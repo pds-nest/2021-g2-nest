@@ -18,6 +18,8 @@ def page_repository(rid):
     """
     user = find_user(get_jwt_identity())
     repository = Repository.query.filter_by(id=rid).first()
+    if not repository:
+        return json_error("Could not find repository."), 404
     if request.method == "GET":
         return json_success(repository.to_json()), 200
     elif request.method == "PATCH":
@@ -33,8 +35,12 @@ def page_repository(rid):
         Base.session.commit()
         return json_success(repository.to_json()), 200
     elif request.method == "DELETE":
-        if repository.owner_id != user.email:
+        if repository.owner_id != user.email and not user.isAdmin:
             return json_error("You are not the owner of this repository."), 403
-        Base.session.delete(repository)
-        Base.session.commit()
+        try:
+            Base.session.delete(repository)
+            Base.session.commit()
+        except Exception as e:
+            Base.session.rollback()
+            return json_error("Cant delete repository because of dependencies.")
         return json_success("Success"), 200

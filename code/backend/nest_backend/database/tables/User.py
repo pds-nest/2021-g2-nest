@@ -12,8 +12,8 @@ class User(Base.Model):
     password = Base.Column(Base.LargeBinary, nullable=False)
     isAdmin = Base.Column(Base.Boolean, default=False)
     # Relationships
-    owner_of = Base.relationship("Repository", back_populates="owner")
-    authorizations = Base.relationship("Authorization", back_populates="user")
+    owner_of = Base.relationship("Repository", back_populates="owner", cascade="all, delete")
+    authorizations = Base.relationship("Authorization", back_populates="user", cascade="all, delete")
 
     def to_json(self):
         return {'email': self.email, 'username': self.username, 'isAdmin': self.isAdmin}
