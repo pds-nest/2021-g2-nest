@@ -20,8 +20,8 @@ def page_user(email):
             return json_error("Thou art not authorized."), 403
         target = find_user(email).to_json()
         if not target:
-            json_error("Could not locate the user."), 404
-        return json_success(target.to_json())
+            return json_error("Could not locate the user."), 404
+        return json_success(target)
     elif request.method == "DELETE":
         if not user.isAdmin:
             return json_error("User is not admin."), 403
@@ -38,7 +38,7 @@ def page_user(email):
             return json_error("Thou art not authorized."), 403
         target = find_user(email)
         if not target:
-            json_error("Could not locate the user."), 404
+            return json_error("Could not locate the user."), 404
         if request.json.get("username"):
             target.username = request.json.get("username")
         if request.json.get("password"):
