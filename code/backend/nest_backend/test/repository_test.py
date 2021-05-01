@@ -14,9 +14,9 @@ class MyTestCase(unittest.TestCase):
         auth_code = j['data']['access_token']
 
         # ritorno le info sulla repo speficicata dopo /repositories
-        #r = requests.get(f'http://localhost:5000/api/v1/repositories/3', headers={'authorization': "Bearer " + auth_code})
-        #j = json.loads(r.text)
-        #assert j['result'] == "success"
+        r = requests.get(f'http://localhost:5000/api/v1/repositories/3', headers={'authorization': "Bearer " + auth_code})
+        j = json.loads(r.text)
+        assert j['result'] == "success"
 
         r = requests.delete(f'http://localhost:5000/api/v1/repositories/1', headers={'authorization': "Bearer " + auth_code})
         j = json.loads(r.text)
