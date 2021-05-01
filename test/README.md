@@ -15,7 +15,7 @@ Si è quindi creata una sezione test nella quale inserire tutti gli script pytho
 
 Tramite una configurazione di intelliJ Idea, l'IDE utilizzato per lo sviluppo, è stato possibile creare una sezione di tipo "pytest".
 
-Questa sezione è alla pari del codice del backend ed è stata strutturata sencondo la stessa gerarchia di cartelle.
+Questa sezione è alla pari del codice del backend ed è stata strutturata secondo la stessa gerarchia di cartelle.
 
 Semplicemente selezionando la cartella dei test oppure il singolo test, è possibile eseguire gli script in run o in debug per poi osservarne la buona riuscita o la presenza di errori.
 
