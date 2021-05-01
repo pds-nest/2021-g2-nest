@@ -5,8 +5,12 @@ import { faMapPin, faPlus } from "@fortawesome/free-solid-svg-icons"
 import FormInline from "../base/FormInline"
 import Style from "./BoxConditionMap.module.css"
 import ButtonIconOnly from "../base/ButtonIconOnly"
-import {MapContainer, TileLayer} from "react-leaflet"
+import { MapContainer, Marker, TileLayer } from "react-leaflet"
 import useRepositoryEditor from "../../hooks/useRepositoryEditor"
+
+
+const STARTING_POSITION = [41.89309, 12.48289]
+const STARTING_ZOOM = 3
 
 
 /**
@@ -52,21 +56,22 @@ export default function BoxConditionMap({ ...props }) {
     }
 
     return (
-        <BoxFull header={<span>Search by <FontAwesomeIcon icon={faMapPin}/> zone</span>} {...props}>
-            <MapContainer center={[41.89309, 12.48289]} zoom={3} style={{"height": "400px"}}>
+        <BoxFull
+            header={<span>Search by <FontAwesomeIcon icon={faMapPin}/> zone</span>}
+            childrenClassName={Style.BoxConditionMapContents}
+            {...props}
+        >
+            <MapContainer
+                center={STARTING_POSITION}
+                zoom={STARTING_ZOOM}
+                className={Style.MapContainer}
+            >
                 <TileLayer
                     attribution='(c) <a href="https://osm.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
+                <Marker draggable={true} position={STARTING_POSITION}/>
             </MapContainer>
-            <FormInline>
-                <ButtonIconOnly
-                    className={Style.Button}
-                    icon={faPlus}
-                    color={"Green"}
-                    onClick={onButtonClick}
-                />
-            </FormInline>
         </BoxFull>
     )
 }

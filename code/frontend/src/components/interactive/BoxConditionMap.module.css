@@ -1,7 +1,11 @@
-.Input {
-    flex-shrink: 1;
+.BoxConditionMapContents {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
 }
 
-.Button {
-
+.MapContainer {
+    flex-grow: 1;
+    height: 300px;
+    border-radius: 0 0 25px 25px;
 }
