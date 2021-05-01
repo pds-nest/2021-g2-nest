@@ -17,7 +17,7 @@ class MyTestCase(unittest.TestCase):
 
         # elimino ma non sono admin
         r = requests.delete(f'http://localhost:5000/api/v1/users/admin@admin.com',
-                            headers={'authorization': "Bearer " + auth_code},)
+                            headers={'authorization': "Bearer " + auth_code})
         j = json.loads(r.text)
         assert j['result'] == "failure"
 
@@ -31,25 +31,32 @@ class MyTestCase(unittest.TestCase):
 
         # elimino un utente che non c'è
         r = requests.delete(f'http://localhost:5000/api/v1/users/none@nest.com',
-                            headers={'authorization': "Bearer " + auth_code},)
+                            headers={'authorization': "Bearer " + auth_code})
         j = json.loads(r.text)
         assert j['result'] == "failure"
 
         print("delete User NON eseguito correttamente!")
 
         r = requests.delete(f'http://localhost:5000/api/v1/users/admin@admin.com',
-                            headers={'authorization': "Bearer " + auth_code},)
+                            headers={'authorization': "Bearer " + auth_code})
         j = json.loads(r.text)
         assert j['result'] == "failure"
 
         print("delete User NON eseguito correttamente!")
 
         r = requests.delete(f'http://localhost:5000/api/v1/users/utente3@nest.com',
-                            headers={'authorization': "Bearer " + auth_code},)
+                            headers={'authorization': "Bearer " + auth_code})
         j = json.loads(r.text)
         assert j['result'] == "success"
 
         # TODO AGGIUNGERE TESTING DI GET E PATCH
+
+        # chiedo le info di un utente che esiste
+        r = requests.get(f'http://localhost:5000/api/v1/users/utente_test@nest.com',
+                            headers={'authorization': "Bearer " + auth_code})
+        j = json.loads(r.text)
+        assert j['result'] == "success"
+
         print("User_delete eseguito correttamente!")
 
     print("Testing del metodo user delete")
