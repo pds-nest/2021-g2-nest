@@ -71,18 +71,3 @@ Lorenzo Balugani - Developer
 |29/04 | 1.0h | Gestione migliorata errori
 |29/04 | 1.0h | Refactoring
 |02/05 | 1.0h | Bugfixing
-
-Template tabella - Rubato da Stefano :P
-| Data  | Durata | Attività |
-|-------|--------|----------|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
-|
