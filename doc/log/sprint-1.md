@@ -19,5 +19,4 @@ Stefano Goldoni - Product Owner
 |29/04 |2.0h |metodi di test
 |30/04 |2.0h |metodi di test backend
 |01/05 |1.0h |test frontend
-|01/05 |2.0h |backlog grooming session
 |02/05 |1.0h |documentazione
