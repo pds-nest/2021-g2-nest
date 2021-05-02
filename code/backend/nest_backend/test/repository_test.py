@@ -8,21 +8,24 @@ class MyTestCase(unittest.TestCase):
         global auth_code
 
         # eseguo il login
-        r = requests.post('http://localhost:5000/api/v1/login', json={'email': 'admin@admin.com', 'password': 'password'})
+        r = requests.post('http://localhost:5000/api/v1/login', json={'email': 'utente_test@nest.com', 'password': 'password'})
         j = json.loads(r.text)
         assert j['result'] == "success"
         auth_code = j['data']['access_token']
 
-        # ritorno le info sulla repo speficicata dopo /repositories
-        r = requests.get(f'http://localhost:5000/api/v1/repositories/15', headers={'authorization': "Bearer " + auth_code})
+        '''# ritorno le info sulla repo speficicata dopo /repositories
+        r = requests.get(f'http://localhost:5000/api/v1/repositories/17', headers={'authorization': "Bearer " + auth_code})
         j = json.loads(r.text)
         assert j['result'] == "success"
 
-        r = requests.delete(f'http://localhost:5000/api/v1/repositories/15', headers={'authorization': "Bearer " + auth_code})
+        r = requests.delete(f'http://localhost:5000/api/v1/repositories/17', headers={'authorization': "Bearer " + auth_code})
         j = json.loads(r.text)
-        assert j['result'] == 'success'
+        assert j['result'] == "success"'''
 
-
+        r = requests.patch(f'http://localhost:5000/api/v1/repositories/16', headers={'authorization': "Bearer " + auth_code},
+                           json={'name': 'newname', 'open': True})
+        j = json.loads(r.text)
+        assert j['result'] == "success"
 
 
 print('Testing del metodo repository_edit')
