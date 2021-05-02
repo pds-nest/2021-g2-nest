@@ -40,6 +40,21 @@ Giovanni Anniballi - Tester
 
 Per il lavoro di testing è stata utilizzata anche la tecnica del Pair Programming, grazie ad un plugin dell'IDE utilizzato.
 
+Giorgio Minoccari - Sviluppatore Backend
+
+Durante lo sprint ho principalmente svolto sviluppo e test riguardo alla API di twitter, in modo da poter effettuare chiamate efficenti e non venire limitati dal sito riguardo alle richieste effettuate.
+| Data  | Durata | Attività |
+|-------|--------|----------|
+|21/04 |1.0h| Primi test riguardo autenticazione Oauth per API twitter
+|23/04 |1.5h| Autenticazione funzionante
+|24/04 |0.5h| Test su ricerche generali con parole chiave
+|26/04 |1.0h| Test su ricerche geolocalizzate 
+|27/04 |1.0h| Definizione di entita' di esempio nei database per provare funzioni legate ad esse
+|28/04 |2.0h| Definizione di funzioni per l'aggregazione di condizioni di diverso tipo per la ricerca di tweet tramite API
+|29/04 |1.0h| Refactor codice scritto fino a quel momento, eliminazione di dati inutili
+|01/05 |1.0h| Implementazioni di analisi su termini e hashtag restituiti dall'API
+|02/05 |1.0h| Test di chiamata alle funzioni di ricerca a partire da repository con condizioni complesse aggregate
+=======
 Lorenzo Balugani - Developer
 
 | Data  | Durata | Attività |
