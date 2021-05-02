@@ -8,3 +8,18 @@
 | 2021-04-11 | 15:03 | 2h 39m | Documentazione e planning poker |
 | 2021-04-15 | 18:15 | 52m | Documentazione |
 | 2021-04-17 | 15:05 | 4h | Documentazione e partita a Scrumble |
+
+
+# Log attività individuali dello Sprint 0
+
+Stefano Goldoni - Product Owner
+
+| Data  | Durata | Attività |
+|-------|--------|----------|
+|08/04 |1.0h |user stories
+|09/04 |1.0h |epic
+|10/04 |0.5h |use cases
+|11/04 |0.5h |use cases
+|14/04 |0.5h |documentazione SRS
+|15/05 |0.5h |documentazione SRS
+|17/04 |1.5h |diagrammi di attività
