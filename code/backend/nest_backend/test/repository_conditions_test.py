@@ -27,9 +27,34 @@ class MyTestCase(unittest.TestCase):
         assert j['result'] == "success"
         auth_code = j['data']['access_token']
 
+        # uso come filtro un hashtag
         r = requests.post(f'http://localhost:5000/api/v1/repositories/16/conditions',
                           headers={'authorization': "Bearer " + auth_code},
                           json={'type': 0, 'content': 'MarioDraghi'})
+        j = json.loads(r.text)
+        assert j['result'] == "success"
+        print("Conditions dei Repositories creati correttamente!")
+
+        # uso come filtro un luogo
+        r = requests.post(f'http://localhost:5000/api/v1/repositories/16/conditions',
+                          headers={'authorization': "Bearer " + auth_code},
+                          json={'type': 1, 'content': 'Roma'})
+        j = json.loads(r.text)
+        assert j['result'] == "success"
+        print("Conditions dei Repositories creati correttamente!")
+
+        # uso come filtro una data
+        r = requests.post(f'http://localhost:5000/api/v1/repositories/16/conditions',
+                          headers={'authorization': "Bearer " + auth_code},
+                          json={'type': 2, 'content': '26/06/2021'})
+        j = json.loads(r.text)
+        assert j['result'] == "success"
+        print("Conditions dei Repositories creati correttamente!")
+
+        # uso una combinazione di filtri
+        r = requests.post(f'http://localhost:5000/api/v1/repositories/16/conditions',
+                          headers={'authorization': "Bearer " + auth_code},
+                          json={'type': 1 and 0, 'content': 'Roma' and 'Totti'})
         j = json.loads(r.text)
         assert j['result'] == "success"
         print("Conditions dei Repositories creati correttamente!")
