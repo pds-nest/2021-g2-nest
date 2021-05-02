@@ -21,7 +21,7 @@ Stefano Goldoni - Product Owner
 |01/05 |1.0h |test frontend
 |01/05 |1.0h |test backend in pair programming
 |02/05 |1.0h |documentazione
-
+|02/05 |2.5h |test backend
 
 Giovanni Anniballi - Tester
 | Data  | Durata | Attività |
