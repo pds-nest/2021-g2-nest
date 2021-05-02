@@ -82,3 +82,13 @@ FLavia Cocca - Scrum Master
 |30/04 | 1.0h | modifica mockup UI
 |01/05 | 2.0h | Riunione con il team per sprint review e sprint retrospective
 |02/05 | 3.0h | Stesura documenti Sprint1(debito tecnico e relazione sprint retrospective), realizzazione video Sprint1 review
+
+
+Chiara Calzolari - UI Designer
+
+| Data  | Durata | Attività |
+|-------|--------|----------|
+|26/04 | 3.0h | Configurazione ambiente di sviluppo
+|27/04 | 1.0h | modifica mockup UI (adeguamento al JS)
+|29/04 | 2.0h | modifica mockup UI (Manage users)
+|01/05 | 0.5h | Ultimi ritocchi al mockup UI
