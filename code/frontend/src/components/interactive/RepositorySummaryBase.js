@@ -10,10 +10,12 @@ import { faArchive, faPencilAlt, faTrash } from "@fortawesome/free-solid-svg-ico
  * A long line representing a repository in a list.
  *
  * @param icon - The FontAwesome IconDefinition that represents the repository.
- * @param title - The title of the repository.
+ * @param name - The title of the repository.
  * @todo What goes in the details field?
  * @param details - Whatever should be rendered in the details field.
- * @param startDate - The start date of the repository.
+ * @param start - The start date of the repository.
+ * @param end - The end date of the repository.
+ * @param isActive - Whether the repository is active or not.
  * @param canDelete - If the Delete button should be displayed or not.
  * @param canEdit - If the Edit button should be displayed or not.
  * @param canArchive - If the Archive button should be displayed or not.
@@ -23,7 +25,7 @@ import { faArchive, faPencilAlt, faTrash } from "@fortawesome/free-solid-svg-ico
  * @constructor
  */
 export default function RepositorySummaryBase(
-    { icon, title, details, startDate, canDelete, canEdit, canArchive, className, ...props }
+    { icon, name, details, start, end, isActive, canDelete, canEdit, canArchive, className, ...props }
 ) {
     return (
         <div className={classNames(Style.RepositorySummary, className)} {...props}>
@@ -32,10 +34,10 @@ export default function RepositorySummaryBase(
                     <FontAwesomeIcon icon={icon}/>
                 </div>
                 <div className={Style.Title}>
-                    {title}
+                    {name}
                 </div>
                 <div className={Style.StartDate}>
-                    {startDate}
+                    {start}
                 </div>
             </div>
             <div className={Style.Middle}>
@@ -49,7 +51,7 @@ export default function RepositorySummaryBase(
                     <Button color={"Yellow"} icon={faPencilAlt}>Edit</Button>
                 : null}
                 {canArchive ?
-                    <Button color={"Grey"} icon={faArchive}>Archive</Button>
+                    <Button color={"Grey"} icon={faArchive}>{isActive ? "Archive" : "Unarchive"}</Button>
                 : null}
             </div>
         </div>

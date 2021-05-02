@@ -5,6 +5,7 @@ import useData from "../../hooks/useData"
 import RepositorySummaryBase from "./RepositorySummaryBase"
 import Loading from "../base/Loading"
 import BoxAlert from "../base/BoxAlert"
+import { faSearch } from "@fortawesome/free-solid-svg-icons"
 
 
 /**
@@ -15,7 +16,7 @@ import BoxAlert from "../base/BoxAlert"
  * @constructor
  */
 export default function BoxRepositoriesArchived({ ...props }) {
-    const {fetchDataAuth} = useContext(ContextUser)
+    const {user, fetchDataAuth} = useContext(ContextUser)
     const {data, started, loading, error} = useData(fetchDataAuth, "GET", "/api/v1/repositories/", {
         "onlyDead": true,
     })
@@ -30,7 +31,15 @@ export default function BoxRepositoriesArchived({ ...props }) {
     else {
         let repositories = [...data["owner"], ...data["spectator"]]
         if(repositories.length > 0) {
-            contents = repositories.map(repo => <RepositorySummaryBase {...repo}/>)
+            contents = repositories.map(repo => (
+                <RepositorySummaryBase
+                    {...repo}
+                    icon={faSearch}
+                    canArchive={true}
+                    canEdit={false}
+                    canDelete={repo["owner"]["username"] === user["username"]}
+                />
+            ))
         }
         else {
             contents = <i>There's nothing here.</i>
