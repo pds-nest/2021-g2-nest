@@ -40,9 +40,10 @@ def page_repository_conditions(rid):
 
         condition = Condition(content=content, type=type_)
         Base.session.add(condition)
+        Base.session.commit()
 
         use = Uses(cid=condition.id, rid=repository.id)
         Base.session.merge(use)
-
         Base.session.commit()
+
         return json_success(condition.to_json()), 200
