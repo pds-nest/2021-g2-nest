@@ -15,7 +15,7 @@ def page_repository_conditions(rid):
         + POST: type, content -> Adds a condition and returns it.
     """
 
-    repository = Repository.query.filter_by(rid=rid).first()
+    repository = Repository.query.filter_by(id=rid).first()
     if not repository:
         return json_error("Could not find repository"), 404
     user = find_user(get_jwt_identity())
