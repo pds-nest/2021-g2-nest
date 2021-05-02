@@ -5,7 +5,7 @@
 | 2021-05-01 | 15:30 | 2h | backlog grooming session |
 
 
-# Log attività individuali dello Sprint 0
+# Log attività individuali dello Sprint 1
 
 Stefano Goldoni - Product Owner
 
@@ -19,4 +19,5 @@ Stefano Goldoni - Product Owner
 |29/04 |2.0h |metodi di test
 |30/04 |2.0h |metodi di test backend
 |01/05 |1.0h |test frontend
+|01/05 |1.0h |test backend in pair programming
 |02/05 |1.0h |documentazione
