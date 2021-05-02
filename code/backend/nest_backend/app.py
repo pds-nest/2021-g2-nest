@@ -1,7 +1,6 @@
 from flask import Flask
 import os
 
-
 app = Flask(__name__)
 if os.getenv('COOKIE_SECRET'):
     app.secret_key = os.getenv('COOKIE_SECRET')
