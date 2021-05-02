@@ -54,7 +54,8 @@ Durante lo sprint ho principalmente svolto sviluppo e test riguardo alla API di 
 |29/04 |1.0h| Refactor codice scritto fino a quel momento, eliminazione di dati inutili
 |01/05 |1.0h| Implementazioni di analisi su termini e hashtag restituiti dall'API
 |02/05 |1.0h| Test di chiamata alle funzioni di ricerca a partire da repository con condizioni complesse aggregate
-=======
+
+
 Lorenzo Balugani - Developer
 
 | Data  | Durata | Attività |
