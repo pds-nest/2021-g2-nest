@@ -53,8 +53,6 @@ class MyTestCase(unittest.TestCase):
 
         print("delete User eseguito correttamente!")
 
-        # TODO: AGGIUNGERE TESTING DI GET E PATCH
-
         # chiedo le info di un utente che esiste
         r = requests.get(f'http://localhost:5000/api/v1/users/utente_test@nest.com',
                          headers={'authorization': "Bearer " + auth_code})
