@@ -19,6 +19,6 @@ class Condition(Base.Model):
     def to_json(self):
         return {
             "id": self.id,
-            "type": self.type,
+            "type": self.type.value,
             "content": self.content,
         }
