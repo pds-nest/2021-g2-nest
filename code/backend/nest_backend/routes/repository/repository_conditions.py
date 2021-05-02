@@ -38,13 +38,9 @@ def page_repository_conditions(rid):
         if not (content := request.json.get("content")):
             return json_error("Missing `content` parameter."), 400
 
-        if (repo_id := request.json.get("id")) is None:
-            return json_error("Missing `id` parameter."), 400
-
         condition = Condition(content=content, type=type_)
-        Base.session.merge(condition)
+        Base.session.add(condition)
 
-        repository = Repository.query.get(repo_id)
         use = Uses(cid=condition.id, rid=repository.id)
         Base.session.merge(use)
 
