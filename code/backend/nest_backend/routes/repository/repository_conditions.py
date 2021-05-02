@@ -27,7 +27,7 @@ def page_repository_conditions(rid):
         return json_success([u.condition.to_json() for u in repository.uses])
 
     if request.method == "POST":
-        if not (type_ := request.json.get("type")):
+        if (type_ := request.json.get("type")) is None:
             return json_error("Missing `type` parameter."), 400
 
         try:
@@ -38,7 +38,7 @@ def page_repository_conditions(rid):
         if not (content := request.json.get("content")):
             return json_error("Missing `content` parameter."), 400
 
-        if not (repo_id := request.json.get("id")):
+        if (repo_id := request.json.get("id")) is None:
             return json_error("Missing `id` parameter."), 400
 
         condition = Condition(content=content, type=type_)
