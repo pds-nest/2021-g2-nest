@@ -23,7 +23,8 @@ Stefano Goldoni - Product Owner
 |02/05 |1.0h |documentazione
 |02/05 |2.5h |test backend
 
-Giovanni Anniballi - Tester
+Giovanni Anniballi - Tester  
+
 | Data  | Durata | Attività |
 |-------|--------|----------|
 |22/04 |0.5h| Riunione con il team
@@ -53,6 +54,22 @@ Durante lo sprint ho principalmente svolto sviluppo e test riguardo alla API di 
 |29/04 |1.0h| Refactor codice scritto fino a quel momento, eliminazione di dati inutili
 |01/05 |1.0h| Implementazioni di analisi su termini e hashtag restituiti dall'API
 |02/05 |1.0h| Test di chiamata alle funzioni di ricerca a partire da repository con condizioni complesse aggregate
+=======
+Lorenzo Balugani - Developer
+
+| Data  | Durata | Attività |
+|-------|--------|----------|
+|21/04 | 2.0h | Implementazione Base di Dati
+|22/04 | 2.0h | Login, creazione utenti 
+|25/04 | 1.0h | Rimozione utenti, CORS, Creazione repo
+|25/04 | 3.0h | Altre funzioni API
+|26/04 | 0.5h | Standardizzazione output json
+|26/04 | 1.0h | Documentazione
+|27/04 | 0.5h | Aggiunto supporto al modulo explorer, fix
+|28/04 | 0.5h | Bugfixing
+|29/04 | 1.0h | Gestione migliorata errori
+|29/04 | 1.0h | Refactoring
+|02/05 | 1.0h | Bugfixing
 
 Template tabella - Rubato da Stefano :P
 | Data  | Durata | Attività |
