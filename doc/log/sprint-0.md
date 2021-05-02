@@ -1,4 +1,4 @@
-# Log riunioni dello Sprint 0
+# Log riunioni collettive dello Sprint 0
 
 | Data | Ora | Durata | Attività |
 |------|-----|--------|----------|
