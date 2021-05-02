@@ -21,5 +21,5 @@ Stefano Goldoni - Product Owner
 |10/04 |0.5h |use cases
 |11/04 |0.5h |use cases
 |14/04 |0.5h |documentazione SRS
-|15/05 |0.5h |documentazione SRS
+|15/04 |0.5h |documentazione SRS
 |17/04 |1.5h |diagrammi di attività
