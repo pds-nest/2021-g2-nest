@@ -71,3 +71,14 @@ Lorenzo Balugani - Developer
 |29/04 | 1.0h | Gestione migliorata errori
 |29/04 | 1.0h | Refactoring
 |02/05 | 1.0h | Bugfixing
+
+
+FLavia Cocca - Scrum Master
+
+| Data  | Durata | Attività |
+|-------|--------|----------|
+
+|27/04 | 1.0h | modifica mockup UI
+|28/04 | 1.0h | Organizzazione Sprint retrospective
+|01/05 | 2.0h | Riunione con il team per sprint review e sprint retrospective
+|02/05 | 3.0h | Stesura documenti Sprint1(debito tecnico e relazione sprint retrospective), realizzazione video Sprint1 review
