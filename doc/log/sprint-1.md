@@ -21,3 +21,35 @@ Stefano Goldoni - Product Owner
 |01/05 |1.0h |test frontend
 |01/05 |1.0h |test backend in pair programming
 |02/05 |1.0h |documentazione
+
+
+Giovanni Anniballi - Tester
+| Data  | Durata | Attività |
+|-------|--------|----------|
+|22/04 |0.5h| Riunione con il team
+|23/04 |1.0h| Studio struttura del backend
+|24/04 |1.5h| Studio del backend, volto a capire il funzionamento delle varie API
+|26/04 |2.0h| Testing login e retrieval dei dati inerenti a tutti gli utenti registrati
+|27/04 |1.0h| Testing creazione user
+|28/04 |2.0h| Test cancellazione utente e ritorno dei dati inerenti a quell’utente
+|29/04 |1.5h| Test modica utenti e creazione della prima repository
+|30/04 |2.0h| Testing ritorno di tutte le repository di proprietà dell’utente loggato, ritorno delle info inerenti alla repository specificata
+|01/05 |3.0h| Riunione con il team per sprint review e sprint retrospective(2h). Testing modifica ed eliminazione di una repository (nome, stato)
+|02/05 |2.0h| Testing del frontend tramite UI, controllo generale dei test già effettuati.
+Per il lavoro di testing è stata utilizzata anche la tecnica del Pair Programming, grazie ad un plugin dell'IDE utilizzato.
+
+
+Template tabella - Rubato da Stefano :P
+| Data  | Durata | Attività |
+|-------|--------|----------|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
+|
