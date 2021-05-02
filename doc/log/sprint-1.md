@@ -77,7 +77,6 @@ FLavia Cocca - Scrum Master
 
 | Data  | Durata | Attività |
 |-------|--------|----------|
-
 |27/04 | 1.0h | modifica mockup UI
 |28/04 | 1.0h | Organizzazione Sprint retrospective
 |01/05 | 2.0h | Riunione con il team per sprint review e sprint retrospective
