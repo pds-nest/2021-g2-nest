@@ -37,3 +37,20 @@ Flavia Cocca - Scrum Master
 |15/04 |2.0h |mockup UI con relativo css (creazioni pagine)
 |16/04 |2.0h |ultimi ritocchi UI
 |17/04 |0.5h |Stesura documentazione partita scrumble
+
+Chiara Calzolari - UI Designer
+
+| Data  | Durata | Attività |
+|-------|--------|----------|
+|09/04 |2.5h |Brainstorming UI
+|10/04 |1.5h |mockup UI con relativo css (dashboard ed elenco repositories)
+|11/04 |1.0h |mockup UI con relativo css (settings)
+|11/04 |0.5h |Prima versione del logo
+|12/04 |3.0h |mockup UI con relativo css (creazione componenti, light/dark mode)
+|13/04 |1.0h |mockup UI con relativo css (alerts)
+|15/04 |1.0h |Versione definitiva del logo
+|16/04 |0.5h |mockup UI con relativo css (Notifications e Share)
+|17/04 |1.0h |Documentazione Mockup
+|17/04 |0.5h |Doppiaggio video di presentazione
+
+
