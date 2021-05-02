@@ -23,3 +23,17 @@ Stefano Goldoni - Product Owner
 |14/04 |0.5h |documentazione SRS
 |15/04 |0.5h |documentazione SRS
 |17/04 |1.5h |diagrammi di attività
+
+
+Flavia Cocca - Scrum Master
+
+| Data  | Durata | Attività |
+|-------|--------|----------|
+|08/04 |2.5h |brainstorming Ui
+|10/04 |2.0h |creazione frame in figma con relativo css
+|11/04 |1.5h |mockup UI con relativo css (creazione componenti)
+|12/04 |1.5h |mockup UI con relativo css (creazione componenti)
+|14/04 |3.0h |mockup UI con relativo css (creazione pagine)
+|15/04 |2.0h |mockup UI con relativo css (creazioni pagine)
+|16/04 |2.0h |ultimi ritocchi UI
+|17/04 |0.5h |Stesura documentazione partita scrumble
