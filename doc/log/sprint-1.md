@@ -36,6 +36,7 @@ Giovanni Anniballi - Tester
 |30/04 |2.0h| Testing ritorno di tutte le repository di proprietà dell’utente loggato, ritorno delle info inerenti alla repository specificata
 |01/05 |3.0h| Riunione con il team per sprint review e sprint retrospective(2h). Testing modifica ed eliminazione di una repository (nome, stato)
 |02/05 |2.0h| Testing del frontend tramite UI, controllo generale dei test già effettuati.
+
 Per il lavoro di testing è stata utilizzata anche la tecnica del Pair Programming, grazie ad un plugin dell'IDE utilizzato.
 
 
