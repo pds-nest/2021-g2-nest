@@ -1,7 +1,7 @@
 from flask import render_template, abort, jsonify, request
-from ...database import *
+from nest_backend.database import *
 from flask_jwt_extended import jwt_required
-from ...gestione import *
+from nest_backend.gestione import *
 from flask_cors import cross_origin
 
 
@@ -9,9 +9,51 @@ from flask_cors import cross_origin
 @jwt_required()
 def page_users():
     """
-    Users:
-        + GET: gets info about all the users of the platform. Requires the user to be admin.
-        + POST: email, password, username -> Creates a new user and returns it. Requires the user to be admin.
+    ---
+    get:
+        description: Get a list of users.
+        responses:
+            '200':
+                description: A list of User schemas, incapsulated in Success.
+            '403':
+                description: The user is not authorized.
+                content:
+                    application/json:
+                        schema: Error
+            '401':
+                description: The user is not logged in.
+                content:
+                    application/json:
+                        schema: Error
+        tags:
+            - user-related
+            - admin-only
+    post:
+        description: Creates a user.
+        requestBody:
+            required: true
+            content:
+                application/json:
+                    schema: CreateUser
+        responses:
+            '200':
+                description: The user has been created successfully.
+                content:
+                    application/json:
+                        schema: User
+            '403':
+                description: The user is not authorized.
+                content:
+                    application/json:
+                        schema: Error
+            '401':
+                description: The user is not logged in.
+                content:
+                    application/json:
+                        schema: Error
+        tags:
+            - user-related
+            - admin-only
     """
     user = find_user(get_jwt_identity())
     if request.method == "GET":
