@@ -11,10 +11,100 @@ import datetime
 @repository_auth
 def page_repository(rid):
     """
-    Repository <rid>:
-        + GET: Gets info about the specified repository.
-        + PATCH: [name], [close], [open] -> Updates certain aspects of the repository.
-        + DELETE: deletes the specified repository.
+    ---
+    get:
+        description: Get details about a repository.
+        parameters:
+        - in: path
+          schema: IntegerParameterSchema
+
+        responses:
+            '200':
+                description: The details about the requested schema. The schema is incapsulated in Success.
+                content:
+                    application/json:
+                        schema: Repository
+            '404':
+                description: Could not find the requested repository.
+                content:
+                    application/json:
+                        schema: Error
+            '403':
+                description: The user is not authorized.
+                content:
+                    application/json:
+                        schema: Error
+            '401':
+                description: The user is not logged in.
+                content:
+                    application/json:
+                        schema: Error
+        tags:
+            - repository-related
+    delete:
+        description: Deletes a repository.
+        parameters:
+        - in: path
+          schema: IntegerParameterSchema
+        responses:
+            '200':
+                description: The repository has been deleted successfully.
+            '404':
+                description: Could not find the requested repository.
+                content:
+                    application/json:
+                        schema: Error
+            '403':
+                description: The user is not authorized.
+                content:
+                    application/json:
+                        schema: Error
+            '401':
+                description: The user is not logged in.
+                content:
+                    application/json:
+                        schema: Error
+            '500':
+                description: Could not delete the repository.
+                content:
+                    application/json:
+                        schema: Error
+        tags:
+            - repository-related
+    patch:
+        description: Updates a repository.
+        requestBody:
+            required: true
+            content:
+                application/json:
+                    schema: RepositoryUpdate
+        parameters:
+        - in: path
+          schema: IntegerParameterSchema
+
+        responses:
+            '200':
+                description: The repository has been updated successfully.
+                content:
+                    application/json:
+                        schema: Repository
+            '404':
+                description: Could not find the requested repository.
+                content:
+                    application/json:
+                        schema: Error
+            '403':
+                description: The user is not authorized.
+                content:
+                    application/json:
+                        schema: Error
+            '401':
+                description: The user is not logged in.
+                content:
+                    application/json:
+                        schema: Error
+        tags:
+            - repository-related
     """
     user = find_user(get_jwt_identity())
     repository = Repository.query.filter_by(id=rid).first()
@@ -42,5 +132,5 @@ def page_repository(rid):
             Base.session.commit()
         except Exception as e:
             Base.session.rollback()
-            return json_error("Cant delete repository because of dependencies.")
+            return json_error("Cant delete repository because of dependencies."), 500
         return json_success("Success"), 200
