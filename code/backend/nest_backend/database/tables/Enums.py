@@ -6,9 +6,16 @@ import enum
 
 
 class ConditionType(enum.Enum):
+    """
+    Vedi `Specifica delle Conditions su
+    GitLab <https://gitlab.steffo.eu/nest/g2-progetto/-/wikis/Specifica-delle-Conditions>`_ .
+    """
+
     hashtag = 0
     location = 1
     time = 2
+    coordinates = 3
+    place = 4
 
 
 class OperationType(enum.Enum):

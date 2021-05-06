@@ -1,6 +1,6 @@
 from flask import render_template, abort, jsonify, request
-from ...database import *
-from ...gestione import *
+from nest_backend.database import *
+from nest_backend.gestione import *
 from flask_jwt_extended import create_access_token
 from flask_cors import cross_origin
 from datetime import timedelta, datetime
@@ -9,8 +9,27 @@ from datetime import timedelta, datetime
 @cross_origin()
 def page_login():
     """
-    Login:
-        + POST: email, password -> Sends a response containing the JWT token
+    ---
+    post:
+      summary: Attempt login.
+      requestBody:
+        required: true
+        content:
+            application/json:
+                schema: I_Login
+      responses:
+        '201':
+            description: Login successful, user authorized. The schema is incapsulated in Success.
+            content:
+                application/json:
+                    schema: Login
+        '401':
+            description: User not authorized.
+            content:
+                application/json:
+                    schema: Error
+      tags:
+          - user-related
     """
     email = request.json.get("email", None)
     password = request.json.get("password", None)

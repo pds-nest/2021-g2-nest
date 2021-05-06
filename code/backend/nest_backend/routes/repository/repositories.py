@@ -1,7 +1,7 @@
 from flask import render_template, abort, jsonify, request
-from ...database import *
+from nest_backend.database import *
 from flask_jwt_extended import jwt_required
-from ...gestione import *
+from nest_backend.gestione import *
 import datetime
 from flask_cors import cross_origin
 
