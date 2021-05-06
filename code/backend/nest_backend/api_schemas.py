@@ -42,13 +42,21 @@ class CreateUser(Schema):
     password = fields.String(description="The new user's password.")
 
 
+class ConditionSchema(Schema):
+    id = fields.Integer(description="The condition id.")
+    type = fields.Integer(description="The condition type.")
+    content = fields.String(description="The condition content. Meaning may change according to type.")
+
+
 class RepositorySchema(Schema):
     id = fields.Integer(description="The repository id.")
     name = fields.String(description="The repository name.")
     start = fields.DateTime(description="The start date of the repository.")
-    isActive = fields.Boolean(description="True if the repository is active.")
+    is_active = fields.Boolean(description="True if the repository is active.")
     end = fields.DateTime(description="The end date of the repository")
     owner = fields.Nested(UserSchema)
+    conditions = fields.Nested(ConditionSchema, many=True)
+    evaluation_mode = fields.Integer(description="The mode with which conditions are evaluated.")
 
 
 class CreateRepository(Schema):
@@ -59,12 +67,7 @@ class RepositoryUpdate(Schema):
     name = fields.String(description="If present, it changes the name of the repository.")
     close = fields.String(description="If present, it closes the repository.")
     open = fields.String(description="If present, it opens the repository.")
-
-
-class ConditionSchema(Schema):
-    id = fields.Integer(description="The condition id.")
-    type = fields.Integer(description="The condition type.")
-    content = fields.String(description="The condition content. Meaning may change according to type.")
+    evaluation_mode = fields.Integer(description="If present, it alters the Condition evaluation mode.")
 
 
 class CreateCondition(Schema):

@@ -3,6 +3,7 @@ This module defines the :class:`.Repository` database class.
 """
 
 from ..base import Base
+from .Enums import ConditionMode
 
 
 class Repository(Base.Model):
@@ -13,7 +14,8 @@ class Repository(Base.Model):
     name = Base.Column(Base.String, nullable=False)
     start = Base.Column(Base.DateTime, nullable=True)
     end = Base.Column(Base.DateTime, nullable=True)
-    isActive = Base.Column(Base.Boolean, nullable=False, default=False)
+    is_active = Base.Column(Base.Boolean, nullable=False, default=False)
+    evaluation_mode = Base.Column(Base.Enum(ConditionMode), default=ConditionMode.all_or.value)
 
     # Foreign Keys
     owner_id = Base.Column(Base.String, Base.ForeignKey("user.email", ondelete="CASCADE"), nullable=False)
@@ -30,7 +32,9 @@ class Repository(Base.Model):
             "id": self.id,
             "name": self.name,
             "start": self.start.isoformat() if self.start else None,
-            "isActive": self.isActive,
+            "is_active": self.is_active,
             "end": self.end.isoformat() if self.end else None,
-            "owner": self.owner.to_json()
+            "owner": self.owner.to_json(),
+            "evaluation_mode": self.evaluation_mode,
+            "conditions": [c.to_json() for c in self.conditions]
         }

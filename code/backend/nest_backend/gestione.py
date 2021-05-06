@@ -107,3 +107,9 @@ def error_handler(e):
     except Exception:
         print(e)
         return json_error(f"{e.__repr__()}"), 500
+
+
+def json_request_authorizer(json, serializable):
+    json_keys = json.keys()
+    serializable_keys = serializable.to_json().keys()
+    return all(key in json_keys for key in serializable_keys)

@@ -28,7 +28,6 @@ spec.components.schema("IntegerParameter", schema=IntegerParameterSchema)
 spec.components.schema("RepositoryUpdate", schema=RepositoryUpdate)
 spec.components.schema("CreateRepository", schema=CreateRepository)
 spec.components.schema("CreateCondition", schema=CreateCondition)
-spec.components.schema("Condition", schema=ConditionSchema)
 spec.components.schema("ConditionParameter", schema=ConditionParameterSchema)
 spec.components.security_scheme("jwt", {"type": "http", "scheme": "bearer", "bearerFormat": "JWT"})
 

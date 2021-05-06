@@ -23,3 +23,8 @@ class OperationType(enum.Enum):
     _or = 1
     _not = 2
     assign = 3
+
+
+class ConditionMode(enum.Enum):
+    all_or = 0
+    all_and = 1
