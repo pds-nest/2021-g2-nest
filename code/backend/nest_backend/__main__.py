@@ -42,7 +42,7 @@ with app.test_request_context():
         spec.path(view=view_fn)
 
 
-@app.route("/api/v1/swagger.json")
+@app.route("/docs/swagger.json")
 def create_swagger_doc():
     return jsonify(spec.to_dict())
 
