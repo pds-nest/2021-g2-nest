@@ -11,7 +11,7 @@ from flask_cors import CORS
 from flask_jwt_extended import *
 from .app import app
 from .api_spec import spec
-from swagger import swagger_ui_blueprint, SWAGGER_URL
+from .swagger import swagger_ui_blueprint, SWAGGER_URL
 
 Base.init_app(app=app)
 jwt = JWTManager(app)
