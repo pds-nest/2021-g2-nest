@@ -25,7 +25,7 @@ spec.components.schema("CreateUser", schema=CreateUser)
 spec.components.schema("Repository", schema=RepositorySchema)
 spec.components.schema("IntegerParameter", schema=IntegerParameterSchema)
 spec.components.schema("RepositoryUpdate", schema=RepositoryUpdate)
-spec.components.security_scheme("jwt", {"type":"http", "scheme":"bearer", "bearerFormat":"JWT"})
+spec.components.security_scheme("jwt", {"type": "http", "scheme": "bearer", "bearerFormat": "JWT"})
 
 # add swagger tags that are used for endpoint annotation
 tags = [
