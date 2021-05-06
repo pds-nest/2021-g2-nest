@@ -11,7 +11,7 @@ def page_login():
     """
     ---
     post:
-      description: Attempt login.
+      summary: Attempt login.
       requestBody:
         required: true
         content:

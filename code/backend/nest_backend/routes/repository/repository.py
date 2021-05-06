@@ -13,7 +13,7 @@ def page_repository(rid):
     """
     ---
     get:
-        description: Get details about a repository.
+        summary: Get details about a repository.
         parameters:
         - in: path
           schema: IntegerParameterSchema
@@ -42,7 +42,7 @@ def page_repository(rid):
         tags:
             - repository-related
     delete:
-        description: Deletes a repository.
+        summary: Deletes a repository.
         parameters:
         - in: path
           schema: IntegerParameterSchema
@@ -72,7 +72,7 @@ def page_repository(rid):
         tags:
             - repository-related
     patch:
-        description: Updates a repository.
+        summary: Updates a repository.
         requestBody:
             required: true
             content:

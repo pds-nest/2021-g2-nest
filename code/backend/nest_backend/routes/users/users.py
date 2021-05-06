@@ -11,7 +11,7 @@ def page_users():
     """
     ---
     get:
-        description: Get a list of users.
+        summary: Get a list of users.
         responses:
             '200':
                 description: A list of User schemas, incapsulated in Success.
@@ -29,7 +29,7 @@ def page_users():
             - user-related
             - admin-only
     post:
-        description: Creates a user.
+        summary: Creates a user.
         requestBody:
             required: true
             content:

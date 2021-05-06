@@ -11,7 +11,7 @@ def page_user(email):
     """
     ---
     get:
-        description: Get details about a user.
+        summary: Get details about a user.
         parameters:
         - in: path
           schema: EmailParameterSchema
@@ -40,7 +40,7 @@ def page_user(email):
         tags:
             - user-related
     delete:
-        description: Deletes a user.
+        summary: Deletes a user.
         parameters:
         - in: path
           schema: EmailParameterSchema
@@ -77,7 +77,7 @@ def page_user(email):
             - user-related
             - admin-only
     patch:
-        description: Updates a user.
+        summary: Updates a user.
         parameters:
         - in: path
           schema: EmailParameterSchema
