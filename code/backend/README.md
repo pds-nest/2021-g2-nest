@@ -64,6 +64,9 @@ In seguito, è possibile avviare il backend con:
 python -m nest_backend
 ```
 
+> Nota: eseguire questo programma in modalità ottimizzata (`python -OO -m nest_backend`) 
+> disattiverà completamente le funzionalità di documentazione automatica, pertanto è **fortemente sconsigliato**.
+
 ## Sviluppo
 
 Le pagine web del server sono disponibili a http://127.0.0.1:5000 .
@@ -71,7 +74,14 @@ Le pagine web del server sono disponibili a http://127.0.0.1:5000 .
 Mentre il development server è avviato, _buona parte_ delle modifiche saranno rilevate e applicate automaticamente
 senza dover riavviare il server. Per testare la connettività, visitare http://127.0.0.1:5000/doa.
 
+## Documentazione
+
+Mentre il server è avviato, la documentazione sarà disponibile a http://127.0.0.1:5000/docs/ .
+
 ## Deployment
 
 Per effettuare il deployment in production, 
 seguire [la guida ufficiale di Flask](https://flask.palletsprojects.com/en/1.1.x/deploying/).
+
+> Nota: un bug attualmente impedisce a questo programma di essere installato su percorsi diversi da `/`.
+> Usare sottodomini e virtualhosts se è necessario avere più servizi web in esecuzione sullo stesso server!
