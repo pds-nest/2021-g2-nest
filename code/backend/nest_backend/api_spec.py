@@ -5,11 +5,12 @@ from apispec import APISpec
 from apispec.ext.marshmallow import MarshmallowPlugin
 from apispec_webframeworks.flask import FlaskPlugin
 from api_schemas import *
+import pkg_resources
 
 # Create an APISpec
 spec = APISpec(
     title="N.E.S.T.",
-    version="S2-1",
+    version=pkg_resources.get_distribution("nest_backend").version,
     openapi_version="3.0.2",
     plugins=[FlaskPlugin(), MarshmallowPlugin()],
 )
