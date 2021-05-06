@@ -76,7 +76,7 @@ def page_repository_conditions(rid):
         return json_error("You are not authorized."), 403
 
     if request.method == "GET":
-        return json_success([u.condition.to_json() for u in repository.uses])
+        return json_success([u.condition.to_json() for u in repository.conditions])
 
     if request.method == "POST":
         if (type_ := request.json.get("type")) is None:
@@ -90,12 +90,8 @@ def page_repository_conditions(rid):
         if not (content := request.json.get("content")):
             return json_error("Missing `content` parameter."), 400
 
-        condition = Condition(content=content, type=type_)
+        condition = Condition(content=content, type=type_, repository_id=rid)
         Base.session.add(condition)
-        Base.session.commit()
-
-        use = Uses(cid=condition.id, rid=repository.id)
-        Base.session.merge(use)
         Base.session.commit()
 
         return json_success(condition.to_json()), 200

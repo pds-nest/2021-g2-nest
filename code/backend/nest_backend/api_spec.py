@@ -29,6 +29,7 @@ spec.components.schema("RepositoryUpdate", schema=RepositoryUpdate)
 spec.components.schema("CreateRepository", schema=CreateRepository)
 spec.components.schema("CreateCondition", schema=CreateCondition)
 spec.components.schema("Condition", schema=ConditionSchema)
+spec.components.schema("ConditionParameter", schema=ConditionParameterSchema)
 spec.components.security_scheme("jwt", {"type": "http", "scheme": "bearer", "bearerFormat": "JWT"})
 
 # add swagger tags that are used for endpoint annotation
@@ -38,6 +39,9 @@ tags = [
      },
     {'name': 'repository-related',
      'description': 'Repository related calls of the API.'
+     },
+    {'name': 'condition-related',
+     'description': 'Condition related calls of the API.'
      },
     {'name': 'admin-only',
      'description': 'Admin only calls of the API.'

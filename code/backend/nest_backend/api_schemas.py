@@ -70,3 +70,7 @@ class ConditionSchema(Schema):
 class CreateCondition(Schema):
     type = fields.Integer(description="The condition type.")
     content = fields.String(description="The condition content. Meaning may change according to type.")
+
+
+class ConditionParameterSchema(Schema):
+    cid = fields.Integer(description="The condition id.")

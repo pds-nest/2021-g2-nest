@@ -14,17 +14,17 @@ class MyTestCase(unittest.TestCase):
         auth_code = j['data']['access_token']
 
         # ritorno le info sulla repository speficicata
-        r = requests.get(f'http://localhost:5000/api/v1/repositories/17', headers={'authorization': "Bearer " + auth_code})
+        r = requests.get(f'http://localhost:5000/api/v1/repositories/1', headers={'authorization': "Bearer " + auth_code})
         j = json.loads(r.text)
         assert j['result'] == "success"
 
         # cancello la repository specificata
-        r = requests.delete(f'http://localhost:5000/api/v1/repositories/17', headers={'authorization': "Bearer " + auth_code})
+        r = requests.delete(f'http://localhost:5000/api/v1/repositories/1', headers={'authorization': "Bearer " + auth_code})
         j = json.loads(r.text)
         assert j['result'] == "success"
 
         # modifico il nome e lo stato della repository specificata 
-        r = requests.patch(f'http://localhost:5000/api/v1/repositories/16', headers={'authorization': "Bearer " + auth_code},
+        r = requests.patch(f'http://localhost:5000/api/v1/repositories/1', headers={'authorization': "Bearer " + auth_code},
                            json={'name': 'newname', 'open': True})
         j = json.loads(r.text)
         assert j['result'] == "success"

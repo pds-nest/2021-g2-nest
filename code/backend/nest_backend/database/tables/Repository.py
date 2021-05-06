@@ -16,14 +16,14 @@ class Repository(Base.Model):
     isActive = Base.Column(Base.Boolean, nullable=False, default=False)
 
     # Foreign Keys
-    owner_id = Base.Column(Base.String, Base.ForeignKey("user.email"), nullable=False)
+    owner_id = Base.Column(Base.String, Base.ForeignKey("user.email", ondelete="CASCADE"), nullable=False)
 
     # Relationships
     owner = Base.relationship("User", back_populates="owner_of")
     authorizations = Base.relationship("Authorization", back_populates="repository", cascade="all, delete")
     tweets = Base.relationship("Composed", back_populates="repository", cascade="all, delete")
     alerts = Base.relationship("Alert", back_populates="repository", cascade="all, delete")
-    uses = Base.relationship("Uses", back_populates="repository", cascade="all, delete")
+    conditions = Base.relationship("Condition", back_populates="repository")
 
     def to_json(self):
         return {

@@ -11,8 +11,10 @@ class Condition(Base.Model):
     id = Base.Column(Base.Integer, primary_key=True)
     type = Base.Column(Base.Enum(ConditionType), nullable=False)
     content = Base.Column(Base.String, nullable=False)
+    # FK
+    repository_id = Base.Column(Base.Integer, Base.ForeignKey("repository.id", ondelete="CASCADE"))
     # Relationships
-    used = Base.relationship("Uses", back_populates="condition", cascade="all, delete")
+    repository = Base.relationship("Repository", back_populates="conditions", cascade="all, delete")
     tweets = Base.relationship("Contains", back_populates="condition")
     operations = Base.relationship("BoolOperation", back_populates="condition")
 

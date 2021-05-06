@@ -25,7 +25,7 @@ class MyTestCase(unittest.TestCase):
 
     # User autenticato come non-Admin: fallisce
     auth_code = ""
-    r = requests.post('http://localhost:5000/api/v1/login', json={'email': 'utente20@nest.com', 'password': 'password'})
+    r = requests.post('http://localhost:5000/api/v1/login', json={'email': 'utente_test@nest.com', 'password': 'password'})
     j = json.loads(r.text)
     assert j['result'] == "success"
     auth_code = j['data']['access_token']

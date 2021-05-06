@@ -29,17 +29,20 @@ app.add_url_rule("/api/v1/repositories/", view_func=page_repositories, methods=[
 app.add_url_rule("/api/v1/repositories/<int:rid>", view_func=page_repository, methods=["GET", "PATCH", "DELETE"])
 app.add_url_rule("/api/v1/repositories/<int:rid>/conditions", view_func=page_repository_conditions,
                  methods=["GET", "POST"])
+app.add_url_rule("/api/v1/conditions/<int:cid>", view_func=page_condition, methods=["GET", "PATCH", "DELETE"])
 
 app.register_error_handler(Exception, error_handler)
 app.register_blueprint(swagger_ui_blueprint, url_prefix=SWAGGER_URL)
 
 
 with app.test_request_context():
+    print(" * Getting docs ready...")
     for fn_name in app.view_functions:
         if fn_name == 'static':
             continue
         view_fn = app.view_functions[fn_name]
         spec.path(view=view_fn)
+    print(" * Docs have been compiled on http://127.0.0.1:5000/docs")
 
 
 @app.route("/docs/swagger.json")
