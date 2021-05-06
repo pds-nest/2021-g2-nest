@@ -4,7 +4,7 @@
 from apispec import APISpec
 from apispec.ext.marshmallow import MarshmallowPlugin
 from apispec_webframeworks.flask import FlaskPlugin
-from api_schemas import *
+from .api_schemas import *
 import pkg_resources
 
 # Create an APISpec
