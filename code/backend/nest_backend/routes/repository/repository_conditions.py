@@ -10,9 +10,61 @@ from flask_cors import cross_origin
 @repository_auth
 def page_repository_conditions(rid):
     """
-    Repository/Condition:
-        + GET: Returns the conditions of the specified repo.
-        + POST: type, content -> Adds a condition and returns it.
+    ---
+    get:
+        summary: Get a list of a repository conditions.
+        parameters:
+        - in: path
+          schema: IntegerParameterSchema
+        security:
+        - jwt: []
+        responses:
+            '200':
+                description: List of Condition schemas, incapsulated in Success.
+            '401':
+                description: The user is not logged in.
+                content:
+                    application/json:
+                        schema: Error
+            '403':
+                description: The user is not authorized.
+                content:
+                    application/json:
+                        schema: Error
+            '404':
+                description: The repository could not be found.
+                content:
+                    application/json:
+                        schema: Error
+        tags:
+            - repository-related
+    post:
+        summary: Creates a condition and attaches it to the repository.
+        security:
+        - jwt: []
+        requestBody:
+            required: true
+            content:
+                application/json:
+                    schema: CreateCondition
+        responses:
+            '200':
+                description: The user has been created successfully.
+                content:
+                    application/json:
+                        schema: Condition
+            '403':
+                description: The user is not authorized.
+                content:
+                    application/json:
+                        schema: Error
+            '401':
+                description: The user is not logged in.
+                content:
+                    application/json:
+                        schema: Error
+        tags:
+            - repository-related
     """
 
     repository = Repository.query.filter_by(id=rid).first()

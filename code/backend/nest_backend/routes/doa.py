@@ -7,13 +7,6 @@ from nest_backend.database import *
 
 
 def page_doa():
-    """
-    ---
-    get:
-        description: Test endpoint. If this page works, the server is fine.
-        tags:
-            - debug
-    """
     if request.method == "GET":
         return "If you see this, the server is fine."
     return "Hello there."

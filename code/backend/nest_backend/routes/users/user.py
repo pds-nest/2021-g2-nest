@@ -15,7 +15,8 @@ def page_user(email):
         parameters:
         - in: path
           schema: EmailParameterSchema
-
+        security:
+        - jwt: []
         responses:
             '200':
                 description: The details about the requested user. The schema is incapsulated in Success.
@@ -44,7 +45,8 @@ def page_user(email):
         parameters:
         - in: path
           schema: EmailParameterSchema
-
+        security:
+        - jwt: []
         responses:
             '200':
                 description: The user has been deleted successfully.
@@ -81,7 +83,8 @@ def page_user(email):
         parameters:
         - in: path
           schema: EmailParameterSchema
-
+        security:
+        - jwt: []
         responses:
             '200':
                 description: The user has been updated successfully.

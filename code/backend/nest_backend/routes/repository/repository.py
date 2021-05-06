@@ -17,7 +17,8 @@ def page_repository(rid):
         parameters:
         - in: path
           schema: IntegerParameterSchema
-
+        security:
+        - jwt: []
         responses:
             '200':
                 description: The details about the requested schema. The schema is incapsulated in Success.
@@ -46,6 +47,8 @@ def page_repository(rid):
         parameters:
         - in: path
           schema: IntegerParameterSchema
+        security:
+        - jwt: []
         responses:
             '200':
                 description: The repository has been deleted successfully.
@@ -73,6 +76,8 @@ def page_repository(rid):
             - repository-related
     patch:
         summary: Updates a repository.
+        security:
+        - jwt: []
         requestBody:
             required: true
             content:

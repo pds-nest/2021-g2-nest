@@ -33,7 +33,7 @@ class EmailParameterSchema(Schema):
 
 
 class IntegerParameterSchema(Schema):
-    id = fields.Integer(description="The target numeric id.")
+    rid = fields.Integer(description="The target numeric id.")
 
 
 class CreateUser(Schema):
@@ -51,7 +51,22 @@ class RepositorySchema(Schema):
     owner = fields.Nested(UserSchema)
 
 
+class CreateRepository(Schema):
+    name = fields.String(description="The repository name.")
+
+
 class RepositoryUpdate(Schema):
     name = fields.String(description="If present, it changes the name of the repository.")
     close = fields.String(description="If present, it closes the repository.")
     open = fields.String(description="If present, it opens the repository.")
+
+
+class ConditionSchema(Schema):
+    id = fields.Integer(description="The condition id.")
+    type = fields.Integer(description="The condition type.")
+    content = fields.String(description="The condition content. Meaning may change according to type.")
+
+
+class CreateCondition(Schema):
+    type = fields.Integer(description="The condition type.")
+    content = fields.String(description="The condition content. Meaning may change according to type.")

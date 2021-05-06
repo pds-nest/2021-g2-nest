@@ -12,6 +12,8 @@ def page_users():
     ---
     get:
         summary: Get a list of users.
+        security:
+        - jwt: []
         responses:
             '200':
                 description: A list of User schemas, incapsulated in Success.
@@ -26,10 +28,11 @@ def page_users():
                     application/json:
                         schema: Error
         tags:
-            - user-related
             - admin-only
     post:
         summary: Creates a user.
+        security:
+        - jwt: []
         requestBody:
             required: true
             content:
@@ -53,7 +56,6 @@ def page_users():
                         schema: Error
         tags:
             - user-related
-            - admin-only
     """
     user = find_user(get_jwt_identity())
     if request.method == "GET":

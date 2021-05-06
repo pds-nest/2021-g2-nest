@@ -10,9 +10,53 @@ from flask_cors import cross_origin
 @jwt_required()
 def page_repositories():
     """
-    Repositories:
-        + GET: [onlyActive], [onlyDead] -> Gets the list of all the user-related repos.
-        + POST: name -> Creates a new repository and returns it
+    ---
+    get:
+        summary: Get a list of repositories.
+        security:
+        - jwt: []
+        responses:
+            '200':
+                description: The list of the repositories related to the user (divided in "owner" and "spectator" dict keys), incapsulated in Success.
+            '403':
+                description: The user is not authorized.
+                content:
+                    application/json:
+                        schema: Error
+            '401':
+                description: The user is not logged in.
+                content:
+                    application/json:
+                        schema: Error
+        tags:
+            - repository-related
+    post:
+        summary: Creates a repository.
+        security:
+        - jwt: []
+        requestBody:
+            required: true
+            content:
+                application/json:
+                    schema: CreateRepository
+        responses:
+            '200':
+                description: The user has been created successfully.
+                content:
+                    application/json:
+                        schema: Repository
+            '403':
+                description: The user is not authorized.
+                content:
+                    application/json:
+                        schema: Error
+            '401':
+                description: The user is not logged in.
+                content:
+                    application/json:
+                        schema: Error
+        tags:
+            - repository-related
     """
     user = find_user(get_jwt_identity())
     if request.method == "GET":
@@ -27,7 +71,7 @@ def page_repositories():
         owner = owner.all()
         spectator = spectator.all()
         return json_success({"owner": [r.to_json() for r in owner],
-                            "spectator": [r.repository.to_json() for r in spectator]})
+                             "spectator": [r.repository.to_json() for r in spectator]})
     elif request.method == "POST":
         name = request.json.get("name")
         if not name:
