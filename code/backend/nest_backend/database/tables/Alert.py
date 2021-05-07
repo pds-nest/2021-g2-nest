@@ -17,3 +17,16 @@ class Alert(ext.Model):
     repository = ext.relationship("Repository", back_populates="alerts")
     notifications = ext.relationship("Notification", back_populates="alert", cascade="all, delete")
     operations = ext.relationship("BoolOperation", back_populates="alert", cascade="all, delete")
+
+    def to_json(self):
+        return {
+            'id': self.id,
+            'name': self.name,
+            'window_size': self.window_size,
+            'limit': self.limit,
+            'repository_id': self.repository_id,
+            'notifications': [notification.to_json() for notification in self.notifications],
+            'operations': [operation.to_json() for operation in self.operations],
+            'root_operation': [operation.to_json() for operation in self.operations if operation.is_root == True][
+                0] if self.operations else None
+        }

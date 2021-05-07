@@ -63,6 +63,11 @@ app.add_url_rule(
     methods=["GET", "POST"],
 )
 app.add_url_rule(
+    "/api/v1/repositories/<int:rid>/alerts",
+    view_func=routes.page_repository_alerts,
+    methods=["GET", "POST"]
+)
+app.add_url_rule(
     "/api/v1/conditions/<int:cid>",
     view_func=routes.page_condition,
     methods=["GET", "PATCH", "DELETE"],
