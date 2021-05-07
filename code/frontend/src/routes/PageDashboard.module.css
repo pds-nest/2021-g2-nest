@@ -8,6 +8,7 @@
         "b e"
         "b f"
     ;
+    grid-template-columns: 400px 1fr;
     grid-template-rows: auto auto auto 1fr auto;
 
     grid-gap: 10px;
