@@ -32,14 +32,17 @@ export default function BoxConditionHashtag({ ...props }) {
         return setHashtag(text)
     }
 
-    const onButtonClick = () => {
+    const onButtonClick = e => {
         addCondition(new Condition("HASHTAG", hashtag))
         setHashtag("")
+
+        // Prevent reloading the page!
+        e.preventDefault()
     }
 
     return (
         <BoxFull header={<span>Search by <FontAwesomeIcon icon={faHashtag}/> hashtag</span>} {...props}>
-            <FormInline>
+            <FormInline onSubmit={onButtonClick}>
                 <InputWithIcon
                     className={Style.Input}
                     id={"condition-hashtag"}

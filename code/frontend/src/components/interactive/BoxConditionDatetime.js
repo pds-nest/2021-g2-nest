@@ -35,7 +35,7 @@ export default function BoxConditionDatetime({ ...props }) {
         return setDatetime(text)
     }
 
-    const onButtonClick = () => {
+    const onButtonClick = e => {
         const naive = new Date(datetime)
         if(naive.toString() === "Invalid Date") {
             console.debug("Refusing to add condition: ", naive , " is an Invalid Date.")
@@ -44,11 +44,14 @@ export default function BoxConditionDatetime({ ...props }) {
         const aware = convertToLocalISODate(naive)
         addCondition(new Condition("TIME", `${ba ? ">" : "<"} ${aware}`))
         setDatetime("")
+
+        // Prevent reloading the page!
+        e.preventDefault()
     }
 
     return (
         <BoxFull header={<span>Search by <FontAwesomeIcon icon={faClock}/> time period</span>} {...props}>
-            <FormInline>
+            <FormInline onSubmit={onButtonClick}>
                 <ButtonToggleBeforeAfter onUpdate={setBa}/>
                 <InputWithIcon
                     className={Style.Input}

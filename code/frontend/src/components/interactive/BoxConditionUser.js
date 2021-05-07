@@ -31,14 +31,17 @@ export default function BoxConditionUser({ ...props }) {
         return setUser(text)
     }
 
-    const onButtonClick = () => {
+    const onButtonClick = e => {
         addCondition(new Condition("USER", user))
         setUser("")
+
+        // Prevent reloading the page!
+        e.preventDefault()
     }
 
     return (
         <BoxFull header={<span>Search by <FontAwesomeIcon icon={faAt}/> user</span>} {...props}>
-            <FormInline>
+            <FormInline onSubmit={onButtonClick}>
                 <InputWithIcon
                     className={Style.Input}
                     id={"condition-hashtag"}
