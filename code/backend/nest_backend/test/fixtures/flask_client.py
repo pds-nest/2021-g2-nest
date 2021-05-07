@@ -40,7 +40,7 @@ def flask_client():
 @pytest.fixture()
 def access_token(flask_client):
     response = flask_client.post("/api/v1/login", json={
-        "username": "admin",
+        "email": "admin@admin.com",
         "password": "password"
     })
     assert response.json is not None
