@@ -1,16 +1,12 @@
 """
 This is the runner for the server.
 """
-import os
 import werkzeug.middleware.proxy_fix
 from .routes import *
-from .database import Base, tables
-import psycopg2
 from .gestione import *
 from flask_cors import CORS
 from flask_jwt_extended import *
 from .app import app
-from .tweet_explorer.__main__ import search_repo_conditions, start_exploring
 from .api_spec import spec
 from .swagger import swagger_ui_blueprint, SWAGGER_URL
 
@@ -58,35 +54,4 @@ if __name__ == "__main__":
             Base.session.add(
                 User(email="admin@admin.com", password=gen_password("password"), username="admin", isAdmin=True))
             Base.session.commit()
-        if not Repository.query.filter_by(id=1).first():
-            Base.session.add(Repository(id=1, name="Draghi", owner_id="admin@admin.com"))
-            Base.session.commit()
-        if not Condition.query.filter_by(id=1).first():
-            Base.session.add(Condition(id=1, type=Enums.ConditionType.hashtag, content="draghi"))
-            Base.session.commit()
-        if not Condition.query.filter_by(id=2).first():
-            Base.session.add(Condition(id=2, type=Enums.ConditionType.location, content="Modena"))
-            Base.session.commit()
-        if not Condition.query.filter_by(id=3).first():
-            Base.session.add(Condition(id=3, type=Enums.ConditionType.time, content="2021-04-27"))
-            Base.session.commit()
-        if not Uses.query.filter_by(rid=1, cid=1).first():
-            Base.session.add(Uses(rid=1, cid=1))
-            Base.session.commit()
-        if not Uses.query.filter_by(rid=1, cid=2).first():
-            Base.session.add(Uses(rid=1, cid=2))
-            Base.session.commit()
-        if not Uses.query.filter_by(rid=1, cid=3).first():
-            Base.session.add(Uses(rid=1, cid=3))
-            Base.session.commit()
-        debug = True
-        if os.getenv("DISABLE_DEBUG"):
-            debug = False
-
-        #print(Repository.query.all()[0].to_json())
-        #print(Condition.query.all()[0].content)
-        #print(Uses.query.all()[0].cid, Uses.query.all()[0].rid)
-        search_repo_conditions(1)
-        #start_exploring()
-    app.run(debug=debug)
-
+    app.run(debug=__debug__)
