@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useRef, useMemo } from "react"
+import React, { useCallback, useState, useRef, useMemo, useEffect } from "react"
 import BoxFull from "../base/BoxFull"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import { faMapPin, faPlus } from "@fortawesome/free-solid-svg-icons"
@@ -10,8 +10,36 @@ import useRepositoryEditor from "../../hooks/useRepositoryEditor"
 import Condition from "../../utils/Condition"
 
 
-const STARTING_POSITION = [41.89309, 12.48289]
+const STARTING_POSITION = {lat: 41.89309, lng: 12.48289}
 const STARTING_ZOOM = 3
+
+// FIXME: this only works correctly at the equator!
+/**
+ * https://wiki.openstreetmap.org/wiki/Zoom_levels
+  */
+const MPIXEL = [
+    156412,
+    78206,
+    39103,
+    19551,
+    9776,
+    4888,
+    2444,
+    1222,
+    610.984,
+    305.492,
+    152.746,
+    76.373,
+    38.187,
+    19.093,
+    9.547,
+    4.773,
+    2.387,
+    1.193,
+    0.596,
+    0.298,
+    0.149,
+]
 
 
 /**
@@ -22,35 +50,56 @@ const STARTING_ZOOM = 3
  * @constructor
  */
 export default function BoxConditionMap({ ...props }) {
-    const [position, setPosition] = useState({lat: STARTING_POSITION[0], lng: STARTING_POSITION[1]})
+    const [position, setPosition] = useState(STARTING_POSITION)
+    const [zoom, setZoom] = useState(STARTING_ZOOM)
+    const [map, setMap] = useState(null)
     const {addCondition} = useRepositoryEditor()
 
-    const markerRef = useRef(null)
-    const eventHandlers = useMemo(
-        () => ({
-            dragend() {
-                const marker = markerRef.current
-                if (marker != null) {
-                    const pos = marker.getLatLng()
-                    console.debug("Changing marker position to: ", pos)
-                    setPosition(pos)
-                }
-            },
-        }),
-        [],
+    const onMove = useCallback(
+        () => {
+            setPosition(map.getCenter())
+        },
+        [map]
+    )
+
+    const onZoom = useCallback(
+        () => {
+            setZoom(map.getZoom())
+        },
+        [map]
+    )
+
+    useEffect(
+        () => {
+            if(map === null) return
+
+            map.on("move", onMove)
+            map.on("zoom", onZoom)
+            return () => {
+                map.off("move", onMove)
+                map.off("zoom", onZoom)
+            }
+        },
+        [map]
     )
 
     const onButtonClick = () => {
+        const mapSize = map.getSize()
+        const minSize = Math.min(mapSize.x, mapSize.y)
+        const radius = minSize * MPIXEL[zoom]
+
         addCondition(new Condition(
             "COORDINATES",
-            `WIP WIP ${position.lat.toFixed(6)} ${position.lng.toFixed(6)}`
+            `< ${radius} ${position.lat} ${position.lng}`
         ))
-        setPosition({lat: STARTING_POSITION[0], lng: STARTING_POSITION[1]})
+        setPosition(STARTING_POSITION)
     }
 
     return (
         <BoxFull
-            header={<span>Search by <FontAwesomeIcon icon={faMapPin}/> zone</span>}
+            header={
+                <span>Search by <FontAwesomeIcon icon={faMapPin}/> zone</span>
+            }
             childrenClassName={Style.BoxConditionMapContents}
             {...props}
         >
@@ -58,19 +107,23 @@ export default function BoxConditionMap({ ...props }) {
                 center={STARTING_POSITION}
                 zoom={STARTING_ZOOM}
                 className={Style.MapContainer}
+                whenCreated={setMap}
             >
                 <TileLayer
                     attribution='(c) <a href="https://osm.org/copyright">OpenStreetMap</a> contributors'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
-                <Marker ref={markerRef} draggable={true} position={position} eventHandlers={eventHandlers}/>
+                <div className={"leaflet-top leaflet-right"}>
+                    <div className={"leaflet-control"}>
+                        <ButtonIconOnly
+                            className={Style.Button}
+                            icon={faPlus}
+                            color={"Green"}
+                            onClick={onButtonClick}
+                        />
+                    </div>
+                </div>
             </MapContainer>
-            <ButtonIconOnly
-                className={Style.Button}
-                icon={faPlus}
-                color={"Green"}
-                onClick={onButtonClick}
-            />
         </BoxFull>
     )
 }

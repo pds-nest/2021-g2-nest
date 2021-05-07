@@ -38,6 +38,21 @@ export default function ConditionBadge({ ...condition }) {
     const icon = CONDITION_ICONS[type]
     const {removeRawCondition} = useContext(ContextRepositoryEditor)
 
+    let displayedContent = content
+    if(type === 3) {
+        let split = displayedContent.split(" ")
+        let type = split[0]
+        let radius = Number.parseFloat(split[1]).toFixed(0)
+        let radiusType = "m"
+        if(radius >= 2000) {
+            radius = Math.round(radius / 1000)
+            radiusType = "km"
+        }
+        let lat = Number(split[2]).toFixed(3)
+        let lng = Number(split[3]).toFixed(3)
+        displayedContent = `${split[0]} ${radius}${radiusType} ${lat} ${lng}`
+    }
+
     return (
         <div
             title={id ? `💠 Condition ID: ${id}` : "✨ New Condition"}
@@ -47,7 +62,7 @@ export default function ConditionBadge({ ...condition }) {
                 <FontAwesomeIcon icon={icon}/>
             </div>
             <div className={Style.Text}>
-                {content}
+                {displayedContent}
             </div>
             <div>
                 <ButtonSmallX onClick={() => {
