@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react"
+import React, { useCallback, useContext, useState } from "react"
 import ContextRepositoryEditor from "../../contexts/ContextRepositoryEditor"
 import useArrayState from "../../hooks/useArrayState"
 import Style from "./RepositoryEditor.module.css"
@@ -9,10 +9,11 @@ import BoxConditionDatetime from "../interactive/BoxConditionDatetime"
 import BoxConditions from "../interactive/BoxConditions"
 import BoxRepositoryCreate from "../interactive/BoxRepositoryCreate"
 import classNames from "classnames"
+import ContextUser from "../../contexts/ContextUser"
+import useData from "../../hooks/useData"
 
 
 export default function RepositoryEditor({
-    refresh,
     id = null,
     name,
     is_active: isActive,
@@ -44,26 +45,37 @@ export default function RepositoryEditor({
     } = useArrayState(conditions)
 
     /** The operator the conditions should be evaluated with. */
-    const [_evaluationMode, setEvaluationMode] = useState(evaluationMode)
+    const [_evaluationMode, setEvaluationMode] = useState(evaluationMode ?? 0)
 
-    /**
-     * Invia al backend le modifiche effettuate.
-     */
+    const {user, fetchDataAuth} = useContext(ContextUser)
+
+    const method = id ? "PUT" : "POST"
+    const path = id ? `/api/v1/repositories/${id}` : `/api/v1/repositories/`
+    const body = {
+        "conditions": _conditions,
+        "end": _end,
+        "evaluation_mode": _evaluationMode,
+        "id": id,
+        "is_active": true,
+        "name": _name,
+        "owner": user,
+        "start": _start,
+    }
+    const {error, loading, fetchNow} = useData(fetchDataAuth, method, path, body)
+
     const save = useCallback(
         () => {
-            if(id === null) {
-                // POST
-                throw new Error("Not yet implemented")
+            if(id) {
+                console.info("Creating new repository with body: ", body)
             }
             else {
-                // PUT
-                throw new Error("Not yet implemented")
+                console.info("Editing repository ", id, " with body: ", body)
             }
-
-            refresh()
+            fetchNow()
         },
-        [id]
+        [id, body, fetchNow]
     )
+
 
     /**
      * Cancel the changes made so far to the repository.
@@ -119,6 +131,7 @@ export default function RepositoryEditor({
             end: _end, setEnd,
             conditions: _conditions, addCondition, appendRawCondition, removeRawCondition, spliceRawCondition,
             evaluationMode: _evaluationMode, setEvaluationMode,
+            error, loading,
             revert, save,
         }}>
             <div className={classNames(Style.RepositoryEditor, className)}>

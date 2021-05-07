@@ -6,6 +6,7 @@ import RepositorySummaryBase from "./RepositorySummaryBase"
 import Loading from "../base/Loading"
 import BoxAlert from "../base/BoxAlert"
 import { faSearch } from "@fortawesome/free-solid-svg-icons"
+import useDataImmediately from "../../hooks/useDataImmediately"
 
 
 /**
@@ -17,7 +18,7 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons"
  */
 export default function BoxRepositoriesActive({ ...props }) {
     const {user, fetchDataAuth} = useContext(ContextUser)
-    const {data, started, loading, error} = useData(fetchDataAuth, "GET", "/api/v1/repositories/", {
+    const {data, started, loading, error} = useDataImmediately(fetchDataAuth, "GET", "/api/v1/repositories/", {
         "onlyActive": true,
     })
 

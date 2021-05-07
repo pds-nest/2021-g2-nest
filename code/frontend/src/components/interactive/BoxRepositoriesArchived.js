@@ -1,11 +1,11 @@
 import React, { useContext } from "react"
 import BoxFull from "../base/BoxFull"
 import ContextUser from "../../contexts/ContextUser"
-import useData from "../../hooks/useData"
 import RepositorySummaryBase from "./RepositorySummaryBase"
 import Loading from "../base/Loading"
 import BoxAlert from "../base/BoxAlert"
 import { faSearch } from "@fortawesome/free-solid-svg-icons"
+import useDataImmediately from "../../hooks/useDataImmediately"
 
 
 /**
@@ -17,7 +17,7 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons"
  */
 export default function BoxRepositoriesArchived({ ...props }) {
     const {user, fetchDataAuth} = useContext(ContextUser)
-    const {data, started, loading, error} = useData(fetchDataAuth, "GET", "/api/v1/repositories/", {
+    const {data, started, loading, error} = useDataImmediately(fetchDataAuth, "GET", "/api/v1/repositories/", {
         "onlyDead": true,
     })
 

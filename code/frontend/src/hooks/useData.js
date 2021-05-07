@@ -9,13 +9,11 @@ import { useCallback, useEffect, useState } from "react"
  * @param path - The HTTP path to fetch the data at.
  * @param body - The body of the HTTP request (it will be JSONified before being sent).
  * @param init - Additional `init` parameters to pass to `fetch`.
- * @returns {{data: *, refresh: function, error: Error}}
  */
 export default function useData(fetchData, method, path, body, init) {
     const [error, setError] = useState(null)
     const [data, setData] = useState(null)
     const [loading, setLoading] = useState(false)
-    const started = (loading || data || error)
 
     /**
      * Load data from the API.
@@ -41,7 +39,7 @@ export default function useData(fetchData, method, path, body, init) {
     /**
      * Invalidate the data loaded from the API and try to load it again.
      */
-    const refresh = useCallback(
+    const fetchNow = useCallback(
         async () => {
             console.debug("Clearing data...")
             setData(null)
@@ -54,15 +52,5 @@ export default function useData(fetchData, method, path, body, init) {
         [load]
     )
 
-    useEffect(
-        () => {
-            if(!started) {
-                // noinspection JSIgnoredPromiseFromCall
-                load()
-            }
-        },
-        [load, started]
-    )
-
-    return {data, error, loading, started, refresh}
+    return {data, error, loading, fetchNow}
 }

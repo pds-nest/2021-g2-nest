@@ -7,6 +7,7 @@ import { faFolder, faPlus } from "@fortawesome/free-solid-svg-icons"
 import Radio from "../base/Radio"
 import Button from "../base/Button"
 import useRepositoryEditor from "../../hooks/useRepositoryEditor"
+import FormAlert from "../base/formparts/FormAlert"
 
 
 export default function BoxRepositoryCreate({ ...props }) {
@@ -16,11 +17,12 @@ export default function BoxRepositoryCreate({ ...props }) {
         name,
         setName,
         save,
+        error,
     } = useRepositoryEditor()
 
     return (
         <BoxFull header={"Create repository"} {...props}>
-            <FormLabelled>
+            <FormLabelled onSubmit={e => {e.preventDefault(); save()}}>
                 <FormLabel htmlFor={"repo-name"} text={"Repository name"}>
                     <InputWithIcon
                         id={"repo-name"}
@@ -48,6 +50,11 @@ export default function BoxRepositoryCreate({ ...props }) {
                         Every filter
                     </label>
                 </FormLabel>
+                {error ?
+                    <FormAlert color={"Red"}>
+                        {error.toString()}
+                    </FormAlert>
+                 : null}
                 <Button style={{"gridColumn": "1 / 3"}} icon={faPlus} color={"Green"} onClick={e => save()}>
                     Create repository
                 </Button>
