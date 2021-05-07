@@ -35,3 +35,18 @@ def flask_client():
     # Teardown schema
     with app.app_context():
         ext.engine.execute(f"""DROP SCHEMA "{uniq_schema}" CASCADE;""")
+
+
+@pytest.fixture()
+def access_token(flask_client):
+    response = flask_client.post("/api/v1/login", json={
+        "username": "admin",
+        "password": "password"
+    })
+    assert response.json is not None
+    assert "result" in response.json
+    assert response.json["result"] == "success"
+    assert "data" in response.json
+    data = response.json["data"]
+    assert "access_token" in data
+    return data["access_token"]
