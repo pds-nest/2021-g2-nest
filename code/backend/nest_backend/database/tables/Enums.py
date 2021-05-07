@@ -12,10 +12,11 @@ class ConditionType(enum.Enum):
     """
 
     hashtag = 0
-    location = 1
+    location = 1  # DEPRECATED, do not use
     time = 2
     coordinates = 3
     place = 4
+    user = 5
 
 
 class OperationType(enum.Enum):
