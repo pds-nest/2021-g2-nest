@@ -2,13 +2,13 @@
     display: grid;
 
     grid-template-areas:
-        "a a"
-        "b c"
-        "b d"
-        "b e"
-        "b f"
+        "a a a"
+        "b c d"
+        "b e e"
+        "b f f"
+        "b g g"
     ;
-    grid-template-columns: 400px 1fr;
+    grid-template-columns: 400px 1fr 1fr;
     grid-template-rows: auto auto auto 1fr auto;
 
     grid-gap: 10px;
@@ -29,14 +29,18 @@
     grid-area: c;
 }
 
-.SearchByTimePeriod {
+.SearchByUser {
     grid-area: d;
 }
 
-.Conditions {
+.SearchByTimePeriod {
     grid-area: e;
 }
 
-.CreateDialog {
+.Conditions {
     grid-area: f;
+}
+
+.CreateDialog {
+    grid-area: g;
 }

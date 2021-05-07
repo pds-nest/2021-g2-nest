@@ -14,6 +14,7 @@ import BoxConditionHashtag from "../components/interactive/BoxConditionHashtag"
 import BoxConditions from "../components/interactive/BoxConditions"
 import BoxConditionDatetime from "../components/interactive/BoxConditionDatetime"
 import BoxConditionMap from "../components/interactive/BoxConditionMap"
+import BoxConditionUser from "../components/interactive/BoxConditionUser"
 
 
 export default function PageDashboard({ children, className, ...props }) {
@@ -25,6 +26,7 @@ export default function PageDashboard({ children, className, ...props }) {
                 </BoxHeader>
                 <BoxConditionMap className={Style.SearchByZone}/>
                 <BoxConditionHashtag className={Style.SearchByHashtags}/>
+                <BoxConditionUser className={Style.SearchByUser}/>
                 <BoxConditionDatetime className={Style.SearchByTimePeriod}/>
                 <BoxConditions className={Style.Conditions}/>
                 <BoxFull className={Style.CreateDialog} header={"Create repository"}>
