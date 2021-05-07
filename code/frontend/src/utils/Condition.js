@@ -26,7 +26,7 @@ export default class Condition {
      * @param content - The content of the Condition.
      * @param id - The id of the Condition on the backend, or null if the Condition hasn't been committed yet.
      */
-    constructor({type, content, id = null}) {
+    constructor(type, content, id = null) {
         if(isString(type)) {
             this.type = typeEnums[type.toUpperCase()]
         }
