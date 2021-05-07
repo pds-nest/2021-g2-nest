@@ -3,13 +3,13 @@
 
     grid-template-areas:
         "a a a"
-        "b c d"
-        "b e e"
-        "b f f"
+        "b c f"
+        "b d f"
+        "b e f"
         "b g g"
     ;
     grid-template-columns: 400px 1fr 1fr;
-    grid-template-rows: auto auto auto 1fr auto;
+    grid-template-rows: auto 1fr 1fr 1fr auto;
 
     grid-gap: 10px;
 
