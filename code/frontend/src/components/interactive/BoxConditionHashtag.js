@@ -7,6 +7,7 @@ import FormInline from "../base/FormInline"
 import Style from "./BoxConditionHashtag.module.css"
 import ButtonIconOnly from "../base/ButtonIconOnly"
 import useRepositoryEditor from "../../hooks/useRepositoryEditor"
+import Condition from "../../utils/Condition"
 
 // Official hashtag regex from https://stackoverflow.com/a/22490853/4334568
 // noinspection RegExpAnonymousGroup,LongLine
@@ -23,7 +24,7 @@ const INVALID_HASHTAG_CHARACTERS = /([^a-z0-9_\u00c0-\u00d6\u00d8-\u00f6\u00f8-\
  */
 export default function BoxConditionHashtag({ ...props }) {
     const [hashtag, setHashtag] = useState("")
-    const {conditions, appendCondition} = useRepositoryEditor()
+    const {addCondition} = useRepositoryEditor()
 
     const onInputChange = event => {
         let text = event.target.value
@@ -32,33 +33,7 @@ export default function BoxConditionHashtag({ ...props }) {
     }
 
     const onButtonClick = () => {
-        const newCond = {
-            "id": null,
-            "type": 0,
-            "content": hashtag
-        }
-
-        if(hashtag === "") {
-            console.debug("Refusing to append ", newCond, " to the Conditions list, as it is empty.")
-            return
-        }
-
-        let duplicate = null;
-        for(const oldCond of conditions) {
-            if(newCond.type === oldCond.type && newCond.content === oldCond.content) {
-                duplicate = oldCond;
-                break;
-            }
-        }
-
-        if(duplicate) {
-            console.debug("Refusing to append ", newCond, " to the Conditions list, as ", duplicate, " already exists.")
-        }
-        else {
-            console.debug("Appending ", newCond, " to the Conditions list")
-            appendCondition(newCond)
-        }
-
+        addCondition(new Condition("HASHTAG", hashtag))
         setHashtag("")
     }
 

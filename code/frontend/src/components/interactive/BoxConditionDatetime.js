@@ -8,9 +8,11 @@ import Style from "./BoxConditionDatetime.module.css"
 import ButtonIconOnly from "../base/ButtonIconOnly"
 import useRepositoryEditor from "../../hooks/useRepositoryEditor"
 import ButtonToggleBeforeAfter from "./ButtonToggleBeforeAfter"
+import Condition from "../../utils/Condition"
+import convertToLocalISODate from "../../utils/convertToLocalISODate"
 
 
-const INVALID_USER_CHARACTERS = /[^0-9TZ:-]/g
+const INVALID_USER_CHARACTERS = /[^0-9TZ:+-]/g
 
 
 /**
@@ -24,7 +26,7 @@ const INVALID_USER_CHARACTERS = /[^0-9TZ:-]/g
 export default function BoxConditionDatetime({ ...props }) {
     const [datetime, setDatetime] = useState("")
     const [ba, setBa] = useState(false)
-    const {conditions, appendCondition} = useRepositoryEditor()
+    const {addCondition} = useRepositoryEditor()
 
     const onInputChange = event => {
         let text = event.target.value
@@ -34,39 +36,13 @@ export default function BoxConditionDatetime({ ...props }) {
     }
 
     const onButtonClick = () => {
-        const newCond = {
-            "id": null,
-            "type": 2,
-            "content": `${ba ? ">" : "<"} ${datetime}`
-        }
-
-        const date = new Date(datetime)
-        if(date.toString() === "Invalid Date") {
-            console.debug("Refusing to append ", newCond, " to the Conditions list, as it is invalid.")
+        const naive = new Date(datetime)
+        if(naive.toString() === "Invalid Date") {
+            console.debug("Refusing to add condition: ", naive , " is an Invalid Date.")
             return
         }
-
-        if(datetime === "") {
-            console.debug("Refusing to append ", newCond, " to the Conditions list, as it is empty.")
-            return
-        }
-
-        let duplicate = null;
-        for(const oldCond of conditions) {
-            if(newCond.type === oldCond.type && newCond.content === oldCond.content) {
-                duplicate = oldCond;
-                break;
-            }
-        }
-
-        if(duplicate) {
-            console.debug("Refusing to append ", newCond, " to the Conditions list, as ", duplicate, " already exists.")
-        }
-        else {
-            console.debug("Appending ", newCond, " to the Conditions list")
-            appendCondition(newCond)
-        }
-
+        const aware = convertToLocalISODate(naive)
+        addCondition(new Condition("TIME", `${ba ? ">" : "<"} ${aware}`))
         setDatetime("")
     }
 
@@ -81,7 +57,7 @@ export default function BoxConditionDatetime({ ...props }) {
                     icon={faClock}
                     value={datetime}
                     onChange={onInputChange}
-                    placeholder={"2021-12-31T23:59"}
+                    placeholder={"2021-12-31T23:59Z"}
                 />
                 <ButtonIconOnly
                     className={Style.Button}
