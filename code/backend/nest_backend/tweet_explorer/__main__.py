@@ -63,7 +63,6 @@ def search_repo_conditions(repository_id):
     for types in conditions_type.keys():
         print(types, ":", conditions_type[types])
 
-def search_condtions(conditions):
 
 
 
