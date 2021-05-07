@@ -1,6 +1,4 @@
-import React, { useState } from "react"
-import Style from "./BoxRepositoryCreate.module.css"
-import classNames from "classnames"
+import React from "react"
 import BoxFull from "../base/BoxFull"
 import FormLabelled from "../base/FormLabelled"
 import FormLabel from "../base/formparts/FormLabel"
@@ -19,7 +17,6 @@ export default function BoxRepositoryCreate({ ...props }) {
         setName,
         save,
     } = useRepositoryEditor()
-
 
     return (
         <BoxFull header={"Create repository"} {...props}>
