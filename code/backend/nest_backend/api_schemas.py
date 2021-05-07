@@ -75,5 +75,38 @@ class CreateCondition(Schema):
     content = fields.String(description="The condition content. Meaning may change according to type.")
 
 
+class CreateAlert(Schema):
+    name = fields.String(description="The name of the alert.")
+    limit = fields.Integer(description="The number of tweets in a time window.")
+    window_size = fields.Integer(description="The size of the time window.")
+
+
+class Operations(Schema):
+    id = fields.Integer(description="The operation id.")
+    operation = fields.Integer(description="The type of the operation.")
+    is_root = fields.Boolean(description="If true, the operation is the root of the operation tree.")
+    node_1 = fields.Nested('self')
+    node_2 = fields.Nested('self')
+    condition = fields.Nested(ConditionSchema)
+    alert_id = fields.Integer(description="The id of the related alert.")
+
+
+class Notification(Schema):
+    id = fields.Integer(description="The notification id.")
+    ora = fields.DateTime(description="Muda muda muda.")
+    repository_id = fields.Integer(description="The id of the related repository.")
+
+
+class Alert(Schema):
+    id = fields.Integer(description="The alert id.")
+    name = fields.String(description="The name of the alert.")
+    limit = fields.Integer(description="The number of tweets in a time window.")
+    window_size = fields.Integer(description="The size of the time window.")
+    repository_id = fields.Integer(description="The id of the related repository.")
+    operations = fields.Nested(Operations, many=True)
+    root_operation = fields.Nested(Operations, many=False)
+    notifications = fields.Nested(Notification, many=True)
+
+
 class ConditionParameterSchema(Schema):
     cid = fields.Integer(description="The condition id.")

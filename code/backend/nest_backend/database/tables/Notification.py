@@ -12,3 +12,10 @@ class Notification(Base.Model):
     alert_id = Base.Column(Base.Integer, Base.ForeignKey("alert.id"), nullable=False)
     # Relationships
     alert = Base.relationship("Alert", back_populates="notifications")
+
+    def to_json(self):
+        return {
+            "id": self.id,
+            "ora": self.ora.isoformat(),
+            "alert_id": self.alert_id
+        }

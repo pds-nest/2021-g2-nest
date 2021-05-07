@@ -10,7 +10,7 @@ class BoolOperation(Base.Model):
     __tablename__ = "bool_operation"
     id = Base.Column(Base.Integer, primary_key=True)
     operation = Base.Column(Base.Enum(OperationType), nullable=False)
-    isRoot = Base.Column(Base.Boolean, default=False, nullable=False)
+    is_root = Base.Column(Base.Boolean, default=False, nullable=False)
     # Foreign Keys
     condition_id = Base.Column(Base.Integer, Base.ForeignKey("condition.id"))
     node_1_id = Base.Column(Base.Integer, Base.ForeignKey("bool_operation.id"))
@@ -23,3 +23,13 @@ class BoolOperation(Base.Model):
     node_2 = Base.relationship("BoolOperation", primaryjoin=("bool_operation.c.node_2_id==bool_operation.c.id"),
                                remote_side="BoolOperation.id", backref=backref("father_2", uselist=False))
     alert = Base.relationship("Alert", back_populates="operations")
+
+    def to_json(self):
+        return {"id": self.id,
+                "operation": self.operation,
+                "is_root": self.is_root,
+                "alert_id": self.alert_id,
+                "condition": self.condition.to_json() if self.condition else None,
+                "node_1": self.node_1.to_json() if self.node_1 else None,
+                "node_2": self.node_2.to_json() if self.node_2 else None
+                }

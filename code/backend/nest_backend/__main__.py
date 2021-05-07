@@ -26,6 +26,8 @@ app.add_url_rule("/api/v1/repositories/", view_func=page_repositories, methods=[
 app.add_url_rule("/api/v1/repositories/<int:rid>", view_func=page_repository, methods=["GET", "PATCH", "DELETE", "PUT"])
 app.add_url_rule("/api/v1/repositories/<int:rid>/conditions", view_func=page_repository_conditions,
                  methods=["GET", "POST"])
+app.add_url_rule("/api/v1/repositories/<int:rid>/alerts", view_func=page_repository_alerts,
+                 methods=["GET", "POST"])
 app.add_url_rule("/api/v1/conditions/<int:cid>", view_func=page_condition, methods=["GET", "PATCH", "DELETE"])
 
 app.register_error_handler(Exception, error_handler)
