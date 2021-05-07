@@ -20,7 +20,7 @@ reverse_proxy_app = werkzeug.middleware.proxy_fix.ProxyFix(app=app, x_for=1, x_p
 
 app.add_url_rule("/doa", view_func=page_doa, methods=["GET", "POST"])
 app.add_url_rule("/api/v1/login", view_func=page_login, methods=["POST"])
-app.add_url_rule("/api/v1/users", view_func=page_users, methods=["GET", "POST"])
+app.add_url_rule("/api/v1/users/", view_func=page_users, methods=["GET", "POST"])
 app.add_url_rule("/api/v1/users/<string:email>", view_func=page_user, methods=["GET", "PATCH", "DELETE"])
 app.add_url_rule("/api/v1/repositories/", view_func=page_repositories, methods=["GET", "POST"])
 app.add_url_rule("/api/v1/repositories/<int:rid>", view_func=page_repository, methods=["GET", "PATCH", "DELETE", "PUT"])
