@@ -1,7 +1,8 @@
-from flask import render_template, abort, jsonify, request
-from nest_backend.database import *
+from flask import request
 from flask_jwt_extended import jwt_required
-from nest_backend.gestione import *
+from nest_backend.gestione import repository_auth, json_error, json_success, ConditionType, Condition, Repository, \
+                                  find_user, get_jwt_identity
+from nest_backend.database import ext as extension_sqlalchemy
 from flask_cors import cross_origin
 
 
@@ -91,7 +92,7 @@ def page_repository_conditions(rid):
             return json_error("Missing `content` parameter."), 400
 
         condition = Condition(content=content, type=type_, repository_id=rid)
-        Base.session.add(condition)
-        Base.session.commit()
+        extension_sqlalchemy.session.add(condition)
+        extension_sqlalchemy.session.commit()
 
         return json_success(condition.to_json()), 200

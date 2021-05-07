@@ -2,30 +2,30 @@
 This module defines the :class:`.Repository` database class.
 """
 
-from ..base import Base
+from ..base import ext
 from .Enums import ConditionMode
 
 
-class Repository(Base.Model):
+class Repository(ext.Model):
     __tablename__ = "repository"
 
     # Columns
-    id = Base.Column(Base.Integer, primary_key=True)
-    name = Base.Column(Base.String, nullable=False)
-    start = Base.Column(Base.DateTime, nullable=True)
-    end = Base.Column(Base.DateTime, nullable=True)
-    is_active = Base.Column(Base.Boolean, nullable=False, default=False)
-    evaluation_mode = Base.Column(Base.Enum(ConditionMode), default=ConditionMode.all_or.value)
+    id = ext.Column(ext.Integer, primary_key=True)
+    name = ext.Column(ext.String, nullable=False)
+    start = ext.Column(ext.DateTime, nullable=True)
+    end = ext.Column(ext.DateTime, nullable=True)
+    is_active = ext.Column(ext.Boolean, nullable=False, default=False)
+    evaluation_mode = ext.Column(ext.Enum(ConditionMode), default=ConditionMode.all_or.value)
 
     # Foreign Keys
-    owner_id = Base.Column(Base.String, Base.ForeignKey("user.email", ondelete="CASCADE"), nullable=False)
+    owner_id = ext.Column(ext.String, ext.ForeignKey("user.email", ondelete="CASCADE"), nullable=False)
 
     # Relationships
-    owner = Base.relationship("User", back_populates="owner_of")
-    authorizations = Base.relationship("Authorization", back_populates="repository", cascade="all, delete")
-    tweets = Base.relationship("Composed", back_populates="repository", cascade="all, delete")
-    alerts = Base.relationship("Alert", back_populates="repository", cascade="all, delete")
-    conditions = Base.relationship("Condition", back_populates="repository")
+    owner = ext.relationship("User", back_populates="owner_of")
+    authorizations = ext.relationship("Authorization", back_populates="repository", cascade="all, delete")
+    tweets = ext.relationship("Composed", back_populates="repository", cascade="all, delete")
+    alerts = ext.relationship("Alert", back_populates="repository", cascade="all, delete")
+    conditions = ext.relationship("Condition", back_populates="repository")
 
     def to_json(self):
         return {

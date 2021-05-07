@@ -127,11 +127,11 @@ def page_user(email):
             return json_error("User is not admin."), 403
         if user == target:
             return json_error("The user cant delete himself. Its a sin."), 406
-        Base.session.delete(target)
+        ext.session.delete(target)
         try:
-            Base.session.commit()
+            ext.session.commit()
         except Exception:
-            Base.session.rollback()
+            ext.session.rollback()
             return json_error("Could not delete the user."), 500
         return json_success("The user has been deleted.")
     elif request.method == "PATCH":
@@ -142,5 +142,5 @@ def page_user(email):
             target.username = request.json.get("username")
         if request.json.get("password"):
             target.password = gen_password(request.json.get("password"))
-        Base.session.commit()
+        ext.session.commit()
         return json_success(target.to_json())

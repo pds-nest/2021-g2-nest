@@ -9,7 +9,7 @@ from .database import *
 import bcrypt
 import functools
 from flask_jwt_extended import get_jwt_identity
-from flask import request, jsonify
+from flask import jsonify
 
 
 def authenticate(username, password):

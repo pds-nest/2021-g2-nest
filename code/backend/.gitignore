@@ -1,3 +1,8 @@
+# Flask config
+
+config.py
+configtest.py
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

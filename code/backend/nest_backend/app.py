@@ -1,16 +1,101 @@
 from flask import Flask
-import os
+from flask_cors import CORS as FlaskCORS
+from flask_jwt_extended import JWTManager as FlaskJWTManager
+from flask_sqlalchemy import SQLAlchemy as FlaskSQLAlchemy
+from werkzeug.middleware.proxy_fix import ProxyFix as MiddlewareProxyFix
+
+from . import database, routes, gestione, swagger
+from .api_spec import spec
+
+# --- MAIN APP ---
 
 app = Flask(__name__)
-if os.getenv('COOKIE_SECRET'):
-    app.secret_key = os.getenv('COOKIE_SECRET')
-else:
-    app.secret_key = "testing"
-if os.getenv("JWT_SECRET_KEY"):
-    app.config["JWT_SECRET_KEY"] = os.getenv("JWT_SECRET_KEY")
-else:
-    app.config["JWT_SECRET_KEY"] = "testing"
-if os.getenv("DATABASE_URI"):
-    app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URI')
-else:
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:password@localhost:5432/PdSDev'
+
+# --- APP CONFIG
+
+app.config.from_envvar("FLASK_CONFIG")
+
+# --- EXTENSIONS ---
+
+app.config['CORS_HEADERS'] = 'Content-Type'
+extension_cors = FlaskCORS(app=app)
+
+extension_jwt = FlaskJWTManager(app=app)
+
+extension_sqlalchemy = database.ext
+extension_sqlalchemy.init_app(app=app)
+
+# --- API ROUTES ---
+
+app.add_url_rule(
+    "/doa",
+    view_func=routes.page_doa,
+    methods=["GET", "POST"],
+)
+app.add_url_rule(
+    "/api/v1/login",
+    view_func=routes.page_login,
+    methods=["POST"],
+)
+app.add_url_rule(
+    "/api/v1/users/",
+    view_func=routes.page_users,
+    methods=["GET", "POST"],
+)
+app.add_url_rule(
+    "/api/v1/users/<string:email>",
+    view_func=routes.page_user,
+    methods=["GET", "PATCH", "DELETE"],
+)
+app.add_url_rule(
+    "/api/v1/repositories/",
+    view_func=routes.page_repositories,
+    methods=["GET", "POST"],
+)
+app.add_url_rule(
+    "/api/v1/repositories/<int:rid>",
+    view_func=routes.page_repository,
+    methods=["GET", "PATCH", "DELETE", "PUT"],
+)
+app.add_url_rule(
+    "/api/v1/repositories/<int:rid>/conditions",
+    view_func=routes.page_repository_conditions,
+    methods=["GET", "POST"],
+)
+app.add_url_rule(
+    "/api/v1/conditions/<int:cid>",
+    view_func=routes.page_condition,
+    methods=["GET", "PATCH", "DELETE"],
+)
+
+# --- SWAGGER DOCS ---
+
+app.register_blueprint(
+    swagger.swagger_ui_blueprint,
+    url_prefix=swagger.SWAGGER_URL
+)
+
+with app.test_request_context():
+    for fn_name in app.view_functions:
+        if fn_name == 'static':
+            continue
+        view_fn = app.view_functions[fn_name]
+        spec.path(view=view_fn)
+
+app.add_url_rule(
+    "/docs/swagger.json",
+    view_func=lambda: gestione.jsonify(spec.to_dict()),
+    methods=["GET"],
+)
+
+# --- ERROR HANDLER ---
+
+app.register_error_handler(
+    Exception,
+    gestione.error_handler
+)
+
+# --- REVERSE PROXY ---
+
+if not __debug__:
+    app = MiddlewareProxyFix(app=app, x_for=1, x_proto=0, x_host=1, x_port=0, x_prefix=0)

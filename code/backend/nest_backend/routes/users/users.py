@@ -68,6 +68,6 @@ def page_users():
             return json_error("User is not admin. Thou art not authorized."), 403
         new_user = User(email=request.json.get("email"), password=gen_password(request.json.get("password")),
                         username=request.json.get("username"))
-        Base.session.add(new_user)
-        Base.session.commit()
+        ext.session.add(new_user)
+        ext.session.commit()
         return json_success(new_user.to_json())

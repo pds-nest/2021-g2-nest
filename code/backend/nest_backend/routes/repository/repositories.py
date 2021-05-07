@@ -77,6 +77,6 @@ def page_repositories():
         if not name:
             return json_error("Missing one or more parameters"), 400
         repository = Repository(name=name, owner_id=user.email)
-        Base.session.add(repository)
-        Base.session.commit()
+        ext.session.add(repository)
+        ext.session.commit()
         return json_success(repository.to_json()), 200

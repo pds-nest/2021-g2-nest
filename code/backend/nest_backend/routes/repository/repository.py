@@ -174,16 +174,16 @@ def page_repository(rid):
             except KeyError:
                 return json_error("Unknown `type` specified."), 400
             repository.evaluation_mode = evaluation_mode
-        Base.session.commit()
+        ext.session.commit()
         return json_success(repository.to_json()), 200
     elif request.method == "DELETE":
         if repository.owner_id != user.email and not user.isAdmin:
             return json_error("You are not the owner of this repository."), 403
         try:
-            Base.session.delete(repository)
-            Base.session.commit()
+            ext.session.delete(repository)
+            ext.session.commit()
         except Exception as e:
-            Base.session.rollback()
+            ext.session.rollback()
             return json_error("Cant delete repository because of dependencies."), 500
         return json_success("Success"), 200
     elif request.method == "PUT":
@@ -200,8 +200,8 @@ def page_repository(rid):
         # Delete no longer needed conditions.
         for c in repository.conditions:
             if c.id not in ids:
-                Base.session.delete(c)
-                Base.session.commit()
+                ext.session.delete(c)
+                ext.session.commit()
         # Create brand new conditions
         for c in request.json['conditions']:
             if not c['id']:
@@ -210,6 +210,6 @@ def page_repository(rid):
                         type_ = ConditionType(type_)
                     except KeyError:
                         return json_error("Unknown `type` specified."), 400
-                Base.session.add(Condition(type=type_, content=c['content'], repository_id=rid))
-                Base.session.commit()
+                ext.session.add(Condition(type=type_, content=c['content'], repository_id=rid))
+                ext.session.commit()
         return json_success(repository.to_json()), 200

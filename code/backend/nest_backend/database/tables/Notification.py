@@ -2,13 +2,14 @@
 This module defines the Notification database class.
 """
 
-from ..base import Base
+from ..base import ext
 
-class Notification(Base.Model):
+
+class Notification(ext.Model):
     __tablename__ = "notification"
-    id = Base.Column(Base.Integer, primary_key=True)
-    ora = Base.Column(Base.DateTime, nullable=False)
+    id = ext.Column(ext.Integer, primary_key=True)
+    ora = ext.Column(ext.DateTime, nullable=False)
     # Foreign Key
-    alert_id = Base.Column(Base.Integer, Base.ForeignKey("alert.id"), nullable=False)
+    alert_id = ext.Column(ext.Integer, ext.ForeignKey("alert.id"), nullable=False)
     # Relationships
-    alert = Base.relationship("Alert", back_populates="notifications")
+    alert = ext.relationship("Alert", back_populates="notifications")

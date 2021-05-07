@@ -7,7 +7,7 @@ from nltk.corpus import stopwords
 
 
 
-Base.init_app(app=app)
+ext.init_app(app=app)
 
 def authenticate():
     c_k = "GEhtSyP9e98mzFeiOCSW0lvQX"
@@ -81,5 +81,5 @@ if __name__ == "__main__":
     search_repo_conditions()
     #print(stopwords.words('italian'))
     with app.app_context():
-        Base.create_all(app=app)
+        ext.create_all(app=app)
         #start_exploring()

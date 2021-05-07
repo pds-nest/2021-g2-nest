@@ -2,15 +2,15 @@
 This module defines the Tweet database class.
 """
 
-from ..base import Base
+from ..base import ext
 
 
-class Tweet(Base.Model):
+class Tweet(ext.Model):
     __tablename__ = "tweet"
-    snowflake = Base.Column(Base.String, primary_key=True)
-    content = Base.Column(Base.String)
-    location = Base.Column(Base.String)  # Todo: see if a dedicated class for locations is needed. This is likely.
-    poster = Base.Column(Base.String)  # Todo: see if a dedicated class for posters is needed.
+    snowflake = ext.Column(ext.String, primary_key=True)
+    content = ext.Column(ext.String)
+    location = ext.Column(ext.String)  # Todo: see if a dedicated class for locations is needed. This is likely.
+    poster = ext.Column(ext.String)  # Todo: see if a dedicated class for posters is needed.
     # Relationships
-    repositories = Base.relationship("Composed", back_populates="tweet", cascade="all, delete")
-    conditions = Base.relationship("Contains", back_populates="tweet", cascade="all, delete")
+    repositories = ext.relationship("Composed", back_populates="tweet", cascade="all, delete")
+    conditions = ext.relationship("Contains", back_populates="tweet", cascade="all, delete")

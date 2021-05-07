@@ -123,9 +123,9 @@ def page_condition(cid):
 
         if content := request.json.get("content"):
             condition.content = content
-        Base.session.commit()
+        ext.session.commit()
         return json_success(condition.to_json()), 200
     if request.method == "DELETE":
-        Base.session.delete(condition)
-        Base.session.commit()
+        ext.session.delete(condition)
+        ext.session.commit()
         return json_success("Deleted."), 200
