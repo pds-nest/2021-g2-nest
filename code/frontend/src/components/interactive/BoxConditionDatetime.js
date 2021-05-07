@@ -34,8 +34,6 @@ export default function BoxConditionDatetime({ ...props }) {
     }
 
     const onButtonClick = () => {
-
-
         const newCond = {
             "id": null,
             "type": 2,
