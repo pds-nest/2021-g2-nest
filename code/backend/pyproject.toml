@@ -1,8 +1,16 @@
 [tool.poetry]
 name = "nest_backend"
 version = "0.1.0"
-description = ""
-authors = ["Lorenzo Balugani <lorenzo.balugani@gmail.com>"]
+description = "The backend for N.E.S.T."
+authors = [
+    "Lorenzo Balugani <256867@studenti.unimore.it>",
+    "Stefano Pigozzi <256895@studenti.unimore.it>",
+    "Stefano Goldoni <280712@studenti.unimore.it>",
+    "Giorgio Minoccari <261807@studenti.unimore.it>",
+    "Flavia Cocca <253218@studenti.unimore.it>",
+    "Chiara Calzolari <258727@studenti.unimore.it>",
+    "Giovanni Anniballi <253150@studenti.unimore.it>",
+]
 
 [tool.poetry.dependencies]
 python = "^3.8.5"
