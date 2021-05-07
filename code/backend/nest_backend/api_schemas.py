@@ -36,6 +36,10 @@ class IntegerParameterSchema(Schema):
     rid = fields.Integer(description="The target numeric id.")
 
 
+class AlertParameterSchema(Schema):
+    rid = fields.Integer(description="The target numeric id.")
+
+
 class CreateUser(Schema):
     email = fields.String(description="The new user's email.")
     username = fields.String(description="The new user's username.")

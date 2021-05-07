@@ -9,22 +9,22 @@ import datetime
 @cross_origin()
 @jwt_required()
 @repository_auth
-def page_repository(aid):
+def page_alert(aid):
     """
     ---
     get:
-        summary: Get details about a repository.
+        summary: Get details about an alert.
         parameters:
         - in: path
-          schema: IntegerParameterSchema
+          schema: AlertParameterSchema
         security:
         - jwt: []
         responses:
             '200':
-                description: The details about the requested schema. The schema is incapsulated in Success.
+                description: The details about the requested alert. The schema is incapsulated in Success.
                 content:
                     application/json:
-                        schema: Repository
+                        schema: Alert
             '404':
                 description: Could not find the requested repository.
                 content:
@@ -41,12 +41,12 @@ def page_repository(aid):
                     application/json:
                         schema: Error
         tags:
-            - repository-related
+            - alert-related
     delete:
-        summary: Deletes a repository.
+        summary: Deletes an alert.
         parameters:
         - in: path
-          schema: IntegerParameterSchema
+          schema: AlertParameterSchema
         security:
         - jwt: []
         responses:
@@ -73,26 +73,26 @@ def page_repository(aid):
                     application/json:
                         schema: Error
         tags:
-            - repository-related
+            - alert-related
     patch:
-        summary: Updates a repository.
+        summary: Updates an alert.
         security:
         - jwt: []
         requestBody:
             required: true
             content:
                 application/json:
-                    schema: RepositoryUpdate
+                    schema: CreateAlert
         parameters:
         - in: path
-          schema: IntegerParameterSchema
+          schema: AlertParameterSchema
 
         responses:
             '200':
                 description: The repository has been updated successfully.
                 content:
                     application/json:
-                        schema: Repository
+                        schema: Alert
             '404':
                 description: Could not find the requested repository.
                 content:
@@ -109,48 +109,7 @@ def page_repository(aid):
                     application/json:
                         schema: Error
         tags:
-            - repository-related
-    put:
-        summary: Overwrites a repository.
-        security:
-        - jwt: []
-        requestBody:
-            required: true
-            content:
-                application/json:
-                    schema: Repository
-        parameters:
-        - in: path
-          schema: IntegerParameterSchema
-
-        responses:
-            '200':
-                description: The repository has been updated successfully.
-                content:
-                    application/json:
-                        schema: Repository
-            '404':
-                description: Could not find the requested repository.
-                content:
-                    application/json:
-                        schema: Error
-            '403':
-                description: The user is not authorized.
-                content:
-                    application/json:
-                        schema: Error
-            '401':
-                description: The user is not logged in.
-                content:
-                    application/json:
-                        schema: Error
-            '400':
-                description: The request was malformed.
-                content:
-                    application/json:
-                        schema: Error
-        tags:
-            - repository-related
+            - alert-related
     """
     user = find_user(get_jwt_identity())
     alert = Alert.query.filter_by(id=aid).first()

@@ -28,7 +28,8 @@ app.add_url_rule("/api/v1/repositories/<int:rid>/conditions", view_func=page_rep
                  methods=["GET", "POST"])
 app.add_url_rule("/api/v1/repositories/<int:rid>/alerts", view_func=page_repository_alerts,
                  methods=["GET", "POST"])
-app.add_url_rule("/api/v1/conditions/<int:cid>", view_func=page_condition, methods=["GET", "PATCH", "DELETE"])
+app.add_url_rule("/api/v1/conditions/<int:aid>", view_func=page_condition, methods=["GET", "PATCH", "DELETE"])
+app.add_url_rule("/api/v1/alerts/<int:aid>", view_func=page_alert, methods=["GET", "PATCH", "DELETE"])
 
 app.register_error_handler(Exception, error_handler)
 app.register_blueprint(swagger_ui_blueprint, url_prefix=SWAGGER_URL)
