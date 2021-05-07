@@ -1,0 +1,42 @@
+.RepositoryEditor {
+    display: grid;
+
+    grid-template-areas:
+        "b c"
+        "b d"
+        "b e"
+        "b f"
+        "b g"
+;
+    grid-template-columns: 400px 1fr;
+    grid-template-rows: auto auto auto 1fr auto;
+
+    grid-gap: 10px;
+
+    width: 100%;
+    height: 100%;
+}
+
+.SearchByZone {
+    grid-area: b;
+}
+
+.SearchByHashtags {
+    grid-area: c;
+}
+
+.SearchByUser {
+    grid-area: d;
+}
+
+.SearchByTimePeriod {
+    grid-area: e;
+}
+
+.Conditions {
+    grid-area: f;
+}
+
+.CreateDialog {
+    grid-area: g;
+}

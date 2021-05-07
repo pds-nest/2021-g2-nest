@@ -1,10 +1,17 @@
 import React, { useCallback, useState } from "react"
 import ContextRepositoryEditor from "../../contexts/ContextRepositoryEditor"
 import useArrayState from "../../hooks/useArrayState"
+import Style from "./RepositoryEditor.module.css"
+import BoxConditionMap from "../interactive/BoxConditionMap"
+import BoxConditionHashtag from "../interactive/BoxConditionHashtag"
+import BoxConditionUser from "../interactive/BoxConditionUser"
+import BoxConditionDatetime from "../interactive/BoxConditionDatetime"
+import BoxConditions from "../interactive/BoxConditions"
+import BoxRepositoryCreate from "../interactive/BoxRepositoryCreate"
+import classNames from "classnames"
 
 
 export default function RepositoryEditor({
-    children,
     refresh,
     id = null,
     name,
@@ -13,6 +20,7 @@ export default function RepositoryEditor({
     end,
     conditions,
     evaluation_mode: evaluationMode,
+    className,
 }) {
     /** The repository name. */
     const [_name, setName] = useState(name)
@@ -113,7 +121,14 @@ export default function RepositoryEditor({
             evaluationMode: _evaluationMode, setEvaluationMode,
             revert, save,
         }}>
-            {children}
+            <div className={classNames(Style.RepositoryEditor, className)}>
+                <BoxConditionMap className={Style.SearchByZone}/>
+                <BoxConditionHashtag className={Style.SearchByHashtags}/>
+                <BoxConditionUser className={Style.SearchByUser}/>
+                <BoxConditionDatetime className={Style.SearchByTimePeriod}/>
+                <BoxConditions className={Style.Conditions}/>
+                <BoxRepositoryCreate className={Style.CreateDialog}/>
+            </div>
         </ContextRepositoryEditor.Provider>
     )
 }

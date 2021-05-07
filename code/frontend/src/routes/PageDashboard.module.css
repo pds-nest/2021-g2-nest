@@ -2,14 +2,10 @@
     display: grid;
 
     grid-template-areas:
-        "a a a"
-        "b c f"
-        "b d f"
-        "b e f"
-        "b g g"
+        "a"
+        "b"
     ;
-    grid-template-columns: 400px 1fr 1fr;
-    grid-template-rows: auto 1fr 1fr 1fr auto;
+    grid-template-rows: auto 1fr;
 
     grid-gap: 10px;
 
@@ -21,26 +17,6 @@
     grid-area: a;
 }
 
-.SearchByZone {
+.RepositoryEditor {
     grid-area: b;
-}
-
-.SearchByHashtags {
-    grid-area: c;
-}
-
-.SearchByUser {
-    grid-area: d;
-}
-
-.SearchByTimePeriod {
-    grid-area: e;
-}
-
-.Conditions {
-    grid-area: f;
-}
-
-.CreateDialog {
-    grid-area: g;
 }
