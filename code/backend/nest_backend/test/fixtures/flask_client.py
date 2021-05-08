@@ -1,5 +1,8 @@
 import pytest
 import uuid
+
+import requests
+
 from nest_backend.app import app
 from nest_backend.gestione import gen_password
 from nest_backend.database import ext
@@ -78,4 +81,12 @@ def user_headers(user_access_token):
     user_headers = {'Authorization': f"Bearer {user_access_token}"}
     return user_headers
 
+
+@pytest.fixture()
+def user_create(admin_headers, flask_client):
+    r = flask_client.post(f'/api/v1/users/', headers=admin_headers, json={
+        'email': 'utente_test@nest.com',
+        'password': 'password',
+        'username': 'utente_test'
+    })
 
