@@ -9,12 +9,30 @@ class TestUserGet:
 
 class TestUserAdd:
     def test_for_success(self, flask_client: Client, admin_headers):
-        r = flask_client.post(f'/api/v1/users/', headers=admin_headers,
-                              json={'email': 'utente_test@nest.com', 'password': 'password', 'username': 'utente_test'})
+        r = flask_client.post(f'/api/v1/users/', headers=admin_headers, json={
+            'email': 'utente_test@nest.com',
+            'password': 'password',
+            'username': 'utente_test'
+        })
         assert b'success' in r.data
+
+    def test_for_failure(self, flask_client: Client, user_headers):
+        r = flask_client.post(f'/api/v1/users/', headers=user_headers, json={
+            'email': 'utente_test@nest.com',
+            'password': 'password',
+            'username': 'utente_test'
+        })
+        assert b'failure' in r.data
 
 
 class TestUserDelete:
     def test_for_success(self, flask_client: Client, admin_headers):
         r = flask_client.delete(f'/api/v1/users/utente_test@nest.com', headers=admin_headers)
         assert b'success' in r.data
+
+    # the admin tries to commit suicide
+    def test_for_failure(self, flask_client: Client, admin_headers):
+        r = flask_client.delete(f'/api/v1/users/admin@admin.com', headers=admin_headers)
+        assert b'failure' in r.data
+
+
