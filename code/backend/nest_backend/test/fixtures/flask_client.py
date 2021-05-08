@@ -38,7 +38,7 @@ def flask_client():
 
 
 @pytest.fixture()
-def access_token(flask_client):
+def admin_access_token(flask_client):
     response = flask_client.post("/api/v1/login", json={
         "email": "admin@admin.com",
         "password": "password"
@@ -53,6 +53,29 @@ def access_token(flask_client):
 
 
 @pytest.fixture()
-def headers(access_token):
-    headers = {'Authorization': f"Bearer {access_token}"}
-    return headers
+def user_access_token(flask_client):
+    response = flask_client.post("/api/v1/login", json={
+        "email": "utente_test@nest.com",
+        "password": "password"
+    })
+    assert response.json is not None
+    assert "result" in response.json
+    assert response.json["result"] == "success"
+    assert "data" in response.json
+    data = response.json["data"]
+    assert "access_token" in data
+    return data["access_token"]
+
+
+@pytest.fixture()
+def admin_headers(admin_access_token):
+    admin_headers = {'Authorization': f"Bearer {admin_access_token}"}
+    return admin_headers
+
+
+@pytest.fixture()
+def user_headers(user_access_token):
+    user_headers = {'Authorization': f"Bearer {user_access_token}"}
+    return user_headers
+
+
