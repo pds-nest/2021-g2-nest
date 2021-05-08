@@ -50,3 +50,9 @@ def access_token(flask_client):
     data = response.json["data"]
     assert "access_token" in data
     return data["access_token"]
+
+
+@pytest.fixture()
+def headers(access_token):
+    headers = {'Authorization': f"Bearer {access_token}"}
+    return headers
