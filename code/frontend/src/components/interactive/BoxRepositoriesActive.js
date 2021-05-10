@@ -18,18 +18,15 @@ import useDataImmediately from "../../hooks/useDataImmediately"
  */
 export default function BoxRepositoriesActive({ ...props }) {
     const {user, fetchDataAuth} = useContext(ContextUser)
-    const {data, started, loading, error} = useDataImmediately(fetchDataAuth, "GET", "/api/v1/repositories/", {
+    const {data, error, loading, fetchNow} = useDataImmediately(fetchDataAuth, "GET", "/api/v1/repositories/", {
         "onlyActive": true,
     })
 
     let contents;
-    if(!started || loading) {
-        contents = <Loading/>
-    }
-    else if(error) {
+    if(error) {
         contents = <BoxAlert color={"Red"}>{error.toString()}</BoxAlert>
     }
-    else {
+    else if(data) {
         let repositories = [...data["owner"], ...data["spectator"]]
         if(repositories.length > 0) {
             contents = repositories.map(repo => (
@@ -45,6 +42,9 @@ export default function BoxRepositoriesActive({ ...props }) {
         else {
             contents = <i>There's nothing here.</i>
         }
+    }
+    else {
+        contents = <Loading/>
     }
 
     return (
