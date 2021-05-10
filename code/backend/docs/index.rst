@@ -7,10 +7,9 @@ Welcome to N.E.S.T. Backend's documentation!
 ============================================
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+   :maxdepth: 4
 
-   modules
+   python_api/index
 
 
 
