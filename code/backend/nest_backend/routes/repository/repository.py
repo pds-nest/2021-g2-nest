@@ -170,7 +170,7 @@ def page_repository(rid):
             repository.is_active = True
         if 'evaluation_mode' in request.json:
             try:
-                evaluation_mode = ConditionType(request.json['evaluation_mode'])
+                evaluation_mode = ConditionMode(request.json['evaluation_mode'])
             except KeyError:
                 return json_error("Unknown `type` specified."), 400
             repository.evaluation_mode = evaluation_mode

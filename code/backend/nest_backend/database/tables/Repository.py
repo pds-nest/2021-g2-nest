@@ -15,7 +15,7 @@ class Repository(ext.Model):
     start = ext.Column(ext.DateTime, nullable=True)
     end = ext.Column(ext.DateTime, nullable=True)
     is_active = ext.Column(ext.Boolean, nullable=False, default=False)
-    evaluation_mode = ext.Column(ext.Enum(ConditionMode), default=ConditionMode.all_or.value)
+    evaluation_mode = ext.Column(ext.Enum(ConditionMode), default=ConditionMode.all_or)
 
     # Foreign Keys
     owner_id = ext.Column(ext.String, ext.ForeignKey("user.email", ondelete="CASCADE"), nullable=False)
@@ -35,6 +35,6 @@ class Repository(ext.Model):
             "is_active": self.is_active,
             "end": self.end.isoformat() if self.end else None,
             "owner": self.owner.to_json(),
-            "evaluation_mode": self.evaluation_mode,
+            "evaluation_mode": self.evaluation_mode.value,
             "conditions": [c.to_json() for c in self.conditions]
         }

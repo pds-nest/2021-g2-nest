@@ -12,4 +12,4 @@ from .Notification import Notification
 from .Repository import Repository
 from .Tweet import Tweet
 from .User import User
-from .Enums import ConditionType, OperationType
+from .Enums import ConditionType, OperationType, ConditionMode
