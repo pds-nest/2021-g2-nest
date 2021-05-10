@@ -35,7 +35,7 @@ export default function BoxRepositoryCreate({ ...props }) {
                     <label>
                         <Radio
                             name={"filter-mode"}
-                            onClick={() => setEvaluationMode(0)}
+                            onChange={() => setEvaluationMode(0)}
                             checked={evaluationMode === 0}
                         />
                         At least one filter
@@ -44,7 +44,7 @@ export default function BoxRepositoryCreate({ ...props }) {
                     <label>
                         <Radio
                             name={"filter-mode"}
-                            onClick={() => setEvaluationMode(1)}
+                            onChange={() => setEvaluationMode(1)}
                             checked={evaluationMode === 1}
                         />
                         Every filter
