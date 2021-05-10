@@ -24,16 +24,16 @@ export default function RepositoryEditor({
     className,
 }) {
     /** The repository name. */
-    const [_name, setName] = useState(name)
+    const [_name, setName] = useState(name ?? "")
 
     /** The repository state (active / archived). */
-    const [_isActive, setActive] = useState(isActive)
+    const [_isActive, setActive] = useState(isActive ?? true)
 
     /** The start date of the data gathering. */
-    const [_start, setStart] = useState(start)
+    const [_start, setStart] = useState(start ?? new Date().toISOString())
 
     /** The end date of the data gathering. */
-    const [_end, setEnd] = useState(end)
+    const [_end, setEnd] = useState(end ?? new Date().toISOString())
 
     /** The conditions of the data gathering. */
     const {

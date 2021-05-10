@@ -8,6 +8,8 @@ import Radio from "../base/Radio"
 import Button from "../base/Button"
 import useRepositoryEditor from "../../hooks/useRepositoryEditor"
 import FormAlert from "../base/formparts/FormAlert"
+import goToOnSuccess from "../../utils/goToOnSuccess"
+import { useHistory } from "react-router"
 
 
 /**
@@ -27,6 +29,8 @@ export default function BoxRepositoryCreate({ ...props }) {
         save,
         error,
     } = useRepositoryEditor()
+
+    const history = useHistory()
 
     return (
         <BoxFull header={"Create repository"} {...props}>
@@ -68,8 +72,7 @@ export default function BoxRepositoryCreate({ ...props }) {
                          style={{"gridColumn": "1 / 3"}}
                          icon={faPencilAlt}
                          color={"Green"}
-                         goTo={"/repositories"}
-                         onClick={e => save()}
+                         onClick={e => goToOnSuccess(save, history, "/repositories")}
                      >
                          Edit repository
                      </Button>
@@ -78,8 +81,7 @@ export default function BoxRepositoryCreate({ ...props }) {
                         style={{"gridColumn": "1 / 3"}}
                         icon={faPlus}
                         color={"Green"}
-                        goTo={"/repositories"}
-                        onClick={e => save()}
+                        onClick={e => goToOnSuccess(save, history, "/repositories")}
                     >
                         Create repository
                     </Button>
