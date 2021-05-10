@@ -1,10 +1,12 @@
-import React from "react"
+import React, { useContext } from "react"
 import Style from "./RepositorySummaryBase.module.css"
 import classNames from "classnames"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import Button from "../base/Button"
 import { faArchive, faPencilAlt, faTrash } from "@fortawesome/free-solid-svg-icons"
 import { useHistory } from "react-router"
+import useData from "../../hooks/useData"
+import ContextUser from "../../contexts/ContextUser"
 
 
 /**
@@ -28,7 +30,11 @@ import { useHistory } from "react-router"
 export default function RepositorySummaryBase(
     { id, owner, icon, name, start, end, isActive, canDelete, canEdit, canArchive, className, ...props }
 ) {
+    const {fetchDataAuth} = useContext(ContextUser)
     const {history} = useHistory()
+    const {fetchNow: archiveThis} = useData(fetchDataAuth, "PATCH", `/api/v1/repositories/${id}`, {"close": true})
+    const {fetchNow: unarchiveThis} = useData(fetchDataAuth, "PATCH", `/api/v1/repositories/${id}`, {"open": true})
+    const {fetchNow: deletThis} = useData(fetchDataAuth, "DELETE", `/api/v1/repositories/${id}`)
 
     return (
         <div className={classNames(Style.RepositorySummary, className)} {...props}>
@@ -56,6 +62,7 @@ export default function RepositorySummaryBase(
                     <Button
                         color={"Red"}
                         icon={faTrash}
+                        onClick={deletThis}
                     >
                         Delete
                     </Button>
@@ -73,6 +80,7 @@ export default function RepositorySummaryBase(
                     <Button
                         color={"Grey"}
                         icon={faArchive}
+                        onClick={isActive ? archiveThis : unarchiveThis}
                     >
                         {isActive ? "Archive" : "Unarchive"}
                     </Button>
