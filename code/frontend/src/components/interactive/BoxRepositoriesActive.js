@@ -18,7 +18,7 @@ import useDataImmediately from "../../hooks/useDataImmediately"
  */
 export default function BoxRepositoriesActive({ ...props }) {
     const {user, fetchDataAuth} = useContext(ContextUser)
-    const {data, error, loading, fetchNow} = useDataImmediately(fetchDataAuth, "GET", "/api/v1/repositories/", {
+    const {data, error} = useDataImmediately(fetchDataAuth, "GET", "/api/v1/repositories/", {
         "onlyActive": true,
     })
 

@@ -4,15 +4,16 @@ import classNames from "classnames"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import Button from "../base/Button"
 import { faArchive, faPencilAlt, faTrash } from "@fortawesome/free-solid-svg-icons"
+import { useHistory } from "react-router"
 
 
 /**
  * A long line representing a repository in a list.
  *
+ * @param id - The id of the repository.
+ * @param owner - The owner of the repository.
  * @param icon - The FontAwesome IconDefinition that represents the repository.
  * @param name - The title of the repository.
- * @todo What goes in the details field?
- * @param details - Whatever should be rendered in the details field.
  * @param start - The start date of the repository.
  * @param end - The end date of the repository.
  * @param isActive - Whether the repository is active or not.
@@ -25,8 +26,10 @@ import { faArchive, faPencilAlt, faTrash } from "@fortawesome/free-solid-svg-ico
  * @constructor
  */
 export default function RepositorySummaryBase(
-    { icon, name, details, start, end, isActive, canDelete, canEdit, canArchive, className, ...props }
+    { id, owner, icon, name, start, end, isActive, canDelete, canEdit, canArchive, className, ...props }
 ) {
+    const {history} = useHistory()
+
     return (
         <div className={classNames(Style.RepositorySummary, className)} {...props}>
             <div className={Style.Left}>
@@ -36,22 +39,43 @@ export default function RepositorySummaryBase(
                 <div className={Style.Title}>
                     {name}
                 </div>
-                <div className={Style.StartDate}>
-                    {start}
+                <div className={Style.Author}>
+                    {owner["username"]}
                 </div>
             </div>
             <div className={Style.Middle}>
-                {details}
+                <div className={Style.StartDate}>
+                    Start: {start}
+                </div>
+                <div className={Style.EndDate}>
+                    End: {end}
+                </div>
             </div>
             <div className={Style.Right}>
                 {canDelete ?
-                    <Button color={"Red"} icon={faTrash}>Delete</Button>
+                    <Button
+                        color={"Red"}
+                        icon={faTrash}
+                    >
+                        Delete
+                    </Button>
                 : null}
                 {canEdit ?
-                    <Button color={"Yellow"} icon={faPencilAlt}>Edit</Button>
+                    <Button
+                        color={"Yellow"}
+                        icon={faPencilAlt}
+                        onClick={() => history.push(`/repositories/${id}/edit`)}
+                    >
+                        Edit
+                    </Button>
                 : null}
                 {canArchive ?
-                    <Button color={"Grey"} icon={faArchive}>{isActive ? "Archive" : "Unarchive"}</Button>
+                    <Button
+                        color={"Grey"}
+                        icon={faArchive}
+                    >
+                        {isActive ? "Archive" : "Unarchive"}
+                    </Button>
                 : null}
             </div>
         </div>
