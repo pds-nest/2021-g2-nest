@@ -20,16 +20,19 @@ export default function useData(fetchData, method, path, body, init) {
      */
     const load = useCallback(
         async () => {
-            console.debug(`Trying to ${method} ${path}...`)
-
+            console.debug(`Loading ${method} ${path}...`)
             setLoading(true)
 
+            console.debug(`Fetching ${method} ${path}...`)
             try {
                 const _data = await fetchData(method, path, body, init)
+                console.debug(`Displaying data of ${method} ${path}: `, _data)
                 setData(_data)
             } catch(e) {
+                console.debug(`Displaying error of ${method} ${path}: `, e)
                 setError(e)
             } finally {
+                console.debug(`Stopping loading of ${method} ${path}...`)
                 setLoading(false)
             }
         },

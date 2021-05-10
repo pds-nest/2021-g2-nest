@@ -50,7 +50,7 @@
     align-self: flex-end;
 }
 
-.StartDate {
+.Author {
     grid-area: d;
     font-size: small;
 
@@ -59,10 +59,23 @@
 
 .Middle {
     flex-grow: 1;
-
     height: 60px;
 
     background-color: var(--bg-light);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+
+}
+
+.StartDate {
+
+}
+
+.EndDate {
+
 }
 
 .Right {

@@ -7,6 +7,7 @@ import PageSettings from "./routes/PageSettings"
 import PageSandbox from "./routes/PageSandbox"
 import PageDashboard from "./routes/PageDashboard"
 import PageRoot from "./routes/PageRoot"
+import PageEdit from "./routes/PageEdit"
 
 
 export default function PageSwitcher({ ...props }) {
@@ -14,6 +15,9 @@ export default function PageSwitcher({ ...props }) {
         <Switch {...props}>
             <Route path={"/login"} exact={true}>
                 <PageLogin/>
+            </Route>
+            <Route path={"/repositories/:id/edit"} exact={true}>
+                <PageEdit/>
             </Route>
             <Route path={"/repositories"} exact={true}>
                 <PageRepositories/>
