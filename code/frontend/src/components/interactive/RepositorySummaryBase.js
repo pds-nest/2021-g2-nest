@@ -31,7 +31,7 @@ export default function RepositorySummaryBase(
     { id, owner, icon, name, start, end, isActive, canDelete, canEdit, canArchive, className, ...props }
 ) {
     const {fetchDataAuth} = useContext(ContextUser)
-    const {history} = useHistory()
+    const history = useHistory()
     const {fetchNow: archiveThis} = useData(fetchDataAuth, "PATCH", `/api/v1/repositories/${id}`, {"close": true})
     const {fetchNow: unarchiveThis} = useData(fetchDataAuth, "PATCH", `/api/v1/repositories/${id}`, {"open": true})
     const {fetchNow: deletThis} = useData(fetchDataAuth, "DELETE", `/api/v1/repositories/${id}`)

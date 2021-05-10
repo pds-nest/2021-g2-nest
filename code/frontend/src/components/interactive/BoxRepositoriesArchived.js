@@ -30,6 +30,7 @@ export default function BoxRepositoriesArchived({ ...props }) {
         if(repositories.length > 0) {
             contents = repositories.map(repo => (
                 <RepositorySummaryBase
+                    key={repo["id"]}
                     {...repo}
                     icon={faSearch}
                     canArchive={true}
