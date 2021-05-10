@@ -15,8 +15,8 @@ class BoolOperation(ext.Model):
     isRoot = ext.Column(ext.Boolean, default=False, nullable=False)
     # Foreign Keys
     condition_id = ext.Column(ext.Integer, ext.ForeignKey("condition.id"))
-    node_1_id = ext.Column(ext.Integer, ext.ForeignKey("bool_operation.id"))
-    node_2_id = ext.Column(ext.Integer, ext.ForeignKey("bool_operation.id"))
+    node_1_id = ext.Column(ext.Integer, ext.ForeignKey("bool_operation.id", ondelete="SET NULL"))
+    node_2_id = ext.Column(ext.Integer, ext.ForeignKey("bool_operation.id", ondelete="SET NULL"))
     alert_id = ext.Column(ext.Integer, ext.ForeignKey("alert.id"))
     # Relationships
     condition = ext.relationship("Condition", back_populates="operations")
@@ -35,3 +35,11 @@ class BoolOperation(ext.Model):
                 "node_1": self.node_1.to_json() if self.node_1 else None,
                 "node_2": self.node_2.to_json() if self.node_2 else None
                 }
+
+    def get_chain_ids(self, l):
+        if self.id in l:
+            # Loop detected!
+            return -1
+        l.append(self.id)
+        self.get_chain_ids(self.node_1, l)
+        self.get_chain_ids(self.node_2, l)

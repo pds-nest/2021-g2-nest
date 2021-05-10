@@ -75,21 +75,21 @@ def page_alert(aid):
         tags:
             - alert-related
     patch:
-        summary: Updates an alert.
+        summary: Updates an alert and the boolops structure.
         security:
         - jwt: []
         requestBody:
             required: true
             content:
                 application/json:
-                    schema: CreateAlert
+                    schema: Alert
         parameters:
         - in: path
           schema: AlertParameterSchema
 
         responses:
             '200':
-                description: The repository has been updated successfully.
+                description: The alert has been updated successfully.
                 content:
                     application/json:
                         schema: Alert
@@ -138,5 +138,84 @@ def page_alert(aid):
             return json_error("Something went wrong while deleting alert."), 500
         return json_success("Deletion completed."), 200
     elif request.method == "PUT":
-        pass
+        if not json_request_authorizer(request.json, alert):
+            return json_error("Missing one or more parameters in repository json."), 400
+        alert.limit = request.json['limit']
+        alert.name = request.json['name']
+        alert.window_size = request.json['window_size']
+        root_id = alert.to_json()['root_operation']['id']
+        root = BoolOperation.filter_by(id=root_id).first()
+        if not root:
+            return json_error("Could not find original root element."), 404
+        # No longer used chain element deletion
+        l = []
+        bool_list = root.get_chains_ids(l)
+        for element in alert.operations:
+            if element.id not in bool_list:
+                if element.id == root.id:
+                    root = None
+                ext.session.delete(element)
+                ext.session.commit()
+        if request.json['root-operation'].get('id'):  # If an alternative root is already present.
+            new_root_test = BoolOperation.filter_by(id=request.json['root_operation']['id']).first()
+            if new_root_test and new_root_test != root:
+                new_root_test.is_root = True
+                ext.session.commit()
+        else:  # If the alternative root needs to be brand-new.
+            condition_id = None
+            if request.json['root_operation'].get('condition'): # Is the new alternative connected to a condition?
+                if not Condition.query.filter_by(id=request.json['root_operation']['condition']['id'],
+                                                 repository_id=alert.repository_id).first():
+                    return json_error("One of the provided IDs is incorrect."), 404
+                condition_id = request.json['root_operation']['condition']['id']
+            if (type_ := request.json['root-operation']['operation']) is not None:
+                try:
+                    type_ = OperationType(type_)
+                except KeyError:
+                    return json_error("Unknown `operation` specified."), 400
+            root = BoolOperation(operation=type_, is_root=True, alert_id=aid)
+            ext.session.add(root)
+            ext.session.commit()
+        root = BoolOperation.filter_by(id=request.json['root_operation']['id']).first()
+        try:
+            recursion(root, ext, request.json['root_operation'])
+        except FileNotFoundError:
+            return json_error("One of the provided IDs is incorrect"), 404
+        except KeyError:
+            return json_error("Unknown field specified."), 400
 
+
+def create_node(node, ext, json, id):
+    # Check if the node already exists
+    id_1 = json[f'node_{id}']['id']
+    if id_1:
+        node_1 = BoolOperation.query.filter_by(id=id_1).first()
+        if not node_1:
+            raise FileNotFoundError
+    else:
+        # The node is new.
+        condition_id = None
+        if json[f'node_{id}'].get('condition'):
+            condition = Condition.query.filter_by(
+                id=json[f'node_{id}']['condition']['id']).filter(
+                Condition.repository_id == node.alert.repository_id).first()
+            if not condition:
+                raise FileNotFoundError
+            condition_id = condition.id
+        if (type_ := json[f'node_{id}']['operation']) is not None:
+            type_ = OperationType(type_)
+        else:
+            raise FileNotFoundError
+        # Create new node
+        node_1 = BoolOperation(operation=type_, is_root=False, condition_id=condition_id, alert_id=node.alert_id)
+        ext.session.add(node_1)
+        ext.session.commit()
+    # Recursion goes brr
+    recursion(node_1, ext, json['node_1'])
+
+
+def recursion(node, ext, json):
+    if json.get('node_1'): # Create node 1
+        create_node(node, ext, json, 1)
+    if json.get('node_2'): # Create node 2
+        create_node(node, ext, json, 2)
