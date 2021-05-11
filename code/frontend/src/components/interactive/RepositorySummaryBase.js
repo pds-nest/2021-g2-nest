@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Button from "../base/Button"
 import { faArchive, faPencilAlt, faTrash } from "@fortawesome/free-solid-svg-icons"
 import { useHistory } from "react-router"
-import useData from "../../hooks/useData"
+import useBackend from "../../hooks/useBackend"
 import ContextUser from "../../contexts/ContextUser"
 
 
@@ -33,9 +33,9 @@ export default function RepositorySummaryBase(
 ) {
     const { fetchDataAuth } = useContext(ContextUser)
     const history = useHistory()
-    const { fetchNow: archiveThis } = useData(fetchDataAuth, "PATCH", `/api/v1/repositories/${id}`, { "close": true })
-    const { fetchNow: unarchiveThis } = useData(fetchDataAuth, "PATCH", `/api/v1/repositories/${id}`, { "open": true })
-    const { fetchNow: deletThis } = useData(fetchDataAuth, "DELETE", `/api/v1/repositories/${id}`)
+    const { fetchNow: archiveThis } = useBackend(fetchDataAuth, "PATCH", `/api/v1/repositories/${id}`, { "close": true })
+    const { fetchNow: unarchiveThis } = useBackend(fetchDataAuth, "PATCH", `/api/v1/repositories/${id}`, { "open": true })
+    const { fetchNow: deletThis } = useBackend(fetchDataAuth, "DELETE", `/api/v1/repositories/${id}`)
 
     const onEditClick = event => {
         history.push(`/repositories/${id}/edit`)

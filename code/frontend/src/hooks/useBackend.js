@@ -10,7 +10,7 @@ import { useCallback, useState } from "react"
  * @param body - The body of the HTTP request (it will be JSONified before being sent).
  * @param init - Additional `init` parameters to pass to `fetch`.
  */
-export default function useData(fetchData, method, path, body, init) {
+export default function useBackend(fetchData, method, path, body, init) {
     const [error, setError] = useState(null)
     const [data, setData] = useState(null)
     const [loading, setLoading] = useState(false)

@@ -1,9 +1,9 @@
-import useData from "./useData"
+import useBackend from "./useBackend"
 import { useEffect } from "react"
 
 
 /**
- * Like {@link useData}, but runs as soon as the component is rendered.
+ * Like {@link useBackend}, but runs as soon as the component is rendered.
  *
  * @param fetchData - The function to use when fetching data.
  * @param method - The HTTP method to use.
@@ -11,8 +11,8 @@ import { useEffect } from "react"
  * @param body - The body of the HTTP request (it will be JSONified before being sent).
  * @param init - Additional `init` parameters to pass to `fetch`.
  */
-export default function useDataImmediately(fetchData, method, path, body, init) {
-    const { data, error, loading, fetchNow } = useData(fetchData, method, path, body, init)
+export default function useBackendImmediately(fetchData, method, path, body, init) {
+    const { data, error, loading, fetchNow } = useBackend(fetchData, method, path, body, init)
 
     useEffect(
         () => {

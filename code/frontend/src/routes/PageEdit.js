@@ -3,7 +3,7 @@ import Style from "./PageDashboard.module.css"
 import classNames from "classnames"
 import BoxHeader from "../components/base/BoxHeader"
 import RepositoryEditor from "../components/providers/RepositoryEditor"
-import useDataImmediately from "../hooks/useDataImmediately"
+import useBackendImmediately from "../hooks/useBackendImmediately"
 import ContextUser from "../contexts/ContextUser"
 import BoxAlert from "../components/base/BoxAlert"
 import Loading from "../components/base/Loading"
@@ -11,7 +11,7 @@ import Loading from "../components/base/Loading"
 
 export default function PageEdit({ id, className, ...props }) {
     const { fetchDataAuth } = useContext(ContextUser)
-    const { data, error } = useDataImmediately(fetchDataAuth, "GET", `/api/v1/repositories/${id}`)
+    const { data, error } = useBackendImmediately(fetchDataAuth, "GET", `/api/v1/repositories/${id}`)
 
     let contents
     if(error) {

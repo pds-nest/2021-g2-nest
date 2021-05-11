@@ -10,7 +10,7 @@ import BoxConditions from "../interactive/BoxConditions"
 import BoxRepositoryCreate from "../interactive/BoxRepositoryCreate"
 import classNames from "classnames"
 import ContextUser from "../../contexts/ContextUser"
-import useData from "../../hooks/useData"
+import useBackend from "../../hooks/useBackend"
 
 
 export default function RepositoryEditor({
@@ -61,7 +61,7 @@ export default function RepositoryEditor({
         "owner": user,
         "start": _start,
     }
-    const { error, loading, fetchNow } = useData(fetchDataAuth, method, path, body)
+    const { error, loading, fetchNow } = useBackend(fetchDataAuth, method, path, body)
 
     const save = useCallback(
         () => {

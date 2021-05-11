@@ -3,7 +3,7 @@ import Style from "./PageRepositories.module.css"
 import classNames from "classnames"
 import BoxRepositoriesActive from "../components/interactive/BoxRepositoriesActive"
 import BoxRepositoriesArchived from "../components/interactive/BoxRepositoriesArchived"
-import useDataImmediately from "../hooks/useDataImmediately"
+import useBackendImmediately from "../hooks/useBackendImmediately"
 import ContextUser from "../contexts/ContextUser"
 import BoxAlert from "../components/base/BoxAlert"
 import Loading from "../components/base/Loading"
@@ -11,7 +11,7 @@ import Loading from "../components/base/Loading"
 
 export default function PageRepositories({ children, className, ...props }) {
     const { fetchDataAuth } = useContext(ContextUser)
-    const { data, error, fetchNow: refresh } = useDataImmediately(fetchDataAuth, "GET", "/api/v1/repositories/")
+    const { data, error, fetchNow: refresh } = useBackendImmediately(fetchDataAuth, "GET", "/api/v1/repositories/")
 
     let contents
     if(error) {
