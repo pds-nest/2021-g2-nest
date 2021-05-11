@@ -82,7 +82,7 @@ export default function SummaryRepository(
         <Summary
             icon={repo.is_active ? faFolderOpen : faFolder}
             title={repo.name}
-            subtitle={repo.author}
+            subtitle={repo.owner ? repo.owner.username : null}
             upperLabel={"Start"}
             upperValue={repo.start ? new Date(repo.start).toLocaleString() : null}
             lowerLabel={"End"}
