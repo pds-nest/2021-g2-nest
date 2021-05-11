@@ -10,7 +10,7 @@ class Notification(ext.Model):
     id = ext.Column(ext.Integer, primary_key=True)
     ora = ext.Column(ext.DateTime, nullable=False)
     # Foreign Key
-    alert_id = ext.Column(ext.Integer, ext.ForeignKey("alert.id"), nullable=False)
+    alert_id = ext.Column(ext.Integer, ext.ForeignKey("alert.id", ondelete="CASCADE"), nullable=False)
     # Relationships
     alert = ext.relationship("Alert", back_populates="notifications")
 

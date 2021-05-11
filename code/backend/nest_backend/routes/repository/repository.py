@@ -191,9 +191,10 @@ def page_repository(rid):
             return json_error("Missing one or more parameters in repository json."), 400
         # Users will be tolerated if they change parameters they're not supposed to touch. We'll ignore them for now.
         try:
-            repository.evaluation_mode = request.json['evaluation_mode']
+            evaluation_mode = ConditionMode(request.json['evaluation_mode'])
         except KeyError:
             return json_error("Unknown `type` specified."), 400
+        repository.evaluation_mode = evaluation_mode
         repository.name = request.json['name']
         repository.is_active = request.json['is_active']
         ids = [c['id'] for c in request.json['conditions'] if c['id']]
@@ -205,11 +206,10 @@ def page_repository(rid):
         # Create brand new conditions
         for c in request.json['conditions']:
             if not c['id']:
-                if (type_ := c['type']) is not None:
-                    try:
-                        type_ = ConditionType(type_)
-                    except KeyError:
-                        return json_error("Unknown `type` specified."), 400
+                try:
+                    type_ = ConditionType(c['type'])
+                except KeyError:
+                    return json_error("Unknown `type` specified."), 400
                 ext.session.add(Condition(type=type_, content=c['content'], repository_id=rid))
                 ext.session.commit()
         return json_success(repository.to_json()), 200

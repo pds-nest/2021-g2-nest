@@ -15,8 +15,8 @@ class Alert(ext.Model):
     repository_id = ext.Column(ext.Integer, ext.ForeignKey("repository.id", ondelete="CASCADE"), nullable=False)
     # Relationships
     repository = ext.relationship("Repository", back_populates="alerts")
-    notifications = ext.relationship("Notification", back_populates="alert", cascade="all, delete")
-    operations = ext.relationship("BoolOperation", back_populates="alert", cascade="all, delete")
+    notifications = ext.relationship("Notification", back_populates="alert")
+    operations = ext.relationship("BoolOperation", back_populates="alert")
 
     def to_json(self):
         return {

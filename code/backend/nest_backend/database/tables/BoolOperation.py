@@ -12,12 +12,12 @@ class BoolOperation(ext.Model):
 
     id = ext.Column(ext.Integer, primary_key=True)
     operation = ext.Column(ext.Enum(OperationType), nullable=False)
-    isRoot = ext.Column(ext.Boolean, default=False, nullable=False)
+    is_root = ext.Column(ext.Boolean, default=False, nullable=False)
     # Foreign Keys
     condition_id = ext.Column(ext.Integer, ext.ForeignKey("condition.id"))
     node_1_id = ext.Column(ext.Integer, ext.ForeignKey("bool_operation.id", ondelete="SET NULL"))
     node_2_id = ext.Column(ext.Integer, ext.ForeignKey("bool_operation.id", ondelete="SET NULL"))
-    alert_id = ext.Column(ext.Integer, ext.ForeignKey("alert.id"))
+    alert_id = ext.Column(ext.Integer, ext.ForeignKey("alert.id", ondelete="CASCADE"))
     # Relationships
     condition = ext.relationship("Condition", back_populates="operations")
     node_1 = ext.relationship("BoolOperation", primaryjoin=("bool_operation.c.node_1_id==bool_operation.c.id"),

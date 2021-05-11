@@ -22,9 +22,9 @@ class Repository(ext.Model):
 
     # Relationships
     owner = ext.relationship("User", back_populates="owner_of")
-    authorizations = ext.relationship("Authorization", back_populates="repository", cascade="all, delete")
-    tweets = ext.relationship("Composed", back_populates="repository", cascade="all, delete")
-    alerts = ext.relationship("Alert", back_populates="repository", cascade="all, delete")
+    authorizations = ext.relationship("Authorization", back_populates="repository")
+    tweets = ext.relationship("Composed", back_populates="repository")
+    alerts = ext.relationship("Alert", back_populates="repository")
     conditions = ext.relationship("Condition", back_populates="repository")
 
     def to_json(self):

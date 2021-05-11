@@ -9,12 +9,12 @@ from .Enums import ConditionType
 class Condition(ext.Model):
     __tablename__ = "condition"
     id = ext.Column(ext.Integer, primary_key=True)
-    type = ext.Column(ext.Enum(ConditionType), nullable=False)
+    type = ext.Column(ext.Enum(ConditionType), nullable=False, default=ConditionType.hashtag)
     content = ext.Column(ext.String, nullable=False)
     # FK
     repository_id = ext.Column(ext.Integer, ext.ForeignKey("repository.id", ondelete="CASCADE"))
     # Relationships
-    repository = ext.relationship("Repository", back_populates="conditions", cascade="all, delete")
+    repository = ext.relationship("Repository", back_populates="conditions")
     tweets = ext.relationship("Contains", back_populates="condition")
     operations = ext.relationship("BoolOperation", back_populates="condition")
 
