@@ -7,6 +7,7 @@
       <sourceFolder url="file://$MODULE_DIR$/nest_backend/test" isTestSource="true" />
       <sourceFolder url="file://$MODULE_DIR$/old_unittest_tests" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/docs/_build" />
+      <excludeFolder url="file://$MODULE_DIR$/.pytest_cache" />
     </content>
     <orderEntry type="jdk" jdkName="Poetry (backend)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
