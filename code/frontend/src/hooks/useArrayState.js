@@ -25,9 +25,8 @@ export default function useArrayState(def) {
             console.debug("Splicing ", position, " from ArrayState")
             setValue(
                 oldArray => {
-                    // TODO: Hope this doesn't break anything...
                     oldArray.splice(position, 1)
-                    return oldArray
+                    return [...oldArray]
                 },
             )
         },
