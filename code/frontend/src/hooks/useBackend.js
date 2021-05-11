@@ -4,7 +4,7 @@ import { useCallback, useState } from "react"
 /**
  * Hook which fetches data from the backend on the first render of a component.
  *
- * @param fetchData - The function to use when fetching data.
+ * @param fetchData - The function to use when fetching data, usually created by GlobalServer or GlobalUser.
  * @param method - The HTTP method to use.
  * @param path - The HTTP path to fetch the data at.
  * @param body - The body of the HTTP request (it will be JSONified before being sent).
