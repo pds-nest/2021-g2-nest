@@ -45,7 +45,6 @@
 
 .Title {
     grid-area: c;
-    font-size: large;
     align-self: flex-end;
 }
 
@@ -65,11 +64,17 @@
     display: grid;
     grid-template-columns: auto 1fr;
     grid-template-rows: 1fr 1fr;
+    grid-column-gap: 10px;
+    align-items: center;
+
+    font-size: small;
 
 }
 
 .Middle .Label {
     grid-column: 1;
+    text-align: right;
+    font-weight: bold;
 }
 
 .Middle .Value {

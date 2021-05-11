@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 /**
  * A long line displaying the summary of a certain entity, such as a repository or an user.
  *
+ * @param icon - The icon of the summary.
  * @param title - The title of the summary.
  * @param subtitle - The subtitle of the summary.
  * @param upperLabel - The label for the upper value.
@@ -20,7 +21,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
  * @constructor
  */
 export default function Summary(
-    { title, subtitle, upperLabel, upperValue, lowerLabel, lowerValue, buttons, className, ...props },
+    { icon, title, subtitle, upperLabel, upperValue, lowerLabel, lowerValue, buttons, className, ...props },
 ) {
     return (
         <div className={classNames(Style.Summary, className)} {...props}>

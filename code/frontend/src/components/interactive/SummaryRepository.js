@@ -1,12 +1,10 @@
 import React, { useContext } from "react"
-import Style from "./RepositorySummaryBase.module.css"
-import classNames from "classnames"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Button from "../base/Button"
 import { faArchive, faFolder, faFolderOpen, faPencilAlt, faTrash } from "@fortawesome/free-solid-svg-icons"
 import { useHistory } from "react-router"
 import useBackend from "../../hooks/useBackend"
 import ContextUser from "../../contexts/ContextUser"
+import Summary from "../base/Summary"
 
 
 /**
@@ -50,64 +48,47 @@ export default function SummaryRepository(
         await refresh()
     }
 
+    const buttons = <>
+        {canDelete ?
+         <Button
+             color={"Red"}
+             icon={faTrash}
+             onClick={onDeleteClick}
+         >
+             Delete
+         </Button>
+                   : null}
+        {canEdit ?
+         <Button
+             color={"Yellow"}
+             icon={faPencilAlt}
+             onClick={onEditClick}
+         >
+             Edit
+         </Button>
+                 : null}
+        {canArchive ?
+         <Button
+             color={"Grey"}
+             icon={faArchive}
+             onClick={repo.is_active ? onArchiveClick : onUnarchiveClick}
+         >
+             {repo.is_active ? "Archive" : "Unarchive"}
+         </Button>
+                    : null}
+    </>
+
     return (
-        <div className={classNames(Style.RepositorySummary, className)} {...props}>
-            <div className={Style.Left}>
-                <div className={Style.IconContainer}>
-                    <FontAwesomeIcon
-                        icon={repo.is_active ? faFolderOpen : faFolder}
-                    />
-                </div>
-                <div className={Style.Title}>
-                    {repo.name}
-                </div>
-                <div className={Style.Author}>
-                    {repo.owner.username}
-                </div>
-            </div>
-            <div className={Style.Middle}>
-                <div className={classNames(Style.MiddleLabel, Style.MiddleTop)}>
-                    Start:
-                </div>
-                <div className={classNames(Style.MiddleValue, Style.MiddleTop)}>
-                    {repo.start}
-                </div>
-                <div className={classNames(Style.MiddleLabel, Style.MiddleBot)}>
-                    End:
-                </div>
-                <div className={classNames(Style.MiddleValue, Style.MiddleBot)}>
-                    {repo.end}
-                </div>
-            </div>
-            <div className={Style.Right}>
-                {canDelete ?
-                 <Button
-                     color={"Red"}
-                     icon={faTrash}
-                     onClick={onDeleteClick}
-                 >
-                     Delete
-                 </Button>
-                           : null}
-                {canEdit ?
-                 <Button
-                     color={"Yellow"}
-                     icon={faPencilAlt}
-                     onClick={onEditClick}
-                 >
-                     Edit
-                 </Button>
-                         : null}
-                {canArchive ?
-                 <Button
-                     color={"Grey"}
-                     icon={faArchive}
-                     onClick={repo.is_active ? onArchiveClick : onUnarchiveClick}
-                 >
-                     {repo.is_active ? "Archive" : "Unarchive"}
-                 </Button>
-                            : null}
-            </div>
-        </div>
+        <Summary
+            icon={repo.is_active ? faFolderOpen : faFolder}
+            title={repo.name}
+            subtitle={repo.author}
+            upperLabel={"Start"}
+            upperValue={repo.start ? new Date(repo.start).toLocaleString() : null}
+            lowerLabel={"End"}
+            lowerValue={repo.end ? new Date(repo.end).toLocaleString() : null}
+            buttons={buttons}
+            {...props}
+        />
     )
 }
