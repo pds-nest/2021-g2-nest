@@ -18,6 +18,14 @@
     grid-area: a;
 }
 
-.RepositoryEditor {
+.CreateUser {
     grid-area: b;
+}
+
+.DeleteUser {
+    grid-area: c;
+}
+
+.UserList {
+    grid-area: d;
 }
