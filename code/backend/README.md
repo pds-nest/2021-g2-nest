@@ -26,6 +26,7 @@ Questo creerà un nuovo venv nelle cartelle interne di Poetry e vi installerà a
 ## Configurazione
 
 ### Configurazione del Database
+
 Dopo aver installato Postgres, è necessario creare un database dedicato all'applicazione (ad esempio PdSTest).  
 Se si desidera, si può anche creare un utente dedicato (l'utente postgres di default va benissimo).  
 Per configurare l'URI del database che N.E.S.T. andrà a impiegare, è necessario eseguire
@@ -37,6 +38,7 @@ export DATABASE_URI=postgresql://[postgresUser]:[postgresPassword]@localhost:[po
 Ora il database è pronto per l'uso.
 
 ### Altre variabili d'ambiente
+
 Questo ultimo passaggio è importante solo in un ambiente non-dev. La configurazione andrà a valore di default nel caso
 in cui queste variabili non siano definite.  
 Per terminare la configurazione, eseguire:

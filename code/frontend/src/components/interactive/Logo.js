@@ -1,4 +1,4 @@
-import React, {useContext} from "react"
+import React, { useContext } from "react"
 import Style from "./Logo.module.css"
 import LogoDark from "../../media/LogoDark.png"
 import LogoLight from "../../media/LogoLight.png"
@@ -19,9 +19,9 @@ import classNames from "classnames"
 export default function Logo({ className, ...props }) {
     // I have no idea why IntelliJ is complaining about this line
     // It's perfectly fine!
-    const {theme} = useContext(ContextTheme)
+    const { theme } = useContext(ContextTheme)
 
-    let logo;
+    let logo
     if(theme === "ThemeDark") {
         logo = LogoDark
     }

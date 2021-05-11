@@ -1,4 +1,4 @@
-import React  from "react"
+import React from "react"
 import Style from "./Button.module.css"
 import classNames from "classnames"
 import make_icon from "../../utils/make_icon"

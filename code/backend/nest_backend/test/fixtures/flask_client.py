@@ -40,7 +40,7 @@ def flask_client():
         ext.engine.execute(f"""DROP SCHEMA "{uniq_schema}" CASCADE;""")
 
 
-@pytest.fixture()
+@pytest.fixture(scope="package")
 def admin_access_token(flask_client):
     response = flask_client.post("/api/v1/login", json={
         "email": "admin@admin.com",
@@ -55,8 +55,17 @@ def admin_access_token(flask_client):
     return data["access_token"]
 
 
-@pytest.fixture()
-def user_access_token(flask_client):
+@pytest.fixture(scope="package")
+def user_exists(admin_headers, flask_client):
+    flask_client.post(f'/api/v1/users/', headers=admin_headers, json={
+        'email': 'utente_test@nest.com',
+        'password': 'password',
+        'username': 'utente_test'
+    })
+
+
+@pytest.fixture(scope="package")
+def user_access_token(flask_client, user_exists):
     response = flask_client.post("/api/v1/login", json={
         "email": "utente_test@nest.com",
         "password": "password"
@@ -70,23 +79,13 @@ def user_access_token(flask_client):
     return data["access_token"]
 
 
-@pytest.fixture()
+@pytest.fixture(scope="package")
 def admin_headers(admin_access_token):
     admin_headers = {'Authorization': f"Bearer {admin_access_token}"}
     return admin_headers
 
 
-@pytest.fixture()
+@pytest.fixture(scope="package")
 def user_headers(user_access_token):
     user_headers = {'Authorization': f"Bearer {user_access_token}"}
     return user_headers
-
-
-@pytest.fixture()
-def user_create(admin_headers, flask_client):
-    r = flask_client.post(f'/api/v1/users/', headers=admin_headers, json={
-        'email': 'utente_test@nest.com',
-        'password': 'password',
-        'username': 'utente_test'
-    })
-

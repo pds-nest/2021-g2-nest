@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React, { useState } from "react"
 import Style from "./InputWithIcon.module.css"
 import classNames from "classnames"
 import make_icon from "../../utils/make_icon"
@@ -17,7 +17,7 @@ import make_icon from "../../utils/make_icon"
  * @constructor
  */
 export default function InputWithIcon({ icon, className, ...props }) {
-    const [isFocused, setFocused] = useState(false);
+    const [isFocused, setFocused] = useState(false)
 
     return (
         <div className={classNames(Style.InputWithIcon, isFocused ? Style.Focused : null, className)}>

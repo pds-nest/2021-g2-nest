@@ -3,29 +3,23 @@ import Style from "./PageDashboard.module.css"
 import classNames from "classnames"
 import BoxHeader from "../components/base/BoxHeader"
 import RepositoryEditor from "../components/providers/RepositoryEditor"
-import useDataImmediately from "../hooks/useDataImmediately"
+import useBackendImmediately from "../hooks/useBackendImmediately"
 import ContextUser from "../contexts/ContextUser"
-import BoxAlert from "../components/base/BoxAlert"
-import RepositorySummaryBase from "../components/interactive/RepositorySummaryBase"
-import { faSearch } from "@fortawesome/free-solid-svg-icons"
-import Loading from "../components/base/Loading"
-import BoxFull from "../components/base/BoxFull"
+import renderContents from "../utils/renderContents"
+import { useParams } from "react-router"
 
 
-export default function PageEdit({ id, className, ...props }) {
-    const {fetchDataAuth} = useContext(ContextUser)
-    const {data, error} = useDataImmediately(fetchDataAuth, "GET", `/api/v1/repositories/${id}`)
-
-    let contents;
-    if(error) {
-        contents = <BoxAlert color={"Red"}>{error.toString()}</BoxAlert>
-    }
-    else if(data) {
-        contents = <RepositoryEditor className={Style.RepositoryEditor} {...data}/>
-    }
-    else {
-        contents = <Loading/>
-    }
+export default function PageEdit({ className, ...props }) {
+    const { id } = useParams()
+    const { fetchDataAuth } = useContext(ContextUser)
+    const repositoryRequest = useBackendImmediately(fetchDataAuth, "GET", `/api/v1/repositories/${id}`)
+    const contents = renderContents(
+        repositoryRequest,
+        data => {
+            console.debug("Data: ", data)
+            return <RepositoryEditor className={Style.RepositoryEditor} {...data}/>
+        },
+    )
 
     return (
         <div className={classNames(Style.PageHome, className)} {...props}>

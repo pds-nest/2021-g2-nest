@@ -14,7 +14,7 @@ export default function GlobalTheme({ children }) {
     const [theme, setTheme] = useLocalStorageState("theme", "ThemeDark")
 
     return (
-        <ContextTheme.Provider value={{theme, setTheme}}>
+        <ContextTheme.Provider value={{ theme, setTheme }}>
             {children}
         </ContextTheme.Provider>
     )

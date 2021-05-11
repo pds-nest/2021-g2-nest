@@ -4,20 +4,25 @@ from flask.testing import Client
 
 
 class TestUserGet:
-    def test_for_success(self, flask_client: Client, admin_headers):
+    def test_admin_user(self, flask_client: Client, admin_headers):
         r = flask_client.get(f'/api/v1/users/admin@admin.com', headers=admin_headers)
-        assert b'success' in r.data
+        assert r.json["result"] == "success"
+        assert r.json["data"]["email"] == "admin@admin.com"
+        assert r.json["data"]["isAdmin"] is True
+        assert r.json["data"]["username"] == "admin"
 
+    def test_non_existing_user(self, flask_client: Client, admin_headers):
+        r = flask_client.get(f'/api/v1/users/ciccio@dev.com', headers=admin_headers)
+        assert r.json["result"] == "failure"
+        assert r.json["msg"] == "Could not locate the user."
 
 # ritorna i dati di tutti gli utenti registrati
 class TestUserGetAll:
-    def test_for_success(self, flask_client: Client, admin_headers, user_create):
+    def test_for_success(self, flask_client: Client, admin_headers):
         r = flask_client.get(f'/api/v1/users/', headers=admin_headers)
         assert b'success' in r.data
 
-    # FIXME AssertionError in flask_client at line 63. Il test non riesce ad andare a buon fine
     def test_for_failure(self, flask_client: Client, user_headers):
-
         r = flask_client.get(f'/api/v1/users/', headers=user_headers)
         assert b'failure' in r.data
 
@@ -47,14 +52,12 @@ class TestUserDelete:
 
     # the admin tries to commit suicide
     def test_for_failure(self, flask_client: Client, admin_headers):
-
         r = flask_client.delete(f'/api/v1/users/admin@admin.com', headers=admin_headers)
         assert b'failure' in r.data
 
 
 class TestUserPatch:
-    def test_for_success(self, flask_client: Client, admin_headers, user_create):
-
+    def test_for_success(self, flask_client: Client, admin_headers):
         r = flask_client.patch(f'/api/v1/users/admin@admin.com', headers=admin_headers, json={
             'username': 'admin_patched'
         })
@@ -66,5 +69,3 @@ class TestUserPatch:
             'username': 'admin_patched'
         })
         assert b'failure' in r.data
-
-

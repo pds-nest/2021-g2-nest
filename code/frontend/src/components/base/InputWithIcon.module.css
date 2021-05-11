@@ -36,6 +36,8 @@
     /* Repeat properties overridden by <input> */
     font-family: var(--font-regular);
     color: var(--fg-field-off);
+
+    width: 100%;
 }
 
 

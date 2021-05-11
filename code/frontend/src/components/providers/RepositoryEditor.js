@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useState } from "react"
+import React, { useCallback, useContext, useMemo, useState } from "react"
 import ContextRepositoryEditor from "../../contexts/ContextRepositoryEditor"
 import useArrayState from "../../hooks/useArrayState"
 import Style from "./RepositoryEditor.module.css"
@@ -10,30 +10,30 @@ import BoxConditions from "../interactive/BoxConditions"
 import BoxRepositoryCreate from "../interactive/BoxRepositoryCreate"
 import classNames from "classnames"
 import ContextUser from "../../contexts/ContextUser"
-import useData from "../../hooks/useData"
+import useBackend from "../../hooks/useBackend"
 
 
 export default function RepositoryEditor({
-    id = null,
-    name,
-    is_active: isActive,
-    start,
-    end,
-    conditions,
-    evaluation_mode: evaluationMode,
-    className,
-}) {
+                                             id = null,
+                                             name,
+                                             is_active: isActive,
+                                             start,
+                                             end,
+                                             conditions,
+                                             evaluation_mode: evaluationMode,
+                                             className,
+                                         }) {
     /** The repository name. */
-    const [_name, setName] = useState(name)
+    const [_name, setName] = useState(name ?? "")
 
     /** The repository state (active / archived). */
-    const [_isActive, setActive] = useState(isActive)
+    const [_isActive, setActive] = useState(isActive ?? true)
 
     /** The start date of the data gathering. */
-    const [_start, setStart] = useState(start)
+    const [_start, setStart] = useState(start ?? new Date().toISOString())
 
     /** The end date of the data gathering. */
-    const [_end, setEnd] = useState(end)
+    const [_end, setEnd] = useState(end ?? new Date().toISOString())
 
     /** The conditions of the data gathering. */
     const {
@@ -47,25 +47,30 @@ export default function RepositoryEditor({
     /** The operator the conditions should be evaluated with. */
     const [_evaluationMode, setEvaluationMode] = useState(evaluationMode ?? 0)
 
-    const {user, fetchDataAuth} = useContext(ContextUser)
+    const { user, fetchDataAuth } = useContext(ContextUser)
 
     const method = id ? "PUT" : "POST"
     const path = id ? `/api/v1/repositories/${id}` : `/api/v1/repositories/`
-    const body = {
-        "conditions": _conditions,
-        "end": _end,
-        "evaluation_mode": _evaluationMode,
-        "id": id,
-        "is_active": true,
-        "name": _name,
-        "owner": user,
-        "start": _start,
-    }
-    const {error, loading, fetchNow} = useData(fetchDataAuth, method, path, body)
+    const body = useMemo(
+        () => {
+            return {
+                "conditions": _conditions,
+                "end": _end,
+                "evaluation_mode": _evaluationMode,
+                "id": id,
+                "is_active": true,
+                "name": _name,
+                "owner": user,
+                "start": _start,
+            }
+        },
+        [_conditions, _end, _evaluationMode, id, _name, user, _start],
+    )
+    const { error, loading, fetchNow } = useBackend(fetchDataAuth, method, path, body)
 
     const save = useCallback(
         () => {
-            if(id) {
+            if(!id) {
                 console.info("Creating new repository with body: ", body)
             }
             else {
@@ -73,7 +78,7 @@ export default function RepositoryEditor({
             }
             fetchNow()
         },
-        [id, body, fetchNow]
+        [id, body, fetchNow],
     )
 
 
@@ -89,7 +94,7 @@ export default function RepositoryEditor({
             setRawConditions(conditions)
             setEvaluationMode(evaluationMode)
         },
-        [name, isActive, start, end, conditions, evaluationMode]
+        [name, isActive, start, end, conditions, evaluationMode, setRawConditions],
     )
 
     /**
@@ -104,7 +109,7 @@ export default function RepositoryEditor({
             }
 
             // Check for duplicates
-            let duplicate = null;
+            let duplicate = null
             for(const oldCond of _conditions) {
                 if(newCond.type === oldCond.type && newCond.content === oldCond.content) {
                     duplicate = oldCond
@@ -119,21 +124,23 @@ export default function RepositoryEditor({
             console.debug("Adding ", newCond, " to the Repository Conditions")
             appendRawCondition(newCond)
         },
-        [_conditions]
+        [_conditions, appendRawCondition],
     )
 
     return (
-        <ContextRepositoryEditor.Provider value={{
-            id,
-            name: _name, setName,
-            isActive: _isActive, setActive,
-            start: _start, setStart,
-            end: _end, setEnd,
-            conditions: _conditions, addCondition, appendRawCondition, removeRawCondition, spliceRawCondition,
-            evaluationMode: _evaluationMode, setEvaluationMode,
-            error, loading,
-            revert, save,
-        }}>
+        <ContextRepositoryEditor.Provider
+            value={{
+                id,
+                name: _name, setName,
+                isActive: _isActive, setActive,
+                start: _start, setStart,
+                end: _end, setEnd,
+                conditions: _conditions, addCondition, appendRawCondition, removeRawCondition, spliceRawCondition,
+                evaluationMode: _evaluationMode, setEvaluationMode,
+                error, loading,
+                revert, save,
+            }}
+        >
             <div className={classNames(Style.RepositoryEditor, className)}>
                 <BoxConditionMap className={Style.SearchByZone}/>
                 <BoxConditionHashtag className={Style.SearchByHashtags}/>

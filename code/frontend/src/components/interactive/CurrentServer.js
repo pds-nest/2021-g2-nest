@@ -1,5 +1,5 @@
 import React, { useContext } from "react"
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faGlobe } from "@fortawesome/free-solid-svg-icons"
 import ContextServer from "../../contexts/ContextServer"
 
@@ -12,7 +12,7 @@ import ContextServer from "../../contexts/ContextServer"
  * @constructor
  */
 export default function CurrentServer({ ...props }) {
-    const {server} = useContext(ContextServer);
+    const { server } = useContext(ContextServer)
 
     return (
         <b {...props}>

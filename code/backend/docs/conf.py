@@ -12,6 +12,7 @@
 #
 import os
 import sys
+import pkg_resources
 sys.path.insert(0, os.path.abspath('..'))
 
 
@@ -20,6 +21,7 @@ sys.path.insert(0, os.path.abspath('..'))
 project = 'N.E.S.T. Backend'
 copyright = '2021, Gruppo 2'
 author = 'Gruppo 2'
+release = pkg_resources.get_distribution("nest_backend").version
 
 
 # -- General configuration ---------------------------------------------------
@@ -28,7 +30,9 @@ author = 'Gruppo 2'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    'sphinx.ext.autodoc',
+    "sphinx.ext.autodoc",
+    "sphinx.ext.intersphinx",
+    'sphinx.ext.todo',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -39,13 +43,19 @@ templates_path = ['_templates']
 # This pattern also affects html_static_path and html_extra_path.
 exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
+# Print warnings on the page
+keep_warnings = True
+
+# Display more warnings than usual
+nitpicky = True
+
 
 # -- Options for HTML output -------------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'alabaster'
+html_theme = 'sphinx_rtd_theme'
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
@@ -53,4 +63,31 @@ html_theme = 'alabaster'
 html_static_path = ['_static']
 
 
+# -- Intersphinx options -----------------------------------------------------
+
+intersphinx_mapping = {
+    "python": ("https://docs.python.org/3.8", None),
+    "sqlalchemy": ("https://docs.sqlalchemy.org/en/14/", None),
+    "flask": ("https://flask.palletsprojects.com/en/1.1.x/", None),
+    "flask_sqlalchemy": ("https://flask-sqlalchemy.palletsprojects.com/en/2.x/", None),
+    "flask_jwt_extended": ("https://flask-jwt-extended.readthedocs.io/en/stable/", None),
+    "flask_cors": ("https://flask-cors.readthedocs.io/en/latest/", None),
+    "requests": ("https://docs.python-requests.org/en/master/", None),
+    "apispec": ("https://apispec.readthedocs.io/en/latest/", None),
+    "marshmallow": ("https://marshmallow.readthedocs.io/en/stable/", None),
+    "tweepy": ("https://docs.tweepy.org/en/latest/", None),
+    "nltk": ("https://www.nltk.org/", None),
+}
+
+
 # -- Extension configuration -------------------------------------------------
+
+# -- Automodule settings -----------------------------------------------------
+
+autodoc_default_options = {
+    'members': True,
+    'member-order': 'bysource',
+    'special-members': '__init__',
+    'undoc-members': True,
+    'show-inheritance': True,
+}

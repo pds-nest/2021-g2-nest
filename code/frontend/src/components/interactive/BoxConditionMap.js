@@ -1,22 +1,21 @@
-import React, { useCallback, useState, useRef, useMemo, useEffect } from "react"
+import React, { useCallback, useEffect, useState } from "react"
 import BoxFull from "../base/BoxFull"
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faMapPin, faPlus } from "@fortawesome/free-solid-svg-icons"
-import FormInline from "../base/FormInline"
 import Style from "./BoxConditionMap.module.css"
 import ButtonIconOnly from "../base/ButtonIconOnly"
-import { MapContainer, Marker, TileLayer } from "react-leaflet"
+import { MapContainer, TileLayer } from "react-leaflet"
 import useRepositoryEditor from "../../hooks/useRepositoryEditor"
 import Condition from "../../utils/Condition"
 
 
-const STARTING_POSITION = {lat: 41.89309, lng: 12.48289}
+const STARTING_POSITION = { lat: 41.89309, lng: 12.48289 }
 const STARTING_ZOOM = 3
 
 // FIXME: this only works correctly at the equator!
 /**
  * https://wiki.openstreetmap.org/wiki/Zoom_levels
-  */
+ */
 const MPIXEL = [
     156412,
     78206,
@@ -53,25 +52,27 @@ export default function BoxConditionMap({ ...props }) {
     const [position, setPosition] = useState(STARTING_POSITION)
     const [zoom, setZoom] = useState(STARTING_ZOOM)
     const [map, setMap] = useState(null)
-    const {addCondition} = useRepositoryEditor()
+    const { addCondition } = useRepositoryEditor()
 
     const onMove = useCallback(
         () => {
             setPosition(map.getCenter())
         },
-        [map]
+        [map],
     )
 
     const onZoom = useCallback(
         () => {
             setZoom(map.getZoom())
         },
-        [map]
+        [map],
     )
 
     useEffect(
         () => {
-            if(map === null) return
+            if(map === null) {
+                return
+            }
 
             map.on("move", onMove)
             map.on("zoom", onZoom)
@@ -80,7 +81,7 @@ export default function BoxConditionMap({ ...props }) {
                 map.off("zoom", onZoom)
             }
         },
-        [map]
+        [map, onMove, onZoom],
     )
 
     const onButtonClick = () => {
@@ -90,7 +91,7 @@ export default function BoxConditionMap({ ...props }) {
 
         addCondition(new Condition(
             "COORDINATES",
-            `< ${radius} ${position.lat} ${position.lng}`
+            `< ${radius} ${position.lat} ${position.lng}`,
         ))
         setPosition(STARTING_POSITION)
     }

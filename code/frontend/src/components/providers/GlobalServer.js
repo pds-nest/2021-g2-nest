@@ -75,7 +75,7 @@ export default function GlobalServer({ children }) {
     }, [server])
 
     return (
-        <ContextServer.Provider value={{server, setServer, fetchData}}>
+        <ContextServer.Provider value={{ server, setServer, fetchData }}>
             {children}
         </ContextServer.Provider>
     )

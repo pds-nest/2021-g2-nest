@@ -7,17 +7,17 @@
  * @returns {(function(): void)|*}
  */
 export default function goToOnSuccess(func, history, destination) {
-    return ([...args]) => {
-        let success = false
+    return (...args) => {
+        let result
         try {
-            func(...args)
-            success = true
+            console.debug("Trying to run: ", func)
+            result = func(...args)
+            history.push(destination)
+            return result
         }
         catch(e) {
-            success = false
-        }
-        if(success) {
-            history.push(destination)
+            console.debug("Failed to run ", func, ", not doing anything.")
+            throw e
         }
     }
 }

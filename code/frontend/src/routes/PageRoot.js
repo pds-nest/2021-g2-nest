@@ -4,7 +4,7 @@ import { Redirect } from "react-router"
 
 
 export default function PageRoot() {
-    const {state} = useContext(ContextUser)
+    const { state } = useContext(ContextUser)
 
     if(!state) {
         return <Redirect to={"/login"}/>

@@ -12,7 +12,7 @@ import ContextUser from "../../contexts/ContextUser"
  * @constructor
  */
 export default function LoggedInUser({ ...props }) {
-    const {user} = useContext(ContextUser);
+    const { user } = useContext(ContextUser)
 
     if(!user) {
         return (

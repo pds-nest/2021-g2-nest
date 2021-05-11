@@ -3,11 +3,13 @@ import BoxFull from "../base/BoxFull"
 import FormLabelled from "../base/FormLabelled"
 import FormLabel from "../base/formparts/FormLabel"
 import InputWithIcon from "../base/InputWithIcon"
-import { faFolder, faPencilAlt, faPlus } from "@fortawesome/free-solid-svg-icons"
+import { faBackward, faFolder, faPencilAlt, faPlus } from "@fortawesome/free-solid-svg-icons"
 import Radio from "../base/Radio"
 import Button from "../base/Button"
 import useRepositoryEditor from "../../hooks/useRepositoryEditor"
 import FormAlert from "../base/formparts/FormAlert"
+import goToOnSuccess from "../../utils/goToOnSuccess"
+import { useHistory } from "react-router"
 
 
 /**
@@ -25,12 +27,20 @@ export default function BoxRepositoryCreate({ ...props }) {
         name,
         setName,
         save,
+        revert,
         error,
     } = useRepositoryEditor()
 
+    const history = useHistory()
+
     return (
         <BoxFull header={"Create repository"} {...props}>
-            <FormLabelled onSubmit={e => {e.preventDefault(); save()}}>
+            <FormLabelled
+                onSubmit={e => {
+                    e.preventDefault()
+                    save()
+                }}
+            >
                 <FormLabel htmlFor={"repo-name"} text={"Repository name"}>
                     <InputWithIcon
                         id={"repo-name"}
@@ -46,7 +56,7 @@ export default function BoxRepositoryCreate({ ...props }) {
                             onChange={() => setEvaluationMode(0)}
                             checked={evaluationMode === 0}
                         />
-                        At least one filter
+                        One filter
                     </label>
                     &nbsp;
                     <label>
@@ -59,30 +69,38 @@ export default function BoxRepositoryCreate({ ...props }) {
                     </label>
                 </FormLabel>
                 {error ?
-                    <FormAlert color={"Red"}>
-                        {error.toString()}
-                    </FormAlert>
-                 : null}
+                 <FormAlert color={"Red"}>
+                     {error.toString()}
+                 </FormAlert>
+                       : null}
                 {id ?
+                 <>
                      <Button
-                         style={{"gridColumn": "1 / 3"}}
+                         style={{ "gridColumn": "1" }}
+                         icon={faBackward}
+                         color={"Red"}
+                         onClick={() => revert()}
+                     >
+                         Rollback edits
+                     </Button>
+                     <Button
+                         style={{ "gridColumn": "2" }}
                          icon={faPencilAlt}
                          color={"Green"}
-                         goTo={"/repositories"}
-                         onClick={e => save()}
+                         onClick={_ => goToOnSuccess(save, history, "/repositories")()}
                      >
-                         Edit repository
+                         Save changes
                      </Button>
-                :
-                    <Button
-                        style={{"gridColumn": "1 / 3"}}
-                        icon={faPlus}
-                        color={"Green"}
-                        goTo={"/repositories"}
-                        onClick={e => save()}
-                    >
-                        Create repository
-                    </Button>
+                 </>
+                    :
+                 <Button
+                     style={{ "gridColumn": "1 / 3" }}
+                     icon={faPlus}
+                     color={"Green"}
+                     onClick={_ => goToOnSuccess(save, history, "/repositories")()}
+                 >
+                     Create repository
+                 </Button>
                 }
 
             </FormLabelled>

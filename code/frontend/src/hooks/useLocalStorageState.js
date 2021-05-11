@@ -28,7 +28,7 @@ export default function useLocalStorageState(key, def) {
         }
     }
 
-    const [value, setValue] = useState(load());
+    const [value, setValue] = useState(load())
 
     /**
      * Save a value to the {@link localStorage}.
@@ -43,7 +43,7 @@ export default function useLocalStorageState(key, def) {
                 console.warn(`Can't save ${key}; localStorage doesn't seem to be available...`)
             }
         },
-        [key]
+        [key],
     )
 
     /**
@@ -54,7 +54,7 @@ export default function useLocalStorageState(key, def) {
             setValue(value)
             save(value)
         },
-        [save]
+        [save],
     )
 
     return [value, setAndSave]

@@ -15,7 +15,10 @@ import classNames from "classnames"
  */
 export default function TextArea({ resize, children, className, ...props }) {
     return (
-        <textarea className={classNames(Style.TextArea, resize ? Style.TextAreaResizable : Style.TextAreaNoResize, className)} {...props}>
+        <textarea
+            className={classNames(Style.TextArea, resize
+                                                  ? Style.TextAreaResizable
+                                                  : Style.TextAreaNoResize, className)} {...props}>
             {children}
         </textarea>
     )
