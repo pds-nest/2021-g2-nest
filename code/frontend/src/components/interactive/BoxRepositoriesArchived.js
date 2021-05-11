@@ -25,7 +25,7 @@ export default function BoxRepositoriesArchived({ repositories, refresh, ...prop
                 repo={repo}
                 icon={faSearch}
                 refresh={refresh}
-                canArchive={true}
+                canArchive={false}
                 canEdit={false}
                 canDelete={repo["owner"]["username"] === user["username"]}
             />
