@@ -3,7 +3,7 @@ import BoxFull from "../base/BoxFull"
 import FormLabelled from "../base/FormLabelled"
 import FormLabel from "../base/formparts/FormLabel"
 import InputWithIcon from "../base/InputWithIcon"
-import { faFolder, faPencilAlt, faPlus } from "@fortawesome/free-solid-svg-icons"
+import { faBackward, faFolder, faPencilAlt, faPlus } from "@fortawesome/free-solid-svg-icons"
 import Radio from "../base/Radio"
 import Button from "../base/Button"
 import useRepositoryEditor from "../../hooks/useRepositoryEditor"
@@ -27,6 +27,7 @@ export default function BoxRepositoryCreate({ ...props }) {
         name,
         setName,
         save,
+        revert,
         error,
     } = useRepositoryEditor()
 
@@ -55,7 +56,7 @@ export default function BoxRepositoryCreate({ ...props }) {
                             onChange={() => setEvaluationMode(0)}
                             checked={evaluationMode === 0}
                         />
-                        At least one filter
+                        One filter
                     </label>
                     &nbsp;
                     <label>
@@ -73,20 +74,30 @@ export default function BoxRepositoryCreate({ ...props }) {
                  </FormAlert>
                        : null}
                 {id ?
-                 <Button
-                     style={{ "gridColumn": "1 / 3" }}
-                     icon={faPencilAlt}
-                     color={"Green"}
-                     onClick={e => goToOnSuccess(save, history, "/repositories")}
-                 >
-                     Edit repository
-                 </Button>
+                 <>
+                     <Button
+                         style={{ "gridColumn": "1" }}
+                         icon={faBackward}
+                         color={"Red"}
+                         onClick={e => revert()}
+                     >
+                         Rollback edits
+                     </Button>
+                     <Button
+                         style={{ "gridColumn": "2" }}
+                         icon={faPencilAlt}
+                         color={"Green"}
+                         onClick={_ => goToOnSuccess(save, history, "/repositories")()}
+                     >
+                         Save changes
+                     </Button>
+                 </>
                     :
                  <Button
                      style={{ "gridColumn": "1 / 3" }}
                      icon={faPlus}
                      color={"Green"}
-                     onClick={e => goToOnSuccess(save, history, "/repositories")}
+                     onClick={_ => goToOnSuccess(save, history, "/repositories")()}
                  >
                      Create repository
                  </Button>

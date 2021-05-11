@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useState } from "react"
+import React, { useCallback, useContext, useMemo, useState } from "react"
 import ContextRepositoryEditor from "../../contexts/ContextRepositoryEditor"
 import useArrayState from "../../hooks/useArrayState"
 import Style from "./RepositoryEditor.module.css"
@@ -51,21 +51,26 @@ export default function RepositoryEditor({
 
     const method = id ? "PUT" : "POST"
     const path = id ? `/api/v1/repositories/${id}` : `/api/v1/repositories/`
-    const body = {
-        "conditions": _conditions,
-        "end": _end,
-        "evaluation_mode": _evaluationMode,
-        "id": id,
-        "is_active": true,
-        "name": _name,
-        "owner": user,
-        "start": _start,
-    }
+    const body = useMemo(
+        () => {
+            return {
+                "conditions": _conditions,
+                "end": _end,
+                "evaluation_mode": _evaluationMode,
+                "id": id,
+                "is_active": true,
+                "name": _name,
+                "owner": user,
+                "start": _start,
+            }
+        },
+        [_conditions, _end, _evaluationMode, id, _name, user, _start],
+    )
     const { error, loading, fetchNow } = useBackend(fetchDataAuth, method, path, body)
 
     const save = useCallback(
         () => {
-            if(id) {
+            if(!id) {
                 console.info("Creating new repository with body: ", body)
             }
             else {
@@ -89,7 +94,7 @@ export default function RepositoryEditor({
             setRawConditions(conditions)
             setEvaluationMode(evaluationMode)
         },
-        [name, isActive, start, end, conditions, evaluationMode],
+        [name, isActive, start, end, conditions, evaluationMode, setRawConditions],
     )
 
     /**
@@ -119,7 +124,7 @@ export default function RepositoryEditor({
             console.debug("Adding ", newCond, " to the Repository Conditions")
             appendRawCondition(newCond)
         },
-        [_conditions],
+        [_conditions, appendRawCondition],
     )
 
     return (

@@ -41,7 +41,6 @@ export default function ConditionBadge({ ...condition }) {
     let displayedContent = content
     if(type === 3) {
         let split = displayedContent.split(" ")
-        let type = split[0]
         let radius = Number.parseFloat(split[1]).toFixed(0)
         let radiusType = "m"
         if(radius >= 2000) {

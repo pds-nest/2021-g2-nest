@@ -81,7 +81,7 @@ export default function BoxConditionMap({ ...props }) {
                 map.off("zoom", onZoom)
             }
         },
-        [map],
+        [map, onMove, onZoom],
     )
 
     const onButtonClick = () => {

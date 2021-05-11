@@ -59,22 +59,30 @@
 .Middle {
     flex-grow: 1;
     height: 60px;
+    padding: 5px;
 
     background-color: var(--bg-light);
 
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: stretch;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: 1fr 1fr;
 
 }
 
-.StartDate {
-
+.MiddleLabel {
+    grid-column: 1;
 }
 
-.EndDate {
+.MiddleValue {
+    grid-column: 2;
+}
 
+.MiddleTop {
+    grid-row: 1;
+}
+
+.MiddleBot {
+    grid-row: 2;
 }
 
 .Right {

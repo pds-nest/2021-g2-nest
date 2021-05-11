@@ -6,14 +6,19 @@ import RepositoryEditor from "../components/providers/RepositoryEditor"
 import useBackendImmediately from "../hooks/useBackendImmediately"
 import ContextUser from "../contexts/ContextUser"
 import renderContents from "../utils/renderContents"
+import { useParams } from "react-router"
 
 
-export default function PageEdit({ id, className, ...props }) {
+export default function PageEdit({ className, ...props }) {
+    const { id } = useParams()
     const { fetchDataAuth } = useContext(ContextUser)
     const repositoryRequest = useBackendImmediately(fetchDataAuth, "GET", `/api/v1/repositories/${id}`)
     const contents = renderContents(
         repositoryRequest,
-        data => <RepositoryEditor className={Style.RepositoryEditor} {...data}/>,
+        data => {
+            console.debug("Data: ", data)
+            return <RepositoryEditor className={Style.RepositoryEditor} {...data}/>
+        },
     )
 
     return (

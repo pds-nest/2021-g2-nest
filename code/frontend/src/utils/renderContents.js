@@ -10,7 +10,7 @@ export default function renderContents(requestHookResults, renderFunction) {
         return <Loading/>
     }
     if(error) {
-        return <BoxAlert color={"Red"}>{error}</BoxAlert>
+        return <BoxAlert color={"Red"}>{error.toString()}</BoxAlert>
     }
     if(data) {
         return renderFunction(data)

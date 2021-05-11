@@ -70,11 +70,17 @@ export default function RepositorySummaryBase(
                 </div>
             </div>
             <div className={Style.Middle}>
-                <div className={Style.StartDate}>
-                    Start: {start}
+                <div className={classNames(Style.MiddleLabel, Style.MiddleTop)}>
+                    Start:
                 </div>
-                <div className={Style.EndDate}>
-                    End: {end}
+                <div className={classNames(Style.MiddleValue, Style.MiddleTop)}>
+                    {start}
+                </div>
+                <div className={classNames(Style.MiddleLabel, Style.MiddleBot)}>
+                    End:
+                </div>
+                <div className={classNames(Style.MiddleValue, Style.MiddleBot)}>
+                    {end}
                 </div>
             </div>
             <div className={Style.Right}>
