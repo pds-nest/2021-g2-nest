@@ -58,7 +58,7 @@
 .Middle {
     flex-grow: 1;
     height: 60px;
-    padding: 5px;
+    padding: 5px 20px;
 
     background-color: var(--bg-light);
 
