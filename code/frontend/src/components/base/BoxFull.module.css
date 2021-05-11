@@ -12,8 +12,8 @@
     font-size: x-large;
     font-family: var(--font-title);
 
-    flex-shrink: 0;
-    flex-grow: 0;
+    white-space: nowrap;
+    overflow-x: hidden;
 }
 
 .BoxBody {
@@ -26,6 +26,5 @@
     font-size: medium;
     font-family: var(--font-regular);
 
-    flex-shrink: 0;
     flex-grow: 1;
 }
