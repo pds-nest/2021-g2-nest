@@ -21,40 +21,40 @@ class TestUserGet:
 class TestUserGetAll:
     def test_for_success(self, flask_client: Client, admin_headers):
         r = flask_client.get(f'/api/v1/users/', headers=admin_headers)
-        assert b'success' in r.data
+        assert r.json["result"] == "success"
 
     def test_for_failure(self, flask_client: Client, user_headers):
         r = flask_client.get(f'/api/v1/users/', headers=user_headers)
-        assert b'failure' in r.data
+        assert r.json["result"] == "failure"
 
 
 class TestUserAdd:
-    def test_for_success(self, flask_client: Client, admin_headers):
+    def test_valid_user(self, flask_client: Client, admin_headers):
         r = flask_client.post(f'/api/v1/users/', headers=admin_headers, json={
             'email': 'utente1_test@nest.com',
             'password': 'password',
             'username': 'utente_test'
         })
-        assert b'success' in r.data
+        assert r.json["result"] == "success"
 
-    def test_for_failure(self, flask_client: Client, user_headers):
+    def test_existing_user(self, flask_client: Client, user_headers):
         r = flask_client.post(f'/api/v1/users/', headers=user_headers, json={
             'email': 'utente_test@nest.com',
             'password': 'password',
             'username': 'utente_test'
         })
-        assert b'failure' in r.data
+        assert r.json["result"] == "failure"
 
 
 class TestUserDelete:
-    def test_for_success(self, flask_client: Client, admin_headers):
+    def test_valid_user(self, flask_client: Client, admin_headers):
         r = flask_client.delete(f'/api/v1/users/utente1_test@nest.com', headers=admin_headers)
-        assert b'success' in r.data
+        assert r.status_code == 204
 
     # the admin tries to commit suicide
-    def test_for_failure(self, flask_client: Client, admin_headers):
+    def test_himself(self, flask_client: Client, admin_headers):
         r = flask_client.delete(f'/api/v1/users/admin@admin.com', headers=admin_headers)
-        assert b'failure' in r.data
+        assert r.json["result"] == "failure"
 
 
 class TestUserPatch:
@@ -62,11 +62,10 @@ class TestUserPatch:
         r = flask_client.patch(f'/api/v1/users/admin@admin.com', headers=admin_headers, json={
             'username': 'admin_patched'
         })
-        assert b'success' in r.data
+        assert r.json["result"] == "success"
 
-    # FIXME AssertionError in flask_client at line 63. Il test non riesce ad andare a buon fine
-    def test_for_failure(self, flask_client: Client, user_headers):
+    def test_not_authorized(self, flask_client: Client, user_headers):
         r = flask_client.patch(f'/api/v1/users/admin@admin.com', headers=user_headers, json={
             'username': 'admin_patched'
         })
-        assert b'failure' in r.data
+        assert r.json["result"] == "failure"
