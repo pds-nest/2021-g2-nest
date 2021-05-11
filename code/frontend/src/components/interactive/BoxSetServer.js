@@ -15,7 +15,7 @@ import ContextServer from "../../contexts/ContextServer"
  * @constructor
  */
 export default function BoxSetServer({ ...props }) {
-    const {server, setServer} = useContext(ContextServer);
+    const { server, setServer } = useContext(ContextServer)
 
     return (
         <BoxFull header={"Choose server"} {...props}>

@@ -10,10 +10,10 @@ import Loading from "../components/base/Loading"
 
 
 export default function PageRepositories({ children, className, ...props }) {
-    const {fetchDataAuth} = useContext(ContextUser)
-    const {data, error, fetchNow: refresh} = useDataImmediately(fetchDataAuth, "GET", "/api/v1/repositories/")
+    const { fetchDataAuth } = useContext(ContextUser)
+    const { data, error, fetchNow: refresh } = useDataImmediately(fetchDataAuth, "GET", "/api/v1/repositories/")
 
-    let contents;
+    let contents
     if(error) {
         contents = <BoxAlert color={"Red"}>{error}</BoxAlert>
     }

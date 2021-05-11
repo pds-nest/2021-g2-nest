@@ -15,9 +15,9 @@ import ContextUser from "../../contexts/ContextUser"
  * @constructor
  */
 export default function BoxRepositoriesActive({ repositories, refresh, ...props }) {
-    const {user} = useContext(ContextUser)
+    const { user } = useContext(ContextUser)
 
-    let contents;
+    let contents
     if(repositories.length > 0) {
         contents = repositories.map(repo => (
             <RepositorySummaryBase

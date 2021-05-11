@@ -6,8 +6,7 @@
         "b d"
         "b e"
         "b f"
-        "b g"
-;
+        "b g";
     grid-template-columns: 400px 1fr;
     grid-template-rows: auto auto auto 1fr auto;
 

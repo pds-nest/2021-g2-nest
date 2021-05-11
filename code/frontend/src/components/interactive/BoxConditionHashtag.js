@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import BoxFull from "../base/BoxFull"
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faHashtag, faPlus } from "@fortawesome/free-solid-svg-icons"
 import InputWithIcon from "../base/InputWithIcon"
 import FormInline from "../base/FormInline"
@@ -24,7 +24,7 @@ const INVALID_HASHTAG_CHARACTERS = /([^a-z0-9_\u00c0-\u00d6\u00d8-\u00f6\u00f8-\
  */
 export default function BoxConditionHashtag({ ...props }) {
     const [hashtag, setHashtag] = useState("")
-    const {addCondition} = useRepositoryEditor()
+    const { addCondition } = useRepositoryEditor()
 
     const onInputChange = event => {
         let text = event.target.value

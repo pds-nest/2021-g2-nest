@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import BoxFull from "../base/BoxFull"
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
-import { faAt, faClock, faPlus } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faClock, faPlus } from "@fortawesome/free-solid-svg-icons"
 import InputWithIcon from "../base/InputWithIcon"
 import FormInline from "../base/FormInline"
 import Style from "./BoxConditionDatetime.module.css"
@@ -26,7 +26,7 @@ const INVALID_USER_CHARACTERS = /[^0-9TZ:+-]/g
 export default function BoxConditionDatetime({ ...props }) {
     const [datetime, setDatetime] = useState("")
     const [ba, setBa] = useState(false)
-    const {addCondition} = useRepositoryEditor()
+    const { addCondition } = useRepositoryEditor()
 
     const onInputChange = event => {
         let text = event.target.value
@@ -38,7 +38,7 @@ export default function BoxConditionDatetime({ ...props }) {
     const onButtonClick = e => {
         const naive = new Date(datetime)
         if(naive.toString() === "Invalid Date") {
-            console.debug("Refusing to add condition: ", naive , " is an Invalid Date.")
+            console.debug("Refusing to add condition: ", naive, " is an Invalid Date.")
             return
         }
         const aware = convertToLocalISODate(naive)

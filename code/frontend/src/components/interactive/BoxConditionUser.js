@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import BoxFull from "../base/BoxFull"
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faAt, faPlus } from "@fortawesome/free-solid-svg-icons"
 import InputWithIcon from "../base/InputWithIcon"
 import FormInline from "../base/FormInline"
@@ -23,7 +23,7 @@ const INVALID_USER_CHARACTERS = /[^a-zA-Z0-9]/g
  */
 export default function BoxConditionUser({ ...props }) {
     const [user, setUser] = useState("")
-    const {addCondition} = useRepositoryEditor()
+    const { addCondition } = useRepositoryEditor()
 
     const onInputChange = event => {
         let text = event.target.value

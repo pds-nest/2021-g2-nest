@@ -1,7 +1,7 @@
 import React, { useContext } from "react"
 import Style from "./ConditionBadge.module.css"
 import classNames from "classnames"
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import ButtonSmallX from "../base/ButtonSmallX"
 import { faAt, faClock, faGlobe, faHashtag, faMapPin } from "@fortawesome/free-solid-svg-icons"
 import ContextRepositoryEditor from "../../contexts/ContextRepositoryEditor"
@@ -36,7 +36,7 @@ export default function ConditionBadge({ ...condition }) {
     const { id, type, content } = condition
     const color = CONDITION_COLORS[type]
     const icon = CONDITION_ICONS[type]
-    const {removeRawCondition} = useContext(ContextRepositoryEditor)
+    const { removeRawCondition } = useContext(ContextRepositoryEditor)
 
     let displayedContent = content
     if(type === 3) {
@@ -65,10 +65,12 @@ export default function ConditionBadge({ ...condition }) {
                 {displayedContent}
             </div>
             <div>
-                <ButtonSmallX onClick={() => {
-                    console.debug(`Removing Condition: `, condition)
-                    removeRawCondition(condition)
-                }}/>
+                <ButtonSmallX
+                    onClick={() => {
+                        console.debug(`Removing Condition: `, condition)
+                        removeRawCondition(condition)
+                    }}
+                />
             </div>
         </div>
     )

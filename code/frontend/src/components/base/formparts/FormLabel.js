@@ -16,7 +16,7 @@ import Style from "./FormLabel.module.css"
 export default function FormLabel({ children, text, htmlFor }) {
     return (
         <Fragment>
-            <label htmlFor={htmlFor} className={Style.LabelText} >
+            <label htmlFor={htmlFor} className={Style.LabelText}>
                 {text}
             </label>
             <div className={Style.LabelContent}>

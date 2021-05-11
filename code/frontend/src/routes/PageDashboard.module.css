@@ -3,8 +3,7 @@
 
     grid-template-areas:
         "a"
-        "b"
-    ;
+        "b";
     grid-template-rows: auto 1fr;
 
     grid-gap: 10px;

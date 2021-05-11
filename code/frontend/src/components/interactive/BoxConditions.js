@@ -12,7 +12,7 @@ import useRepositoryEditor from "../../hooks/useRepositoryEditor"
  * @constructor
  */
 export default function BoxConditions({ ...props }) {
-    const {conditions} = useRepositoryEditor()
+    const { conditions } = useRepositoryEditor()
 
     const badges = conditions.map((cond, pos) => <ConditionBadge key={pos} {...cond}/>)
 

@@ -17,7 +17,7 @@ import CurrentServer from "./CurrentServer"
  * @constructor
  */
 export default function BoxLoggedIn({ ...props }) {
-    const {logout} = useContext(ContextUser)
+    const { logout } = useContext(ContextUser)
     const history = useHistory()
 
     return (
@@ -27,10 +27,12 @@ export default function BoxLoggedIn({ ...props }) {
                     You are currently logged in at <CurrentServer/> as <LoggedInUser/>.
                 </div>
                 <div>
-                    <Button color={"Red"} onClick={() => {
+                    <Button
+                        color={"Red"} onClick={() => {
                         logout()
                         history.push("/login")
-                    }} icon={faSignOutAlt}>Logout</Button>
+                    }} icon={faSignOutAlt}
+                    >Logout</Button>
                 </div>
             </div>
         </BoxFull>

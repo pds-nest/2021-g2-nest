@@ -1,4 +1,4 @@
-import React  from "react"
+import React from "react"
 import { Route, Switch } from "react-router"
 import PageLogin from "./routes/PageLogin"
 import PageRepositories from "./routes/PageRepositories"

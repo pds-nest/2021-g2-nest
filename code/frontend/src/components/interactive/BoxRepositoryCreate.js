@@ -34,7 +34,12 @@ export default function BoxRepositoryCreate({ ...props }) {
 
     return (
         <BoxFull header={"Create repository"} {...props}>
-            <FormLabelled onSubmit={e => {e.preventDefault(); save()}}>
+            <FormLabelled
+                onSubmit={e => {
+                    e.preventDefault()
+                    save()
+                }}
+            >
                 <FormLabel htmlFor={"repo-name"} text={"Repository name"}>
                     <InputWithIcon
                         id={"repo-name"}
@@ -63,28 +68,28 @@ export default function BoxRepositoryCreate({ ...props }) {
                     </label>
                 </FormLabel>
                 {error ?
-                    <FormAlert color={"Red"}>
-                        {error.toString()}
-                    </FormAlert>
-                 : null}
+                 <FormAlert color={"Red"}>
+                     {error.toString()}
+                 </FormAlert>
+                       : null}
                 {id ?
-                     <Button
-                         style={{"gridColumn": "1 / 3"}}
-                         icon={faPencilAlt}
-                         color={"Green"}
-                         onClick={e => goToOnSuccess(save, history, "/repositories")}
-                     >
-                         Edit repository
-                     </Button>
-                :
-                    <Button
-                        style={{"gridColumn": "1 / 3"}}
-                        icon={faPlus}
-                        color={"Green"}
-                        onClick={e => goToOnSuccess(save, history, "/repositories")}
-                    >
-                        Create repository
-                    </Button>
+                 <Button
+                     style={{ "gridColumn": "1 / 3" }}
+                     icon={faPencilAlt}
+                     color={"Green"}
+                     onClick={e => goToOnSuccess(save, history, "/repositories")}
+                 >
+                     Edit repository
+                 </Button>
+                    :
+                 <Button
+                     style={{ "gridColumn": "1 / 3" }}
+                     icon={faPlus}
+                     color={"Green"}
+                     onClick={e => goToOnSuccess(save, history, "/repositories")}
+                 >
+                     Create repository
+                 </Button>
                 }
 
             </FormLabelled>

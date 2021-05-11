@@ -1,7 +1,7 @@
 import React, { useContext } from "react"
 import Style from "./RepositorySummaryBase.module.css"
 import classNames from "classnames"
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Button from "../base/Button"
 import { faArchive, faPencilAlt, faTrash } from "@fortawesome/free-solid-svg-icons"
 import { useHistory } from "react-router"
@@ -29,13 +29,13 @@ import ContextUser from "../../contexts/ContextUser"
  * @constructor
  */
 export default function RepositorySummaryBase(
-    { id, refresh, owner, icon, name, start, end, is_active, canDelete, canEdit, canArchive, className, ...props }
+    { id, refresh, owner, icon, name, start, end, is_active, canDelete, canEdit, canArchive, className, ...props },
 ) {
-    const {fetchDataAuth} = useContext(ContextUser)
+    const { fetchDataAuth } = useContext(ContextUser)
     const history = useHistory()
-    const {fetchNow: archiveThis} = useData(fetchDataAuth, "PATCH", `/api/v1/repositories/${id}`, {"close": true})
-    const {fetchNow: unarchiveThis} = useData(fetchDataAuth, "PATCH", `/api/v1/repositories/${id}`, {"open": true})
-    const {fetchNow: deletThis} = useData(fetchDataAuth, "DELETE", `/api/v1/repositories/${id}`)
+    const { fetchNow: archiveThis } = useData(fetchDataAuth, "PATCH", `/api/v1/repositories/${id}`, { "close": true })
+    const { fetchNow: unarchiveThis } = useData(fetchDataAuth, "PATCH", `/api/v1/repositories/${id}`, { "open": true })
+    const { fetchNow: deletThis } = useData(fetchDataAuth, "DELETE", `/api/v1/repositories/${id}`)
 
     const onEditClick = event => {
         history.push(`/repositories/${id}/edit`)
@@ -79,32 +79,32 @@ export default function RepositorySummaryBase(
             </div>
             <div className={Style.Right}>
                 {canDelete ?
-                    <Button
-                        color={"Red"}
-                        icon={faTrash}
-                        onClick={onDeleteClick}
-                    >
-                        Delete
-                    </Button>
-                : null}
+                 <Button
+                     color={"Red"}
+                     icon={faTrash}
+                     onClick={onDeleteClick}
+                 >
+                     Delete
+                 </Button>
+                           : null}
                 {canEdit ?
-                    <Button
-                        color={"Yellow"}
-                        icon={faPencilAlt}
-                        onClick={onEditClick}
-                    >
-                        Edit
-                    </Button>
-                : null}
+                 <Button
+                     color={"Yellow"}
+                     icon={faPencilAlt}
+                     onClick={onEditClick}
+                 >
+                     Edit
+                 </Button>
+                         : null}
                 {canArchive ?
-                    <Button
-                        color={"Grey"}
-                        icon={faArchive}
-                        onClick={is_active ? onArchiveClick : onUnarchiveClick}
-                    >
-                        {is_active ? "Archive" : "Unarchive"}
-                    </Button>
-                : null}
+                 <Button
+                     color={"Grey"}
+                     icon={faArchive}
+                     onClick={is_active ? onArchiveClick : onUnarchiveClick}
+                 >
+                     {is_active ? "Archive" : "Unarchive"}
+                 </Button>
+                            : null}
             </div>
         </div>
     )

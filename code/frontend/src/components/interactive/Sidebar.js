@@ -17,7 +17,7 @@ import ContextUser from "../../contexts/ContextUser"
  * @constructor
  */
 export default function Sidebar({ className, ...props }) {
-    const {user} = useContext(ContextUser)
+    const { user } = useContext(ContextUser)
 
     return (
         <aside className={classNames(Style.Sidebar, className)} {...props}>
@@ -30,7 +30,7 @@ export default function Sidebar({ className, ...props }) {
                     <ButtonSidebar to={"/alerts"} icon={faExclamationTriangle}>Alerts</ButtonSidebar>
                     <ButtonSidebar to={"/settings"} icon={faCog}>Settings</ButtonSidebar>
                 </Fragment>
-                :
+                     :
                 <Fragment>
                     <ButtonSidebar to={"/login"} icon={faKey}>Login</ButtonSidebar>
                 </Fragment>
@@ -38,7 +38,7 @@ export default function Sidebar({ className, ...props }) {
             {
                 process.env.NODE_ENV === "development" ?
                 <ButtonSidebar to={"/sandbox"} icon={faWrench}>Sandbox</ButtonSidebar>
-                : null
+                                                       : null
             }
         </aside>
     )

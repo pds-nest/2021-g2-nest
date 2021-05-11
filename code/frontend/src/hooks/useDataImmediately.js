@@ -12,16 +12,18 @@ import { useEffect } from "react"
  * @param init - Additional `init` parameters to pass to `fetch`.
  */
 export default function useDataImmediately(fetchData, method, path, body, init) {
-    const {data, error, loading, fetchNow} = useData(fetchData, method, path, body, init)
+    const { data, error, loading, fetchNow } = useData(fetchData, method, path, body, init)
 
     useEffect(
         () => {
-            if(!(loading || data || error)) {
+            if(!(
+                loading || data || error
+            )) {
                 fetchNow()
             }
         },
-        [data, error, loading, fetchNow]
+        [data, error, loading, fetchNow],
     )
 
-    return {data, error, loading, fetchNow}
+    return { data, error, loading, fetchNow }
 }

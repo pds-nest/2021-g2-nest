@@ -12,7 +12,7 @@ import ContextUser from "../../contexts/ContextUser"
  * @constructor
  */
 export default function GlobalUser({ children }) {
-    const {fetchData} = useContext(ContextServer)
+    const { fetchData } = useContext(ContextServer)
     const [user, setUser] = useLocalStorageState("login", null)
 
     /**
@@ -79,7 +79,7 @@ export default function GlobalUser({ children }) {
     }, [setUser])
 
     return (
-        <ContextUser.Provider value={{user, login, logout, fetchDataAuth}}>
+        <ContextUser.Provider value={{ user, login, logout, fetchDataAuth }}>
             {children}
         </ContextUser.Provider>
     )

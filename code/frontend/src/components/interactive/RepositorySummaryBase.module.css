@@ -17,8 +17,7 @@
         "a b"
         "a c"
         "a d"
-        "a e"
-    ;
+        "a e";
     grid-template-columns: auto 1fr;
     grid-template-rows: 5px 1fr 1fr 5px;
 

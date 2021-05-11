@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react"
+import { useCallback, useState } from "react"
 
 
 /**
@@ -28,15 +28,17 @@ export default function useData(fetchData, method, path, body, init) {
                 const _data = await fetchData(method, path, body, init)
                 console.debug(`Displaying data of ${method} ${path}: `, _data)
                 setData(_data)
-            } catch(e) {
+            }
+            catch(e) {
                 console.debug(`Displaying error of ${method} ${path}: `, e)
                 setError(e)
-            } finally {
+            }
+            finally {
                 console.debug(`Stopping loading of ${method} ${path}...`)
                 setLoading(false)
             }
         },
-        [fetchData, method, path, body, init]
+        [fetchData, method, path, body, init],
     )
 
     /**
@@ -52,8 +54,8 @@ export default function useData(fetchData, method, path, body, init) {
 
             await load()
         },
-        [load]
+        [load],
     )
 
-    return {data, error, loading, fetchNow}
+    return { data, error, loading, fetchNow }
 }

@@ -15,9 +15,9 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons"
  * @constructor
  */
 export default function BoxRepositoriesArchived({ repositories, refresh, ...props }) {
-    const {user} = useContext(ContextUser)
+    const { user } = useContext(ContextUser)
 
-    let contents;
+    let contents
     if(repositories.length > 0) {
         contents = repositories.map(repo => (
             <RepositorySummaryBase

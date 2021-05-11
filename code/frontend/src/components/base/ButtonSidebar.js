@@ -22,7 +22,7 @@ export default function ButtonSidebar({ icon, children, to, className, ...props 
         path: to,
         strict: true,
         exact: true,
-    });
+    })
 
     if(match) {
         className = classNames(Style.Active, className)

@@ -1,4 +1,4 @@
-import React, {useContext} from "react"
+import React, { useContext } from "react"
 import Select from "../base/Select"
 import ContextTheme from "../../contexts/ContextTheme"
 
@@ -12,7 +12,7 @@ import ContextTheme from "../../contexts/ContextTheme"
  * @constructor
  */
 export default function SelectTheme({ ...props }) {
-    const {theme, setTheme} = useContext(ContextTheme);
+    const { theme, setTheme } = useContext(ContextTheme)
 
     return (
         <Select value={theme} onChange={e => setTheme(e.target.value)} {...props}>

@@ -22,12 +22,12 @@ export default function BoxLogin({ ...props }) {
     const [password, setPassword] = useState("password")
     const [working, setWorking] = useState(false)
     const [error, setError] = useState(null)
-    const {login} = useContext(ContextUser)
+    const { login } = useContext(ContextUser)
     const history = useHistory()
 
     const doLogin = async () => {
         if(working) {
-            return;
+            return
         }
 
         setWorking(true)
@@ -67,10 +67,10 @@ export default function BoxLogin({ ...props }) {
                     />
                 </FormLabel>
                 {error ?
-                    <FormAlert color={"Red"}>
-                        {error.toString()}
-                    </FormAlert>
-                : null}
+                 <FormAlert color={"Red"}>
+                     {error.toString()}
+                 </FormAlert>
+                       : null}
                 <FormButton
                     onClick={doLogin}
                     icon={faArrowRight}
