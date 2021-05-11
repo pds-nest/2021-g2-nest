@@ -5,30 +5,24 @@ import BoxRepositoriesActive from "../components/interactive/BoxRepositoriesActi
 import BoxRepositoriesArchived from "../components/interactive/BoxRepositoriesArchived"
 import useBackendImmediately from "../hooks/useBackendImmediately"
 import ContextUser from "../contexts/ContextUser"
-import BoxAlert from "../components/base/BoxAlert"
-import Loading from "../components/base/Loading"
+import renderContents from "../utils/renderContents"
 
 
 export default function PageRepositories({ children, className, ...props }) {
     const { fetchDataAuth } = useContext(ContextUser)
-    const { data, error, fetchNow: refresh } = useBackendImmediately(fetchDataAuth, "GET", "/api/v1/repositories/")
-
-    let contents
-    if(error) {
-        contents = <BoxAlert color={"Red"}>{error}</BoxAlert>
-    }
-    else if(data) {
-        const repositories = [...data["owner"], ...data["spectator"]]
-        const active = repositories.filter(r => r.is_active)
-        const archived = repositories.filter(r => !r.is_active)
-        contents = <>
-            <BoxRepositoriesActive repositories={active} refresh={refresh}/>
-            <BoxRepositoriesArchived repositories={archived} refresh={refresh}/>
-        </>
-    }
-    else {
-        contents = <Loading/>
-    }
+    const repositoryRequest = useBackendImmediately(fetchDataAuth, "GET", "/api/v1/repositories/")
+    const contents = renderContents(
+        repositoryRequest,
+        data => {
+            const repositories = [...data["owner"], ...data["spectator"]]
+            const active = repositories.filter(r => r.is_active)
+            const archived = repositories.filter(r => !r.is_active)
+            return <>
+                <BoxRepositoriesActive repositories={active} refresh={repositoryRequest.fetchNow}/>
+                <BoxRepositoriesArchived repositories={archived} refresh={repositoryRequest.fetchNow}/>
+            </>
+        },
+    )
 
     return (
         <div className={classNames(Style.PageRepositories, className)} {...props}>
