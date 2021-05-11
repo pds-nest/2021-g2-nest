@@ -74,7 +74,7 @@ def page_repositories():
                              "spectator": [r.repository.to_json() for r in spectator]})
     elif request.method == "POST":
         # Users will be tolerated if they change parameters they're not supposed to touch. We'll ignore them for now.
-        if not request.json.get("name") or not request.json.get("conditions") or not request.json.get("evaluation_mode"):
+        if not request.json.get("name") or not request.json.get("conditions") or not str(request.json.get("evaluation_mode")):
             return json_error("Missing arguments."), 400
         name = request.json.get("name")
         try:
@@ -94,4 +94,7 @@ def page_repositories():
                     return json_error("Unknown `type` specified."), 400
                 ext.session.add(Condition(type=type_, content=c['content'], repository_id=repository.id))
                 ext.session.commit()
+        repository.is_active = True
+        repository.start = datetime.datetime.now()
+        ext.session.commit()
         return json_success(repository.to_json()), 201
