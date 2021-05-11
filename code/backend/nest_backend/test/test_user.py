@@ -16,6 +16,7 @@ class TestUserGet:
         assert r.json["result"] == "failure"
         assert r.json["msg"] == "Could not locate the user."
 
+
 # ritorna i dati di tutti gli utenti registrati
 class TestUserGetAll:
     def test_for_success(self, flask_client: Client, admin_headers):
@@ -47,7 +48,7 @@ class TestUserAdd:
 
 class TestUserDelete:
     def test_for_success(self, flask_client: Client, admin_headers):
-        r = flask_client.delete(f'/api/v1/users/utente_test@nest.com', headers=admin_headers)
+        r = flask_client.delete(f'/api/v1/users/utente1_test@nest.com', headers=admin_headers)
         assert b'success' in r.data
 
     # the admin tries to commit suicide
