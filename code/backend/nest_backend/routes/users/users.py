@@ -39,7 +39,7 @@ def page_users():
                 application/json:
                     schema: CreateUser
         responses:
-            '200':
+            '201':
                 description: The user has been created successfully.
                 content:
                     application/json:
@@ -62,7 +62,7 @@ def page_users():
         if not user.isAdmin:
             return json_error("User is not admin. Thou art not authorized"), 403
         users = User.query.all()
-        return json_success([user.to_json() for user in users])
+        return json_success([user.to_json() for user in users]), 200
     if request.method == "POST":
         if not user.isAdmin:
             return json_error("User is not admin. Thou art not authorized."), 403
@@ -70,4 +70,4 @@ def page_users():
                         username=request.json.get("username"))
         ext.session.add(new_user)
         ext.session.commit()
-        return json_success(new_user.to_json())
+        return json_success(new_user.to_json()), 201

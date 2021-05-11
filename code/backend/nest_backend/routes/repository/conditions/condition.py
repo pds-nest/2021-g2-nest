@@ -48,7 +48,7 @@ def page_condition(cid):
         security:
         - jwt: []
         responses:
-            '200':
+            '204':
                 description: The deletion was successful.
             '401':
                 description: The user is not logged in.
@@ -80,7 +80,7 @@ def page_condition(cid):
                 application/json:
                     schema: CreateCondition
         responses:
-            '200':
+            '204':
                 description: The user is not logged in.
                 content:
                     application/json:
@@ -124,8 +124,8 @@ def page_condition(cid):
         if content := request.json.get("content"):
             condition.content = content
         ext.session.commit()
-        return json_success(condition.to_json()), 200
+        return json_success(condition.to_json()), 204
     if request.method == "DELETE":
         ext.session.delete(condition)
         ext.session.commit()
-        return json_success("Deleted."), 200
+        return json_success("Deleted."), 204

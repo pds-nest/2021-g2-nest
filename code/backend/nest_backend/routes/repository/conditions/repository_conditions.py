@@ -49,7 +49,7 @@ def page_repository_conditions(rid):
                 application/json:
                     schema: CreateCondition
         responses:
-            '200':
+            '201':
                 description: The user has been created successfully.
                 content:
                     application/json:
@@ -95,4 +95,4 @@ def page_repository_conditions(rid):
         extension_sqlalchemy.session.add(condition)
         extension_sqlalchemy.session.commit()
 
-        return json_success(condition.to_json()), 200
+        return json_success(condition.to_json()), 201

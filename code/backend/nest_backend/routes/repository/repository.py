@@ -50,7 +50,7 @@ def page_repository(rid):
         security:
         - jwt: []
         responses:
-            '200':
+            '204':
                 description: The repository has been deleted successfully.
             '404':
                 description: Could not find the requested repository.
@@ -88,7 +88,7 @@ def page_repository(rid):
           schema: IntegerParameterSchema
 
         responses:
-            '200':
+            '204':
                 description: The repository has been updated successfully.
                 content:
                     application/json:
@@ -175,7 +175,7 @@ def page_repository(rid):
                 return json_error("Unknown `type` specified."), 400
             repository.evaluation_mode = evaluation_mode
         ext.session.commit()
-        return json_success(repository.to_json()), 200
+        return json_success(repository.to_json()), 204
     elif request.method == "DELETE":
         if repository.owner_id != user.email and not user.isAdmin:
             return json_error("You are not the owner of this repository."), 403
@@ -185,7 +185,7 @@ def page_repository(rid):
         except Exception as e:
             ext.session.rollback()
             return json_error("Cant delete repository because of dependencies."), 500
-        return json_success("Success"), 200
+        return json_success("Success"), 204
     elif request.method == "PUT":
         if not json_request_authorizer(request.json, repository):
             return json_error("Missing one or more parameters in repository json."), 400

@@ -48,7 +48,7 @@ def page_user(email):
         security:
         - jwt: []
         responses:
-            '200':
+            '204':
                 description: The user has been deleted successfully.
             '404':
                 description: Could not find the requested user.
@@ -86,7 +86,7 @@ def page_user(email):
         security:
         - jwt: []
         responses:
-            '200':
+            '204':
                 description: The user has been updated successfully.
                 content:
                     application/json:
@@ -133,7 +133,7 @@ def page_user(email):
         except Exception:
             ext.session.rollback()
             return json_error("Could not delete the user."), 500
-        return json_success("The user has been deleted."), 200
+        return json_success("The user has been deleted."), 204
     elif request.method == "PATCH":
         if not email == user.email and not user.isAdmin:
             return json_error("Thou art not authorized."), 403
@@ -143,4 +143,4 @@ def page_user(email):
         if request.json.get("password"):
             target.password = gen_password(request.json.get("password"))
         ext.session.commit()
-        return json_success(target.to_json()), 200
+        return json_success(target.to_json()), 204

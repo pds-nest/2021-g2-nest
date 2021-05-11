@@ -48,7 +48,7 @@ def page_repository_alerts(rid):
                 application/json:
                     schema: CreateAlert
         responses:
-            '200':
+            '201':
                 description: The alert has been created successfully.
                 content:
                     application/json:
@@ -89,4 +89,4 @@ def page_repository_alerts(rid):
         ext.session.add(alert)
         ext.session.commit()
 
-        return json_success(alert.to_json()), 200
+        return json_success(alert.to_json()), 201

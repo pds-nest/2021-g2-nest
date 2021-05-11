@@ -38,9 +38,9 @@ def page_repositories():
             required: true
             content:
                 application/json:
-                    schema: CreateRepository
+                    schema: Repository
         responses:
-            '200':
+            '201':
                 description: The user has been created successfully.
                 content:
                     application/json:
@@ -73,10 +73,25 @@ def page_repositories():
         return json_success({"owner": [r.to_json() for r in owner],
                              "spectator": [r.repository.to_json() for r in spectator]})
     elif request.method == "POST":
+        # Users will be tolerated if they change parameters they're not supposed to touch. We'll ignore them for now.
+        if not request.json.get("name") or not request.json.get("conditions") or not request.json.get("evaluation_mode"):
+            return json_error("Missing arguments."), 400
         name = request.json.get("name")
-        if not name:
-            return json_error("Missing one or more parameters"), 400
-        repository = Repository(name=name, owner_id=user.email)
+        try:
+            evaluation_mode = ConditionMode(request.json['evaluation_mode'])
+        except KeyError:
+            return json_error("Unknown `type` specified."), 400
+        repository = Repository(name=name, owner_id=user.email, is_active=False, evaluation_mode=evaluation_mode)
         ext.session.add(repository)
         ext.session.commit()
-        return json_success(repository.to_json()), 200
+        ids = [c['id'] for c in request.json['conditions'] if c['id']]
+        # Create brand new conditions
+        for c in request.json['conditions']:
+            if not c['id']:
+                try:
+                    type_ = ConditionType(c['type'])
+                except KeyError:
+                    return json_error("Unknown `type` specified."), 400
+                ext.session.add(Condition(type=type_, content=c['content'], repository_id=repository.id))
+                ext.session.commit()
+        return json_success(repository.to_json()), 201

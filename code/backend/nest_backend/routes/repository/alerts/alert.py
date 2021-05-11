@@ -50,7 +50,7 @@ def page_alert(aid):
         security:
         - jwt: []
         responses:
-            '200':
+            '204':
                 description: The repository has been deleted successfully.
             '404':
                 description: Could not find the requested repository.
@@ -88,7 +88,7 @@ def page_alert(aid):
           schema: AlertParameterSchema
 
         responses:
-            '200':
+            '204':
                 description: The alert has been updated successfully.
                 content:
                     application/json:
@@ -131,14 +131,14 @@ def page_alert(aid):
         if 'window_size' in request.json:
             alert.window_size = request.json['window_size']
         ext.session.commit()
-        return json_success(alert.to_json()), 200
+        return json_success(alert.to_json()), 204
     elif request.method == "DELETE":
         try:
             ext.session.delete(alert)
             ext.session.commit()
         except Exception:
             return json_error("Something went wrong while deleting alert."), 500
-        return json_success("Deletion completed."), 200
+        return json_success("Deletion completed."), 204
     elif request.method == "PUT":
         if not json_request_authorizer(request.json, alert):
             return json_error("Missing one or more parameters in repository json."), 400
@@ -185,6 +185,7 @@ def page_alert(aid):
             return json_error("One of the provided IDs is incorrect"), 404
         except KeyError:
             return json_error("Unknown field specified."), 400
+        return json_success(alert.to_json()), 200
 
 
 def create_node(node, ext, json, id):
