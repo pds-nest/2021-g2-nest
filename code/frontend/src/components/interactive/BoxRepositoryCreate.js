@@ -79,7 +79,7 @@ export default function BoxRepositoryCreate({ ...props }) {
                          style={{ "gridColumn": "1" }}
                          icon={faBackward}
                          color={"Red"}
-                         onClick={e => revert()}
+                         onClick={() => revert()}
                      >
                          Rollback edits
                      </Button>
