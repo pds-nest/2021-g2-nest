@@ -2,49 +2,37 @@ import React, { useContext } from "react"
 import BoxFull from "../base/BoxFull"
 import ContextUser from "../../contexts/ContextUser"
 import RepositorySummaryBase from "./RepositorySummaryBase"
-import Loading from "../base/Loading"
-import BoxAlert from "../base/BoxAlert"
 import { faSearch } from "@fortawesome/free-solid-svg-icons"
-import useDataImmediately from "../../hooks/useDataImmediately"
 
 
 /**
  * A {@link BoxFull} listing all the user's archived repositories.
  *
+ * @param repositories - Array of repositories to display in the box.
+ * @param refresh - Function that can be called to refresh the repositories list.
  * @param props - Additional props to pass to the box.
  * @returns {JSX.Element}
  * @constructor
  */
-export default function BoxRepositoriesArchived({ ...props }) {
-    const {user, fetchDataAuth} = useContext(ContextUser)
-    const {data, error} = useDataImmediately(fetchDataAuth, "GET", "/api/v1/repositories/", {
-        "onlyDead": true,
-    })
+export default function BoxRepositoriesArchived({ repositories, refresh, ...props }) {
+    const {user} = useContext(ContextUser)
 
     let contents;
-    if(error) {
-        contents = <BoxAlert color={"Red"}>{error.toString()}</BoxAlert>
-    }
-    else if(data) {
-        let repositories = [...data["owner"], ...data["spectator"]]
-        if(repositories.length > 0) {
-            contents = repositories.map(repo => (
-                <RepositorySummaryBase
-                    key={repo["id"]}
-                    {...repo}
-                    icon={faSearch}
-                    canArchive={true}
-                    canEdit={false}
-                    canDelete={repo["owner"]["username"] === user["username"]}
-                />
-            ))
-        }
-        else {
-            contents = <i>There's nothing here.</i>
-        }
+    if(repositories.length > 0) {
+        contents = repositories.map(repo => (
+            <RepositorySummaryBase
+                key={repo["id"]}
+                {...repo}
+                icon={faSearch}
+                refresh={refresh}
+                canArchive={true}
+                canEdit={false}
+                canDelete={repo["owner"]["username"] === user["username"]}
+            />
+        ))
     }
     else {
-        contents = <Loading/>
+        contents = <i>There's nothing here.</i>
     }
 
     return (

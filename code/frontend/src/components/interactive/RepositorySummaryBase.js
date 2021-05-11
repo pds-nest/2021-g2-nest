@@ -13,12 +13,13 @@ import ContextUser from "../../contexts/ContextUser"
  * A long line representing a repository in a list.
  *
  * @param id - The id of the repository.
+ * @param refresh - Function that can be called to refresh the repositories list.
  * @param owner - The owner of the repository.
  * @param icon - The FontAwesome IconDefinition that represents the repository.
  * @param name - The title of the repository.
  * @param start - The start date of the repository.
  * @param end - The end date of the repository.
- * @param isActive - Whether the repository is active or not.
+ * @param is_active - Whether the repository is active or not.
  * @param canDelete - If the Delete button should be displayed or not.
  * @param canEdit - If the Edit button should be displayed or not.
  * @param canArchive - If the Archive button should be displayed or not.
@@ -28,13 +29,32 @@ import ContextUser from "../../contexts/ContextUser"
  * @constructor
  */
 export default function RepositorySummaryBase(
-    { id, owner, icon, name, start, end, isActive, canDelete, canEdit, canArchive, className, ...props }
+    { id, refresh, owner, icon, name, start, end, is_active, canDelete, canEdit, canArchive, className, ...props }
 ) {
     const {fetchDataAuth} = useContext(ContextUser)
     const history = useHistory()
     const {fetchNow: archiveThis} = useData(fetchDataAuth, "PATCH", `/api/v1/repositories/${id}`, {"close": true})
     const {fetchNow: unarchiveThis} = useData(fetchDataAuth, "PATCH", `/api/v1/repositories/${id}`, {"open": true})
     const {fetchNow: deletThis} = useData(fetchDataAuth, "DELETE", `/api/v1/repositories/${id}`)
+
+    const onEditClick = event => {
+        history.push(`/repositories/${id}/edit`)
+    }
+
+    const onArchiveClick = async event => {
+        await archiveThis()
+        await refresh()
+    }
+
+    const onUnarchiveClick = async event => {
+        await unarchiveThis()
+        await refresh()
+    }
+
+    const onDeleteClick = async event => {
+        await deletThis()
+        await refresh()
+    }
 
     return (
         <div className={classNames(Style.RepositorySummary, className)} {...props}>
@@ -62,7 +82,7 @@ export default function RepositorySummaryBase(
                     <Button
                         color={"Red"}
                         icon={faTrash}
-                        onClick={deletThis}
+                        onClick={onDeleteClick}
                     >
                         Delete
                     </Button>
@@ -71,7 +91,7 @@ export default function RepositorySummaryBase(
                     <Button
                         color={"Yellow"}
                         icon={faPencilAlt}
-                        onClick={() => history.push(`/repositories/${id}/edit`)}
+                        onClick={onEditClick}
                     >
                         Edit
                     </Button>
@@ -80,9 +100,9 @@ export default function RepositorySummaryBase(
                     <Button
                         color={"Grey"}
                         icon={faArchive}
-                        onClick={isActive ? archiveThis : unarchiveThis}
+                        onClick={is_active ? onArchiveClick : onUnarchiveClick}
                     >
-                        {isActive ? "Archive" : "Unarchive"}
+                        {is_active ? "Archive" : "Unarchive"}
                     </Button>
                 : null}
             </div>
