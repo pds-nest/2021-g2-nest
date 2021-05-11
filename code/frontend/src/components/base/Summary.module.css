@@ -1,0 +1,98 @@
+.Summary {
+    width: 100%;
+    height: 60px;
+
+    margin: 10px 0;
+
+    display: flex;
+}
+
+
+.Left {
+    width: 250px;
+    height: 60px;
+
+    display: grid;
+    grid-template-areas:
+        "a b"
+        "a c"
+        "a d"
+        "a e";
+    grid-template-columns: auto 1fr;
+    grid-template-rows: 5px 1fr 1fr 5px;
+
+    background-color: var(--bg-accent);
+    border-radius: 30px 0 0 30px;
+}
+
+.IconContainer {
+    margin: 5px 15px 5px 5px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: var(--bg-light);
+    color: var(--fg-primary);
+
+    font-size: x-large;
+
+    grid-area: a;
+}
+
+.Title {
+    grid-area: c;
+    font-size: large;
+    align-self: flex-end;
+}
+
+.Subtitle {
+    grid-area: d;
+    font-size: small;
+    align-self: flex-start;
+}
+
+.Middle {
+    flex-grow: 1;
+    height: 60px;
+    padding: 5px;
+
+    background-color: var(--bg-light);
+
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: 1fr 1fr;
+
+}
+
+.Middle .Label {
+    grid-column: 1;
+}
+
+.Middle .Value {
+    grid-column: 2;
+}
+
+.Middle .Upper {
+    grid-row: 1;
+}
+
+.Middle .Lower {
+    grid-row: 2;
+}
+
+.Right {
+    width: 250px;
+    height: 60px;
+    padding: 5px;
+
+    background-color: var(--bg-accent);
+    border-radius: 0 30px 30px 0;
+
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
