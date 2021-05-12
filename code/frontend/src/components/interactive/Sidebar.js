@@ -44,11 +44,11 @@ export default function Sidebar({ className, ...props }) {
                 </>
             }
             {
-                user.isAdmin ?
+                user && user.isAdmin ?
                 <>
                     <ButtonSidebar to={"/users"} icon={faUserCog}>Utenti</ButtonSidebar>
                 </>
-                             :
+                                     :
                 null
             }
             {
