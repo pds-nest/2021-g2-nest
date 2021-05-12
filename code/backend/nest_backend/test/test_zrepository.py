@@ -3,22 +3,6 @@ from flask.testing import Client
 '''A file that contains tests of classes and methods for all the requests concerning an user.'''
 
 
-class TestRepositoryGetAll:
-    def test_get_all_user_repositories(self, flask_client: Client, user_headers):
-        r = flask_client.get(f'/api/v1/repositories/', headers=user_headers,
-                             json={'owner_id': 'utente_test@nest.com', 'isActive': False})
-        assert r.json["result"] == "success"
-        # assert r.json["data"]["owner"] == "utente_test@nest.com"
-        # assert r.json["data"]["isAdmin"] is not True
-
-    def test_get_all_admin_repositories(self, flask_client: Client, admin_headers):
-        r = flask_client.get(f'/api/v1/repositories/', headers=admin_headers,
-                             json={'owner_id': 'admin@admin.com', 'isActive': False})
-        assert r.json["result"] == "success"
-        # assert r.json["data"]["owner"] == "admin@admin.com"
-        # assert r.json["data"]["isAdmin"] is True
-
-
 class TestRepositoryAdd:
     def test_for_success(self, flask_client: Client, user_headers):
         r = flask_client.post(f'/api/v1/repositories/', headers=user_headers, json={
@@ -33,11 +17,12 @@ class TestRepositoryAdd:
             'name': 'repo_test',
             'is_active': True
         })
+        assert r.status_code == 200
         assert r.json["result"] == "success"
         assert r.json["data"]["is_active"] is True
 
     # non vengono passate le condizioni necessarie, in questo caso il nome della repository
-    def test_for_failure(self, flask_client: Client, user_headers):
+    def test_no_name(self, flask_client: Client, user_headers):
         r = flask_client.post(f'/api/v1/repositories/', headers=user_headers, json={
             'conditions': [
                 {
@@ -49,6 +34,7 @@ class TestRepositoryAdd:
             'evaluation_mode': 0,
             'is_active': True
         })
+        assert r.status_code == 400
         assert r.json["msg"] == "Missing arguments."
         assert r.json["result"] == "failure"
 
@@ -66,6 +52,7 @@ class TestRepositoryAdd:
             'name': 'repo_test',
             'is_active': True
         })
+        assert r.status_code == 400
         assert r.json["result"] == "failure"
 
     # viene passato un campo type con valore non previsto dall'enum
@@ -82,7 +69,35 @@ class TestRepositoryAdd:
             'name': 'repo_test',
             'is_active': True
         })
+        assert r.status_code == 400
         assert r.json["result"] == "failure"
+
+
+class TestRepositoryGetAll:
+    def test_get_all_user_repositories(self, flask_client: Client, user_headers):
+        r = flask_client.get(f'/api/v1/repositories/', headers=user_headers,
+                             json={'owner_id': 'utente_test@nest.com', 'isActive': False})
+        assert r.status_code == 200
+        assert r.json["result"] == "success"
+
+    def test_get_all_admin_repositories(self, flask_client: Client, admin_headers):
+        r = flask_client.get(f'/api/v1/repositories/', headers=admin_headers,
+                             json={'owner_id': 'admin@admin.com', 'isActive': False})
+        assert r.status_code == 200
+        assert r.json["result"] == "success"
+
+
+class TestRepositoryGet:
+    def test_get_existing_repository(self, flask_client: Client, user_headers):
+        r = flask_client.get(f'/api/v1/repositories/1', headers=user_headers)
+        assert r.status_code == 200
+        assert r.json["result"] == "success"
+
+    def test_get_non_existing_repository(self, flask_client: Client, admin_headers):
+        r = flask_client.get(f'/api/v1/repositories/99', headers=admin_headers)
+        assert r.status_code == 404
+        assert r.json["result"] == "failure"
+
 
 '''
 class TestUserDelete:
