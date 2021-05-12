@@ -1,9 +1,10 @@
 from flask import request
 from flask_jwt_extended import jwt_required
 from nest_backend.gestione import repository_auth, json_error, json_success, ConditionType, Condition, Repository, \
-                                  find_user, get_jwt_identity
-from nest_backend.database import ext as extension_sqlalchemy
+    find_user, get_jwt_identity
+from nest_backend.database import ext
 from flask_cors import cross_origin
+from gestione import hashtag_validator
 
 
 @cross_origin()
@@ -43,6 +44,9 @@ def page_repository_conditions(rid):
         summary: Creates a condition and attaches it to the repository.
         security:
         - jwt: []
+        parameters:
+        - in: path
+          schema: IntegerParameterSchema
         requestBody:
             required: true
             content:
@@ -90,9 +94,10 @@ def page_repository_conditions(rid):
 
         if not (content := request.json.get("content")):
             return json_error("Missing `content` parameter."), 400
-
+        if type_ == ConditionType.hashtag:
+            content = hashtag_validator(content)
         condition = Condition(content=content, type=type_, repository_id=rid)
-        extension_sqlalchemy.session.add(condition)
-        extension_sqlalchemy.session.commit()
+        ext.session.add(condition)
+        ext.session.commit()
 
         return json_success(condition.to_json()), 201
