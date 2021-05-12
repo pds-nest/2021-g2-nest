@@ -13,20 +13,20 @@ import Summary from "../base/Summary"
  * @param repo - The repository object.
  * @param refresh - Function that can be called to refresh the repositories list.
  * @param canDelete - If the Delete button should be displayed or not.
+ * @param deleteSelf - Function to call when the Delete button is pressed.
  * @param canEdit - If the Edit button should be displayed or not.
  * @param canArchive - If the Archive button should be displayed or not.
+ * @param archiveSelf - Function to call when the Archive button is pressed.
+ * @param running - If an action is currently running.
  * @param className - Additional class(es) to be added to the outer box.
  * @param props - Additional props to pass to the outer box.
  * @returns {JSX.Element}
  * @constructor
  */
 export default function SummaryRepository(
-    { repo, refresh, canDelete, canEdit, canArchive, className, ...props },
+    { repo, refresh, canDelete, deleteSelf, canEdit, canArchive, archiveSelf, running, className, ...props },
 ) {
-    const { fetchDataAuth } = useContext(ContextUser)
     const history = useHistory()
-    const { fetchNow: archiveThis } = useBackend(fetchDataAuth, "PATCH", `/api/v1/repositories/${repo.id}`, { "close": true })
-    const { fetchNow: deletThis } = useBackend(fetchDataAuth, "DELETE", `/api/v1/repositories/${repo.id}`)
 
     const onRepoClick = () => {
         history.push(`/repositories/${repo.id}`)
@@ -36,22 +36,13 @@ export default function SummaryRepository(
         history.push(`/repositories/${repo.id}/edit`)
     }
 
-    const onArchiveClick = async () => {
-        await archiveThis()
-        await refresh()
-    }
-
-    const onDeleteClick = async () => {
-        await deletThis()
-        await refresh()
-    }
-
     const buttons = <>
         {canDelete ?
          <Button
              color={"Red"}
              icon={faTrash}
-             onClick={onDeleteClick}
+             onClick={deleteSelf}
+             disabled={running}
          >
              Delete
          </Button>
@@ -61,6 +52,7 @@ export default function SummaryRepository(
              color={"Yellow"}
              icon={faPencilAlt}
              onClick={onEditClick}
+             disabled={running}
          >
              Edit
          </Button>
@@ -69,7 +61,8 @@ export default function SummaryRepository(
          <Button
              color={"Grey"}
              icon={faArchive}
-             onClick={onArchiveClick}
+             onClick={archiveSelf}
+             disabled={running}
          >
              {"Archive"}
          </Button>

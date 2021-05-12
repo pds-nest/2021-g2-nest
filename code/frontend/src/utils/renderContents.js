@@ -1,3 +1,4 @@
+import React from "react"
 import Loading from "../components/base/Loading"
 import BoxAlert from "../components/base/BoxAlert"
 import Starting from "../components/base/Starting"

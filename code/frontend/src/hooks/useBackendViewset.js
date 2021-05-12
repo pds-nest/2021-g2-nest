@@ -127,6 +127,25 @@ export default function useBackendViewset(resourcesPath, pkName) {
         [apiList],
     )
 
+    const refreshResource = useCallback(
+        async (pk) => {
+            try {
+                const refreshedResource = await apiRetrieve(pk)
+                setResources(resources => resources.map(resource => {
+                    if(resource[pkName] === pk) {
+                        return refreshedResource
+                    }
+                    return resource
+                }))
+            }
+            catch(e) {
+                return { error: e }
+            }
+            return {}
+        },
+        [apiRetrieve, pkName]
+    )
+
     const createResource = useCallback(
         async (data) => {
             try {
@@ -191,12 +210,14 @@ export default function useBackendViewset(resourcesPath, pkName) {
         resources,
         running,
         loaded,
+        apiRequest,
         apiList,
         apiRetrieve,
         apiCreate,
         apiEdit,
         apiDestroy,
         refreshResources,
+        refreshResource,
         createResource,
         editResource,
         destroyResource,
