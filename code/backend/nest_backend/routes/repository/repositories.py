@@ -17,7 +17,7 @@ def page_repositories():
         - jwt: []
         responses:
             '200':
-                description: The list of the repositories related to the user (divided in "owner" and "spectator" dict keys), incapsulated in Success.
+                description: The list of the repositories related to the user, incapsulated in Success.
             '403':
                 description: The user is not authorized.
                 content:
