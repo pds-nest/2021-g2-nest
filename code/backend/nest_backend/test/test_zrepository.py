@@ -19,15 +19,14 @@ class TestRepositoryGetAll:
         # assert r.json["data"]["isAdmin"] is True
 
 
-
 class TestRepositoryAdd:
     def test_for_success(self, flask_client: Client, user_headers):
         r = flask_client.post(f'/api/v1/repositories/', headers=user_headers, json={
             'conditions': [
                 {
-                'content': 'PdS2021',
-                'id': 0,
-                'type': 0
+                    'content': 'PdS2021',
+                    'id': 0,
+                    'type': 0
                 }
             ],
             'evaluation_mode': 0,
@@ -37,24 +36,53 @@ class TestRepositoryAdd:
         assert r.json["result"] == "success"
         assert r.json["data"]["is_active"] is True
 
-
     # non vengono passate le condizioni necessarie, in questo caso il nome della repository
     def test_for_failure(self, flask_client: Client, user_headers):
         r = flask_client.post(f'/api/v1/repositories/', headers=user_headers, json={
             'conditions': [
                 {
-                'content': 'PdS2021',
-                'id': 0,
-                'type': 0
+                    'content': 'PdS2021',
+                    'id': 0,
+                    'type': 0
                 }
             ],
             'evaluation_mode': 0,
-
             'is_active': True
         })
         assert r.json["msg"] == "Missing arguments."
         assert r.json["result"] == "failure"
-        
+
+    # viene passato un campo evaluation_mode con valore non previsto dall'enum
+    def test_wrong_evaluation_mode(self, flask_client: Client, user_headers):
+        r = flask_client.post(f'/api/v1/repositories/', headers=user_headers, json={
+            'conditions': [
+                {
+                    'content': 'PdS2021',
+                    'id': 0,
+                    'type': 0
+                }
+            ],
+            'evaluation_mode': 99,
+            'name': 'repo_test',
+            'is_active': True
+        })
+        assert r.json["result"] == "failure"
+
+    # viene passato un campo type con valore non previsto dall'enum
+    def test_wrong_condition(self, flask_client: Client, user_headers):
+        r = flask_client.post(f'/api/v1/repositories/', headers=user_headers, json={
+            'conditions': [
+                {
+                    'content': 'PdS2021',
+                    'id': 0,
+                    'type': 99
+                }
+            ],
+            'evaluation_mode': 2,
+            'name': 'repo_test',
+            'is_active': True
+        })
+        assert r.json["result"] == "failure"
 
 '''
 class TestUserDelete:
