@@ -8,41 +8,55 @@ class TestRepositoryGetAll:
         r = flask_client.get(f'/api/v1/repositories/', headers=user_headers,
                              json={'owner_id': 'utente_test@nest.com', 'isActive': False})
         assert r.json["result"] == "success"
-        # assert r.json["data"]["email"] == "admin@admin.com"
-        # assert r.json["data"]["isAdmin"] is True
+        # assert r.json["data"]["owner"] == "utente_test@nest.com"
+        # assert r.json["data"]["isAdmin"] is not True
 
     def test_get_all_admin_repositories(self, flask_client: Client, admin_headers):
         r = flask_client.get(f'/api/v1/repositories/', headers=admin_headers,
                              json={'owner_id': 'admin@admin.com', 'isActive': False})
         assert r.json["result"] == "success"
-        # assert r.json["data"]["email"] == "admin@admin.com"
+        # assert r.json["data"]["owner"] == "admin@admin.com"
         # assert r.json["data"]["isAdmin"] is True
 
 
-'''    
-    def test_non_existing_user(self, flask_client: Client, admin_headers):
-        r = flask_client.get(f'/api/v1/users/ciccio@dev.com', headers=admin_headers)
-        assert r.json["result"] == "failure"
-        assert r.json["msg"] == "Could not locate the user."
 
-class TestUserAdd:
-    def test_for_success(self, flask_client: Client, admin_headers):
-        r = flask_client.post(f'/api/v1/users/', headers=admin_headers, json={
-            'email': 'utente1_test@nest.com',
-            'password': 'password',
-            'username': 'utente_test'
+class TestRepositoryAdd:
+    def test_for_success(self, flask_client: Client, user_headers):
+        r = flask_client.post(f'/api/v1/repositories/', headers=user_headers, json={
+            'conditions': [
+                {
+                'content': 'PdS2021',
+                'id': 0,
+                'type': 0
+                }
+            ],
+            'evaluation_mode': 0,
+            'name': 'repo_test',
+            'is_active': True
         })
-        assert b'success' in r.data
+        assert r.json["result"] == "success"
+        assert r.json["data"]["is_active"] is True
 
+
+    # non vengono passate le condizioni necessarie, in questo caso il nome della repository
     def test_for_failure(self, flask_client: Client, user_headers):
-        r = flask_client.post(f'/api/v1/users/', headers=user_headers, json={
-            'email': 'utente_test@nest.com',
-            'password': 'password',
-            'username': 'utente_test'
+        r = flask_client.post(f'/api/v1/repositories/', headers=user_headers, json={
+            'conditions': [
+                {
+                'content': 'PdS2021',
+                'id': 0,
+                'type': 0
+                }
+            ],
+            'evaluation_mode': 0,
+
+            'is_active': True
         })
-        assert b'failure' in r.data
+        assert r.json["msg"] == "Missing arguments."
+        assert r.json["result"] == "failure"
+        
 
-
+'''
 class TestUserDelete:
     def test_for_success(self, flask_client: Client, admin_headers):
         r = flask_client.delete(f'/api/v1/users/utente_test@nest.com', headers=admin_headers)
