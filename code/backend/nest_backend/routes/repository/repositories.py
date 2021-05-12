@@ -17,7 +17,7 @@ def page_repositories():
         - jwt: []
         responses:
             '200':
-                description: The list of the repositories related to the user (divided in "owner" and "spectator" dict keys), incapsulated in Success.
+                description: The list of the repositories related to the user, incapsulated in Success.
             '403':
                 description: The user is not authorized.
                 content:
@@ -70,8 +70,7 @@ def page_repositories():
             spectator = spectator.filter(not Repository.is_active)
         owner = owner.all()
         spectator = spectator.all()
-        return json_success({"owner": [r.to_json() for r in owner],
-                             "spectator": [r.repository.to_json() for r in spectator]})
+        return json_success([r.to_json() for r in owner]+[r.repository.to_json() for r in spectator])
     elif request.method == "POST":
         # Users will be tolerated if they change parameters they're not supposed to touch. We'll ignore them for now.
         if not request.json.get("name") or not request.json.get("conditions") or not str(request.json.get("evaluation_mode")):

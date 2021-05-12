@@ -6,6 +6,7 @@ import sys
 
 from .gestione import *
 from .app import app, extension_sqlalchemy
+from .database import User
 
 
 print(" * Swagger docs will be available at http://127.0.0.1:5000/docs")
