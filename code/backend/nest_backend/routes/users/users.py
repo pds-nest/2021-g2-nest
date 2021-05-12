@@ -71,11 +71,12 @@ def page_users():
     if request.method == "POST":
         if not user.isAdmin:
             return json_error("User is not admin. Thou art not authorized."), 403
-        if not request.json.get("email") or request.json.get("password") or request.json.get("username"):
+        if not request.json.get("email") or not request.json.get("password") or not request.json.get("username"):
             return json_error("Missing required fields."), 400
         if User.query.filter_by(email=request.json.get("email")).first():
             return json_error("User already exists."), 406
         new_user = User(email=request.json.get("email"), password=gen_password(request.json.get("password")),
                         username=request.json.get("username"))
         ext.session.add(new_user)
+        ext.session.commit()
         return json_success(new_user.to_json()), 201
