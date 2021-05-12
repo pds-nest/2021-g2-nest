@@ -70,8 +70,7 @@ def page_repositories():
             spectator = spectator.filter(not Repository.is_active)
         owner = owner.all()
         spectator = spectator.all()
-        return json_success({"owner": [r.to_json() for r in owner],
-                             "spectator": [r.repository.to_json() for r in spectator]})
+        return json_success([r.to_json() for r in owner]+[r.repository.to_json() for r in spectator])
     elif request.method == "POST":
         # Users will be tolerated if they change parameters they're not supposed to touch. We'll ignore them for now.
         if not request.json.get("name") or not request.json.get("conditions") or not str(request.json.get("evaluation_mode")):
