@@ -1,9 +1,10 @@
 from flask import render_template, abort, jsonify, request
 from nest_backend.database import *
-from flask_jwt_extended import jwt_required
+from flask_jwt_extended import jwt_required, get_jwt_identity
 from nest_backend.gestione import *
 from flask_cors import cross_origin
 import datetime
+
 
 
 @cross_origin()
@@ -210,6 +211,9 @@ def page_repository(rid):
                     type_ = ConditionType(c['type'])
                 except KeyError:
                     return json_error("Unknown `type` specified."), 400
-                ext.session.add(Condition(type=type_, content=c['content'], repository_id=rid))
+                content = c['content']
+                if type_ == ConditionType.hashtag:
+                    content = hashtag_validator(content)
+                ext.session.add(Condition(type=type_, content=content, repository_id=rid))
                 ext.session.commit()
         return json_success(repository.to_json()), 200
