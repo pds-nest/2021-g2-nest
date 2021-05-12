@@ -65,9 +65,17 @@ def user_exists(admin_headers, flask_client):
 
 
 @pytest.fixture(scope="package")
-def repository_exists(admin_headers, flask_client):
-    flask_client.post(f'/api/v1/repository/', headers=admin_headers, json={
-        'name': 'repo1'
+def repository_exists(user_headers, flask_client):
+    r = flask_client.post(f'/api/v1/repositories/', headers=user_headers, json={
+        'conditions': [
+            {
+                'content': 'PdS2021',
+                'id': 0,
+                'type': 0
+            }
+        ],
+        'evaluation_mode': 0,
+        'name': 'repo_1'
     })
 
 
