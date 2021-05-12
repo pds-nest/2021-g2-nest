@@ -28,6 +28,10 @@ export default function SummaryRepository(
     const { fetchNow: archiveThis } = useBackend(fetchDataAuth, "PATCH", `/api/v1/repositories/${repo.id}`, { "close": true })
     const { fetchNow: deletThis } = useBackend(fetchDataAuth, "DELETE", `/api/v1/repositories/${repo.id}`)
 
+    const onRepoClick = () => {
+        history.push(`/repositories/${repo.id}`)
+    }
+
     const onEditClick = () => {
         history.push(`/repositories/${repo.id}/edit`)
     }
@@ -77,6 +81,7 @@ export default function SummaryRepository(
             icon={repo.is_active ? faFolderOpen : faFolder}
             title={repo.name}
             subtitle={repo.owner ? repo.owner.username : null}
+            onClick={onRepoClick}
             upperLabel={"Created"}
             upperValue={repo.start ? new Date(repo.start).toLocaleString() : null}
             lowerLabel={"Archived"}

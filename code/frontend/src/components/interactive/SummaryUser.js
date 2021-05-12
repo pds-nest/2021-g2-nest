@@ -13,7 +13,8 @@ export default function SummaryUser({ user, destroyUser, running, ...props }) {
          <Button
              color={"Red"}
              icon={faTrash}
-             onClick={async () => {
+             onClick={async event => {
+                 event.stopPropagation()
                  // TODO: Errors are not caught here. Where should they be displayed?
                  await destroyUser(user["email"])
              }}

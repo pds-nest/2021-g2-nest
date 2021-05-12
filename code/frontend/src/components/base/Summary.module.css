@@ -7,6 +7,13 @@
     display: flex;
 }
 
+.Clickable {
+    cursor: pointer;
+}
+
+.Clickable:hover {
+    filter: brightness(110%);
+}
 
 .Left {
     width: 250px;
