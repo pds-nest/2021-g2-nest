@@ -64,7 +64,7 @@ export default function RepositoryEditor({
                 "start": null,
             }
         },
-        [_conditions, _end, _evaluationMode, id, _name, user, _start],
+        [_conditions, _evaluationMode, id, _name, user],
     )
     const { error, loading, fetchNow } = useBackend(fetchDataAuth, method, path, body)
 

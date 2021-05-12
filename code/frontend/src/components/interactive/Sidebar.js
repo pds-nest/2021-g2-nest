@@ -9,7 +9,7 @@ import {
     faFolder,
     faHome,
     faKey,
-    faUser,
+    faUserCog,
     faWrench,
 } from "@fortawesome/free-solid-svg-icons"
 import ContextUser from "../../contexts/ContextUser"
@@ -46,7 +46,7 @@ export default function Sidebar({ className, ...props }) {
             {
                 user.isAdmin ?
                 <>
-                    <ButtonSidebar to={"/users"} icon={faUser}>Users</ButtonSidebar>
+                    <ButtonSidebar to={"/users"} icon={faUserCog}>Utenti</ButtonSidebar>
                 </>
                              :
                 null

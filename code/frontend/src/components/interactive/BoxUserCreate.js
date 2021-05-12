@@ -1,32 +1,30 @@
-import React, { useContext, useMemo, useState } from "react"
+import React, { useCallback, useState } from "react"
 import FormLabelled from "../base/FormLabelled"
 import FormLabel from "../base/formparts/FormLabel"
 import InputWithIcon from "../base/InputWithIcon"
 import { faEnvelope, faKey, faPlus, faUser } from "@fortawesome/free-solid-svg-icons"
 import FormButton from "../base/formparts/FormButton"
 import BoxFull from "../base/BoxFull"
-import useBackend from "../../hooks/useBackend"
-import ContextUser from "../../contexts/ContextUser"
 import FormAlert from "../base/formparts/FormAlert"
 
 
-export default function BoxUserCreate({ children, ...props }) {
-    const { fetchDataAuth } = useContext(ContextUser)
+export default function BoxUserCreate({ createUser, running, ...props }) {
     const [username, setUsername] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [error, setError] = useState(undefined)
 
-    const body = useMemo(
-        () => {
-            return {
+    const onButtonClick = useCallback(
+        async () => {
+            const result = await createUser({
                 "email": email,
                 "username": username,
                 "password": password,
-            }
+            })
+            setError(result.error)
         },
-        [email, username, password],
+        [createUser, email, username, password],
     )
-    const { error, fetchNow: createNow } = useBackend(fetchDataAuth, "POST", "/api/v1/users/", body)
 
     return (
         <BoxFull header={"Crea utente"} {...props}>
@@ -63,12 +61,12 @@ export default function BoxUserCreate({ children, ...props }) {
                 <FormButton
                     color={"Green"}
                     icon={faPlus}
-                    onClick={() => createNow()}
+                    onClick={onButtonClick}
+                    disabled={running}
                 >
                     Create
                 </FormButton>
             </FormLabelled>
-            {children}
         </BoxFull>
     )
 }

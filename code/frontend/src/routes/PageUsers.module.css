@@ -2,11 +2,11 @@
     display: grid;
 
     grid-template-areas:
-        "a a"
-        "b c"
-        "d d";
-    grid-template-rows: auto auto 1fr;
-    grid-template-columns: 1fr 1fr;
+        "a"
+        "b"
+        "c";
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 1fr;
 
     grid-gap: 10px;
 
@@ -18,14 +18,10 @@
     grid-area: a;
 }
 
-.CreateUser {
+.UserList {
     grid-area: b;
 }
 
-.DeleteUser {
+.CreateUser {
     grid-area: c;
-}
-
-.UserList {
-    grid-area: d;
 }
