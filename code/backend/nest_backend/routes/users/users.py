@@ -60,7 +60,7 @@ def page_users():
                     application/json:
                         schema: Error
         tags:
-            - user-related
+            - admin-only
     """
     user = find_user(get_jwt_identity())
     if request.method == "GET":
