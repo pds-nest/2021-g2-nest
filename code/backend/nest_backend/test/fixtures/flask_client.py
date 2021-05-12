@@ -65,6 +65,13 @@ def user_exists(admin_headers, flask_client):
 
 
 @pytest.fixture(scope="package")
+def repository_exists(admin_headers, flask_client):
+    flask_client.post(f'/api/v1/repository/', headers=admin_headers, json={
+        'name': 'repo1'
+    })
+
+
+@pytest.fixture(scope="package")
 def user_access_token(flask_client, user_exists):
     response = flask_client.post("/api/v1/login", json={
         "email": "utente_test@nest.com",

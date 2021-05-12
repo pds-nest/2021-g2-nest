@@ -55,28 +55,28 @@ export default function RepositoryEditor({
         () => {
             return {
                 "conditions": _conditions,
-                "end": _end,
+                "end": null,
                 "evaluation_mode": _evaluationMode,
                 "id": id,
                 "is_active": true,
                 "name": _name,
                 "owner": user,
-                "start": _start,
+                "start": null,
             }
         },
-        [_conditions, _end, _evaluationMode, id, _name, user, _start],
+        [_conditions, _evaluationMode, id, _name, user],
     )
     const { error, loading, fetchNow } = useBackend(fetchDataAuth, method, path, body)
 
     const save = useCallback(
-        () => {
+        async () => {
             if(!id) {
                 console.info("Creating new repository with body: ", body)
             }
             else {
                 console.info("Editing repository ", id, " with body: ", body)
             }
-            fetchNow()
+            await fetchNow()
         },
         [id, body, fetchNow],
     )

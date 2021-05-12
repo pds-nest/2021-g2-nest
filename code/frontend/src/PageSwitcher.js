@@ -8,16 +8,20 @@ import PageSandbox from "./routes/PageSandbox"
 import PageDashboard from "./routes/PageDashboard"
 import PageRoot from "./routes/PageRoot"
 import PageEdit from "./routes/PageEdit"
+import PageUsers from "./routes/PageUsers"
 
 
 export default function PageSwitcher({ ...props }) {
     return (
         <Switch {...props}>
+            <Route path={"/repositories/:id/edit"} exact={true}>
+                <PageEdit/>
+            </Route>
             <Route path={"/login"} exact={true}>
                 <PageLogin/>
             </Route>
-            <Route path={"/repositories/:id/edit"} exact={true}>
-                <PageEdit/>
+            <Route path={"/users"} exact={true}>
+                <PageUsers/>
             </Route>
             <Route path={"/repositories"} exact={true}>
                 <PageRepositories/>

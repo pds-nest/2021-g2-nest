@@ -1,7 +1,7 @@
 import React, { useContext } from "react"
 import BoxFull from "../base/BoxFull"
 import SummaryRepository from "./SummaryRepository"
-import { faSearch } from "@fortawesome/free-solid-svg-icons"
+import { faFolderOpen } from "@fortawesome/free-solid-svg-icons"
 import ContextUser from "../../contexts/ContextUser"
 
 
@@ -23,7 +23,7 @@ export default function BoxRepositoriesActive({ repositories, refresh, ...props 
             <SummaryRepository
                 key={repo["id"]}
                 repo={repo}
-                icon={faSearch}
+                icon={faFolderOpen}
                 refresh={refresh}
                 canArchive={true}
                 canEdit={true}

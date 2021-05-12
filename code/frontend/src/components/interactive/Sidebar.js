@@ -1,9 +1,17 @@
-import React, { Fragment, useContext } from "react"
+import React, { useContext } from "react"
 import Style from "./Sidebar.module.css"
 import classNames from "classnames"
 import Logo from "../interactive/Logo"
 import ButtonSidebar from "../base/ButtonSidebar"
-import { faCog, faExclamationTriangle, faFolder, faHome, faKey, faWrench } from "@fortawesome/free-solid-svg-icons"
+import {
+    faCog,
+    faExclamationTriangle,
+    faFolder,
+    faHome,
+    faKey,
+    faUserCog,
+    faWrench,
+} from "@fortawesome/free-solid-svg-icons"
 import ContextUser from "../../contexts/ContextUser"
 
 
@@ -24,16 +32,24 @@ export default function Sidebar({ className, ...props }) {
             <Logo/>
             {
                 user ?
-                <Fragment>
+                <>
                     <ButtonSidebar to={"/dashboard"} icon={faHome}>Dashboard</ButtonSidebar>
                     <ButtonSidebar to={"/repositories"} icon={faFolder}>Repositories</ButtonSidebar>
                     <ButtonSidebar to={"/alerts"} icon={faExclamationTriangle}>Alerts</ButtonSidebar>
                     <ButtonSidebar to={"/settings"} icon={faCog}>Settings</ButtonSidebar>
-                </Fragment>
+                </>
                      :
-                <Fragment>
+                <>
                     <ButtonSidebar to={"/login"} icon={faKey}>Login</ButtonSidebar>
-                </Fragment>
+                </>
+            }
+            {
+                user && user.isAdmin ?
+                <>
+                    <ButtonSidebar to={"/users"} icon={faUserCog}>Utenti</ButtonSidebar>
+                </>
+                                     :
+                null
             }
             {
                 process.env.NODE_ENV === "development" ?

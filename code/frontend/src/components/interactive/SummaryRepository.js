@@ -26,8 +26,11 @@ export default function SummaryRepository(
     const { fetchDataAuth } = useContext(ContextUser)
     const history = useHistory()
     const { fetchNow: archiveThis } = useBackend(fetchDataAuth, "PATCH", `/api/v1/repositories/${repo.id}`, { "close": true })
-    const { fetchNow: unarchiveThis } = useBackend(fetchDataAuth, "PATCH", `/api/v1/repositories/${repo.id}`, { "open": true })
     const { fetchNow: deletThis } = useBackend(fetchDataAuth, "DELETE", `/api/v1/repositories/${repo.id}`)
+
+    const onRepoClick = () => {
+        history.push(`/repositories/${repo.id}`)
+    }
 
     const onEditClick = () => {
         history.push(`/repositories/${repo.id}/edit`)
@@ -35,11 +38,6 @@ export default function SummaryRepository(
 
     const onArchiveClick = async () => {
         await archiveThis()
-        await refresh()
-    }
-
-    const onUnarchiveClick = async () => {
-        await unarchiveThis()
         await refresh()
     }
 
@@ -71,9 +69,9 @@ export default function SummaryRepository(
          <Button
              color={"Grey"}
              icon={faArchive}
-             onClick={repo.is_active ? onArchiveClick : onUnarchiveClick}
+             onClick={onArchiveClick}
          >
-             {repo.is_active ? "Archive" : "Unarchive"}
+             {"Archive"}
          </Button>
                     : null}
     </>
@@ -82,10 +80,11 @@ export default function SummaryRepository(
         <Summary
             icon={repo.is_active ? faFolderOpen : faFolder}
             title={repo.name}
-            subtitle={repo.author}
-            upperLabel={"Start"}
+            subtitle={repo.owner ? repo.owner.username : null}
+            onClick={onRepoClick}
+            upperLabel={"Created"}
             upperValue={repo.start ? new Date(repo.start).toLocaleString() : null}
-            lowerLabel={"End"}
+            lowerLabel={"Archived"}
             lowerValue={repo.end ? new Date(repo.end).toLocaleString() : null}
             buttons={buttons}
             {...props}

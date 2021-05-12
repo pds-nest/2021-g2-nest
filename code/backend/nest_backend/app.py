@@ -1,7 +1,6 @@
 from flask import Flask
 from flask_cors import CORS as FlaskCORS
 from flask_jwt_extended import JWTManager as FlaskJWTManager
-from flask_sqlalchemy import SQLAlchemy as FlaskSQLAlchemy
 from werkzeug.middleware.proxy_fix import ProxyFix as MiddlewareProxyFix
 
 from . import database, routes, gestione, swagger
@@ -107,5 +106,4 @@ app.register_error_handler(
 
 # --- REVERSE PROXY ---
 
-if not __debug__:
-    app = MiddlewareProxyFix(app=app, x_for=1, x_proto=0, x_host=1, x_port=0, x_prefix=0)
+rp_app = MiddlewareProxyFix(app=app, x_for=1, x_proto=0, x_host=1, x_port=0, x_prefix=0)

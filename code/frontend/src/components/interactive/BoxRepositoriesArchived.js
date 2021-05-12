@@ -2,7 +2,7 @@ import React, { useContext } from "react"
 import BoxFull from "../base/BoxFull"
 import ContextUser from "../../contexts/ContextUser"
 import SummaryRepository from "./SummaryRepository"
-import { faSearch } from "@fortawesome/free-solid-svg-icons"
+import { faFolder } from "@fortawesome/free-solid-svg-icons"
 
 
 /**
@@ -23,9 +23,9 @@ export default function BoxRepositoriesArchived({ repositories, refresh, ...prop
             <SummaryRepository
                 key={repo["id"]}
                 repo={repo}
-                icon={faSearch}
+                icon={faFolder}
                 refresh={refresh}
-                canArchive={true}
+                canArchive={false}
                 canEdit={false}
                 canDelete={repo["owner"]["username"] === user["username"]}
             />

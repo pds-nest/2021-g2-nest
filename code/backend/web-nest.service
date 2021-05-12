@@ -1,0 +1,16 @@
+[Unit]
+Description=N.E.S.T. Backend Webserver
+Wants=network-online.target postgresql.service
+After=network-online.target nss-lookup.target postgresql.service
+
+[Service]
+Type=exec
+User=nest
+Group=nest
+# Cambia questa riga alla tua directory di installazione
+WorkingDirectory=/srv/nest
+# Cambia questa riga al tuo venv
+ExecStart=/srv/nest/venv/bin/gunicorn -b 127.0.0.1:5000 --env "FLASK_CONFIG=/srv/nest/config.py" nest_backend.app:rp_app
+
+[Install]
+WantedBy=multi-user.target

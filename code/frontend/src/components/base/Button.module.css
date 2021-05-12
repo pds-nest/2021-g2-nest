@@ -11,6 +11,10 @@
     cursor: pointer;
 }
 
+.Button[disabled] {
+    opacity: 0.5;
+}
+
 .Button:focus-visible {
     outline: 4px solid var(--outline);
 }

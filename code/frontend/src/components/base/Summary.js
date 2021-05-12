@@ -10,6 +10,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
  * @param icon - The icon of the summary.
  * @param title - The title of the summary.
  * @param subtitle - The subtitle of the summary.
+ * @param onClick - A function to call when the summary is clicked.
  * @param upperLabel - The label for the upper value.
  * @param upperValue - The upper value.
  * @param lowerLabel - The label for the lower value.
@@ -21,11 +22,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
  * @constructor
  */
 export default function Summary(
-    { icon, title, subtitle, upperLabel, upperValue, lowerLabel, lowerValue, buttons, className, ...props },
+    { icon, title, subtitle, onClick, upperLabel, upperValue, lowerLabel, lowerValue, buttons, className, ...props },
 ) {
     return (
         <div className={classNames(Style.Summary, className)} {...props}>
-            <div className={Style.Left}>
+            <div className={classNames(Style.Left, onClick ? Style.Clickable : null)} onClick={onClick}>
                 <div className={Style.IconContainer}>
                     <FontAwesomeIcon icon={icon}/>
                 </div>
