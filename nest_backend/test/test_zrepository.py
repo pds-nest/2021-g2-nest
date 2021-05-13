@@ -4,6 +4,7 @@ from flask.testing import Client
 
 
 class TestRepositoryAdd:
+    # creo un repository
     def test_for_success(self, flask_client: Client, user_headers):
         r = flask_client.post(f'/api/v1/repositories/', headers=user_headers, json={
             'conditions': [
@@ -15,6 +16,24 @@ class TestRepositoryAdd:
             ],
             'evaluation_mode': 0,
             'name': 'repo_test',
+            'is_active': True
+        })
+        assert r.status_code == 200
+        assert r.json["result"] == "success"
+        assert r.json["data"]["is_active"] is True
+
+    # ne creo un altro come admin
+    def test_for_success(self, flask_client: Client, admin_headers):
+        r = flask_client.post(f'/api/v1/repositories/', headers=admin_headers, json={
+            'conditions': [
+                {
+                    'content': 'PdS2021',
+                    'id': 0,
+                    'type': 0
+                }
+            ],
+            'evaluation_mode': 0,
+            'name': 'repo_admin',
             'is_active': True
         })
         assert r.status_code == 200
@@ -107,25 +126,26 @@ class TestRepositoryPatch:
 
     def test_unknown_type(self, flask_client: Client, admin_headers):
         r = flask_client.patch(f'/api/v1/repositories/1', headers=admin_headers,
-                             json={
-                                 "name": "string",
-                                 "close": "string",
-                                 "open": "string",
-                                 "evaluation_mode": 99
-                             })
+                               json={
+                                   "name": "string",
+                                   "close": "string",
+                                   "open": "string",
+                                   "evaluation_mode": 99
+                               })
         assert r.status_code == 400
         assert r.json["result"] == "failure"
 
     def test_for_success(self, flask_client: Client, user_headers):
         r = flask_client.patch(f'/api/v1/repositories/1', headers=user_headers,
-                             json={
-                                 "name": "nuovo_nome",
-                                 "close": "false",
-                                 "open": "false",
-                                 "evaluation_mode": 1
-                             })
+                               json={
+                                   "name": "nuovo_nome",
+                                   "close": "false",
+                                   "open": "false",
+                                   "evaluation_mode": 1
+                               })
         assert r.status_code == 200
         assert r.json["result"] == "success"
+
 
 class TestRepositoryDelete:
     def test_wrong_owner(self, flask_client: Client, user_headers):
@@ -133,6 +153,12 @@ class TestRepositoryDelete:
         assert r.status_code == 403
         assert r.json["result"] == "failure"
 
+    # TODO: testare la condizione di uscita con errore perche ci sono delle dipendenze
+
+    def test_for_success(self, flask_client: Client, admin_headers):
+        r = flask_client.delete(f'/api/v1/repositories/2', headers=admin_headers)
+        assert r.status_code == 200
+        assert r.json["result"] == "success"
 
 
 class TestRepositoryPut:
@@ -146,6 +172,7 @@ class TestRepositoryPut:
                              })
         assert r.status_code == 400
         assert r.json["result"] == "failure"
+
 
 '''
 class TestUserDelete:
