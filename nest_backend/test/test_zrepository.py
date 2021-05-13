@@ -99,6 +99,41 @@ class TestRepositoryGet:
         assert r.json["result"] == "failure"
 
 
+class TestRepositoryPatch:
+    def test_wrong_owner(self, flask_client: Client, admin_headers):
+        r = flask_client.get(f'/api/v1/repositories/1', headers=admin_headers)
+        assert r.status_code == 403
+        assert r.json["result"] == "failure"
+
+    def test_unknown_type(self, flask_client: Client, admin_headers):
+        r = flask_client.get(f'/api/v1/repositories/1', headers=admin_headers,
+                             json={
+                                 "name": "string",
+                                 "close": "string",
+                                 "open": "string",
+                                 "evaluation_mode": 99
+                             })
+        assert r.status_code == 400
+        assert r.json["result"] == "failure"
+
+    def test_for_success(self, flask_client: Client, user_headers):
+        r = flask_client.get(f'/api/v1/repositories/1', headers=user_headers,
+                             json={
+                                 "name": "nuovo_nome",
+                                 "close": "false",
+                                 "open": "false",
+                                 "evaluation_mode": 1
+                             })
+        assert r.status_code == 200
+        assert r.json["result"] == "success"
+
+class TestRepositoryDelete:
+    pass
+
+
+class TestRepositoryPut:
+    pass
+
 '''
 class TestUserDelete:
     def test_for_success(self, flask_client: Client, admin_headers):
