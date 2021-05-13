@@ -1,3 +1,4 @@
+import React from "react"
 import Layout from "./components/interactive/Layout"
 import { BrowserRouter } from "react-router-dom"
 import GlobalTheme from "./components/providers/GlobalTheme"
