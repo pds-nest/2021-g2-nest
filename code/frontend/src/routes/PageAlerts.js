@@ -7,11 +7,11 @@ import BoxFull from "../components/base/BoxFull"
 export default function PageAlerts({ children, className, ...props }) {
     return (
         <div className={classNames(Style.PageAlerts, className)} {...props}>
-            <BoxFull header={"Your alerts"} className={Style.YourAlerts}>
-                🚧 Not implemented.
+            <BoxFull header={"I tuoi allarmi"} className={Style.YourAlerts}>
+                🚧 Non implementato.
             </BoxFull>
-            <BoxFull header={"Create new alert"} className={Style.CreateAlert}>
-                🚧 Not implemented.
+            <BoxFull header={"Crea un nuovo allarme"} className={Style.CreateAlert}>
+                🚧 Non implementato.
             </BoxFull>
         </div>
     )

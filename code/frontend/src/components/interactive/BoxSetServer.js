@@ -18,7 +18,7 @@ export default function BoxSetServer({ ...props }) {
     const { server, setServer } = useContext(ContextServer)
 
     return (
-        <BoxFull header={"Choose server"} {...props}>
+        <BoxFull header={"Scegli un server"} {...props}>
             <FormLabelled>
                 <FormLabel text={"Base URL"} htmlFor={"set-server-base-url"}>
                     <InputWithIcon

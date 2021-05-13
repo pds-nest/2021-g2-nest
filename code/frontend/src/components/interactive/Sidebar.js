@@ -35,12 +35,12 @@ export default function Sidebar({ className, ...props }) {
                 <>
                     <ButtonSidebar to={"/dashboard"} icon={faHome}>Dashboard</ButtonSidebar>
                     <ButtonSidebar to={"/repositories"} icon={faFolder}>Repositories</ButtonSidebar>
-                    <ButtonSidebar to={"/alerts"} icon={faExclamationTriangle}>Alerts</ButtonSidebar>
-                    <ButtonSidebar to={"/settings"} icon={faCog}>Settings</ButtonSidebar>
+                    <ButtonSidebar to={"/alerts"} icon={faExclamationTriangle}>Allarmi</ButtonSidebar>
+                    <ButtonSidebar to={"/settings"} icon={faCog}>Impostazioni</ButtonSidebar>
                 </>
                      :
                 <>
-                    <ButtonSidebar to={"/login"} icon={faKey}>Login</ButtonSidebar>
+                    <ButtonSidebar to={"/login"} icon={faKey}>Accedi</ButtonSidebar>
                 </>
             }
             {

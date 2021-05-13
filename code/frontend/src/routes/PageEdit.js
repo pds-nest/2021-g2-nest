@@ -24,7 +24,7 @@ export default function PageEdit({ className, ...props }) {
     return (
         <div className={classNames(Style.PageHome, className)} {...props}>
             <BoxHeader className={Style.Header}>
-                Edit repository
+                Modifica repository
             </BoxHeader>
             {contents}
         </div>

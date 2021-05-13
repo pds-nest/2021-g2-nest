@@ -17,7 +17,7 @@ export default function BoxConditions({ ...props }) {
     const badges = conditions.map((cond, pos) => <ConditionBadge key={pos} {...cond}/>)
 
     return (
-        <BoxFull header={"Conditions"} {...props}>
+        <BoxFull header={"Condizioni"} {...props}>
             {badges}
         </BoxFull>
     )

@@ -99,7 +99,7 @@ export default function BoxConditionMap({ ...props }) {
     return (
         <BoxFull
             header={
-                <span>Search by <FontAwesomeIcon icon={faMapPin}/> zone</span>
+                <span>Ricerca per <FontAwesomeIcon icon={faMapPin}/> area</span>
             }
             childrenClassName={Style.BoxConditionMapContents}
             {...props}

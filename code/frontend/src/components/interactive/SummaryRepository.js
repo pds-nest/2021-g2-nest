@@ -42,7 +42,7 @@ export default function SummaryRepository(
              onClick={deleteSelf}
              disabled={running}
          >
-             Delete
+             Elimina
          </Button>
                    : null}
         {canEdit ?
@@ -52,7 +52,7 @@ export default function SummaryRepository(
              onClick={onEditClick}
              disabled={running}
          >
-             Edit
+             Modifica
          </Button>
                  : null}
         {canArchive ?
@@ -62,7 +62,7 @@ export default function SummaryRepository(
              onClick={archiveSelf}
              disabled={running}
          >
-             {"Archive"}
+             {"Archivia"}
          </Button>
                     : null}
     </>
@@ -73,9 +73,9 @@ export default function SummaryRepository(
             title={repo.name}
             subtitle={repo.owner ? repo.owner.username : null}
             onClick={onRepoClick}
-            upperLabel={"Created"}
+            upperLabel={"Creata"}
             upperValue={repo.start ? new Date(repo.start).toLocaleString() : null}
-            lowerLabel={"Archived"}
+            lowerLabel={"Archiviata"}
             lowerValue={repo.end ? new Date(repo.end).toLocaleString() : null}
             buttons={buttons}
             {...props}

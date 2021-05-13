@@ -16,8 +16,8 @@ export default function SelectTheme({ ...props }) {
 
     return (
         <Select value={theme} onChange={e => setTheme(e.target.value)} {...props}>
-            <option value={"ThemeDark"}>Dark</option>
-            <option value={"ThemeLight"}>Light</option>
+            <option value={"ThemeDark"}>Scuro</option>
+            <option value={"ThemeLight"}>Chiaro</option>
         </Select>
     )
 }

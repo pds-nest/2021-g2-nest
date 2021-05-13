@@ -19,7 +19,7 @@ export default function ButtonToggleBeforeAfter({ onUpdate, className, ...props 
             onClick={onButtonClick}
             {...props}
         >
-            {value ? "After" : "Before"}
+            {value ? "Dopo" : "Prima"}
         </Button>
     )
 }

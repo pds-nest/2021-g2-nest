@@ -44,7 +44,7 @@ export default function BoxLogin({ ...props }) {
     }
 
     return (
-        <BoxFull header={"Login"} {...props}>
+        <BoxFull header={"Accedi"} {...props}>
             <FormLabelled>
                 <FormLabel text={"Email"} htmlFor={"login-email"}>
                     <InputWithIcon
@@ -77,7 +77,7 @@ export default function BoxLogin({ ...props }) {
                     color={"Green"}
                     disabled={working}
                 >
-                    Login
+                    Accedi
                 </FormButton>
             </FormLabelled>
         </BoxFull>

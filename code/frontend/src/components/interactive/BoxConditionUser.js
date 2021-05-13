@@ -40,7 +40,7 @@ export default function BoxConditionUser({ ...props }) {
     }
 
     return (
-        <BoxFull header={<span>Search by <FontAwesomeIcon icon={faAt}/> user</span>} {...props}>
+        <BoxFull header={<span>Ricerca per <FontAwesomeIcon icon={faAt}/> utente</span>} {...props}>
             <FormInline onSubmit={onButtonClick}>
                 <InputWithIcon
                     className={Style.Input}

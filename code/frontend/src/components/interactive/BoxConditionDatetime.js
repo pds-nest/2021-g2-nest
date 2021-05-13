@@ -50,7 +50,7 @@ export default function BoxConditionDatetime({ ...props }) {
     }
 
     return (
-        <BoxFull header={<span>Search by <FontAwesomeIcon icon={faClock}/> time period</span>} {...props}>
+        <BoxFull header={<span>Ricerca per <FontAwesomeIcon icon={faClock}/> arco di tempo</span>} {...props}>
             <FormInline onSubmit={onButtonClick}>
                 <ButtonToggleBeforeAfter onUpdate={setBa}/>
                 <InputWithIcon

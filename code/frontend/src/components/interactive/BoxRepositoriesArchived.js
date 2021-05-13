@@ -31,7 +31,7 @@ export default function BoxRepositoriesArchived({
         contents = <Loading/>
     }
     else if(repositories.length === 0) {
-        contents = <i>There's nothing here.</i>
+        contents = <i>Non c'è nulla qui.</i>
     }
     else {
         contents = repositories.map(repo => (
@@ -50,7 +50,7 @@ export default function BoxRepositoriesArchived({
     }
 
     return (
-        <BoxFullScrollable header={"Your active repositories"} {...props}>
+        <BoxFullScrollable header={"Le tue repository archiviate"} {...props}>
             {contents}
         </BoxFullScrollable>
     )

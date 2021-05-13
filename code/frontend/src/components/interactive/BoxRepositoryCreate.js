@@ -34,14 +34,14 @@ export default function BoxRepositoryCreate({ ...props }) {
     const history = useHistory()
 
     return (
-        <BoxFull header={"Create repository"} {...props}>
+        <BoxFull header={"Crea repository"} {...props}>
             <FormLabelled
                 onSubmit={e => {
                     e.preventDefault()
                     save()
                 }}
             >
-                <FormLabel htmlFor={"repo-name"} text={"Repository name"}>
+                <FormLabel htmlFor={"repo-name"} text={"Nome della repository"}>
                     <InputWithIcon
                         id={"repo-name"}
                         icon={faFolder}
@@ -49,14 +49,14 @@ export default function BoxRepositoryCreate({ ...props }) {
                         onChange={e => setName(e.target.value)}
                     />
                 </FormLabel>
-                <FormLabel htmlFor={"filter-mode"} text={"Add tweets if they satisfy"}>
+                <FormLabel htmlFor={"filter-mode"} text={"Aggiutngi tweet se soddisfano:"}>
                     <label>
                         <Radio
                             name={"filter-mode"}
                             onChange={() => setEvaluationMode(0)}
                             checked={evaluationMode === 0}
                         />
-                        One filter
+                        Un filtro
                     </label>
                     &nbsp;
                     <label>
@@ -65,7 +65,7 @@ export default function BoxRepositoryCreate({ ...props }) {
                             onChange={() => setEvaluationMode(1)}
                             checked={evaluationMode === 1}
                         />
-                        Every filter
+                        Tutti i filtri
                     </label>
                 </FormLabel>
                 {error ?
@@ -99,7 +99,7 @@ export default function BoxRepositoryCreate({ ...props }) {
                      color={"Green"}
                      onClick={_ => goToOnSuccess(save, history, "/repositories")()}
                  >
-                     Create repository
+                     Crea repository
                  </Button>
                 }
 

@@ -20,7 +20,7 @@ export default function SummaryUser({ user, destroyUser, running, ...props }) {
              }}
              disabled={running}
          >
-             Delete
+             Elimina
          </Button>
                                          : null}
     </>

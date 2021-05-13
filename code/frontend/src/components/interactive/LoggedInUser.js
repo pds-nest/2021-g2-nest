@@ -17,7 +17,7 @@ export default function LoggedInUser({ ...props }) {
     if(!user) {
         return (
             <i {...props}>
-                Not logged in
+                Non acceduto
             </i>
         )
     }

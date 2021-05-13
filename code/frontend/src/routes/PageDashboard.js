@@ -9,7 +9,7 @@ export default function PageDashboard({ children, className, ...props }) {
     return (
         <div className={classNames(Style.PageHome, className)} {...props}>
             <BoxHeader className={Style.Header}>
-                Create a new repository
+                Crea una nuova repository
             </BoxHeader>
             <RepositoryEditor className={Style.RepositoryEditor}/>
         </div>

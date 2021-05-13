@@ -21,10 +21,10 @@ export default function BoxLoggedIn({ ...props }) {
     const history = useHistory()
 
     return (
-        <BoxFull header={"Logged in"} {...props}>
+        <BoxFull header={"Acceduto"} {...props}>
             <div className={Style.BoxLoggedInContents}>
                 <div>
-                    You are currently logged in at <CurrentServer/> as <LoggedInUser/>.
+                    Al momento sei acceduto su <CurrentServer/> come <LoggedInUser/>.
                 </div>
                 <div>
                     <Button
@@ -32,7 +32,7 @@ export default function BoxLoggedIn({ ...props }) {
                         logout()
                         history.push("/login")
                     }} icon={faSignOutAlt}
-                    >Logout</Button>
+                    >Esci</Button>
                 </div>
             </div>
         </BoxFull>

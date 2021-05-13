@@ -13,16 +13,16 @@ export default function PageSettings({ children, className, ...props }) {
         <div className={classNames(Style.PageSettings, className)} {...props}>
             <BoxLoggedIn/>
             <BoxHeader>
-                Switch theme: <SelectTheme/>
+                Cambia tema: <SelectTheme/>
             </BoxHeader>
-            <BoxFull header={"Alert settings"}>
-                🚧 Not implemented.
+            <BoxFull header={"Impostazioni allarmi"}>
+                🚧 Non implementato.
             </BoxFull>
-            <BoxFull header={"Change your email address"}>
-                🚧 Not implemented.
+            <BoxFull header={"Cambia il tuo indirizzo email"}>
+                🚧 Non implementato.
             </BoxFull>
-            <BoxFull header={"Change your password"}>
-                🚧 Not implemented.
+            <BoxFull header={"Cambia la tua password"}>
+                🚧 Non implementato.
             </BoxFull>
         </div>
     )
