@@ -1,37 +1,13 @@
 <component name="InspectionProjectProfileManager">
   <profile version="1.0">
     <option name="myName" value="Project Default" />
-    <inspection_tool class="CssUnknownProperty" enabled="true" level="WARNING" enabled_by_default="true">
-      <option name="myCustomPropertiesEnabled" value="true" />
-      <option name="myIgnoreVendorSpecificProperties" value="false" />
-      <option name="myCustomPropertiesList">
-        <value>
-          <list size="2">
-            <item index="0" class="java.lang.String" itemvalue="scrollbar-color" />
-            <item index="1" class="java.lang.String" itemvalue="scrollbar-width" />
-          </list>
-        </value>
-      </option>
-    </inspection_tool>
-    <inspection_tool class="ExceptionCaughtLocallyJS" enabled="false" level="WARNING" enabled_by_default="false" />
-    <inspection_tool class="HtmlUnknownAttribute" enabled="true" level="WARNING" enabled_by_default="true">
-      <option name="myValues">
-        <value>
-          <list size="1">
-            <item index="0" class="java.lang.String" itemvalue="for" />
-          </list>
-        </value>
-      </option>
-      <option name="myCustomValuesEnabled" value="true" />
-    </inspection_tool>
+    <inspection_tool class="Eslint" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="InconsistentLineSeparators" enabled="true" level="WEAK WARNING" enabled_by_default="true" />
-    <inspection_tool class="JSUnresolvedFunction" enabled="true" level="ERROR" enabled_by_default="true" />
-    <inspection_tool class="JSUnresolvedVariable" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="JupyterPackageInspection" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="LessResolvedByNameOnly" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="LessUnresolvedMixin" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="LessUnresolvedVariable" enabled="true" level="ERROR" enabled_by_default="true" />
-    <inspection_tool class="LongLine" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
+    <inspection_tool class="LongLine" enabled="true" level="WEAK WARNING" enabled_by_default="true" />
     <inspection_tool class="PoetryPackageVersion" enabled="true" level="SERVER PROBLEM" enabled_by_default="true" />
     <inspection_tool class="ProblematicWhitespace" enabled="true" level="WEAK WARNING" enabled_by_default="true" />
     <inspection_tool class="PyAbstractClassInspection" enabled="true" level="ERROR" enabled_by_default="true" />
@@ -45,7 +21,7 @@
     <inspection_tool class="PyFromFutureImportInspection" enabled="true" level="ERROR" enabled_by_default="true" />
     <inspection_tool class="PyGlobalUndefinedInspection" enabled="true" level="WARNING" enabled_by_default="true" />
     <inspection_tool class="PyInconsistentIndentationInspection" enabled="true" level="ERROR" enabled_by_default="true" />
-    <inspection_tool class="PyInterpreterInspection" enabled="false" level="SERVER PROBLEM" enabled_by_default="false" />
+    <inspection_tool class="PyInterpreterInspection" enabled="true" level="SERVER PROBLEM" enabled_by_default="true" />
     <inspection_tool class="PyMandatoryEncodingInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true" />
     <inspection_tool class="PyMethodMayBeStaticInspection" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
     <inspection_tool class="PyMissingTypeHintsInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true" />
@@ -76,6 +52,9 @@
         <list>
           <option value="pydantic.main.BaseModel.__root__" />
           <option value="telethon.client.telegramclient.TelegramClient.__await__" />
+          <option value="royalnet.engineer.pda.implementations.base.PDAImplementation.register_partial" />
+          <option value="royalnet.engineer.pda.implementations.base.PDAImplementation.register_partialcommand" />
+          <option value="royalnet.engineer.pda.implementations.base.PDAImplementation.register_conversation" />
         </list>
       </option>
     </inspection_tool>
