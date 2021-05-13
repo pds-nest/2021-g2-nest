@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Backend" type="PythonConfigurationType" factoryName="Python">
+  <configuration default="false" name="Test backend" type="tests" factoryName="py.test">
     <module name="Modulo unico" />
     <option name="INTERPRETER_OPTIONS" value="-X dev" />
     <option name="PARENT_ENVS" value="true" />
@@ -13,13 +13,11 @@
     <option name="ADD_CONTENT_ROOTS" value="true" />
     <option name="ADD_SOURCE_ROOTS" value="true" />
     <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-    <option name="SCRIPT_NAME" value="nest_backend" />
-    <option name="PARAMETERS" value="" />
-    <option name="SHOW_COMMAND_LINE" value="false" />
-    <option name="EMULATE_TERMINAL" value="false" />
-    <option name="MODULE_MODE" value="true" />
-    <option name="REDIRECT_INPUT" value="false" />
-    <option name="INPUT_FILE" value="" />
+    <option name="_new_keywords" value="&quot;&quot;" />
+    <option name="_new_parameters" value="&quot;&quot;" />
+    <option name="_new_additionalArguments" value="&quot;&quot;" />
+    <option name="_new_target" value="&quot;nest_backend&quot;" />
+    <option name="_new_targetType" value="&quot;PYTHON&quot;" />
     <method v="2" />
   </configuration>
 </component>
