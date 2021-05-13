@@ -18,12 +18,12 @@ class TestRepositoryAdd:
             'name': 'repo_test',
             'is_active': True
         })
-        assert r.status_code == 200
+        assert r.status_code == 201
         assert r.json["result"] == "success"
         assert r.json["data"]["is_active"] is True
 
     # ne creo un altro come admin
-    def test_for_success(self, flask_client: Client, admin_headers):
+    def test_for_success_admin(self, flask_client: Client, admin_headers):
         r = flask_client.post(f'/api/v1/repositories/', headers=admin_headers, json={
             'conditions': [
                 {
@@ -36,7 +36,7 @@ class TestRepositoryAdd:
             'name': 'repo_admin',
             'is_active': True
         })
-        assert r.status_code == 200
+        assert r.status_code == 201
         assert r.json["result"] == "success"
         assert r.json["data"]["is_active"] is True
 

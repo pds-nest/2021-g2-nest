@@ -70,15 +70,16 @@ def page_repositories():
             spectator = spectator.filter(not Repository.is_active)
         owner = owner.all()
         spectator = spectator.all()
-        return json_success([r.to_json() for r in owner]+[r.repository.to_json() for r in spectator])
+        return json_success([r.to_json() for r in owner] + [r.repository.to_json() for r in spectator])
     elif request.method == "POST":
         # Users will be tolerated if they change parameters they're not supposed to touch. We'll ignore them for now.
-        if not request.json.get("name") or not request.json.get("conditions") or not str(request.json.get("evaluation_mode")):
+        if not request.json.get("name") or not request.json.get("conditions") or not str(
+                request.json.get("evaluation_mode")):
             return json_error("Missing arguments."), 400
         name = request.json.get("name")
         try:
             evaluation_mode = ConditionMode(request.json['evaluation_mode'])
-        except KeyError:
+        except:  # KeyError
             return json_error("Unknown `type` specified."), 400
         repository = Repository(name=name, owner_id=user.email, is_active=False, evaluation_mode=evaluation_mode)
         ext.session.add(repository)
