@@ -1,4 +1,4 @@
-import React, { useCallback, useContext } from "react"
+import React, { useCallback } from "react"
 import Style from "./PageRepositories.module.css"
 import classNames from "classnames"
 import BoxRepositoriesActive from "../components/interactive/BoxRepositoriesActive"
@@ -22,7 +22,7 @@ export default function PageRepositories({ children, className, ...props }) {
             }
             return {}
         },
-        [bv.apiRequest, bv.refreshResource]
+        [bv.apiRequest, bv.refreshResource],
     )
 
     return (

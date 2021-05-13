@@ -16,8 +16,8 @@ Per installare le dipendenze del frontend, è necessario eseguire in questa cart
 npm install
 ```
 
-Questo scaricherà da [npm](https://www.npmjs.com/) tutte le dipendenze necessarie ad avviare il development server, 
-e le inserirà nella cartella `node_modules`.
+Questo scaricherà da [npm](https://www.npmjs.com/) tutte le dipendenze necessarie ad avviare il development server, e le
+inserirà nella cartella `node_modules`.
 
 > Nota: La cartella `node_modules` **non deve essere committata**!
 
@@ -33,8 +33,8 @@ Questo avvierà un webserver su `localhost` legato alla porta TCP `3000`.
 
 ## Sviluppo
 
-Mentre il development server è avviato, qualsiasi modifica verrà immediatamente applicata sulla 
-pagina web di anteprima a http://localhost:3000 .
+Mentre il development server è avviato, qualsiasi modifica verrà immediatamente applicata sulla pagina web di anteprima
+a http://localhost:3000 .
 
 ## Documentazione
 
@@ -50,5 +50,5 @@ Per compilare il frontend in una webapp ottimizzata per l'uso in production, è 
 npm build
 ```
 
-La pagina web e le sue risorse saranno create all'interno della cartella `build`, pronte per essere servite tramite
-un qualsiasi webserver di pagine statiche.
+La pagina web e le sue risorse saranno create all'interno della cartella `build`, pronte per essere servite tramite un
+qualsiasi webserver di pagine statiche.

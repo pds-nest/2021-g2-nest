@@ -143,7 +143,7 @@ export default function useBackendViewset(resourcesPath, pkName) {
             }
             return {}
         },
-        [apiRetrieve, pkName]
+        [apiRetrieve, pkName],
     )
 
     const createResource = useCallback(

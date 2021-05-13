@@ -1,9 +1,7 @@
-import React, { useContext } from "react"
+import React from "react"
 import Button from "../base/Button"
 import { faArchive, faFolder, faFolderOpen, faPencilAlt, faTrash } from "@fortawesome/free-solid-svg-icons"
 import { useHistory } from "react-router"
-import useBackend from "../../hooks/useBackend"
-import ContextUser from "../../contexts/ContextUser"
 import Summary from "../base/Summary"
 
 

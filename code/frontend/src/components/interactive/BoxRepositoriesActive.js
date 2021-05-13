@@ -1,5 +1,4 @@
 import React, { useContext } from "react"
-import BoxFull from "../base/BoxFull"
 import SummaryRepository from "./SummaryRepository"
 import { faFolderOpen } from "@fortawesome/free-solid-svg-icons"
 import ContextUser from "../../contexts/ContextUser"
@@ -18,7 +17,13 @@ import BoxFullScrollable from "../base/BoxFullScrollable"
  * @returns {JSX.Element}
  * @constructor
  */
-export default function BoxRepositoriesActive({ repositories, archiveRepository, destroyRepository, running, ...props }) {
+export default function BoxRepositoriesActive({
+                                                  repositories,
+                                                  archiveRepository,
+                                                  destroyRepository,
+                                                  running,
+                                                  ...props
+                                              }) {
     const { user } = useContext(ContextUser)
 
     let contents
