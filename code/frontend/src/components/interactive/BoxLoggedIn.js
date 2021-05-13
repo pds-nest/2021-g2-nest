@@ -21,10 +21,10 @@ export default function BoxLoggedIn({ ...props }) {
     const history = useHistory()
 
     return (
-        <BoxFull header={"Acceduto"} {...props}>
+        <BoxFull header={"Effettuato l'accesso"} {...props}>
             <div className={Style.BoxLoggedInContents}>
                 <div>
-                    Al momento sei acceduto su <CurrentServer/> come <LoggedInUser/>.
+                    Al momento hai effettuato l'accesso su <CurrentServer/> come <LoggedInUser/>.
                 </div>
                 <div>
                     <Button
