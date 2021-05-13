@@ -101,12 +101,12 @@ class TestRepositoryGet:
 
 class TestRepositoryPatch:
     def test_wrong_owner(self, flask_client: Client, admin_headers):
-        r = flask_client.get(f'/api/v1/repositories/1', headers=admin_headers)
+        r = flask_client.patch(f'/api/v1/repositories/1', headers=admin_headers)
         assert r.status_code == 403
         assert r.json["result"] == "failure"
 
     def test_unknown_type(self, flask_client: Client, admin_headers):
-        r = flask_client.get(f'/api/v1/repositories/1', headers=admin_headers,
+        r = flask_client.patch(f'/api/v1/repositories/1', headers=admin_headers,
                              json={
                                  "name": "string",
                                  "close": "string",
@@ -117,7 +117,7 @@ class TestRepositoryPatch:
         assert r.json["result"] == "failure"
 
     def test_for_success(self, flask_client: Client, user_headers):
-        r = flask_client.get(f'/api/v1/repositories/1', headers=user_headers,
+        r = flask_client.patch(f'/api/v1/repositories/1', headers=user_headers,
                              json={
                                  "name": "nuovo_nome",
                                  "close": "false",
@@ -128,11 +128,24 @@ class TestRepositoryPatch:
         assert r.json["result"] == "success"
 
 class TestRepositoryDelete:
-    pass
+    def test_wrong_owner(self, flask_client: Client, user_headers):
+        r = flask_client.delete(f'/api/v1/repositories/2', headers=user_headers)
+        assert r.status_code == 403
+        assert r.json["result"] == "failure"
+
 
 
 class TestRepositoryPut:
-    pass
+    def test_unknown_type(self, flask_client: Client, admin_headers):
+        r = flask_client.put(f'/api/v1/repositories/1', headers=admin_headers,
+                             json={
+                                 "name": "string",
+                                 "close": "string",
+                                 "open": "string",
+                                 "evaluation_mode": 99
+                             })
+        assert r.status_code == 400
+        assert r.json["result"] == "failure"
 
 '''
 class TestUserDelete:
