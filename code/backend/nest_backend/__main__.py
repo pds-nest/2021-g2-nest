@@ -8,6 +8,7 @@ from .gestione import *
 from .app import app, extension_sqlalchemy
 from .database import User
 
+print(" * N.E.S.T. Server is now starting. Please hold up.")
 
 print(" * Swagger docs will be available at http://127.0.0.1:5000/docs")
 
@@ -20,5 +21,5 @@ with app.app_context():
             User(email="admin@admin.com", password=gen_password("password"), username="admin", isAdmin=True))
         extension_sqlalchemy.session.commit()
         print(" * Created! Username: admin | Password: password")
-
+print(" * N.E.S.T. is based on Gestione and coded by the N.E.S.T. team.")
 app.run(debug=__debug__)

@@ -67,6 +67,11 @@ app.add_url_rule(
     methods=["GET", "POST"]
 )
 app.add_url_rule(
+    "/api/v1/repositories/<int:rid>/tweets",
+    view_func=routes.page_repository_tweets,
+    methods=["GET"]
+)
+app.add_url_rule(
     "/api/v1/alert/<int:aid>",
     view_func=routes.page_alert,
     methods=["GET", "PATCH", "DELETE", "PUT"]

@@ -31,6 +31,7 @@ spec.components.schema("CreateCondition", schema=CreateCondition)
 spec.components.schema("ConditionParameter", schema=ConditionParameterSchema)
 spec.components.schema("AlertParameter", schema=AlertParameterSchema)
 spec.components.schema("Alert", schema=Alert)
+spec.components.schema("Tweet", schema=TweetSchema)
 spec.components.schema("CreateAlert", schema=CreateAlert)
 spec.components.security_scheme("jwt", {"type": "http", "scheme": "bearer", "bearerFormat": "JWT"})
 

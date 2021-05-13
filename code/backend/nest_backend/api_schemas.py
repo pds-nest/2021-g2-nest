@@ -63,6 +63,16 @@ class RepositorySchema(Schema):
     evaluation_mode = fields.Integer(description="The mode with which conditions are evaluated.")
 
 
+class TweetSchema(Schema):
+    snowflake = fields.String(description="The tweet identifier.")
+    content = fields.String(description="The content of the tweet.")
+    location = fields.String(description="The location (coordinates) from which the tweet was tweeted.")
+    place = fields.String(description="The place from which the tweet was tweeted.")
+    poster = fields.String(default="The one that created the tweet.")
+    insert_time = fields.DateTime(default="The time on which the tweet was captured.")
+    conditions = fields.Nested(ConditionSchema, many=True)
+
+
 class CreateRepository(Schema):
     name = fields.String(description="The repository name.")
 
