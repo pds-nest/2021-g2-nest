@@ -17,7 +17,7 @@
       <sourceFolder url="file://$MODULE_DIR$/nest_crawler" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/nest_database" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/nest_frontend" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/nest_frontend/public" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/public" type="java-resource" />
       <excludeFolder url="file://$MODULE_DIR$/docs/build" />
       <excludeFolder url="file://$MODULE_DIR$/legacy" />
     </content>
