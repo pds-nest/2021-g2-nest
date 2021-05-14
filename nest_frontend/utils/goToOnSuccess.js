@@ -10,13 +10,13 @@ export default function goToOnSuccess(func, history, destination) {
     return (...args) => {
         let result
         try {
-            console.debug("Trying to run: ", func)
+            console.debug("Provando ad eseguire: ", func)
             result = func(...args)
             history.push(destination)
             return result
         }
         catch(e) {
-            console.debug("Failed to run ", func, ", not doing anything.")
+            console.debug("Esecuzione fallita: ", func, ", non ha fatto nulla.")
             throw e
         }
     }

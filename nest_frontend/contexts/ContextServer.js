@@ -16,7 +16,7 @@ import { createContext } from "react"
  */
 const ContextServer = createContext({
     server: null,
-    setServer: () => console.error("Trying to setServer while outside a ContextServer.Provider!"),
-    fetchData: () => console.error("Trying to fetchData while outside a ContextServer.Provider!"),
+    setServer: () => console.error("Provato ad eseguire setServer mentre fuori da un ContextServer.Provider!"),
+    fetchData: () => console.error("Provato ad eseguire fetchData mentre fuori da un ContextServer.Provider!"),
 })
 export default ContextServer

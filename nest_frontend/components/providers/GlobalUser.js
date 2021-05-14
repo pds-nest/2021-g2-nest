@@ -28,7 +28,7 @@ export default function GlobalUser({ children }) {
      */
     const fetchDataAuth = useCallback(async (method, path, body, init) => {
         if(!user) {
-            throw new Error("Not logged in")
+            throw new Error("Non effettuato l'accesso")
         }
 
         if(!init) {
@@ -50,13 +50,13 @@ export default function GlobalUser({ children }) {
      * @returns {Promise<void>}
      */
     const login = useCallback(async (email, password) => {
-        console.debug("Contacting server to login...")
+        console.debug("Contattando il server per accedere...")
         const data = await fetchData("POST", `/api/v1/login`, {
             "email": email,
             "password": password,
         })
 
-        console.debug("Storing login state...")
+        console.debug("Memorizzando lo stato di login...")
         setUser({
             email: data["user"]["email"],
             isAdmin: data["user"]["isAdmin"],
@@ -64,18 +64,18 @@ export default function GlobalUser({ children }) {
             token: data["access_token"],
         })
 
-        console.info("Login successful!")
+        console.info("Accesso effettuato!")
     }, [fetchData, setUser])
 
     /**
      * Logout from the currently active server.
      */
     const logout = useCallback(() => {
-        console.debug("Clearing login state...")
+        console.debug("Ripulendo lo stato di login...")
         setUser(null)
-        console.debug("Cleared login state!")
+        console.debug("Stato di login ripulito!")
 
-        console.info("Logout successful!")
+        console.info("Logout avvenuto con successo!")
     }, [setUser])
 
     return (

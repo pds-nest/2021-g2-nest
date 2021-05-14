@@ -12,7 +12,7 @@ export default function useArrayState(def) {
 
     const appendValue = useCallback(
         newSingle => {
-            console.debug("Appending ", newSingle, " to ArrayState")
+            console.debug("Aggiungendo ", newSingle, " ad ArrayState")
             setValue(
                 oldArray => [...oldArray, newSingle],
             )
@@ -22,7 +22,7 @@ export default function useArrayState(def) {
 
     const spliceValue = useCallback(
         position => {
-            console.debug("Splicing ", position, " from ArrayState")
+            console.debug("Estraendo ", position, " da ArrayState")
             setValue(
                 oldArray => {
                     oldArray.splice(position, 1)

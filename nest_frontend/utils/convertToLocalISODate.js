@@ -10,7 +10,7 @@
  */
 export default function convertToLocalISODate(date) {
     if(date.toString() === "Invalid Date") {
-        throw new Error("Received an Invalid Date as parameter.")
+        throw new Error("Data non valida ricevuta come parametro.")
     }
 
     // Create a timezone naive ISO string

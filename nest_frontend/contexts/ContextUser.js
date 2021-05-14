@@ -19,8 +19,8 @@ import { createContext } from "react"
  */
 const ContextUser = createContext({
     user: null,
-    login: () => console.error("Trying to login while outside a ContextUser.Provider!"),
-    logout: () => console.error("Trying to logout while outside a ContextUser.Provider!"),
-    fetchDataAuth: () => console.error("Trying to fetchDataAuth while outside a ContextUser.Provider!"),
+    login: () => console.error("Provato ad eseguire l'accesso mentre fuori da un ContextUser.Provider!"),
+    logout: () => console.error("Provato ad eseguire il logout mentre fuori da un while outside a ContextUser.Provider!"),
+    fetchDataAuth: () => console.error("Provato ad eseguire fetchDataAuth mentre fuori da un ContextUser.Provider!"),
 })
 export default ContextUser

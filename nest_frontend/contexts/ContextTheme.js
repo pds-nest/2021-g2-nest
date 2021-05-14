@@ -14,6 +14,6 @@ import { createContext } from "react"
 const ContextTheme = createContext({
     isSet: false,
     theme: "ThemeDark",
-    setTheme: () => console.error("Trying to setTheme while outside a ContextTheme.Provider!"),
+    setTheme: () => console.error("Provato a eseguire setTheme mentre fuori da un ContextTheme.Provider!"),
 })
 export default ContextTheme

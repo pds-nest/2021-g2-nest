@@ -71,10 +71,10 @@ export default function RepositoryEditor({
     const save = useCallback(
         async () => {
             if(!id) {
-                console.info("Creating new repository with body: ", body)
+                console.info("Creando una nuova repository avente come corpo: ", body)
             }
             else {
-                console.info("Editing repository ", id, " with body: ", body)
+                console.info("Modificando la repository ", id, " con corpo: ", body)
             }
             await fetchNow()
         },
@@ -104,7 +104,7 @@ export default function RepositoryEditor({
         (newCond) => {
             // Check for content
             if(!newCond.content) {
-                console.debug("Refusing to add ", newCond, ": content is empty.")
+                console.debug("Impossibile aggiungere ", newCond, ": l'oggetto è vuoto.")
                 return
             }
 
@@ -117,11 +117,11 @@ export default function RepositoryEditor({
                 }
             }
             if(duplicate) {
-                console.debug("Refusing to add ", newCond, ": ", duplicate, " already exists.")
+                console.debug("Impossibile aggiungere ", newCond, ": ", duplicate, " è già esistente.")
                 return
             }
 
-            console.debug("Adding ", newCond, " to the Repository Conditions")
+            console.debug("Aggiungendo ", newCond, " alle condizioni del repository")
             appendRawCondition(newCond)
         },
         [_conditions, appendRawCondition],
