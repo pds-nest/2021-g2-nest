@@ -175,7 +175,7 @@ def page_alert(aid):
                     type_ = OperationType(type_)
                 except KeyError:
                     return json_error("Unknown `operation` specified."), 400
-            root = BoolOperation(operation=type_, is_root=True, alert_id=aid)
+            root = BoolOperation(operation=type_, is_root=True, alert_id=aid, condition_id=condition_id)
             ext.session.add(root)
             ext.session.commit()
         root = BoolOperation.filter_by(id=request.json['root_operation']['id']).first()

@@ -36,10 +36,10 @@ class BoolOperation(ext.Model):
                 "node_2": self.node_2.to_json() if self.node_2 else None
                 }
 
-    def get_chain_ids(self, l):
-        if self.id in l:
+    def get_chain_ids(self, lista):
+        if self.id in lista:
             # Loop detected!
             return -1
-        l.append(self.id)
-        self.get_chain_ids(self.node_1, l)
-        self.get_chain_ids(self.node_2, l)
+        lista.append(self.id)
+        self.node_1.get_chain_ids(lista)
+        self.node_1.get_chain_ids(lista)
