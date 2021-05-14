@@ -79,11 +79,11 @@ def page_repository_alerts(rid):
 
     if request.method == "POST":
         if 'name' not in request.json:
-            json_error("Missing name."), 400
+            return json_error("Missing name."), 400
         if 'limit' not in request.json:
-            json_error('Missing limit'), 400
+            return json_error('Missing limit'), 400
         if 'window_size' not in request.json:
-            json_error('Missing window size'), 400
+            return json_error('Missing window size'), 400
         alert = Alert(name=request.json['name'], limit=request.json['limit'], window_size=request.json['window_size'],
                       repository_id=rid)
         ext.session.add(alert)
