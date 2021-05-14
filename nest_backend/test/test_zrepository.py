@@ -95,15 +95,28 @@ class TestRepositoryAdd:
 class TestRepositoryGetAll:
     def test_get_all_user_repositories(self, flask_client: Client, user_headers):
         r = flask_client.get(f'/api/v1/repositories/', headers=user_headers,
-                             json={'owner_id': 'utente_test@nest.com', 'isActive': False})
+                             json={
+                                 'owner_id': 'utente_test@nest.com',
+                                 'isActive': False
+                             })
         assert r.status_code == 200
         assert r.json["result"] == "success"
 
     def test_get_all_admin_repositories(self, flask_client: Client, admin_headers):
         r = flask_client.get(f'/api/v1/repositories/', headers=admin_headers,
-                             json={'owner_id': 'admin@admin.com', 'isActive': False})
+                             json={
+                                 'owner_id': 'admin@admin.com',
+                                 'isActive': False
+                             })
         assert r.status_code == 200
         assert r.json["result"] == "success"
+
+    def test_user_not_logged(self, flask_client: Client):
+        r = flask_client.get(f'/api/v1/repositories/',
+                             json={
+                                 'owner_id': 'utente_test@nest.com',
+                                 'isActive': False})
+        assert r.status_code == 401
 
 
 class TestRepositoryGet:
@@ -117,6 +130,10 @@ class TestRepositoryGet:
         assert r.status_code == 404
         assert r.json["result"] == "failure"
 
+    def test_user__not_logged(self, flask_client: Client, ):
+        r = flask_client.get(f'/api/v1/repositories/1')
+        assert r.status_code == 401
+
 
 class TestRepositoryPatch:
     def test_wrong_owner(self, flask_client: Client, admin_headers):
@@ -124,6 +141,33 @@ class TestRepositoryPatch:
         assert r.status_code == 403
         assert r.json["result"] == "failure"
 
+    def test_user_not_logged(self, flask_client: Client):
+        r = flask_client.patch(f'/api/v1/repositories/1')
+        assert r.status_code == 401
+
+    def test_repository_not_found(self, flask_client: Client, user_headers):
+        r = flask_client.patch(f'/api/v1/repositories/99', headers=user_headers)
+        assert r.status_code == 404
+        assert r.json["result"] == "failure"
+
+    def test_for_success(self, flask_client: Client, admin_headers):
+        r = flask_client.patch(f'/api/v1/repositories/2', headers=admin_headers, json={
+                    'conditions': [
+                        {
+                            'content': 'calcio',
+                            'id': 0,
+                            'type': 0
+                        }
+                    ],
+                    "evaluation_mode": 0,
+                    "id": 0,
+                    "is_active": "false",
+                    "name": "nuovo_nome",
+
+
+                               })
+        assert r.status_code == 204
+'''
     def test_unknown_type(self, flask_client: Client, admin_headers):
         r = flask_client.patch(f'/api/v1/repositories/1', headers=admin_headers,
                                json={
@@ -133,18 +177,9 @@ class TestRepositoryPatch:
                                    "evaluation_mode": 99
                                })
         assert r.status_code == 400
-        assert r.json["result"] == "failure"
+        assert r.json["result"] == "failure" '''
 
-    def test_for_success(self, flask_client: Client, user_headers):
-        r = flask_client.patch(f'/api/v1/repositories/1', headers=user_headers,
-                               json={
-                                   "name": "nuovo_nome",
-                                   "close": "false",
-                                   "open": "false",
-                                   "evaluation_mode": 1
-                               })
-        assert r.status_code == 200
-        assert r.json["result"] == "success"
+
 
 
 class TestRepositoryDelete:
@@ -157,47 +192,59 @@ class TestRepositoryDelete:
 
     def test_for_success(self, flask_client: Client, admin_headers):
         r = flask_client.delete(f'/api/v1/repositories/2', headers=admin_headers)
-        assert r.status_code == 200
-        assert r.json["result"] == "success"
+        assert r.status_code == 204
 
+    def test_user_not_logged(self, flask_client: Client):
+        r = flask_client.delete(f'/api/v1/repositories/2')
+        assert r.status_code == 401
 
-class TestRepositoryPut:
-    def test_unknown_type(self, flask_client: Client, admin_headers):
-        r = flask_client.put(f'/api/v1/repositories/1', headers=admin_headers,
-                             json={
-                                 "name": "string",
-                                 "close": "string",
-                                 "open": "string",
-                                 "evaluation_mode": 99
-                             })
-        assert r.status_code == 400
+    def test_repository_not_found(self, flask_client: Client, user_headers):
+        r = flask_client.delete(f'/api/v1/repositories/99', headers=user_headers)
+        assert r.status_code == 404
         assert r.json["result"] == "failure"
 
 
-'''
-class TestUserDelete:
+class TestRepositoryPut:
+
+    def test_user_not_logged(self, flask_client: Client):
+        r = flask_client.put(f'/api/v1/repositories/1')
+        assert r.status_code == 401
+
+    def test_bad_request(self, flask_client: Client, user_headers):
+        r = flask_client.put(f'/api/v1/repositories/1', headers=user_headers,
+            json={
+                "name": "string",
+                "close": "string",
+                "open": "string",
+                "evaluation_mode": 0
+            })
+        assert r.status_code == 400
+        assert r.json["result"] == "failure"
+
+    def test_repository_not_found(self, flask_client: Client, user_headers):
+        r = flask_client.put(f'/api/v1/repositories/99', headers=user_headers)
+        assert r.status_code == 404
+        assert r.json["result"] == "failure"
+
     def test_for_success(self, flask_client: Client, admin_headers):
-        r = flask_client.delete(f'/api/v1/users/utente_test@nest.com', headers=admin_headers)
-        assert b'success' in r.data
-
-    # the admin tries to commit suicide
-    def test_for_failure(self, flask_client: Client, admin_headers):
-        r = flask_client.delete(f'/api/v1/users/admin@admin.com', headers=admin_headers)
-        assert b'failure' in r.data
-
-
-class TestUserPatch:
-    def test_for_success(self, flask_client: Client, admin_headers):
-        r = flask_client.patch(f'/api/v1/users/admin@admin.com', headers=admin_headers, json={
-            'username': 'admin_patched'
+        r = flask_client.put(f'/api/v1/repositories/1', headers=admin_headers, json={
+            "conditions": [
+                {
+                    "content": "string",
+                    "id": 0,
+                    "type": 0
+                }
+            ],
+            "end": "2021-05-14T12:12:29.827Z",
+            "evaluation_mode": 0,
+            "id": 0,
+            "is_active": True,
+            "name": "string",
+            "owner": {
+                "email": "string",
+                "isAdmin": True,
+                "username": "string"
+            },
+            "start": "2021-05-14T12:12:29.827Z"
         })
-        assert b'success' in r.data
-
-    # FIXME AssertionError in flask_client at line 63. Il test non riesce ad andare a buon fine
-    def test_for_failure(self, flask_client: Client, user_headers):
-        r = flask_client.patch(f'/api/v1/users/admin@admin.com', headers=user_headers, json={
-            'username': 'admin_patched'
-        })
-        assert b'failure' in r.data
-
-'''
+        assert r.status_code == 200
