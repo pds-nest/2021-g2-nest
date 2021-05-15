@@ -114,6 +114,9 @@ def page_condition(cid):
     if condition.repository not in user.owner_or and not user.isAdmin:
         return json_error("You lack the authorization to proceed, pal."), 403
     if request.method == "PATCH":
+        if request.json is None:
+            return json_error("Missing json content."), 400
+
         if (type_ := request.json.get("type")) is not None:
             try:
                 type_ = ConditionType(type_)
