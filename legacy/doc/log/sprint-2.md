@@ -4,6 +4,8 @@
 |------|-----|--------|----------|
 |14/05 |10:00 | 1.0h  | backlog grooming session |
 
+Totale generale di tutti i componenti: 98.5h
+
 
 # Log attività individuali dello Sprint 2
 
@@ -17,6 +19,8 @@ Chiara Calzolari - UI Designer
 |03/05 | 1.0h | Testing frontend e segnalazione issues
 |03/05 | 1.0h | Modifica mockup UI (Dashboard repository)
 |04/05 | 1.0h | Modifica mockup UI (adeguamento al JS)
+|-------|--------|
+|totale| 3.0h |
 
 Stefano Goldoni - Product Owner & Tester
 
@@ -27,8 +31,10 @@ Stefano Goldoni - Product Owner & Tester
 |11/05 |2.5h |test utenti e repository
 |12/05 |2.0h |test repository
 |13/05 |2.5h |test repository
-|14/05 |1.0h |test conditions
-|15/05 |1.0h |test conditions
+|14/05 |3.0h |test conditions
+|15/05 |2.0h |test conditions + sonarqube scanner
+|-------|--------|
+|totale| 16.0h |
 
 Lorenzo Balugani - DB & Backend Developer
 
@@ -42,6 +48,8 @@ Lorenzo Balugani - DB & Backend Developer
 |12/05|3.0h|Risolti issue pubblicati su Taiga
 |13/05|1.0h|Bugfixing
 |14/05|1.0h|Bugfixing
+|-------|--------|
+|totale| 19.0h |
 
 Stefano Pigozzi - Sysadmin & Frontend Developer
 
@@ -78,6 +86,8 @@ Stefano Pigozzi - Sysadmin & Frontend Developer
 |13/05|1.20h|Sviluppo
 |14/05|0.20h|Sviluppo
 |15/05|3.17h|Documentazione
+|-------|--------|
+|totale| 27.5h |
 
 Flavia Cocca - Scrum Master & UI Designer
 
@@ -92,6 +102,10 @@ Flavia Cocca - Scrum Master & UI Designer
 |13/05|1.0h|Bugfixing
 |14/05|1.0h|Sprint Retrospective
 |15/05|2.0h|Documentazione 
+|-------|--------|
+|totale| 16.0h |
+
+Giovanni Anniballi - Tester
 
 | Data  | Durata | Attività |
 |-------|--------|----------|
@@ -105,6 +119,8 @@ Flavia Cocca - Scrum Master & UI Designer
 |13/05|1.0h|Generazione coverage pytest e setting sonarqube (riuscito!)
 |14/05|4.0h|Sprint review e retrospettiva e conclusione test repository
 |15/05|2.5h|generazione nuovo coverage e fix a sonarqube 2h, fix piccoli bug segnalati da sonarqube 0.5
+|-------|--------|
+|totale| 17.0h |
 
 
 
