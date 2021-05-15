@@ -1,0 +1,497 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="it" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Installazione &mdash; N.E.S.T. 0.1.0 documentazione</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Indice" href="../genindex.html" />
+    <link rel="search" title="Cerca" href="../search.html" />
+    <link rel="next" title="nest_backend - Web API in Python" href="../backend/index.html" />
+    <link rel="prev" title="Il progetto" href="../about/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> N.E.S.T.
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Manuale</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../about/index.html">Il progetto</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Installazione</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#prerequisiti">Prerequisiti</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#creare-un-nuovo-utente">Creare un nuovo utente</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#scaricare-il-codice-sorgente">Scaricare il codice sorgente</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#creare-il-database">Creare il database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#creare-un-file-di-configurazione-per-il-backend">Creare un file di configurazione per il backend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installare-le-dipendenze-python">Installare le dipendenze Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installare-le-dipendenze-nodejs">Installare le dipendenze NodeJS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#creare-un-servizio-systemd-per-il-backend">Creare un servizio SystemD per il backend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#compilare-il-frontend">Compilare il frontend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#creare-un-servizio-systemd-per-il-frontend">Creare un servizio SystemD per il frontend</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#creare-un-servizio-systemd-per-il-crawler">Creare un servizio SystemD per il crawler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configurare-apache-come-reverse-proxy">Configurare Apache come reverse proxy</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Documentazione autogenerata</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../backend/index.html"><code class="docutils literal notranslate"><span class="pre">nest_backend</span></code> - Web API in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../crawler/index.html"><code class="docutils literal notranslate"><span class="pre">nest_crawler</span></code> - Crawler in Python</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../frontend/index.html"><code class="docutils literal notranslate"><span class="pre">nest_frontend</span></code> - Interfaccia utente in React</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">N.E.S.T.</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Installazione</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/installation/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="installazione">
+<h1>Installazione<a class="headerlink" href="#installazione" title="Link a questa intestazione">¶</a></h1>
+<p>Questa guida illustra come installare interamente N.E.S.T. su un server Linux.</p>
+<div class="section" id="prerequisiti">
+<h2>Prerequisiti<a class="headerlink" href="#prerequisiti" title="Link a questa intestazione">¶</a></h2>
+<p>Per installare ed eseguire N.E.S.T., è necessario:</p>
+<ul class="simple">
+<li><p>Una connessione a Internet</p></li>
+<li><p>Un sistema operativo Linux-based (preferibilmente <a class="reference external" href="https://wiki.archlinux.org/title/Main_page">Arch Linux</a>)</p></li>
+<li><p><a class="reference external" href="https://www.freedesktop.org/wiki/Software/systemd/">SystemD ^248.2</a></p></li>
+<li><p><a class="reference external" href="https://httpd.apache.org/">Apache HTTP Server ^2.4.46</a></p></li>
+<li><p><a class="reference external" href="https://www.postgresql.org/download/">PostgreSQL ^13.2</a></p></li>
+<li><p><a class="reference external" href="https://git-scm.com/">Git ^2.31.1</a></p></li>
+<li><p><a class="reference external" href="https://www.python.org/downloads/">Python ^3.8</a></p></li>
+<li><p><a class="reference external" href="https://python-poetry.org/">Poetry ^1.0</a></p></li>
+<li><p><a class="reference external" href="https://nodejs.org/">NodeJS ^16.0</a></p></li>
+<li><p><a class="reference external" href="https://www.npmjs.com/">npm ^7.13.0</a></p></li>
+</ul>
+</div>
+<div class="section" id="creare-un-nuovo-utente">
+<h2>Creare un nuovo utente<a class="headerlink" href="#creare-un-nuovo-utente" title="Link a questa intestazione">¶</a></h2>
+<p>Per motivi di sicurezza, si suggerisce di creare un nuovo utente con il quale eseguire il progetto:</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>È necessario essere amministratori di sistema per eseguire i seguenti comandi.
+Si veda il manuale di <a class="reference external" href="https://linux.die.net/man/8/useradd">useradd</a> per più dettagli.</p>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">root:~# </span>mkdir --parents /srv/nest
+<span class="gp">root:~# </span>useradd --home-dir /srv/nest --shell /bin/bash nest
+<span class="gp">root:~# </span>chown --recursive nest: /srv/nest
+</pre></div>
+</div>
+</div>
+<div class="section" id="scaricare-il-codice-sorgente">
+<h2>Scaricare il codice sorgente<a class="headerlink" href="#scaricare-il-codice-sorgente" title="Link a questa intestazione">¶</a></h2>
+<p>Per installare N.E.S.T., è necessario avere il codice sorgente disponibile sul server.</p>
+<p>Si consiglia di scaricarlo tramite <em>Git</em>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">nest:~$ </span>git clone https://gitlab.steffo.eu/nest/g2-progetto.git
+</pre></div>
+</div>
+<p>Questo creerà una nuova cartella <code class="docutils literal notranslate"><span class="pre">g2-progetto</span></code> nella directory in cui è stato eseguito il comando.</p>
+<p>Per proseguire, sarà necessario entrarvi:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">nest:~$ </span><span class="nb">cd</span> g2-progetto
+</pre></div>
+</div>
+</div>
+<div class="section" id="creare-il-database">
+<h2>Creare il database<a class="headerlink" href="#creare-il-database" title="Link a questa intestazione">¶</a></h2>
+<p>N.E.S.T. necessita di un database PostgreSQL in cui salvare i dati.</p>
+<p>Per motivi di sicurezza, si suggerisce di creare un ruolo isolato dal resto del DBMS apposta per N.E.S.T.:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">postgres:~$ </span>createuser nest
+</pre></div>
+</div>
+<p>Per creare il database PostgreSQL, si esegua:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">postgres:~$ </span>createdb --owner<span class="o">=</span>nest nest
+</pre></div>
+</div>
+</div>
+<div class="section" id="creare-un-file-di-configurazione-per-il-backend">
+<h2>Creare un file di configurazione per il backend<a class="headerlink" href="#creare-un-file-di-configurazione-per-il-backend" title="Link a questa intestazione">¶</a></h2>
+<p>Il backend usa un file di configurazione per impostare certe variabili.</p>
+<p>Si crei un nuovo file nella working directory del progetto denominato <code class="docutils literal notranslate"><span class="pre">config.py</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">nest:~/g2-progetto$ </span>vim config.py
+</pre></div>
+</div>
+<p>Il file dovrà avere i seguenti contenuti:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Una stringa rappresentante il database da utilizzare</span>
+<span class="c1"># Per maggiori informazioni sulla sintassi, si veda https://docs.sqlalchemy.org/en/14/core/engines.html</span>
+<span class="n">SQLALCHEMY_DATABASE_URI</span> <span class="o">=</span> <span class="s2">&quot;postgresql://nest@/nest&quot;</span>
+
+<span class="c1"># Una stringa casuale utilizzata per generare i JSON Web Token (JWT)</span>
+<span class="c1"># Va mantenuta segreta e costante per tutta l&#39;operazione del backend!</span>
+<span class="c1"># Si suggerisce di premere tasti casuali sulla tastiera finchè la riga non è piena.</span>
+<span class="n">SECRET_KEY</span> <span class="o">=</span> <span class="s2">&quot;dsjiofgvinmodfiojvbnio3erfnoiweraqugu43ghjwrevniuwerng43iugnreuwignhritmj43i43nb8i42ug0wevkwovmwigtjj&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="installare-le-dipendenze-python">
+<h2>Installare le dipendenze Python<a class="headerlink" href="#installare-le-dipendenze-python" title="Link a questa intestazione">¶</a></h2>
+<p>Le dipendenze Python sono gestite da <em>Poetry</em>, e possono essere installate con:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">nest:~/g2-progetto$ </span>poetry install
+</pre></div>
+</div>
+<p>Poetry creerà automaticamente un <a class="reference external" href="https://docs.python.org/3/library/venv.html">venv</a> e vi installerà all’interno tutti
+i pacchetti necessari all’esecuzione del backend e del crawler di N.E.S.T. .</p>
+<p><strong>Segnatevi il nome</strong> del venv creato da Poetry, in quanto sarà necessario per
+<span class="xref std std-ref">Creare un servizio SystemD per il backend</span>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Creating virtualenv nest-7C2fm2VD-py3.9 in /srv/nest/.cache/pypoetry/virtualenvs</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="installare-le-dipendenze-nodejs">
+<h2>Installare le dipendenze NodeJS<a class="headerlink" href="#installare-le-dipendenze-nodejs" title="Link a questa intestazione">¶</a></h2>
+<p>Le dipendenze NodeJS sono gestite da <em>npm</em>, e possono essere installate con:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">nest:~/g2-progetto$ </span>npm install
+</pre></div>
+</div>
+<p>npm creerà automaticamente una cartella
+<a class="reference external" href="https://docs.npmjs.com/cli/v7/configuring-npm/folders#node-modules">node_modules</a> e vi installerà all’interno tutte
+le librerie necessarie all’esecuzione del frontend di N.E.S.T. .</p>
+</div>
+<div class="section" id="creare-un-servizio-systemd-per-il-backend">
+<h2>Creare un servizio SystemD per il backend<a class="headerlink" href="#creare-un-servizio-systemd-per-il-backend" title="Link a questa intestazione">¶</a></h2>
+<p>Per fare in modo che il backend rimanga attivo in background, anche dopo un riavvio, si suggerisce di installarlo come
+servizio di sistema di <em>SystemD</em>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">root:~# </span>systemctl edit --force --full nest-backend
+</pre></div>
+</div>
+<p>Inserire all’interno del file le seguenti direttive:</p>
+<div class="highlight-systemd notranslate"><div class="highlight"><pre><span></span>[Unit]
+Description=N.E.S.T. Backend
+Wants=network-online.target postgresql.service
+After=network-online.target nss-lookup.target postgresql.service
+
+[Service]
+Type=exec
+User=nest
+Group=nest
+WorkingDirectory=/srv/nest/g2-progetto
+
+# Si sostituisca a questo il percorso del virtualenv creato in precedenza da Poetry
+#         ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+ExecStart=/srv/nest/.cache/pypoetry/virtualenvs/nest-7C2fm2VD-py3.9/bin/python -m gunicorn -b 127.0.0.1:30040 --env=&quot;FLASK_CONFIG=../config.py&quot; nest_backend.app:rp_app
+
+[Install]
+WantedBy=multi-user.target
+</pre></div>
+</div>
+<p>Ora, si verifichi che il servizio si avvii correttamente eseguendolo manualmente con:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">root:~# </span>systemctl start nest-backend
+</pre></div>
+</div>
+<p>In caso di successo, l’API dovrebbe essere esposto sulla porta <code class="docutils literal notranslate"><span class="pre">30040</span></code> dell’indirizzo di loopback <code class="docutils literal notranslate"><span class="pre">127.0.0.1</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">root:~# </span>curl <span class="m">127</span>.0.0.1:30040/doa
+<span class="go">If you see this, the server is fine.</span>
+</pre></div>
+</div>
+<p>Si abiliti il servizio, in modo che venga automaticamente avviato al riavvio del sistema:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">root:~# </span>systemctl <span class="nb">enable</span> nest-backend
+</pre></div>
+</div>
+</div>
+<div class="section" id="compilare-il-frontend">
+<h2>Compilare il frontend<a class="headerlink" href="#compilare-il-frontend" title="Link a questa intestazione">¶</a></h2>
+<p>Perchè sia possibile servire il frontend agli utenti, è necessario prima crearne una versione compilata ottimizzata.</p>
+<p>È possibile farlo con il comando:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">nest:~/g2-progetto$ </span>npm run build
+</pre></div>
+</div>
+<p>Verrà creata una cartella <code class="docutils literal notranslate"><span class="pre">build</span></code> con all’interno la versione compilata.</p>
+</div>
+<div class="section" id="creare-un-servizio-systemd-per-il-frontend">
+<h2>Creare un servizio SystemD per il frontend<a class="headerlink" href="#creare-un-servizio-systemd-per-il-frontend" title="Link a questa intestazione">¶</a></h2>
+<p>Per rendere disponibile alla rete la copia locale del frontend, si suggerisce di avviare lo script npm <code class="docutils literal notranslate"><span class="pre">serve</span></code>
+integrato con N.E.S.T. come un servizio di sistema di <em>SystemD</em>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">root:~# </span>systemctl edit --force --full nest-frontend
+</pre></div>
+</div>
+<p>Inserire all’interno del file le seguenti direttive:</p>
+<div class="highlight-systemd notranslate"><div class="highlight"><pre><span></span>[Unit]
+Description=N.E.S.T. Frontend
+Wants=network-online.target nest-backend.service
+After=network-online.target nss-lookup.target nest-backend.service
+
+[Service]
+Type=exec
+Environment=NODE_ENV=production
+User=nest
+Group=nest
+WorkingDirectory=/srv/nest/g2-progetto
+ExecStart=/usr/bin/npm run serve
+
+[Install]
+WantedBy=multi-user.target
+</pre></div>
+</div>
+<div class="admonition-todo admonition" id="id1">
+<p class="admonition-title">Da fare</p>
+<p>Questo file non è stato testato, in quanto sul server demo è in uso una versione più complessa che usa
+<a class="reference external" href="https://github.com/nvm-sh/nvm">nvm</a> per gestire più versioni di NodeJS sullo stesso sistema.</p>
+<p>La versione in uso sul server demo è:</p>
+<div class="highlight-systemd notranslate"><div class="highlight"><pre><span></span>[Unit]
+Description=N.E.S.T. Frontend
+Wants=network-online.target nest-backend.service
+After=network-online.target nss-lookup.target nest-backend.service
+
+[Service]
+Type=exec
+Environment=NODE_ENV=production
+Environment=NODE_VERSION=16
+User=nest
+Group=nest
+WorkingDirectory=/srv/nest/g2-progetto
+ExecStart=/srv/nest/.nvm/nvm-exec npm run serve
+
+[Install]
+WantedBy=multi-user.target
+</pre></div>
+</div>
+</div>
+<p>Ora, si verifichi che il servizio si avvii correttamente eseguendolo manualmente con:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">root:~# </span>systemctl start nest-frontend
+</pre></div>
+</div>
+<p>In caso di successo, il frontend dovrebbe essere esposto sulla porta <code class="docutils literal notranslate"><span class="pre">30041</span></code> dell’indirizzo di loopback <code class="docutils literal notranslate"><span class="pre">127.0.0.1</span></code>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">root:~# </span>curl <span class="m">127</span>.0.0.1:30041
+<span class="go">[...]</span>
+</pre></div>
+</div>
+<p>Si abiliti il servizio, in modo che venga automaticamente avviato al riavvio del sistema:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">root:~# </span>systemctl <span class="nb">enable</span> nest-frontend
+</pre></div>
+</div>
+</div>
+<div class="section" id="creare-un-servizio-systemd-per-il-crawler">
+<h2>Creare un servizio SystemD per il crawler<a class="headerlink" href="#creare-un-servizio-systemd-per-il-crawler" title="Link a questa intestazione">¶</a></h2>
+<div class="admonition-todo admonition" id="id2">
+<p class="admonition-title">Da fare</p>
+<p>Il crawler non è ancora disponibile.</p>
+</div>
+</div>
+<div class="section" id="configurare-apache-come-reverse-proxy">
+<h2>Configurare Apache come reverse proxy<a class="headerlink" href="#configurare-apache-come-reverse-proxy" title="Link a questa intestazione">¶</a></h2>
+<p>Per rendere l’API e il frontend disponibili al pubblico, si suggerisce di configurare Apache HTTP Server
+come reverse proxy.</p>
+<p>La configurazione di Apache varia molto da distribuzione a distribuzione Linux, e talvolta anche da server a server;
+pertanto, si fornisce solamente un file <a class="reference external" href="https://httpd.apache.org/docs/2.4/vhosts/examples.html">VirtualHost</a> di
+esempio da adattare al proprio setup:</p>
+<div class="highlight-apacheconf notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;VirtualHost</span> <span class="s">*:80</span><span class="nt">&gt;</span>
+    <span class="nb">ServerName</span> <span class="s2">&quot;api.nest.steffo.eu&quot;</span>
+    <span class="nb">ServerName</span> <span class="s2">&quot;prod.nest.steffo.eu&quot;</span>
+
+    <span class="nb">RewriteEngine</span> <span class="k">On</span>
+    <span class="nb">RewriteRule</span> ^(.*)$ https://%{HTTP_HOST}$1 [R=301,L]
+<span class="nt">&lt;/VirtualHost&gt;</span>
+
+<span class="nt">&lt;VirtualHost</span> <span class="s">*:443</span><span class="nt">&gt;</span>
+    <span class="nb">ServerName</span> <span class="s2">&quot;api.nest.steffo.eu&quot;</span>
+
+    <span class="nb">SSLEngine</span> <span class="k">on</span>
+    <span class="nb">SSLCertificateFile</span>      <span class="s2">&quot;/root/.acme.sh/*.nest.steffo.eu/fullchain.cer&quot;</span>
+    <span class="nb">SSLCertificateKeyFile</span>   <span class="s2">&quot;/root/.acme.sh/*.nest.steffo.eu/*.nest.steffo.eu.key&quot;</span>
+
+    <span class="nb">ProxyPass</span>           <span class="s2">&quot;/&quot;</span> <span class="s2">&quot;http://127.0.0.1:30040/&quot;</span>
+    <span class="nb">ProxyPassReverse</span>    <span class="s2">&quot;/&quot;</span> <span class="s2">&quot;http://127.0.0.1:30040/&quot;</span>
+    <span class="nb">RequestHeader</span> set <span class="s2">&quot;X-Forwarded-Proto&quot;</span> expr=%{REQUEST_SCHEME}
+
+    <span class="nb">Protocols</span> h2 http/1.1
+    <span class="nb">Header</span> always set Strict-Transport-Security <span class="s2">&quot;max-age=63072000&quot;</span>
+<span class="nt">&lt;/VirtualHost&gt;</span>
+
+<span class="nt">&lt;VirtualHost</span> <span class="s">*:443</span><span class="nt">&gt;</span>
+    <span class="nb">ServerName</span> <span class="s2">&quot;prod.nest.steffo.eu&quot;</span>
+
+    <span class="nb">SSLEngine</span> <span class="k">on</span>
+    <span class="nb">SSLCertificateFile</span>      <span class="s2">&quot;/root/.acme.sh/*.nest.steffo.eu/fullchain.cer&quot;</span>
+    <span class="nb">SSLCertificateKeyFile</span>   <span class="s2">&quot;/root/.acme.sh/*.nest.steffo.eu/*.nest.steffo.eu.key&quot;</span>
+
+    <span class="nb">ProxyPass</span>           <span class="s2">&quot;/&quot;</span> <span class="s2">&quot;http://127.0.0.1:30041/&quot;</span>
+    <span class="nb">ProxyPassReverse</span>    <span class="s2">&quot;/&quot;</span> <span class="s2">&quot;http://127.0.0.1:30041/&quot;</span>
+    <span class="nb">RequestHeader</span> set <span class="s2">&quot;X-Forwarded-Proto&quot;</span> expr=%{REQUEST_SCHEME}
+
+    <span class="nb">Protocols</span> h2 http/1.1
+    <span class="nb">Header</span> always set Strict-Transport-Security <span class="s2">&quot;max-age=63072000&quot;</span>
+<span class="nt">&lt;/VirtualHost&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../backend/index.html" class="btn btn-neutral float-right" title="nest_backend - Web API in Python" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../about/index.html" class="btn btn-neutral float-left" title="Il progetto" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Gruppo 2.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
