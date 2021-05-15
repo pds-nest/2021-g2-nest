@@ -19,6 +19,9 @@ Chiara Calzolari - UI Designer
 |04/05 | 1.0h | Modifica mockup UI (adeguamento al JS)
 
 Stefano Goldoni - Product Owner & Tester
+
+| Data  | Durata | Attività |
+|-------|--------|----------|
 |04/05 |1.0h |preparazione backlog sprint 2
 |10/05 |3.0h |test sprint 2
 |11/05 |2.5h |test utenti e repository
