@@ -117,8 +117,8 @@ Giovanni Anniballi - Tester
 |11/05|2.0h|Discussione sui test e correzioni bug
 |12/05|1.0h|Test repository
 |13/05|1.0h|Generazione coverage pytest e setting sonarqube (riuscito!)
-|14/05|4.0h|Sprint review e retrospettiva e conclusione test repository
-|15/05|2.5h|generazione nuovo coverage e fix a sonarqube 2h, fix piccoli bug segnalati da sonarqube 0.5
+|14/05|4.0h|Sprint review e retrospettiva, conclusione test repository
+|15/05|2.5h|generazione nuovo coverage e fix a sonarqube 2h, fix piccoli bug segnalati da sonarqube 0.5h
 |-------|--------|
 |totale| 17.0h |
 
