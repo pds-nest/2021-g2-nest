@@ -2,7 +2,7 @@
 
 | Data | Ora | Durata | Attività |
 |------|-----|--------|----------|
-|14/05 |10:00 | 1.0h  | backlog grooming session |
+|14/05 |10:00 | 1.0h  | Sprint Retrospective session |
 
 Totale generale di tutti i componenti: 98.5h
 
