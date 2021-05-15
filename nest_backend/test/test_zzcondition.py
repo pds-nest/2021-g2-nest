@@ -2,6 +2,7 @@ from flask.testing import Client
 
 '''A file that contains tests of classes and methods for all the requests concerning an user.'''
 
+
 # test del file repository_conditions
 
 
@@ -21,7 +22,31 @@ class TestConditionGetAllOfARepository:
         assert r.status_code == 200
         assert r.json["result"] == "success"
 
-    # TODO: testare il POST
+
+class TestConditionPost:
+    def test_missing_type(self, flask_client: Client, user_headers):
+        r = flask_client.post(f'/api/v1/repositories/1/conditions', headers=user_headers,
+                              json={})
+        assert r.status_code == 400
+        assert r.json["result"] == "failure"
+
+    def test_wrong_type(self, flask_client: Client, user_headers):
+        r = flask_client.post(f'/api/v1/repositories/1/conditions', headers=user_headers,
+                              json={"content": "string", "type": 99})
+        assert r.status_code == 400 # ottengo 500
+        assert r.json["result"] == "failure"
+
+    def test_missing_content(self, flask_client: Client, user_headers):
+        r = flask_client.post(f'/api/v1/repositories/1/conditions', headers=user_headers,
+                              json={"type": 0})
+        assert r.status_code == 400 # ottengo 500
+        assert r.json["result"] == "failure"
+
+    def test_for_success(self, flask_client: Client, user_headers):
+        r = flask_client.post(f'/api/v1/repositories/1/conditions', headers=user_headers,
+                              json={"content": "string", "type": 0})
+        assert r.status_code == 201
+        assert r.json["result"] == "success"
 
     # test del file condition
 
