@@ -4,7 +4,6 @@ import PageLogin from "./routes/PageLogin"
 import PageRepositories from "./routes/PageRepositories"
 import PageAlerts from "./routes/PageAlerts"
 import PageSettings from "./routes/PageSettings"
-import PageSandbox from "./routes/PageSandbox"
 import PageDashboard from "./routes/PageDashboard"
 import PageRoot from "./routes/PageRoot"
 import PageEdit from "./routes/PageEdit"
@@ -31,9 +30,6 @@ export default function PageSwitcher({ ...props }) {
             </Route>
             <Route path={"/settings"} exact={true}>
                 <PageSettings/>
-            </Route>
-            <Route path={"/sandbox"} exact={true}>
-                <PageSandbox/>
             </Route>
             <Route path={"/dashboard"} exact={true}>
                 <PageDashboard/>
