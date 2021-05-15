@@ -111,7 +111,7 @@ def page_condition(cid):
         return json_error("You lack the authorization to proceed, pal."), 403
     if request.method == "GET":
         return json_success(condition.to_json()), 200
-    if condition.repository not in user.owner_or and not user.isAdmin:
+    if condition.repository not in user.owner_of and not user.isAdmin:
         return json_error("You lack the authorization to proceed, pal."), 403
     if request.method == "PATCH":
         if request.json is None:
@@ -123,6 +123,8 @@ def page_condition(cid):
                 condition.type = type_
             except KeyError:
                 return json_error("Unknown `type` specified."), 400
+            except Exception as e:
+                return json_error("Unknown error:" + str(e)), 400
 
         if content := request.json.get("content"):
             condition.content = content
