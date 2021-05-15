@@ -4,7 +4,7 @@
 |------|-----|--------|----------|
 |14/05 |10:00 | 1.0h  | Sprint Retrospective session |
 
-Totale generale di tutti i componenti: 98.5h
+Totale generale di tutti i componenti: 106.5h
 
 
 # Log attività individuali dello Sprint 2
@@ -19,8 +19,12 @@ Chiara Calzolari - UI Designer
 |03/05 | 1.0h | Testing frontend e segnalazione issues
 |03/05 | 1.0h | Modifica mockup UI (Dashboard repository)
 |04/05 | 1.0h | Modifica mockup UI (adeguamento al JS)
+|10/05 | 3.0h | Configurazione ambiente di sviluppo
+|11/05 | 1.5h | Modifica UI (traduzione in Italiano)
+|12/05 | 0.5h | Modifica UI (traduzione in Italiano)
+|14/05 | 3.0h | Realizzazione video demo sprint 2
 |-------|--------|
-|totale| 3.0h |
+|totale| 11.0h |
 
 Stefano Goldoni - Product Owner & Tester
 
