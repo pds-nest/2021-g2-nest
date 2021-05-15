@@ -78,3 +78,19 @@ Stefano Pigozzi - Sysadmin & Frontend Developer
 |13/05|1.20h|Sviluppo
 |14/05|0.20h|Sviluppo
 |15/05|3.17h|Documentazione
+
+Flavia Cocca - Scrum Master & UI Designer
+
+| Data  | Durata | Attività |
+|-------|--------|----------|
+|04/05|0.5h|Riunione per con PO, nuovo backlog
+|04/05|1.0h|Riunione
+|07/05|3.0h|Refactoring test
+|08/05|2.0h|Refactoring test
+|09/05|3.0h|Nuovi test
+|11/05|2.5h|Discussione test e risoluzione di alcune issue
+|13/05|1.0h|Bugfixing
+|14/05|0.5h|Sprint Retrospective
+|14/05|2.0h|Documentazione 
+
+
