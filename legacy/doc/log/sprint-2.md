@@ -84,13 +84,27 @@ Flavia Cocca - Scrum Master & UI Designer
 | Data  | Durata | Attività |
 |-------|--------|----------|
 |04/05|0.5h|Riunione per con PO, nuovo backlog
-|04/05|1.0h|Riunione
+|05/05|1.0h|Riunione
 |07/05|3.0h|Refactoring test
 |08/05|2.0h|Refactoring test
 |09/05|3.0h|Nuovi test
 |11/05|2.5h|Discussione test e risoluzione di alcune issue
 |13/05|1.0h|Bugfixing
-|14/05|0.5h|Sprint Retrospective
-|14/05|2.0h|Documentazione 
+|14/05|1.0h|Sprint Retrospective
+|15/05|2.0h|Documentazione 
+
+| Data  | Durata | Attività |
+|-------|--------|----------|
+|04/05|0.5h|Incontro con SM e PO per valutare quali US andranno nello sprint2
+|05/05|1.0h|Incontro con il team
+|07/05|2.0h|Refactoring tests sugli user e primi utilizzi delle fixtures
+|08/05|2.0h|Completamento test users
+|10/05|1.0h|Ulteriori approcci (fallimentari) al coverage di SonarQube
+|11/05|2.0h|Discussione sui test e correzioni bug
+|12/05|1.0h|Test repository
+|13/05|1.0h|Generazione coverage pytest e setting sonarqube (riuscito!)
+|14/05|4.0h|Sprint review e retrospettiva e conclusione test repository
+|15/05|2.5h|generazione nuovo coverage e fix a sonarqube 2h, fix piccoli bug segnalati da sonarqube 0.5
+
 
 
