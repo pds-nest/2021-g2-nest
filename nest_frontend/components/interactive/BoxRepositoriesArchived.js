@@ -50,7 +50,7 @@ export default function BoxRepositoriesArchived({
     }
 
     return (
-        <BoxFullScrollable header={"Le tue repository archiviate"} {...props}>
+        <BoxFullScrollable header={"Repository archiviati"} {...props}>
             {contents}
         </BoxFullScrollable>
     )
