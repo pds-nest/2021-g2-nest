@@ -3,7 +3,15 @@ import BoxFull from "../base/BoxFull"
 import ReactWordcloud from "react-wordcloud"
 
 
-export default function BoxWordcloud({ ...props }) {
+/**
+ * A Box which displays a wordcloud.
+ *
+ * @param words - A list of word objects, made of a string "text" and a number "value"
+ * @param props - Additional props to pass to the box.
+ * @returns {JSX.Element}
+ * @constructor
+ */
+export default function BoxWordcloud({ words, props }) {
     return (
         <BoxFull header={"Wordcloud"} {...props}>
             <div style={{"width": "100%", "height": "100%"}}>
@@ -17,24 +25,7 @@ export default function BoxWordcloud({ ...props }) {
                         size: undefined,
                         deterministic: true,
                     }}
-                    words={[
-                        {
-                            text: "noi",
-                            value: 1
-                        },
-                        {
-                            text: "estraiamo",
-                            value: 1
-                        },
-                        {
-                            text: "statistiche",
-                            value: 1
-                        },
-                        {
-                            text: "tweet",
-                            value: 1
-                        },
-                    ]}
+                    words={words}
                 />
             </div>
         </BoxFull>
