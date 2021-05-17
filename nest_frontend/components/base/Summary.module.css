@@ -16,7 +16,7 @@
 }
 
 .Left {
-    width: 250px;
+    width: 280px;
     height: 60px;
 
     display: grid;
@@ -97,7 +97,7 @@
 }
 
 .Right {
-    width: 250px;
+    width: 280px;
     height: 60px;
     padding: 5px;
 

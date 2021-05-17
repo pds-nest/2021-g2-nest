@@ -88,6 +88,9 @@ intersphinx_mapping = {
 
 # -- Extension configuration -------------------------------------------------
 
+todo_include_todos = True
+todo_emit_warnings = True
+
 # -- Automodule settings -----------------------------------------------------
 
 autodoc_default_options = {

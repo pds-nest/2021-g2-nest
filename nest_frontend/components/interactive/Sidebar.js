@@ -10,7 +10,6 @@ import {
     faHome,
     faKey,
     faUserCog,
-    faWrench,
 } from "@fortawesome/free-solid-svg-icons"
 import ContextUser from "../../contexts/ContextUser"
 
@@ -50,11 +49,6 @@ export default function Sidebar({ className, ...props }) {
                 </>
                                      :
                 null
-            }
-            {
-                process.env.NODE_ENV === "development" ?
-                <ButtonSidebar to={"/sandbox"} icon={faWrench}>Sandbox</ButtonSidebar>
-                                                       : null
             }
         </aside>
     )

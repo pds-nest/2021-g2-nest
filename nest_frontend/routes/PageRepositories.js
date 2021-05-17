@@ -22,7 +22,7 @@ export default function PageRepositories({ children, className, ...props }) {
             }
             return {}
         },
-        [bv.apiRequest, bv.refreshResource],
+        [bv],
     )
 
     return (

@@ -81,9 +81,15 @@ def page_repository_conditions(rid):
         return json_error("You are not authorized."), 403
 
     if request.method == "GET":
-        return json_success([u.condition.to_json() for u in repository.conditions])
+        try:
+            return json_success([u.to_json() for u in repository.conditions])
+        except Exception as e:
+            return json_error("Unknown error:" + str(e)), 400
 
     if request.method == "POST":
+        if request.json is None:
+            return json_error("Missing json content."), 400
+
         if (type_ := request.json.get("type")) is None:
             return json_error("Missing `type` parameter."), 400
 
@@ -91,6 +97,8 @@ def page_repository_conditions(rid):
             type_ = ConditionType(type_)
         except KeyError:
             return json_error("Unknown `type` specified."), 400
+        except Exception as e:
+            return json_error("Unknown error: " + str(e)), 400
 
         if not (content := request.json.get("content")):
             return json_error("Missing `content` parameter."), 400

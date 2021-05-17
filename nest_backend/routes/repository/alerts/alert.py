@@ -118,11 +118,11 @@ def page_alert(aid):
     if not alert:
         return json_error("Could not find alert."), 404
     if alert.repository not in [a.repository for a in user.authorizations] + user.owner_of:
-        json_error("You are not authorized to proceed."), 403
+        return json_error("You are not authorized to proceed."), 403
     if request.method == "GET":
         return json_success(alert.to_json()), 200
     if alert.repository not in user.owner_of:
-        json_error("You are not authorized to proceed."), 403
+        return json_error("You are not authorized to proceed."), 403
     if request.method == "PATCH":
         if 'name' in request.json:
             alert.name = request.json['name']

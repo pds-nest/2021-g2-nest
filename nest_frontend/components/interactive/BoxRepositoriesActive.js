@@ -50,7 +50,7 @@ export default function BoxRepositoriesActive({
     }
 
     return (
-        <BoxFullScrollable header={"Le tue repository attive"} {...props}>
+        <BoxFullScrollable header={"Repository attivi"} {...props}>
             {contents}
         </BoxFullScrollable>
     )

@@ -20,6 +20,8 @@
         "react-router": "^5.2.0",
         "react-router-dom": "^5.2.0",
         "react-scripts": "4.0.3",
+        "react-wordcloud": "github:Steffo99/react-wordcloud",
+        "serve": "^11.3.2",
         "web-vitals": "^1.1.1"
     },
     "main": "nest_frontend/index.js",
@@ -27,7 +29,8 @@
         "start": "react-app-rewired start",
         "build": "react-app-rewired build",
         "test": "react-app-rewired test",
-        "eject": "react-scripts eject"
+        "eject": "react-scripts eject",
+        "serve": "serve -s build -l tcp://127.0.0.1:30041"
     },
     "eslintConfig": {
         "extends": [

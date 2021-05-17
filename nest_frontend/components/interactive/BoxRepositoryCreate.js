@@ -41,7 +41,7 @@ export default function BoxRepositoryCreate({ ...props }) {
                     save()
                 }}
             >
-                <FormLabel htmlFor={"repo-name"} text={"Nome della repository"}>
+                <FormLabel htmlFor={"repo-name"} text={"Nome repository"}>
                     <InputWithIcon
                         id={"repo-name"}
                         icon={faFolder}
@@ -49,14 +49,14 @@ export default function BoxRepositoryCreate({ ...props }) {
                         onChange={e => setName(e.target.value)}
                     />
                 </FormLabel>
-                <FormLabel htmlFor={"filter-mode"} text={"Aggiutngi tweet se soddisfano:"}>
+                <FormLabel htmlFor={"filter-mode"} text={"Richiedi"}>
                     <label>
                         <Radio
                             name={"filter-mode"}
                             onChange={() => setEvaluationMode(0)}
                             checked={evaluationMode === 0}
                         />
-                        Un filtro
+                        Almeno una cond.
                     </label>
                     &nbsp;
                     <label>
@@ -65,7 +65,7 @@ export default function BoxRepositoryCreate({ ...props }) {
                             onChange={() => setEvaluationMode(1)}
                             checked={evaluationMode === 1}
                         />
-                        Tutti i filtri
+                        Tutte le cond.
                     </label>
                 </FormLabel>
                 {error ?
@@ -81,7 +81,7 @@ export default function BoxRepositoryCreate({ ...props }) {
                          color={"Red"}
                          onClick={() => revert()}
                      >
-                         Rollback edits
+                         Annulla modifiche
                      </Button>
                      <Button
                          style={{ "gridColumn": "2" }}
@@ -89,7 +89,7 @@ export default function BoxRepositoryCreate({ ...props }) {
                          color={"Green"}
                          onClick={_ => goToOnSuccess(save, history, "/repositories")()}
                      >
-                         Save changes
+                         Salva modifiche
                      </Button>
                  </>
                     :
