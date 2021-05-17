@@ -21,6 +21,7 @@ class InputLoginSchema(Schema):
 class ErrorSchema(Schema):
     result = fields.String(description="Contains a string that informs if the procedure was successful.")
     msg = fields.String(description="Contains a description of the error.")
+    code = fields.String(description="Error code")
 
 
 class SuccesSchema(Schema):

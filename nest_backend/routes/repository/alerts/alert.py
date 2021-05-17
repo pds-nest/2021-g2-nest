@@ -4,6 +4,7 @@ from flask_jwt_extended import jwt_required, get_jwt_identity
 from nest_backend.gestione import *
 from flask_cors import cross_origin
 import datetime
+from nest_backend.errors import *
 
 
 @cross_origin()
@@ -113,16 +114,14 @@ def page_alert(aid):
     """
     user = find_user(get_jwt_identity())
     alert = Alert.query.filter_by(id=aid).first()
-    if alert.repository_id not in user.owner_of:
-        return json_error("The user is not authorized."), 403
     if not alert:
-        return json_error("Could not find alert."), 404
+        return json_error("Could not find alert.", ALERT_NOT_FOUND), 404
     if alert.repository not in [a.repository for a in user.authorizations] + user.owner_of:
-        return json_error("You are not authorized to proceed."), 403
+        return json_error("You are not authorized to proceed.", USER_NOT_AUTHORIZED), 403
     if request.method == "GET":
         return json_success(alert.to_json()), 200
     if alert.repository not in user.owner_of:
-        return json_error("You are not authorized to proceed."), 403
+        return json_error("You are not authorized to proceed.", REPOSITORY_NOT_OWNER), 403
     if request.method == "PATCH":
         if 'name' in request.json:
             alert.name = request.json['name']
@@ -137,11 +136,11 @@ def page_alert(aid):
             ext.session.delete(alert)
             ext.session.commit()
         except Exception:
-            return json_error("Something went wrong while deleting alert."), 500
+            return json_error("Something went wrong while deleting alert.", ALERT_DELETION_FAILURE), 500
         return json_success("Deletion completed."), 204
     elif request.method == "PUT":
         if not json_request_authorizer(request.json, alert):
-            return json_error("Missing one or more parameters in repository json."), 400
+            return json_error("Missing one or more parameters in repository json.", GENERIC_MISSING_FIELDS), 400
         alert.limit = request.json['limit']
         alert.name = request.json['name']
         alert.window_size = request.json['window_size']
@@ -149,14 +148,14 @@ def page_alert(aid):
             try:
                 alert.evaluation_mode = ConditionMode(mode)
             except KeyError:
-                return json_error("Unknown `type` specified."), 400
+                return json_error("Unknown `type` specified.", GENERIC_ENUM_INVALID), 400
             except Exception as e:
-                return json_error("Unknown error:" + str(e)), 400
+                return json_error("Unknown error:" + str(e), GENERIC_UFO), 400
         if request.json['conditions'] is not None:
             # Possibile vulnearabilità! Un utente potrebbe aggiungere conditions non del suo repo!
             for c in request.json['conditions']:
                 if c['id'] not in alert.repository.conditions:
-                    return json_error("Stop! You violated the law!"), 403
+                    return json_error("Stop! You violated the law!", USER_NOT_AUTHORIZED), 403
             # Wow very pythonic so much wow
             # Obtain list of no longer needed connections
             to_be_deleted = [c.cid for c in alert.conditions if
