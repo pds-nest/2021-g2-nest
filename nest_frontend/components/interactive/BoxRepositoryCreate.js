@@ -19,7 +19,7 @@ import { useHistory } from "react-router"
  * @returns {JSX.Element}
  * @constructor
  */
-export default function BoxRepositoryCreate({ ...props }) {
+export default function BoxRepositoryCreate({ running, ...props }) {
     const {
         id,
         evaluationMode,
@@ -80,6 +80,7 @@ export default function BoxRepositoryCreate({ ...props }) {
                          icon={faBackward}
                          color={"Red"}
                          onClick={() => revert()}
+                         disabled={running}
                      >
                          Annulla modifiche
                      </Button>
@@ -88,6 +89,7 @@ export default function BoxRepositoryCreate({ ...props }) {
                          icon={faPencilAlt}
                          color={"Green"}
                          onClick={_ => goToOnSuccess(save, history, "/repositories")()}
+                         disabled={running}
                      >
                          Salva modifiche
                      </Button>
@@ -98,6 +100,7 @@ export default function BoxRepositoryCreate({ ...props }) {
                      icon={faPlus}
                      color={"Green"}
                      onClick={_ => goToOnSuccess(save, history, "/repositories")()}
+                     disabled={running}
                  >
                      Crea repository
                  </Button>
