@@ -51,7 +51,18 @@ export default function BoxConditionDatetime({ ...props }) {
     }
 
     return (
-        <BoxFull header={<span>{Localization.searchBy}<FontAwesomeIcon icon={faClock}/> {Localization.byTimePeriod}</span>} {...props}>
+        <BoxFull
+            header={
+                <span>
+                    {Localization.searchBy}
+                    &nbsp;
+                    <FontAwesomeIcon icon={faClock}/>
+                    &nbsp;
+                    {Localization.byTimePeriod}
+                </span>
+            }
+            {...props}
+        >
             <FormInline onSubmit={onButtonClick}>
                 <ButtonToggleBeforeAfter onUpdate={setBa}/>
                 <InputWithIcon

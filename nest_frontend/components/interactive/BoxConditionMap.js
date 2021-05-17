@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from "react"
 import BoxFull from "../base/BoxFull"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faMapPin, faPlus } from "@fortawesome/free-solid-svg-icons"
+import { faAt, faMapPin, faPlus } from "@fortawesome/free-solid-svg-icons"
 import Style from "./BoxConditionMap.module.css"
 import ButtonIconOnly from "../base/ButtonIconOnly"
 import { MapContainer, TileLayer } from "react-leaflet"
@@ -100,7 +100,13 @@ export default function BoxConditionMap({ ...props }) {
     return (
         <BoxFull
             header={
-                <span>{Localization.searchBy}<FontAwesomeIcon icon={faMapPin}/> {Localization.byZone}</span>
+                <span>
+                    {Localization.searchBy}
+                    &nbsp;
+                    <FontAwesomeIcon icon={faMapPin}/>
+                    &nbsp;
+                    {Localization.byZone}
+                </span>
             }
             childrenClassName={Style.BoxConditionMapContents}
             {...props}

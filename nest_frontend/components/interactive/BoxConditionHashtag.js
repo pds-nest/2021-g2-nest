@@ -42,7 +42,18 @@ export default function BoxConditionHashtag({ ...props }) {
     }
 
     return (
-        <BoxFull header={<span>{Localization.searchBy}<FontAwesomeIcon icon={faHashtag}/> {Localization.byHashtag}</span>} {...props}>
+        <BoxFull
+            header={
+                <span>
+                    {Localization.searchBy}
+                    &nbsp;
+                    <FontAwesomeIcon icon={faHashtag}/>
+                    &nbsp;
+                    {Localization.byHashtag}
+                </span>
+            }
+            {...props}
+        >
             <FormInline onSubmit={onButtonClick}>
                 <InputWithIcon
                     className={Style.Input}
