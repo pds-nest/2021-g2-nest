@@ -30,9 +30,9 @@ apispec-webframeworks = "^0.5.2"
 marshmallow = "^3.11.1"
 openapi-spec-validator = "^0.3.0"
 flask-swagger-ui = "^3.36.0"
-tweepy = "^3.10.0"
 nltk = "^3.6.2"
 gunicorn = "^20.1.0"
+tweepy = {git = "https://github.com/tweepy/tweepy.git"}
 
 [tool.poetry.dev-dependencies]
 pytest = "^6.2.3"
