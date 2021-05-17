@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import Style from "./ButtonToggleBeforeAfter.module.css"
 import classNames from "classnames"
 import Button from "../base/Button"
+import Localization from "../../Localization"
 
 
 export default function ButtonToggleBeforeAfter({ onUpdate, className, ...props }) {
@@ -19,7 +20,7 @@ export default function ButtonToggleBeforeAfter({ onUpdate, className, ...props 
             onClick={onButtonClick}
             {...props}
         >
-            {value ? "Dopo" : "Prima"}
+            {value ? Localization.timeBefore : Localization.timeAfter}
         </Button>
     )
 }

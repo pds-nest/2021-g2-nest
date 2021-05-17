@@ -2,6 +2,7 @@ import React from "react"
 import BoxFull from "../base/BoxFull"
 import ConditionBadge from "./ConditionBadge"
 import useRepositoryEditor from "../../hooks/useRepositoryEditor"
+import Localization from "../../Localization"
 
 
 /**
@@ -17,7 +18,7 @@ export default function BoxConditions({ ...props }) {
     const badges = conditions.map((cond, pos) => <ConditionBadge key={pos} {...cond}/>)
 
     return (
-        <BoxFull header={"Condizioni"} {...props}>
+        <BoxFull header={Localization.conditions} {...props}>
             {badges}
         </BoxFull>
     )

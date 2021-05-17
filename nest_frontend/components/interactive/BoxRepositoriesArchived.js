@@ -4,6 +4,7 @@ import { faFolderOpen } from "@fortawesome/free-solid-svg-icons"
 import ContextUser from "../../contexts/ContextUser"
 import Loading from "../base/Loading"
 import BoxFullScrollable from "../base/BoxFullScrollable"
+import Localization from "../../Localization"
 
 
 /**
@@ -31,7 +32,7 @@ export default function BoxRepositoriesArchived({
         contents = <Loading/>
     }
     else if(repositories.length === 0) {
-        contents = <i>Non c'è nulla qui.</i>
+        contents = <i>{Localization.emptyMenu}.</i>
     }
     else {
         contents = repositories.map(repo => (
@@ -50,7 +51,7 @@ export default function BoxRepositoriesArchived({
     }
 
     return (
-        <BoxFullScrollable header={"Repository archiviati"} {...props}>
+        <BoxFullScrollable header={Localization.menuArchived} {...props}>
             {contents}
         </BoxFullScrollable>
     )

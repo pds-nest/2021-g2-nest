@@ -10,6 +10,7 @@ import useRepositoryEditor from "../../hooks/useRepositoryEditor"
 import FormAlert from "../base/formparts/FormAlert"
 import goToOnSuccess from "../../utils/goToOnSuccess"
 import { useHistory } from "react-router"
+import Localization from "../../Localization"
 
 
 /**
@@ -35,14 +36,14 @@ export default function BoxRepositoryCreate({ running, ...props }) {
     const history = useHistory()
 
     return (
-        <BoxFull header={"Crea repository"} {...props}>
+        <BoxFull header={Localization.createRepo} {...props}>
             <FormLabelled
                 onSubmit={e => {
                     e.preventDefault()
                     save()
                 }}
             >
-                <FormLabel htmlFor={"repo-name"} text={"Nome repository"}>
+                <FormLabel htmlFor={"repo-name"} text={Localization.repoName}>
                     <InputWithIcon
                         id={"repo-name"}
                         icon={faFolder}
@@ -50,14 +51,14 @@ export default function BoxRepositoryCreate({ running, ...props }) {
                         onChange={e => setName(e.target.value)}
                     />
                 </FormLabel>
-                <FormLabel htmlFor={"filter-mode"} text={"Richiedi"}>
+                <FormLabel htmlFor={"filter-mode"} text={Localization.request}>
                     <label>
                         <Radio
                             name={"filter-mode"}
                             onChange={() => setEvaluationMode(0)}
                             checked={evaluationMode === 0}
                         />
-                        Almeno una cond.
+                        {Localization.filterOR}
                     </label>
                     &nbsp;
                     <label>
@@ -66,7 +67,7 @@ export default function BoxRepositoryCreate({ running, ...props }) {
                             onChange={() => setEvaluationMode(1)}
                             checked={evaluationMode === 1}
                         />
-                        Tutte le cond.
+                        {Localization.filterAND}
                     </label>
                 </FormLabel>
                 {error ?
@@ -83,7 +84,7 @@ export default function BoxRepositoryCreate({ running, ...props }) {
                          onClick={() => revert()}
                          disabled={running}
                      >
-                         Annulla modifiche
+                         {Localization.rollback}
                      </Button>
                      <Button
                          style={{ "gridColumn": "2" }}
@@ -92,7 +93,7 @@ export default function BoxRepositoryCreate({ running, ...props }) {
                          onClick={_ => goToOnSuccess(save, history, "/repositories")()}
                          disabled={running}
                      >
-                         Salva modifiche
+                         {Localization.save}
                      </Button>
                  </>
                     :
@@ -103,7 +104,7 @@ export default function BoxRepositoryCreate({ running, ...props }) {
                      onClick={_ => goToOnSuccess(save, history, "/repositories")()}
                      disabled={running}
                  >
-                     Crea repository
+                     {Localization.createRepo}
                  </Button>
                 }
 

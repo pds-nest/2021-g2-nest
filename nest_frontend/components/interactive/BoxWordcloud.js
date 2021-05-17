@@ -1,6 +1,7 @@
 import React from "react"
 import BoxFull from "../base/BoxFull"
 import ReactWordcloud from "@steffo/nest-react-wordcloud"
+import Localization from "../../Localization"
 
 
 /**
@@ -13,7 +14,7 @@ import ReactWordcloud from "@steffo/nest-react-wordcloud"
  */
 export default function BoxWordcloud({ words, props }) {
     return (
-        <BoxFull header={"Wordcloud"} {...props}>
+        <BoxFull header={Localization.wordcloud} {...props}>
             <div style={{"width": "100%", "height": "100%"}}>
                 <ReactWordcloud
                     options={{

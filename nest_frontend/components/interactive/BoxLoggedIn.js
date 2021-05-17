@@ -7,6 +7,7 @@ import ContextUser from "../../contexts/ContextUser"
 import { useHistory } from "react-router"
 import Style from "./BoxLoggedIn.module.css"
 import CurrentServer from "./CurrentServer"
+import Localization from "../../Localization"
 
 
 /**
@@ -21,10 +22,10 @@ export default function BoxLoggedIn({ ...props }) {
     const history = useHistory()
 
     return (
-        <BoxFull header={"Effettuato l'accesso"} {...props}>
+        <BoxFull header={Localization.loggedInTitle} {...props}>
             <div className={Style.BoxLoggedInContents}>
                 <div>
-                    Al momento hai effettuato l'accesso su <CurrentServer/> come <LoggedInUser/>.
+                    {Localization.loggedInOn} <CurrentServer/> {Localization.loggedInAs} <LoggedInUser/>.
                 </div>
                 <div>
                     <Button
@@ -32,7 +33,7 @@ export default function BoxLoggedIn({ ...props }) {
                         logout()
                         history.push("/login")
                     }} icon={faSignOutAlt}
-                    >Esci</Button>
+                    >{Localization.logout}</Button>
                 </div>
             </div>
         </BoxFull>

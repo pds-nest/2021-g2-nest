@@ -8,6 +8,7 @@ import Style from "./BoxConditionUser.module.css"
 import ButtonIconOnly from "../base/ButtonIconOnly"
 import useRepositoryEditor from "../../hooks/useRepositoryEditor"
 import Condition from "../../utils/Condition"
+import Localization from "../../Localization"
 
 
 const INVALID_USER_CHARACTERS = /[^a-zA-Z0-9]/g
@@ -40,7 +41,7 @@ export default function BoxConditionUser({ ...props }) {
     }
 
     return (
-        <BoxFull header={<span>Ricerca per <FontAwesomeIcon icon={faAt}/> utente</span>} {...props}>
+        <BoxFull header={<span>{Localization.searchBy}<FontAwesomeIcon icon={faAt}/> {Localization.byUser}</span>} {...props}>
             <FormInline onSubmit={onButtonClick}>
                 <InputWithIcon
                     className={Style.Input}

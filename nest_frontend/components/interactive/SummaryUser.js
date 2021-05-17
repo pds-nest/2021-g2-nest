@@ -3,6 +3,7 @@ import Summary from "../base/Summary"
 import { faStar, faTrash, faUser } from "@fortawesome/free-solid-svg-icons"
 import Button from "../base/Button"
 import ContextUser from "../../contexts/ContextUser"
+import Localization from "../../Localization"
 
 
 export default function SummaryUser({ user, destroyUser, running, ...props }) {
@@ -20,7 +21,7 @@ export default function SummaryUser({ user, destroyUser, running, ...props }) {
              }}
              disabled={running}
          >
-             Elimina
+             {Localization.delete}
          </Button>
                                          : null}
     </>
@@ -30,8 +31,8 @@ export default function SummaryUser({ user, destroyUser, running, ...props }) {
             icon={user.isAdmin ? faStar : faUser}
             title={user.username}
             subtitle={user.email}
-            upperLabel={"Tipo"}
-            upperValue={user.isAdmin ? "Amministratore" : "Utente"}
+            upperLabel={Localization.type}
+            upperValue={user.isAdmin ? Localization.admin : Localization.user}
             buttons={buttons}
             {...props}
         />

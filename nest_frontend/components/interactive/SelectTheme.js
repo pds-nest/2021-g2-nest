@@ -1,6 +1,7 @@
 import React, { useContext } from "react"
 import Select from "../base/Select"
 import ContextTheme from "../../contexts/ContextTheme"
+import Localization from "../../Localization"
 
 
 /**
@@ -16,8 +17,8 @@ export default function SelectTheme({ ...props }) {
 
     return (
         <Select value={theme} onChange={e => setTheme(e.target.value)} {...props}>
-            <option value={"ThemeDark"}>Scuro</option>
-            <option value={"ThemeLight"}>Chiaro</option>
+            <option value={"ThemeDark"}>{Localization.darkMode}</option>
+            <option value={"ThemeLight"}>{Localization.lightMode}</option>
         </Select>
     )
 }

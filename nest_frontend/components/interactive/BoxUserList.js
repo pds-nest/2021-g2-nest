@@ -2,6 +2,7 @@ import React from "react"
 import Loading from "../base/Loading"
 import BoxFullScrollable from "../base/BoxFullScrollable"
 import SummaryUser from "./SummaryUser"
+import Localization from "../../Localization"
 
 
 export default function BoxUserList({ users, destroyUser, running, ...props }) {
@@ -15,7 +16,7 @@ export default function BoxUserList({ users, destroyUser, running, ...props }) {
     }
 
     return (
-        <BoxFullScrollable header={"Elenco utenti"} {...props}>
+        <BoxFullScrollable header={Localization.userList} {...props}>
             {contents}
         </BoxFullScrollable>
     )

@@ -10,6 +10,7 @@ import useRepositoryEditor from "../../hooks/useRepositoryEditor"
 import ButtonToggleBeforeAfter from "./ButtonToggleBeforeAfter"
 import Condition from "../../utils/Condition"
 import convertToLocalISODate from "../../utils/convertToLocalISODate"
+import Localization from "../../Localization"
 
 
 const INVALID_USER_CHARACTERS = /[^0-9TZ:+-]/g
@@ -50,7 +51,7 @@ export default function BoxConditionDatetime({ ...props }) {
     }
 
     return (
-        <BoxFull header={<span>Ricerca per <FontAwesomeIcon icon={faClock}/> arco di tempo</span>} {...props}>
+        <BoxFull header={<span>{Localization.searchBy}<FontAwesomeIcon icon={faClock}/> {Localization.byTimePeriod}</span>} {...props}>
             <FormInline onSubmit={onButtonClick}>
                 <ButtonToggleBeforeAfter onUpdate={setBa}/>
                 <InputWithIcon

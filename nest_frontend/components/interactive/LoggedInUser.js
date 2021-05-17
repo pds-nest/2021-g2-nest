@@ -2,6 +2,7 @@ import React, { useContext } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faUser } from "@fortawesome/free-solid-svg-icons"
 import ContextUser from "../../contexts/ContextUser"
+import Localization from "../../Localization"
 
 
 /**
@@ -17,7 +18,7 @@ export default function LoggedInUser({ ...props }) {
     if(!user) {
         return (
             <i {...props}>
-                Non acceduto
+                {Localization.notLoggedIn}
             </i>
         )
     }

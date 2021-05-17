@@ -8,6 +8,7 @@ import FormButton from "../base/formparts/FormButton"
 import ContextUser from "../../contexts/ContextUser"
 import { useHistory } from "react-router"
 import FormAlert from "../base/formparts/FormAlert"
+import Localization from "../../Localization"
 
 
 /**
@@ -44,9 +45,9 @@ export default function BoxLogin({ ...props }) {
     }
 
     return (
-        <BoxFull header={"Accedi"} {...props}>
+        <BoxFull header={Localization.login} {...props}>
             <FormLabelled>
-                <FormLabel text={"Email"} htmlFor={"login-email"}>
+                <FormLabel text={Localization.email} htmlFor={"login-email"}>
                     <InputWithIcon
                         id={"login-email"}
                         name={"login-email"}
@@ -56,7 +57,7 @@ export default function BoxLogin({ ...props }) {
                         icon={faEnvelope}
                     />
                 </FormLabel>
-                <FormLabel text={"Password"} htmlFor={"login-password"}>
+                <FormLabel text={Localization.passwd} htmlFor={"login-password"}>
                     <InputWithIcon
                         id={"login-password"}
                         name={"login-password"}
@@ -77,7 +78,7 @@ export default function BoxLogin({ ...props }) {
                     color={"Green"}
                     disabled={working}
                 >
-                    Accedi
+                    {Localization.login}
                 </FormButton>
             </FormLabelled>
         </BoxFull>

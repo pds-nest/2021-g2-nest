@@ -7,6 +7,7 @@ import ButtonIconOnly from "../base/ButtonIconOnly"
 import { MapContainer, TileLayer } from "react-leaflet"
 import useRepositoryEditor from "../../hooks/useRepositoryEditor"
 import Condition from "../../utils/Condition"
+import Localization from "../../Localization"
 
 
 const STARTING_POSITION = { lat: 41.89309, lng: 12.48289 }
@@ -99,7 +100,7 @@ export default function BoxConditionMap({ ...props }) {
     return (
         <BoxFull
             header={
-                <span>Ricerca per <FontAwesomeIcon icon={faMapPin}/> area</span>
+                <span>{Localization.searchBy}<FontAwesomeIcon icon={faMapPin}/> {Localization.byZone}</span>
             }
             childrenClassName={Style.BoxConditionMapContents}
             {...props}

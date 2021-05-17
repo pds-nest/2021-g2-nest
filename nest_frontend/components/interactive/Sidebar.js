@@ -12,6 +12,7 @@ import {
     faUserCog,
 } from "@fortawesome/free-solid-svg-icons"
 import ContextUser from "../../contexts/ContextUser"
+import Localization from "../../Localization"
 
 
 /**
@@ -32,20 +33,20 @@ export default function Sidebar({ className, ...props }) {
             {
                 user ?
                 <>
-                    <ButtonSidebar to={"/dashboard"} icon={faHome}>Dashboard</ButtonSidebar>
-                    <ButtonSidebar to={"/repositories"} icon={faFolder}>Repositories</ButtonSidebar>
-                    <ButtonSidebar to={"/alerts"} icon={faExclamationTriangle}>Allarmi</ButtonSidebar>
-                    <ButtonSidebar to={"/settings"} icon={faCog}>Impostazioni</ButtonSidebar>
+                    <ButtonSidebar to={"/dashboard"} icon={faHome}>{Localization.dashboard}</ButtonSidebar>
+                    <ButtonSidebar to={"/repositories"} icon={faFolder}>{Localization.repositories}</ButtonSidebar>
+                    <ButtonSidebar to={"/alerts"} icon={faExclamationTriangle}>{Localization.alerts}</ButtonSidebar>
+                    <ButtonSidebar to={"/settings"} icon={faCog}>{Localization.settings}</ButtonSidebar>
                 </>
                      :
                 <>
-                    <ButtonSidebar to={"/login"} icon={faKey}>Accedi</ButtonSidebar>
+                    <ButtonSidebar to={"/login"} icon={faKey}>{Localization.login}</ButtonSidebar>
                 </>
             }
             {
                 user && user.isAdmin ?
                 <>
-                    <ButtonSidebar to={"/users"} icon={faUserCog}>Utenti</ButtonSidebar>
+                    <ButtonSidebar to={"/users"} icon={faUserCog}>{Localization.users}</ButtonSidebar>
                 </>
                                      :
                 null

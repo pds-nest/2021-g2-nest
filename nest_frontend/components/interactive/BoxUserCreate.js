@@ -6,6 +6,7 @@ import { faEnvelope, faKey, faPlus, faUser } from "@fortawesome/free-solid-svg-i
 import FormButton from "../base/formparts/FormButton"
 import BoxFull from "../base/BoxFull"
 import FormAlert from "../base/formparts/FormAlert"
+import Localization from "../../Localization"
 
 
 export default function BoxUserCreate({ createUser, running, ...props }) {
@@ -27,9 +28,9 @@ export default function BoxUserCreate({ createUser, running, ...props }) {
     )
 
     return (
-        <BoxFull header={"Crea utente"} {...props}>
+        <BoxFull header={Localization.userCreate} {...props}>
             <FormLabelled>
-                <FormLabel text={"Username"}>
+                <FormLabel text={Localization.userName}>
                     <InputWithIcon
                         icon={faUser}
                         type={"text"}
@@ -37,7 +38,7 @@ export default function BoxUserCreate({ createUser, running, ...props }) {
                         onChange={event => setUsername(event.target.value)}
                     />
                 </FormLabel>
-                <FormLabel text={"Email"}>
+                <FormLabel text={Localization.email}>
                     <InputWithIcon
                         icon={faEnvelope}
                         type={"text"}
@@ -45,7 +46,7 @@ export default function BoxUserCreate({ createUser, running, ...props }) {
                         onChange={event => setEmail(event.target.value)}
                     />
                 </FormLabel>
-                <FormLabel text={"Password"}>
+                <FormLabel text={Localization.passwd}>
                     <InputWithIcon
                         icon={faKey}
                         type={"password"}
@@ -64,7 +65,7 @@ export default function BoxUserCreate({ createUser, running, ...props }) {
                     onClick={onButtonClick}
                     disabled={running}
                 >
-                    Create
+                    {Localization.create}
                 </FormButton>
             </FormLabelled>
         </BoxFull>

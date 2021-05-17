@@ -4,7 +4,7 @@ import { faFolderOpen } from "@fortawesome/free-solid-svg-icons"
 import ContextUser from "../../contexts/ContextUser"
 import Loading from "../base/Loading"
 import BoxFullScrollable from "../base/BoxFullScrollable"
-
+import Localization from "../../Localization"
 
 /**
  * A {@link BoxFull} listing all the user's active repositories.
@@ -31,7 +31,7 @@ export default function BoxRepositoriesActive({
         contents = <Loading/>
     }
     else if(repositories.length === 0) {
-        contents = <i>Non c'è nulla qui.</i>
+        contents = <i>{Localization.emptyMenu}.</i>
     }
     else {
         contents = repositories.map(repo => (
@@ -50,7 +50,7 @@ export default function BoxRepositoriesActive({
     }
 
     return (
-        <BoxFullScrollable header={"Repository attivi"} {...props}>
+        <BoxFullScrollable header={Localization.menuActive} {...props}>
             {contents}
         </BoxFullScrollable>
     )

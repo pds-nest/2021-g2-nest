@@ -8,6 +8,7 @@ import Style from "./BoxConditionHashtag.module.css"
 import ButtonIconOnly from "../base/ButtonIconOnly"
 import useRepositoryEditor from "../../hooks/useRepositoryEditor"
 import Condition from "../../utils/Condition"
+import Localization from "../../Localization"
 
 // Official hashtag regex from https://stackoverflow.com/a/22490853/4334568
 // noinspection RegExpAnonymousGroup,LongLine
@@ -41,7 +42,7 @@ export default function BoxConditionHashtag({ ...props }) {
     }
 
     return (
-        <BoxFull header={<span>Ricerca per <FontAwesomeIcon icon={faHashtag}/> hashtag</span>} {...props}>
+        <BoxFull header={<span>{Localization.searchBy}<FontAwesomeIcon icon={faHashtag}/> {Localization.byHashtag}</span>} {...props}>
             <FormInline onSubmit={onButtonClick}>
                 <InputWithIcon
                     className={Style.Input}
