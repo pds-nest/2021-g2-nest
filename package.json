@@ -35,12 +35,6 @@
         "eject": "react-scripts eject",
         "serve": "serve -s build -l tcp://127.0.0.1:30041"
     },
-    "eslintConfig": {
-        "extends": [
-            "react-app",
-            "react-app/jest"
-        ]
-    },
     "browserslist": {
         "production": [
             ">0.2%",
