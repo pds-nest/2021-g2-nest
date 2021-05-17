@@ -4,6 +4,7 @@ import LogoDark from "../../media/LogoDark.png"
 import LogoLight from "../../media/LogoLight.png"
 import ContextTheme from "../../contexts/ContextTheme"
 import classNames from "classnames"
+import Localization from "../../Localization"
 
 
 /**
@@ -33,6 +34,12 @@ export default function Logo({ className, ...props }) {
     }
 
     return (
-        <img src={logo} className={classNames(Style.Logo, className)} alt={"N.E.S.T."} {...props}/>
+        <img
+            src={logo}
+            className={classNames(Style.Logo, className)}
+            alt={Localization.appName}
+            title={Localization.appFullName}
+            {...props}
+        />
     )
 }
