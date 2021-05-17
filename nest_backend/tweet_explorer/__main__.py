@@ -5,9 +5,8 @@ import nltk
 from nltk.corpus import stopwords
 
 
-
-
 ext.init_app(app=app)
+
 
 def authenticate():
     c_k = "GEhtSyP9e98mzFeiOCSW0lvQX"
@@ -19,6 +18,7 @@ def authenticate():
     auth.set_access_token(a_t, a_t_s)
     api = tw.API(auth, wait_on_rate_limit=True)
     return api
+
 
 def start_exploring():
     api = authenticate()
@@ -49,7 +49,7 @@ def start_exploring():
     print(dict(sorted(most_popular_words.items(), key=lambda item: item[1])))
 
 
-def search_repo_conditions(repository_id):
+def search_repo_conditions(repository_id, all_or):
     repo = Repository.query.filter_by(id=repository_id).first()
     conditions = [use.condition for use in repo.uses]
     conditions_type = dict()
@@ -64,22 +64,6 @@ def search_repo_conditions(repository_id):
         print(types, ":", conditions_type[types])
 
 
-
-
-    
-
-
-
-
-
-
-
-
-
-
 if __name__ == "__main__":
-    search_repo_conditions()
-    #print(stopwords.words('italian'))
     with app.app_context():
         ext.create_all(app=app)
-        #start_exploring()
