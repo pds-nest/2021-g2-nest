@@ -15,7 +15,8 @@ import { useHistory } from "react-router"
 /**
  * A {@link BoxFull} allowing the user to save the changes made in the current {@link RepositoryEditor}.
  *
- * @param props
+ * @param running - If a request is running, disabling the buttons.
+ * @param props - Additional props to pass to the box.
  * @returns {JSX.Element}
  * @constructor
  */
