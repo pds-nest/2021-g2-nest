@@ -16,7 +16,7 @@ class Condition(ext.Model):
     # Relationships
     repository = ext.relationship("Repository", back_populates="conditions")
     tweets = ext.relationship("Contains", back_populates="condition")
-    operations = ext.relationship("BoolOperation", back_populates="condition")
+    alerts = ext.relationship("MadeOf", back_populates="condition")
 
     def to_json(self):
         return {

@@ -93,6 +93,9 @@ class CreateAlert(Schema):
     name = fields.String(description="The name of the alert.")
     limit = fields.Integer(description="The number of tweets in a time window.")
     window_size = fields.Integer(description="The size of the time window.")
+    repository_id = fields.Integer(description="The id of the related repository.")
+    evaluation_mode = fields.Integer(description="How the conditions have to be evaluated.")
+    conditions = fields.Nested(ConditionSchema, many=True)
 
 
 class Operations(Schema):
@@ -117,8 +120,8 @@ class Alert(Schema):
     limit = fields.Integer(description="The number of tweets in a time window.")
     window_size = fields.Integer(description="The size of the time window.")
     repository_id = fields.Integer(description="The id of the related repository.")
-    operations = fields.Nested(Operations, many=True)
-    root_operation = fields.Nested(Operations, many=False)
+    evaluation_mode = fields.Integer(description="How the conditions have to be evaluated.")
+    conditions = fields.Nested(ConditionSchema, many=True)
     notifications = fields.Nested(Notification, many=True)
 
 

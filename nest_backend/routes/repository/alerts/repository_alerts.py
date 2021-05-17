@@ -84,9 +84,26 @@ def page_repository_alerts(rid):
             return json_error('Missing limit'), 400
         if 'window_size' not in request.json:
             return json_error('Missing window size'), 400
+        if (mode := request.json.get("evaluation_mode")) is not None:
+            try:
+                mode = ConditionMode(mode)
+            except KeyError:
+                return json_error("Unknown `type` specified."), 400
+            except Exception as e:
+                return json_error("Unknown error:" + str(e)), 400
+        else:
+            return json_error("Evaluation mode was not provided."), 400
+
         alert = Alert(name=request.json['name'], limit=request.json['limit'], window_size=request.json['window_size'],
-                      repository_id=rid)
+                      repository_id=rid, evaluation_mode=mode)
         ext.session.add(alert)
         ext.session.commit()
-
+        if request.json['conditions'] is not None:
+            for condition in request.json['conditions']:
+                c = Condition.query.filter_by(id=condition['id']).first()
+                if not c:
+                    return json_error("Could not locate condition."), 404
+                conn = MadeOf(aid=alert.id, cid=c.id)
+                ext.session.add(conn)
+                ext.session.commit()
         return json_success(alert.to_json()), 201
