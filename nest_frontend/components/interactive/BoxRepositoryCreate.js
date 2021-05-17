@@ -15,11 +15,12 @@ import { useHistory } from "react-router"
 /**
  * A {@link BoxFull} allowing the user to save the changes made in the current {@link RepositoryEditor}.
  *
- * @param props
+ * @param running - If a request is running, disabling the buttons.
+ * @param props - Additional props to pass to the box.
  * @returns {JSX.Element}
  * @constructor
  */
-export default function BoxRepositoryCreate({ ...props }) {
+export default function BoxRepositoryCreate({ running, ...props }) {
     const {
         id,
         evaluationMode,
@@ -80,6 +81,7 @@ export default function BoxRepositoryCreate({ ...props }) {
                          icon={faBackward}
                          color={"Red"}
                          onClick={() => revert()}
+                         disabled={running}
                      >
                          Annulla modifiche
                      </Button>
@@ -88,6 +90,7 @@ export default function BoxRepositoryCreate({ ...props }) {
                          icon={faPencilAlt}
                          color={"Green"}
                          onClick={_ => goToOnSuccess(save, history, "/repositories")()}
+                         disabled={running}
                      >
                          Salva modifiche
                      </Button>
@@ -98,6 +101,7 @@ export default function BoxRepositoryCreate({ ...props }) {
                      icon={faPlus}
                      color={"Green"}
                      onClick={_ => goToOnSuccess(save, history, "/repositories")()}
+                     disabled={running}
                  >
                      Crea repository
                  </Button>

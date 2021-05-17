@@ -147,7 +147,7 @@ export default function RepositoryEditor({
                 <BoxConditionUser className={Style.SearchByUser}/>
                 <BoxConditionDatetime className={Style.SearchByTimePeriod}/>
                 <BoxConditions className={Style.Conditions}/>
-                <BoxRepositoryCreate className={Style.CreateDialog}/>
+                <BoxRepositoryCreate running={loading} className={Style.CreateDialog}/>
             </div>
         </ContextRepositoryEditor.Provider>
     )

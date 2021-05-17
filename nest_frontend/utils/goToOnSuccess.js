@@ -7,16 +7,17 @@
  * @returns {(function(): void)|*}
  */
 export default function goToOnSuccess(func, history, destination) {
-    return (...args) => {
+    return async (...args) => {
         let result
         try {
-            console.debug("Provando ad eseguire: ", func)
-            result = func(...args)
+            console.debug("Executing: ", func)
+            result = await func(...args)
+            console.debug("Executed successfully: ", func, " moving to a different page.")
             history.push(destination)
             return result
         }
         catch(e) {
-            console.debug("Esecuzione fallita: ", func, ", non ha fatto nulla.")
+            console.debug("Execution failed: ", func, ", not doing anything.")
             throw e
         }
     }
