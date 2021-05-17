@@ -1,6 +1,6 @@
 import React from "react"
 import BoxFull from "../base/BoxFull"
-import ReactWordcloud from "react-wordcloud"
+import ReactWordcloud from "@steffo/nest-react-wordcloud"
 
 
 /**
