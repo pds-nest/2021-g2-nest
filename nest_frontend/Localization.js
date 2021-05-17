@@ -44,7 +44,7 @@ export default new LocalizedStrings({
         loggedInTitle: "Accesso effettuato",
         loggedInOn: "Al momento hai effettuato l'accesso su ",
         loggedInAs: " come ",
-        logout: "Esci"
+        logout: "Esci",
         switchTheme: "Cambia tema",
         alertSettings: "Impostazioni allarmi",
         changeEmail: "Cambia il tuo indirizzo email",
@@ -85,7 +85,7 @@ export default new LocalizedStrings({
         loggedInTitle: "Logged in",
         loggedInOn: "You are currently logged in at ",
         loggedInAs: " as ",
-        logout: "Logout"
+        logout: "Logout",
         switchTheme: "Switch theme",
         alertSettings: "Alert settings",
         changeEmail: "Change your email address",
