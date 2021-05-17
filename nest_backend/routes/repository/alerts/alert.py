@@ -129,6 +129,13 @@ def page_alert(aid):
             alert.limit = request.json['limit']
         if 'window_size' in request.json:
             alert.window_size = request.json['window_size']
+        if 'evaluation_mode' in request.json:
+            try:
+                alert.evaluation_mode = ConditionMode(request.json['evaluation_mode'])
+            except KeyError:
+                return json_error("Unknown `type` specified.", GENERIC_ENUM_INVALID), 400
+            except Exception as e:
+                return json_error("Unknown error:" + str(e), GENERIC_UFO), 400
         ext.session.commit()
         return json_success(alert.to_json()), 204
     elif request.method == "DELETE":
