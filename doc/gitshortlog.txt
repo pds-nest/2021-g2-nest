@@ -1,0 +1,17 @@
+   217	Stefano Pigozzi <256895@studenti.unimore.it>
+    59	Lorenzo Balugani <lorenzo.balugani@gmail.com>
+    54	stefanogoldoni <stefanogoldoni@gmail.com>
+    26	Annielated <giovannianniballi@hotmail.com>
+    24	Flavia Cocca <253218@studenti.unimore.it>
+    17	Stefano Pigozzi <me@steffo.eu>
+    13	Stefano Goldoni <280712@studenti.unimore.it>
+    12	Giovanni Anniballi <253150@studenti.unimore.it>
+    11	Chiara Calzolari <258727@studenti.unimore.it>
+    10	g.minoccari <g.minoccari@gmail.com>
+     9	Lorenzo Balugani <256867@studenti.unimore.it>
+     5	FlaviaC-uni <80752618+FlaviaC-uni@users.noreply.github.com>
+     5	Giorgio Minoccari <261807@studenti.unimore.it>
+     4	Nemesis <lorenzo.balugani@gmail.com>
+     3	@uni-chiara <258727@studenti.unimore.it>
+     3	Prof. Missiroli (home) <prof.missiroli@gmail.com>
+     2	Marcello Missiroli <mmissiroli@unimore.it>
