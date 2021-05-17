@@ -126,5 +126,17 @@ Giovanni Anniballi - Tester
 |-------|--------|
 |totale| 17.0h |
 
+Giorgio Minoccari - Analyst & Backend Developer
+
+| Data  | Durata | Attività |
+|-------|--------|----------|
+|04/05 | 0.5h | Aggiunta della condizione sull'utente
+|10/05 | 2.0h | Tentativo di inserimento delle query con place_id
+|11/05 | 1.5h | Test per passare alla versione 2.0 delle API
+|12/05 | 1.0h | Ritorno alla versione 1.1 perche' lascia disponibili le query sulla geolocalizzazione gratuitamente
+|14/05 | 5.0h | Integrazione e inserimento dei tweet catturati nel database
+|-------|--------|
+|totale| 10.0h |
+
 
 
