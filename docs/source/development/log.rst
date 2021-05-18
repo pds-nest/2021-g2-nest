@@ -1,10 +1,6 @@
 Registro attività
 =================
 
-.. todo::
-
-    Mettere titoli personali uguali in tutti gli sprint per consistenza.
-
 Sprint 0
 --------
 
@@ -48,7 +44,7 @@ Riunioni collettive
 Attività individuali
 ^^^^^^^^^^^^^^^^^^^^
 
-Stefano Goldoni - Product Owner
+Stefano Goldoni - Product Owner & Tester 
 """""""""""""""""""""""""""""""
 
 .. list-table::
@@ -81,7 +77,7 @@ Stefano Goldoni - Product Owner
       - diagrammi di attività
 
 
-Flavia Cocca - Scrum Master
+Flavia Cocca - Scrum Master & UI Designer
 """""""""""""""""""""""""""
 
 .. list-table::
@@ -117,7 +113,7 @@ Flavia Cocca - Scrum Master
       - Stesura documentazione partita scrumble
 
 
-Chiara Calzolari - UI/UX Designer
+Chiara Calzolari - UI Designer
 """""""""""""""""""""""""""""""""
 
 .. list-table::
@@ -159,10 +155,56 @@ Chiara Calzolari - UI/UX Designer
       - Doppiaggio video di presentazione
 
 
-Stefano Pigozzi - Frontend Developer & Sysadmin
-"""""""""""""""""""""""""""""""""""""""""""""""
+Stefano Pigozzi - Sysadmin & Frontend Developer
+""""""""""""""""""""""""""""""""""""
 
-.. todo:: Compilare con i dati di Toggl!
+.. list-table::
+    :header-rows: 2
+
+    * - Data
+      - Durata
+      - Attività
+    * -
+      -
+      - Totale
+
+    * - 2021-04-02
+      - 1.5h
+      - Studio
+
+    * - 2021-04-08
+      - 4.5h
+      - Configurazione Discord e GitLab
+
+    * - 2021-04-09
+      - 3.5h
+      - Riunione con il cliente e configurazione Taiga
+
+    * - 2021-04-10
+      - 4.0h
+      - Configurazione Penpot, Taiga, UI Design, progettazione Database
+
+    * - 2021-04-11
+      - 3.5h
+      - Riunione, configurazione GitLab e project management
+
+    * - 2021-04-12
+      - 0.5h
+      - Configurazione Twitter e UI Design
+
+    * - 2021-04-15
+      - 2.5h
+      - Partita a Scrumble e project management
+
+    * - 2021-04-16
+      - 1.5h
+      - Project management e configurazione SonarQube
+
+    * - 2021-04-17
+      - 3.5h
+      - Riunione e partita a scrumble
+
+
 
 
 Sprint 1
@@ -187,7 +229,7 @@ Riunioni collettive
 Attività individuali
 ^^^^^^^^^^^^^^^^^^^^
 
-Stefano Goldoni - Product Owner
+Stefano Goldoni - Product Owner & Tester
 """""""""""""""""""""""""""""""
 
 
@@ -277,7 +319,7 @@ Per il lavoro di testing è stata utilizzata anche la tecnica del Pair Programmi
       - Testing del frontend tramite UI, controllo generale dei test già effettuati.
 
 
-Giorgio Minoccari - Sviluppatore Backend
+Giorgio Minoccari - Analyst & Backend Developer
 """"""""""""""""""""""""""""""""""""""""
 
 Durante lo sprint ho principalmente svolto sviluppo e test riguardo alla API di twitter, in modo da poter effettuare chiamate efficenti e non venire limitati dal sito riguardo alle richieste effettuate.
@@ -318,7 +360,7 @@ Durante lo sprint ho principalmente svolto sviluppo e test riguardo alla API di 
       - Test di chiamata alle funzioni di ricerca a partire da repository con condizioni complesse aggregate
 
 
-Lorenzo Balugani - Developer
+Lorenzo Balugani - DB & Backend Developer
 """"""""""""""""""""""""""""
 
 .. list-table::
@@ -363,7 +405,7 @@ Lorenzo Balugani - Developer
       - Bugfixing
 
 
-FLavia Cocca - Scrum Master
+FLavia Cocca - Scrum Master & UI Designer
 """""""""""""""""""""""""""
 
 .. list-table::
@@ -414,12 +456,68 @@ Chiara Calzolari - UI Designer
       - Ultimi ritocchi al mockup UI
 
 
-Stefano Pigozzi - Frontend Developer
+Stefano Pigozzi - Sysadmin & Frontend Developer
 """"""""""""""""""""""""""""""""""""
 
-.. todo:: Compilare con i dati di Toggl!
+.. list-table::
+    :header-rows: 2
 
+    * - Data
+      - Durata
+      - Attività
+    * -
+      -
+      - Totale
 
+    * -
+      -
+      -
+
+    * -
+      -
+      -
+
+    * -
+      -
+      -
+
+    * -
+      -
+      -
+
+    * -
+      -
+      -
+
+    * -
+      -
+      -
+
+    * -
+      -
+      -
+
+    * -
+      -
+      -
+
+    * -
+      -
+      -
+
+    * -
+      -
+      -
+
+    * -
+      -
+      -
+
+    * -
+      -
+      -
+
+  
 Sprint 2
 --------
 
