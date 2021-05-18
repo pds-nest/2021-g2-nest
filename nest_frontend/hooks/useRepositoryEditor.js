@@ -8,7 +8,7 @@ import ContextRepositoryEditor from "../contexts/ContextRepositoryEditor"
 export default function useRepositoryEditor() {
     const context = useContext(ContextRepositoryEditor)
     if(!context) {
-        throw new Error("Questo componente deve essere messo in un RepositoryEditor.")
+        throw new Error("This component must be placed inside a RepositoryEditor.")
     }
     return context
 }
