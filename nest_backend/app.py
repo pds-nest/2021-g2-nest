@@ -57,17 +57,17 @@ app.add_url_rule(
     methods=["GET", "PATCH", "DELETE", "PUT"],
 )
 app.add_url_rule(
-    "/api/v1/repositories/<int:rid>/conditions",
+    "/api/v1/repositories/<int:rid>/conditions/",
     view_func=routes.page_repository_conditions,
     methods=["GET", "POST"],
 )
 app.add_url_rule(
-    "/api/v1/repositories/<int:rid>/alerts",
+    "/api/v1/repositories/<int:rid>/alerts/",
     view_func=routes.page_repository_alerts,
     methods=["GET", "POST"]
 )
 app.add_url_rule(
-    "/api/v1/repositories/<int:rid>/tweets",
+    "/api/v1/repositories/<int:rid>/tweets/",
     view_func=routes.page_repository_tweets,
     methods=["GET"]
 )
