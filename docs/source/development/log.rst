@@ -45,7 +45,7 @@ Attività individuali
 ^^^^^^^^^^^^^^^^^^^^
 
 Stefano Goldoni - Product Owner & Tester 
-"""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""
 
 .. list-table::
     :header-rows: 1
@@ -78,7 +78,7 @@ Stefano Goldoni - Product Owner & Tester
 
 
 Flavia Cocca - Scrum Master & UI Designer
-"""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""
 
 .. list-table::
     :header-rows: 1
@@ -114,7 +114,7 @@ Flavia Cocca - Scrum Master & UI Designer
 
 
 Chiara Calzolari - UI Designer
-"""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""
 
 .. list-table::
     :header-rows: 1
@@ -156,7 +156,7 @@ Chiara Calzolari - UI Designer
 
 
 Stefano Pigozzi - Sysadmin & Frontend Developer
-""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""
 
 .. list-table::
     :header-rows: 2
@@ -230,7 +230,7 @@ Attività individuali
 ^^^^^^^^^^^^^^^^^^^^
 
 Stefano Goldoni - Product Owner & Tester
-"""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""
 
 
 .. list-table::
@@ -320,7 +320,7 @@ Per il lavoro di testing è stata utilizzata anche la tecnica del Pair Programmi
 
 
 Giorgio Minoccari - Analyst & Backend Developer
-""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""
 
 Durante lo sprint ho principalmente svolto sviluppo e test riguardo alla API di twitter, in modo da poter effettuare chiamate efficenti e non venire limitati dal sito riguardo alle richieste effettuate.
 
@@ -361,7 +361,7 @@ Durante lo sprint ho principalmente svolto sviluppo e test riguardo alla API di 
 
 
 Lorenzo Balugani - DB & Backend Developer
-""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""
 
 .. list-table::
     :header-rows: 1
@@ -406,7 +406,7 @@ Lorenzo Balugani - DB & Backend Developer
 
 
 FLavia Cocca - Scrum Master & UI Designer
-"""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""
 
 .. list-table::
     :header-rows: 1
@@ -457,7 +457,7 @@ Chiara Calzolari - UI Designer
 
 
 Stefano Pigozzi - Sysadmin & Frontend Developer
-""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""
 
 .. list-table::
     :header-rows: 2
