@@ -11,7 +11,6 @@ import BoxMap from "../base/BoxMap"
 const STARTING_POSITION = { lat: 41.89309, lng: 12.48289 }
 const STARTING_ZOOM = 3
 
-// FIXME: this only works correctly at the equator!
 /**
  * https://wiki.openstreetmap.org/wiki/Zoom_levels
  */

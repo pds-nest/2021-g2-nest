@@ -3,7 +3,7 @@ import ContextRepositoryViewer from "../contexts/ContextRepositoryViewer"
 
 
 /**
- * @todo Document this.
+ * Hook to quickly use {@link ContextRepositoryViewer}.
  */
 export default function useRepositoryViewer() {
     const context = useContext(ContextRepositoryViewer)

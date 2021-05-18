@@ -2,6 +2,6 @@ import { createContext } from "react"
 
 
 /**
- * @todo Document this.
+ * Context to quickly pass props to the children of {@link RepositoryEditor}.
  */
 export default createContext(null)

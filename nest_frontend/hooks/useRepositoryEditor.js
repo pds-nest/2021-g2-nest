@@ -3,7 +3,7 @@ import ContextRepositoryEditor from "../contexts/ContextRepositoryEditor"
 
 
 /**
- * @todo Document this.
+ * Hook to quickly use {@link ContextRepositoryEditor}.
  */
 export default function useRepositoryEditor() {
     const context = useContext(ContextRepositoryEditor)

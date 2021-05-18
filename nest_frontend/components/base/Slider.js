@@ -6,7 +6,7 @@ import classNames from "classnames"
 /**
  * A slider that allows to select a numeric value in a range.
  *
- * @todo Custom styling only works on Firefox!
+ * Custom styling only works on Firefox!
  *
  * @param className - Additional class(es) to add to the element.
  * @param props - Additional props to pass to the element.
