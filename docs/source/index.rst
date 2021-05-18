@@ -19,6 +19,16 @@ Benvenuto alla documentazione di N.E.S.T.!
 
 
 .. toctree::
+   :maxdepth: 2
+   :caption: Compendio del progetto
+
+   development/client/index
+   development/stats/index
+   development/log
+   development/tools
+
+
+.. toctree::
    :caption: Documentazione autogenerata
 
    backend/index
