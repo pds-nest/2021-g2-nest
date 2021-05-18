@@ -22,6 +22,7 @@ export default {
         email: "Email",
         passwd: "Password",
 
+        dashboardTitle: "Crea una nuova repository",
         dashboard: "Dashboard",
         searchBy: "Ricerca per",
         byZone: "area",
@@ -42,6 +43,7 @@ export default {
 
         repositories: "Repositories",
         repoMenu: "Menu repository",
+        repoEdit: "Modifica repository",
         menuActive: "Le tue repository attive",
         menuArchived: "Le tue repository archiviate",
         emptyMenu: "Non c'è nulla qui",
@@ -54,6 +56,7 @@ export default {
         alerts: "Allarmi",
         alertTitle: "I tuoi allarmi",
         alertCreate: "Crea un allarme",
+        notImplemented: "🚧 Non implementato.",
 
         settings: "Impostazioni",
         loggedInTitle: "Accesso effettuato",
@@ -63,6 +66,7 @@ export default {
         switchTheme: "Cambia tema",
         darkMode: "Scuro",
         lightMode: "Chiaro",
+        changeLang: "Cambia lingua",
         alertSettings: "Impostazioni allarmi",
         changeEmail: "Cambia il tuo indirizzo email",
         changePasswd: "Cambia la tua password",
@@ -89,6 +93,7 @@ export default {
         email: "Email",
         passwd: "Password",
 
+        dashboardTitle: "Create a new repository",
         dashboard: "Dashboard",
         searchBy: "Search by",
         byZone: "zone",
@@ -109,6 +114,7 @@ export default {
 
         repositories: "Repositories",
         repoMenu: "Repositories menu",
+        repoEdit: "Edit repository",
         menuActive: "Your active repositories",
         menuArchived: "Your archived repositories",
         emptyMenu: "There's nothing here",
@@ -121,6 +127,7 @@ export default {
         alerts: "Alerts",
         alertTitle: "Your alerts",
         alertCreate: "Create a new alert",
+        notImplemented: "🚧 Not implemented.",
 
         settings: "Settings",
         loggedInTitle: "Logged in",
@@ -130,6 +137,7 @@ export default {
         switchTheme: "Switch theme",
         darkMode: "Dark",
         lightMode: "Light",
+        changeLang: "Change language",
         alertSettings: "Alert settings",
         changeEmail: "Change your email address",
         changePasswd: "Change your password",
@@ -156,6 +164,7 @@ export default {
         email: "Sähköposti",
         passwd: "Salasana",
 
+        dashboardTitle: "Luo uusi arkisto",
         dashboard: "Kojelauta",
         searchBy: "Haku ",
         byZone: "vyöhykkeen mukaan",
@@ -176,6 +185,7 @@ export default {
 
         repositories: "Arkistot",
         repoMenu: "Arkistot-valikko",
+        repoEdit: "Muokkaa arkistoa",
         menuActive: "Aktiiviset arkistosi",
         menuArchived: "Arkistoidut arkistosi",
         emptyMenu: "Täällä ei ole mitään",
@@ -188,6 +198,7 @@ export default {
         alerts: "Hälytykset",
         alertTitle: "Hälytyksesi",
         alertCreate: "Luo uusi hälytys",
+        notImplemented: "🚧 Ei toteutettu.",
 
         settings: "Asetukset",
         loggedInTitle: "Kirjautunut sisään",
@@ -197,6 +208,7 @@ export default {
         switchTheme: "Vaihda teema",
         darkMode: "Tumma",
         lightMode: "Selkeä",
+        changeLang: "Vaihda kieltä",
         alertSettings: "Hälytysasetukset",
         changeEmail: "Vaihda sähköpostiosoitteesi",
         changePasswd: "Vaihda salasanasi",

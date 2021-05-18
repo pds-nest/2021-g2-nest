@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useContext } from "react"
 import Style from "./PageSettings.module.css"
 import classNames from "classnames"
 import BoxHeader from "../components/base/BoxHeader"
@@ -6,27 +6,29 @@ import BoxFull from "../components/base/BoxFull"
 import SelectTheme from "../components/interactive/SelectTheme"
 import BoxLoggedIn from "../components/interactive/BoxLoggedIn"
 import SelectLanguage from "../components/interactive/SelectLanguage"
+import ContextLanguage from "../contexts/ContextLanguage"
 
 
 export default function PageSettings({ children, className, ...props }) {
+    const { strings } = useContext(ContextLanguage)
 
     return (
         <div className={classNames(Style.PageSettings, className)} {...props}>
             <BoxLoggedIn/>
             <BoxHeader>
-                Cambia tema: <SelectTheme/>
+                {strings.switchTheme}: <SelectTheme/>
             </BoxHeader>
             <BoxHeader>
-                Cambia lingua: <SelectLanguage/>
+                {strings.changeLang}: <SelectLanguage/>
             </BoxHeader>
-            <BoxFull header={"Impostazioni allarmi"}>
-                🚧 Non implementato.
+            <BoxFull header={strings.alertSettings}>
+                {strings.notImplemented}
             </BoxFull>
-            <BoxFull header={"Cambia il tuo indirizzo email"}>
-                🚧 Non implementato.
+            <BoxFull header={strings.changeEmail}>
+                {strings.notImplemented}
             </BoxFull>
-            <BoxFull header={"Cambia la tua password"}>
-                🚧 Non implementato.
+            <BoxFull header={strings.changePasswd}>
+                {strings.notImplemented}
             </BoxFull>
         </div>
     )

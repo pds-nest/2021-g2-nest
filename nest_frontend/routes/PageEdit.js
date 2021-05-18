@@ -7,9 +7,12 @@ import useBackendImmediately from "../hooks/useBackendImmediately"
 import ContextUser from "../contexts/ContextUser"
 import renderContents from "../utils/renderContents"
 import { useParams } from "react-router"
+import ContextLanguage from "../contexts/ContextLanguage"
 
 
 export default function PageEdit({ className, ...props }) {
+    const { strings } = useContext(ContextLanguage)
+
     const { id } = useParams()
     const { fetchDataAuth } = useContext(ContextUser)
     const repositoryRequest = useBackendImmediately(fetchDataAuth, "GET", `/api/v1/repositories/${id}`)
@@ -24,7 +27,7 @@ export default function PageEdit({ className, ...props }) {
     return (
         <div className={classNames(Style.PageHome, className)} {...props}>
             <BoxHeader className={Style.Header}>
-                Modifica repository
+                {strings.repoEdit}
             </BoxHeader>
             {contents}
         </div>

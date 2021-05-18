@@ -10,11 +10,11 @@ export default function PageAlerts({ children, className, ...props }) {
 
     return (
         <div className={classNames(Style.PageAlerts, className)} {...props}>
-            <BoxFull header={"I tuoi allarmi"} className={Style.YourAlerts}>
-                🚧 Non implementato.
+            <BoxFull header={strings.alertTitle} className={Style.YourAlerts}>
+                {strings.notImplemented}
             </BoxFull>
-            <BoxFull header={"Crea un nuovo allarme"} className={Style.CreateAlert}>
-                🚧 Non implementato.
+            <BoxFull header={strings.alertCreate} className={Style.CreateAlert}>
+                {strings.notImplemented}
             </BoxFull>
         </div>
     )
