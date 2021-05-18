@@ -5,10 +5,17 @@ Benvenuto alla documentazione di N.E.S.T.!
 
 .. toctree::
    :maxdepth: 2
-   :caption: Manuale
+   :caption: Manuale utente
 
    about/index
    installation/index
+
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Guida sviluppatore
+
+   meta/index
 
 
 .. toctree::

@@ -113,8 +113,8 @@ Le dipendenze Python sono gestite da *Poetry*, e possono essere installate con:
 Poetry creerà automaticamente un `venv <https://docs.python.org/3/library/venv.html>`_ e vi installerà all'interno tutti
 i pacchetti necessari all'esecuzione del backend e del crawler di N.E.S.T. .
 
-**Segnatevi il nome** del venv creato da Poetry, in quanto sarà necessario per
-:ref:`creare un servizio SystemD per il backend`:
+**Si suggerisce di ricordare il nome del venv creato da Poetry**, in quanto sarà necessario per
+:ref:`Creare un servizio SystemD per il backend`:
 
 .. code-block:: console
 
