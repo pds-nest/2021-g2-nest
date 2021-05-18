@@ -1,0 +1,38 @@
+.Badge {
+    display: inline-flex;
+
+    gap: 5px;
+    padding: 0 5px;
+    border-radius: 25px;
+    margin: 0 2px;
+}
+
+.BadgeRed {
+    background-color: var(--bg-red);
+    color: var(--fg-red)
+}
+
+.BadgeYellow {
+    background-color: var(--bg-yellow);
+    color: var(--fg-yellow)
+}
+
+.BadgeGrey {
+    background-color: var(--bg-grey);
+    color: var(--fg-grey)
+}
+
+.BadgeGreen {
+    background-color: var(--bg-green);
+    color: var(--fg-green)
+}
+
+.Text {
+    max-width: 350px;
+    overflow-x: hidden;
+}
+
+.Icon {
+    width: 15px;
+    text-align: center;
+}
