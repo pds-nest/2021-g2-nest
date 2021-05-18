@@ -2,7 +2,7 @@
 
 # Log attività individuali dello Sprint 0
 
-Stefano Goldoni - Product Owner
+Stefano Goldoni - Product Owner e Tester
 
 | Data  | Durata | Attività |
 |-------|--------|----------|
@@ -15,7 +15,7 @@ Stefano Goldoni - Product Owner
 |17/04 |1.5h |diagrammi di attività
 
 
-Flavia Cocca - Scrum Master
+Flavia Cocca - Scrum Master & UI Designer
 
 | Data  | Durata | Attività |
 |-------|--------|----------|
@@ -28,7 +28,7 @@ Flavia Cocca - Scrum Master
 |16/04 |2.0h |ultimi ritocchi UI
 |17/04 |0.5h |Stesura documentazione partita scrumble
 
-Chiara Calzolari - UI Designer
+Chiara Calzolari - UI Designer 
 
 | Data  | Durata | Attività |
 |-------|--------|----------|
