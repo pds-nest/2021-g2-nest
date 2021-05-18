@@ -83,3 +83,15 @@ h1, h2, h3, h4, h5, h6 {
 
     --outline: black;
 }
+
+.Clickable {
+    cursor: pointer;
+}
+
+.Clickable:hover {
+    filter: brightness(110%);
+}
+
+.Clickable:active {
+    filter: brightness(125%);
+}
