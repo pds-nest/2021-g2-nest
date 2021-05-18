@@ -12,7 +12,7 @@ export default function SummaryUser({ user, destroyUser, running, ...props }) {
     const { strings } = useContext(ContextLanguage)
 
     return (
-        <SummaryBase>
+        <SummaryBase {...props}>
             <SummaryLeft
                 icon={user.isAdmin ? faStar : faUser}
                 title={user.username}

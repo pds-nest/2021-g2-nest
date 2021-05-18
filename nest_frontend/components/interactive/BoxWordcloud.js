@@ -24,7 +24,7 @@ export default function BoxWordcloud({ words, props }) {
                             "var(--fg-primary)",
                         ],
                         fontFamily: "Bree Serif",
-                        fontSizes: [12, 128],
+                        fontSizes: [16, 48],
                         size: undefined,
                         deterministic: true,
                     }}

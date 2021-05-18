@@ -7,7 +7,7 @@
 
 # Log attività individuali dello Sprint 1
 
-Stefano Goldoni - Product Owner
+Stefano Goldoni - Product Owner e Tester
 
 | Data  | Durata | Attività |
 |-------|--------|----------|
@@ -40,7 +40,7 @@ Giovanni Anniballi - Tester
 
 Per il lavoro di testing è stata utilizzata anche la tecnica del Pair Programming, grazie ad un plugin dell'IDE utilizzato.
 
-Giorgio Minoccari - Sviluppatore Backend
+Giorgio Minoccari - Analyst & Backend Developer
 
 Durante lo sprint ho principalmente svolto sviluppo e test riguardo alla API di twitter, in modo da poter effettuare chiamate efficenti e non venire limitati dal sito riguardo alle richieste effettuate.
 | Data  | Durata | Attività |
@@ -56,7 +56,7 @@ Durante lo sprint ho principalmente svolto sviluppo e test riguardo alla API di 
 |02/05 |1.0h| Test di chiamata alle funzioni di ricerca a partire da repository con condizioni complesse aggregate
 
 
-Lorenzo Balugani - Developer
+Lorenzo Balugani - DB & Backend Developer
 
 | Data  | Durata | Attività |
 |-------|--------|----------|
@@ -73,7 +73,7 @@ Lorenzo Balugani - Developer
 |02/05 | 1.0h | Bugfixing
 
 
-FLavia Cocca - Scrum Master
+Flavia Cocca - Scrum Master & UI Designer
 
 | Data  | Durata | Attività |
 |-------|--------|----------|
