@@ -1,4 +1,5 @@
 .SummaryLeft {
+    min-width: 175px;
     width: 275px;
 
     display: grid;

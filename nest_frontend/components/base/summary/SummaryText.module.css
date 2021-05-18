@@ -1,0 +1,22 @@
+.SummaryText {
+    flex-grow: 3;
+
+    padding: 0 0 0 20px;
+
+    background-color: var(--bg-light);
+
+    display: flex;
+    justify-content: stretch;
+    align-items: center;
+
+    font-size: small;
+}
+
+.Text {
+    height: 60px;
+    overflow-y: auto;
+
+    /* Custom scrollbar (firefox only!) */
+    scrollbar-color: var(--bg-accent) var(--bg-light);
+    scrollbar-width: auto;
+}

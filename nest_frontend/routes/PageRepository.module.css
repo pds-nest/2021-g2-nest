@@ -1,7 +1,10 @@
 .PageRepository {
     display: grid;
 
-    grid-template-areas: "a";
+    grid-template-areas:
+            "a b"
+            "c d"
+    ;
 
     grid-gap: 10px;
 

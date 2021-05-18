@@ -40,7 +40,7 @@ export default function SummaryRepository(
     }
 
     return (
-        <SummaryBase>
+        <SummaryBase {...props}>
             <SummaryLeft
                 icon={repo.is_active ? faFolderOpen : faFolder}
                 title={repo.name}
