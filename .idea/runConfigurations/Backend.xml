@@ -5,7 +5,7 @@
     <option name="PARENT_ENVS" value="true" />
     <envs>
       <env name="PYTHONUNBUFFERED" value="1" />
-      <env name="FLASK_CONFIG" value="../.config.py" />
+      <env name="FLASK_CONFIG" value="config.py" />
     </envs>
     <option name="SDK_HOME" value="$USER_HOME$/.cache/pypoetry/virtualenvs/nest--u3GVeLy-py3.9/bin/python" />
     <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
