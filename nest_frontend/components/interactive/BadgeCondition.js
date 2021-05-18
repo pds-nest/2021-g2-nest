@@ -1,8 +1,4 @@
 import React, { useContext } from "react"
-import Style from "./BadgeCondition.module.css"
-import classNames from "classnames"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import ButtonSmallX from "../base/ButtonSmallX"
 import { faAt, faClock, faGlobe, faHashtag, faMapPin } from "@fortawesome/free-solid-svg-icons"
 import ContextRepositoryEditor from "../../contexts/ContextRepositoryEditor"
 import Badge from "../base/Badge"
