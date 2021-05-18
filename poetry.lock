@@ -423,6 +423,17 @@ python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
 pyparsing = ">=2.0.2"
 
 [[package]]
+name = "parsimonious"
+version = "0.7.0"
+description = "(Soon to be) the fastest pure-Python PEG parser I could muster"
+category = "dev"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+six = "*"
+
+[[package]]
 name = "pluggy"
 version = "0.13.1"
 description = "plugin and hook calling mechanisms for python"
@@ -621,6 +632,19 @@ lint = ["flake8 (>=3.5.0)", "isort", "mypy (>=0.800)", "docutils-stubs"]
 test = ["pytest", "pytest-cov", "html5lib", "cython", "typed-ast"]
 
 [[package]]
+name = "sphinx-js"
+version = "3.1.2"
+description = "Support for using Sphinx on JSDoc-documented JS code"
+category = "dev"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+Jinja2 = ">2.0,<3.0"
+parsimonious = ">=0.7.0,<0.8.0"
+Sphinx = ">=3.0.0"
+
+[[package]]
 name = "sphinx-rtd-theme"
 version = "0.5.2"
 description = "Read the Docs theme for Sphinx"
@@ -810,7 +834,7 @@ watchdog = ["watchdog"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8.5"
-content-hash = "ce716a14534bfcf41e82944d3eabf4cbeb743303f2c1a21e8360f802d89598d1"
+content-hash = "96ffc2cb1a76224ec4fe7a34b8e13fba39f2054a7914727db0a12a04cad39726"
 
 [metadata.files]
 alabaster = [
@@ -1073,6 +1097,9 @@ packaging = [
     {file = "packaging-20.9-py2.py3-none-any.whl", hash = "sha256:67714da7f7bc052e064859c05c595155bd1ee9f69f76557e21f051443c20947a"},
     {file = "packaging-20.9.tar.gz", hash = "sha256:5b327ac1320dc863dca72f4514ecc086f31186744b84a230374cc1fd776feae5"},
 ]
+parsimonious = [
+    {file = "parsimonious-0.7.0.tar.gz", hash = "sha256:396d424f64f834f9463e81ba79a331661507a21f1ed7b644f7f6a744006fd938"},
+]
 pluggy = [
     {file = "pluggy-0.13.1-py2.py3-none-any.whl", hash = "sha256:966c145cd83c96502c3c3868f50408687b38434af77734af1e9ca461a4081d2d"},
     {file = "pluggy-0.13.1.tar.gz", hash = "sha256:15b2acde666561e1298d71b523007ed7364de07029219b604cf808bfa1c765b0"},
@@ -1239,6 +1266,10 @@ snowballstemmer = [
 sphinx = [
     {file = "Sphinx-3.5.4-py3-none-any.whl", hash = "sha256:2320d4e994a191f4b4be27da514e46b3d6b420f2ff895d064f52415d342461e8"},
     {file = "Sphinx-3.5.4.tar.gz", hash = "sha256:19010b7b9fa0dc7756a6e105b2aacd3a80f798af3c25c273be64d7beeb482cb1"},
+]
+sphinx-js = [
+    {file = "sphinx-js-3.1.2.tar.gz", hash = "sha256:04fe0d2fec6d39b505d70500d0132cfa0efc834760c9598048c1a9dbbc175732"},
+    {file = "sphinx_js-3.1.2-py2.py3-none-any.whl", hash = "sha256:4503accb74ba3a15e0e59e20ec18b15be1932b2c8e8b82e03ace39a415899785"},
 ]
 sphinx-rtd-theme = [
     {file = "sphinx_rtd_theme-0.5.2-py2.py3-none-any.whl", hash = "sha256:4a05bdbe8b1446d77a01e20a23ebc6777c74f43237035e76be89699308987d6f"},
