@@ -12,7 +12,7 @@ import {
     faUserCog,
 } from "@fortawesome/free-solid-svg-icons"
 import ContextUser from "../../contexts/ContextUser"
-import Localization from "../../Localization"
+import ContextLanguage from "../../contexts/ContextLanguage"
 
 
 /**
@@ -26,6 +26,7 @@ import Localization from "../../Localization"
  */
 export default function Sidebar({ className, ...props }) {
     const { user } = useContext(ContextUser)
+    const {strings} = useContext(ContextLanguage)
 
     return (
         <aside className={classNames(Style.Sidebar, className)} {...props}>
@@ -33,20 +34,20 @@ export default function Sidebar({ className, ...props }) {
             {
                 user ?
                 <>
-                    <ButtonSidebar to={"/dashboard"} icon={faHome}>{Localization.dashboard}</ButtonSidebar>
-                    <ButtonSidebar to={"/repositories"} icon={faFolder}>{Localization.repositories}</ButtonSidebar>
-                    <ButtonSidebar to={"/alerts"} icon={faExclamationTriangle}>{Localization.alerts}</ButtonSidebar>
-                    <ButtonSidebar to={"/settings"} icon={faCog}>{Localization.settings}</ButtonSidebar>
+                    <ButtonSidebar to={"/dashboard"} icon={faHome}>{strings.dashboard}</ButtonSidebar>
+                    <ButtonSidebar to={"/repositories"} icon={faFolder}>{strings.repositories}</ButtonSidebar>
+                    <ButtonSidebar to={"/alerts"} icon={faExclamationTriangle}>{strings.alerts}</ButtonSidebar>
+                    <ButtonSidebar to={"/settings"} icon={faCog}>{strings.settings}</ButtonSidebar>
                 </>
                      :
                 <>
-                    <ButtonSidebar to={"/login"} icon={faKey}>{Localization.login}</ButtonSidebar>
+                    <ButtonSidebar to={"/login"} icon={faKey}>{strings.login}</ButtonSidebar>
                 </>
             }
             {
                 user && user.isAdmin ?
                 <>
-                    <ButtonSidebar to={"/users"} icon={faUserCog}>{Localization.users}</ButtonSidebar>
+                    <ButtonSidebar to={"/users"} icon={faUserCog}>{strings.users}</ButtonSidebar>
                 </>
                                      :
                 null

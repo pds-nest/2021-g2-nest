@@ -1,6 +1,3 @@
-import LocalizedStrings from "react-localization"
-
-
 /**
  * All strings contained in the app should be present in this dict.
  *
@@ -12,7 +9,7 @@ import LocalizedStrings from "react-localization"
  * "{number} km radius"
  * ```
  */
-export default new LocalizedStrings({
+export default {
     // 🇮🇹
     it: {
         appName: "N.E.S.T.",
@@ -214,5 +211,4 @@ export default new LocalizedStrings({
         admin: "Ylläpitäjä",
         user: "Käyttäjä",
     }
-})
-
+}

@@ -2,7 +2,7 @@ import React, { useContext } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faUser } from "@fortawesome/free-solid-svg-icons"
 import ContextUser from "../../contexts/ContextUser"
-import Localization from "../../Localization"
+import ContextLanguage from "../../contexts/ContextLanguage"
 
 
 /**
@@ -14,11 +14,12 @@ import Localization from "../../Localization"
  */
 export default function LoggedInUser({ ...props }) {
     const { user } = useContext(ContextUser)
+    const {strings} = useContext(ContextLanguage)
 
     if(!user) {
         return (
             <i {...props}>
-                {Localization.notLoggedIn}
+                {strings.notLoggedIn}
             </i>
         )
     }

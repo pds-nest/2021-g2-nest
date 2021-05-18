@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react"
+import React, { useCallback, useContext, useEffect, useState } from "react"
 import BoxFull from "../base/BoxFull"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faAt, faMapPin, faPlus } from "@fortawesome/free-solid-svg-icons"
@@ -7,7 +7,7 @@ import ButtonIconOnly from "../base/ButtonIconOnly"
 import { MapContainer, TileLayer } from "react-leaflet"
 import useRepositoryEditor from "../../hooks/useRepositoryEditor"
 import Condition from "../../utils/Condition"
-import Localization from "../../Localization"
+import ContextLanguage from "../../contexts/ContextLanguage"
 
 
 const STARTING_POSITION = { lat: 41.89309, lng: 12.48289 }
@@ -54,6 +54,7 @@ export default function BoxConditionMap({ ...props }) {
     const [zoom, setZoom] = useState(STARTING_ZOOM)
     const [map, setMap] = useState(null)
     const { addCondition } = useRepositoryEditor()
+    const {strings} = useContext(ContextLanguage)
 
     const onMove = useCallback(
         () => {
@@ -101,11 +102,11 @@ export default function BoxConditionMap({ ...props }) {
         <BoxFull
             header={
                 <span>
-                    {Localization.searchBy}
+                    {strings.searchBy}
                     &nbsp;
                     <FontAwesomeIcon icon={faMapPin}/>
                     &nbsp;
-                    {Localization.byZone}
+                    {strings.byZone}
                 </span>
             }
             childrenClassName={Style.BoxConditionMapContents}

@@ -1,8 +1,8 @@
-import React from "react"
+import React, { useContext } from "react"
 import BoxFull from "../base/BoxFull"
 import ConditionBadge from "./ConditionBadge"
 import useRepositoryEditor from "../../hooks/useRepositoryEditor"
-import Localization from "../../Localization"
+import ContextLanguage from "../../contexts/ContextLanguage"
 
 
 /**
@@ -14,11 +14,12 @@ import Localization from "../../Localization"
  */
 export default function BoxConditions({ ...props }) {
     const { conditions } = useRepositoryEditor()
+    const {strings} = useContext(ContextLanguage)
 
     const badges = conditions.map((cond, pos) => <ConditionBadge key={pos} {...cond}/>)
 
     return (
-        <BoxFull header={Localization.conditions} {...props}>
+        <BoxFull header={strings.conditions} {...props}>
             {badges}
         </BoxFull>
     )

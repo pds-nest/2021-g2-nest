@@ -1,12 +1,13 @@
-import React, { useState } from "react"
+import React, { useContext, useState } from "react"
 import Style from "./ButtonToggleBeforeAfter.module.css"
 import classNames from "classnames"
 import Button from "../base/Button"
-import Localization from "../../Localization"
+import ContextLanguage from "../../contexts/ContextLanguage"
 
 
 export default function ButtonToggleBeforeAfter({ onUpdate, className, ...props }) {
     const [value, setValue] = useState(false)
+    const {strings} = useContext(ContextLanguage)
 
     const onButtonClick = () => {
         onUpdate(!value)
@@ -20,7 +21,7 @@ export default function ButtonToggleBeforeAfter({ onUpdate, className, ...props 
             onClick={onButtonClick}
             {...props}
         >
-            {value ? Localization.timeBefore : Localization.timeAfter}
+            {value ? strings.timeBefore : strings.timeAfter}
         </Button>
     )
 }

@@ -1,6 +1,6 @@
-import React, { useState } from "react"
+import React, { useContext } from "react"
 import Select from "../base/Select"
-import Localization from "../../Localization"
+import ContextLanguage from "../../contexts/ContextLanguage"
 
 
 /**
@@ -12,17 +12,10 @@ import Localization from "../../Localization"
  * @constructor
  */
 export default function SelectLanguage({ ...props }) {
-    const [_language, _setLanguage] = useState(Localization.getLanguage())
-
-    const setLanguage = event => {
-        const language = event.target.value
-        console.info("Changing language to: ", language)
-        Localization.setLanguage(language)
-        _setLanguage(language)
-    }
+    const {strings, lang, setLang} = useContext(ContextLanguage)
 
     return (
-        <Select value={_language} onChange={setLanguage} {...props}>
+        <Select value={lang} onChange={event => setLang(event.target.value)} {...props}>
             <option value={"it"}>🇮🇹 Italiano</option>
             <option value={"en"}>🇬🇧 English</option>
             <option value={"fi"}>🇫🇮 Suomi</option>

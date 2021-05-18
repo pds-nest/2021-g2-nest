@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react"
+import React, { useCallback, useContext, useState } from "react"
 import FormLabelled from "../base/FormLabelled"
 import FormLabel from "../base/formparts/FormLabel"
 import InputWithIcon from "../base/InputWithIcon"
@@ -6,7 +6,7 @@ import { faEnvelope, faKey, faPlus, faUser } from "@fortawesome/free-solid-svg-i
 import FormButton from "../base/formparts/FormButton"
 import BoxFull from "../base/BoxFull"
 import FormAlert from "../base/formparts/FormAlert"
-import Localization from "../../Localization"
+import ContextLanguage from "../../contexts/ContextLanguage"
 
 
 export default function BoxUserCreate({ createUser, running, ...props }) {
@@ -14,6 +14,7 @@ export default function BoxUserCreate({ createUser, running, ...props }) {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [error, setError] = useState(undefined)
+    const {strings} = useContext(ContextLanguage)
 
     const onButtonClick = useCallback(
         async () => {
@@ -28,9 +29,9 @@ export default function BoxUserCreate({ createUser, running, ...props }) {
     )
 
     return (
-        <BoxFull header={Localization.userCreate} {...props}>
+        <BoxFull header={strings.userCreate} {...props}>
             <FormLabelled>
-                <FormLabel text={Localization.userName}>
+                <FormLabel text={strings.userName}>
                     <InputWithIcon
                         icon={faUser}
                         type={"text"}
@@ -38,7 +39,7 @@ export default function BoxUserCreate({ createUser, running, ...props }) {
                         onChange={event => setUsername(event.target.value)}
                     />
                 </FormLabel>
-                <FormLabel text={Localization.email}>
+                <FormLabel text={strings.email}>
                     <InputWithIcon
                         icon={faEnvelope}
                         type={"text"}
@@ -46,7 +47,7 @@ export default function BoxUserCreate({ createUser, running, ...props }) {
                         onChange={event => setEmail(event.target.value)}
                     />
                 </FormLabel>
-                <FormLabel text={Localization.passwd}>
+                <FormLabel text={strings.passwd}>
                     <InputWithIcon
                         icon={faKey}
                         type={"password"}
@@ -65,7 +66,7 @@ export default function BoxUserCreate({ createUser, running, ...props }) {
                     onClick={onButtonClick}
                     disabled={running}
                 >
-                    {Localization.create}
+                    {strings.create}
                 </FormButton>
             </FormLabelled>
         </BoxFull>

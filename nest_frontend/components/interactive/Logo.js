@@ -4,7 +4,7 @@ import LogoDark from "../../media/LogoDark.png"
 import LogoLight from "../../media/LogoLight.png"
 import ContextTheme from "../../contexts/ContextTheme"
 import classNames from "classnames"
-import Localization from "../../Localization"
+import ContextLanguage from "../../contexts/ContextLanguage"
 
 
 /**
@@ -18,9 +18,8 @@ import Localization from "../../Localization"
  * @constructor
  */
 export default function Logo({ className, ...props }) {
-    // I have no idea why IntelliJ is complaining about this line
-    // It's perfectly fine!
     const { theme } = useContext(ContextTheme)
+    const {strings} = useContext(ContextLanguage)
 
     let logo
     if(theme === "ThemeDark") {
@@ -37,8 +36,8 @@ export default function Logo({ className, ...props }) {
         <img
             src={logo}
             className={classNames(Style.Logo, className)}
-            alt={Localization.appName}
-            title={Localization.appFullName}
+            alt={strings.appName}
+            title={strings.appFullName}
             {...props}
         />
     )

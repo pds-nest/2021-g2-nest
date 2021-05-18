@@ -5,6 +5,7 @@ import GlobalTheme from "./components/providers/GlobalTheme"
 import GlobalServer from "./components/providers/GlobalServer"
 import GlobalUser from "./components/providers/GlobalUser"
 import PageSwitcher from "./PageSwitcher"
+import GlobalLanguage from "./components/providers/GlobalLanguage"
 
 
 /**
@@ -15,16 +16,18 @@ import PageSwitcher from "./PageSwitcher"
  */
 export default function App() {
     return (
-        <GlobalServer>
-            <GlobalUser>
-                <GlobalTheme>
-                    <BrowserRouter>
-                        <Layout>
-                            <PageSwitcher/>
-                        </Layout>
-                    </BrowserRouter>
-                </GlobalTheme>
-            </GlobalUser>
-        </GlobalServer>
+        <GlobalLanguage>
+            <GlobalServer>
+                <GlobalUser>
+                    <GlobalTheme>
+                        <BrowserRouter>
+                            <Layout>
+                                <PageSwitcher/>
+                            </Layout>
+                        </BrowserRouter>
+                    </GlobalTheme>
+                </GlobalUser>
+            </GlobalServer>
+        </GlobalLanguage>
     )
 }

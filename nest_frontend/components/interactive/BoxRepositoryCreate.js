@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useContext } from "react"
 import BoxFull from "../base/BoxFull"
 import FormLabelled from "../base/FormLabelled"
 import FormLabel from "../base/formparts/FormLabel"
@@ -10,7 +10,7 @@ import useRepositoryEditor from "../../hooks/useRepositoryEditor"
 import FormAlert from "../base/formparts/FormAlert"
 import goToOnSuccess from "../../utils/goToOnSuccess"
 import { useHistory } from "react-router"
-import Localization from "../../Localization"
+import ContextLanguage from "../../contexts/ContextLanguage"
 
 
 /**
@@ -34,16 +34,17 @@ export default function BoxRepositoryCreate({ running, ...props }) {
     } = useRepositoryEditor()
 
     const history = useHistory()
+    const {strings} = useContext(ContextLanguage)
 
     return (
-        <BoxFull header={Localization.createRepo} {...props}>
+        <BoxFull header={strings.createRepo} {...props}>
             <FormLabelled
                 onSubmit={e => {
                     e.preventDefault()
                     save()
                 }}
             >
-                <FormLabel htmlFor={"repo-name"} text={Localization.repoName}>
+                <FormLabel htmlFor={"repo-name"} text={strings.repoName}>
                     <InputWithIcon
                         id={"repo-name"}
                         icon={faFolder}
@@ -51,14 +52,14 @@ export default function BoxRepositoryCreate({ running, ...props }) {
                         onChange={e => setName(e.target.value)}
                     />
                 </FormLabel>
-                <FormLabel htmlFor={"filter-mode"} text={Localization.request}>
+                <FormLabel htmlFor={"filter-mode"} text={strings.request}>
                     <label>
                         <Radio
                             name={"filter-mode"}
                             onChange={() => setEvaluationMode(0)}
                             checked={evaluationMode === 0}
                         />
-                        {Localization.filterOR}
+                        {strings.filterOR}
                     </label>
                     &nbsp;
                     <label>
@@ -67,7 +68,7 @@ export default function BoxRepositoryCreate({ running, ...props }) {
                             onChange={() => setEvaluationMode(1)}
                             checked={evaluationMode === 1}
                         />
-                        {Localization.filterAND}
+                        {strings.filterAND}
                     </label>
                 </FormLabel>
                 {error ?
@@ -84,7 +85,7 @@ export default function BoxRepositoryCreate({ running, ...props }) {
                          onClick={() => revert()}
                          disabled={running}
                      >
-                         {Localization.rollback}
+                         {strings.rollback}
                      </Button>
                      <Button
                          style={{ "gridColumn": "2" }}
@@ -93,7 +94,7 @@ export default function BoxRepositoryCreate({ running, ...props }) {
                          onClick={_ => goToOnSuccess(save, history, "/repositories")()}
                          disabled={running}
                      >
-                         {Localization.save}
+                         {strings.save}
                      </Button>
                  </>
                     :
@@ -104,7 +105,7 @@ export default function BoxRepositoryCreate({ running, ...props }) {
                      onClick={_ => goToOnSuccess(save, history, "/repositories")()}
                      disabled={running}
                  >
-                     {Localization.createRepo}
+                     {strings.createRepo}
                  </Button>
                 }
 
