@@ -40,7 +40,7 @@
     <link rel="index" title="Indice" href="../genindex.html" />
     <link rel="search" title="Cerca" href="../search.html" />
     <link rel="next" title="nest_crawler - Crawler in Python" href="../crawler/index.html" />
-    <link rel="prev" title="Installazione" href="../installation/index.html" /> 
+    <link rel="prev" title="Strumenti utilizzati" href="../development/tools.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -50,7 +50,7 @@
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+        <div class="wy-side-nav-search"  style="background: #3B7097" >
           
 
           
@@ -85,10 +85,21 @@
               
             
             
-              <p class="caption"><span class="caption-text">Manuale</span></p>
+              <p class="caption"><span class="caption-text">Manuale utente</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../about/index.html">Il progetto</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installazione</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Guida sviluppatore</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../meta/index.html">Meta-documentazione</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Compendio del progetto</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../development/client/index.html">Feedback ricevuto dal cliente</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/stats/index.html">Statistiche di Gitinspector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/log.html">Registro attività</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/tools.html">Strumenti utilizzati</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Documentazione autogenerata</span></p>
 <ul class="current">
@@ -224,8 +235,9 @@ It is required by Flask-JWT, and shouldnt be used alone.
 
 <dl class="py function">
 <dt id="nest_backend.gestione.json_error">
-<code class="sig-prename descclassname"><span class="pre">nest_backend.gestione.</span></code><code class="sig-name descname"><span class="pre">json_error</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nest_backend.gestione.json_error" title="Link a questa definizione">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">nest_backend.gestione.</span></code><code class="sig-name descname"><span class="pre">json_error</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">msg</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">code</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'errorUnknownError'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nest_backend.gestione.json_error" title="Link a questa definizione">¶</a></dt>
 <dd><p>Returns an error in json format
+:param code: the code of the error according to the spec.
 :param msg: the error message.
 :return: a json formatted string.</p>
 </dd></dl>
@@ -285,6 +297,11 @@ It is required by Flask-JWT, and shouldnt be used alone.
 <dd></dd></dl>
 
 <dl class="py attribute">
+<dt id="nest_backend.database.tables.Alert.evaluation_mode">
+<code class="sig-name descname"><span class="pre">evaluation_mode</span></code><a class="headerlink" href="#nest_backend.database.tables.Alert.evaluation_mode" title="Link a questa definizione">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
 <dt id="nest_backend.database.tables.Alert.repository_id">
 <code class="sig-name descname"><span class="pre">repository_id</span></code><a class="headerlink" href="#nest_backend.database.tables.Alert.repository_id" title="Link a questa definizione">¶</a></dt>
 <dd></dd></dl>
@@ -300,8 +317,8 @@ It is required by Flask-JWT, and shouldnt be used alone.
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt id="nest_backend.database.tables.Alert.operations">
-<code class="sig-name descname"><span class="pre">operations</span></code><a class="headerlink" href="#nest_backend.database.tables.Alert.operations" title="Link a questa definizione">¶</a></dt>
+<dt id="nest_backend.database.tables.Alert.conditions">
+<code class="sig-name descname"><span class="pre">conditions</span></code><a class="headerlink" href="#nest_backend.database.tables.Alert.conditions" title="Link a questa definizione">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -358,100 +375,6 @@ values in <code class="docutils literal notranslate"><span class="pre">kwargs</s
 attributes of the instance’s class are allowed. These could be,
 for example, any mapped columns or relationships.</p>
 </dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt id="nest_backend.database.tables.BoolOperation">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">nest_backend.database.tables.</span></code><code class="sig-name descname"><span class="pre">BoolOperation</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nest_backend.database.tables.BoolOperation" title="Link a questa definizione">¶</a></dt>
-<dd><blockquote>
-<div><p>Basi: <code class="xref py py-class docutils literal notranslate"><span class="pre">sqlalchemy.orm.decl_api.Model</span></code></p>
-</div></blockquote>
-<dl class="py attribute">
-<dt id="nest_backend.database.tables.BoolOperation.id">
-<code class="sig-name descname"><span class="pre">id</span></code><a class="headerlink" href="#nest_backend.database.tables.BoolOperation.id" title="Link a questa definizione">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt id="nest_backend.database.tables.BoolOperation.operation">
-<code class="sig-name descname"><span class="pre">operation</span></code><a class="headerlink" href="#nest_backend.database.tables.BoolOperation.operation" title="Link a questa definizione">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt id="nest_backend.database.tables.BoolOperation.is_root">
-<code class="sig-name descname"><span class="pre">is_root</span></code><a class="headerlink" href="#nest_backend.database.tables.BoolOperation.is_root" title="Link a questa definizione">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt id="nest_backend.database.tables.BoolOperation.condition_id">
-<code class="sig-name descname"><span class="pre">condition_id</span></code><a class="headerlink" href="#nest_backend.database.tables.BoolOperation.condition_id" title="Link a questa definizione">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt id="nest_backend.database.tables.BoolOperation.node_1_id">
-<code class="sig-name descname"><span class="pre">node_1_id</span></code><a class="headerlink" href="#nest_backend.database.tables.BoolOperation.node_1_id" title="Link a questa definizione">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt id="nest_backend.database.tables.BoolOperation.node_2_id">
-<code class="sig-name descname"><span class="pre">node_2_id</span></code><a class="headerlink" href="#nest_backend.database.tables.BoolOperation.node_2_id" title="Link a questa definizione">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt id="nest_backend.database.tables.BoolOperation.alert_id">
-<code class="sig-name descname"><span class="pre">alert_id</span></code><a class="headerlink" href="#nest_backend.database.tables.BoolOperation.alert_id" title="Link a questa definizione">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt id="nest_backend.database.tables.BoolOperation.condition">
-<code class="sig-name descname"><span class="pre">condition</span></code><a class="headerlink" href="#nest_backend.database.tables.BoolOperation.condition" title="Link a questa definizione">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt id="nest_backend.database.tables.BoolOperation.node_1">
-<code class="sig-name descname"><span class="pre">node_1</span></code><a class="headerlink" href="#nest_backend.database.tables.BoolOperation.node_1" title="Link a questa definizione">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt id="nest_backend.database.tables.BoolOperation.node_2">
-<code class="sig-name descname"><span class="pre">node_2</span></code><a class="headerlink" href="#nest_backend.database.tables.BoolOperation.node_2" title="Link a questa definizione">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt id="nest_backend.database.tables.BoolOperation.alert">
-<code class="sig-name descname"><span class="pre">alert</span></code><a class="headerlink" href="#nest_backend.database.tables.BoolOperation.alert" title="Link a questa definizione">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt id="nest_backend.database.tables.BoolOperation.to_json">
-<code class="sig-name descname"><span class="pre">to_json</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nest_backend.database.tables.BoolOperation.to_json" title="Link a questa definizione">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt id="nest_backend.database.tables.BoolOperation.get_chain_ids">
-<code class="sig-name descname"><span class="pre">get_chain_ids</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">lista</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nest_backend.database.tables.BoolOperation.get_chain_ids" title="Link a questa definizione">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt id="nest_backend.database.tables.BoolOperation.__init__">
-<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nest_backend.database.tables.BoolOperation.__init__" title="Link a questa definizione">¶</a></dt>
-<dd><p>A simple constructor that allows initialization from kwargs.</p>
-<p>Sets attributes on the constructed instance using the names and
-values in <code class="docutils literal notranslate"><span class="pre">kwargs</span></code>.</p>
-<p>Only keys that are present as
-attributes of the instance’s class are allowed. These could be,
-for example, any mapped columns or relationships.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt id="nest_backend.database.tables.BoolOperation.father_1">
-<code class="sig-name descname"><span class="pre">father_1</span></code><a class="headerlink" href="#nest_backend.database.tables.BoolOperation.father_1" title="Link a questa definizione">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt id="nest_backend.database.tables.BoolOperation.father_2">
-<code class="sig-name descname"><span class="pre">father_2</span></code><a class="headerlink" href="#nest_backend.database.tables.BoolOperation.father_2" title="Link a questa definizione">¶</a></dt>
-<dd></dd></dl>
 
 </dd></dl>
 
@@ -531,8 +454,8 @@ for example, any mapped columns or relationships.</p>
 <dd></dd></dl>
 
 <dl class="py attribute">
-<dt id="nest_backend.database.tables.Condition.operations">
-<code class="sig-name descname"><span class="pre">operations</span></code><a class="headerlink" href="#nest_backend.database.tables.Condition.operations" title="Link a questa definizione">¶</a></dt>
+<dt id="nest_backend.database.tables.Condition.alerts">
+<code class="sig-name descname"><span class="pre">alerts</span></code><a class="headerlink" href="#nest_backend.database.tables.Condition.alerts" title="Link a questa definizione">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -839,6 +762,45 @@ for example, any mapped columns or relationships.</p>
 </dd></dl>
 
 <dl class="py class">
+<dt id="nest_backend.database.tables.MadeOf">
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">nest_backend.database.tables.</span></code><code class="sig-name descname"><span class="pre">MadeOf</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nest_backend.database.tables.MadeOf" title="Link a questa definizione">¶</a></dt>
+<dd><blockquote>
+<div><p>Basi: <code class="xref py py-class docutils literal notranslate"><span class="pre">sqlalchemy.orm.decl_api.Model</span></code></p>
+</div></blockquote>
+<dl class="py attribute">
+<dt id="nest_backend.database.tables.MadeOf.aid">
+<code class="sig-name descname"><span class="pre">aid</span></code><a class="headerlink" href="#nest_backend.database.tables.MadeOf.aid" title="Link a questa definizione">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="nest_backend.database.tables.MadeOf.cid">
+<code class="sig-name descname"><span class="pre">cid</span></code><a class="headerlink" href="#nest_backend.database.tables.MadeOf.cid" title="Link a questa definizione">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="nest_backend.database.tables.MadeOf.alert">
+<code class="sig-name descname"><span class="pre">alert</span></code><a class="headerlink" href="#nest_backend.database.tables.MadeOf.alert" title="Link a questa definizione">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt id="nest_backend.database.tables.MadeOf.condition">
+<code class="sig-name descname"><span class="pre">condition</span></code><a class="headerlink" href="#nest_backend.database.tables.MadeOf.condition" title="Link a questa definizione">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="nest_backend.database.tables.MadeOf.__init__">
+<code class="sig-name descname"><span class="pre">__init__</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nest_backend.database.tables.MadeOf.__init__" title="Link a questa definizione">¶</a></dt>
+<dd><p>A simple constructor that allows initialization from kwargs.</p>
+<p>Sets attributes on the constructed instance using the names and
+values in <code class="docutils literal notranslate"><span class="pre">kwargs</span></code>.</p>
+<p>Only keys that are present as
+attributes of the instance’s class are allowed. These could be,
+for example, any mapped columns or relationships.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
 <dt id="nest_backend.database.tables.ConditionType">
 <em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">nest_backend.database.tables.</span></code><code class="sig-name descname"><span class="pre">ConditionType</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nest_backend.database.tables.ConditionType" title="Link a questa definizione">¶</a></dt>
 <dd><blockquote>
@@ -925,7 +887,7 @@ GitLab</a> .</p>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
         <a href="../crawler/index.html" class="btn btn-neutral float-right" title="nest_crawler - Crawler in Python" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="../installation/index.html" class="btn btn-neutral float-left" title="Installazione" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../development/tools.html" class="btn btn-neutral float-left" title="Strumenti utilizzati" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

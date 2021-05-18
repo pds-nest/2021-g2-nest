@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useContext, useState } from "react"
 import BoxFull from "../base/BoxFull"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faClock, faPlus } from "@fortawesome/free-solid-svg-icons"
@@ -10,6 +10,7 @@ import useRepositoryEditor from "../../hooks/useRepositoryEditor"
 import ButtonToggleBeforeAfter from "./ButtonToggleBeforeAfter"
 import Condition from "../../utils/Condition"
 import convertToLocalISODate from "../../utils/convertToLocalISODate"
+import ContextLanguage from "../../contexts/ContextLanguage"
 
 
 const INVALID_USER_CHARACTERS = /[^0-9TZ:+-]/g
@@ -27,6 +28,7 @@ export default function BoxConditionDatetime({ ...props }) {
     const [datetime, setDatetime] = useState("")
     const [ba, setBa] = useState(false)
     const { addCondition } = useRepositoryEditor()
+    const { strings } = useContext(ContextLanguage)
 
     const onInputChange = event => {
         let text = event.target.value
@@ -50,7 +52,18 @@ export default function BoxConditionDatetime({ ...props }) {
     }
 
     return (
-        <BoxFull header={<span>Ricerca per <FontAwesomeIcon icon={faClock}/> arco di tempo</span>} {...props}>
+        <BoxFull
+            header={
+                <span>
+                    {strings.searchBy}
+                    &nbsp;
+                    <FontAwesomeIcon icon={faClock}/>
+                    &nbsp;
+                    {strings.byTimePeriod}
+                </span>
+            }
+            {...props}
+        >
             <FormInline onSubmit={onButtonClick}>
                 <ButtonToggleBeforeAfter onUpdate={setBa}/>
                 <InputWithIcon

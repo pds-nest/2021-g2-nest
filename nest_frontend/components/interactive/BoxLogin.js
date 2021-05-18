@@ -8,6 +8,7 @@ import FormButton from "../base/formparts/FormButton"
 import ContextUser from "../../contexts/ContextUser"
 import { useHistory } from "react-router"
 import FormAlert from "../base/formparts/FormAlert"
+import ContextLanguage from "../../contexts/ContextLanguage"
 
 
 /**
@@ -24,6 +25,7 @@ export default function BoxLogin({ ...props }) {
     const [error, setError] = useState(null)
     const { login } = useContext(ContextUser)
     const history = useHistory()
+    const { strings } = useContext(ContextLanguage)
 
     const doLogin = async () => {
         if(working) {
@@ -44,9 +46,9 @@ export default function BoxLogin({ ...props }) {
     }
 
     return (
-        <BoxFull header={"Accedi"} {...props}>
+        <BoxFull header={strings.login} {...props}>
             <FormLabelled>
-                <FormLabel text={"Email"} htmlFor={"login-email"}>
+                <FormLabel text={strings.email} htmlFor={"login-email"}>
                     <InputWithIcon
                         id={"login-email"}
                         name={"login-email"}
@@ -56,7 +58,7 @@ export default function BoxLogin({ ...props }) {
                         icon={faEnvelope}
                     />
                 </FormLabel>
-                <FormLabel text={"Password"} htmlFor={"login-password"}>
+                <FormLabel text={strings.passwd} htmlFor={"login-password"}>
                     <InputWithIcon
                         id={"login-password"}
                         name={"login-password"}
@@ -77,7 +79,7 @@ export default function BoxLogin({ ...props }) {
                     color={"Green"}
                     disabled={working}
                 >
-                    Accedi
+                    {strings.login}
                 </FormButton>
             </FormLabelled>
         </BoxFull>

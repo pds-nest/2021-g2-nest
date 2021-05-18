@@ -7,6 +7,7 @@ import ContextUser from "../../contexts/ContextUser"
 import { useHistory } from "react-router"
 import Style from "./BoxLoggedIn.module.css"
 import CurrentServer from "./CurrentServer"
+import ContextLanguage from "../../contexts/ContextLanguage"
 
 
 /**
@@ -19,12 +20,13 @@ import CurrentServer from "./CurrentServer"
 export default function BoxLoggedIn({ ...props }) {
     const { logout } = useContext(ContextUser)
     const history = useHistory()
+    const { strings } = useContext(ContextLanguage)
 
     return (
-        <BoxFull header={"Effettuato l'accesso"} {...props}>
+        <BoxFull header={strings.loggedInTitle} {...props}>
             <div className={Style.BoxLoggedInContents}>
                 <div>
-                    Al momento hai effettuato l'accesso su <CurrentServer/> come <LoggedInUser/>.
+                    {strings.loggedInOn} <CurrentServer/> {strings.loggedInAs} <LoggedInUser/>.
                 </div>
                 <div>
                     <Button
@@ -32,7 +34,7 @@ export default function BoxLoggedIn({ ...props }) {
                         logout()
                         history.push("/login")
                     }} icon={faSignOutAlt}
-                    >Esci</Button>
+                    >{strings.logout}</Button>
                 </div>
             </div>
         </BoxFull>

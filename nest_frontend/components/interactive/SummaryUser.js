@@ -3,10 +3,12 @@ import Summary from "../base/Summary"
 import { faStar, faTrash, faUser } from "@fortawesome/free-solid-svg-icons"
 import Button from "../base/Button"
 import ContextUser from "../../contexts/ContextUser"
+import ContextLanguage from "../../contexts/ContextLanguage"
 
 
 export default function SummaryUser({ user, destroyUser, running, ...props }) {
     const { user: loggedUser } = useContext(ContextUser)
+    const { strings } = useContext(ContextLanguage)
 
     const buttons = <>
         {loggedUser.email !== user.email ?
@@ -20,7 +22,7 @@ export default function SummaryUser({ user, destroyUser, running, ...props }) {
              }}
              disabled={running}
          >
-             Elimina
+             {strings.delete}
          </Button>
                                          : null}
     </>
@@ -30,8 +32,8 @@ export default function SummaryUser({ user, destroyUser, running, ...props }) {
             icon={user.isAdmin ? faStar : faUser}
             title={user.username}
             subtitle={user.email}
-            upperLabel={"Tipo"}
-            upperValue={user.isAdmin ? "Amministratore" : "Utente"}
+            upperLabel={strings.type}
+            upperValue={user.isAdmin ? strings.admin : strings.user}
             buttons={buttons}
             {...props}
         />

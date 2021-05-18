@@ -5,6 +5,7 @@ import FormLabel from "../base/formparts/FormLabel"
 import InputWithIcon from "../base/InputWithIcon"
 import { faGlobe } from "@fortawesome/free-solid-svg-icons"
 import ContextServer from "../../contexts/ContextServer"
+import ContextLanguage from "../../contexts/ContextLanguage"
 
 
 /**
@@ -16,11 +17,12 @@ import ContextServer from "../../contexts/ContextServer"
  */
 export default function BoxSetServer({ ...props }) {
     const { server, setServer } = useContext(ContextServer)
+    const { strings } = useContext(ContextLanguage)
 
     return (
-        <BoxFull header={"Scegli un server"} {...props}>
+        <BoxFull header={strings.server} {...props}>
             <FormLabelled>
-                <FormLabel text={"Base URL"} htmlFor={"set-server-base-url"}>
+                <FormLabel text={strings.baseURL} htmlFor={"set-server-base-url"}>
                     <InputWithIcon
                         id={"set-server-base-url"}
                         type={"url"}

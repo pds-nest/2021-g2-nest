@@ -5,6 +5,7 @@ import BoxHeader from "../components/base/BoxHeader"
 import BoxFull from "../components/base/BoxFull"
 import SelectTheme from "../components/interactive/SelectTheme"
 import BoxLoggedIn from "../components/interactive/BoxLoggedIn"
+import SelectLanguage from "../components/interactive/SelectLanguage"
 
 
 export default function PageSettings({ children, className, ...props }) {
@@ -14,6 +15,9 @@ export default function PageSettings({ children, className, ...props }) {
             <BoxLoggedIn/>
             <BoxHeader>
                 Cambia tema: <SelectTheme/>
+            </BoxHeader>
+            <BoxHeader>
+                Cambia lingua: <SelectLanguage/>
             </BoxHeader>
             <BoxFull header={"Impostazioni allarmi"}>
                 🚧 Non implementato.

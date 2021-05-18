@@ -1,8 +1,9 @@
-import React from "react"
+import React, { useContext } from "react"
 import Button from "../base/Button"
 import { faArchive, faFolder, faFolderOpen, faPencilAlt, faTrash } from "@fortawesome/free-solid-svg-icons"
 import { useHistory } from "react-router"
 import Summary from "../base/Summary"
+import ContextLanguage from "../../contexts/ContextLanguage"
 
 
 /**
@@ -25,6 +26,7 @@ export default function SummaryRepository(
     { repo, refresh, canDelete, deleteSelf, canEdit, canArchive, archiveSelf, running, className, ...props },
 ) {
     const history = useHistory()
+    const { strings } = useContext(ContextLanguage)
 
     const onRepoClick = () => {
         history.push(`/repositories/${repo.id}`)
@@ -42,7 +44,7 @@ export default function SummaryRepository(
              onClick={deleteSelf}
              disabled={running}
          >
-             Elimina
+             {strings.delete}
          </Button>
                    : null}
         {canEdit ?
@@ -52,7 +54,7 @@ export default function SummaryRepository(
              onClick={onEditClick}
              disabled={running}
          >
-             Modifica
+             {strings.edit}
          </Button>
                  : null}
         {canArchive ?
@@ -62,7 +64,7 @@ export default function SummaryRepository(
              onClick={archiveSelf}
              disabled={running}
          >
-             {"Archivia"}
+             {strings.archive}
          </Button>
                     : null}
     </>
@@ -73,9 +75,9 @@ export default function SummaryRepository(
             title={repo.name}
             subtitle={repo.owner ? repo.owner.username : null}
             onClick={onRepoClick}
-            upperLabel={"Creata"}
+            upperLabel={strings.created}
             upperValue={repo.start ? new Date(repo.start).toLocaleString() : null}
-            lowerLabel={"Archiviata"}
+            lowerLabel={strings.archived}
             lowerValue={repo.end ? new Date(repo.end).toLocaleString() : null}
             buttons={buttons}
             {...props}

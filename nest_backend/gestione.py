@@ -8,6 +8,7 @@ import functools
 from flask_jwt_extended import get_jwt_identity
 from flask import jsonify
 from re import sub
+from .errors import GENERIC_UFO
 
 __all__ = ["authenticate", "identity", "gen_password", "find_user", "admin_or_403",
            "repository_auth", "json_request_authorizer", "json_error",
@@ -84,13 +85,14 @@ def repository_auth(f):
     return func
 
 
-def json_error(msg):
+def json_error(msg, code=GENERIC_UFO):
     """
     Returns an error in json format
+    :param code: the code of the error according to the spec.
     :param msg: the error message.
     :return: a json formatted string.
     """
-    return jsonify({"result": "failure", 'msg': msg})
+    return jsonify({"result": "failure", 'msg': msg, 'code':code})
 
 
 def json_success(data):

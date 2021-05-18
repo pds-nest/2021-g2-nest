@@ -79,7 +79,7 @@ Per creare il database PostgreSQL, si esegua:
 Creare un file di configurazione per il backend
 -----------------------------------------------
 
-Il backend usa un file di configurazione per impostare certe variabili.
+Il backend usa un file di configurazione per impostare alcune variabili.
 
 Si crei un nuovo file nella working directory del progetto denominato ``config.py``:
 
@@ -113,7 +113,7 @@ Le dipendenze Python sono gestite da *Poetry*, e possono essere installate con:
 Poetry creerà automaticamente un `venv <https://docs.python.org/3/library/venv.html>`_ e vi installerà all'interno tutti
 i pacchetti necessari all'esecuzione del backend e del crawler di N.E.S.T. .
 
-**Segnatevi il nome** del venv creato da Poetry, in quanto sarà necessario per
+**Si suggerisce di ricordare il nome del venv creato da Poetry**, in quanto sarà necessario per
 :ref:`Creare un servizio SystemD per il backend`:
 
 .. code-block:: console

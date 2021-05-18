@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useContext, useState } from "react"
 import BoxFull from "../base/BoxFull"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faHashtag, faPlus } from "@fortawesome/free-solid-svg-icons"
@@ -8,6 +8,7 @@ import Style from "./BoxConditionHashtag.module.css"
 import ButtonIconOnly from "../base/ButtonIconOnly"
 import useRepositoryEditor from "../../hooks/useRepositoryEditor"
 import Condition from "../../utils/Condition"
+import ContextLanguage from "../../contexts/ContextLanguage"
 
 // Official hashtag regex from https://stackoverflow.com/a/22490853/4334568
 // noinspection RegExpAnonymousGroup,LongLine
@@ -25,6 +26,7 @@ const INVALID_HASHTAG_CHARACTERS = /([^a-z0-9_\u00c0-\u00d6\u00d8-\u00f6\u00f8-\
 export default function BoxConditionHashtag({ ...props }) {
     const [hashtag, setHashtag] = useState("")
     const { addCondition } = useRepositoryEditor()
+    const { strings } = useContext(ContextLanguage)
 
     const onInputChange = event => {
         let text = event.target.value
@@ -41,7 +43,18 @@ export default function BoxConditionHashtag({ ...props }) {
     }
 
     return (
-        <BoxFull header={<span>Ricerca per <FontAwesomeIcon icon={faHashtag}/> hashtag</span>} {...props}>
+        <BoxFull
+            header={
+                <span>
+                    {strings.searchBy}
+                    &nbsp;
+                    <FontAwesomeIcon icon={faHashtag}/>
+                    &nbsp;
+                    {strings.byHashtag}
+                </span>
+            }
+            {...props}
+        >
             <FormInline onSubmit={onButtonClick}>
                 <InputWithIcon
                     className={Style.Input}

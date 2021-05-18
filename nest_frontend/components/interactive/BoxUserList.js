@@ -1,10 +1,13 @@
-import React from "react"
+import React, { useContext } from "react"
 import Loading from "../base/Loading"
 import BoxFullScrollable from "../base/BoxFullScrollable"
 import SummaryUser from "./SummaryUser"
+import ContextLanguage from "../../contexts/ContextLanguage"
 
 
 export default function BoxUserList({ users, destroyUser, running, ...props }) {
+    const { strings } = useContext(ContextLanguage)
+
     let contents
     if(users === null) {
         contents = <Loading/>
@@ -15,7 +18,7 @@ export default function BoxUserList({ users, destroyUser, running, ...props }) {
     }
 
     return (
-        <BoxFullScrollable header={"Elenco utenti"} {...props}>
+        <BoxFullScrollable header={strings.userList} {...props}>
             {contents}
         </BoxFullScrollable>
     )

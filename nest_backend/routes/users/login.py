@@ -4,6 +4,7 @@ from nest_backend.gestione import *
 from flask_jwt_extended import create_access_token
 from flask_cors import cross_origin
 from datetime import timedelta, datetime
+from nest_backend.errors import *
 
 
 @cross_origin()
@@ -42,4 +43,4 @@ def page_login():
         access_token = create_access_token(identity=email, expires_delta=delta)
         user = find_user(email)
         return json_success({"access_token": access_token, 'user': user.to_json(), "expiration": expiration}), 201
-    return json_error("Bad username or password."), 401
+    return json_error("Bad username or password.", USER_WRONG_CREDENTIALS), 401

@@ -4,6 +4,7 @@ from flask_jwt_extended import jwt_required, get_jwt_identity
 from nest_backend.gestione import *
 import datetime
 from flask_cors import cross_origin
+from nest_backend.errors import *
 
 
 @cross_origin()
@@ -75,23 +76,27 @@ def page_repositories():
         # Users will be tolerated if they change parameters they're not supposed to touch. We'll ignore them for now.
         if not request.json.get("name") or not request.json.get("conditions") or not str(
                 request.json.get("evaluation_mode")):
-            return json_error("Missing arguments."), 400
+            return json_error("Missing arguments.", GENERIC_MISSING_FIELDS), 400
         name = request.json.get("name")
         try:
             evaluation_mode = ConditionMode(request.json['evaluation_mode'])
-        except:  # KeyError
-            return json_error("Unknown `type` specified."), 400
+        except KeyError:
+            return json_error("Unknown `type` specified.", GENERIC_ENUM_INVALID), 400
         repository = Repository(name=name, owner_id=user.email, is_active=False, evaluation_mode=evaluation_mode)
         ext.session.add(repository)
         ext.session.commit()
-        ids = [c['id'] for c in request.json['conditions'] if c['id']]
+        conditions = [c for c in repository.conditions if c.id not in [a['id'] for a in request.json['conditions'] if
+                                                                   a['id'] in [b.id for b in repository.conditions]]]
+        for c in conditions:
+            ext.session.delete(c)
+            ext.session.commit()
         # Create brand new conditions
         for c in request.json['conditions']:
             if not c['id']:
                 try:
                     type_ = ConditionType(c['type'])
                 except KeyError:
-                    return json_error("Unknown `type` specified."), 400
+                    return json_error("Unknown `type` specified.", GENERIC_ENUM_INVALID), 400
                 ext.session.add(Condition(type=type_, content=c['content'], repository_id=repository.id))
                 ext.session.commit()
         repository.is_active = True

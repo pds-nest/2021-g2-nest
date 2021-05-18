@@ -1,6 +1,7 @@
-import React from "react"
+import React, { useContext } from "react"
 import BoxFull from "../base/BoxFull"
-import ReactWordcloud from "react-wordcloud"
+import ReactWordcloud from "@steffo/nest-react-wordcloud"
+import ContextLanguage from "../../contexts/ContextLanguage"
 
 
 /**
@@ -12,9 +13,11 @@ import ReactWordcloud from "react-wordcloud"
  * @constructor
  */
 export default function BoxWordcloud({ words, props }) {
+    const { strings } = useContext(ContextLanguage)
+
     return (
-        <BoxFull header={"Wordcloud"} {...props}>
-            <div style={{"width": "100%", "height": "100%"}}>
+        <BoxFull header={strings.wordcloud} {...props}>
+            <div style={{ "width": "100%", "height": "100%" }}>
                 <ReactWordcloud
                     options={{
                         colors: [
