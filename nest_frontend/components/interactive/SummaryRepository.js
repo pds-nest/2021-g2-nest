@@ -26,7 +26,7 @@ export default function SummaryRepository(
     { repo, refresh, canDelete, deleteSelf, canEdit, canArchive, archiveSelf, running, className, ...props },
 ) {
     const history = useHistory()
-    const {strings} = useContext(ContextLanguage)
+    const { strings } = useContext(ContextLanguage)
 
     const onRepoClick = () => {
         history.push(`/repositories/${repo.id}`)

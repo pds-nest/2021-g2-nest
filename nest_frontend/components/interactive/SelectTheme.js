@@ -14,7 +14,7 @@ import ContextLanguage from "../../contexts/ContextLanguage"
  */
 export default function SelectTheme({ ...props }) {
     const { theme, setTheme } = useContext(ContextTheme)
-    const {strings} = useContext(ContextLanguage)
+    const { strings } = useContext(ContextLanguage)
 
     return (
         <Select value={theme} onChange={e => setTheme(e.target.value)} {...props}>

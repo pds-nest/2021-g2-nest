@@ -14,7 +14,7 @@ export default function BoxUserCreate({ createUser, running, ...props }) {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [error, setError] = useState(undefined)
-    const {strings} = useContext(ContextLanguage)
+    const { strings } = useContext(ContextLanguage)
 
     const onButtonClick = useCallback(
         async () => {

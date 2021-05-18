@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useEffect, useState } from "react"
 import BoxFull from "../base/BoxFull"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faAt, faMapPin, faPlus } from "@fortawesome/free-solid-svg-icons"
+import { faMapPin, faPlus } from "@fortawesome/free-solid-svg-icons"
 import Style from "./BoxConditionMap.module.css"
 import ButtonIconOnly from "../base/ButtonIconOnly"
 import { MapContainer, TileLayer } from "react-leaflet"
@@ -54,7 +54,7 @@ export default function BoxConditionMap({ ...props }) {
     const [zoom, setZoom] = useState(STARTING_ZOOM)
     const [map, setMap] = useState(null)
     const { addCondition } = useRepositoryEditor()
-    const {strings} = useContext(ContextLanguage)
+    const { strings } = useContext(ContextLanguage)
 
     const onMove = useCallback(
         () => {

@@ -26,7 +26,7 @@ export default function BoxRepositoriesArchived({
                                                     ...props
                                                 }) {
     const { user } = useContext(ContextUser)
-    const {strings} = useContext(ContextLanguage)
+    const { strings } = useContext(ContextLanguage)
 
     let contents
     if(repositories === null) {

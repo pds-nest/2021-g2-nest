@@ -19,7 +19,7 @@ import ContextLanguage from "../../contexts/ContextLanguage"
  */
 export default function Logo({ className, ...props }) {
     const { theme } = useContext(ContextTheme)
-    const {strings} = useContext(ContextLanguage)
+    const { strings } = useContext(ContextLanguage)
 
     let logo
     if(theme === "ThemeDark") {

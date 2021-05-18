@@ -25,7 +25,7 @@ export default function BoxLogin({ ...props }) {
     const [error, setError] = useState(null)
     const { login } = useContext(ContextUser)
     const history = useHistory()
-    const {strings} = useContext(ContextLanguage)
+    const { strings } = useContext(ContextLanguage)
 
     const doLogin = async () => {
         if(working) {

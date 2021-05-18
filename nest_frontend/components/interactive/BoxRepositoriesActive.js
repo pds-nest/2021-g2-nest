@@ -6,6 +6,7 @@ import Loading from "../base/Loading"
 import BoxFullScrollable from "../base/BoxFullScrollable"
 import ContextLanguage from "../../contexts/ContextLanguage"
 
+
 /**
  * A {@link BoxFull} listing all the user's active repositories.
  *
@@ -25,7 +26,7 @@ export default function BoxRepositoriesActive({
                                                   ...props
                                               }) {
     const { user } = useContext(ContextUser)
-    const {strings} = useContext(ContextLanguage)
+    const { strings } = useContext(ContextLanguage)
 
     let contents
     if(repositories === null) {

@@ -8,7 +8,7 @@ import ContextLanguage from "../../contexts/ContextLanguage"
 
 export default function SummaryUser({ user, destroyUser, running, ...props }) {
     const { user: loggedUser } = useContext(ContextUser)
-    const {strings} = useContext(ContextLanguage)
+    const { strings } = useContext(ContextLanguage)
 
     const buttons = <>
         {loggedUser.email !== user.email ?

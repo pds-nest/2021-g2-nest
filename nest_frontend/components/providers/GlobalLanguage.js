@@ -1,4 +1,4 @@
-import React  from "react"
+import React from "react"
 import useLocalStorageState from "../../hooks/useLocalStorageState"
 import ContextLanguage from "../../contexts/ContextLanguage"
 import LocalizationStrings from "../../LocalizationStrings"

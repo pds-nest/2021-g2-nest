@@ -14,7 +14,7 @@ import ContextLanguage from "../../contexts/ContextLanguage"
  */
 export default function BoxConditions({ ...props }) {
     const { conditions } = useRepositoryEditor()
-    const {strings} = useContext(ContextLanguage)
+    const { strings } = useContext(ContextLanguage)
 
     const badges = conditions.map((cond, pos) => <ConditionBadge key={pos} {...cond}/>)
 

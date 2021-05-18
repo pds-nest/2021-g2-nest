@@ -25,7 +25,7 @@ const INVALID_USER_CHARACTERS = /[^a-zA-Z0-9]/g
 export default function BoxConditionUser({ ...props }) {
     const [user, setUser] = useState("")
     const { addCondition } = useRepositoryEditor()
-    const {strings} = useContext(ContextLanguage)
+    const { strings } = useContext(ContextLanguage)
 
     const onInputChange = event => {
         let text = event.target.value

@@ -20,7 +20,7 @@ import ContextLanguage from "../../contexts/ContextLanguage"
 export default function BoxLoggedIn({ ...props }) {
     const { logout } = useContext(ContextUser)
     const history = useHistory()
-    const {strings} = useContext(ContextLanguage)
+    const { strings } = useContext(ContextLanguage)
 
     return (
         <BoxFull header={strings.loggedInTitle} {...props}>

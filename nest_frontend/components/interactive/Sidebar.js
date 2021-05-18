@@ -3,14 +3,7 @@ import Style from "./Sidebar.module.css"
 import classNames from "classnames"
 import Logo from "../interactive/Logo"
 import ButtonSidebar from "../base/ButtonSidebar"
-import {
-    faCog,
-    faExclamationTriangle,
-    faFolder,
-    faHome,
-    faKey,
-    faUserCog,
-} from "@fortawesome/free-solid-svg-icons"
+import { faCog, faExclamationTriangle, faFolder, faHome, faKey, faUserCog } from "@fortawesome/free-solid-svg-icons"
 import ContextUser from "../../contexts/ContextUser"
 import ContextLanguage from "../../contexts/ContextLanguage"
 
@@ -26,7 +19,7 @@ import ContextLanguage from "../../contexts/ContextLanguage"
  */
 export default function Sidebar({ className, ...props }) {
     const { user } = useContext(ContextUser)
-    const {strings} = useContext(ContextLanguage)
+    const { strings } = useContext(ContextLanguage)
 
     return (
         <aside className={classNames(Style.Sidebar, className)} {...props}>

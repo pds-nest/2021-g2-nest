@@ -34,7 +34,7 @@ export default function BoxRepositoryCreate({ running, ...props }) {
     } = useRepositoryEditor()
 
     const history = useHistory()
-    const {strings} = useContext(ContextLanguage)
+    const { strings } = useContext(ContextLanguage)
 
     return (
         <BoxFull header={strings.createRepo} {...props}>

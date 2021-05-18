@@ -210,5 +210,5 @@ export default {
         type: "Tyyppi",
         admin: "Ylläpitäjä",
         user: "Käyttäjä",
-    }
+    },
 }

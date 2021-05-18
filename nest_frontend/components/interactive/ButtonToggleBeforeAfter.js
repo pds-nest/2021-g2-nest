@@ -7,7 +7,7 @@ import ContextLanguage from "../../contexts/ContextLanguage"
 
 export default function ButtonToggleBeforeAfter({ onUpdate, className, ...props }) {
     const [value, setValue] = useState(false)
-    const {strings} = useContext(ContextLanguage)
+    const { strings } = useContext(ContextLanguage)
 
     const onButtonClick = () => {
         onUpdate(!value)

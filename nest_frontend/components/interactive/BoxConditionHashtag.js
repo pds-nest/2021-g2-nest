@@ -26,7 +26,7 @@ const INVALID_HASHTAG_CHARACTERS = /([^a-z0-9_\u00c0-\u00d6\u00d8-\u00f6\u00f8-\
 export default function BoxConditionHashtag({ ...props }) {
     const [hashtag, setHashtag] = useState("")
     const { addCondition } = useRepositoryEditor()
-    const {strings} = useContext(ContextLanguage)
+    const { strings } = useContext(ContextLanguage)
 
     const onInputChange = event => {
         let text = event.target.value

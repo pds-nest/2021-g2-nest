@@ -6,7 +6,7 @@ import ContextLanguage from "../../contexts/ContextLanguage"
 
 
 export default function BoxUserList({ users, destroyUser, running, ...props }) {
-    const {strings} = useContext(ContextLanguage)
+    const { strings } = useContext(ContextLanguage)
 
     let contents
     if(users === null) {

@@ -6,7 +6,7 @@ import ContextLanguage from "../contexts/ContextLanguage"
 
 
 export default function PageAlerts({ children, className, ...props }) {
-    const {strings} = useContext(ContextLanguage)
+    const { strings } = useContext(ContextLanguage)
 
     return (
         <div className={classNames(Style.PageAlerts, className)} {...props}>

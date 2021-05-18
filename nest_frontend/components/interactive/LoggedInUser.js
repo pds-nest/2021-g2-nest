@@ -14,7 +14,7 @@ import ContextLanguage from "../../contexts/ContextLanguage"
  */
 export default function LoggedInUser({ ...props }) {
     const { user } = useContext(ContextUser)
-    const {strings} = useContext(ContextLanguage)
+    const { strings } = useContext(ContextLanguage)
 
     if(!user) {
         return (

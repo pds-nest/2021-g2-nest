@@ -28,7 +28,7 @@ export default function BoxConditionDatetime({ ...props }) {
     const [datetime, setDatetime] = useState("")
     const [ba, setBa] = useState(false)
     const { addCondition } = useRepositoryEditor()
-    const {strings} = useContext(ContextLanguage)
+    const { strings } = useContext(ContextLanguage)
 
     const onInputChange = event => {
         let text = event.target.value

@@ -17,7 +17,7 @@ import ContextLanguage from "../../contexts/ContextLanguage"
  */
 export default function BoxSetServer({ ...props }) {
     const { server, setServer } = useContext(ContextServer)
-    const {strings} = useContext(ContextLanguage)
+    const { strings } = useContext(ContextLanguage)
 
     return (
         <BoxFull header={strings.server} {...props}>
