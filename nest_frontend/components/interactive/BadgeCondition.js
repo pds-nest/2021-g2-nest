@@ -23,7 +23,7 @@ const CONDITION_ICONS = {
 
 
 /**
- * A small colored badge representing a Condition for a filter.
+ * A {@link Badge} representing a Condition for a filter.
  *
  * @param condition - The Condition that this badge represents.
  * @returns {JSX.Element}
