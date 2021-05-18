@@ -1,4 +1,4 @@
-.BoxConditionMapContents {
+.BoxMapContents {
     display: flex;
     flex-direction: column;
     padding: 0;
@@ -8,7 +8,4 @@
     flex-grow: 1;
     height: 300px;
     border-radius: 0 0 25px 25px;
-}
-
-.Button {
 }

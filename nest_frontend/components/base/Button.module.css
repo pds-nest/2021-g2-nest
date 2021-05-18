@@ -45,8 +45,6 @@
 
 .Icon {
     font-size: large;
-
-    /* TODO: non so quanto sia una buona idea, ma funziona accettabilmente */
     line-height: 0;
     vertical-align: sub;
 }

@@ -1,10 +1,7 @@
 import React, { useContext } from "react"
-import Style from "./ConditionBadge.module.css"
-import classNames from "classnames"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import ButtonSmallX from "../base/ButtonSmallX"
 import { faAt, faClock, faGlobe, faHashtag, faMapPin } from "@fortawesome/free-solid-svg-icons"
 import ContextRepositoryEditor from "../../contexts/ContextRepositoryEditor"
+import Badge from "../base/Badge"
 
 
 const CONDITION_COLORS = {
@@ -26,13 +23,13 @@ const CONDITION_ICONS = {
 
 
 /**
- * A small colored badge representing a Condition for a filter.
+ * A {@link Badge} representing a Condition for a filter.
  *
  * @param condition - The Condition that this badge represents.
  * @returns {JSX.Element}
  * @constructor
  */
-export default function ConditionBadge({ ...condition }) {
+export default function BadgeCondition({ ...condition }) {
     const { id, type, content } = condition
     const color = CONDITION_COLORS[type]
     const icon = CONDITION_ICONS[type]
@@ -53,24 +50,16 @@ export default function ConditionBadge({ ...condition }) {
     }
 
     return (
-        <div
+        <Badge
             title={id ? `💠 Condition ID: ${id}` : "✨ New Condition"}
-            className={classNames(Style.ConditionBadge, Style[`ConditionBadge${color}`])}
+            color={color}
+            icon={icon}
+            onClickDelete={() => {
+                console.debug(`Removing Condition: `, condition)
+                removeRawCondition(condition)
+            }}
         >
-            <div className={Style.Icon}>
-                <FontAwesomeIcon icon={icon}/>
-            </div>
-            <div className={Style.Text}>
-                {displayedContent}
-            </div>
-            <div>
-                <ButtonSmallX
-                    onClick={() => {
-                        console.debug(`Removing Condition: `, condition)
-                        removeRawCondition(condition)
-                    }}
-                />
-            </div>
-        </div>
+            {displayedContent}
+        </Badge>
     )
 }

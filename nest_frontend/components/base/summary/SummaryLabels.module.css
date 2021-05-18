@@ -1,0 +1,33 @@
+.SummaryLabels {
+    flex-grow: 3;
+
+    padding: 5px 20px;
+
+    background-color: var(--bg-light);
+
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-column-gap: 10px;
+    align-items: center;
+
+    font-size: small;
+}
+
+.Label {
+    grid-column: 1;
+    text-align: right;
+    font-weight: bold;
+}
+
+.Value {
+    grid-column: 2;
+}
+
+.Upper {
+    grid-row: 1;
+}
+
+.Lower {
+    grid-row: 2;
+}

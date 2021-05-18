@@ -1,0 +1,7 @@
+.SummaryRight {
+    min-width: 30px;
+    padding: 5px;
+
+    background-color: var(--bg-accent);
+    border-radius: 0 30px 30px 0;
+}

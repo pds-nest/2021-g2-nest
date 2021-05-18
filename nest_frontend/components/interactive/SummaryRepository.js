@@ -1,9 +1,12 @@
 import React, { useContext } from "react"
-import Button from "../base/Button"
 import { faArchive, faFolder, faFolderOpen, faPencilAlt, faTrash } from "@fortawesome/free-solid-svg-icons"
 import { useHistory } from "react-router"
-import Summary from "../base/Summary"
 import ContextLanguage from "../../contexts/ContextLanguage"
+import SummaryBase from "../base/summary/SummaryBase"
+import SummaryLeft from "../base/summary/SummaryLeft"
+import SummaryLabels from "../base/summary/SummaryLabels"
+import SummaryButton from "../base/summary/SummaryButton"
+import SummaryRight from "../base/summary/SummaryRight"
 
 
 /**
@@ -36,51 +39,51 @@ export default function SummaryRepository(
         history.push(`/repositories/${repo.id}/edit`)
     }
 
-    const buttons = <>
-        {canDelete ?
-         <Button
-             color={"Red"}
-             icon={faTrash}
-             onClick={deleteSelf}
-             disabled={running}
-         >
-             {strings.delete}
-         </Button>
-                   : null}
-        {canEdit ?
-         <Button
-             color={"Yellow"}
-             icon={faPencilAlt}
-             onClick={onEditClick}
-             disabled={running}
-         >
-             {strings.edit}
-         </Button>
-                 : null}
-        {canArchive ?
-         <Button
-             color={"Grey"}
-             icon={faArchive}
-             onClick={archiveSelf}
-             disabled={running}
-         >
-             {strings.archive}
-         </Button>
-                    : null}
-    </>
-
     return (
-        <Summary
-            icon={repo.is_active ? faFolderOpen : faFolder}
-            title={repo.name}
-            subtitle={repo.owner ? repo.owner.username : null}
-            onClick={onRepoClick}
-            upperLabel={strings.created}
-            upperValue={repo.start ? new Date(repo.start).toLocaleString() : null}
-            lowerLabel={strings.archived}
-            lowerValue={repo.end ? new Date(repo.end).toLocaleString() : null}
-            buttons={buttons}
-            {...props}
-        />
+        <SummaryBase>
+            <SummaryLeft
+                icon={repo.is_active ? faFolderOpen : faFolder}
+                title={repo.name}
+                subtitle={repo.owner ? repo.owner.username : null}
+                onClick={onRepoClick}
+            />
+            <SummaryLabels
+                upperLabel={strings.created}
+                upperValue={repo.start ? new Date(repo.start).toLocaleString() : null}
+                lowerLabel={strings.archived}
+                lowerValue={repo.end ? new Date(repo.end).toLocaleString() : null}
+            />
+            {canDelete ?
+             <SummaryButton
+                 color={"Red"}
+                 icon={faTrash}
+                 onClick={deleteSelf}
+                 disabled={running}
+             >
+                 {strings.delete}
+             </SummaryButton>
+                       : null}
+            {canEdit ?
+             <SummaryButton
+                 color={"Yellow"}
+                 icon={faPencilAlt}
+                 onClick={onEditClick}
+                 disabled={running}
+             >
+                 {strings.edit}
+             </SummaryButton>
+                     : null}
+            {canArchive ?
+             <SummaryButton
+                 color={"Grey"}
+                 icon={faArchive}
+                 onClick={archiveSelf}
+                 disabled={running}
+             >
+                 {strings.archive}
+             </SummaryButton>
+                        : null}
+            <SummaryRight/>
+        </SummaryBase>
     )
 }

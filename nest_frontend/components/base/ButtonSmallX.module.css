@@ -12,10 +12,13 @@
     top: -1px;
 }
 
-.ButtonSmallX:focus {
-    outline: none;
+.ButtonSmallX:hover {
     background-color: var(--bg-field-on);
     color: var(--fg-field-on);
+}
+
+.ButtonSmallX:focus {
+    outline: none;
 }
 
 .ButtonSmallX:focus-visible {

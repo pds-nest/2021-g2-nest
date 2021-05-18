@@ -1,19 +1,16 @@
 import React, { useCallback, useContext, useEffect, useState } from "react"
-import BoxFull from "../base/BoxFull"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faMapPin, faPlus } from "@fortawesome/free-solid-svg-icons"
-import Style from "./BoxConditionMap.module.css"
 import ButtonIconOnly from "../base/ButtonIconOnly"
-import { MapContainer, TileLayer } from "react-leaflet"
 import useRepositoryEditor from "../../hooks/useRepositoryEditor"
 import Condition from "../../utils/Condition"
 import ContextLanguage from "../../contexts/ContextLanguage"
+import BoxMap from "../base/BoxMap"
 
 
 const STARTING_POSITION = { lat: 41.89309, lng: 12.48289 }
 const STARTING_ZOOM = 3
 
-// FIXME: this only works correctly at the equator!
 /**
  * https://wiki.openstreetmap.org/wiki/Zoom_levels
  */
@@ -99,7 +96,7 @@ export default function BoxConditionMap({ ...props }) {
     }
 
     return (
-        <BoxFull
+        <BoxMap
             header={
                 <span>
                     {strings.searchBy}
@@ -109,30 +106,17 @@ export default function BoxConditionMap({ ...props }) {
                     {strings.byZone}
                 </span>
             }
-            childrenClassName={Style.BoxConditionMapContents}
-            {...props}
-        >
-            <MapContainer
-                center={STARTING_POSITION}
-                zoom={STARTING_ZOOM}
-                className={Style.MapContainer}
-                whenCreated={setMap}
-            >
-                <TileLayer
-                    attribution='(c) <a href="https://osm.org/copyright">OpenStreetMap</a> contributors'
-                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            startingPosition={STARTING_POSITION}
+            startingZoom={STARTING_ZOOM}
+            setMap={setMap}
+            button={
+                <ButtonIconOnly
+                    icon={faPlus}
+                    color={"Green"}
+                    onClick={onButtonClick}
                 />
-                <div className={"leaflet-top leaflet-right"}>
-                    <div className={"leaflet-control"}>
-                        <ButtonIconOnly
-                            className={Style.Button}
-                            icon={faPlus}
-                            color={"Green"}
-                            onClick={onButtonClick}
-                        />
-                    </div>
-                </div>
-            </MapContainer>
-        </BoxFull>
+            }
+            {...props}
+        />
     )
 }

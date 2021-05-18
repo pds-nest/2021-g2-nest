@@ -11,7 +11,6 @@ import ContextLanguage from "../../contexts/ContextLanguage"
 /**
  * The sidebar of the website, with the logo, buttons to switch between the various pages and a notification counter.
  *
- * @todo The notification counter is still missing.
  * @param className - Additional class(es) to be added to the outer container.
  * @param props - Additional props to be passed to the outer container.
  * @returns {JSX.Element}

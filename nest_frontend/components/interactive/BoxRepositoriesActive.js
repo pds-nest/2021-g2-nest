@@ -45,7 +45,7 @@ export default function BoxRepositoriesActive({
                 deleteSelf={() => destroyRepository(repo["id"])}
                 canArchive={true}
                 canEdit={true}
-                canDelete={repo["owner"]["username"] === user["username"]}
+                canDelete={false}
                 running={running}
             />
         ))
