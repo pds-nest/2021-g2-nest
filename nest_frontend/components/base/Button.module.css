@@ -15,6 +15,14 @@
     opacity: 0.5;
 }
 
+.Button:hover {
+    filter: brightness(110%);
+}
+
+.Button:active {
+    filter: brightness(125%);
+}
+
 .Button:focus-visible {
     outline: 4px solid var(--outline);
 }
