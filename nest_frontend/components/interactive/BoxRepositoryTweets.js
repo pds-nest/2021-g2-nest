@@ -8,7 +8,7 @@ export default function BoxRepositoryTweets({ tweets, ...props }) {
 
     return (
         <BoxFullScrollable header={"Tweets"} {...props}>
-            {tweets.map(tweet => <SummaryTweet tweet={tweet}/>)}
+            {tweets.map(tweet => <SummaryTweet key={tweet.snowflake} tweet={tweet}/>)}
         </BoxFullScrollable>
     )
 }
