@@ -4,7 +4,14 @@ import ContextUser from "../contexts/ContextUser"
 import makeURLSearchParams from "../utils/makeURLSearchParams"
 
 
-export default function useBackendViewset(resourcesPath, pkName) {
+/**
+ * An hook which allows access to a full REST viewset (list, create, retrieve, edit, delete).
+ *
+ * @param resourcesPath - The path of the resource directory.
+ * @param pkName - The name of the primary key attribute of the elements.
+ * @param refreshOnStart - Whether the data should be loaded at the first startup (defaults to true).
+ */
+export default function useBackendViewset(resourcesPath, pkName, refreshOnStart = true) {
     const { server } = useContext(ContextServer)
     const configured = server !== null
 
@@ -195,14 +202,12 @@ export default function useBackendViewset(resourcesPath, pkName) {
 
     useEffect(
         () => {
-            if(!(
-                loaded || running
-            )) {
+            if(refreshOnStart && !(loaded || running)) {
                 // noinspection JSIgnoredPromiseFromCall
                 refreshResources()
             }
         },
-        [loaded, refreshResources, running],
+        [loaded, refreshResources, running, refreshOnStart],
     )
 
     return {
