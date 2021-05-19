@@ -203,7 +203,6 @@ def page_repository(rid):
         for c in repository.conditions:
             if c.id not in ids:
                 ext.session.delete(c)
-                ext.session.commit()
         # Create brand new conditions
         for c in request.json['conditions']:
             if not c['id']:
@@ -215,5 +214,5 @@ def page_repository(rid):
                 if type_ == ConditionType.hashtag:
                     content = hashtag_validator(content)
                 ext.session.add(Condition(type=type_, content=content, repository_id=rid))
-                ext.session.commit()
+        ext.session.commit()
         return json_success(repository.to_json()), 200
