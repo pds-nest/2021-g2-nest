@@ -17,7 +17,7 @@ export default function PageRepositories({ children, className, ...props }) {
             await bv.apiRequest("PATCH", `/api/v1/repositories/${pk}`, {
                 "close": true,
             })
-            await bv.refreshResource(pk)
+            await bv.retrieveResource(pk)
         },
         [bv],
     )
@@ -31,7 +31,7 @@ export default function PageRepositories({ children, className, ...props }) {
                 repositories={bv.resources.filter(r => r.is_active)}
                 view={pk => history.push(`/repositories/${pk}`)}
                 archive={archive}
-                edit={bv.editResource}
+                edit={pk => history.push(`/repositories/${pk}/edit`)}
             />
             <BoxRepositories
                 header={strings.menuArchived}
