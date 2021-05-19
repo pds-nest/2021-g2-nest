@@ -3,29 +3,48 @@ import Style from "./PageRepository.module.css"
 import classNames from "classnames"
 import BoxRepositoryTweets from "../components/interactive/BoxRepositoryTweets"
 import BoxWordcloud from "../components/interactive/BoxWordcloud"
-import ButtonIconOnly from "../components/base/ButtonIconOnly"
-import { faAt, faChartBar, faClock, faCloud, faHashtag, faMap, faMapPin } from "@fortawesome/free-solid-svg-icons"
-import BoxFull from "../components/base/BoxFull"
 import BoxHeader from "../components/base/BoxHeader"
 import PickerVisualization from "../components/interactive/PickerVisualization"
 import PickerFilter from "../components/interactive/PickerFilter"
+import useBackendViewset from "../hooks/useBackendViewset"
+import useBackendResource from "../hooks/useBackendResource"
+import { faFolder, faFolderOpen, faTrash } from "@fortawesome/free-solid-svg-icons"
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
+import { useParams } from "react-router"
+import Loading from "../components/base/Loading"
 
 
 export default function PageRepository({ className, ...props }) {
+    const {id} = useParams()
+
     const [visualizationTab, setVisualizationTab] = useState("wordcloud")
     const [addFilterTab, setAddFilterTab] = useState("hashtag")
 
-    const tweets = [
+    const repositoryBr = useBackendResource(
+        `/api/v1/repositories/${id}`,
         {
-            "conditions": [],
-            "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec posuere lacinia eleifend. Maecenas a neque augue. Nulla dapibus lobortis gravida. Quisque quis ultricies elit. Donec in tortor augue. Cras eget aliquam felis. Nunc tempor, ipsum in lobortis tristique, nunc ante velit.",
-            "insert_time": "2021-05-18T18:56Z",
-            "location": null,
-            "place": "Casa mia",
-            "poster": "USteffo",
-            "snowflake": "1394698342282809344",
-        },
-    ]
+            retrieve: true,
+            edit: true,
+            destroy: true,
+            action: false,
+        }
+    )
+    const repository = repositoryBr.error ? null : repositoryBr.resource
+
+    const tweetsBv = useBackendViewset(
+        `/api/v1/repositories/${id}/tweets/`,
+        "snowflake",
+        {
+            list: true,
+            create: false,
+            retrieve: false,
+            edit: false,
+            destroy: false,
+            command: false,
+            action: false,
+        }
+    )
+    const tweets = tweetsBv.resources && tweetsBv.error ? [] : tweetsBv.resources
 
     const words = useMemo(
         () => {
@@ -57,12 +76,28 @@ export default function PageRepository({ className, ...props }) {
         [tweets]
     )
 
-
-
-    return (
-        <div className={classNames(Style.PageRepository, className)} {...props}>
+    let contents;
+    if(!repositoryBr.firstLoad || !tweetsBv.firstLoad) {
+        contents = <>
             <BoxHeader className={Style.Header}>
-                Repository Senza Nome
+                <Loading/>
+            </BoxHeader>
+        </>
+    }
+    else if(repository === null) {
+        console.debug("repositoryBr: ", repositoryBr, ", tweetsBv: ", tweetsBv)
+
+        // TODO: Translate this!
+        contents = <>
+            <BoxHeader className={Style.Header}>
+                <FontAwesomeIcon icon={faTrash}/> <i>This repository was deleted.</i>
+            </BoxHeader>
+        </>
+    }
+    else {
+        contents = <>
+            <BoxHeader className={Style.Header}>
+                <FontAwesomeIcon icon={repository.is_active ? faFolderOpen : faFolder}/> {repository.name}
             </BoxHeader>
 
             <BoxRepositoryTweets
@@ -76,17 +111,23 @@ export default function PageRepository({ className, ...props }) {
                 setTab={setVisualizationTab}
             />
             {visualizationTab === "wordcloud" ?
-                <BoxWordcloud
-                    className={Style.Wordcloud}
-                    words={words}
-                />
-             : null}
+             <BoxWordcloud
+                 className={Style.Wordcloud}
+                 words={words}
+             />
+                                              : null}
 
             <PickerFilter
                 className={Style.FilterPicker}
                 currentTab={addFilterTab}
                 setTab={setAddFilterTab}
             />
+        </>
+    }
+
+    return (
+        <div className={classNames(Style.PageRepository, className)} {...props}>
+            {contents}
         </div>
     )
 }

@@ -10,6 +10,7 @@ import { useEffect } from "react"
  * @param path - The HTTP path to fetch the data at.
  * @param body - The body of the HTTP request (it will be JSONified before being sent).
  * @param init - Additional `init` parameters to pass to `fetch`.
+ * @deprecated since 2021-05-19
  */
 export default function useBackendImmediately(fetchData, method, path, body, init) {
     const { data, error, loading, fetchNow } = useBackend(fetchData, method, path, body, init)

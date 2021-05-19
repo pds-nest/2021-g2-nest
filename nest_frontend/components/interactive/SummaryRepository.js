@@ -10,34 +10,23 @@ import SummaryRight from "../base/summary/SummaryRight"
 
 
 /**
- * A long line representing a repository in a list.
+ * A {@link SummaryBase} representing a repository.
  *
- * @param repo - The repository object.
- * @param refresh - Function that can be called to refresh the repositories list.
- * @param canDelete - If the Delete button should be displayed or not.
- * @param deleteSelf - Function to call when the Delete button is pressed.
- * @param canEdit - If the Edit button should be displayed or not.
- * @param canArchive - If the Archive button should be displayed or not.
- * @param archiveSelf - Function to call when the Archive button is pressed.
- * @param running - If an action is currently running.
- * @param className - Additional class(es) to be added to the outer box.
- * @param props - Additional props to pass to the outer box.
+ * @param repo - The repository to display.
+ * @param view - Function with no parameters to call when the view repository button is clicked.
+ * @param archive - Function with no parameters to call when the archive repository button is clicked.
+ * @param edit - Function with no parameters to call when the edit repository button is clicked.
+ * @param destroy - Function with no parameters to call when the delete repository button is clicked.
+ * @param running - If an action is running on the viewset.
+ * @param className - Additional class(es) to append to the summary.
+ * @param props - Additional props to pass to the summary.
  * @returns {JSX.Element}
  * @constructor
  */
 export default function SummaryRepository(
-    { repo, refresh, canDelete, deleteSelf, canEdit, canArchive, archiveSelf, running, className, ...props },
+    { repo, view, archive, edit, destroy, running, className, ...props },
 ) {
-    const history = useHistory()
     const { strings } = useContext(ContextLanguage)
-
-    const onRepoClick = () => {
-        history.push(`/repositories/${repo.id}`)
-    }
-
-    const onEditClick = () => {
-        history.push(`/repositories/${repo.id}/edit`)
-    }
 
     return (
         <SummaryBase {...props}>
@@ -45,44 +34,49 @@ export default function SummaryRepository(
                 icon={repo.is_active ? faFolderOpen : faFolder}
                 title={repo.name}
                 subtitle={repo.owner ? repo.owner.username : null}
-                onClick={onRepoClick}
+                onClick={view}
             />
+
             <SummaryLabels
                 upperLabel={strings.created}
                 upperValue={repo.start ? new Date(repo.start).toLocaleString() : null}
                 lowerLabel={strings.archived}
                 lowerValue={repo.end ? new Date(repo.end).toLocaleString() : null}
             />
-            {canDelete ?
-             <SummaryButton
-                 color={"Red"}
-                 icon={faTrash}
-                 onClick={deleteSelf}
-                 disabled={running}
-             >
-                 {strings.delete}
-             </SummaryButton>
-                       : null}
-            {canEdit ?
-             <SummaryButton
-                 color={"Yellow"}
-                 icon={faPencilAlt}
-                 onClick={onEditClick}
-                 disabled={running}
-             >
-                 {strings.edit}
-             </SummaryButton>
-                     : null}
-            {canArchive ?
-             <SummaryButton
-                 color={"Grey"}
-                 icon={faArchive}
-                 onClick={archiveSelf}
-                 disabled={running}
-             >
-                 {strings.archive}
-             </SummaryButton>
-                        : null}
+
+            {destroy ?
+                <SummaryButton
+                    color={"Red"}
+                    icon={faTrash}
+                    onClick={() => destroy(repo["id"])}
+                    disabled={running}
+                >
+                    {strings.delete}
+                </SummaryButton>
+            : null}
+
+            {archive ?
+                <SummaryButton
+                    color={"Grey"}
+                    icon={faArchive}
+                    onClick={() => archive(repo["id"])}
+                    disabled={running}
+                >
+                    {strings.archive}
+                </SummaryButton>
+            : null}
+
+            {edit ?
+                <SummaryButton
+                    color={"Yellow"}
+                    icon={faPencilAlt}
+                    onClick={() => edit(repo["id"])}
+                    disabled={running}
+                >
+                    {strings.edit}
+                </SummaryButton>
+            : null}
+
             <SummaryRight/>
         </SummaryBase>
     )
