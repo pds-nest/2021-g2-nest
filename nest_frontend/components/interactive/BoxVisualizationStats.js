@@ -41,8 +41,6 @@ export default function BoxVisualizationStats({ tweets, words, totalTweetCount, 
         [tweetContentCount, tweetCount],
     )
 
-    console.debug(words)
-
     const wordCount = useMemo(
         () => words.map(word => word.value).reduce((a, b) => a + b),
         [words],

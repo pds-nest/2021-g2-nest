@@ -12,7 +12,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useParams } from "react-router"
 import Loading from "../components/base/Loading"
 import BoxVisualizationStats from "../components/interactive/BoxVisualizationStats"
-import BoxVisualizationGraph from "../components/interactive/BoxVisualizationGraph"
+import BoxVisualizationChart from "../components/interactive/BoxVisualizationChart"
 import BoxVisualizationMap from "../components/interactive/BoxVisualizationMap"
 import BoxVisualizationWordcloud from "../components/interactive/BoxVisualizationWordcloud"
 import BoxFull from "../components/base/BoxFull"
@@ -25,7 +25,7 @@ export default function PageRepository({ className, ...props }) {
     const { id } = useParams()
     const { strings } = useContext(ContextLanguage)
 
-    const [visualizationTab, setVisualizationTab] = useState("wordcloud")
+    const [visualizationTab, setVisualizationTab] = useState("stats")
     const [addFilterTab, setAddFilterTab] = useState("hashtag")
 
     const repositoryBr = useBackendResource(
@@ -99,7 +99,7 @@ export default function PageRepository({ className, ...props }) {
              />
                                               : null}
             {visualizationTab === "histogram" ?
-             <BoxVisualizationGraph
+             <BoxVisualizationChart
                  className={Style.Wordcloud}
                  tweets={tweets}
              />

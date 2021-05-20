@@ -5,7 +5,6 @@ import { MapContainer, TileLayer } from "react-leaflet"
 
 
 export default function BoxMap({
-                                   header,
                                    setMap,
                                    startingPosition = { lat: 41.89309, lng: 12.48289 },
                                    startingZoom = 3,
@@ -15,7 +14,6 @@ export default function BoxMap({
                                }) {
     return (
         <BoxFull
-            header={header}
             childrenClassName={Style.BoxMapContents}
             {...props}
         >
