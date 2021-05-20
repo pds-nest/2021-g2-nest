@@ -10,7 +10,7 @@ import ContextLanguage from "../contexts/ContextLanguage"
 export default function PageRepositories({ children, className, ...props }) {
     const bv = useBackendViewset("/api/v1/repositories/", "id")
     const history = useHistory()
-    const {strings} = useContext(ContextLanguage)
+    const { strings } = useContext(ContextLanguage)
 
     const archive = useCallback(
         async (pk) => {

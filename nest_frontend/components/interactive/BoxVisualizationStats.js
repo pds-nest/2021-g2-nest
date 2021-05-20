@@ -2,34 +2,33 @@ import React, { useMemo } from "react"
 import FormLabelled from "../base/FormLabelled"
 import FormLabel from "../base/formparts/FormLabel"
 import BoxFullScrollable from "../base/BoxFullScrollable"
-import tokenizeTweetWords from "../../utils/countTweetWords"
 
 
 export default function BoxVisualizationStats({ tweets, words, totalTweetCount, ...props }) {
 
     const tweetCount = useMemo(
         () => tweets.length,
-        [tweets]
+        [tweets],
     )
 
     const tweetPct = useMemo(
         () => tweetCount / totalTweetCount * 100,
-        [tweetCount, totalTweetCount]
+        [tweetCount, totalTweetCount],
     )
 
     const tweetLocationCount = useMemo(
         () => tweets.filter(tweet => tweet.location).length,
-        [tweets]
+        [tweets],
     )
 
     const tweetLocationPct = useMemo(
         () => tweetLocationCount / tweetCount * 100,
-        [tweetLocationCount, tweetCount]
+        [tweetLocationCount, tweetCount],
     )
 
     const tweetContent = useMemo(
         () => tweets.filter(tweet => tweet.content),
-        [tweets]
+        [tweets],
     )
 
     const tweetContentCount = useMemo(
@@ -45,51 +44,61 @@ export default function BoxVisualizationStats({ tweets, words, totalTweetCount, 
     console.debug(words)
 
     const wordCount = useMemo(
-        () => words.map(word => word.value).reduce((a, b) => a+b),
-        [words]
+        () => words.map(word => word.value).reduce((a, b) => a + b),
+        [words],
     )
 
     const mostPopularWord = useMemo(
         () => {
             return words.sort((wa, wb) => {
-                if(wa.value > wb.value) return -1
-                if(wa.value < wb.value) return 1
+                if(wa.value > wb.value) {
+                    return -1
+                }
+                if(wa.value < wb.value) {
+                    return 1
+                }
                 return 0
             })[0].text
         },
-        [words]
+        [words],
     )
 
     const users = useMemo(
         () => tweets.map(tweet => tweet.poster),
-        [tweets]
+        [tweets],
     )
 
     const uniqueUsers = useMemo(
         () => [...new Set(users)],
-        [users]
+        [users],
     )
 
     const uniqueUsersCount = useMemo(
         () => uniqueUsers.length,
-        [uniqueUsers]
+        [uniqueUsers],
     )
 
     const mostActiveUser = useMemo(
         () => {
-            if(uniqueUsers.length === 0) return null
+            if(uniqueUsers.length === 0) {
+                return null
+            }
             return uniqueUsers.map(user => {
                 return {
                     user: user,
-                    count: tweets.filter(tweet => tweet.poster === user).length
+                    count: tweets.filter(tweet => tweet.poster === user).length,
                 }
             }).sort((a, b) => {
-                if(a.count > b.count) return -1
-                if(a.count < b.count) return 1
+                if(a.count > b.count) {
+                    return -1
+                }
+                if(a.count < b.count) {
+                    return 1
+                }
                 return 0
             })[0]
         },
-        [uniqueUsers, tweets]
+        [uniqueUsers, tweets],
     )
 
     // TODO: tweets with picture count

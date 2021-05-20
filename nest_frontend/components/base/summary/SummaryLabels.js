@@ -3,7 +3,15 @@ import Style from "./SummaryLabels.module.css"
 import classNames from "classnames"
 
 
-export default function SummaryLabels({ children, upperLabel, upperValue, lowerLabel, lowerValue, className, ...props }) {
+export default function SummaryLabels({
+                                          children,
+                                          upperLabel,
+                                          upperValue,
+                                          lowerLabel,
+                                          lowerValue,
+                                          className,
+                                          ...props
+                                      }) {
     return (
         <div className={classNames(Style.SummaryLabels, className)} {...props}>
             <div className={classNames(Style.Label, Style.Upper)}>

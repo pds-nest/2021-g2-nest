@@ -8,7 +8,7 @@ const locationRegex = /[{](?<lat>[0-9.]+),(?<lng>[0-9.]+)[}]/
 
 export default function BoxVisualizationMap({ tweets, ...props }) {
     // TODO: translate this
-    const {strings} = useContext(ContextLanguage)
+    const { strings } = useContext(ContextLanguage)
 
     console.debug(tweets)
     const markers = tweets.filter(tweet => tweet.location).map(tweet => {
@@ -17,7 +17,7 @@ export default function BoxVisualizationMap({ tweets, ...props }) {
             console.error("No match for location ", tweet.location)
             return null
         }
-        const {lat, lng} = match.groups
+        const { lat, lng } = match.groups
         return (
             <Marker key={tweet["snowflake"]} position={[Number.parseFloat(lat), Number.parseFloat(lng)]}>
                 <Popup>

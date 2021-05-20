@@ -11,8 +11,12 @@ export default function countTweetWords(tweets = {}) {
             continue
         }
         for(const word of tweet.content.toLowerCase().split(/\s+/)) {
-            if(stopwords.includes(word)) continue
-            if(word.startsWith("https://")) continue
+            if(stopwords.includes(word)) {
+                continue
+            }
+            if(word.startsWith("https://")) {
+                continue
+            }
 
             if(!words.hasOwnProperty(word)) {
                 words[word] = 0

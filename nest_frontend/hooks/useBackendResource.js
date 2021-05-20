@@ -1,7 +1,4 @@
-import { useCallback, useContext, useEffect, useState } from "react"
-import ContextServer from "../contexts/ContextServer"
-import ContextUser from "../contexts/ContextUser"
-import makeURLSearchParams from "../utils/makeURLSearchParams"
+import { useCallback, useEffect, useState } from "react"
 import useBackendRequest from "./useBackendRequest"
 
 
@@ -11,15 +8,17 @@ import useBackendRequest from "./useBackendRequest"
  * @param resourcePath - The path of the resource file.
  * @param allowViews - An object with maps views to a boolean detailing if they're allowed in the viewset or not.
  */
-export default function useBackendResource(resourcePath,
-                                          {
-                                              retrieve: allowRetrieve = true,
-                                              edit: allowEdit = true,
-                                              destroy: allowDestroy = true,
-                                              action: allowAction = false,
-                                          } = {}) {
+export default function useBackendResource(
+    resourcePath,
+    {
+        retrieve: allowRetrieve = true,
+        edit: allowEdit = true,
+        destroy: allowDestroy = true,
+        action: allowAction = false,
+    } = {},
+) {
 
-    const {abort, running, apiRequest} = useBackendRequest()
+    const { abort, running, apiRequest } = useBackendRequest()
 
     const [firstLoad, setFirstLoad] = useState(false)
     const [resource, setResource] = useState(null)
@@ -27,7 +26,9 @@ export default function useBackendResource(resourcePath,
 
     const apiRetrieve = useCallback(
         async (init) => {
-            if(!allowRetrieve) throw new ViewNotAllowedError("retrieve")
+            if(!allowRetrieve) {
+                throw new ViewNotAllowedError("retrieve")
+            }
             return await apiRequest("GET", `${resourcePath}`, undefined, init)
         },
         [apiRequest, allowRetrieve, resourcePath],
@@ -35,7 +36,9 @@ export default function useBackendResource(resourcePath,
 
     const apiEdit = useCallback(
         async (data, init) => {
-            if(!allowEdit) throw new ViewNotAllowedError("edit")
+            if(!allowEdit) {
+                throw new ViewNotAllowedError("edit")
+            }
             return await apiRequest("PUT", `${resourcePath}`, data, init)
         },
         [apiRequest, allowEdit, resourcePath],
@@ -43,7 +46,9 @@ export default function useBackendResource(resourcePath,
 
     const apiDestroy = useCallback(
         async (init) => {
-            if(!allowDestroy) throw new ViewNotAllowedError("destroy")
+            if(!allowDestroy) {
+                throw new ViewNotAllowedError("destroy")
+            }
             return await apiRequest("DELETE", `${resourcePath}`, undefined, init)
         },
         [apiRequest, allowDestroy, resourcePath],
@@ -51,10 +56,12 @@ export default function useBackendResource(resourcePath,
 
     const apiAction = useCallback(
         async (method, command, data, init) => {
-            if(!allowAction) throw new ViewNotAllowedError("action")
+            if(!allowAction) {
+                throw new ViewNotAllowedError("action")
+            }
             return await apiRequest(method, `${resourcePath}/${command}`, data, init)
         },
-        [apiRequest, allowAction, resourcePath]
+        [apiRequest, allowAction, resourcePath],
     )
 
     const retrieveResource = useCallback(

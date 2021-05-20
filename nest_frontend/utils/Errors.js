@@ -7,7 +7,7 @@ class ViewNotAllowedError extends NestError {
     view
 
     constructor(view) {
-        super();
+        super()
 
         this.view = view
     }

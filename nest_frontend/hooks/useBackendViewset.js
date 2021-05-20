@@ -18,8 +18,9 @@ export default function useBackendViewset(resourcesPath, pkName,
                                               destroy: allowDestroy = true,
                                               command: allowCommand = false,
                                               action: allowAction = false,
-                                          } = {}) {
-    const {abort, running, apiRequest} = useBackendRequest()
+                                          } = {},
+) {
+    const { abort, running, apiRequest } = useBackendRequest()
 
     const [firstLoad, setFirstLoad] = useState(false)
     const [resources, setResources] = useState([])
@@ -27,7 +28,9 @@ export default function useBackendViewset(resourcesPath, pkName,
 
     const apiList = useCallback(
         async (init) => {
-            if(!allowList) throw new ViewNotAllowedError("list")
+            if(!allowList) {
+                throw new ViewNotAllowedError("list")
+            }
             return await apiRequest("GET", `${resourcesPath}`, undefined, init)
         },
         [apiRequest, allowList, resourcesPath],
@@ -35,7 +38,9 @@ export default function useBackendViewset(resourcesPath, pkName,
 
     const apiRetrieve = useCallback(
         async (id, init) => {
-            if(!allowRetrieve) throw new ViewNotAllowedError("retrieve")
+            if(!allowRetrieve) {
+                throw new ViewNotAllowedError("retrieve")
+            }
             return await apiRequest("GET", `${resourcesPath}${id}`, undefined, init)
         },
         [apiRequest, allowRetrieve, resourcesPath],
@@ -43,7 +48,9 @@ export default function useBackendViewset(resourcesPath, pkName,
 
     const apiCreate = useCallback(
         async (data, init) => {
-            if(!allowCreate) throw new ViewNotAllowedError("create")
+            if(!allowCreate) {
+                throw new ViewNotAllowedError("create")
+            }
             return await apiRequest("POST", `${resourcesPath}`, data, init)
         },
         [apiRequest, allowCreate, resourcesPath],
@@ -51,7 +58,9 @@ export default function useBackendViewset(resourcesPath, pkName,
 
     const apiEdit = useCallback(
         async (id, data, init) => {
-            if(!allowEdit) throw new ViewNotAllowedError("edit")
+            if(!allowEdit) {
+                throw new ViewNotAllowedError("edit")
+            }
             return await apiRequest("PUT", `${resourcesPath}${id}`, data, init)
         },
         [apiRequest, allowEdit, resourcesPath],
@@ -59,7 +68,9 @@ export default function useBackendViewset(resourcesPath, pkName,
 
     const apiDestroy = useCallback(
         async (id, init) => {
-            if(!allowDestroy) throw new ViewNotAllowedError("destroy")
+            if(!allowDestroy) {
+                throw new ViewNotAllowedError("destroy")
+            }
             return await apiRequest("DELETE", `${resourcesPath}${id}`, undefined, init)
         },
         [apiRequest, allowDestroy, resourcesPath],
@@ -67,18 +78,22 @@ export default function useBackendViewset(resourcesPath, pkName,
 
     const apiCommand = useCallback(
         async (method, command, data, init) => {
-            if(!allowCommand) throw new ViewNotAllowedError("command")
+            if(!allowCommand) {
+                throw new ViewNotAllowedError("command")
+            }
             return await apiRequest(method, `${resourcesPath}${command}`, data, init)
         },
-        [apiRequest, allowCommand, resourcesPath]
+        [apiRequest, allowCommand, resourcesPath],
     )
 
     const apiAction = useCallback(
         async (method, id, command, data, init) => {
-            if(!allowAction) throw new ViewNotAllowedError("action")
+            if(!allowAction) {
+                throw new ViewNotAllowedError("action")
+            }
             return await apiRequest(method, `${resourcesPath}${id}/${command}`, data, init)
         },
-        [apiRequest, allowAction, resourcesPath]
+        [apiRequest, allowAction, resourcesPath],
     )
 
     const listResources = useCallback(

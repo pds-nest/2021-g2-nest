@@ -76,7 +76,7 @@ export default function useBackendRequest() {
             try {
                 json = await response.json()
             }
-            catch (error) {
+            catch(error) {
                 throw new DecodeError(response.status, response.statusText, error)
             }
 

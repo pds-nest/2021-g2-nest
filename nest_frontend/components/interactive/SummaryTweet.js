@@ -1,7 +1,7 @@
 import React from "react"
 import SummaryBase from "../base/summary/SummaryBase"
 import SummaryLeft from "../base/summary/SummaryLeft"
-import { faComment, faLocationArrow, faMapMarker, faMapMarkerAlt, faMapPin } from "@fortawesome/free-solid-svg-icons"
+import { faComment, faLocationArrow, faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons"
 import SummaryText from "../base/summary/SummaryText"
 import SummaryRight from "../base/summary/SummaryRight"
 

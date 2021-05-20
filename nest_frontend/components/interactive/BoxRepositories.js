@@ -1,7 +1,6 @@
-import React, { useContext } from "react"
+import React from "react"
 import BoxFullScrollable from "../base/BoxFullScrollable"
 import Loading from "../base/Loading"
-import ContextLanguage from "../../contexts/ContextLanguage"
 import SummaryRepository from "./SummaryRepository"
 import Empty from "./Empty"
 
@@ -21,7 +20,17 @@ import Empty from "./Empty"
  * @returns {JSX.Element}
  * @constructor
  */
-export default function BoxRepositories({ repositories, view, archive, edit, destroy, loading, running, className, ...props }) {
+export default function BoxRepositories({
+                                            repositories,
+                                            view,
+                                            archive,
+                                            edit,
+                                            destroy,
+                                            loading,
+                                            running,
+                                            className,
+                                            ...props
+                                        }) {
     let contents
     if(loading) {
         contents = <Loading/>

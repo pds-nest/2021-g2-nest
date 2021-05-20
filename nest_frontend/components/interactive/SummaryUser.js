@@ -22,18 +22,18 @@ export default function SummaryUser({ user, destroyUser, running, ...props }) {
                 upperLabel={strings.type}
                 upperValue={user.isAdmin ? strings.admin : strings.user}
             />
-             <SummaryButton
-                 color={"Red"}
-                 icon={faTrash}
-                 onClick={async event => {
-                     event.stopPropagation()
-                     // TODO: Errors are not caught here. Where should they be displayed?
-                     await destroyUser(user["email"])
-                 }}
-                 disabled={running}
-             >
-                 {strings.delete}
-             </SummaryButton>
+            <SummaryButton
+                color={"Red"}
+                icon={faTrash}
+                onClick={async event => {
+                    event.stopPropagation()
+                    // TODO: Errors are not caught here. Where should they be displayed?
+                    await destroyUser(user["email"])
+                }}
+                disabled={running}
+            >
+                {strings.delete}
+            </SummaryButton>
             <SummaryRight/>
         </SummaryBase>
     )

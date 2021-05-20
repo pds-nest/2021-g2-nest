@@ -4,7 +4,15 @@ import BoxFull from "./BoxFull"
 import { MapContainer, TileLayer } from "react-leaflet"
 
 
-export default function BoxMap({ header, setMap, startingPosition = { lat: 41.89309, lng: 12.48289 }, startingZoom = 3, button, children, ...props }) {
+export default function BoxMap({
+                                   header,
+                                   setMap,
+                                   startingPosition = { lat: 41.89309, lng: 12.48289 },
+                                   startingZoom = 3,
+                                   button,
+                                   children,
+                                   ...props
+                               }) {
     return (
         <BoxFull
             header={header}

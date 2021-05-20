@@ -6,7 +6,7 @@ export default function objectToWordcloudFormat(words) {
         }
         result.push({
             text: word,
-            value: words[word]
+            value: words[word],
         })
     }
     return result

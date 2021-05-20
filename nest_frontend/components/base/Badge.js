@@ -28,12 +28,12 @@ export default function Badge({ icon, color, onClickDelete, children, className,
             </div>
             {
                 onClickDelete ?
-                    <div>
-                        <ButtonSmallX
-                            onClick={onClickDelete}
-                        />
-                    </div>
-                : null
+                <div>
+                    <ButtonSmallX
+                        onClick={onClickDelete}
+                    />
+                </div>
+                              : null
             }
         </div>
     )

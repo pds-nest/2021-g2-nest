@@ -8,7 +8,7 @@ import PickerFilter from "../components/interactive/PickerFilter"
 import useBackendViewset from "../hooks/useBackendViewset"
 import useBackendResource from "../hooks/useBackendResource"
 import { faFolder, faFolderOpen, faTrash } from "@fortawesome/free-solid-svg-icons"
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useParams } from "react-router"
 import Loading from "../components/base/Loading"
 import BoxVisualizationStats from "../components/interactive/BoxVisualizationStats"
@@ -17,14 +17,13 @@ import BoxVisualizationMap from "../components/interactive/BoxVisualizationMap"
 import BoxVisualizationWordcloud from "../components/interactive/BoxVisualizationWordcloud"
 import BoxFull from "../components/base/BoxFull"
 import ContextLanguage from "../contexts/ContextLanguage"
-import tokenizeTweetWords from "../utils/countTweetWords"
 import countTweetWords from "../utils/countTweetWords"
 import objectToWordcloudFormat from "../utils/objectToWordcloudFormat"
 
 
 export default function PageRepository({ className, ...props }) {
-    const {id} = useParams()
-    const {strings} = useContext(ContextLanguage)
+    const { id } = useParams()
+    const { strings } = useContext(ContextLanguage)
 
     const [visualizationTab, setVisualizationTab] = useState("wordcloud")
     const [addFilterTab, setAddFilterTab] = useState("hashtag")
@@ -36,7 +35,7 @@ export default function PageRepository({ className, ...props }) {
             edit: true,
             destroy: true,
             action: false,
-        }
+        },
     )
     const repository = repositoryBr.error ? null : repositoryBr.resource
 
@@ -51,16 +50,16 @@ export default function PageRepository({ className, ...props }) {
             destroy: false,
             command: false,
             action: false,
-        }
+        },
     )
     const tweets = tweetsBv.resources && tweetsBv.error ? [] : tweetsBv.resources
 
     const words = useMemo(
         () => objectToWordcloudFormat(countTweetWords(tweets)),
-        [tweets]
+        [tweets],
     )
 
-    let contents;
+    let contents
     if(!repositoryBr.firstLoad || !tweetsBv.firstLoad) {
         contents = <>
             <BoxHeader className={Style.Header}>
@@ -93,32 +92,32 @@ export default function PageRepository({ className, ...props }) {
                 setTab={setVisualizationTab}
             />
             {visualizationTab === "wordcloud" ?
-                <BoxVisualizationWordcloud
-                    className={Style.Wordcloud}
-                    tweets={tweets}
-                    words={words}
-                />
-            : null}
+             <BoxVisualizationWordcloud
+                 className={Style.Wordcloud}
+                 tweets={tweets}
+                 words={words}
+             />
+                                              : null}
             {visualizationTab === "histogram" ?
-                <BoxVisualizationGraph
-                    className={Style.Wordcloud}
-                    tweets={tweets}
-                />
-            : null}
+             <BoxVisualizationGraph
+                 className={Style.Wordcloud}
+                 tweets={tweets}
+             />
+                                              : null}
             {visualizationTab === "map" ?
-                <BoxVisualizationMap
-                    className={Style.Wordcloud}
-                    tweets={tweets}
-                />
-            : null}
+             <BoxVisualizationMap
+                 className={Style.Wordcloud}
+                 tweets={tweets}
+             />
+                                        : null}
             {visualizationTab === "stats" ?
-                <BoxVisualizationStats
-                    className={Style.Wordcloud}
-                    tweets={tweets}
-                    words={words}
-                    totalTweetCount={tweets.length}
-                />
-            : null}
+             <BoxVisualizationStats
+                 className={Style.Wordcloud}
+                 tweets={tweets}
+                 words={words}
+                 totalTweetCount={tweets.length}
+             />
+                                          : null}
 
             <PickerFilter
                 className={Style.FilterPicker}

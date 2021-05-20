@@ -1,6 +1,5 @@
 import React, { useContext } from "react"
 import { faArchive, faFolder, faFolderOpen, faPencilAlt, faTrash } from "@fortawesome/free-solid-svg-icons"
-import { useHistory } from "react-router"
 import ContextLanguage from "../../contexts/ContextLanguage"
 import SummaryBase from "../base/summary/SummaryBase"
 import SummaryLeft from "../base/summary/SummaryLeft"
@@ -45,37 +44,37 @@ export default function SummaryRepository(
             />
 
             {destroy ?
-                <SummaryButton
-                    color={"Red"}
-                    icon={faTrash}
-                    onClick={() => destroy(repo["id"])}
-                    disabled={running}
-                >
-                    {strings.delete}
-                </SummaryButton>
-            : null}
+             <SummaryButton
+                 color={"Red"}
+                 icon={faTrash}
+                 onClick={() => destroy(repo["id"])}
+                 disabled={running}
+             >
+                 {strings.delete}
+             </SummaryButton>
+                     : null}
 
             {archive ?
-                <SummaryButton
-                    color={"Grey"}
-                    icon={faArchive}
-                    onClick={() => archive(repo["id"])}
-                    disabled={running}
-                >
-                    {strings.archive}
-                </SummaryButton>
-            : null}
+             <SummaryButton
+                 color={"Grey"}
+                 icon={faArchive}
+                 onClick={() => archive(repo["id"])}
+                 disabled={running}
+             >
+                 {strings.archive}
+             </SummaryButton>
+                     : null}
 
             {edit ?
-                <SummaryButton
-                    color={"Yellow"}
-                    icon={faPencilAlt}
-                    onClick={() => edit(repo["id"])}
-                    disabled={running}
-                >
-                    {strings.edit}
-                </SummaryButton>
-            : null}
+             <SummaryButton
+                 color={"Yellow"}
+                 icon={faPencilAlt}
+                 onClick={() => edit(repo["id"])}
+                 disabled={running}
+             >
+                 {strings.edit}
+             </SummaryButton>
+                  : null}
 
             <SummaryRight/>
         </SummaryBase>
