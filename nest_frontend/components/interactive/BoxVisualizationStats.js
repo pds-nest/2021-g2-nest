@@ -127,7 +127,7 @@ export default function BoxVisualizationStats({ tweets, words, totalTweetCount, 
                 <FormLabel text={strings.contTweets}>
                     <b>{tweetContentCount}</b>
                 </FormLabel>
-                <FormLabel text={strings.conTweetsPerc}>
+                <FormLabel text={strings.contTweetsPerc}>
                     <b>{tweetContentPct.toFixed(2)}%</b>
                 </FormLabel>
                 <FormLabel text={strings.wordCount}>
