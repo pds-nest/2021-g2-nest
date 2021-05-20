@@ -1,7 +1,6 @@
-import React, { useRef } from "react"
+import React from "react"
 import BoxFull from "./BoxFull"
 import ChartComponent from "react-chartjs-2"
-import Loading from "./Loading"
 
 
 export default function BoxChart({chartProps, ...props}) {
