@@ -68,10 +68,9 @@ export default function PageRepository({ className, ...props }) {
         </>
     }
     else if(repository === null) {
-        // TODO: Translate this!
         contents = <>
             <BoxHeader className={Style.Header}>
-                <FontAwesomeIcon icon={faTrash}/> <i>This repository was deleted.</i>
+                <FontAwesomeIcon icon={faTrash}/> <i>{strings.repoDeleted}</i>
             </BoxHeader>
         </>
     }

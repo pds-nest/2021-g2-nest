@@ -1,11 +1,12 @@
-import React from "react"
+import React, { useContext } from "react"
 import BoxFullScrollable from "../base/BoxFullScrollable"
 import SummaryTweet from "./SummaryTweet"
+import ContextLanguage from "../../contexts/ContextLanguage"
 import Empty from "./Empty"
 
 
 export default function BoxRepositoryTweets({ tweets, ...props }) {
-    // TODO: Translate this
+    const { strings } = useContext(ContextLanguage)
 
     let content
     if(tweets.length === 0) {
@@ -16,7 +17,7 @@ export default function BoxRepositoryTweets({ tweets, ...props }) {
     }
 
     return (
-        <BoxFullScrollable header={"Tweets"} {...props}>
+        <BoxFullScrollable header={strings.tweets} {...props}>
             {content}
         </BoxFullScrollable>
     )

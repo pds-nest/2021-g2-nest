@@ -7,7 +7,6 @@ import { Marker, Popup } from "react-leaflet"
 const locationRegex = /[{](?<lat>[0-9.]+),(?<lng>[0-9.]+)[}]/
 
 export default function BoxVisualizationMap({ tweets, ...props }) {
-    // TODO: translate this
     const { strings } = useContext(ContextLanguage)
 
     console.debug(tweets)
@@ -33,7 +32,7 @@ export default function BoxVisualizationMap({ tweets, ...props }) {
     })
 
     return (
-        <BoxMap header={"Map"} {...props}>
+        <BoxMap header={strings.visualMap} {...props}>
             {markers}
         </BoxMap>
     )

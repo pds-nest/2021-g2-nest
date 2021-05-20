@@ -1,11 +1,12 @@
-import React from "react"
+import React, { useContext } from "react"
 import BoxFull from "../base/BoxFull"
 import BoxChart from "../base/BoxChart"
 import Empty from "./Empty"
+import ContextLanguage from "../../contexts/ContextLanguage"
 
 
 export default function BoxVisualizationChart({ tweets, ...props }) {
-    // TODO: translate this
+    const { strings } = useContext(ContextLanguage)
 
     const hours = [...Array(24).keys()].map(hour => hour.toString())
     const hourlyTweetCount = Array(24).fill(0)
@@ -25,7 +26,7 @@ export default function BoxVisualizationChart({ tweets, ...props }) {
 
     return (
         <BoxChart
-            header={"Hourly graph"}
+            header={strings.hourlyGraph}
             chartProps={{
                 type: "bar",
                 data: {
