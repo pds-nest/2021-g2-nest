@@ -5,7 +5,6 @@ import BoxFullScrollable from "../base/BoxFullScrollable"
 
 
 export default function BoxVisualizationStats({ tweets, words, totalTweetCount, ...props }) {
-
     const tweetCount = useMemo(
         () => tweets.length,
         [tweets],
@@ -42,12 +41,16 @@ export default function BoxVisualizationStats({ tweets, words, totalTweetCount, 
     )
 
     const wordCount = useMemo(
-        () => words.map(word => word.value).reduce((a, b) => a + b),
-        [words],
+        () => {
+            if(words.length === 0) return 0
+            return words.map(word => word.value).reduce((a, b) => a + b)
+        },
+        [words]
     )
 
     const mostPopularWord = useMemo(
         () => {
+            if(words.length === 0) return "❌"
             return words.sort((wa, wb) => {
                 if(wa.value > wb.value) {
                     return -1
@@ -142,7 +145,7 @@ export default function BoxVisualizationStats({ tweets, words, totalTweetCount, 
                     <b>{uniqueUsersCount}</b>
                 </FormLabel>
                 <FormLabel text={"Most active poster"}>
-                    <b>{mostActiveUser.user} ({mostActiveUser.count} tweets)</b>
+                    <b>{mostActiveUser ? `${mostActiveUser.user} (${mostActiveUser.count} tweet${mostActiveUser.count === 1 ? "" : "s"})` : "❌"}</b>
                 </FormLabel>
             </FormLabelled>
         </BoxFullScrollable>
