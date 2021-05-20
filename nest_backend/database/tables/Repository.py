@@ -35,6 +35,7 @@ class Repository(ext.Model):
             "is_active": self.is_active,
             "end": self.end.isoformat() if self.end else None,
             "owner": self.owner.to_json(),
+            "spectators": [a.to_json() for a in self.authorizations],
             "evaluation_mode": self.evaluation_mode.value,
             "conditions": [c.to_json() for c in self.conditions]
         }

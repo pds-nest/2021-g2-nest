@@ -74,6 +74,7 @@ class RepositorySchema(Schema):
     is_active = fields.Boolean(description="True if the repository is active.")
     end = fields.DateTime(description="The end date of the repository")
     owner = fields.Nested(UserSchema)
+    spectators = fields.Nested(AuthorizationSchema, many=True)
     conditions = fields.Nested(ConditionSchema, many=True)
     evaluation_mode = fields.Integer(description="The mode with which conditions are evaluated.")
 
