@@ -101,8 +101,7 @@ export default function BoxVisualizationStats({ tweets, words, totalTweetCount, 
         [uniqueUsers, tweets],
     )
 
-    // TODO: tweets with picture count
-    // TODO: tweets with picture pct
+    // TODO: missing stats
 
     // TODO: translate this
     return (
@@ -144,7 +143,7 @@ export default function BoxVisualizationStats({ tweets, words, totalTweetCount, 
                 <FormLabel text={"Unique posters"}>
                     <b>{uniqueUsersCount}</b>
                 </FormLabel>
-                <FormLabel text={"Most active user"}>
+                <FormLabel text={"Most active poster"}>
                     <b>{mostActiveUser.user} ({mostActiveUser.count} tweets)</b>
                 </FormLabel>
             </FormLabelled>
