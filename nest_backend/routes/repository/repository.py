@@ -198,6 +198,7 @@ def page_repository(rid):
         repository.evaluation_mode = evaluation_mode
         repository.name = request.json['name']
         repository.is_active = request.json['is_active']
+        ext.session.commit()
         ids = [c['id'] for c in request.json['conditions'] if c['id']]
         # Delete no longer needed conditions.
         for c in repository.conditions:

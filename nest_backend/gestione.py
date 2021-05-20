@@ -8,7 +8,7 @@ import functools
 from flask_jwt_extended import get_jwt_identity
 from flask import jsonify
 from re import sub
-from .errors import GENERIC_UFO
+from .errors import GENERIC_UFO, REPOSITORY_NOT_FOUND, USER_NOT_AUTHORIZED
 
 __all__ = ["authenticate", "identity", "gen_password", "find_user", "admin_or_403",
            "repository_auth", "json_request_authorizer", "json_error",
@@ -76,10 +76,10 @@ def repository_auth(f):
             return json_error("Missing one or more parameters."), 400
         repository = Repository.query.filter_by(id=repository_id).first()
         if not repository:
-            return json_error("Cant't find the repository."), 404
+            return json_error("Cant't find the repository.", REPOSITORY_NOT_FOUND), 404
         if repository.owner_id != user.email and user.email not in [a.email for a in
                                                                     repository.authorizations] and not user.isAdmin:
-            return json_error("Stop right there, criminal scum! Nobody accesses protected data under MY watch!"), 403
+            return json_error("Stop right there, criminal scum! Nobody accesses protected data under MY watch!", USER_NOT_AUTHORIZED), 403
         return f(*args, **kwargs)
 
     return func

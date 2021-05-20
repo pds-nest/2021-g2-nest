@@ -11,3 +11,9 @@ class Authorization(ext.Model):
     # Relationships
     repository = ext.relationship("Repository", back_populates="authorizations")
     user = ext.relationship("User", back_populates="authorizations")
+
+    def to_json(self):
+        return {
+            "rid": self.rid,
+            "email": self.email,
+        }

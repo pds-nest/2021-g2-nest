@@ -24,6 +24,20 @@ class ErrorSchema(Schema):
     code = fields.String(description="Error code")
 
 
+class AuthorizationSchema(Schema):
+    rid = fields.Integer(description="The repository id.")
+    email = fields.String(description="The user's email.")
+
+
+class AuthorizationParameterSchema(Schema):
+    rid = fields.Integer(description="The repository id.")
+    email = fields.String(description="The user's email.")
+
+
+class CreateAuthorizationSchema(Schema):
+    email = fields.String(description="The user's email")
+
+
 class SuccesSchema(Schema):
     result = fields.String(description="Contains a string that informs if the procedure was successful.")
     data = fields.String(description="The content of the response.")

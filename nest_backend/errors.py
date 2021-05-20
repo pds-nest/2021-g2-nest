@@ -25,3 +25,5 @@ ALERT_NO_LIMIT = "errorAlertNoLimit"  # Missing limit entry
 ALERT_NO_WINDOW = "errorAlertNoWindow"  # Missing window entry
 ALERT_NO_EVALUATION = "errorAlertNoEvaluation"  # Missing evalmode entry
 ALERT_DELETION_FAILURE = "errorAlertDeletionFailure"  # Error while deleting alerts
+# Authorization
+AUTHORIZATION_NOT_FOUND = "errorAuthorizationNotFound"  # Authorization not found

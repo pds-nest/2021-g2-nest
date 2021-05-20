@@ -33,6 +33,8 @@ spec.components.schema("AlertParameter", schema=AlertParameterSchema)
 spec.components.schema("Alert", schema=Alert)
 spec.components.schema("Tweet", schema=TweetSchema)
 spec.components.schema("CreateAlert", schema=CreateAlert)
+spec.components.schema("CreateAuthorization", schema=CreateAuthorizationSchema)
+spec.components.schema("Authorization", schema=AuthorizationSchema)
 spec.components.security_scheme("jwt", {"type": "http", "scheme": "bearer", "bearerFormat": "JWT"})
 
 # add swagger tags that are used for endpoint annotation
