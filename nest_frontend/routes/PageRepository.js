@@ -17,6 +17,9 @@ import BoxVisualizationMap from "../components/interactive/BoxVisualizationMap"
 import BoxVisualizationWordcloud from "../components/interactive/BoxVisualizationWordcloud"
 import BoxFull from "../components/base/BoxFull"
 import ContextLanguage from "../contexts/ContextLanguage"
+import tokenizeTweetWords from "../utils/countTweetWords"
+import countTweetWords from "../utils/countTweetWords"
+import objectToWordcloudFormat from "../utils/objectToWordcloudFormat"
 
 
 export default function PageRepository({ className, ...props }) {
@@ -51,6 +54,11 @@ export default function PageRepository({ className, ...props }) {
         }
     )
     const tweets = tweetsBv.resources && tweetsBv.error ? [] : tweetsBv.resources
+
+    const words = useMemo(
+        () => objectToWordcloudFormat(countTweetWords(tweets)),
+        [tweets]
+    )
 
     let contents;
     if(!repositoryBr.firstLoad || !tweetsBv.firstLoad) {
@@ -88,6 +96,7 @@ export default function PageRepository({ className, ...props }) {
                 <BoxVisualizationWordcloud
                     className={Style.Wordcloud}
                     tweets={tweets}
+                    words={words}
                 />
             : null}
             {visualizationTab === "histogram" ?
@@ -106,6 +115,7 @@ export default function PageRepository({ className, ...props }) {
                 <BoxVisualizationStats
                     className={Style.Wordcloud}
                     tweets={tweets}
+                    words={words}
                     totalTweetCount={tweets.length}
                 />
             : null}

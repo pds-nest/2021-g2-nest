@@ -2,31 +2,95 @@ import React, { useMemo } from "react"
 import FormLabelled from "../base/FormLabelled"
 import FormLabel from "../base/formparts/FormLabel"
 import BoxFullScrollable from "../base/BoxFullScrollable"
-import tokenizeTweetWords from "../../utils/tokenizeTweetWords"
+import tokenizeTweetWords from "../../utils/countTweetWords"
 
 
-export default function BoxVisualizationStats({ tweets, totalTweetCount, ...props }) {
+export default function BoxVisualizationStats({ tweets, words, totalTweetCount, ...props }) {
 
-    const words = useMemo(
-        () => tokenizeTweetWords(tweets),
+    const tweetCount = useMemo(
+        () => tweets.length,
         [tweets]
     )
 
-    const tweetCount = tweets.length
-    const tweetPct = tweetCount / totalTweetCount * 100
-    const tweetLocationCount = tweets.filter(tweet => tweet.location).length
-    const tweetLocationPct = tweetLocationCount / tweetCount * 100
-    const tweetContent = tweets.filter(tweet => tweet.content)
-    const tweetContentCount = tweetContent.length
-    const tweetContentPct = tweetContentCount / tweetCount * 100
-    const wordCount = words.map(word => word.value).reduce((a, b) => a+b)
-    const mostPopularWord = words.sort((wa, wb) => {
-        if(wa.value > wb.value) return -1
-        if(wa.value < wb.value) return 1
-        return 0
-    })[0].text
-    const users = [...new Set(tweets.map(tweet => tweet.poster))]
-    const usersCount = users.length
+    const tweetPct = useMemo(
+        () => tweetCount / totalTweetCount * 100,
+        [tweetCount, totalTweetCount]
+    )
+
+    const tweetLocationCount = useMemo(
+        () => tweets.filter(tweet => tweet.location).length,
+        [tweets]
+    )
+
+    const tweetLocationPct = useMemo(
+        () => tweetLocationCount / tweetCount * 100,
+        [tweetLocationCount, tweetCount]
+    )
+
+    const tweetContent = useMemo(
+        () => tweets.filter(tweet => tweet.content),
+        [tweets]
+    )
+
+    const tweetContentCount = useMemo(
+        () => tweetContent.length,
+        [tweetContent],
+    )
+
+    const tweetContentPct = useMemo(
+        () => tweetContentCount / tweetCount * 100,
+        [tweetContentCount, tweetCount],
+    )
+
+    console.debug(words)
+
+    const wordCount = useMemo(
+        () => words.map(word => word.value).reduce((a, b) => a+b),
+        [words]
+    )
+
+    const mostPopularWord = useMemo(
+        () => {
+            return words.sort((wa, wb) => {
+                if(wa.value > wb.value) return -1
+                if(wa.value < wb.value) return 1
+                return 0
+            })[0].text
+        },
+        [words]
+    )
+
+    const users = useMemo(
+        () => tweets.map(tweet => tweet.poster),
+        [tweets]
+    )
+
+    const uniqueUsers = useMemo(
+        () => [...new Set(users)],
+        [users]
+    )
+
+    const uniqueUsersCount = useMemo(
+        () => uniqueUsers.length,
+        [uniqueUsers]
+    )
+
+    const mostActiveUser = useMemo(
+        () => {
+            if(uniqueUsers.length === 0) return null
+            return uniqueUsers.map(user => {
+                return {
+                    user: user,
+                    count: tweets.filter(tweet => tweet.poster === user).length
+                }
+            }).sort((a, b) => {
+                if(a.count > b.count) return -1
+                if(a.count < b.count) return 1
+                return 0
+            })[0]
+        },
+        [uniqueUsers, tweets]
+    )
 
     // TODO: tweets with picture count
     // TODO: tweets with picture pct
@@ -68,8 +132,11 @@ export default function BoxVisualizationStats({ tweets, totalTweetCount, ...prop
                 <FormLabel text={"% of tweets with image"}>
                     <b>🚧</b>
                 </FormLabel>
-                <FormLabel text={"Users count"}>
-                    <b>{usersCount}</b>
+                <FormLabel text={"Unique posters"}>
+                    <b>{uniqueUsersCount}</b>
+                </FormLabel>
+                <FormLabel text={"Most active user"}>
+                    <b>{mostActiveUser.user} ({mostActiveUser.count} tweets)</b>
                 </FormLabel>
             </FormLabelled>
         </BoxFullScrollable>
