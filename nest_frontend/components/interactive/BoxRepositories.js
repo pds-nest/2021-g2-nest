@@ -3,6 +3,7 @@ import BoxFullScrollable from "../base/BoxFullScrollable"
 import Loading from "../base/Loading"
 import ContextLanguage from "../../contexts/ContextLanguage"
 import SummaryRepository from "./SummaryRepository"
+import Empty from "./Empty"
 
 
 /**
@@ -21,14 +22,12 @@ import SummaryRepository from "./SummaryRepository"
  * @constructor
  */
 export default function BoxRepositories({ repositories, view, archive, edit, destroy, loading, running, className, ...props }) {
-    const { strings } = useContext(ContextLanguage)
-
     let contents
     if(loading) {
         contents = <Loading/>
     }
     else if(repositories.length === 0) {
-        contents = <i>{strings.emptyMenu}</i>
+        contents = <Empty/>
     }
     else {
         contents = repositories.map(repo => (

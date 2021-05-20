@@ -8,9 +8,6 @@ import ContextLanguage from "../../contexts/ContextLanguage"
 import BoxMap from "../base/BoxMap"
 
 
-const STARTING_POSITION = { lat: 41.89309, lng: 12.48289 }
-const STARTING_ZOOM = 3
-
 /**
  * https://wiki.openstreetmap.org/wiki/Zoom_levels
  */
@@ -47,8 +44,8 @@ const MPIXEL = [
  * @constructor
  */
 export default function BoxConditionMap({ ...props }) {
-    const [position, setPosition] = useState(STARTING_POSITION)
-    const [zoom, setZoom] = useState(STARTING_ZOOM)
+    const [position, setPosition] = useState()
+    const [zoom, setZoom] = useState()
     const [map, setMap] = useState(null)
     const { addCondition } = useRepositoryEditor()
     const { strings } = useContext(ContextLanguage)
@@ -92,7 +89,6 @@ export default function BoxConditionMap({ ...props }) {
             "COORDINATES",
             `< ${radius} ${position.lat} ${position.lng}`,
         ))
-        setPosition(STARTING_POSITION)
     }
 
     return (
@@ -106,8 +102,6 @@ export default function BoxConditionMap({ ...props }) {
                     {strings.byZone}
                 </span>
             }
-            startingPosition={STARTING_POSITION}
-            startingZoom={STARTING_ZOOM}
             setMap={setMap}
             button={
                 <ButtonIconOnly

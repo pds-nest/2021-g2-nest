@@ -4,7 +4,7 @@ import BoxFull from "./BoxFull"
 import { MapContainer, TileLayer } from "react-leaflet"
 
 
-export default function BoxMap({ header, setMap, startingPosition, startingZoom, button, children, additions, ...props }) {
+export default function BoxMap({ header, setMap, startingPosition = { lat: 41.89309, lng: 12.48289 }, startingZoom = 3, button, children, ...props }) {
     return (
         <BoxFull
             header={header}
@@ -21,7 +21,7 @@ export default function BoxMap({ header, setMap, startingPosition, startingZoom,
                     attribution='(c) <a href="https://osm.org/copyright">OpenStreetMap contributors</a>'
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
-                {additions}
+                {children}
                 <div className={"leaflet-top leaflet-right"}>
                     <div className={"leaflet-control"}>
                         {button}

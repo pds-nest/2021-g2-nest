@@ -1,6 +1,6 @@
 .SummaryLeft {
-    min-width: 175px;
-    width: 275px;
+    width: 260px;
+    flex-shrink: 0;
 
     display: grid;
     grid-template-areas:

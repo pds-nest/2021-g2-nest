@@ -1,8 +1,7 @@
-import React, { useMemo, useState } from "react"
+import React, { useContext, useMemo, useState } from "react"
 import Style from "./PageRepository.module.css"
 import classNames from "classnames"
 import BoxRepositoryTweets from "../components/interactive/BoxRepositoryTweets"
-import BoxWordcloud from "../components/interactive/BoxWordcloud"
 import BoxHeader from "../components/base/BoxHeader"
 import PickerVisualization from "../components/interactive/PickerVisualization"
 import PickerFilter from "../components/interactive/PickerFilter"
@@ -12,10 +11,17 @@ import { faFolder, faFolderOpen, faTrash } from "@fortawesome/free-solid-svg-ico
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import { useParams } from "react-router"
 import Loading from "../components/base/Loading"
+import BoxVisualizationStats from "../components/interactive/BoxVisualizationStats"
+import BoxVisualizationGraph from "../components/interactive/BoxVisualizationGraph"
+import BoxVisualizationMap from "../components/interactive/BoxVisualizationMap"
+import BoxVisualizationWordcloud from "../components/interactive/BoxVisualizationWordcloud"
+import BoxFull from "../components/base/BoxFull"
+import ContextLanguage from "../contexts/ContextLanguage"
 
 
 export default function PageRepository({ className, ...props }) {
     const {id} = useParams()
+    const {strings} = useContext(ContextLanguage)
 
     const [visualizationTab, setVisualizationTab] = useState("wordcloud")
     const [addFilterTab, setAddFilterTab] = useState("hashtag")
@@ -46,36 +52,6 @@ export default function PageRepository({ className, ...props }) {
     )
     const tweets = tweetsBv.resources && tweetsBv.error ? [] : tweetsBv.resources
 
-    const words = useMemo(
-        () => {
-            let preprocessedWords = {}
-            for(const tweet of tweets) {
-                if(!tweet.content) {
-                    continue
-                }
-                for(const word of tweet.content.toLowerCase().split(/\s+/)) {
-                    if(!preprocessedWords.hasOwnProperty(word)) {
-                        preprocessedWords[word] = 0
-                    }
-                    preprocessedWords[word] += 1
-                }
-            }
-
-            let processedWords = []
-            for(const word in preprocessedWords) {
-                if(!preprocessedWords.hasOwnProperty(word)) {
-                    continue
-                }
-                processedWords.push({
-                    text: word,
-                    value: preprocessedWords[word]
-                })
-            }
-            return processedWords
-        },
-        [tweets]
-    )
-
     let contents;
     if(!repositoryBr.firstLoad || !tweetsBv.firstLoad) {
         contents = <>
@@ -85,8 +61,6 @@ export default function PageRepository({ className, ...props }) {
         </>
     }
     else if(repository === null) {
-        console.debug("repositoryBr: ", repositoryBr, ", tweetsBv: ", tweetsBv)
-
         // TODO: Translate this!
         contents = <>
             <BoxHeader className={Style.Header}>
@@ -111,17 +85,44 @@ export default function PageRepository({ className, ...props }) {
                 setTab={setVisualizationTab}
             />
             {visualizationTab === "wordcloud" ?
-             <BoxWordcloud
-                 className={Style.Wordcloud}
-                 words={words}
-             />
-                                              : null}
+                <BoxVisualizationWordcloud
+                    className={Style.Wordcloud}
+                    tweets={tweets}
+                />
+            : null}
+            {visualizationTab === "histogram" ?
+                <BoxVisualizationGraph
+                    className={Style.Wordcloud}
+                    tweets={tweets}
+                />
+            : null}
+            {visualizationTab === "map" ?
+                <BoxVisualizationMap
+                    className={Style.Wordcloud}
+                    tweets={tweets}
+                />
+            : null}
+            {visualizationTab === "stats" ?
+                <BoxVisualizationStats
+                    className={Style.Wordcloud}
+                    tweets={tweets}
+                    totalTweetCount={tweets.length}
+                />
+            : null}
 
             <PickerFilter
                 className={Style.FilterPicker}
                 currentTab={addFilterTab}
                 setTab={setAddFilterTab}
             />
+
+            <BoxFull header={strings.notImplemented} className={Style.Filters}>
+                {strings.notImplemented}
+            </BoxFull>
+
+            <BoxFull header={strings.notImplemented} className={Style.AddFilter}>
+                {strings.notImplemented}
+            </BoxFull>
         </>
     }
 
