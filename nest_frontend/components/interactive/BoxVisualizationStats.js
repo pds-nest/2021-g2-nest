@@ -1,10 +1,14 @@
-import React, { useMemo } from "react"
+import React, { useContext, useMemo } from "react"
 import FormLabelled from "../base/FormLabelled"
 import FormLabel from "../base/formparts/FormLabel"
+import ContextLanguage from "../../contexts/ContextLanguage"
 import BoxFullScrollable from "../base/BoxFullScrollable"
+import ContextRepositoryViewer from "../../contexts/ContextRepositoryViewer"
 
 
-export default function BoxVisualizationStats({ tweets, words, totalTweetCount, ...props }) {
+export default function BoxVisualizationStats({ ...props }) {
+    const { strings } = useContext(ContextLanguage)
+    const {tweets, words, rawTweets} = useContext(ContextRepositoryViewer)
 
     const tweetCount = useMemo(
         () => tweets.length,
@@ -12,8 +16,8 @@ export default function BoxVisualizationStats({ tweets, words, totalTweetCount, 
     )
 
     const tweetPct = useMemo(
-        () => tweetCount / totalTweetCount * 100,
-        [tweetCount, totalTweetCount],
+        () => tweetCount / rawTweets.length * 100,
+        [tweetCount, rawTweets],
     )
 
     const tweetLocationCount = useMemo(
@@ -42,12 +46,16 @@ export default function BoxVisualizationStats({ tweets, words, totalTweetCount, 
     )
 
     const wordCount = useMemo(
-        () => words.map(word => word.value).reduce((a, b) => a + b),
-        [words],
+        () => {
+            if(words.length === 0) return 0
+            return words.map(word => word.value).reduce((a, b) => a + b)
+        },
+        [words]
     )
 
     const mostPopularWord = useMemo(
         () => {
+            if(words.length === 0) return "❌"
             return words.sort((wa, wb) => {
                 if(wa.value > wb.value) {
                     return -1
@@ -101,48 +109,47 @@ export default function BoxVisualizationStats({ tweets, words, totalTweetCount, 
 
     // TODO: missing stats
 
-    // TODO: translate this
     return (
-        <BoxFullScrollable header={"Stats"} {...props}>
+        <BoxFullScrollable header={strings.stats} {...props}>
             <FormLabelled>
-                <FormLabel text={"Total tweets"}>
-                    <b>{totalTweetCount}</b>
+                <FormLabel text={strings.totTweets}>
+                    <b>{rawTweets.length}</b>
                 </FormLabel>
-                <FormLabel text={"Displayed tweets"}>
+                <FormLabel text={strings.dispTweets}>
                     <b>{tweetCount}</b>
                 </FormLabel>
-                <FormLabel text={"% of displayed tweets"}>
+                <FormLabel text={strings.dispTweetsPerc}>
                     <b>{tweetPct.toFixed(2)}%</b>
                 </FormLabel>
-                <FormLabel text={"Tweets with location"}>
+                <FormLabel text={strings.locTweets}>
                     <b>{tweetLocationCount}</b>
                 </FormLabel>
-                <FormLabel text={"% of tweets with location"}>
+                <FormLabel text={strings.locTweetsPerc}>
                     <b>{tweetLocationPct.toFixed(2)}%</b>
                 </FormLabel>
-                <FormLabel text={"Tweets with content"}>
+                <FormLabel text={strings.contTweets}>
                     <b>{tweetContentCount}</b>
                 </FormLabel>
-                <FormLabel text={"% of tweets with content"}>
+                <FormLabel text={strings.contTweetsPerc}>
                     <b>{tweetContentPct.toFixed(2)}%</b>
                 </FormLabel>
-                <FormLabel text={"Word count"}>
+                <FormLabel text={strings.wordCount}>
                     <b>{wordCount}</b>
                 </FormLabel>
-                <FormLabel text={"Most popular word"}>
+                <FormLabel text={strings.wordPop}>
                     <b>{mostPopularWord}</b>
                 </FormLabel>
-                <FormLabel text={"Tweets with image"}>
+                <FormLabel text={strings.imgTweets}>
                     <b>🚧</b>
                 </FormLabel>
-                <FormLabel text={"% of tweets with image"}>
+                <FormLabel text={strings.imgTweetsPerc}>
                     <b>🚧</b>
                 </FormLabel>
-                <FormLabel text={"Unique posters"}>
+                <FormLabel text={strings.postUniq}>
                     <b>{uniqueUsersCount}</b>
                 </FormLabel>
-                <FormLabel text={"Most active poster"}>
-                    <b>{mostActiveUser.user} ({mostActiveUser.count} tweets)</b>
+                <FormLabel text={strings.postPop}>
+                    <b>{mostActiveUser ? `${mostActiveUser.user} (${mostActiveUser.count} tweet${mostActiveUser.count === 1 ? "" : "s"})` : "❌"}</b>
                 </FormLabel>
             </FormLabelled>
         </BoxFullScrollable>

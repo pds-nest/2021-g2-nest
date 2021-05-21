@@ -1,24 +1,38 @@
-import React from "react"
-import ButtonIconOnly from "../base/ButtonIconOnly"
+import React, { useContext } from "react"
 import { faChartBar, faCloud, faMap, faStar } from "@fortawesome/free-solid-svg-icons"
+import ContextRepositoryViewer from "../../contexts/ContextRepositoryViewer"
+import ButtonPicker from "./ButtonPicker"
 
 
-export default function PickerVisualization({ currentTab, setTab, ...props }) {
+export default function PickerVisualization({...props}) {
+    const {visualizationTab, setVisualizationTab} = useContext(ContextRepositoryViewer)
+
     return (
         <div {...props}>
-            <ButtonIconOnly
-                onClick={() => setTab("stats")} disabled={currentTab ===
-            "stats"} color={"Grey"} icon={faStar}
+            <ButtonPicker
+                currentTab={visualizationTab}
+                setTab={setVisualizationTab}
+                name={"stats"}
+                icon={faStar}
             />
-            <ButtonIconOnly
-                onClick={() => setTab("wordcloud")} disabled={currentTab ===
-            "wordcloud"} color={"Grey"} icon={faCloud}
+            <ButtonPicker
+                currentTab={visualizationTab}
+                setTab={setVisualizationTab}
+                name={"wordcloud"}
+                icon={faCloud}
             />
-            <ButtonIconOnly
-                onClick={() => setTab("histogram")} disabled={currentTab ===
-            "histogram"} color={"Grey"} icon={faChartBar}
+            <ButtonPicker
+                currentTab={visualizationTab}
+                setTab={setVisualizationTab}
+                name={"chart"}
+                icon={faChartBar}
             />
-            <ButtonIconOnly onClick={() => setTab("map")} disabled={currentTab === "map"} color={"Grey"} icon={faMap}/>
+            <ButtonPicker
+                currentTab={visualizationTab}
+                setTab={setVisualizationTab}
+                name={"map"}
+                icon={faMap}
+            />
         </div>
     )
 }
