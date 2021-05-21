@@ -13,6 +13,7 @@
         "@testing-library/jest-dom": "^5.11.10",
         "@testing-library/react": "^11.2.6",
         "@testing-library/user-event": "^12.8.3",
+        "chart.js": "^3.2.1",
         "classnames": "^2.3.1",
         "is-string": "^1.0.5",
         "leaflet": "^1.7.1",
