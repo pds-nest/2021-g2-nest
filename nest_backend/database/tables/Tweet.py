@@ -13,11 +13,13 @@ class Tweet(ext.Model):
     place = ext.Column(ext.String)
     poster = ext.Column(ext.String)
     insert_time = ext.Column(ext.DateTime, nullable=False)
+    post_time = ext.Column(ext.DateTime, nullable=True)
+    image_url = ext.Column(ext.String, nullable=True)
     # Relationships
     repositories = ext.relationship("Composed", back_populates="tweet", cascade="all, delete")
     conditions = ext.relationship("Contains", back_populates="tweet", cascade="all, delete")
 
     def to_json(self):
         return {"snowflake": self.snowflake, "content": self.content, "location": self.location, "poster": self.poster,
-                "place": self.place, "insert_time": self.insert_time.isoformat(),
-                "conditions": [c.condition.to_json() for c in self.conditions]}
+                "place": self.place, "insert_time": self.insert_time.isoformat(), "post_time": self.post_time,
+                "image_url": self.image_url, "conditions": [c.condition.to_json() for c in self.conditions]}

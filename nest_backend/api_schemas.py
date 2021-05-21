@@ -84,8 +84,10 @@ class TweetSchema(Schema):
     content = fields.String(description="The content of the tweet.")
     location = fields.String(description="The location (coordinates) from which the tweet was tweeted.")
     place = fields.String(description="The place from which the tweet was tweeted.")
-    poster = fields.String(default="The one that created the tweet.")
-    insert_time = fields.DateTime(default="The time on which the tweet was captured.")
+    poster = fields.String(description="The one that created the tweet.")
+    insert_time = fields.DateTime(description="The time on which the tweet was captured.")
+    post_time = fields.DateTime(description="The time on which the tweet was posted.")
+    image_url = fields.String(descritpion="The embedded image urls, separated by |. If there are no images, its None.")
     conditions = fields.Nested(ConditionSchema, many=True)
 
 
