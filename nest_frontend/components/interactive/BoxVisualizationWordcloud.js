@@ -4,11 +4,12 @@ import ContextLanguage from "../../contexts/ContextLanguage"
 import BoxFull from "../base/BoxFull"
 import Empty from "./Empty"
 import ContextRepositoryViewer from "../../contexts/ContextRepositoryViewer"
+import { ContainsFilter } from "../../utils/Filter"
 
 
 export default function BoxVisualizationWordcloud({ ...props }) {
     const { strings } = useContext(ContextLanguage)
-    const {words} = useContext(ContextRepositoryViewer)
+    const {words, appendFilter} = useContext(ContextRepositoryViewer)
 
     if(words.length === 0) {
         return (
@@ -18,7 +19,16 @@ export default function BoxVisualizationWordcloud({ ...props }) {
         )
     }
 
+    const onWordClick = word => {
+        appendFilter(new ContainsFilter(false, word.text))
+    }
+
     return (
-        <BoxWordcloud header={strings.wordcloud} words={words} {...props}/>
+        <BoxWordcloud
+            header={strings.wordcloud}
+            words={words}
+            callbacks={{onWordClick}}
+            {...props}
+        />
     )
 }

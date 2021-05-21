@@ -19,7 +19,7 @@ export default function BadgeFilter({ filter }) {
         <Badge
             color={filter.color()}
             icon={filter.icon()}
-            onClickDelete={null}
+            onClickDelete={() => removeFilter(filter)}
         >
             {filter.text()}
         </Badge>

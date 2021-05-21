@@ -20,6 +20,9 @@ import PickerFilter from "../interactive/PickerFilter"
 import useArrayState from "../../hooks/useArrayState"
 import BoxFilters from "../interactive/BoxFilters"
 import ContextRepositoryViewer from "../../contexts/ContextRepositoryViewer"
+import BoxFilterContains from "../interactive/BoxFilterContains"
+import BoxFilterUser from "../interactive/BoxFilterUser"
+import BoxFilterHashtag from "../interactive/BoxFilterHashtag"
 
 
 export default function RepositoryViewer({ id, className, ...props }) {
@@ -111,8 +114,9 @@ export default function RepositoryViewer({ id, className, ...props }) {
 
             <BoxFilters className={Style.Filters}/>
             <PickerFilter className={Style.FilterPicker}/>
-            {filterTab === "contains" ? "Contains" : null}
-            {filterTab === "user" ? "User" : null}
+            {filterTab === "contains" ? <BoxFilterContains className={Style.AddFilter}/> : null}
+            {filterTab === "hashtag" ? <BoxFilterHashtag className={Style.AddFilter}/> : null}
+            {filterTab === "user" ? <BoxFilterUser className={Style.AddFilter}/> : null}
             {filterTab === "time" ? "Time" : null}
             {filterTab === "location" ? "Location" : null}
         </>

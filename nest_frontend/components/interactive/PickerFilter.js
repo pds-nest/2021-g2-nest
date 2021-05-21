@@ -19,6 +19,12 @@ export default function PickerFilter({ ...props }) {
             <ButtonPicker
                 currentTab={filterTab}
                 setTab={setFilterTab}
+                name={"hashtag"}
+                icon={faHashtag}
+            />
+            <ButtonPicker
+                currentTab={filterTab}
+                setTab={setFilterTab}
                 name={"user"}
                 icon={faAt}
             />

@@ -1,8 +1,8 @@
-import { Location } from "../components/interactive/location"
+import {Location} from "./location"
 import {
     faAt,
     faFilter,
-    faFont,
+    faFont, faHashtag,
     faLocationArrow,
     faMap,
     faMapMarkerAlt,
@@ -60,6 +60,24 @@ export class ContainsFilter extends Filter {
 
     text() {
         return this.word
+    }
+}
+
+
+export class HashtagFilter extends ContainsFilter {
+    hashtag
+
+    constructor(negate, hashtag) {
+        super(negate, `#${hashtag}`);
+        this.hashtag = hashtag
+    }
+
+    icon() {
+        return faHashtag
+    }
+
+    text() {
+        return this.hashtag
     }
 }
 
