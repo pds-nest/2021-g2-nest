@@ -8,7 +8,7 @@ import ContextRepositoryViewer from "../../contexts/ContextRepositoryViewer"
 
 export default function BoxVisualizationChart({ ...props }) {
     const { strings } = useContext(ContextLanguage)
-    const {tweets} = useContext(ContextRepositoryViewer)
+    const { tweets } = useContext(ContextRepositoryViewer)
 
     const hours = [...Array(24).keys()].map(hour => hour.toString())
     const hourlyTweetCount = Array(24).fill(0)
@@ -37,9 +37,9 @@ export default function BoxVisualizationChart({ ...props }) {
                         {
                             label: "Tweets",
                             data: hourlyTweetCount,
-                        }
+                        },
                     ],
-                }
+                },
             }}
             {...props}
         />

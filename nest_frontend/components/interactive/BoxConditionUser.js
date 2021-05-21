@@ -1,17 +1,11 @@
-import React, { useContext, useState } from "react"
+import React, { useContext } from "react"
 import BoxFull from "../base/BoxFull"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faAt, faPlus } from "@fortawesome/free-solid-svg-icons"
-import InputWithIcon from "../base/InputWithIcon"
-import FormInline from "../base/FormInline"
-import Style from "./BoxConditionUser.module.css"
-import ButtonIconOnly from "../base/ButtonIconOnly"
+import { faAt } from "@fortawesome/free-solid-svg-icons"
 import useRepositoryEditor from "../../hooks/useRepositoryEditor"
 import Condition from "../../utils/Condition"
 import ContextLanguage from "../../contexts/ContextLanguage"
-
-
-const INVALID_USER_CHARACTERS = /[^a-zA-Z0-9]/g
+import FormInlineUser from "./FormInlineUser"
 
 
 /**
@@ -23,22 +17,11 @@ const INVALID_USER_CHARACTERS = /[^a-zA-Z0-9]/g
  * @constructor
  */
 export default function BoxConditionUser({ ...props }) {
-    const [user, setUser] = useState("")
     const { addCondition } = useRepositoryEditor()
     const { strings } = useContext(ContextLanguage)
 
-    const onInputChange = event => {
-        let text = event.target.value
-        text = text.replace(INVALID_USER_CHARACTERS, "")
-        return setUser(text)
-    }
-
-    const onButtonClick = e => {
-        addCondition(new Condition("USER", user))
-        setUser("")
-
-        // Prevent reloading the page!
-        e.preventDefault()
+    const submit = value => {
+        addCondition(new Condition("USER", value))
     }
 
     return (
@@ -54,22 +37,9 @@ export default function BoxConditionUser({ ...props }) {
             }
             {...props}
         >
-            <FormInline onSubmit={onButtonClick}>
-                <InputWithIcon
-                    className={Style.Input}
-                    id={"condition-hashtag"}
-                    icon={faAt}
-                    value={user}
-                    onChange={onInputChange}
-                    placeholder={"jack"}
-                />
-                <ButtonIconOnly
-                    className={Style.Button}
-                    icon={faPlus}
-                    color={"Green"}
-                    onClick={onButtonClick}
-                />
-            </FormInline>
+            <FormInlineUser
+                submit={submit}
+            />
         </BoxFull>
     )
 }

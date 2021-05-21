@@ -8,7 +8,7 @@ import ContextRepositoryViewer from "../../contexts/ContextRepositoryViewer"
 
 export default function BoxVisualizationStats({ ...props }) {
     const { strings } = useContext(ContextLanguage)
-    const {tweets, words, rawTweets} = useContext(ContextRepositoryViewer)
+    const { tweets, words, rawTweets } = useContext(ContextRepositoryViewer)
 
     const tweetCount = useMemo(
         () => tweets.length,
@@ -47,15 +47,19 @@ export default function BoxVisualizationStats({ ...props }) {
 
     const wordCount = useMemo(
         () => {
-            if(words.length === 0) return 0
+            if(words.length === 0) {
+                return 0
+            }
             return words.map(word => word.value).reduce((a, b) => a + b)
         },
-        [words]
+        [words],
     )
 
     const mostPopularWord = useMemo(
         () => {
-            if(words.length === 0) return "❌"
+            if(words.length === 0) {
+                return "❌"
+            }
             return words.sort((wa, wb) => {
                 if(wa.value > wb.value) {
                     return -1
@@ -149,7 +153,11 @@ export default function BoxVisualizationStats({ ...props }) {
                     <b>{uniqueUsersCount}</b>
                 </FormLabel>
                 <FormLabel text={strings.postPop}>
-                    <b>{mostActiveUser ? `${mostActiveUser.user} (${mostActiveUser.count} tweet${mostActiveUser.count === 1 ? "" : "s"})` : "❌"}</b>
+                    <b>{mostActiveUser
+                        ? `${mostActiveUser.user} (${mostActiveUser.count} tweet${mostActiveUser.count === 1
+                                                                                  ? ""
+                                                                                  : "s"})`
+                        : "❌"}</b>
                 </FormLabel>
             </FormLabelled>
         </BoxFullScrollable>

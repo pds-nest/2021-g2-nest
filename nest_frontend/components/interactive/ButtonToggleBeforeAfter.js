@@ -1,17 +1,15 @@
-import React, { useContext, useState } from "react"
+import React, { useContext } from "react"
 import Style from "./ButtonToggleBeforeAfter.module.css"
 import classNames from "classnames"
 import Button from "../base/Button"
 import ContextLanguage from "../../contexts/ContextLanguage"
 
 
-export default function ButtonToggleBeforeAfter({ onUpdate, className, ...props }) {
-    const [value, setValue] = useState(false)
+export default function ButtonToggleBeforeAfter({ isBefore, setBefore, className, ...props }) {
     const { strings } = useContext(ContextLanguage)
 
     const onButtonClick = () => {
-        onUpdate(!value)
-        setValue(value => !value)
+        setBefore(a => !a)
     }
 
     return (
@@ -21,7 +19,7 @@ export default function ButtonToggleBeforeAfter({ onUpdate, className, ...props 
             onClick={onButtonClick}
             {...props}
         >
-            {value ? strings.timeBefore : strings.timeAfter}
+            {isBefore ? strings.timeBefore : strings.timeAfter}
         </Button>
     )
 }

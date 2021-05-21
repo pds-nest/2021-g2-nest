@@ -1,10 +1,11 @@
-import {Location} from "./location"
+import { Location } from "./location"
 import {
     faAt,
+    faClock,
     faFilter,
-    faFont, faHashtag,
+    faFont,
+    faHashtag,
     faLocationArrow,
-    faMap,
     faMapMarkerAlt,
     faMapPin,
 } from "@fortawesome/free-solid-svg-icons"
@@ -38,6 +39,7 @@ export class Filter {
     }
 }
 
+
 export class ContainsFilter extends Filter {
     word
 
@@ -68,7 +70,7 @@ export class HashtagFilter extends ContainsFilter {
     hashtag
 
     constructor(negate, hashtag) {
-        super(negate, `#${hashtag}`);
+        super(negate, `#${hashtag}`)
         this.hashtag = hashtag
     }
 
@@ -109,15 +111,12 @@ export class UserFilter extends Filter {
 
 
 export class HasLocationFilter extends Filter {
-    hasLocation
-
-    constructor(negate, hasLocation) {
+    constructor(negate) {
         super(negate)
-        this.hasLocation = hasLocation
     }
 
     check(tweet) {
-        return (tweet["location"] !== null) === this.hasLocation
+        return Boolean(tweet["location"])
     }
 
     color() {
@@ -129,21 +128,18 @@ export class HasLocationFilter extends Filter {
     }
 
     text() {
-        return this.hasLocation
+        return ""
     }
 }
 
 
 export class HasPlaceFilter extends Filter {
-    hasPlace
-
-    constructor(negate, hasPlace) {
+    constructor(negate) {
         super(negate)
-        this.hasPlace = hasPlace
     }
 
     check(tweet) {
-        return (tweet["place"] !== null) === this.hasPlace
+        return Boolean(tweet["place"])
     }
 
     color() {
@@ -155,7 +151,7 @@ export class HasPlaceFilter extends Filter {
     }
 
     text() {
-        return this.hasPlace
+        return ""
     }
 }
 
@@ -165,7 +161,7 @@ export class LocationRadiusFilter extends HasLocationFilter {
     radius
 
     constructor(negate, center, radius) {
-        super(negate, true);
+        super(negate)
         this.center = center
         this.radius = radius
     }
@@ -175,12 +171,12 @@ export class LocationRadiusFilter extends HasLocationFilter {
             return false
         }
 
-        // FIXME: assuming the earth is flat
+        // FIXME: Maths is hard
         const location = Location.fromTweet(tweet)
         const latDiff = Math.abs(location.lat - this.center.lat)
         const lngDiff = Math.abs(location.lng - this.center.lng)
         const squaredDistance = Math.pow(latDiff, 2) + Math.pow(lngDiff, 2)
-        const squaredRadius = Math.pow(radius, 2)
+        const squaredRadius = Math.pow(this.radius, 2)
 
         return squaredDistance < squaredRadius
     }
@@ -194,6 +190,32 @@ export class LocationRadiusFilter extends HasLocationFilter {
     }
 
     text() {
-        return `< ${this.radius} ${this.center.toString()}`
+        return `< ${this.radius}m ${this.center.lat.toFixed(3)} ${this.center.lng.toFixed(3)}`
+    }
+}
+
+
+export class AfterDatetimeFilter extends Filter {
+    datetime
+
+    constructor(negate, datetime) {
+        super(negate)
+        this.datetime = datetime
+    }
+
+    check(tweet) {
+        return this.datetime < new Date(tweet["insert_time"])
+    }
+
+    color() {
+        return "Yellow"
+    }
+
+    icon() {
+        return faClock
+    }
+
+    text() {
+        return `${this.negate ? "<" : ">"} ${this.datetime.toISOString()}`
     }
 }

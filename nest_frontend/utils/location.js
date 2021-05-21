@@ -15,7 +15,7 @@ export class Location {
         if(!match) {
             throw new Error(`Invalid location string: ${locString}`)
         }
-        const {lat, lng} = match.groups
+        const { lat, lng } = match.groups
         return new Location(lat, lng)
     }
 

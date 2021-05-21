@@ -1,39 +1,35 @@
 import React from "react"
 import BoxFull from "../base/BoxFull"
+import { faClock, faHashtag } from "@fortawesome/free-solid-svg-icons"
 import useRepositoryViewer from "../../hooks/useRepositoryViewer"
 import useStrings from "../../hooks/useStrings"
-import { ContainsFilter } from "../../utils/Filter"
-import FormInlineText from "./FormInlineText"
-import { faFont } from "@fortawesome/free-solid-svg-icons"
+import { AfterDatetimeFilter } from "../../utils/Filter"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import FormInlineBADatetime from "./FormInlineBADatetime"
 
 
-export default function BoxFilterContains({ ...props }) {
+export default function BoxFilterDatetime({ ...props }) {
     const strings = useStrings()
     const { appendFilter } = useRepositoryViewer()
 
-    const submit = value => {
-        appendFilter(new ContainsFilter(false, value))
+    const submit = ({ date, isBefore }) => {
+        appendFilter(new AfterDatetimeFilter(isBefore, date))
     }
 
-    // TODO: add this string
     return (
         <BoxFull
             header={
                 <span>
                     {strings.searchBy}
                     &nbsp;
-                    <FontAwesomeIcon icon={faFont}/>
+                    <FontAwesomeIcon icon={faClock}/>
                     &nbsp;
-                    {strings.byContents}
+                    {strings.byTimePeriod}
                 </span>
             }
             {...props}
         >
-            <FormInlineText
-                submit={submit}
-                placeholder={"cat in the box"}
-            />
+            <FormInlineBADatetime submit={submit}/>
         </BoxFull>
     )
 }

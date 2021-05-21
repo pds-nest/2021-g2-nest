@@ -4,8 +4,8 @@ import ContextRepositoryViewer from "../../contexts/ContextRepositoryViewer"
 import ButtonPicker from "./ButtonPicker"
 
 
-export default function PickerVisualization({...props}) {
-    const {visualizationTab, setVisualizationTab} = useContext(ContextRepositoryViewer)
+export default function PickerVisualization({ ...props }) {
+    const { visualizationTab, setVisualizationTab } = useContext(ContextRepositoryViewer)
 
     return (
         <div {...props}>

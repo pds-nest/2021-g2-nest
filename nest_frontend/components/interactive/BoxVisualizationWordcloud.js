@@ -9,7 +9,7 @@ import { ContainsFilter } from "../../utils/Filter"
 
 export default function BoxVisualizationWordcloud({ ...props }) {
     const { strings } = useContext(ContextLanguage)
-    const {words, appendFilter} = useContext(ContextRepositoryViewer)
+    const { words, appendFilter } = useContext(ContextRepositoryViewer)
 
     if(words.length === 0) {
         return (
@@ -27,7 +27,7 @@ export default function BoxVisualizationWordcloud({ ...props }) {
         <BoxWordcloud
             header={strings.wordcloud}
             words={words}
-            callbacks={{onWordClick}}
+            callbacks={{ onWordClick }}
             {...props}
         />
     )

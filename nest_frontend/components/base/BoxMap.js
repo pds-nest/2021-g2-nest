@@ -1,25 +1,33 @@
-import React from "react"
+import React, { useCallback, useEffect, useMemo, useState } from "react"
 import Style from "./BoxMap.module.css"
 import BoxFull from "./BoxFull"
 import { MapContainer, TileLayer } from "react-leaflet"
 
 
-export default function BoxMap({
-                                   setMap,
-                                   startingPosition = { lat: 41.89309, lng: 12.48289 },
-                                   startingZoom = 3,
-                                   button,
-                                   children,
-                                   ...props
-                               }) {
-    return (
-        <BoxFull
-            childrenClassName={Style.BoxMapContents}
-            {...props}
-        >
+export default function BoxMap(
+    {
+        mapViewHook,
+        button,
+        children,
+        ...props
+    }) {
+    const [map, setMap] = useState(null)
+
+    const onMapMove = useCallback(
+        () => mapViewHook.setCenter(map.getCenter()),
+        [mapViewHook, map],
+    )
+
+    const onMapZoom = useCallback(
+        () => mapViewHook.setZoom(map.getZoom()),
+        [mapViewHook, map],
+    )
+
+    const mapContainer = useMemo(
+        () => (
             <MapContainer
-                center={startingPosition}
-                zoom={startingZoom}
+                center={[mapViewHook.center.lat, mapViewHook.center.lng]}
+                zoom={mapViewHook.zoom}
                 className={Style.MapContainer}
                 whenCreated={setMap}
             >
@@ -34,6 +42,33 @@ export default function BoxMap({
                     </div>
                 </div>
             </MapContainer>
+        ),
+        [mapViewHook],
+    )
+
+    useEffect(
+        () => {
+            if(map === null) {
+                return
+            }
+
+            map.on("move", onMapMove)
+            map.on("zoom", onMapZoom)
+
+            return () => {
+                map.off("move", onMapMove)
+                map.off("zoom", onMapZoom)
+            }
+        },
+        [map, mapViewHook]
+    )
+
+    return (
+        <BoxFull
+            childrenClassName={Style.BoxMapContents}
+            {...props}
+        >
+            {mapContainer}
         </BoxFull>
     )
 }

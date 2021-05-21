@@ -3,7 +3,7 @@ import BoxFull from "./BoxFull"
 import ChartComponent from "react-chartjs-2"
 
 
-export default function BoxChart({chartProps, ...props}) {
+export default function BoxChart({ chartProps, ...props }) {
     const getCssVar = (variable) => {
         const computedStyle = window.getComputedStyle(document.querySelector("main"))
         return computedStyle.getPropertyValue(variable).trim()
@@ -23,7 +23,7 @@ export default function BoxChart({chartProps, ...props}) {
                             },
                             ticks: {
                                 color: getCssVar("--fg-primary"),
-                            }
+                            },
                         },
                         y: {
                             beginAtZero: true,
@@ -33,7 +33,7 @@ export default function BoxChart({chartProps, ...props}) {
                             },
                             ticks: {
                                 color: getCssVar("--fg-primary"),
-                            }
+                            },
                         },
                     },
                     elements: {
@@ -46,8 +46,8 @@ export default function BoxChart({chartProps, ...props}) {
                     plugins: {
                         legend: {
                             display: false,
-                        }
-                    }
+                        },
+                    },
                 }}
                 {...chartProps}
             />

@@ -1,19 +1,12 @@
-import React, { useContext, useState } from "react"
+import React, { useContext } from "react"
 import BoxFull from "../base/BoxFull"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faClock, faPlus } from "@fortawesome/free-solid-svg-icons"
-import InputWithIcon from "../base/InputWithIcon"
-import FormInline from "../base/FormInline"
-import Style from "./BoxConditionDatetime.module.css"
-import ButtonIconOnly from "../base/ButtonIconOnly"
+import { faClock } from "@fortawesome/free-solid-svg-icons"
 import useRepositoryEditor from "../../hooks/useRepositoryEditor"
-import ButtonToggleBeforeAfter from "./ButtonToggleBeforeAfter"
 import Condition from "../../utils/Condition"
 import convertToLocalISODate from "../../utils/convertToLocalISODate"
 import ContextLanguage from "../../contexts/ContextLanguage"
-
-
-const INVALID_USER_CHARACTERS = /[^0-9TZ:+-]/g
+import FormInlineBADatetime from "./FormInlineBADatetime"
 
 
 /**
@@ -25,30 +18,16 @@ const INVALID_USER_CHARACTERS = /[^0-9TZ:+-]/g
  * @constructor
  */
 export default function BoxConditionDatetime({ ...props }) {
-    const [datetime, setDatetime] = useState("")
-    const [ba, setBa] = useState(false)
     const { addCondition } = useRepositoryEditor()
     const { strings } = useContext(ContextLanguage)
 
-    const onInputChange = event => {
-        let text = event.target.value
-        text = text.toUpperCase()
-        text = text.replace(INVALID_USER_CHARACTERS, "")
-        return setDatetime(text)
-    }
-
-    const onButtonClick = e => {
-        const naive = new Date(datetime)
-        if(naive.toString() === "Invalid Date") {
-            console.debug("Refusing to add condition: ", naive, " is an Invalid Date.")
+    const submit = ({ date, isBefore }) => {
+        if(date.toString() === "Invalid Date") {
+            console.debug("Refusing to add condition: ", date, " is an Invalid Date.")
             return
         }
-        const aware = convertToLocalISODate(naive)
-        addCondition(new Condition("TIME", `${ba ? ">" : "<"} ${aware}`))
-        setDatetime("")
-
-        // Prevent reloading the page!
-        e.preventDefault()
+        const aware = convertToLocalISODate(date)
+        addCondition(new Condition("TIME", `${isBefore ? "<" : ">"} ${aware}`))
     }
 
     return (
@@ -64,24 +43,9 @@ export default function BoxConditionDatetime({ ...props }) {
             }
             {...props}
         >
-            <FormInline onSubmit={onButtonClick}>
-                <ButtonToggleBeforeAfter onUpdate={setBa}/>
-                <InputWithIcon
-                    className={Style.Input}
-                    id={"condition-datetime"}
-                    type={"datetime-local"}
-                    icon={faClock}
-                    value={datetime}
-                    onChange={onInputChange}
-                    placeholder={"2021-12-31T23:59Z"}
-                />
-                <ButtonIconOnly
-                    className={Style.Button}
-                    icon={faPlus}
-                    color={"Green"}
-                    onClick={onButtonClick}
-                />
-            </FormInline>
+            <FormInlineBADatetime
+                submit={submit}
+            />
         </BoxFull>
     )
 }

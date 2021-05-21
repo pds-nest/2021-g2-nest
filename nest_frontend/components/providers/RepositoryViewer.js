@@ -23,6 +23,10 @@ import ContextRepositoryViewer from "../../contexts/ContextRepositoryViewer"
 import BoxFilterContains from "../interactive/BoxFilterContains"
 import BoxFilterUser from "../interactive/BoxFilterUser"
 import BoxFilterHashtag from "../interactive/BoxFilterHashtag"
+import BoxFilterLocation from "../interactive/BoxFilterLocation"
+import useMapView from "../../hooks/useMapView"
+import BoxFilterDatetime from "../interactive/BoxFilterDatetime"
+import BoxFilterHasPlace from "../interactive/BoxFilterHasPlace"
 
 
 export default function RepositoryViewer({ id, className, ...props }) {
@@ -36,9 +40,11 @@ export default function RepositoryViewer({ id, className, ...props }) {
         setValue: setFilters,
         appendValue: appendFilter,
         spliceValue: spliceFilter,
-        removeValue: removeFilter
+        removeValue: removeFilter,
     } = useArrayState([])
 
+    // FIXME: this has a severe performance impact, investigate
+    const mapViewHook = useMapView()
 
     // Repository
     const repositoryBr = useBackendResource(
@@ -117,29 +123,33 @@ export default function RepositoryViewer({ id, className, ...props }) {
             {filterTab === "contains" ? <BoxFilterContains className={Style.AddFilter}/> : null}
             {filterTab === "hashtag" ? <BoxFilterHashtag className={Style.AddFilter}/> : null}
             {filterTab === "user" ? <BoxFilterUser className={Style.AddFilter}/> : null}
-            {filterTab === "time" ? "Time" : null}
-            {filterTab === "location" ? "Location" : null}
+            {filterTab === "time" ? <BoxFilterDatetime className={Style.AddFilter}/> : null}
+            {filterTab === "place" ? <BoxFilterHasPlace className={Style.AddFilter}/> : null}
+            {filterTab === "location" ? <BoxFilterLocation className={Style.AddFilter}/> : null}
         </>
     }
 
     return (
-        <ContextRepositoryViewer.Provider value={{
-            visualizationTab,
-            setVisualizationTab,
-            filterTab,
-            setFilterTab,
-            filters,
-            setFilters,
-            appendFilter,
-            spliceFilter,
-            removeFilter,
-            repositoryBr,
-            repository,
-            rawTweetsBv,
-            rawTweets,
-            tweets,
-            words,
-        }}>
+        <ContextRepositoryViewer.Provider
+            value={{
+                visualizationTab,
+                setVisualizationTab,
+                filterTab,
+                setFilterTab,
+                filters,
+                setFilters,
+                appendFilter,
+                spliceFilter,
+                removeFilter,
+                repositoryBr,
+                repository,
+                rawTweetsBv,
+                rawTweets,
+                tweets,
+                words,
+                mapViewHook,
+            }}
+        >
 
             <div className={classNames(Style.RepositoryViewer, className)} {...props}>
                 {contents}

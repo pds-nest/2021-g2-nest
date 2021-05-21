@@ -14,7 +14,7 @@ import BadgeFilter from "./BadgeFilter"
  */
 export default function BoxFilters({ ...props }) {
     const { strings } = useContext(ContextLanguage)
-    const {filters} = useContext(ContextRepositoryViewer)
+    const { filters } = useContext(ContextRepositoryViewer)
 
     const badges = filters.map((filter, pos) => <BadgeFilter key={pos} filter={filter}/>)
 

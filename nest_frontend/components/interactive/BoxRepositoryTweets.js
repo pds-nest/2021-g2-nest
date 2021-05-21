@@ -8,7 +8,7 @@ import ContextRepositoryViewer from "../../contexts/ContextRepositoryViewer"
 
 export default function BoxRepositoryTweets({ ...props }) {
     const { strings } = useContext(ContextLanguage)
-    const {tweets} = useContext(ContextRepositoryViewer)
+    const { tweets } = useContext(ContextRepositoryViewer)
 
     let content
     if(tweets.length === 0) {

@@ -34,7 +34,7 @@ export default function BoxWordcloud({ words, callbacks = {}, ...props }) {
                 callbacks={callbacks}
             />
         ),
-        [words]
+        [words],
     )
 
     return (
