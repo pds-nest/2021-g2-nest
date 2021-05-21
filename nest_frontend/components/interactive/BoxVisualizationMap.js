@@ -2,23 +2,20 @@ import React, { useContext } from "react"
 import BoxMap from "../base/BoxMap"
 import ContextLanguage from "../../contexts/ContextLanguage"
 import { Marker, Popup } from "react-leaflet"
+import { Location } from "../../utils/location"
+import ContextRepositoryViewer from "../../contexts/ContextRepositoryViewer"
 
 
-const locationRegex = /[{](?<lat>[0-9.]+),(?<lng>[0-9.]+)[}]/
-
-export default function BoxVisualizationMap({ tweets, ...props }) {
+export default function BoxVisualizationMap({ ...props }) {
     const { strings } = useContext(ContextLanguage)
+    const {tweets} = useContext(ContextRepositoryViewer)
 
     console.debug(tweets)
     const markers = tweets.filter(tweet => tweet.location).map(tweet => {
-        const match = locationRegex.exec(tweet.location)
-        if(!match) {
-            console.error("No match for location ", tweet.location)
-            return null
-        }
-        const { lat, lng } = match.groups
+        const location = Location.fromTweet(tweet)
+
         return (
-            <Marker key={tweet["snowflake"]} position={[Number.parseFloat(lat), Number.parseFloat(lng)]}>
+            <Marker key={tweet["snowflake"]} position={location.toArray()}>
                 <Popup>
                     <p>
                         {tweet["content"]}

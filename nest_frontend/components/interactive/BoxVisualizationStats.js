@@ -3,18 +3,21 @@ import FormLabelled from "../base/FormLabelled"
 import FormLabel from "../base/formparts/FormLabel"
 import ContextLanguage from "../../contexts/ContextLanguage"
 import BoxFullScrollable from "../base/BoxFullScrollable"
+import ContextRepositoryViewer from "../../contexts/ContextRepositoryViewer"
 
 
-export default function BoxVisualizationStats({ tweets, words, totalTweetCount, ...props }) {
+export default function BoxVisualizationStats({ ...props }) {
     const { strings } = useContext(ContextLanguage)
+    const {tweets, words, rawTweets} = useContext(ContextRepositoryViewer)
+
     const tweetCount = useMemo(
         () => tweets.length,
         [tweets],
     )
 
     const tweetPct = useMemo(
-        () => tweetCount / totalTweetCount * 100,
-        [tweetCount, totalTweetCount],
+        () => tweetCount / rawTweets.length * 100,
+        [tweetCount, rawTweets],
     )
 
     const tweetLocationCount = useMemo(
@@ -110,7 +113,7 @@ export default function BoxVisualizationStats({ tweets, words, totalTweetCount, 
         <BoxFullScrollable header={strings.stats} {...props}>
             <FormLabelled>
                 <FormLabel text={strings.totTweets}>
-                    <b>{totalTweetCount}</b>
+                    <b>{rawTweets.length}</b>
                 </FormLabel>
                 <FormLabel text={strings.dispTweets}>
                     <b>{tweetCount}</b>

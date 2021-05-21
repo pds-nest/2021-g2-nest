@@ -3,10 +3,12 @@ import BoxFullScrollable from "../base/BoxFullScrollable"
 import SummaryTweet from "./SummaryTweet"
 import ContextLanguage from "../../contexts/ContextLanguage"
 import Empty from "./Empty"
+import ContextRepositoryViewer from "../../contexts/ContextRepositoryViewer"
 
 
-export default function BoxRepositoryTweets({ tweets, ...props }) {
+export default function BoxRepositoryTweets({ ...props }) {
     const { strings } = useContext(ContextLanguage)
+    const {tweets} = useContext(ContextRepositoryViewer)
 
     let content
     if(tweets.length === 0) {

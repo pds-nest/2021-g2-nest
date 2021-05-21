@@ -1,23 +1,38 @@
-import React from "react"
+import React, { useContext } from "react"
 import ButtonIconOnly from "../base/ButtonIconOnly"
-import { faAt, faClock, faHashtag, faMapPin } from "@fortawesome/free-solid-svg-icons"
+import { faAt, faClock, faFont, faHashtag, faMapPin, faStar } from "@fortawesome/free-solid-svg-icons"
+import ButtonPicker from "./ButtonPicker"
+import ContextRepositoryViewer from "../../contexts/ContextRepositoryViewer"
 
 
-export default function PickerFilter({ currentTab, setTab, ...props }) {
+export default function PickerFilter({ ...props }) {
+    const {filterTab, setFilterTab} = useContext(ContextRepositoryViewer)
+
     return (
         <div {...props}>
-            <ButtonIconOnly
-                onClick={() => setTab("hashtag")} disabled={currentTab ===
-            "hashtag"} color={"Grey"} icon={faHashtag}
+            <ButtonPicker
+                currentTab={filterTab}
+                setTab={setFilterTab}
+                name={"contains"}
+                icon={faFont}
             />
-            <ButtonIconOnly onClick={() => setTab("user")} disabled={currentTab === "user"} color={"Grey"} icon={faAt}/>
-            <ButtonIconOnly
-                onClick={() => setTab("location")} disabled={currentTab ===
-            "location"} color={"Grey"} icon={faMapPin}
+            <ButtonPicker
+                currentTab={filterTab}
+                setTab={setFilterTab}
+                name={"user"}
+                icon={faAt}
             />
-            <ButtonIconOnly
-                onClick={() => setTab("time")} disabled={currentTab ===
-            "time"} color={"Grey"} icon={faClock}
+            <ButtonPicker
+                currentTab={filterTab}
+                setTab={setFilterTab}
+                name={"time"}
+                icon={faClock}
+            />
+            <ButtonPicker
+                currentTab={filterTab}
+                setTab={setFilterTab}
+                name={"location"}
+                icon={faMapPin}
             />
         </div>
     )

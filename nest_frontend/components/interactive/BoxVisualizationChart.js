@@ -3,10 +3,12 @@ import BoxFull from "../base/BoxFull"
 import BoxChart from "../base/BoxChart"
 import Empty from "./Empty"
 import ContextLanguage from "../../contexts/ContextLanguage"
+import ContextRepositoryViewer from "../../contexts/ContextRepositoryViewer"
 
 
-export default function BoxVisualizationChart({ tweets, ...props }) {
+export default function BoxVisualizationChart({ ...props }) {
     const { strings } = useContext(ContextLanguage)
+    const {tweets} = useContext(ContextRepositoryViewer)
 
     const hours = [...Array(24).keys()].map(hour => hour.toString())
     const hourlyTweetCount = Array(24).fill(0)
