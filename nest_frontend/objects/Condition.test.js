@@ -1,7 +1,7 @@
-import "@testing-library/jest-dom/extend-expect"
 import { Condition, ConditionHashtag, ConditionLocation, ConditionTime, ConditionUser } from "./Condition"
 import TimeRay from "./TimeRay"
 import MapArea from "./MapArea"
+import Coordinates from "./Coordinates"
 
 
 test("Condition can be constructed", () => {
@@ -28,7 +28,7 @@ test("ConditionTime can be constructed", () => {
 })
 
 test("ConditionLocation can be constructed", () => {
-    const mapArea = new MapArea(1000, 0.000, 0.000)
+    const mapArea = new MapArea(1000, new Coordinates(0.000, 0.000))
 
     expect(new ConditionLocation(mapArea)).toBeTruthy()
     expect(new ConditionLocation(mapArea, 1)).toBeTruthy()
@@ -50,7 +50,7 @@ test("ConditionTime has the correct type", () => {
 })
 
 test("ConditionLocation has the correct type", () => {
-    const mapArea = new MapArea(1000, 0.000, 0.000)
+    const mapArea = new MapArea(1000, new Coordinates(0.000, 0.000))
 
     expect(new ConditionLocation(mapArea).type).toBe(3)
 })

@@ -1,23 +1,27 @@
+import {getDistance} from "geolib"
+
+
 /**
- * An area on a map, defined by a latitude `lat`, a longitude `lng` and a radius `rad` in meters.
+ * An area on a map, defined by a `center` and a `radius` in meters.
  */
 export default class MapArea {
+    radius
+    center
+
     /**
-     * @param rad - Radius of the area in meters.
-     * @param lat - Latitude of the center of the radius.
-     * @param lng - Longitude of the center of the radius.
+     * @param radius - The radius of the area in meters.
+     * @param center - The center of the area.
      */
-    constructor(rad, lat, lng) {
-        this.rad = rad
-        this.lat = lat
-        this.lng = lng
+    constructor(radius, center) {
+        this.radius = radius
+        this.center = center
     }
 
     /**
      * @returns {string}
      */
     toString() {
-        return `${this.rad} ${this.lat.toFixed(7)} ${this.lng.toFixed(7)}`
+        return `${this.radius} ${this.center.toString()}`
     }
 
     /**
@@ -26,9 +30,20 @@ export default class MapArea {
      * @returns {string}
      */
     toHumanString() {
-        if(this.rad >= 2000) {
-            const kmRadius = Math.round(this.rad / 1000)
-            return `${kmRadius}km ${this.lat.toFixed(3)} ${this.lng.toFixed(3)}`
+        if(this.radius >= 2000) {
+            const kmRadius = Math.round(this.radius / 1000)
+            return `${kmRadius}km ${this.center.toHumanString()}`
         }
+        return `${this.radius}m ${this.center.toHumanString()}`
+    }
+
+    /**
+     * Check if a pair of coordinates is included in the area.
+     *
+     * @param coords - The coordinates to check.
+     * @returns {boolean}
+     */
+    includes(coords) {
+        return getDistance(this.center.toGeolib(), coords.toGeolib()) <= this.radius
     }
 }
