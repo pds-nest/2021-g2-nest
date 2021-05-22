@@ -29,6 +29,8 @@ export default {
         byHashtag: "hashtag",
         byUser: "utente",
         byTimePeriod: "arco di tempo",
+        byContents: "contenuti",
+        byHasPlace: "localizzazione attiva?",
         timeBefore: "Prima",
         timeAfter: "Dopo",
         conditions: "Condizioni",
@@ -99,6 +101,7 @@ export default {
         imgTweetsPerc: "% di tweet con immagine",
         postUniq: "Totale utenti che hanno postato",
         postPop: "Utente più attivo",
+        filters: "Filtri",
     },
     // 🇬🇧
     en: {
@@ -119,6 +122,8 @@ export default {
         byHashtag: "hashtag",
         byUser: "user",
         byTimePeriod: "time period",
+        byContents: "contents",
+        byHasPlace: "is localized?",
         timeBefore: "Before",
         timeAfter: "After",
         conditions: "Conditions",
@@ -189,6 +194,7 @@ export default {
         imgTweetsPerc: "% of tweets with image",
         postUniq: "Unique posters",
         postPop: "Most active poster",
+        filters: "Filters",
     },
     // 🇫🇮
     fi: {
@@ -209,6 +215,8 @@ export default {
         byHashtag: "hashtagin mukaan",
         byUser: "käyttäjän mukaan",
         byTimePeriod: "aikajakson mukaan",
+        byContents: "sisältö",
+        byHasPlace: "on paikallistettu?",
         timeBefore: "Ennen",
         timeAfter: "Jälkeen",
         conditions: "Ehdot",
@@ -279,5 +287,6 @@ export default {
         imgTweetsPerc: "% twiiteistä, joissa on kuva",
         postUniq: "Ainutkertaiset käyttäjät",
         postPop: "Aktiivisimmat käyttäjät",
+        filters: "Suodattimet",
     },
 }

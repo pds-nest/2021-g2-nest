@@ -22,9 +22,9 @@ export default function BoxFilterHashtag({ ...props }) {
                 <span>
                     {strings.searchBy}
                     &nbsp;
-                    <FontAwesomeIcon icon={faClock}/>
+                    <FontAwesomeIcon icon={faHashtag}/>
                     &nbsp;
-                    {strings.byTimePeriod}
+                    {strings.byHashtag}
                 </span>
             }
             {...props}
