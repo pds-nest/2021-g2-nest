@@ -1,4 +1,11 @@
-import { IconDefinition, faQuestionCircle } from "@fortawesome/free-solid-svg-icons"
+import {
+    IconDefinition,
+    faQuestionCircle,
+    faHashtag,
+    faAt,
+    faClock,
+    faLocationArrow,
+} from "@fortawesome/free-solid-svg-icons"
 
 
 /**
@@ -40,7 +47,7 @@ export class Condition {
             color: "Grey",
             icon: faQuestionCircle,
             title: this.id,
-            content: this.content,
+            children: this.content,
         }
     }
 }
@@ -53,6 +60,15 @@ export class ConditionHashtag extends Condition {
     constructor(hashtag, id = null) {
         super(0, hashtag, id)
     }
+
+    display() {
+        return {
+            color: "Grey",
+            icon: faHashtag,
+            title: this.id,
+            children: this.content,
+        }
+    }
 }
 
 
@@ -62,6 +78,15 @@ export class ConditionHashtag extends Condition {
 export class ConditionUser extends Condition {
     constructor(user, id = null) {
         super(5, user, id)
+    }
+
+    display() {
+        return {
+            color: "Green",
+            icon: faAt,
+            title: this.id,
+            children: this.content,
+        }
     }
 }
 
@@ -76,6 +101,15 @@ export class ConditionTime extends Condition {
         super(2, timeRay.toString(), id)
         this.timeRay = timeRay
     }
+
+    display() {
+        return {
+            color: "Yellow",
+            icon: faClock,
+            title: this.id,
+            children: this.content,
+        }
+    }
 }
 
 
@@ -88,5 +122,14 @@ export class ConditionLocation extends Condition {
     constructor(mapArea, id = null) {
         super(3, mapArea.toString(), id)
         this.mapArea = mapArea
+    }
+
+    display() {
+        return {
+            color: "Red",
+            icon: faLocationArrow,
+            title: this.id,
+            children: this.mapArea.toHumanString(),
+        }
     }
 }
