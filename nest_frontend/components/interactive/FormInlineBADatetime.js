@@ -5,6 +5,7 @@ import { faClock, faPlus } from "@fortawesome/free-solid-svg-icons"
 import ButtonIconOnly from "../base/ButtonIconOnly"
 import Style from "./FormInlineText.module.css"
 import ButtonToggleBeforeAfter from "./ButtonToggleBeforeAfter"
+import TimeRay from "../../objects/TimeRay"
 
 
 const INVALID_CHARACTERS = /[^0-9TZ:+-]/g
@@ -26,10 +27,7 @@ export default function FormInlineBADatetime(
 
     const _onSubmit = event => {
         event.preventDefault()
-        submit({
-            date: new Date(value),
-            isBefore,
-        })
+        submit(new TimeRay(isBefore, new Date(value)))
         setValue("")
     }
 

@@ -1,36 +1,29 @@
 import React, { useCallback, useContext } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faMapPin, faPlus } from "@fortawesome/free-solid-svg-icons"
+import { faLocationArrow, faMapPin, faPlus } from "@fortawesome/free-solid-svg-icons"
 import ButtonIconOnly from "../base/ButtonIconOnly"
 import useRepositoryEditor from "../../hooks/useRepositoryEditor"
-import Condition from "../../utils/Condition"
 import ContextLanguage from "../../contexts/ContextLanguage"
 import BoxMap from "../base/BoxMap"
 import useMapAreaState from "../../hooks/useMapAreaState"
-import osmZoomLevels from "../../utils/osmZoomLevels"
+import { ConditionLocation } from "../../objects/Condition"
 
 
 /**
- * A {@link BoxFull} that allows the user to select a geographical location to use to filter tweets.
+ * A {@link BoxMap} that allows the user to select a geographical location, and then to add it as a
+ * {@link ConditionLocation} of a RepositoryEditor.
  *
  * @param props - Additional props to pass to the box.
  * @returns {JSX.Element}
  * @constructor
  */
-export default function BoxConditionMap({ ...props }) {
+export default function BoxConditionLocation({ ...props }) {
     const mapViewHook = useMapAreaState()
     const { addCondition } = useRepositoryEditor()
     const { strings } = useContext(ContextLanguage)
 
     const onButtonClick = useCallback(
-        () => {
-            const radius = mapViewHook.zoom * osmZoomLevels[mapViewHook.zoom]
-
-            addCondition(new Condition(
-                "COORDINATES",
-                `< ${radius} ${mapViewHook.center.lat} ${mapViewHook.center.lng}`,
-            ))
-        },
+        () => addCondition(new ConditionLocation(mapViewHook.mapArea)),
         [mapViewHook, addCondition]
     )
 
@@ -41,7 +34,7 @@ export default function BoxConditionMap({ ...props }) {
                 <span>
                     {strings.searchBy}
                     &nbsp;
-                    <FontAwesomeIcon icon={faMapPin}/>
+                    <FontAwesomeIcon icon={faLocationArrow}/>
                     &nbsp;
                     {strings.byZone}
                 </span>

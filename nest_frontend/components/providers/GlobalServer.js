@@ -14,6 +14,7 @@ import isString from "is-string"
  * @constructor
  */
 export default function GlobalServer({ children }) {
+    // TODO: Set this using an envvar
     const [server, setServer] = useLocalStorageState("server", "http://127.0.0.1:5000")
 
     /**

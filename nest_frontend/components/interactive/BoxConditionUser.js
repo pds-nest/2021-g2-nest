@@ -1,16 +1,16 @@
-import React, { useContext } from "react"
+import React, { useCallback, useContext } from "react"
 import BoxFull from "../base/BoxFull"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faAt } from "@fortawesome/free-solid-svg-icons"
 import useRepositoryEditor from "../../hooks/useRepositoryEditor"
-import Condition from "../../utils/Condition"
 import ContextLanguage from "../../contexts/ContextLanguage"
 import FormInlineUser from "./FormInlineUser"
+import { ConditionHashtag, ConditionUser } from "../../objects/Condition"
 
 
 /**
- * A {@link BoxFull} that allows the user to select a Twitter user to search for, and then to add it as a Condition
- * to the {@link ContextRepositoryEditor}.
+ * A {@link BoxFull} that allows the user to select a Twitter user to search for, and then to add it as a
+ * {@link ConditionUser} of a RepositoryEditor.
  *
  * @param props - Additional props to pass to the box.
  * @returns {JSX.Element}
@@ -20,9 +20,10 @@ export default function BoxConditionUser({ ...props }) {
     const { addCondition } = useRepositoryEditor()
     const { strings } = useContext(ContextLanguage)
 
-    const submit = value => {
-        addCondition(new Condition("USER", value))
-    }
+    const submit = useCallback(
+        value => addCondition(new ConditionUser(value)),
+        [addCondition]
+    )
 
     return (
         <BoxFull
