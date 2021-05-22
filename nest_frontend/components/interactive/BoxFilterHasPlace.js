@@ -5,7 +5,7 @@ import useRepositoryViewer from "../../hooks/useRepositoryViewer"
 import useStrings from "../../hooks/useStrings"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faLocationArrow, faPlus } from "@fortawesome/free-solid-svg-icons"
-import { HasPlaceFilter } from "../../utils/Filter"
+import { FilterWithPlace } from "../../utils/Filter"
 import ButtonIconOnly from "../base/ButtonIconOnly"
 
 
@@ -15,7 +15,7 @@ export default function BoxFilterHasPlace({ ...props }) {
     const { appendFilter } = useRepositoryViewer()
 
     const submit = () => {
-        appendFilter(new HasPlaceFilter(false))
+        appendFilter(new FilterWithPlace(false))
     }
 
     // TODO: translate this

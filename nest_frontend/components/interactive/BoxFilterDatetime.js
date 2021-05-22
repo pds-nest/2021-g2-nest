@@ -3,7 +3,7 @@ import BoxFull from "../base/BoxFull"
 import { faClock, faHashtag } from "@fortawesome/free-solid-svg-icons"
 import useRepositoryViewer from "../../hooks/useRepositoryViewer"
 import useStrings from "../../hooks/useStrings"
-import { AfterDatetimeFilter } from "../../utils/Filter"
+import { FilterInsideTimeRay } from "../../utils/Filter"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import FormInlineBADatetime from "./FormInlineBADatetime"
 
@@ -13,7 +13,7 @@ export default function BoxFilterDatetime({ ...props }) {
     const { appendFilter } = useRepositoryViewer()
 
     const submit = ({ date, isBefore }) => {
-        appendFilter(new AfterDatetimeFilter(isBefore, date))
+        appendFilter(new FilterInsideTimeRay(isBefore, date))
     }
 
     return (

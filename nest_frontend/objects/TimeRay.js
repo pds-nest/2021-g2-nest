@@ -21,4 +21,8 @@ export default class TimeRay {
     toString() {
         return `${this.isBefore ? "<" : ">"} ${this.date.toISOString()}`
     }
+
+    includes(date) {
+        return Boolean((this.date > date) ^ this.isBefore)
+    }
 }

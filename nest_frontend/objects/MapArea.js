@@ -36,7 +36,7 @@ export default class MapArea {
      * @returns {string}
      */
     toString() {
-        return `${this.radius} ${this.center.toString()}`
+        return `< ${this.radius} ${this.center.toString()}`
     }
 
     /**
@@ -47,9 +47,9 @@ export default class MapArea {
     toHumanString() {
         if(this.radius >= 2000) {
             const kmRadius = Math.round(this.radius / 1000)
-            return `${kmRadius}km ${this.center.toHumanString()}`
+            return `< ${kmRadius}km ${this.center.toHumanString()}`
         }
-        return `${this.radius}m ${this.center.toHumanString()}`
+        return `< ${this.radius}m ${this.center.toHumanString()}`
     }
 
     /**

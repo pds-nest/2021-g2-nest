@@ -6,7 +6,7 @@ import useStrings from "../../hooks/useStrings"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faMapPin } from "@fortawesome/free-solid-svg-icons"
 import FormInlineLocation from "./FormInlineLocation"
-import { LocationRadiusFilter } from "../../utils/Filter"
+import { FilterInsideMapArea } from "../../utils/Filter"
 
 
 export default function BoxFilterLocation({ ...props }) {
@@ -15,7 +15,7 @@ export default function BoxFilterLocation({ ...props }) {
     const { appendFilter, mapViewHook } = useRepositoryViewer()
 
     const submit = () => {
-        appendFilter(new LocationRadiusFilter(false, mapViewHook.center, mapViewHook.radius))
+        appendFilter(new FilterInsideMapArea(false, mapViewHook.center, mapViewHook.radius))
     }
 
     return (

@@ -4,7 +4,7 @@ import ContextLanguage from "../../contexts/ContextLanguage"
 import BoxFull from "../base/BoxFull"
 import Empty from "./Empty"
 import ContextRepositoryViewer from "../../contexts/ContextRepositoryViewer"
-import { ContainsFilter } from "../../utils/Filter"
+import { FilterContains } from "../../utils/Filter"
 
 
 export default function BoxVisualizationWordcloud({ ...props }) {
@@ -20,7 +20,7 @@ export default function BoxVisualizationWordcloud({ ...props }) {
     }
 
     const onWordClick = word => {
-        appendFilter(new ContainsFilter(false, word.text))
+        appendFilter(new FilterContains(false, word.text))
     }
 
     return (
