@@ -1,7 +1,7 @@
 import isString from "is-string"
 
 
-export default function makeURLSearchParams(obj) {
+URLSearchParams.fromSerializableObject = function(obj) {
     let usp = new URLSearchParams()
     for(const key in obj) {
         if(!obj.hasOwnProperty(key)) {

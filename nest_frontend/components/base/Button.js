@@ -1,7 +1,7 @@
 import React from "react"
 import Style from "./Button.module.css"
 import classNames from "classnames"
-import make_icon from "../../utils/make_icon"
+import makeIcon from "../../utils/makeIcon"
 
 
 /**
@@ -26,7 +26,7 @@ export default function Button({ children, disabled, onClick, className, color, 
             disabled={disabled}
             {...props}
         >
-            {children} {make_icon(icon, Style.Icon)}
+            {children} {makeIcon(icon, {className: Style.Icon})}
         </button>
     )
 }
