@@ -2,7 +2,8 @@ import { useCallback, useState } from "react"
 
 
 /**
- * Hook with the same API as {@link React.useState} which stores its value in the browser's {@link localStorage}.
+ * Hook with the same API as {@link React.useState} which additionally stores its value in the browser's
+ * {@link localStorage}.
  */
 export default function useLocalStorageState(key, def) {
     /**

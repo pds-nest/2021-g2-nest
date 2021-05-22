@@ -6,7 +6,7 @@ import useRepositoryEditor from "../../hooks/useRepositoryEditor"
 import Condition from "../../utils/Condition"
 import ContextLanguage from "../../contexts/ContextLanguage"
 import BoxMap from "../base/BoxMap"
-import useMapView from "../../hooks/useMapView"
+import useMapAreaState from "../../hooks/useMapAreaState"
 import osmZoomLevels from "../../utils/osmZoomLevels"
 
 
@@ -18,7 +18,7 @@ import osmZoomLevels from "../../utils/osmZoomLevels"
  * @constructor
  */
 export default function BoxConditionMap({ ...props }) {
-    const mapViewHook = useMapView()
+    const mapViewHook = useMapAreaState()
     const { addCondition } = useRepositoryEditor()
     const { strings } = useContext(ContextLanguage)
 

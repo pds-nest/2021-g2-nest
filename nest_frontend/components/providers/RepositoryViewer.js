@@ -24,7 +24,7 @@ import BoxFilterContains from "../interactive/BoxFilterContains"
 import BoxFilterUser from "../interactive/BoxFilterUser"
 import BoxFilterHashtag from "../interactive/BoxFilterHashtag"
 import BoxFilterLocation from "../interactive/BoxFilterLocation"
-import useMapView from "../../hooks/useMapView"
+import useMapAreaState from "../../hooks/useMapAreaState"
 import BoxFilterDatetime from "../interactive/BoxFilterDatetime"
 import BoxFilterHasPlace from "../interactive/BoxFilterHasPlace"
 
@@ -44,7 +44,7 @@ export default function RepositoryViewer({ id, className, ...props }) {
     } = useArrayState([])
 
     // FIXME: this has a severe performance impact, investigate
-    const mapViewHook = useMapView()
+    const mapViewHook = useMapAreaState()
 
     // Repository
     const repositoryBr = useBackendResource(

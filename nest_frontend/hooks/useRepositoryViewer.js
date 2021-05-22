@@ -1,10 +1,9 @@
 import { useContext } from "react"
-import ContextRepositoryEditor from "../contexts/ContextRepositoryEditor"
 import ContextRepositoryViewer from "../contexts/ContextRepositoryViewer"
 
 
 /**
- * Hook to quickly use {@link ContextRepositoryEditor}.
+ * Hook to quickly use {@link ContextRepositoryViewer}.
  */
 export default function useRepositoryViewer() {
     const context = useContext(ContextRepositoryViewer)

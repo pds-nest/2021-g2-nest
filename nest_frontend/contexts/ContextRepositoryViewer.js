@@ -2,6 +2,8 @@ import { createContext } from "react"
 
 
 /**
- * Context to quickly pass props to the children of {@link RepositoryViewer}.
+ * React Context representing containing all variables of a {@link RepositoryViewer}.
+ *
+ * It is `null` outside a RepositoryViewer.
  */
 export default createContext(null)

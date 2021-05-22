@@ -8,7 +8,7 @@ import LocalizationStrings from "../LocalizationStrings"
  * - `setLang`: a function to change the current language
  * - `strings`: an object containing all strings of the current language
  *
- * Defaults to Italian.
+ * Defaults to Italian `it`.
  */
 export default createContext({
     lang: "it",

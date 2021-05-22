@@ -2,7 +2,7 @@ import { createContext } from "react"
 
 
 /**
- * A context containing an object with the following elements:
+ * A React Context containing an object with the following elements:
  * - `theme` - A string containing the name of the current theme.
  * - `setTheme` - A function that allows changing the `theme`.
  *

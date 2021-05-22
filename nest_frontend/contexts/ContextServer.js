@@ -2,7 +2,7 @@ import { createContext } from "react"
 
 
 /**
- * A context containing an object with the following values:
+ * A React Context containing an object with the following values:
  * - `server`: the base URL of the currently active backend server
  * - `setServer`: a function to change `server`
  * - `fetchData`: a function to fetch JSON data from the backend server
