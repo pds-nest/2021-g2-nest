@@ -1,20 +1,10 @@
-// Wow, JS, davvero?
-// Davvero tutte le date.toISOString() sono considerate UTC?
-// Wow.
-
-/**
- * Convert a {@link Date} object to a timezone aware ISO String, using the user's local timezone.
- *
- * @param date
- * @returns {string}
- */
-export default function convertToLocalISODate(date) {
-    if(date.toString() === "Invalid Date") {
+Date.prototype.toAwareISOString = function() {
+    if(this.toString() === "Invalid Date") {
         throw new Error("Data non valida ricevuta come parametro.")
     }
 
     // Create a timezone naive ISO string
-    const naive = date.toISOString()
+    const naive = this.toISOString()
 
     // Find the local timezone
     const tz = -new Date().getTimezoneOffset()

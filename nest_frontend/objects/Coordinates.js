@@ -15,6 +15,20 @@ export default class Coordinates {
     }
 
     /**
+     * Create a new {@link Coordinates} from the format used by the backend.
+     *
+     * @param str - The string to create the object from.
+     * @returns {Coordinates}
+     */
+    static fromCrawlerString(str) {
+        const match = /[{]([0-9.]+),([0-9.]+)[}]/.exec(str)
+        if(!match) {
+            throw new Error(`Invalid location string: ${str}`)
+        }
+        return new Coordinates(match[0], match[1])
+    }
+
+    /**
      * @returns {string}
      */
     toString() {
@@ -31,12 +45,21 @@ export default class Coordinates {
     }
 
     /**
-     * Transform the object in a Geolib compatible-one.
+     * Transform this object in a Geolib compatible-one.
      */
     toGeolib() {
         return {
             latitude: this.lat,
             longitude: this.lng,
         }
+    }
+
+    /**
+     * Transform this object in a 2-ple.
+     *
+     * @returns {[Number, Number]}
+     */
+    toArray() {
+        return [this.lat, this.lng]
     }
 }

@@ -1,4 +1,5 @@
 import {getDistance} from "geolib"
+import osmZoomLevels from "../utils/osmZoomLevels"
 
 
 /**
@@ -18,6 +19,20 @@ export default class MapArea {
     }
 
     /**
+     * Create a new {@link MapArea} from the [zoom level of OpenStreetMaps][1], assuming the window is
+     * ~400 pixels large.
+     *
+     * [1]: https://wiki.openstreetmap.org/wiki/Zoom_levels
+     *
+     * @param zoom
+     * @param center
+     * @returns {MapArea}
+     */
+    static fromZoomLevel(zoom, center) {
+        return new MapArea(osmZoomLevels[zoom], center)
+    }
+
+    /**
      * @returns {string}
      */
     toString() {
@@ -25,7 +40,7 @@ export default class MapArea {
     }
 
     /**
-     * Render the MapArea as an human-readable string.
+     * Render the {@link MapArea} as an human-readable string.
      *
      * @returns {string}
      */
