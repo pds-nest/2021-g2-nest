@@ -25,7 +25,7 @@ export default function FormInlineText(
         buttonIcon = faPlus,
         buttonColor = "Green",
         placeholder = "",
-        validate = value => value,
+        validate = val => val,
         submit,
         ...props
     },
