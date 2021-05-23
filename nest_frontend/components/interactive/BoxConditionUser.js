@@ -5,7 +5,7 @@ import { faAt } from "@fortawesome/free-solid-svg-icons"
 import useRepositoryEditor from "../../hooks/useRepositoryEditor"
 import ContextLanguage from "../../contexts/ContextLanguage"
 import FormInlineUser from "./FormInlineUser"
-import { ConditionHashtag, ConditionUser } from "../../objects/Condition"
+import { ConditionUser } from "../../objects/Condition"
 
 
 /**
@@ -22,7 +22,7 @@ export default function BoxConditionUser({ ...props }) {
 
     const submit = useCallback(
         value => addCondition(new ConditionUser(value)),
-        [addCondition]
+        [addCondition],
     )
 
     return (

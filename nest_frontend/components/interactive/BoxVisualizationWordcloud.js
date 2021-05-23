@@ -23,7 +23,7 @@ export default function BoxVisualizationWordcloud({ ...props }) {
         word => {
             appendFilter(new FilterContains(word.text))
         },
-        [appendFilter]
+        [appendFilter],
     )
 
     return (

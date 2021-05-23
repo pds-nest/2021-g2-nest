@@ -35,10 +35,10 @@ export default function BoxVisualizationChart({ ...props }) {
                             data: hourlyTweetCount,
                         },
                     ],
-                }
+                },
             }
         },
-        [tweets]
+        [tweets],
     )
 
     if(tweets.length === 0) {

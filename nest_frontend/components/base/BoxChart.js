@@ -52,7 +52,7 @@ export default function BoxChart({ chartProps, ...props }) {
                 {...chartProps}
             />
         ),
-        [chartProps]
+        [chartProps],
     )
 
     return (

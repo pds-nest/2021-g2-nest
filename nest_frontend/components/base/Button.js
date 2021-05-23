@@ -26,7 +26,7 @@ export default function Button({ children, disabled, onClick, className, color, 
             disabled={disabled}
             {...props}
         >
-            {children} {makeIcon(icon, {className: Style.Icon})}
+            {children} {makeIcon(icon, { className: Style.Icon })}
         </button>
     )
 }

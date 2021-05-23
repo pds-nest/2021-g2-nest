@@ -3,7 +3,7 @@ import BoxFull from "../base/BoxFull"
 import useRepositoryViewer from "../../hooks/useRepositoryViewer"
 import useStrings from "../../hooks/useStrings"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faLocationArrow, faMapPin } from "@fortawesome/free-solid-svg-icons"
+import { faLocationArrow } from "@fortawesome/free-solid-svg-icons"
 import FormInlineLocation from "./FormInlineLocation"
 import { FilterInsideMapArea } from "../../objects/Filter"
 

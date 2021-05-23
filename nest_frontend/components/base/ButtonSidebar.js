@@ -31,7 +31,7 @@ export default function ButtonSidebar({ icon, children, to, className, ...props 
     return (
         <Link to={to} className={Style.ButtonLink}>
             <div className={classNames(Style.ButtonSidebar, "Clickable", className)} {...props}>
-                {makeIcon(icon, {className: Style.ButtonIcon})}
+                {makeIcon(icon, { className: Style.ButtonIcon })}
                 <div className={Style.ButtonText}>
                     {children}
                 </div>

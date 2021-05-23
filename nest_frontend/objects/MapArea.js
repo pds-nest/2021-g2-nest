@@ -1,4 +1,4 @@
-import {getDistance} from "geolib"
+import { getDistance } from "geolib"
 import osmZoomLevels from "../utils/osmZoomLevels"
 
 

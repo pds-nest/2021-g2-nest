@@ -35,10 +35,10 @@ export default function GlobalLanguage({ children }) {
                 return <i className={Style.MissingString} title={name}>MISSING STRING</i>
             }
         },
-        [lang]
+        [lang],
     )
 
-    const strings = new Proxy({}, {get: getString})
+    const strings = new Proxy({}, { get: getString })
 
 
     return (

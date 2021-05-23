@@ -4,10 +4,10 @@ import {
     faAt,
     faClock,
     faFont,
-    faHashtag, faImage,
+    faHashtag,
+    faImage,
     faLocationArrow,
     faMapMarkerAlt,
-    faMapPin,
 } from "@fortawesome/free-solid-svg-icons"
 import ButtonPicker from "./ButtonPicker"
 import ContextRepositoryViewer from "../../contexts/ContextRepositoryViewer"

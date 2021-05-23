@@ -20,7 +20,9 @@ export default function BoxVisualizationMap({ ...props }) {
     const markers = useMemo(
         () => {
             return tweets.filter(tweet => tweet.location).map(tweet => {
-                if(!tweet.location) return null
+                if(!tweet.location) {
+                    return null
+                }
 
                 const coords = Coordinates.fromCrawlerString(tweet.location)
 

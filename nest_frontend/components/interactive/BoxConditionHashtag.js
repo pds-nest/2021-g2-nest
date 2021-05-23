@@ -22,7 +22,7 @@ export default function BoxConditionHashtag({ ...props }) {
 
     const submit = useCallback(
         value => addCondition(new ConditionHashtag(value)),
-        [addCondition]
+        [addCondition],
     )
 
     return (

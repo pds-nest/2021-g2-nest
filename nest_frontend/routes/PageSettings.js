@@ -1,7 +1,6 @@
 import React, { useContext } from "react"
 import Style from "./PageSettings.module.css"
 import classNames from "classnames"
-import BoxHeader from "../components/base/BoxHeader"
 import BoxFull from "../components/base/BoxFull"
 import SelectTheme from "../components/interactive/SelectTheme"
 import BoxLoggedIn from "../components/interactive/BoxLoggedIn"

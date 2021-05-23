@@ -34,7 +34,9 @@ export default function FormInlineText(
 
     const _onSubmit = event => {
         event.preventDefault()
-        if(!value) return
+        if(!value) {
+            return
+        }
         submit(value)
         setValue("")
     }

@@ -27,7 +27,7 @@ export default function BoxRepositoryTweets({ ...props }) {
                 return tweets.map(tweet => <SummaryTweet key={tweet["snowflake"]} tweet={tweet}/>)
             }
         },
-        [tweets]
+        [tweets],
     )
 
 

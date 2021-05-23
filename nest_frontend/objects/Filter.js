@@ -3,10 +3,10 @@ import {
     faClock,
     faFilter,
     faFont,
-    faHashtag, faImage,
+    faHashtag,
+    faImage,
     faLocationArrow,
     faMapMarkerAlt,
-    faMapPin,
 } from "@fortawesome/free-solid-svg-icons"
 
 
@@ -47,7 +47,7 @@ export class Filter {
         return {
             color: "Grey",
             icon: faFilter,
-            children: this.negate ? "False" : "True"
+            children: this.negate ? "False" : "True",
         }
     }
 }
@@ -72,7 +72,7 @@ export class FilterContains extends Filter {
         return {
             color: "Grey",
             icon: faFont,
-            children: this.string
+            children: this.string,
         }
     }
 }
@@ -93,7 +93,7 @@ export class FilterHashtag extends FilterContains {
         return {
             color: "Grey",
             icon: faHashtag,
-            children: this.hashtag
+            children: this.hashtag,
         }
     }
 }
@@ -118,7 +118,7 @@ export class FilterPoster extends Filter {
         return {
             color: "Green",
             icon: faAt,
-            children: this.poster
+            children: this.poster,
         }
     }
 }
@@ -140,7 +140,7 @@ export class FilterWithLocation extends Filter {
         return {
             color: "Red",
             icon: faLocationArrow,
-            children: ""
+            children: "",
         }
     }
 }
@@ -162,7 +162,7 @@ export class FilterWithPlace extends Filter {
         return {
             color: "Red",
             icon: faMapMarkerAlt,
-            children: ""
+            children: "",
         }
     }
 }
@@ -191,7 +191,7 @@ export class FilterInsideMapArea extends FilterWithLocation {
         return {
             color: "Red",
             icon: faLocationArrow,
-            children: this.mapArea.toHumanString()
+            children: this.mapArea.toHumanString(),
         }
     }
 }
@@ -216,7 +216,7 @@ export class FilterInsideTimeRay extends Filter {
         return {
             color: "Yellow",
             icon: faClock,
-            children: this.timeRay.toString()
+            children: this.timeRay.toString(),
         }
     }
 }
@@ -238,7 +238,7 @@ export class FilterWithImage extends Filter {
         return {
             color: "Grey",
             icon: faImage,
-            children: ""
+            children: "",
         }
     }
 }

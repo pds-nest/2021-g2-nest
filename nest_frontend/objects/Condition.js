@@ -1,10 +1,10 @@
 import {
-    IconDefinition,
-    faQuestionCircle,
-    faHashtag,
     faAt,
     faClock,
+    faHashtag,
     faLocationArrow,
+    faQuestionCircle,
+    IconDefinition,
 } from "@fortawesome/free-solid-svg-icons"
 
 

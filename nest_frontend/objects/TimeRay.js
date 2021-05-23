@@ -23,6 +23,8 @@ export default class TimeRay {
     }
 
     includes(date) {
-        return Boolean((this.date > date) ^ this.isBefore)
+        return Boolean((
+            this.date > date
+        ) ^ this.isBefore)
     }
 }

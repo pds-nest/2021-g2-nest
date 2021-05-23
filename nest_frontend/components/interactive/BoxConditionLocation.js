@@ -24,7 +24,7 @@ export default function BoxConditionLocation({ ...props }) {
 
     const onButtonClick = useCallback(
         () => addCondition(new ConditionLocation(mapViewHook.mapArea)),
-        [mapViewHook, addCondition]
+        [mapViewHook, addCondition],
     )
 
     return (

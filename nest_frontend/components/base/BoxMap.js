@@ -60,7 +60,7 @@ export default function BoxMap(
                 map.off("zoom", onMapZoom)
             }
         },
-        [map, mapViewHook]
+        [map, mapViewHook],
     )
 
     return (

@@ -22,7 +22,7 @@ export default function BoxConditionDatetime({ ...props }) {
 
     const submit = useCallback(
         timeRay => addCondition(new ConditionTime(timeRay)),
-        [addCondition]
+        [addCondition],
     )
 
     return (

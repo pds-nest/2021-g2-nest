@@ -40,7 +40,9 @@ export default function FormInlineTimeRay(
 
     const _onSubmit = event => {
         event.preventDefault()
-        if(!value) return
+        if(!value) {
+            return
+        }
         console.debug(value)
         submit(new TimeRay(isBefore, new Date(value)))
         setValue("")

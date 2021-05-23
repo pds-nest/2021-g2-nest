@@ -41,7 +41,7 @@ export default function BoxFilterHasImage({ ...props }) {
             {...props}
         >
             <FormInline>
-                <div style={{"flex-grow": 1}}>
+                <div style={{ "flex-grow": 1 }}>
                     {strings.hasImageExplaination}
                 </div>
                 <ButtonIconOnly
