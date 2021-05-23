@@ -4,7 +4,7 @@ import {
     faAt,
     faClock,
     faFont,
-    faHashtag,
+    faHashtag, faImage,
     faLocationArrow,
     faMapMarkerAlt,
     faMapPin,
@@ -42,6 +42,12 @@ export default function PickerFilter({ ...props }) {
                 setTab={setFilterTab}
                 name={"user"}
                 icon={faAt}
+            />
+            <ButtonPicker
+                currentTab={filterTab}
+                setTab={setFilterTab}
+                name={"image"}
+                icon={faImage}
             />
             <ButtonPicker
                 currentTab={filterTab}

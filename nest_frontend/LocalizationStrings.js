@@ -9,7 +9,7 @@
  * "{number} km radius"
  * ```
  */
-export default {
+const LOCALIZATION = {
     // 🇮🇹
     it: {
         appName: "N.E.S.T.",
@@ -28,9 +28,10 @@ export default {
         byZone: "area",
         byHashtag: "hashtag",
         byUser: "utente",
+        byHasImage: "immagine",
         byTimePeriod: "arco di tempo",
         byContents: "contenuti",
-        byHasPlace: "localizzazione attiva?",
+        byHasPlace: "punto di interesse",
         timeBefore: "Prima",
         timeAfter: "Dopo",
         conditions: "Condizioni",
@@ -121,9 +122,10 @@ export default {
         byZone: "zone",
         byHashtag: "hashtag",
         byUser: "user",
+        byHasImage: "image",
         byTimePeriod: "time period",
         byContents: "contents",
-        byHasPlace: "is localized?",
+        byHasPlace: "point of interest",
         timeBefore: "Before",
         timeAfter: "After",
         conditions: "Conditions",
@@ -214,9 +216,10 @@ export default {
         byZone: "vyöhykkeen mukaan",
         byHashtag: "hashtagin mukaan",
         byUser: "käyttäjän mukaan",
+        byHasImage: "kuva",
         byTimePeriod: "aikajakson mukaan",
         byContents: "sisältö",
-        byHasPlace: "on paikallistettu?",
+        byHasPlace: "kiinnostuksen kohde",
         timeBefore: "Ennen",
         timeAfter: "Jälkeen",
         conditions: "Ehdot",

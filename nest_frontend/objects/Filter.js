@@ -3,7 +3,7 @@ import {
     faClock,
     faFilter,
     faFont,
-    faHashtag,
+    faHashtag, faImage,
     faLocationArrow,
     faMapMarkerAlt,
     faMapPin,
@@ -217,6 +217,28 @@ export class FilterInsideTimeRay extends Filter {
             color: "Yellow",
             icon: faClock,
             children: this.timeRay.toString()
+        }
+    }
+}
+
+
+/**
+ * Check if a tweet has an associated `image_url`.
+ */
+export class FilterWithImage extends Filter {
+    constructor(negate = false) {
+        super(negate)
+    }
+
+    check(tweet) {
+        return Boolean(tweet["image_url"])
+    }
+
+    display() {
+        return {
+            color: "Grey",
+            icon: faImage,
+            children: ""
         }
     }
 }
