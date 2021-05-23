@@ -29,7 +29,7 @@ export default function useBackendResource(
             if(!allowRetrieve) {
                 throw new ViewNotAllowedError("retrieve")
             }
-            return await apiRequest("GET", `${resourcePath}`, undefined, init)
+            return apiRequest("GET", `${resourcePath}`, undefined, init)
         },
         [apiRequest, allowRetrieve, resourcePath],
     )
@@ -39,7 +39,7 @@ export default function useBackendResource(
             if(!allowEdit) {
                 throw new ViewNotAllowedError("edit")
             }
-            return await apiRequest("PUT", `${resourcePath}`, data, init)
+            return apiRequest("PUT", `${resourcePath}`, data, init)
         },
         [apiRequest, allowEdit, resourcePath],
     )
@@ -49,7 +49,7 @@ export default function useBackendResource(
             if(!allowDestroy) {
                 throw new ViewNotAllowedError("destroy")
             }
-            return await apiRequest("DELETE", `${resourcePath}`, undefined, init)
+            return apiRequest("DELETE", `${resourcePath}`, undefined, init)
         },
         [apiRequest, allowDestroy, resourcePath],
     )
@@ -59,7 +59,7 @@ export default function useBackendResource(
             if(!allowAction) {
                 throw new ViewNotAllowedError("action")
             }
-            return await apiRequest(method, `${resourcePath}/${command}`, data, init)
+            return apiRequest(method, `${resourcePath}/${command}`, data, init)
         },
         [apiRequest, allowAction, resourcePath],
     )
