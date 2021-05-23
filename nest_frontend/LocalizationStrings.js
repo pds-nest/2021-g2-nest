@@ -9,7 +9,7 @@
  * "{number} km radius"
  * ```
  */
-const LOCALIZATION = {
+export default {
     // 🇮🇹
     it: {
         appName: "N.E.S.T.",
