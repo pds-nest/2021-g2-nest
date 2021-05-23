@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useMemo } from "react"
 import BoxFullScrollable from "../base/BoxFullScrollable"
 import SummaryTweet from "./SummaryTweet"
 import Empty from "./Empty"
@@ -18,13 +18,18 @@ export default function BoxRepositoryTweets({ ...props }) {
     const strings = useStrings()
     const { tweets } = useRepositoryViewer()
 
-    let content
-    if(tweets.length === 0) {
-        content = <Empty/>
-    }
-    else {
-        content = tweets.map(tweet => <SummaryTweet key={tweet["snowflake"]} tweet={tweet}/>)
-    }
+    const content = useMemo(
+        () => {
+            if(tweets.length === 0) {
+                return <Empty/>
+            }
+            else {
+                return tweets.map(tweet => <SummaryTweet key={tweet["snowflake"]} tweet={tweet}/>)
+            }
+        },
+        [tweets]
+    )
+
 
     return (
         <BoxFullScrollable header={strings.tweets} {...props}>
