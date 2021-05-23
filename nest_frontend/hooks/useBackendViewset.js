@@ -114,7 +114,7 @@ export default function useBackendViewset(resourcesPath, pkName,
     const retrieveResource = useCallback(
         async (pk) => {
             const refreshedResource = await apiRetrieve(pk)
-            setResources(resources => resources.map(resource => {
+            setResources(res => res.map(resource => {
                 if(resource[pkName] === pk) {
                     return refreshedResource
                 }
@@ -128,7 +128,7 @@ export default function useBackendViewset(resourcesPath, pkName,
     const createResource = useCallback(
         async (data) => {
             const newResource = await apiCreate(data)
-            setResources(resources => [...resources, newResource])
+            setResources(res => [...res, newResource])
             return newResource
         },
         [apiCreate],
@@ -137,7 +137,7 @@ export default function useBackendViewset(resourcesPath, pkName,
     const editResource = useCallback(
         async (pk, data) => {
             const editedResource = await apiEdit(pk, data)
-            setResources(resources => resources.map(resource => {
+            setResources(res => res.map(resource => {
                 if(resource[pkName] === pk) {
                     return editedResource
                 }
@@ -151,7 +151,7 @@ export default function useBackendViewset(resourcesPath, pkName,
     const destroyResource = useCallback(
         async (pk) => {
             await apiDestroy(pk)
-            setResources(resources => resources.filter(resource => resource[pkName] !== pk))
+            setResources(res => res.filter(resource => resource[pkName] !== pk))
             return null
         },
         [apiDestroy, pkName],
