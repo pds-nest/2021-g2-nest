@@ -2,7 +2,7 @@ import { createContext } from "react"
 
 
 /**
- * A context containing an object with the following values:
+ * A React Context containing an object with the following values:
  * - `user`: an object containing data about the currently logged in user
  * - `login`: a function accepting `email, password` as parameters which tries to login the user
  * - `logout`: a function accepting no parameters which logs the user out

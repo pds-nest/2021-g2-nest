@@ -58,7 +58,7 @@
         </list>
       </option>
     </inspection_tool>
-    <inspection_tool class="RegExpAnonymousGroup" enabled="true" level="WEAK WARNING" enabled_by_default="true" />
+    <inspection_tool class="RegExpAnonymousGroup" enabled="false" level="WEAK WARNING" enabled_by_default="false" />
     <inspection_tool class="RegExpEscapedMetaCharacter" enabled="true" level="WEAK WARNING" enabled_by_default="true" />
     <inspection_tool class="RegExpOctalEscape" enabled="true" level="WEAK WARNING" enabled_by_default="true" />
     <inspection_tool class="RegExpRedundantEscape" enabled="true" level="WEAK WARNING" enabled_by_default="true" />

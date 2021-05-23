@@ -11,6 +11,7 @@ module.exports = {
         config.roots = config.roots.map(root => root.replace("src", "nest_frontend"))
         config.collectCoverageFrom = config.collectCoverageFrom.map(root => root.replace("src", "nest_frontend"))
         config.testMatch = config.testMatch.map(root => root.replace("src", "nest_frontend"))
+        console.debug(config)
         return config;
     }
 }

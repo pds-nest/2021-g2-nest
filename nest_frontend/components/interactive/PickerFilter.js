@@ -1,10 +1,25 @@
 import React, { useContext } from "react"
 import ButtonIconOnly from "../base/ButtonIconOnly"
-import { faAt, faClock, faFont, faHashtag, faLocationArrow, faMapPin } from "@fortawesome/free-solid-svg-icons"
+import {
+    faAt,
+    faClock,
+    faFont,
+    faHashtag,
+    faLocationArrow,
+    faMapMarkerAlt,
+    faMapPin,
+} from "@fortawesome/free-solid-svg-icons"
 import ButtonPicker from "./ButtonPicker"
 import ContextRepositoryViewer from "../../contexts/ContextRepositoryViewer"
 
 
+/**
+ * Tab selector for the Add Filter box of a RepositoryViewer.
+ *
+ * @param props - Additional props to pass to the div.
+ * @returns {JSX.Element}
+ * @constructor
+ */
 export default function PickerFilter({ ...props }) {
     const { filterTab, setFilterTab, setVisualizationTab } = useContext(ContextRepositoryViewer)
 
@@ -38,7 +53,7 @@ export default function PickerFilter({ ...props }) {
                 currentTab={filterTab}
                 setTab={setFilterTab}
                 name={"place"}
-                icon={faLocationArrow}
+                icon={faMapMarkerAlt}
             />
             <ButtonIconOnly
                 onClick={() => {
@@ -47,7 +62,7 @@ export default function PickerFilter({ ...props }) {
                 }}
                 disabled={filterTab === "location"}
                 color={"Grey"}
-                icon={faMapPin}
+                icon={faLocationArrow}
             />
         </div>
     )

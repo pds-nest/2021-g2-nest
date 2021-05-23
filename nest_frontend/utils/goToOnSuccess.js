@@ -4,7 +4,6 @@
  * @param func - The function to decorate.
  * @param history - The history to push the destination to.
  * @param destination - The path of the destination.
- * @returns {(function(): void)|*}
  */
 export default function goToOnSuccess(func, history, destination) {
     return async (...args) => {

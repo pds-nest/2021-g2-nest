@@ -3,12 +3,17 @@ import FormInlineText from "./FormInlineText"
 import { faAt } from "@fortawesome/free-solid-svg-icons"
 
 
-// Official hashtag regex from https://stackoverflow.com/a/22490853/4334568
-// noinspection RegExpAnonymousGroup,LongLine
 const INVALID_CHARACTERS = /[^a-zA-Z0-9]/g
 
 
-export default function FormInlineUser({ submit, ...props }) {
+/**
+ * A {@link FormInline} allowing the user to select a Twitter user.
+ *
+ * @param props - Additional props to pass to the form.
+ * @returns {JSX.Element}
+ * @constructor
+ */
+export default function FormInlineUser({ ...props }) {
 
     const validate = value => {
         return value.replace(INVALID_CHARACTERS, "")
@@ -19,7 +24,6 @@ export default function FormInlineUser({ submit, ...props }) {
             textIcon={faAt}
             placeholder={"jack"}
             validate={validate}
-            submit={submit}
             {...props}
         />
     )

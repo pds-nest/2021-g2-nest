@@ -2,7 +2,7 @@ import React, { useCallback, useContext, useMemo, useState } from "react"
 import ContextRepositoryEditor from "../../contexts/ContextRepositoryEditor"
 import useArrayState from "../../hooks/useArrayState"
 import Style from "./RepositoryEditor.module.css"
-import BoxConditionMap from "../interactive/BoxConditionMap"
+import BoxConditionLocation from "../interactive/BoxConditionLocation"
 import BoxConditionHashtag from "../interactive/BoxConditionHashtag"
 import BoxConditionUser from "../interactive/BoxConditionUser"
 import BoxConditionDatetime from "../interactive/BoxConditionDatetime"
@@ -142,7 +142,7 @@ export default function RepositoryEditor({
             }}
         >
             <div className={classNames(Style.RepositoryEditor, className)}>
-                <BoxConditionMap className={Style.SearchByZone}/>
+                <BoxConditionLocation className={Style.SearchByZone}/>
                 <BoxConditionHashtag className={Style.SearchByHashtags}/>
                 <BoxConditionUser className={Style.SearchByUser}/>
                 <BoxConditionDatetime className={Style.SearchByTimePeriod}/>

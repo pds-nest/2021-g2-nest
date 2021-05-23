@@ -6,6 +6,14 @@ import SummaryText from "../base/summary/SummaryText"
 import SummaryRight from "../base/summary/SummaryRight"
 
 
+/**
+ * A {@link SummaryBase} representing a tweet.
+ *
+ * @param tweet - The tweet to represent.
+ * @param props - Additional props to pass to the summary.
+ * @returns {JSX.Element}
+ * @constructor
+ */
 export default function SummaryTweet({ tweet, ...props }) {
     let icon
     if(tweet["location"]) {

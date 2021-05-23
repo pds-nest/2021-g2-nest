@@ -1,14 +1,22 @@
-import React, { useContext } from "react"
+import React from "react"
 import BoxFullScrollable from "../base/BoxFullScrollable"
 import SummaryTweet from "./SummaryTweet"
-import ContextLanguage from "../../contexts/ContextLanguage"
 import Empty from "./Empty"
-import ContextRepositoryViewer from "../../contexts/ContextRepositoryViewer"
+import useRepositoryViewer from "../../hooks/useRepositoryViewer"
+import useStrings from "../../hooks/useStrings"
 
 
+/**
+ * A {@link BoxFullScrollable} rendering all the tweets currently displayed in a RepositoryViewer as
+ * {@link SummaryTweet}s.
+ *
+ * @param props - Additional props to pass to the box.
+ * @returns {JSX.Element}
+ * @constructor
+ */
 export default function BoxRepositoryTweets({ ...props }) {
-    const { strings } = useContext(ContextLanguage)
-    const { tweets } = useContext(ContextRepositoryViewer)
+    const strings = useStrings()
+    const { tweets } = useRepositoryViewer()
 
     let content
     if(tweets.length === 0) {

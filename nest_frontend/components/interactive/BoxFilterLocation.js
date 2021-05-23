@@ -1,21 +1,30 @@
 import React from "react"
 import BoxFull from "../base/BoxFull"
-import FormInline from "../base/FormInline"
 import useRepositoryViewer from "../../hooks/useRepositoryViewer"
 import useStrings from "../../hooks/useStrings"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faMapPin } from "@fortawesome/free-solid-svg-icons"
+import { faLocationArrow, faMapPin } from "@fortawesome/free-solid-svg-icons"
 import FormInlineLocation from "./FormInlineLocation"
-import { LocationRadiusFilter } from "../../utils/Filter"
+import { FilterInsideMapArea } from "../../objects/Filter"
 
 
+/**
+ * A {@link BoxFull} that allows the user to add a {@link FilterInsideMapArea} to a RepositoryViewer.
+ *
+ * It connects to the `mapViewHook` of the RepositoryViewer.
+ *
+ * @deprecated to be refactored
+ * @param props - Additional props to pass to the box.
+ * @returns {JSX.Element}
+ * @constructor
+ */
 export default function BoxFilterLocation({ ...props }) {
     const strings = useStrings()
 
     const { appendFilter, mapViewHook } = useRepositoryViewer()
 
     const submit = () => {
-        appendFilter(new LocationRadiusFilter(false, mapViewHook.center, mapViewHook.radius))
+        appendFilter(new FilterInsideMapArea(mapViewHook.mapArea))
     }
 
     return (
@@ -24,7 +33,7 @@ export default function BoxFilterLocation({ ...props }) {
                 <span>
                     {strings.searchBy}
                     &nbsp;
-                    <FontAwesomeIcon icon={faMapPin}/>
+                    <FontAwesomeIcon icon={faLocationArrow}/>
                     &nbsp;
                     {strings.byZone}
                 </span>

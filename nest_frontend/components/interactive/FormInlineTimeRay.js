@@ -5,12 +5,26 @@ import { faClock, faPlus } from "@fortawesome/free-solid-svg-icons"
 import ButtonIconOnly from "../base/ButtonIconOnly"
 import Style from "./FormInlineText.module.css"
 import ButtonToggleBeforeAfter from "./ButtonToggleBeforeAfter"
+import TimeRay from "../../objects/TimeRay"
 
 
-const INVALID_CHARACTERS = /[^0-9TZ:+-]/g
+const INVALID_CHARACTERS = /[^0-9TZ:+.-]/g
 
 
-export default function FormInlineBADatetime(
+/**
+ * A {@link FormInline} allowing the user to select a {@link TimeRay}.
+ *
+ * @param textIcon - The icon to display in the text field.
+ * @param buttonIcon - The icon to display on the submit button.
+ * @param buttonColor - The color of the submit button.
+ * @param placeholder - The placeholder of the text field.
+ * @param validate - Function <string -> string> called to set the value of the text field.
+ * @param submit - Function <{@link TimeRay}> called when the submit button is pressed.
+ * @param props - Additional props to pass to the form.
+ * @returns {JSX.Element}
+ * @constructor
+ */
+export default function FormInlineTimeRay(
     {
         textIcon = faClock,
         buttonIcon = faPlus,
@@ -26,15 +40,14 @@ export default function FormInlineBADatetime(
 
     const _onSubmit = event => {
         event.preventDefault()
-        submit({
-            date: new Date(value),
-            isBefore,
-        })
+        if(!value) return
+        console.debug(value)
+        submit(new TimeRay(isBefore, new Date(value)))
         setValue("")
     }
 
     const _onChange = event => {
-        setValue(validate(event.target.value.replace(INVALID_CHARACTERS, "")))
+        setValue(validate(event.target.value.toUpperCase().replace(INVALID_CHARACTERS, "")))
     }
 
     return (
@@ -56,6 +69,7 @@ export default function FormInlineBADatetime(
                 icon={buttonIcon}
                 color={buttonColor}
                 onClick={_onSubmit}
+                disabled={!value}
             />
         </FormInline>
     )

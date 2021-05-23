@@ -1,7 +1,7 @@
 import React from "react"
 import Style from "./ButtonSidebar.module.css"
 import classNames from "classnames"
-import make_icon from "../../utils/make_icon"
+import makeIcon from "../../utils/makeIcon"
 import { Link } from "react-router-dom"
 import { useRouteMatch } from "react-router"
 
@@ -31,7 +31,7 @@ export default function ButtonSidebar({ icon, children, to, className, ...props 
     return (
         <Link to={to} className={Style.ButtonLink}>
             <div className={classNames(Style.ButtonSidebar, "Clickable", className)} {...props}>
-                {make_icon(icon, Style.ButtonIcon)}
+                {makeIcon(icon, {className: Style.ButtonIcon})}
                 <div className={Style.ButtonText}>
                     {children}
                 </div>

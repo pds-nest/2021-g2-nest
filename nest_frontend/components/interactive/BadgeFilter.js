@@ -1,6 +1,6 @@
 import React, { useContext } from "react"
-import Badge from "../base/Badge"
 import ContextRepositoryViewer from "../../contexts/ContextRepositoryViewer"
+import Badge from "../base/Badge"
 
 
 /**
@@ -15,11 +15,8 @@ export default function BadgeFilter({ filter }) {
 
     return (
         <Badge
-            color={filter.color()}
-            icon={filter.icon()}
+            {...filter.display()}
             onClickDelete={() => removeFilter(filter)}
-        >
-            {filter.text()}
-        </Badge>
+        />
     )
 }

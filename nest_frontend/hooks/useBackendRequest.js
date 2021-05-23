@@ -1,7 +1,6 @@
 import { useCallback, useContext, useState } from "react"
 import ContextServer from "../contexts/ContextServer"
 import ContextUser from "../contexts/ContextUser"
-import makeURLSearchParams from "../utils/makeURLSearchParams"
 
 
 /**
@@ -45,7 +44,7 @@ export default function useBackendRequest() {
             // Use the body param as either search parameter or request body
             if(body) {
                 if(["GET", "HEAD"].includes(method.toUpperCase())) {
-                    path += makeURLSearchParams(body).toString()
+                    path += URLSearchParams.fromSerializableObject(body).toString()
                 }
                 else {
                     init["body"] = JSON.stringify(body)

@@ -8,6 +8,16 @@ import SummaryButton from "../base/summary/SummaryButton"
 import SummaryRight from "../base/summary/SummaryRight"
 
 
+/**
+ * A {@link SummaryBase} representing a N.E.S.T. user.
+ *
+ * @param user - The user to represent.
+ * @param destroyUser - Async function <string> to destroy an user from the frontend.
+ * @param running - Whether another request is already running.
+ * @param props - Additional props to pass to the summary.
+ * @returns {JSX.Element}
+ * @constructor
+ */
 export default function SummaryUser({ user, destroyUser, running, ...props }) {
     const { strings } = useContext(ContextLanguage)
 

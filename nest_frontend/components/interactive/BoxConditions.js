@@ -16,7 +16,7 @@ export default function BoxConditions({ ...props }) {
     const { conditions } = useRepositoryEditor()
     const { strings } = useContext(ContextLanguage)
 
-    const badges = conditions.map((cond, pos) => <BadgeCondition key={pos} {...cond}/>)
+    const badges = conditions.map((cond, pos) => <BadgeCondition key={pos} condition={cond}/>)
 
     return (
         <BoxFull header={strings.conditions} {...props}>

@@ -4,18 +4,25 @@ import FormInline from "../base/FormInline"
 import useRepositoryViewer from "../../hooks/useRepositoryViewer"
 import useStrings from "../../hooks/useStrings"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faLocationArrow, faPlus } from "@fortawesome/free-solid-svg-icons"
-import { HasPlaceFilter } from "../../utils/Filter"
+import { faLocationArrow, faMapMarkerAlt, faPlus } from "@fortawesome/free-solid-svg-icons"
+import { FilterWithPlace } from "../../objects/Filter"
 import ButtonIconOnly from "../base/ButtonIconOnly"
 
 
+/**
+ * A {@link BoxFull} that allows the user to add a {@link FilterWithPlace} to a RepositoryViewer.
+ *
+ * @param props - Additional props to pass to the box.
+ * @returns {JSX.Element}
+ * @constructor
+ */
 export default function BoxFilterHasPlace({ ...props }) {
     const strings = useStrings()
 
     const { appendFilter } = useRepositoryViewer()
 
     const submit = () => {
-        appendFilter(new HasPlaceFilter(false))
+        appendFilter(new FilterWithPlace())
     }
 
     // TODO: translate this
@@ -26,7 +33,7 @@ export default function BoxFilterHasPlace({ ...props }) {
                 <span>
                     {strings.searchBy}
                     &nbsp;
-                    <FontAwesomeIcon icon={faLocationArrow}/>
+                    <FontAwesomeIcon icon={faMapMarkerAlt}/>
                     &nbsp;
                     {strings.byHasPlace}
                 </span>
