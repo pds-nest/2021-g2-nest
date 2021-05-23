@@ -1,3 +1,27 @@
 .PageShare {
+    display: grid;
 
+    grid-template-areas:
+        "a"
+        "b"
+        "c";
+    grid-template-rows: auto 1fr 1fr;
+    grid-template-columns: 1fr;
+    grid-gap: 10px;
+
+    width: 100%;
+    height: 100%;
+}
+
+
+.Header {
+    grid-area: a;
+}
+
+.UserList {
+    grid-area: b;
+}
+
+.SharingWith {
+    grid-area: c;
 }

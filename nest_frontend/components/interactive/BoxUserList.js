@@ -9,13 +9,15 @@ import ContextLanguage from "../../contexts/ContextLanguage"
  * A {@link BoxFullScrollable} rendering an array of users as {@link SummaryUser}s.
  *
  * @param users - Array of users to render.
+ * @param shareWithUser - Async function to share a repository with an user, to be passed to {@link SummaryUser}.
+ * @param unshareWithUser - Async function to unshare a repository with an user, to be passed to {@link SummaryUser}.
  * @param destroyUser - Async function to destroy an user, to be passed to {@link SummaryUser}.
  * @param running - Whether another request is currently running.
  * @param props - Additional props to pass to the box.
  * @returns {JSX.Element}
  * @constructor
  */
-export default function BoxUserList({ users, destroyUser, running, ...props }) {
+export default function BoxUserList({ users, shareWithUser, unshareWithUser, destroyUser, running, ...props }) {
     const { strings } = useContext(ContextLanguage)
 
     let contents
@@ -23,8 +25,17 @@ export default function BoxUserList({ users, destroyUser, running, ...props }) {
         contents = <Loading/>
     }
     else {
-        contents = users.map(user =>
-            <SummaryUser key={user["email"]} destroyUser={destroyUser} running={running} user={user}/>)
+        contents = users.map(user => (
+                <SummaryUser
+                    key={user["email"]}
+                    shareWithUser={shareWithUser}
+                    unshareWithUser={unshareWithUser}
+                    destroyUser={destroyUser}
+                    running={running}
+                    user={user}
+                />
+            )
+        )
     }
 
     return (

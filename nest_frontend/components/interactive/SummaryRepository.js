@@ -35,6 +35,7 @@ export default function SummaryRepository(
                 title={repo.name}
                 subtitle={repo.owner ? repo.owner.username : null}
                 onClick={view}
+                disabled={running}
             />
 
             <SummaryLabels

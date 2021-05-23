@@ -24,8 +24,9 @@ h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-title);
 }
 
-*[disabled] {
-    cursor: not-allowed;
+*[disabled], .Disabled {
+    opacity: 0.5;
+    cursor: not-allowed !important;
 }
 
 a {

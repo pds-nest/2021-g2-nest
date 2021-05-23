@@ -4,11 +4,18 @@ import classNames from "classnames"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 
-export default function SummaryLeft({ icon, title, subtitle, className, onClick, ...props }) {
+export default function SummaryLeft({ icon, title, subtitle, className, onClick, disabled, ...props }) {
+    const _onClick = disabled ? null : onClick
+
     return (
         <div
-            className={classNames(Style.SummaryLeft, onClick ? "Clickable" : null, className)}
-            onClick={onClick}
+            className={classNames(
+                Style.SummaryLeft,
+                onClick ? "Clickable" : null,
+                (onClick && disabled) ? "Disabled" : null,
+                className
+            )}
+            onClick={_onClick}
             {...props}
         >
             <div className={Style.IconContainer}>
