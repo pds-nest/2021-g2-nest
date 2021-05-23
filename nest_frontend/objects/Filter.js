@@ -59,9 +59,9 @@ export class Filter {
 export class FilterContains extends Filter {
     string
 
-    constructor(word, negate = false) {
+    constructor(string, negate = false) {
         super(negate)
-        this.string = word.toLowerCase().trim()
+        this.string = string.toLowerCase().trim()
     }
 
     check(tweet) {
@@ -85,7 +85,7 @@ export class FilterHashtag extends FilterContains {
     hashtag
 
     constructor(hashtag, negate = false) {
-        super(negate, `#${hashtag}`)
+        super(`#${hashtag}`, negate)
         this.hashtag = hashtag
     }
 

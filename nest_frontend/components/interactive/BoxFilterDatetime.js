@@ -20,7 +20,7 @@ export default function BoxFilterDatetime({ ...props }) {
     const strings = useStrings()
     const { appendFilter } = useRepositoryViewer()
 
-    const submit = ({ timeRay }) => {
+    const submit = (timeRay) => {
         appendFilter(new FilterInsideTimeRay(timeRay))
     }
 

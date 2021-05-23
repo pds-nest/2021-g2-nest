@@ -1,6 +1,6 @@
 import React, { useCallback, useContext } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faLocationArrow, faMapPin, faPlus } from "@fortawesome/free-solid-svg-icons"
+import { faLocationArrow, faPlus } from "@fortawesome/free-solid-svg-icons"
 import ButtonIconOnly from "../base/ButtonIconOnly"
 import useRepositoryEditor from "../../hooks/useRepositoryEditor"
 import ContextLanguage from "../../contexts/ContextLanguage"

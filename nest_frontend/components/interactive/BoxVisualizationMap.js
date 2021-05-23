@@ -2,7 +2,7 @@ import React, { useContext, useMemo } from "react"
 import BoxMap from "../base/BoxMap"
 import ContextLanguage from "../../contexts/ContextLanguage"
 import { Marker, Popup } from "react-leaflet"
-import { Location } from "../../objects/location"
+import Coordinates from "../../objects/Coordinates"
 import ContextRepositoryViewer from "../../contexts/ContextRepositoryViewer"
 
 
@@ -20,10 +20,12 @@ export default function BoxVisualizationMap({ ...props }) {
     const markers = useMemo(
         () => {
             return tweets.filter(tweet => tweet.location).map(tweet => {
-                const location = Location.fromTweet(tweet)
+                if(!tweet.location) return null
+
+                const coords = Coordinates.fromCrawlerString(tweet.location)
 
                 return (
-                    <Marker key={tweet["snowflake"]} position={location.toArray()}>
+                    <Marker key={tweet["snowflake"]} position={coords.toLatLng()}>
                         <Popup>
                             <p>
                                 {tweet["content"]}

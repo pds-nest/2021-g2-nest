@@ -1,6 +1,6 @@
 import React from "react"
 import BoxFull from "../base/BoxFull"
-import { faClock } from "@fortawesome/free-solid-svg-icons"
+import { faClock, faHashtag } from "@fortawesome/free-solid-svg-icons"
 import useRepositoryViewer from "../../hooks/useRepositoryViewer"
 import useStrings from "../../hooks/useStrings"
 import { FilterHashtag } from "../../objects/Filter"
@@ -30,9 +30,9 @@ export default function BoxFilterHashtag({ ...props }) {
                 <span>
                     {strings.searchBy}
                     &nbsp;
-                    <FontAwesomeIcon icon={faClock}/>
+                    <FontAwesomeIcon icon={faHashtag}/>
                     &nbsp;
-                    {strings.byTimePeriod}
+                    {strings.byHashtag}
                 </span>
             }
             {...props}

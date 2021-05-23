@@ -4,7 +4,7 @@ import FormInline from "../base/FormInline"
 import useRepositoryViewer from "../../hooks/useRepositoryViewer"
 import useStrings from "../../hooks/useStrings"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faLocationArrow, faPlus } from "@fortawesome/free-solid-svg-icons"
+import { faLocationArrow, faMapMarkerAlt, faPlus } from "@fortawesome/free-solid-svg-icons"
 import { FilterWithPlace } from "../../objects/Filter"
 import ButtonIconOnly from "../base/ButtonIconOnly"
 
@@ -33,7 +33,7 @@ export default function BoxFilterHasPlace({ ...props }) {
                 <span>
                     {strings.searchBy}
                     &nbsp;
-                    <FontAwesomeIcon icon={faLocationArrow}/>
+                    <FontAwesomeIcon icon={faMapMarkerAlt}/>
                     &nbsp;
                     {strings.byHasPlace}
                 </span>

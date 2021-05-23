@@ -1,6 +1,9 @@
 /**
  * A pair of coordinates, latitude `lat` and longitude `lng`.
  */
+import { LatLng } from "leaflet/dist/leaflet-src.esm"
+
+
 export default class Coordinates {
     lat
     lng
@@ -25,7 +28,7 @@ export default class Coordinates {
         if(!match) {
             throw new Error(`Invalid location string: ${str}`)
         }
-        return new Coordinates(match[0], match[1])
+        return new Coordinates(match[1], match[2])
     }
 
     /**
@@ -61,5 +64,14 @@ export default class Coordinates {
      */
     toArray() {
         return [this.lat, this.lng]
+    }
+
+    /**
+     * Transform this object in a {@link LatLng} / Leaflet compatible-one.
+     *
+     * @returns {LatLng}
+     */
+    toLatLng() {
+        return new LatLng(this.lat, this.lng)
     }
 }

@@ -11,12 +11,11 @@ const INVALID_CHARACTERS = /([^a-z0-9_\u00c0-\u00d6\u00d8-\u00f6\u00f8-\u00ff\u0
 /**
  * A {@link FormInline} allowing the user to select a Twitter hashtag.
  *
- * @param submit - Function <string> called when the submit button is pressed.
  * @param props - Additional props to pass to the form.
  * @returns {JSX.Element}
  * @constructor
  */
-export default function FormInlineHashtag({ submit, ...props }) {
+export default function FormInlineHashtag({ ...props }) {
 
     const validate = value => {
         return value.replace(INVALID_CHARACTERS, "")
@@ -27,7 +26,6 @@ export default function FormInlineHashtag({ submit, ...props }) {
             textIcon={faHashtag}
             placeholder={"hashtag"}
             validate={validate}
-            submit={submit}
             {...props}
         />
     )

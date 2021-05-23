@@ -3,7 +3,7 @@ import BoxFull from "../base/BoxFull"
 import useRepositoryViewer from "../../hooks/useRepositoryViewer"
 import useStrings from "../../hooks/useStrings"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faMapPin } from "@fortawesome/free-solid-svg-icons"
+import { faLocationArrow, faMapPin } from "@fortawesome/free-solid-svg-icons"
 import FormInlineLocation from "./FormInlineLocation"
 import { FilterInsideMapArea } from "../../objects/Filter"
 
@@ -13,6 +13,7 @@ import { FilterInsideMapArea } from "../../objects/Filter"
  *
  * It connects to the `mapViewHook` of the RepositoryViewer.
  *
+ * @deprecated to be refactored
  * @param props - Additional props to pass to the box.
  * @returns {JSX.Element}
  * @constructor
@@ -23,7 +24,7 @@ export default function BoxFilterLocation({ ...props }) {
     const { appendFilter, mapViewHook } = useRepositoryViewer()
 
     const submit = () => {
-        appendFilter(new FilterInsideMapArea(false, mapViewHook.center, mapViewHook.radius))
+        appendFilter(new FilterInsideMapArea(mapViewHook.mapArea))
     }
 
     return (
@@ -32,7 +33,7 @@ export default function BoxFilterLocation({ ...props }) {
                 <span>
                     {strings.searchBy}
                     &nbsp;
-                    <FontAwesomeIcon icon={faMapPin}/>
+                    <FontAwesomeIcon icon={faLocationArrow}/>
                     &nbsp;
                     {strings.byZone}
                 </span>

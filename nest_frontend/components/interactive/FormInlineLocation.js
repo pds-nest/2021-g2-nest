@@ -47,21 +47,21 @@ export default function FormInlineLocation(
                 className={Style.Radius}
                 type={"text"}
                 icon={radIcon}
-                value={`${mapViewHook.radius} m`}
+                value={`${Math.round(mapViewHook.mapArea.radius / 1000)} km`}
                 disabled={true}
             />
             <InputWithIcon
                 className={Style.Latitude}
                 type={"text"}
                 icon={latIcon}
-                value={mapViewHook.center.lat.toFixed(3)}
+                value={mapViewHook.mapArea.center.lat.toFixed(3)}
                 disabled={true}
             />
             <InputWithIcon
                 className={Style.Longitude}
                 type={"text"}
                 icon={lngIcon}
-                value={mapViewHook.center.lng.toFixed(3)}
+                value={mapViewHook.mapArea.center.lng.toFixed(3)}
                 disabled={true}
             />
             <ButtonIconOnly

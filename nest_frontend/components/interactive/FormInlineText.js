@@ -34,6 +34,7 @@ export default function FormInlineText(
 
     const _onSubmit = event => {
         event.preventDefault()
+        if(!value) return
         submit(value)
         setValue("")
     }
@@ -56,6 +57,7 @@ export default function FormInlineText(
                 icon={buttonIcon}
                 color={buttonColor}
                 onClick={_onSubmit}
+                disabled={!value}
             />
         </FormInline>
     )

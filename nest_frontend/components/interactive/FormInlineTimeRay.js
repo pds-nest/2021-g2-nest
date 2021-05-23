@@ -8,7 +8,7 @@ import ButtonToggleBeforeAfter from "./ButtonToggleBeforeAfter"
 import TimeRay from "../../objects/TimeRay"
 
 
-const INVALID_CHARACTERS = /[^0-9TZ:+-]/g
+const INVALID_CHARACTERS = /[^0-9TZ:+.-]/g
 
 
 /**
@@ -40,12 +40,14 @@ export default function FormInlineTimeRay(
 
     const _onSubmit = event => {
         event.preventDefault()
+        if(!value) return
+        console.debug(value)
         submit(new TimeRay(isBefore, new Date(value)))
         setValue("")
     }
 
     const _onChange = event => {
-        setValue(validate(event.target.value.replace(INVALID_CHARACTERS, "")))
+        setValue(validate(event.target.value.toUpperCase().replace(INVALID_CHARACTERS, "")))
     }
 
     return (
@@ -67,6 +69,7 @@ export default function FormInlineTimeRay(
                 icon={buttonIcon}
                 color={buttonColor}
                 onClick={_onSubmit}
+                disabled={!value}
             />
         </FormInline>
     )
