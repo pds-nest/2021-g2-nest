@@ -30,7 +30,7 @@ export default function FormInlineTimeRay(
         buttonIcon = faPlus,
         buttonColor = "Green",
         placeholder = new Date().toISOString(),
-        validate = value => value,
+        validate = val => val,
         submit,
         ...props
     },
