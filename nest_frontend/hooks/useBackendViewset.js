@@ -31,7 +31,7 @@ export default function useBackendViewset(resourcesPath, pkName,
             if(!allowList) {
                 throw new ViewNotAllowedError("list")
             }
-            return await apiRequest("GET", `${resourcesPath}`, undefined, init)
+            return apiRequest("GET", `${resourcesPath}`, undefined, init)
         },
         [apiRequest, allowList, resourcesPath],
     )
@@ -41,7 +41,7 @@ export default function useBackendViewset(resourcesPath, pkName,
             if(!allowRetrieve) {
                 throw new ViewNotAllowedError("retrieve")
             }
-            return await apiRequest("GET", `${resourcesPath}${id}`, undefined, init)
+            return apiRequest("GET", `${resourcesPath}${id}`, undefined, init)
         },
         [apiRequest, allowRetrieve, resourcesPath],
     )
@@ -51,7 +51,7 @@ export default function useBackendViewset(resourcesPath, pkName,
             if(!allowCreate) {
                 throw new ViewNotAllowedError("create")
             }
-            return await apiRequest("POST", `${resourcesPath}`, data, init)
+            return apiRequest("POST", `${resourcesPath}`, data, init)
         },
         [apiRequest, allowCreate, resourcesPath],
     )
@@ -61,7 +61,7 @@ export default function useBackendViewset(resourcesPath, pkName,
             if(!allowEdit) {
                 throw new ViewNotAllowedError("edit")
             }
-            return await apiRequest("PUT", `${resourcesPath}${id}`, data, init)
+            return apiRequest("PUT", `${resourcesPath}${id}`, data, init)
         },
         [apiRequest, allowEdit, resourcesPath],
     )
@@ -71,7 +71,7 @@ export default function useBackendViewset(resourcesPath, pkName,
             if(!allowDestroy) {
                 throw new ViewNotAllowedError("destroy")
             }
-            return await apiRequest("DELETE", `${resourcesPath}${id}`, undefined, init)
+            return apiRequest("DELETE", `${resourcesPath}${id}`, undefined, init)
         },
         [apiRequest, allowDestroy, resourcesPath],
     )
@@ -81,7 +81,7 @@ export default function useBackendViewset(resourcesPath, pkName,
             if(!allowCommand) {
                 throw new ViewNotAllowedError("command")
             }
-            return await apiRequest(method, `${resourcesPath}${command}`, data, init)
+            return apiRequest(method, `${resourcesPath}${command}`, data, init)
         },
         [apiRequest, allowCommand, resourcesPath],
     )
@@ -91,7 +91,7 @@ export default function useBackendViewset(resourcesPath, pkName,
             if(!allowAction) {
                 throw new ViewNotAllowedError("action")
             }
-            return await apiRequest(method, `${resourcesPath}${id}/${command}`, data, init)
+            return apiRequest(method, `${resourcesPath}${id}/${command}`, data, init)
         },
         [apiRequest, allowAction, resourcesPath],
     )
