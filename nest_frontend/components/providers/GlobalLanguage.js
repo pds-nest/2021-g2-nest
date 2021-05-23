@@ -27,12 +27,12 @@ export default function GlobalLanguage({ children }) {
             }
             else if(defaultStrings.hasOwnProperty(name)) {
                 console.warn("Missing ", lang, " localization for string ", name)
-                return <i className={Style.MissingLocalization}>{defaultStrings[name]}</i>
+                return <i className={Style.MissingLocalization} title={name}>{defaultStrings[name]}</i>
 
             }
             else {
                 console.warn("Missing string ", name)
-                return <i className={Style.MissingString}>MISSING STRING</i>
+                return <i className={Style.MissingString} title={name}>MISSING STRING</i>
             }
         },
         [lang]

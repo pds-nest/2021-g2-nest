@@ -1,10 +1,12 @@
 .MissingLocalization {
     background-color: darkorange;
     color: white;
+    cursor: help;
 }
 
 .MissingString {
     background-color: red;
     color: white;
     font-weight: bold;
+    cursor: help;
 }
