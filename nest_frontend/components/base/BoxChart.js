@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useMemo } from "react"
 import BoxFull from "./BoxFull"
 import ChartComponent from "react-chartjs-2"
 
@@ -9,8 +9,8 @@ export default function BoxChart({ chartProps, ...props }) {
         return computedStyle.getPropertyValue(variable).trim()
     }
 
-    return (
-        <BoxFull {...props}>
+    const chart = useMemo(
+        () => (
             <ChartComponent
                 options={{
                     responsive: true,
@@ -51,6 +51,13 @@ export default function BoxChart({ chartProps, ...props }) {
                 }}
                 {...chartProps}
             />
+        ),
+        [chartProps]
+    )
+
+    return (
+        <BoxFull {...props}>
+            {chart}
         </BoxFull>
     )
 }

@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React, { useContext, useMemo } from "react"
 import BoxFull from "../base/BoxFull"
 import BoxChart from "../base/BoxChart"
 import Empty from "./Empty"
@@ -10,13 +10,36 @@ export default function BoxVisualizationChart({ ...props }) {
     const { strings } = useContext(ContextLanguage)
     const { tweets } = useContext(ContextRepositoryViewer)
 
-    const hours = [...Array(24).keys()].map(hour => hour.toString())
-    const hourlyTweetCount = Array(24).fill(0)
-    for(const tweet of tweets) {
-        const insertDate = new Date(tweet["insert_time"])
-        const insertHour = insertDate.getHours()
-        hourlyTweetCount[insertHour] += 1
-    }
+    const chartProps = useMemo(
+        () => {
+            const hours = [...Array(24).keys()].map(hour => hour.toString())
+            const hourlyTweetCount = Array(24).fill(0)
+            for(const tweet of tweets) {
+                if(!tweet["post_time"]) {
+                    console.debug("Tweet ", tweet, " has no post time, skipping...")
+                    continue
+                }
+
+                const insertDate = new Date(tweet["post_time"])
+                const insertHour = insertDate.getHours()
+                hourlyTweetCount[insertHour] += 1
+            }
+
+            return {
+                type: "bar",
+                data: {
+                    labels: hours.map(hour => hour.toString()),
+                    datasets: [
+                        {
+                            label: "Tweets",
+                            data: hourlyTweetCount,
+                        },
+                    ],
+                }
+            }
+        },
+        [tweets]
+    )
 
     if(tweets.length === 0) {
         return (
@@ -29,18 +52,7 @@ export default function BoxVisualizationChart({ ...props }) {
     return (
         <BoxChart
             header={strings.hourlyGraph}
-            chartProps={{
-                type: "bar",
-                data: {
-                    labels: hours.map(hour => hour.toString()),
-                    datasets: [
-                        {
-                            label: "Tweets",
-                            data: hourlyTweetCount,
-                        },
-                    ],
-                },
-            }}
+            chartProps={chartProps}
             {...props}
         />
     )
