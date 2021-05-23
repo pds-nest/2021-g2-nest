@@ -20,6 +20,7 @@ export default function GlobalServer({ children }) {
     /**
      * Fetch JSON data from the API.
      *
+     * @deprecated use {@link useBackendRequest} instead
      * @param method - The method to use.
      * @param path - The path to request data at (ex. `/api/repositories`)
      * @param body - The body of the request (it will be automatically converted to JSON.

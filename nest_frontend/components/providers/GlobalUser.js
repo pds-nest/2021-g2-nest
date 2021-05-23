@@ -20,6 +20,7 @@ export default function GlobalUser({ children }) {
      *
      * Requires an user to be logged in!
      *
+     * @deprecated use {@link useBackendRequest} instead
      * @param method - The HTTP method to use.
      * @param path - The path to request data at (ex. `/api/repositories`)
      * @param body - The body of the request (it will be automatically converted to JSON.
