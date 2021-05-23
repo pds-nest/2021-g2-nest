@@ -1,8 +1,9 @@
-import React from "react"
+import React, { useContext } from "react"
 import BoxFullScrollable from "../base/BoxFullScrollable"
 import Loading from "../base/Loading"
 import SummaryRepository from "./SummaryRepository"
 import Empty from "./Empty"
+import ContextUser from "../../contexts/ContextUser"
 
 
 /**
@@ -34,6 +35,8 @@ export default function BoxRepositories(
         ...props
     })
 {
+    const {user} = useContext(ContextUser)
+
     let contents
     if(loading) {
         contents = <Loading/>
@@ -47,7 +50,7 @@ export default function BoxRepositories(
                 key={repo["id"]}
                 repo={repo}
                 view={view ? () => view(repo["id"]) : null}
-                share={share ? () => share(repo["id"]) : null}
+                share={(share && user["email"] === repo["owner"]["email"]) ? () => share(repo["id"]) : null}
                 archive={archive ? () => archive(repo["id"]) : null}
                 edit={edit ? () => edit(repo["id"]) : null}
                 destroy={destroy ? () => destroy(repo["id"]) : null}

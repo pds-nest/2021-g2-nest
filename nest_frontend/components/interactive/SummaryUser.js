@@ -7,6 +7,7 @@ import SummaryLabels from "../base/summary/SummaryLabels"
 import SummaryButton from "../base/summary/SummaryButton"
 import SummaryRight from "../base/summary/SummaryRight"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
+import ContextUser from "../../contexts/ContextUser"
 
 
 /**
@@ -23,6 +24,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
  */
 export default function SummaryUser({ user, shareWithUser, unshareWithUser, destroyUser, running, ...props }) {
     const { strings } = useContext(ContextLanguage)
+    const {user: loggedUser} = useContext(ContextUser)
 
     return (
         <SummaryBase {...props}>
@@ -36,7 +38,7 @@ export default function SummaryUser({ user, shareWithUser, unshareWithUser, dest
                 upperLabel={strings.type}
                 upperValue={user.isAdmin ? strings.admin : strings.user}
             />
-            {shareWithUser ?
+            {(shareWithUser && loggedUser["email"] !== user["email"]) ?
              <SummaryButton
                  color={"Green"}
                  icon={faShare}
@@ -49,7 +51,7 @@ export default function SummaryUser({ user, shareWithUser, unshareWithUser, dest
                  {strings.share}
              </SummaryButton>
                          : null}
-            {unshareWithUser ?
+            {(unshareWithUser && loggedUser["email"] !== user["email"]) ?
              <SummaryButton
                  color={"Red"}
                  icon={<FontAwesomeIcon icon={faShare} flip={"horizontal"}/>}

@@ -6,12 +6,14 @@ import Style from "./PageShare.module.css"
 import BoxUserList from "../components/interactive/BoxUserList"
 import useBackendViewset from "../hooks/useBackendViewset"
 import { useParams } from "react-router"
+import ContextUser from "../contexts/ContextUser"
 
 
 export default function PageShare({ className, ...props }) {
     const { strings } = useContext(ContextLanguage)
+    const {user: loggedUser} = useContext(ContextUser)
     const { id } = useParams()
-    const {resources: users} = useBackendViewset(
+    const {resources: users, running: usersBvRunning} = useBackendViewset(
         "/api/v1/users/",
         "email",
         {
@@ -24,7 +26,7 @@ export default function PageShare({ className, ...props }) {
             action: false,
         }
     )
-    const {resources: authorizations, createResource: createAuthorization, destroyResource: destroyAuthorization} = useBackendViewset(
+    const {resources: authorizations, createResource: createAuthorization, destroyResource: destroyAuthorization, running: authBvRunning} = useBackendViewset(
         `/api/v1/repositories/${id}/authorizations/`,
         "email",
         {
@@ -61,15 +63,17 @@ export default function PageShare({ className, ...props }) {
             </BoxHeader>
             <BoxUserList
                 className={Style.UserList}
-                users={users.filter(user => !authorizations.map(a => a.email).includes(user.email))}
+                users={users.filter(user => user["email"] !== loggedUser["email"] && !authorizations.map(a => a.email).includes(user.email))}
                 shareWithUser={shareWith}
                 header={strings.availableUsers}
+                running={usersBvRunning && authBvRunning}
             />
             <BoxUserList
                 className={Style.SharingWith}
-                users={users.filter(user => authorizations.map(a => a.email).includes(user.email))}
+                users={users.filter(user => user["email"] === loggedUser["email"] || authorizations.map(a => a.email).includes(user.email))}
                 unshareWithUser={unshareWith}
                 header={strings.sharingWith}
+                running={usersBvRunning && authBvRunning}
             />
         </div>
     )

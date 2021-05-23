@@ -54,10 +54,16 @@ export default {
         emptyMenu: "Non c'è nulla qui.",
         delete: "Elimina",
         share: "Condividi",
+        unshare: "Rimuovi",
         archive: "Archivia",
         edit: "Modifica",
         created: "Creata",
         archived: "Archiviata",
+
+        // TODO: migliorare, maybe?
+        repoShare: "Condivisioni",
+        availableUsers: "Utenti disponibili",
+        sharingWith: "In condivisione con",
 
         alerts: "Allarmi",
         alertTitle: "I tuoi allarmi",
