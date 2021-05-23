@@ -40,7 +40,7 @@ export default function GlobalUser({ children }) {
         }
         init["headers"]["Authorization"] = `Bearer ${user["token"]}`
 
-        return await fetchData(method, path, body, init)
+        return fetchData(method, path, body, init)
     }, [fetchData, user])
 
     /**
