@@ -15,20 +15,11 @@ export default function PageSettings({ children, className, ...props }) {
     return (
         <div className={classNames(Style.PageSettings, className)} {...props}>
             <BoxLoggedIn/>
-            <BoxHeader>
-                {strings.switchTheme}: <SelectTheme/>
-            </BoxHeader>
-            <BoxHeader>
-                {strings.changeLang}: <SelectLanguage/>
-            </BoxHeader>
-            <BoxFull header={strings.alertSettings}>
-                {strings.notImplemented}
+            <BoxFull header={strings.changeLang}>
+                <SelectLanguage/>
             </BoxFull>
-            <BoxFull header={strings.changeEmail}>
-                {strings.notImplemented}
-            </BoxFull>
-            <BoxFull header={strings.changePasswd}>
-                {strings.notImplemented}
+            <BoxFull header={strings.switchTheme}>
+                <SelectTheme/>
             </BoxFull>
         </div>
     )
