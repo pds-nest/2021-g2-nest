@@ -1,6 +1,6 @@
 import React from "react"
 import BoxFull from "../base/BoxFull"
-import { faClock, faHashtag } from "@fortawesome/free-solid-svg-icons"
+import { faHashtag } from "@fortawesome/free-solid-svg-icons"
 import useRepositoryViewer from "../../hooks/useRepositoryViewer"
 import useStrings from "../../hooks/useStrings"
 import { FilterHashtag } from "../../objects/Filter"

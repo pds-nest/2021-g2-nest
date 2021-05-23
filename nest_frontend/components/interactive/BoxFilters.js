@@ -18,10 +18,8 @@ export default function BoxFilters({ ...props }) {
 
     const badges = filters.map((filter, pos) => <BadgeFilter key={pos} filter={filter}/>)
 
-    // TODO: localize this
-
     return (
-        <BoxFull header={"Filters"} {...props}>
+        <BoxFull header={strings.filters} {...props}>
             {badges}
         </BoxFull>
     )
