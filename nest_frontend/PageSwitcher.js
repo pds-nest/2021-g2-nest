@@ -9,11 +9,15 @@ import PageRoot from "./routes/PageRoot"
 import PageEdit from "./routes/PageEdit"
 import PageUsers from "./routes/PageUsers"
 import PageRepository from "./routes/PageRepository"
+import PageShare from "./routes/PageShare"
 
 
 export default function PageSwitcher({ ...props }) {
     return (
         <Switch {...props}>
+            <Route path={"/repositories/:id/share"} exact={true}>
+                <PageShare/>
+            </Route>
             <Route path={"/repositories/:id/edit"} exact={true}>
                 <PageEdit/>
             </Route>
