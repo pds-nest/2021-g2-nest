@@ -12,7 +12,7 @@ import ContextLanguage from "../../contexts/ContextLanguage"
  * @constructor
  */
 export default function SelectLanguage({ ...props }) {
-    const { strings, lang, setLang } = useContext(ContextLanguage)
+    const { lang, setLang } = useContext(ContextLanguage)
 
     return (
         <Select value={lang} onChange={event => setLang(event.target.value)} {...props}>
