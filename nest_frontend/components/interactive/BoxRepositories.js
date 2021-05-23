@@ -20,17 +20,20 @@ import Empty from "./Empty"
  * @returns {JSX.Element}
  * @constructor
  */
-export default function BoxRepositories({
-                                            repositories,
-                                            view,
-                                            archive,
-                                            edit,
-                                            destroy,
-                                            loading,
-                                            running,
-                                            className,
-                                            ...props
-                                        }) {
+export default function BoxRepositories(
+    {
+        repositories,
+        view,
+        share,
+        archive,
+        edit,
+        destroy,
+        loading,
+        running,
+        className,
+        ...props
+    })
+{
     let contents
     if(loading) {
         contents = <Loading/>
@@ -44,6 +47,7 @@ export default function BoxRepositories({
                 key={repo["id"]}
                 repo={repo}
                 view={view ? () => view(repo["id"]) : null}
+                share={share ? () => share(repo["id"]) : null}
                 archive={archive ? () => archive(repo["id"]) : null}
                 edit={edit ? () => edit(repo["id"]) : null}
                 destroy={destroy ? () => destroy(repo["id"]) : null}

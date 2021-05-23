@@ -53,6 +53,7 @@ export default {
         menuArchived: "Le tue repository archiviate",
         emptyMenu: "Non c'è nulla qui.",
         delete: "Elimina",
+        share: "Condividi",
         archive: "Archivia",
         edit: "Modifica",
         created: "Creata",

@@ -1,5 +1,5 @@
 import React, { useContext } from "react"
-import { faArchive, faFolder, faFolderOpen, faPencilAlt, faTrash } from "@fortawesome/free-solid-svg-icons"
+import { faArchive, faFolder, faFolderOpen, faPencilAlt, faShare, faTrash } from "@fortawesome/free-solid-svg-icons"
 import ContextLanguage from "../../contexts/ContextLanguage"
 import SummaryBase from "../base/summary/SummaryBase"
 import SummaryLeft from "../base/summary/SummaryLeft"
@@ -13,6 +13,7 @@ import SummaryRight from "../base/summary/SummaryRight"
  *
  * @param repo - The repository to display.
  * @param view - Function with no parameters to call when the view repository button is clicked.
+ * @param share - Function with no parameters to call when the archive repository button is clicked.
  * @param archive - Function with no parameters to call when the archive repository button is clicked.
  * @param edit - Function with no parameters to call when the edit repository button is clicked.
  * @param destroy - Function with no parameters to call when the delete repository button is clicked.
@@ -23,7 +24,7 @@ import SummaryRight from "../base/summary/SummaryRight"
  * @constructor
  */
 export default function SummaryRepository(
-    { repo, view, archive, edit, destroy, running, className, ...props },
+    { repo, view, share, archive, edit, destroy, running, className, ...props },
 ) {
     const { strings } = useContext(ContextLanguage)
 
@@ -43,11 +44,22 @@ export default function SummaryRepository(
                 lowerValue={repo.end ? new Date(repo.end).toLocaleString() : null}
             />
 
+            {share ?
+                <SummaryButton
+                    color={"Green"}
+                    icon={faShare}
+                    onClick={() => share()}
+                    disabled={running}
+                >
+                    {strings.share}
+                </SummaryButton>
+            : null}
+
             {destroy ?
              <SummaryButton
                  color={"Red"}
                  icon={faTrash}
-                 onClick={() => destroy(repo["id"])}
+                 onClick={() => destroy()}
                  disabled={running}
              >
                  {strings.delete}
@@ -58,7 +70,7 @@ export default function SummaryRepository(
              <SummaryButton
                  color={"Grey"}
                  icon={faArchive}
-                 onClick={() => archive(repo["id"])}
+                 onClick={() => archive()}
                  disabled={running}
              >
                  {strings.archive}
@@ -69,7 +81,7 @@ export default function SummaryRepository(
              <SummaryButton
                  color={"Yellow"}
                  icon={faPencilAlt}
-                 onClick={() => edit(repo["id"])}
+                 onClick={() => edit()}
                  disabled={running}
              >
                  {strings.edit}
