@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faClock } from "@fortawesome/free-solid-svg-icons"
 import useRepositoryEditor from "../../hooks/useRepositoryEditor"
 import ContextLanguage from "../../contexts/ContextLanguage"
-import FormInlineBADatetime from "./FormInlineBADatetime"
+import FormInlineTimeRay from "./FormInlineTimeRay"
 import { ConditionTime } from "../../objects/Condition"
 
 
@@ -38,7 +38,7 @@ export default function BoxConditionDatetime({ ...props }) {
             }
             {...props}
         >
-            <FormInlineBADatetime
+            <FormInlineTimeRay
                 submit={submit}
             />
         </BoxFull>

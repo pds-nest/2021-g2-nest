@@ -1,10 +1,10 @@
-import React, { useContext } from "react"
+import React, { useCallback, useContext } from "react"
 import BoxWordcloud from "../base/BoxWordcloud"
 import ContextLanguage from "../../contexts/ContextLanguage"
 import BoxFull from "../base/BoxFull"
 import Empty from "./Empty"
 import ContextRepositoryViewer from "../../contexts/ContextRepositoryViewer"
-import { FilterContains } from "../../utils/Filter"
+import { FilterContains } from "../../objects/Filter"
 
 
 export default function BoxVisualizationWordcloud({ ...props }) {
@@ -19,9 +19,12 @@ export default function BoxVisualizationWordcloud({ ...props }) {
         )
     }
 
-    const onWordClick = word => {
-        appendFilter(new FilterContains(false, word.text))
-    }
+    const onWordClick = useCallback(
+        word => {
+            appendFilter(new FilterContains(word.text))
+        },
+        [appendFilter]
+    )
 
     return (
         <BoxWordcloud

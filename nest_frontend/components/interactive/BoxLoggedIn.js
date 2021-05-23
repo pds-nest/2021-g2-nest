@@ -13,7 +13,7 @@ import ContextLanguage from "../../contexts/ContextLanguage"
 /**
  * A {@link BoxFull} displaying the user's current login status, and allowing them to logout.
  *
- * @param props
+ * @param props - Additional props to pass to the box.
  * @returns {JSX.Element}
  * @constructor
  */

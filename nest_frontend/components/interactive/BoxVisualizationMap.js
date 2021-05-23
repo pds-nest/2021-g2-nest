@@ -2,10 +2,17 @@ import React, { useContext, useMemo } from "react"
 import BoxMap from "../base/BoxMap"
 import ContextLanguage from "../../contexts/ContextLanguage"
 import { Marker, Popup } from "react-leaflet"
-import { Location } from "../../utils/location"
+import { Location } from "../../objects/location"
 import ContextRepositoryViewer from "../../contexts/ContextRepositoryViewer"
 
 
+/**
+ * A {@link BoxMap} displaying the displayed tweets of a RepositoryViewer as {@link Marker}s.
+ *
+ * @param props - Additional props to pass to the box.
+ * @returns {JSX.Element}
+ * @constructor
+ */
 export default function BoxVisualizationMap({ ...props }) {
     const { strings } = useContext(ContextLanguage)
     const { tweets, mapViewHook } = useContext(ContextRepositoryViewer)

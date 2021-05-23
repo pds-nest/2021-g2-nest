@@ -1,19 +1,27 @@
 import React from "react"
 import BoxFull from "../base/BoxFull"
-import { faClock, faHashtag } from "@fortawesome/free-solid-svg-icons"
+import { faClock } from "@fortawesome/free-solid-svg-icons"
 import useRepositoryViewer from "../../hooks/useRepositoryViewer"
 import useStrings from "../../hooks/useStrings"
-import { FilterInsideTimeRay } from "../../utils/Filter"
+import { FilterInsideTimeRay } from "../../objects/Filter"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import FormInlineBADatetime from "./FormInlineBADatetime"
+import FormInlineTimeRay from "./FormInlineTimeRay"
 
 
+/**
+ * A {@link BoxFull} that allows the user to select a {@link TimeRay}, and then to add it as a
+ * {@link FilterInsideTimeRay} of a RepositoryViewer.
+ *
+ * @param props - Additional props to pass to the box.
+ * @returns {JSX.Element}
+ * @constructor
+ */
 export default function BoxFilterDatetime({ ...props }) {
     const strings = useStrings()
     const { appendFilter } = useRepositoryViewer()
 
-    const submit = ({ date, isBefore }) => {
-        appendFilter(new FilterInsideTimeRay(isBefore, date))
+    const submit = ({ timeRay }) => {
+        appendFilter(new FilterInsideTimeRay(timeRay))
     }
 
     return (
@@ -29,7 +37,7 @@ export default function BoxFilterDatetime({ ...props }) {
             }
             {...props}
         >
-            <FormInlineBADatetime submit={submit}/>
+            <FormInlineTimeRay submit={submit}/>
         </BoxFull>
     )
 }

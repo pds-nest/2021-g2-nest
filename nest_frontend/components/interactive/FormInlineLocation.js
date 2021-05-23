@@ -6,6 +6,21 @@ import ButtonIconOnly from "../base/ButtonIconOnly"
 import Style from "./FormInlineLocation.module.css"
 
 
+/**
+ * @deprecated to be refactored
+ * @param mapViewHook
+ * @param radIcon
+ * @param latIcon
+ * @param lngIcon
+ * @param buttonIcon
+ * @param buttonColor
+ * @param placeholder
+ * @param validate
+ * @param submit
+ * @param props
+ * @returns {JSX.Element}
+ * @constructor
+ */
 export default function FormInlineLocation(
     {
         mapViewHook,

@@ -5,6 +5,16 @@ import SummaryUser from "./SummaryUser"
 import ContextLanguage from "../../contexts/ContextLanguage"
 
 
+/**
+ * A {@link BoxFullScrollable} rendering an array of users as {@link SummaryUser}s.
+ *
+ * @param users - Array of users to render.
+ * @param destroyUser - Async function to destroy an user, to be passed to {@link SummaryUser}.
+ * @param running - Whether another request is currently running.
+ * @param props - Additional props to pass to the box.
+ * @returns {JSX.Element}
+ * @constructor
+ */
 export default function BoxUserList({ users, destroyUser, running, ...props }) {
     const { strings } = useContext(ContextLanguage)
 

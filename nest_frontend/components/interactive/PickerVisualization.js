@@ -4,6 +4,13 @@ import ContextRepositoryViewer from "../../contexts/ContextRepositoryViewer"
 import ButtonPicker from "./ButtonPicker"
 
 
+/**
+ * Tab selector for the Visualization box of a RepositoryViewer.
+ *
+ * @param props - Additional props to pass to the div.
+ * @returns {JSX.Element}
+ * @constructor
+ */
 export default function PickerVisualization({ ...props }) {
     const { visualizationTab, setVisualizationTab } = useContext(ContextRepositoryViewer)
 

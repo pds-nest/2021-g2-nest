@@ -6,6 +6,19 @@ import ButtonIconOnly from "../base/ButtonIconOnly"
 import Style from "./FormInlineText.module.css"
 
 
+/**
+ * A {@link FormInline} allowing the user to enter a string.
+ *
+ * @param textIcon - The icon to display in the text field.
+ * @param buttonIcon - The icon to display on the submit button.
+ * @param buttonColor - The color of the submit button.
+ * @param placeholder - The placeholder of the text field.
+ * @param validate - Function <string -> string> called to set the value of the text field.
+ * @param submit - Function <string> called when the submit button is pressed.
+ * @param props - Additional props to pass to the form.
+ * @returns {JSX.Element}
+ * @constructor
+ */
 export default function FormInlineText(
     {
         textIcon = faFont,

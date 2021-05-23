@@ -5,6 +5,16 @@ import Button from "../base/Button"
 import ContextLanguage from "../../contexts/ContextLanguage"
 
 
+/**
+ * A {@link Button} allowing the user to select between **Before** and **After**.
+ *
+ * @param isBefore - The current value of the button.
+ * @param setBefore - Function to set the current value of the button.
+ * @param className - Additional class(es) to append to the button.
+ * @param props - Additional props to pass to the button.
+ * @returns {JSX.Element}
+ * @constructor
+ */
 export default function ButtonToggleBeforeAfter({ isBefore, setBefore, className, ...props }) {
     const { strings } = useContext(ContextLanguage)
 

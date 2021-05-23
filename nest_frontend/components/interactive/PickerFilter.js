@@ -5,6 +5,13 @@ import ButtonPicker from "./ButtonPicker"
 import ContextRepositoryViewer from "../../contexts/ContextRepositoryViewer"
 
 
+/**
+ * Tab selector for the Add Filter box of a RepositoryViewer.
+ *
+ * @param props - Additional props to pass to the div.
+ * @returns {JSX.Element}
+ * @constructor
+ */
 export default function PickerFilter({ ...props }) {
     const { filterTab, setFilterTab, setVisualizationTab } = useContext(ContextRepositoryViewer)
 

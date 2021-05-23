@@ -9,6 +9,15 @@ import FormAlert from "../base/formparts/FormAlert"
 import ContextLanguage from "../../contexts/ContextLanguage"
 
 
+/**
+ * A {@link BoxFull} allowing an administrator user to create a new user.
+ *
+ * @param createUser - Async function to call to create an user.
+ * @param running - Whether another request is currently running.
+ * @param props - Additional props to pass to the box.
+ * @returns {JSX.Element}
+ * @constructor
+ */
 export default function BoxUserCreate({ createUser, running, ...props }) {
     const [username, setUsername] = useState("")
     const [email, setEmail] = useState("")
