@@ -35,10 +35,10 @@ export default function useLocalStorageState(key, def) {
      * Save a value to the {@link localStorage}.
      */
     const save = useCallback(
-        (value) => {
+        val => {
             if(localStorage) {
                 console.debug(`Saving ${key} to localStorage...`)
-                localStorage.setItem(key, JSON.stringify(value))
+                localStorage.setItem(key, JSON.stringify(val))
             }
             else {
                 console.warn(`Can't save ${key}; localStorage doesn't seem to be available...`)
@@ -51,9 +51,9 @@ export default function useLocalStorageState(key, def) {
      * Set `value` and save it to the {@link localStorage}.
      */
     const setAndSave = useCallback(
-        (value) => {
-            setValue(value)
-            save(value)
+        val => {
+            setValue(val)
+            save(val)
         },
         [save],
     )
