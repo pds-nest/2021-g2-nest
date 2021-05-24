@@ -154,6 +154,7 @@ export default {
         menuArchived: "Your archived repositories",
         emptyMenu: "There's nothing here.",
         delete: "Delete",
+        share: "Share",
         archive: "Archive",
         edit: "Edit",
         created: "Created",
