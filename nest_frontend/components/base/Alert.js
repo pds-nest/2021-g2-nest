@@ -1,5 +1,5 @@
 import React from "react"
-import Style from "./BoxAlert.module.css"
+import Style from "./Alert.module.css"
 import classNames from "classnames"
 
 
@@ -13,7 +13,7 @@ import classNames from "classnames"
  * @returns {JSX.Element}
  * @constructor
  */
-export default function BoxAlert({ color, children, className, ...props }) {
+export default function Alert({ color, children, className, ...props }) {
     return (
         <div className={classNames(Style.BoxAlert, Style[`BoxAlert${color}`], className)} {...props}>
             {children}

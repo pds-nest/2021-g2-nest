@@ -1,6 +1,6 @@
 import React from "react"
 import Loading from "../components/base/Loading"
-import BoxAlert from "../components/base/BoxAlert"
+import Alert from "../components/base/Alert"
 import Starting from "../components/base/Starting"
 
 
@@ -11,7 +11,7 @@ export default function renderContents(requestHookResults, renderFunction) {
         return <Loading/>
     }
     if(error) {
-        return <BoxAlert color={"Red"}>{error.toString()}</BoxAlert>
+        return <Alert color={"Red"}>{error.toString()}</Alert>
     }
     if(data) {
         return renderFunction(data)

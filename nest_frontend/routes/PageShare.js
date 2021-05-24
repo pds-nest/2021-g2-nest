@@ -7,7 +7,7 @@ import BoxUserList from "../components/interactive/BoxUserList"
 import useBackendViewset from "../hooks/useBackendViewset"
 import { useParams } from "react-router"
 import ContextUser from "../contexts/ContextUser"
-import BoxAlert from "../components/base/BoxAlert"
+import Alert from "../components/base/Alert"
 import useStrings from "../hooks/useStrings"
 
 
@@ -90,10 +90,10 @@ export default function PageShare({ className, ...props }) {
                 running={usersBvRunning && authBvRunning}
             />
             {authBvError ?
-                <BoxAlert color={"Red"} className={Style.Error}>{strings[authBvError?.data?.code ?? "errorUnknownError"]}</BoxAlert>
+                <Alert color={"Red"} className={Style.Error}>{strings[authBvError?.data?.code ?? "errorUnknownError"]}</Alert>
             : null}
             {usersBvError ?
-                <BoxAlert color={"Red"} className={Style.Error}>{strings[usersBvError?.data?.code ?? "errorUnknownError"]}</BoxAlert>
+                <Alert color={"Red"} className={Style.Error}>{strings[usersBvError?.data?.code ?? "errorUnknownError"]}</Alert>
             : null}
         </div>
     )

@@ -138,6 +138,10 @@ export default {
         errorAlertNoWindow: "Errore: Finestra di allarme non specificata.",
         errorAlertNoEvaluation: "Errore: Modalità di valutazione non specificata.",
         errorAlertDeletionFailure: "Errore: Qualcosa sta impedendo l'eliminazione dell'allarme.",
+        errorViewNotAllowed: "Errore: Non è permesso effettuare la richiesta.", // TODO: Tradurre
+        errorServerNotConfigured: "Errore: Non è stato configurato nessun server.", // TODO: Tradurre
+        errorDecodeError: "Errore: Non è stato possibile deserializzare i dati ricevuti dal backend.", // TODO: Tradurre
+        errorSerializationError: "Errore: Non è stato possibile serializzare i dati da inviare al backend." // TODO: Tradurre
     },
     // 🇬🇧
     en: {

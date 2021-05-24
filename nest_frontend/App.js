@@ -6,6 +6,7 @@ import GlobalServer from "./components/providers/GlobalServer"
 import GlobalUser from "./components/providers/GlobalUser"
 import PageSwitcher from "./PageSwitcher"
 import GlobalLanguage from "./components/providers/GlobalLanguage"
+import ErrorBoundary from "./components/boundaries/ErrorBoundary"
 
 
 /**
@@ -22,7 +23,9 @@ export default function App() {
                     <GlobalTheme>
                         <BrowserRouter>
                             <Layout>
-                                <PageSwitcher/>
+                                <ErrorBoundary>
+                                    <PageSwitcher/>
+                                </ErrorBoundary>
                             </Layout>
                         </BrowserRouter>
                     </GlobalTheme>

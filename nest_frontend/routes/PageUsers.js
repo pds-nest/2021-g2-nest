@@ -6,7 +6,7 @@ import BoxUserCreate from "../components/interactive/BoxUserCreate"
 import useBackendViewset from "../hooks/useBackendViewset"
 import BoxUserList from "../components/interactive/BoxUserList"
 import ContextLanguage from "../contexts/ContextLanguage"
-import BoxAlert from "../components/base/BoxAlert"
+import Alert from "../components/base/Alert"
 
 
 export default function PageUsers({ children, className, ...props }) {
@@ -22,7 +22,7 @@ export default function PageUsers({ children, className, ...props }) {
             <BoxUserCreate className={Style.CreateUser} createUser={bv.createResource} running={bv.running}/>
             <BoxUserList className={Style.UserList} users={bv.resources} destroyUser={bv.destroyResource} running={bv.running}/>
             {bv.error ?
-                <BoxAlert className={Style.Error} color={"red"}>{strings[bv.error?.data?.code ?? "errorUnknownError"]}</BoxAlert>
+                <Alert className={Style.Error} color={"red"}>{strings[bv.error?.data?.code ?? "errorUnknownError"]}</Alert>
             : null}
         </div>
     )
