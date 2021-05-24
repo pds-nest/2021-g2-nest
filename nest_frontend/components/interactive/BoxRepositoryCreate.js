@@ -73,7 +73,7 @@ export default function BoxRepositoryCreate({ running, ...props }) {
                 </FormLabel>
                 {error ?
                  <FormAlert color={"Red"}>
-                     {error.toString()}
+                     {strings[error.data.code]}
                  </FormAlert>
                        : null}
                 {id ?
@@ -91,7 +91,7 @@ export default function BoxRepositoryCreate({ running, ...props }) {
                          style={{ "gridColumn": "2" }}
                          icon={faPencilAlt}
                          color={"Green"}
-                         onClick={_ => goToOnSuccess(save, history, "/repositories")()}
+                         onClick={save}
                          disabled={running}
                      >
                          {strings.save}
@@ -102,7 +102,7 @@ export default function BoxRepositoryCreate({ running, ...props }) {
                      style={{ "gridColumn": "1 / 3" }}
                      icon={faPlus}
                      color={"Green"}
-                     onClick={_ => goToOnSuccess(save, history, "/repositories")()}
+                     onClick={save}
                      disabled={running}
                  >
                      {strings.createRepo}

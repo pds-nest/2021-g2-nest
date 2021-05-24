@@ -11,6 +11,10 @@ import BoxRepositoryCreate from "../interactive/BoxRepositoryCreate"
 import classNames from "classnames"
 import ContextUser from "../../contexts/ContextUser"
 import useBackend from "../../hooks/useBackend"
+import { Condition } from "../../objects/Condition"
+import useBackendResource from "../../hooks/useBackendResource"
+import useBackendViewset from "../../hooks/useBackendViewset"
+import { Redirect } from "react-router"
 
 
 export default function RepositoryEditor({
@@ -23,74 +27,84 @@ export default function RepositoryEditor({
                                              evaluation_mode: evaluationMode,
                                              className,
                                          }) {
+    /** The currently logged in user. */
+    const { user } = useContext(ContextUser)
+
     /** The repository name. */
     const [_name, setName] = useState(name ?? "")
 
-    /** The repository state (active / archived). */
-    const [_isActive, setActive] = useState(isActive ?? true)
-
-    /** The start date of the data gathering. */
-    const [_start, setStart] = useState(start ?? new Date().toISOString())
-
-    /** The end date of the data gathering. */
-    const [_end, setEnd] = useState(end ?? new Date().toISOString())
-
     /** The conditions of the data gathering. */
     const {
-        value: _conditions,
+        value: rawConditions,
         setValue: setRawConditions,
         appendValue: appendRawCondition,
         removeValue: removeRawCondition,
         spliceValue: spliceRawCondition,
     } = useArrayState(conditions)
+    const _conditions = rawConditions.map(cond => Condition.fromRaw(cond))
 
     /** The operator the conditions should be evaluated with. */
     const [_evaluationMode, setEvaluationMode] = useState(evaluationMode ?? 0)
 
-    const { user, fetchDataAuth } = useContext(ContextUser)
-
-    const method = id ? "PUT" : "POST"
-    const path = id ? `/api/v1/repositories/${id}` : `/api/v1/repositories/`
-    const body = useMemo(
-        () => {
-            return {
-                "conditions": _conditions,
-                "end": null,
-                "evaluation_mode": _evaluationMode,
-                "id": id,
-                "is_active": true,
-                "name": _name,
-                "owner": user,
-                "start": null,
-            }
-        },
-        [_conditions, _evaluationMode, id, _name, user],
+    /** The backend viewset to use to create / edit the repository. */
+    const {running, error, createResource, editResource} = useBackendViewset(
+        `/api/v1/repositories/`,
+        "id",
+        {
+            list: false,
+            create: true,
+            retrieve: false,
+            edit: true,
+            destroy: false,
+            command: false,
+            action: false,
+        }
     )
-    const { error, loading, fetchNow } = useBackend(fetchDataAuth, method, path, body)
 
+    /** If `true`, switches to the repository page on the next render. */
+    const [switchPage, setSwitchPage] = useState(false)
+
+    /**
+     * Save the current changes, creating or editing it as needed.
+     *
+     * @type {(function(): Promise<void>)|*}
+     */
     const save = useCallback(
         async () => {
+            const body = {
+                "id": id,
+                "name": _name,
+                "start": null,
+                "is_active": true,
+                "end": null,
+                "owner": user,
+                "spectators": null,
+                "evaluation_mode": _evaluationMode,
+                "conditions": _conditions,
+            }
+
             if(!id) {
-                console.info("Creando una nuova repository avente come corpo: ", body)
+                console.info("Creating new repository with body: ", body)
+                await createResource(body)
             }
             else {
-                console.info("Modificando la repository ", id, " con corpo: ", body)
+                console.info("Editing repository ", id, " with body: ", body)
+                await editResource(id, body)
             }
-            await fetchNow()
+            setSwitchPage(true)
         },
-        [id, body, fetchNow],
+        [id, createResource, editResource, _conditions, _evaluationMode, _name, user],
     )
 
 
     /**
      * Cancel the changes made so far to the repository.
+     *
+     * @type {(function(): void)|*}
      */
     const revert = useCallback(
         () => {
             setName(name)
-            setActive(isActive)
-            setStart(start)
-            setEnd(end)
             setRawConditions(conditions)
             setEvaluationMode(evaluationMode)
         },
@@ -99,14 +113,11 @@ export default function RepositoryEditor({
 
     /**
      * Try to add a new condition, logging a message to the console if something goes wrong.
+     *
+     * @type {(function(): void)|*}
      */
     const addCondition = useCallback(
         (newCond) => {
-            // Check for content
-            if(!newCond.content) {
-                console.debug("Impossibile aggiungere ", newCond, ": l'oggetto è vuoto.")
-                return
-            }
 
             // Check for duplicates
             let duplicate = null
@@ -117,27 +128,29 @@ export default function RepositoryEditor({
                 }
             }
             if(duplicate) {
-                console.debug("Impossibile aggiungere ", newCond, ": ", duplicate, " è già esistente.")
+                console.debug("Cannot add ", newCond, ": ", duplicate, " already exists.")
                 return
             }
 
-            console.debug("Aggiungendo ", newCond, " alle condizioni del repository")
+            console.debug("Adding ", newCond, " to the repository conditions")
             appendRawCondition(newCond)
         },
         [_conditions, appendRawCondition],
     )
+
+    // Hack to switch page on success
+    if(!error && switchPage) {
+        return <Redirect to={"/repositories"}/>
+    }
 
     return (
         <ContextRepositoryEditor.Provider
             value={{
                 id,
                 name: _name, setName,
-                isActive: _isActive, setActive,
-                start: _start, setStart,
-                end: _end, setEnd,
                 conditions: _conditions, addCondition, appendRawCondition, removeRawCondition, spliceRawCondition,
                 evaluationMode: _evaluationMode, setEvaluationMode,
-                error, loading,
+                error, running,
                 revert, save,
             }}
         >
@@ -147,7 +160,7 @@ export default function RepositoryEditor({
                 <BoxConditionUser className={Style.SearchByUser}/>
                 <BoxConditionDatetime className={Style.SearchByTimePeriod}/>
                 <BoxConditions className={Style.Conditions}/>
-                <BoxRepositoryCreate running={loading} className={Style.CreateDialog}/>
+                <BoxRepositoryCreate running={running} className={Style.CreateDialog}/>
             </div>
         </ContextRepositoryEditor.Provider>
     )

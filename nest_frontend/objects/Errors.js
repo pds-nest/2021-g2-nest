@@ -1,7 +1,7 @@
 /**
  * Error thrown when a function is not implemented in the current class/instance.
  */
-class NotImplementedError {
+export class NotImplementedError {
     name
 
     constructor(name) {
@@ -13,7 +13,7 @@ class NotImplementedError {
 /**
  * An error in the N.E.S.T. frontend-backend communication.
  */
-class BackendCommunicationError {
+export class BackendCommunicationError {
 
 }
 
@@ -21,7 +21,7 @@ class BackendCommunicationError {
 /**
  * Error thrown when trying to access a backend view which doesn't exist or isn't allowed in the used hook.
  */
-class ViewNotAllowedError extends BackendCommunicationError {
+export class ViewNotAllowedError extends BackendCommunicationError {
     view
 
     constructor(view) {
@@ -35,7 +35,7 @@ class ViewNotAllowedError extends BackendCommunicationError {
 /**
  * Error thrown when trying to access a backend view when outside a {@link ContextServer}.
  */
-class ServerNotConfiguredError extends BackendCommunicationError {
+export class ServerNotConfiguredError extends BackendCommunicationError {
 
 }
 
@@ -45,7 +45,7 @@ class ServerNotConfiguredError extends BackendCommunicationError {
  *
  * This is not allowed due to potential race conditions.
  */
-class FetchAlreadyRunningError extends BackendCommunicationError {
+export class FetchAlreadyRunningError extends BackendCommunicationError {
 
 }
 
@@ -53,7 +53,7 @@ class FetchAlreadyRunningError extends BackendCommunicationError {
 /**
  * Abstract class for {@link DecodeError} and {@link ResultError}.
  */
-class FetchError extends BackendCommunicationError {
+export class FetchError extends BackendCommunicationError {
     status
     statusText
 
@@ -69,7 +69,7 @@ class FetchError extends BackendCommunicationError {
 /**
  * Error thrown when the frontend can't parse the data received from the backend.
  */
-class DecodeError extends FetchError {
+export class DecodeError extends FetchError {
     error
 
     constructor(status, statusText, error) {
@@ -83,7 +83,7 @@ class DecodeError extends FetchError {
 /**
  * Error thrown when the backend returns a falsy `"result"` value.
  */
-class ResultError extends FetchError {
+export class ResultError extends FetchError {
     status
     statusText
     data
@@ -100,5 +100,14 @@ class ResultError extends FetchError {
 
     getCode() {
         return this.data.code
+    }
+}
+
+
+export class SerializationError {
+    invalidString
+
+    constructor(invalidString) {
+        this.invalidString = invalidString
     }
 }

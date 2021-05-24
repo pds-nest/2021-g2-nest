@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from "react"
 import useBackendRequest from "./useBackendRequest"
+import { ViewNotAllowedError } from "../objects/Errors"
 
 
 /**
@@ -98,60 +99,97 @@ export default function useBackendViewset(resourcesPath, pkName,
 
     const listResources = useCallback(
         async () => {
+            let res
             try {
-                setResources(await apiList())
+                res = await apiList()
             }
             catch(e) {
                 setError(e)
-                throw e
+                return
             }
             setError(null)
-            return {}
+            setResources(res)
         },
         [apiList],
     )
 
     const retrieveResource = useCallback(
         async (pk) => {
-            const refreshedResource = await apiRetrieve(pk)
-            setResources(res => res.map(resource => {
+            let res
+            try {
+                res = await apiRetrieve(pk)
+            }
+            catch(e) {
+                setError(e)
+                return
+            }
+            setError(null)
+
+            setResources(r => r.map(resource => {
                 if(resource[pkName] === pk) {
-                    return refreshedResource
+                    return res
                 }
                 return resource
             }))
-            return refreshedResource
+
+            return res
         },
         [apiRetrieve, pkName],
     )
 
     const createResource = useCallback(
         async (data) => {
-            const newResource = await apiCreate(data)
-            setResources(res => [...res, newResource])
-            return newResource
+            let res
+            try {
+                res = await apiCreate(data)
+            }
+            catch(e) {
+                setError(e)
+                return
+            }
+            setError(null)
+
+            setResources(r => [...r, res])
+            return res
         },
         [apiCreate],
     )
 
     const editResource = useCallback(
         async (pk, data) => {
-            const editedResource = await apiEdit(pk, data)
-            setResources(res => res.map(resource => {
+            let res
+            try {
+                res = await apiEdit(pk, data)
+            }
+            catch(e) {
+                setError(e)
+                return
+            }
+            setError(null)
+
+            setResources(r => r.map(resource => {
                 if(resource[pkName] === pk) {
-                    return editedResource
+                    return res
                 }
                 return resource
             }))
-            return editedResource
+            return res
         },
         [apiEdit, pkName],
     )
 
     const destroyResource = useCallback(
         async (pk) => {
-            await apiDestroy(pk)
-            setResources(res => res.filter(resource => resource[pkName] !== pk))
+            try {
+                await apiDestroy(pk)
+            }
+            catch(e) {
+                setError(e)
+                return
+            }
+            setError(null)
+
+            setResources(r => r.filter(resource => resource[pkName] !== pk))
             return null
         },
         [apiDestroy, pkName],

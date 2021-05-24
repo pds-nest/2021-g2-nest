@@ -5,7 +5,10 @@ import useBackendViewset from "../hooks/useBackendViewset"
 import BoxRepositories from "../components/interactive/BoxRepositories"
 import { useHistory } from "react-router"
 import ContextLanguage from "../contexts/ContextLanguage"
-import ContextUser from "../contexts/ContextUser"
+import BoxHeader from "../components/base/BoxHeader"
+import { faHome, faPlus } from "@fortawesome/free-solid-svg-icons"
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
+import Button from "../components/base/Button"
 
 
 export default function PageRepositoriesList({ children, className, ...props }) {
@@ -25,7 +28,20 @@ export default function PageRepositoriesList({ children, className, ...props }) 
 
     return (
         <div className={classNames(Style.PageRepositories, className)} {...props}>
+            <BoxHeader className={Style.Header}>
+                <FontAwesomeIcon icon={faHome}/> {strings.dashboard}
+            </BoxHeader>
+            <div className={Style.Buttons}>
+                <Button
+                    icon={faPlus}
+                    color={"Green"}
+                    onClick={() => history.push("/repositories/create")}
+                >
+                    {strings.createRepo}
+                </Button>
+            </div>
             <BoxRepositories
+                className={Style.ActiveRepositories}
                 header={strings.menuActive}
                 loading={!bv.firstLoad}
                 running={bv.running}
@@ -37,6 +53,7 @@ export default function PageRepositoriesList({ children, className, ...props }) 
                 edit={pk => history.push(`/repositories/${pk}/edit`)}
             />
             <BoxRepositories
+                className={Style.ArchivedRepositories}
                 header={strings.menuArchived}
                 loading={!bv.firstLoad}
                 running={bv.running}

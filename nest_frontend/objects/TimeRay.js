@@ -1,3 +1,6 @@
+import { SerializationError } from "./Errors"
+
+
 /**
  * An half-line of time, defined by a `date` and a boolean `isBefore` indicating if the time before or after the
  * specified date should be selected.
@@ -13,6 +16,18 @@ export default class TimeRay {
     constructor(isBefore, date) {
         this.isBefore = isBefore
         this.date = date
+    }
+
+    static rawRegex = /^(?<isBefore>[><]) (?<date>.+)$/
+
+    static fromRaw(data) {
+        const match = this.rawRegex.exec(data)
+
+        if(!match) throw new SerializationError(data)
+
+        const isBefore = match.groups.isBefore === "<"
+        const date = new Date(match.groups.date)
+        return new TimeRay(isBefore, date)
     }
 
     /**

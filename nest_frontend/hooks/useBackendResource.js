@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from "react"
 import useBackendRequest from "./useBackendRequest"
+import { ViewNotAllowedError } from "../objects/Errors"
 
 
 /**
@@ -72,9 +73,10 @@ export default function useBackendResource(
             }
             catch(e) {
                 setError(e)
-                throw e
+                return
             }
             setError(null)
+
             setResource(refreshedResource)
             return refreshedResource
         },
@@ -89,9 +91,10 @@ export default function useBackendResource(
             }
             catch(e) {
                 setError(e)
-                throw e
+                return
             }
             setError(null)
+
             setResource(editedResource)
             return editedResource
         },
@@ -105,9 +108,10 @@ export default function useBackendResource(
             }
             catch(e) {
                 setError(e)
-                throw e
+                return
             }
             setError(null)
+
             setResource(null)
             return null
         },

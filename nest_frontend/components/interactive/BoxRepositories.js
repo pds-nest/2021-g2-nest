@@ -17,7 +17,6 @@ import ContextUser from "../../contexts/ContextUser"
  * @param destroy - Function with a single "id" parameter to call when the delete repository button is clicked.
  * @param firstLoad - If the repositories are loading and a loading message should be displayed.
  * @param running - If an action is running on the viewset.
- * @param className - Additional class(es) to append to the box.
  * @param props - Additional props to pass to the box.
  * @returns {JSX.Element}
  * @constructor
@@ -33,7 +32,6 @@ export default function BoxRepositories(
         destroy,
         loading,
         running,
-        className,
         ...props
     })
 {

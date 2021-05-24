@@ -6,6 +6,8 @@ import {
     faQuestionCircle,
     IconDefinition,
 } from "@fortawesome/free-solid-svg-icons"
+import TimeRay from "./TimeRay"
+import MapArea from "./MapArea"
 
 
 /**
@@ -22,6 +24,16 @@ export class Condition {
         this.content = content
         this.type = type
         this.id = id
+    }
+
+    static fromRaw(data) {
+        console.debug("Trying to serialize condition: ", data)
+
+        if(data.type === 0) return ConditionHashtag.fromRaw(data)
+        else if(data.type === 2) return ConditionTime.fromRaw(data)
+        else if(data.type === 3) return ConditionLocation.fromRaw(data)
+        else if(data.type === 5) return ConditionUser.fromRaw(data)
+        else return new Condition(data.type, data.content, data.id)
     }
 
     /**
@@ -61,6 +73,10 @@ export class ConditionHashtag extends Condition {
         super(0, hashtag, id)
     }
 
+    static fromRaw(data) {
+        return new ConditionHashtag(data.content, data.id)
+    }
+
     display() {
         return {
             color: "Grey",
@@ -78,6 +94,10 @@ export class ConditionHashtag extends Condition {
 export class ConditionUser extends Condition {
     constructor(user, id = null) {
         super(5, user, id)
+    }
+
+    static fromRaw(data) {
+        return new ConditionUser(data.content, data.id)
     }
 
     display() {
@@ -102,6 +122,10 @@ export class ConditionTime extends Condition {
         this.timeRay = timeRay
     }
 
+    static fromRaw(data) {
+        return new ConditionTime(TimeRay.fromRaw(data.content), data.id)
+    }
+
     display() {
         return {
             color: "Yellow",
@@ -124,6 +148,10 @@ export class ConditionLocation extends Condition {
         this.mapArea = mapArea
     }
 
+    static fromRaw(data) {
+        return new ConditionLocation(MapArea.fromRaw(data.content), data.id)
+    }
+
     display() {
         return {
             color: "Red",
@@ -133,3 +161,4 @@ export class ConditionLocation extends Condition {
         }
     }
 }
+

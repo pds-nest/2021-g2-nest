@@ -1,5 +1,7 @@
 import { getDistance } from "geolib"
 import osmZoomLevels from "../utils/osmZoomLevels"
+import Coordinates from "./Coordinates"
+import { SerializationError } from "./Errors"
 
 
 /**
@@ -30,6 +32,21 @@ export default class MapArea {
      */
     static fromZoomLevel(zoom, center) {
         return new MapArea(osmZoomLevels[zoom], center)
+    }
+
+    static rawRegex = /^< (?<radius>[0-9.]+) (?<lat>[0-9.]+) (?<lng>[0-9.]+)$/
+
+    static fromRaw(data) {
+        const match = this.rawRegex.exec(data)
+
+        if(!match) throw new SerializationError(data)
+
+        const radius = Number(match.groups.radius)
+        const lat = Number(match.groups.lat)
+        const lng = Number(match.groups.lng)
+        const center = new Coordinates(lat, lng)
+
+        return new MapArea(radius, center)
     }
 
     /**

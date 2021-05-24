@@ -112,6 +112,8 @@ export default {
         postUniq: "Totale utenti che hanno postato",
         postPop: "Utente più attivo",
         filters: "Filtri",
+
+        errorMissingFields: "Errore: Uno o più campi richiesti non sono stati compilati."
     },
     // 🇬🇧
     en: {

@@ -14,6 +14,9 @@ import PageShare from "./routes/PageShare"
 export default function PageSwitcher({ ...props }) {
     return (
         <Switch {...props}>
+            <Route path={"/repositories/create"} exact={true}>
+                <PageRepositoryCreate/>
+            </Route>
             <Route path={"/repositories/:id/alerts"} exact={true}>
                 <PageRepositoryAlerts/>
             </Route>
@@ -34,9 +37,6 @@ export default function PageSwitcher({ ...props }) {
             </Route>
             <Route path={"/settings"} exact={true}>
                 <PageSettings/>
-            </Route>
-            <Route path={"/dashboard"} exact={true}>
-                <PageRepositoryCreate/>
             </Route>
             <Route path={"/"}>
                 <PageLogin/>
