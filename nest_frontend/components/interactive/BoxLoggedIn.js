@@ -7,7 +7,7 @@ import ContextUser from "../../contexts/ContextUser"
 import { useHistory } from "react-router"
 import Style from "./BoxLoggedIn.module.css"
 import CurrentServer from "./CurrentServer"
-import ContextLanguage from "../../contexts/ContextLanguage"
+import useStrings from "../../hooks/useStrings"
 
 
 /**
@@ -20,7 +20,7 @@ import ContextLanguage from "../../contexts/ContextLanguage"
 export default function BoxLoggedIn({ ...props }) {
     const { logout } = useContext(ContextUser)
     const history = useHistory()
-    const { strings } = useContext(ContextLanguage)
+    const strings = useStrings()
 
     return (
         <BoxFull header={strings.loggedInTitle} {...props}>

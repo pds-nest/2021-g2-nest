@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React from "react"
 import BoxFull from "../base/BoxFull"
 import FormLabelled from "../base/FormLabelled"
 import FormLabel from "../base/formparts/FormLabel"
@@ -8,9 +8,8 @@ import Radio from "../base/Radio"
 import Button from "../base/Button"
 import useRepositoryEditor from "../../hooks/useRepositoryEditor"
 import FormAlert from "../base/formparts/FormAlert"
-import goToOnSuccess from "../../utils/goToOnSuccess"
 import { useHistory } from "react-router"
-import ContextLanguage from "../../contexts/ContextLanguage"
+import useStrings from "../../hooks/useStrings"
 
 
 /**
@@ -34,7 +33,7 @@ export default function BoxRepositoryCreate({ running, ...props }) {
     } = useRepositoryEditor()
 
     const history = useHistory()
-    const { strings } = useContext(ContextLanguage)
+    const strings = useStrings()
 
     return (
         <BoxFull header={strings.createRepo} {...props}>

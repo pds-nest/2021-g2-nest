@@ -4,7 +4,7 @@ import LogoDark from "../../media/LogoDark.png"
 import LogoLight from "../../media/LogoLight.png"
 import ContextTheme from "../../contexts/ContextTheme"
 import classNames from "classnames"
-import ContextLanguage from "../../contexts/ContextLanguage"
+import useStrings from "../../hooks/useStrings"
 
 
 /**
@@ -19,7 +19,7 @@ import ContextLanguage from "../../contexts/ContextLanguage"
  */
 export default function Logo({ className, ...props }) {
     const { theme } = useContext(ContextTheme)
-    const { strings } = useContext(ContextLanguage)
+    const strings = useStrings()
 
     let logo
     if(theme === "ThemeDark") {

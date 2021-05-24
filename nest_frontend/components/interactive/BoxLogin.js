@@ -8,7 +8,7 @@ import FormButton from "../base/formparts/FormButton"
 import ContextUser from "../../contexts/ContextUser"
 import { useHistory } from "react-router"
 import FormAlert from "../base/formparts/FormAlert"
-import ContextLanguage from "../../contexts/ContextLanguage"
+import useStrings from "../../hooks/useStrings"
 
 
 /**
@@ -25,7 +25,7 @@ export default function BoxLogin({ ...props }) {
     const [error, setError] = useState(null)
     const { login } = useContext(ContextUser)
     const history = useHistory()
-    const { strings } = useContext(ContextLanguage)
+    const strings = useStrings()
 
     const doLogin = async () => {
         if(working) {

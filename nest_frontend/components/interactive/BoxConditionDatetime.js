@@ -1,11 +1,11 @@
-import React, { useCallback, useContext } from "react"
+import React, { useCallback } from "react"
 import BoxFull from "../base/BoxFull"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faClock } from "@fortawesome/free-solid-svg-icons"
 import useRepositoryEditor from "../../hooks/useRepositoryEditor"
-import ContextLanguage from "../../contexts/ContextLanguage"
 import FormInlineTimeRay from "./FormInlineTimeRay"
 import { ConditionTime } from "../../objects/Condition"
+import useStrings from "../../hooks/useStrings"
 
 
 /**
@@ -18,7 +18,7 @@ import { ConditionTime } from "../../objects/Condition"
  */
 export default function BoxConditionDatetime({ ...props }) {
     const { addCondition } = useRepositoryEditor()
-    const { strings } = useContext(ContextLanguage)
+    const strings = useStrings()
 
     const submit = useCallback(
         timeRay => addCondition(new ConditionTime(timeRay)),

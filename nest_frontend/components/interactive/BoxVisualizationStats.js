@@ -1,13 +1,13 @@
 import React, { useContext, useMemo } from "react"
 import FormLabelled from "../base/FormLabelled"
 import FormLabel from "../base/formparts/FormLabel"
-import ContextLanguage from "../../contexts/ContextLanguage"
 import BoxFullScrollable from "../base/BoxFullScrollable"
 import ContextRepositoryViewer from "../../contexts/ContextRepositoryViewer"
+import useStrings from "../../hooks/useStrings"
 
 
 export default function BoxVisualizationStats({ ...props }) {
-    const { strings } = useContext(ContextLanguage)
+    const strings = useStrings()
     const { tweets, words, rawTweets } = useContext(ContextRepositoryViewer)
 
     const tweetCount = useMemo(

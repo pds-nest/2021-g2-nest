@@ -1,8 +1,8 @@
-import React, { useContext } from "react"
+import React from "react"
 import BoxFull from "../base/BoxFull"
 import BadgeCondition from "./BadgeCondition"
 import useRepositoryEditor from "../../hooks/useRepositoryEditor"
-import ContextLanguage from "../../contexts/ContextLanguage"
+import useStrings from "../../hooks/useStrings"
 
 
 /**
@@ -14,7 +14,7 @@ import ContextLanguage from "../../contexts/ContextLanguage"
  */
 export default function BoxConditions({ ...props }) {
     const { conditions } = useRepositoryEditor()
-    const { strings } = useContext(ContextLanguage)
+    const strings = useStrings()
 
     const badges = conditions.map((cond, pos) => <BadgeCondition key={pos} condition={cond}/>)
 

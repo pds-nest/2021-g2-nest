@@ -2,7 +2,7 @@ import React, { useContext } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faUser } from "@fortawesome/free-solid-svg-icons"
 import ContextUser from "../../contexts/ContextUser"
-import ContextLanguage from "../../contexts/ContextLanguage"
+import useStrings from "../../hooks/useStrings"
 
 
 /**
@@ -14,7 +14,7 @@ import ContextLanguage from "../../contexts/ContextLanguage"
  */
 export default function LoggedInUser({ ...props }) {
     const { user } = useContext(ContextUser)
-    const { strings } = useContext(ContextLanguage)
+    const strings = useStrings()
 
     if(!user) {
         return (

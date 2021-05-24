@@ -1,12 +1,12 @@
-import React, { useCallback, useContext } from "react"
+import React, { useCallback } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faLocationArrow, faPlus } from "@fortawesome/free-solid-svg-icons"
 import ButtonIconOnly from "../base/ButtonIconOnly"
 import useRepositoryEditor from "../../hooks/useRepositoryEditor"
-import ContextLanguage from "../../contexts/ContextLanguage"
 import BoxMap from "../base/BoxMap"
 import useMapAreaState from "../../hooks/useMapAreaState"
 import { ConditionLocation } from "../../objects/Condition"
+import useStrings from "../../hooks/useStrings"
 
 
 /**
@@ -20,7 +20,7 @@ import { ConditionLocation } from "../../objects/Condition"
 export default function BoxConditionLocation({ ...props }) {
     const mapViewHook = useMapAreaState()
     const { addCondition } = useRepositoryEditor()
-    const { strings } = useContext(ContextLanguage)
+    const strings = useStrings()
 
     const onButtonClick = useCallback(
         () => addCondition(new ConditionLocation(mapViewHook.mapArea)),

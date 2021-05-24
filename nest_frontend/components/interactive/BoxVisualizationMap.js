@@ -1,9 +1,9 @@
 import React, { useContext, useMemo } from "react"
 import BoxMap from "../base/BoxMap"
-import ContextLanguage from "../../contexts/ContextLanguage"
 import { Marker, Popup } from "react-leaflet"
 import Coordinates from "../../objects/Coordinates"
 import ContextRepositoryViewer from "../../contexts/ContextRepositoryViewer"
+import useStrings from "../../hooks/useStrings"
 
 
 /**
@@ -14,7 +14,7 @@ import ContextRepositoryViewer from "../../contexts/ContextRepositoryViewer"
  * @constructor
  */
 export default function BoxVisualizationMap({ ...props }) {
-    const { strings } = useContext(ContextLanguage)
+    const strings = useStrings()
     const { tweets, mapViewHook } = useContext(ContextRepositoryViewer)
 
     const markers = useMemo(

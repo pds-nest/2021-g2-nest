@@ -1,8 +1,8 @@
-import React, { useContext } from "react"
+import React from "react"
 import Style from "./ButtonToggleBeforeAfter.module.css"
 import classNames from "classnames"
 import Button from "../base/Button"
-import ContextLanguage from "../../contexts/ContextLanguage"
+import useStrings from "../../hooks/useStrings"
 
 
 /**
@@ -16,7 +16,7 @@ import ContextLanguage from "../../contexts/ContextLanguage"
  * @constructor
  */
 export default function ButtonToggleBeforeAfter({ isBefore, setBefore, className, ...props }) {
-    const { strings } = useContext(ContextLanguage)
+    const strings = useStrings()
 
     const onButtonClick = () => {
         setBefore(a => !a)

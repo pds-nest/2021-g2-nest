@@ -1,8 +1,8 @@
 import React, { useContext } from "react"
 import BoxFull from "../base/BoxFull"
-import ContextLanguage from "../../contexts/ContextLanguage"
 import ContextRepositoryViewer from "../../contexts/ContextRepositoryViewer"
 import BadgeFilter from "./BadgeFilter"
+import useStrings from "../../hooks/useStrings"
 
 
 /**
@@ -13,7 +13,7 @@ import BadgeFilter from "./BadgeFilter"
  * @constructor
  */
 export default function BoxFilters({ ...props }) {
-    const { strings } = useContext(ContextLanguage)
+    const strings = useStrings()
     const { filters } = useContext(ContextRepositoryViewer)
 
     const badges = filters.map((filter, pos) => <BadgeFilter key={pos} filter={filter}/>)

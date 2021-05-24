@@ -8,10 +8,11 @@ import useBackendViewset from "../hooks/useBackendViewset"
 import { useParams } from "react-router"
 import ContextUser from "../contexts/ContextUser"
 import BoxAlert from "../components/base/BoxAlert"
+import useStrings from "../hooks/useStrings"
 
 
 export default function PageShare({ className, ...props }) {
-    const { strings } = useContext(ContextLanguage)
+    const strings = useStrings()
     const { user: loggedUser } = useContext(ContextUser)
     const { id } = useParams()
 

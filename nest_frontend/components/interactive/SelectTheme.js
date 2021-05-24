@@ -1,7 +1,7 @@
 import React, { useContext } from "react"
 import Select from "../base/Select"
 import ContextTheme from "../../contexts/ContextTheme"
-import ContextLanguage from "../../contexts/ContextLanguage"
+import useStrings from "../../hooks/useStrings"
 
 
 /**
@@ -14,7 +14,7 @@ import ContextLanguage from "../../contexts/ContextLanguage"
  */
 export default function SelectTheme({ ...props }) {
     const { theme, setTheme } = useContext(ContextTheme)
-    const { strings } = useContext(ContextLanguage)
+    const strings = useStrings()
 
     return (
         <Select value={theme} onChange={e => setTheme(e.target.value)} {...props}>

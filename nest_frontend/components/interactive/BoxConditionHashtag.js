@@ -1,11 +1,11 @@
-import React, { useCallback, useContext } from "react"
+import React, { useCallback } from "react"
 import BoxFull from "../base/BoxFull"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faHashtag } from "@fortawesome/free-solid-svg-icons"
 import useRepositoryEditor from "../../hooks/useRepositoryEditor"
-import ContextLanguage from "../../contexts/ContextLanguage"
 import FormInlineHashtag from "./FormInlineHashtag"
 import { ConditionHashtag } from "../../objects/Condition"
+import useStrings from "../../hooks/useStrings"
 
 
 /**
@@ -18,7 +18,7 @@ import { ConditionHashtag } from "../../objects/Condition"
  */
 export default function BoxConditionHashtag({ ...props }) {
     const { addCondition } = useRepositoryEditor()
-    const { strings } = useContext(ContextLanguage)
+    const strings = useStrings()
 
     const submit = useCallback(
         value => addCondition(new ConditionHashtag(value)),

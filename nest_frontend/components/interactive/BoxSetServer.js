@@ -5,7 +5,7 @@ import FormLabel from "../base/formparts/FormLabel"
 import InputWithIcon from "../base/InputWithIcon"
 import { faGlobe } from "@fortawesome/free-solid-svg-icons"
 import ContextServer from "../../contexts/ContextServer"
-import ContextLanguage from "../../contexts/ContextLanguage"
+import useStrings from "../../hooks/useStrings"
 
 
 /**
@@ -17,7 +17,7 @@ import ContextLanguage from "../../contexts/ContextLanguage"
  */
 export default function BoxSetServer({ ...props }) {
     const { server, setServer } = useContext(ContextServer)
-    const { strings } = useContext(ContextLanguage)
+    const strings = useStrings()
 
     return (
         <BoxFull header={strings.server} {...props}>

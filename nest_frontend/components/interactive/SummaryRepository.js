@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React from "react"
 import {
     faArchive,
     faBell,
@@ -8,12 +8,12 @@ import {
     faShare,
     faTrash,
 } from "@fortawesome/free-solid-svg-icons"
-import ContextLanguage from "../../contexts/ContextLanguage"
 import SummaryBase from "../base/summary/SummaryBase"
 import SummaryLeft from "../base/summary/SummaryLeft"
 import SummaryLabels from "../base/summary/SummaryLabels"
 import SummaryButton from "../base/summary/SummaryButton"
 import SummaryRight from "../base/summary/SummaryRight"
+import useStrings from "../../hooks/useStrings"
 
 
 /**
@@ -35,7 +35,7 @@ import SummaryRight from "../base/summary/SummaryRight"
 export default function SummaryRepository(
     { repo, view, alerts, share, archive, edit, destroy, running, className, ...props },
 ) {
-    const { strings } = useContext(ContextLanguage)
+    const strings = useStrings()
 
     return (
         <SummaryBase {...props}>

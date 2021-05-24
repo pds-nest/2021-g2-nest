@@ -1,13 +1,13 @@
 import React, { useContext } from "react"
 import { faShare, faStar, faTrash, faUser } from "@fortawesome/free-solid-svg-icons"
-import ContextLanguage from "../../contexts/ContextLanguage"
 import SummaryBase from "../base/summary/SummaryBase"
 import SummaryLeft from "../base/summary/SummaryLeft"
 import SummaryLabels from "../base/summary/SummaryLabels"
 import SummaryButton from "../base/summary/SummaryButton"
 import SummaryRight from "../base/summary/SummaryRight"
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import ContextUser from "../../contexts/ContextUser"
+import useStrings from "../../hooks/useStrings"
 
 
 /**
@@ -23,7 +23,7 @@ import ContextUser from "../../contexts/ContextUser"
  * @constructor
  */
 export default function SummaryUser({ user, shareWithUser, unshareWithUser, destroyUser, running, ...props }) {
-    const { strings } = useContext(ContextLanguage)
+    const strings = useStrings()
     const {user: loggedUser} = useContext(ContextUser)
 
     return (

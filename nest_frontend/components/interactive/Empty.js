@@ -1,7 +1,7 @@
-import React, { useContext } from "react"
+import React from "react"
 import Style from "./Empty.module.css"
 import classNames from "classnames"
-import ContextLanguage from "../../contexts/ContextLanguage"
+import useStrings from "../../hooks/useStrings"
 
 
 /**
@@ -13,7 +13,7 @@ import ContextLanguage from "../../contexts/ContextLanguage"
  * @constructor
  */
 export default function Empty({ className, ...props }) {
-    const { strings } = useContext(ContextLanguage)
+    const strings = useStrings()
 
     return (
         <i className={classNames(Style.Empty, className)} {...props}>

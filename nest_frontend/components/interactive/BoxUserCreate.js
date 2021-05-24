@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useState } from "react"
+import React, { useCallback, useState } from "react"
 import FormLabelled from "../base/FormLabelled"
 import FormLabel from "../base/formparts/FormLabel"
 import InputWithIcon from "../base/InputWithIcon"
@@ -6,7 +6,7 @@ import { faEnvelope, faKey, faPlus, faUser } from "@fortawesome/free-solid-svg-i
 import FormButton from "../base/formparts/FormButton"
 import BoxFull from "../base/BoxFull"
 import FormAlert from "../base/formparts/FormAlert"
-import ContextLanguage from "../../contexts/ContextLanguage"
+import useStrings from "../../hooks/useStrings"
 
 
 /**
@@ -23,7 +23,7 @@ export default function BoxUserCreate({ createUser, running, ...props }) {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [error, setError] = useState(undefined)
-    const { strings } = useContext(ContextLanguage)
+    const strings = useStrings()
 
     const onButtonClick = useCallback(
         async () => {

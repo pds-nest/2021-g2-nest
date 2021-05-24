@@ -2,12 +2,12 @@ import React, { useContext, useMemo } from "react"
 import BoxFull from "../base/BoxFull"
 import BoxChart from "../base/BoxChart"
 import Empty from "./Empty"
-import ContextLanguage from "../../contexts/ContextLanguage"
 import ContextRepositoryViewer from "../../contexts/ContextRepositoryViewer"
+import useStrings from "../../hooks/useStrings"
 
 
 export default function BoxVisualizationChart({ ...props }) {
-    const { strings } = useContext(ContextLanguage)
+    const strings = useStrings()
     const { tweets } = useContext(ContextRepositoryViewer)
 
     const chartProps = useMemo(
