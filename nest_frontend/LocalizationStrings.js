@@ -14,7 +14,7 @@ export default {
     it: {
         appName: "N.E.S.T.",
         appFullName: "Noi Estraiamo Statistiche Tweet",
-        welcomeToNest: "Benvenuto a N.E.S.T.!",  // TODO: Tradurre
+        welcomeToNest: "Benvenuto a N.E.S.T.!",
 
         server: "Scegli un server",
         baseURL: "Base URL",
@@ -114,7 +114,6 @@ export default {
         postPop: "Utente più attivo",
         filters: "Filtri",
 
-        // TODO: Tradurre gli errori
         errorUserNotFound: "Errore: Utente non trovato.",
         errorUserWrongCredentials: "Errore: Username o password non validi.",
         errorUserNotAuthorized: "Errore: Non hai i permessi necessari per accedere a questa risorsa.",
@@ -142,6 +141,7 @@ export default {
     en: {
         appName: "N.E.S.T.",
         appFullName: "We Extract Statistics from Tweets",
+        welcomeToNest: "Welcome to N.E.S.T.!",
 
         server: "Choose a server",
         baseURL: "Base URL",
@@ -157,9 +157,11 @@ export default {
         byHashtag: "hashtag",
         byUser: "user",
         byHasImage: "image",
+        hasImageExplaination: "Only show tweets with an image.",
         byTimePeriod: "time period",
         byContents: "contents",
         byHasPlace: "point of interest",
+        hasPlaceExplaination: "Only show tweets with an associated PoI.",
         timeBefore: "Before",
         timeAfter: "After",
         conditions: "Conditions",
@@ -180,10 +182,15 @@ export default {
         emptyMenu: "There's nothing here.",
         delete: "Delete",
         share: "Share",
+        unshare: "Unshare",
         archive: "Archive",
         edit: "Edit",
         created: "Created",
         archived: "Archived",
+
+        repoShare: "Share",
+        availableUsers: "Available users",
+        sharingWith: "Sharing with",
 
         alerts: "Alerts",
         alertTitle: "Your alerts",
@@ -237,6 +244,7 @@ export default {
     fi: {
         appName: "N.E.S.T.",
         appFullName: "Poimimme Twiittien Tilastot",
+        welcomeToNest: "Tervetuloa N.E.S.T.:hen!", //Certo che il finlandese è proprio strano
 
         server: "Valitse palvelin",
         baseURL: "Perus-URL",
@@ -252,9 +260,11 @@ export default {
         byHashtag: "hashtagin mukaan",
         byUser: "käyttäjän mukaan",
         byHasImage: "kuva",
+        hasImageExplaination: "Näytä vain twiitit, joissa on kuva.",
         byTimePeriod: "aikajakson mukaan",
         byContents: "sisältö",
         byHasPlace: "kiinnostuksen kohde",
+        hasPlaceExplaination: "Näytä vain twiitit, joihin liittyy kiinnostava kohde.",
         timeBefore: "Ennen",
         timeAfter: "Jälkeen",
         conditions: "Ehdot",
@@ -274,10 +284,16 @@ export default {
         menuArchived: "Arkistoidut arkistosi",
         emptyMenu: "Täällä ei ole mitään.",
         delete: "Poista",
+        share: "Osake",
+        unshare: "Peruuta jakaminen", // Potrebbe voler dire tutt'altra cosa, ma ho già combattuto abbastanza per una singola frase
         archive: "Arkistoi",
         edit: "Muokkaa",
         created: "Luotu",
         archived: "Arkisto",
+
+        repoShare: "Osake",
+        availableUsers: "Käytettävissä olevat käyttäjät",
+        sharingWith: "Jakaminen seuraavien kanssa",
 
         alerts: "Hälytykset",
         alertTitle: "Hälytyksesi",
