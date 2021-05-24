@@ -1,14 +1,13 @@
 import React from "react"
 import { Route, Switch } from "react-router"
 import PageLogin from "./routes/PageLogin"
-import PageRepositories from "./routes/PageRepositories"
-import PageAlerts from "./routes/PageAlerts"
+import PageRepositoriesList from "./routes/PageRepositoriesList"
+import PageRepositoryAlerts from "./routes/PageRepositoryAlerts"
 import PageSettings from "./routes/PageSettings"
-import PageDashboard from "./routes/PageDashboard"
-import PageRoot from "./routes/PageRoot"
-import PageEdit from "./routes/PageEdit"
+import PageRepositoryCreate from "./routes/PageRepositoryCreate"
+import PageRepositoryEdit from "./routes/PageRepositoryEdit"
 import PageUsers from "./routes/PageUsers"
-import PageRepository from "./routes/PageRepository"
+import PageRepositoryAnalyze from "./routes/PageRepositoryAnalyze"
 import PageShare from "./routes/PageShare"
 
 
@@ -16,34 +15,31 @@ export default function PageSwitcher({ ...props }) {
     return (
         <Switch {...props}>
             <Route path={"/repositories/:id/alerts"} exact={true}>
-                <PageAlerts/>
+                <PageRepositoryAlerts/>
             </Route>
             <Route path={"/repositories/:id/share"} exact={true}>
                 <PageShare/>
             </Route>
             <Route path={"/repositories/:id/edit"} exact={true}>
-                <PageEdit/>
+                <PageRepositoryEdit/>
             </Route>
             <Route path={"/repositories/:id"} exact={true}>
-                <PageRepository/>
-            </Route>
-            <Route path={"/login"} exact={true}>
-                <PageLogin/>
+                <PageRepositoryAnalyze/>
             </Route>
             <Route path={"/users"} exact={true}>
                 <PageUsers/>
             </Route>
             <Route path={"/repositories"} exact={true}>
-                <PageRepositories/>
+                <PageRepositoriesList/>
             </Route>
             <Route path={"/settings"} exact={true}>
                 <PageSettings/>
             </Route>
             <Route path={"/dashboard"} exact={true}>
-                <PageDashboard/>
+                <PageRepositoryCreate/>
             </Route>
             <Route path={"/"}>
-                <PageRoot/>
+                <PageLogin/>
             </Route>
         </Switch>
     )

@@ -35,7 +35,7 @@ export default function BoxLogin({ ...props }) {
         setWorking(true)
         try {
             await login(email, password)
-            history.push("/dashboard")
+            history.push("/repositories")
         }
         catch(e) {
             setError(e)

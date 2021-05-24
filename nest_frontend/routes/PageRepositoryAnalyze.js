@@ -3,7 +3,7 @@ import { useParams } from "react-router"
 import RepositoryViewer from "../components/providers/RepositoryViewer"
 
 
-export default function PageRepository({ className, ...props }) {
+export default function PageRepositoryAnalyze({ className, ...props }) {
     const { id } = useParams()
 
     return (

@@ -1,5 +1,5 @@
 import React, { useContext } from "react"
-import Style from "./PageDashboard.module.css"
+import Style from "./PageRepositoryCreate.module.css"
 import classNames from "classnames"
 import BoxHeader from "../components/base/BoxHeader"
 import RepositoryEditor from "../components/providers/RepositoryEditor"
@@ -10,7 +10,7 @@ import { useParams } from "react-router"
 import ContextLanguage from "../contexts/ContextLanguage"
 
 
-export default function PageEdit({ className, ...props }) {
+export default function PageRepositoryEdit({ className, ...props }) {
     const { strings } = useContext(ContextLanguage)
 
     const { id } = useParams()

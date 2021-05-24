@@ -26,8 +26,7 @@ export default function Sidebar({ className, ...props }) {
             {
                 user ?
                 <>
-                    <ButtonSidebar to={"/dashboard"} icon={faHome}>{strings.dashboard}</ButtonSidebar>
-                    <ButtonSidebar to={"/repositories"} icon={faFolder}>{strings.repositories}</ButtonSidebar>
+                    <ButtonSidebar to={"/repositories"} icon={faHome}>{strings.dashboard}</ButtonSidebar>
                     <ButtonSidebar to={"/settings"} icon={faCog}>{strings.settings}</ButtonSidebar>
                 </>
                      :

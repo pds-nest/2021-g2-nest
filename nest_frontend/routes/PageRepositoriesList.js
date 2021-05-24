@@ -1,5 +1,5 @@
 import React, { useCallback, useContext } from "react"
-import Style from "./PageRepositories.module.css"
+import Style from "./PageRepositoriesList.module.css"
 import classNames from "classnames"
 import useBackendViewset from "../hooks/useBackendViewset"
 import BoxRepositories from "../components/interactive/BoxRepositories"
@@ -8,7 +8,7 @@ import ContextLanguage from "../contexts/ContextLanguage"
 import ContextUser from "../contexts/ContextUser"
 
 
-export default function PageRepositories({ children, className, ...props }) {
+export default function PageRepositoriesList({ children, className, ...props }) {
     const bv = useBackendViewset("/api/v1/repositories/", "id")
     const history = useHistory()
     const { strings } = useContext(ContextLanguage)

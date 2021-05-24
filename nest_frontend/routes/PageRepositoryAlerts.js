@@ -1,5 +1,5 @@
 import React, { useContext } from "react"
-import Style from "./PageAlerts.module.css"
+import Style from "./PageRepositoryAlerts.module.css"
 import classNames from "classnames"
 import BoxFull from "../components/base/BoxFull"
 import ContextLanguage from "../contexts/ContextLanguage"
@@ -7,7 +7,7 @@ import BoxHeader from "../components/base/BoxHeader"
 import { useParams } from "react-router"
 
 
-export default function PageAlerts({ children, className, ...props }) {
+export default function PageRepositoryAlerts({ children, className, ...props }) {
     const { strings } = useContext(ContextLanguage)
     const { id } = useParams()
 
