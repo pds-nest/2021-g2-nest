@@ -71,7 +71,7 @@ def page_repository_authorizations(rid):
         tags:
             - repository-related
     put:
-        summary: Delete an authorization.
+        summary: Update an authorization.
         parameters:
         - in: path
           schema: IntegerParameterSchema
