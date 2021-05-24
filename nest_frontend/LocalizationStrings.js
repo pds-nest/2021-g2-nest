@@ -14,6 +14,7 @@ export default {
     it: {
         appName: "N.E.S.T.",
         appFullName: "Noi Estraiamo Statistiche Tweet",
+        welcomeToNest: "Benvenuto a N.E.S.T.!",  // TODO: Tradurre
 
         server: "Scegli un server",
         baseURL: "Base URL",
