@@ -113,7 +113,29 @@ export default {
         postPop: "Utente più attivo",
         filters: "Filtri",
 
-        errorMissingFields: "Errore: Uno o più campi richiesti non sono stati compilati."
+        // TODO: Tradurre gli errori
+        errorUserNotFound: "Errore: Utente non trovato.",
+        errorUserWrongCredentials: "Errore: Username o password non validi.",
+        errorUserNotAuthorized: "Errore: Non hai i permessi necessari per accedere a questa risorsa.",
+        errorUserNotAdmin: "Errore: Non sei amministratore.",
+        errorUserPreventSeppuku: "Errore: Non puoi eliminare te stesso dalla lista degli utenti!",
+        errorDeletionError: "Errore: Qualcosa sta impedendo l'eliminazione dell'utente.", // ask balu?
+        errorNotFound: "Errore: Risorsa non trovata.",
+        errorMissingFields: "Errore: Uno o più campi richiesti non sono stati compilati.",
+        errorAlreadyExists: "Errore: La risorsa esiste già.",
+        errorEnumInvalid: "Errore: Tipo di dato sconosciuto.",
+        errorUnknownError: "Errore sconosciuto.",
+        errorNoJson: "Errore: È stata inviata una richiesta senza corpo.",
+        errorRepositoryNotFound: "Errore: Repository non trovato.",
+        errorRepositoryNotOwner: "Errore: Non sei il proprietario del repository!",
+        errorRepositoryDepencencyFailure: "Errore: Qualcosa sta impedendo l'eliminazione del repository.",
+        errorConditionNotFound: "Errore: Specificata una condizione non valida.",
+        errorAlertNotFound: "Errore: Allarme non trovato.",
+        errorAlertNoName: "Errore: Nome allarme non specificato.",
+        errorAlertNoLimit: "Errore: Limite allarme non specificato.",
+        errorAlertNoWindow: "Errore: Finestra di allarme non specificata.",
+        errorAlertNoEvaluation: "Errore: Modalità di valutazione non specificata.",
+        errorAlertDeletionFailure: "Errore: Qualcosa sta impedendo l'eliminazione dell'allarme.",
     },
     // 🇬🇧
     en: {
