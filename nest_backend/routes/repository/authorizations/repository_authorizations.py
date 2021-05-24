@@ -70,6 +70,38 @@ def page_repository_authorizations(rid):
                         schema: Error
         tags:
             - repository-related
+    delete:
+        summary: Delete an authorization.
+        parameters:
+        - in: path
+          schema: IntegerParameterSchema
+        security:
+        - jwt: []
+        requestBody:
+            required: true
+            content:
+                application/json:
+                    schema: CreateAuthorization
+        responses:
+            '204':
+                description: The deletion was successful.
+            '401':
+                description: The user is not logged in.
+                content:
+                    application/json:
+                        schema: Error
+            '403':
+                description: The user is not authorized.
+                content:
+                    application/json:
+                        schema: Error
+            '404':
+                description: Something could not be found.
+                content:
+                    application/json:
+                        schema: Error
+        tags:
+            - repository-related
     """
 
     repository = Repository.query.filter_by(id=rid).first()
@@ -99,3 +131,11 @@ def page_repository_authorizations(rid):
         ext.session.commit()
 
         return json_success(authorization.to_json()), 201
+
+    if request.method == "DELETE":
+        authorization = Authorization.query.filter_by(rid=rid, email=request.json.get('email')).first()
+        if not authorization:
+            return json_error("Could not find the authorization", AUTHORIZATION_NOT_FOUND), 404
+        ext.session.delete(authorization)
+        ext.session.commit()
+        return json_success("Deleted."), 204
