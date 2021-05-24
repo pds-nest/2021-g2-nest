@@ -70,7 +70,7 @@ def page_repository_authorizations(rid):
                         schema: Error
         tags:
             - repository-related
-    delete:
+    put:
         summary: Delete an authorization.
         parameters:
         - in: path
@@ -83,8 +83,16 @@ def page_repository_authorizations(rid):
                 application/json:
                     schema: CreateAuthorization
         responses:
-            '204':
-                description: The deletion was successful.
+            '200':
+                description: The authorization already existed
+                content:
+                    application/json:
+                        schema: Authorization
+            '201':
+                description: The authorization has been created successfully.
+                content:
+                    application/json:
+                        schema: Authorization
             '401':
                 description: The user is not logged in.
                 content:
@@ -115,27 +123,28 @@ def page_repository_authorizations(rid):
             return json_success([a.to_json() for a in repository.authorizations])
         except Exception as e:
             return json_error("Unknown error:" + str(e), GENERIC_UFO), 400
+    if request.json is None:
+        return json_error("Missing json content.", GENERIC_NO_JSON), 400
+    if not request.json.get("email"):
+        return json_error("Missing user email.", GENERIC_MISSING_FIELDS), 400
+    target = User.query.filter_by(email=request.json.get('email')).first()
+    if not target:
+        return json_error("User could not be located", USER_NOT_FOUND), 400
+    if target == user:
+        return json_error("Owner cannot be a spectator", GENERIC_ALREADY_EXISTS), 406
     if request.method == "POST":
-        if request.json is None:
-            return json_error("Missing json content.", GENERIC_NO_JSON), 400
-        if not request.json.get("email"):
-            return json_error("Missing user email.", GENERIC_MISSING_FIELDS), 400
-        target = User.query.filter_by(email=request.json.get('email')).first()
-        if not target:
-            return json_error("User could not be located", USER_NOT_FOUND), 400
-        if target == user:
-            return json_error("Owner cannot be a spectator", GENERIC_ALREADY_EXISTS), 406
-
         authorization = Authorization(email=request.json.get('email'), rid=repository.id)
         ext.session.add(authorization)
         ext.session.commit()
 
         return json_success(authorization.to_json()), 201
 
-    if request.method == "DELETE":
+    if request.method == "PUT":
         authorization = Authorization.query.filter_by(rid=rid, email=request.json.get('email')).first()
         if not authorization:
-            return json_error("Could not find the authorization", AUTHORIZATION_NOT_FOUND), 404
-        ext.session.delete(authorization)
-        ext.session.commit()
-        return json_success("Deleted."), 204
+            authorization = Authorization(email=request.json.get('email'), rid=repository.id)
+            ext.session.add(authorization)
+            ext.session.commit()
+            return json_success(authorization.to_json()), 201
+
+        return json_success(authorization.to_json()), 200

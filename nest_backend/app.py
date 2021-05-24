@@ -69,7 +69,7 @@ app.add_url_rule(
 app.add_url_rule(
     "/api/v1/repositories/<int:rid>/authorizations/",
     view_func=routes.page_repository_authorizations,
-    methods=["GET", "POST", "DELETE"],
+    methods=["GET", "POST", "PUT"],
 )
 app.add_url_rule(
     "/api/v1/repositories/<int:rid>/tweets/",
@@ -77,7 +77,7 @@ app.add_url_rule(
     methods=["GET"]
 )
 app.add_url_rule(
-    "/api/v1/authorization/<int:rid>/<string:email>",
+    "/api/v1/repositories/<int:rid>/authorizations/<string:email>",
     view_func=routes.page_authorization,
     methods=["DELETE"]
 )
