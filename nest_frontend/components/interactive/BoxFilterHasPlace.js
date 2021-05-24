@@ -41,7 +41,7 @@ export default function BoxFilterHasPlace({ ...props }) {
             {...props}
         >
             <FormInline>
-                <div style={{ "flex-grow": 1 }}>
+                <div style={{ "flexGrow": 1 }}>
                     {strings.hasPlaceExplaination}
                 </div>
                 <ButtonIconOnly
