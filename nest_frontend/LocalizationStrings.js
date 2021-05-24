@@ -138,10 +138,10 @@ export default {
         errorAlertNoWindow: "Errore: Finestra di allarme non specificata.",
         errorAlertNoEvaluation: "Errore: Modalità di valutazione non specificata.",
         errorAlertDeletionFailure: "Errore: Qualcosa sta impedendo l'eliminazione dell'allarme.",
-        errorViewNotAllowed: "Errore: Non è permesso effettuare la richiesta.", // TODO: Tradurre
-        errorServerNotConfigured: "Errore: Non è stato configurato nessun server.", // TODO: Tradurre
-        errorDecodeError: "Errore: Non è stato possibile deserializzare i dati ricevuti dal backend.", // TODO: Tradurre
-        errorSerializationError: "Errore: Non è stato possibile serializzare i dati da inviare al backend." // TODO: Tradurre
+        errorViewNotAllowed: "Errore: Non è permesso effettuare la richiesta.",
+        errorServerNotConfigured: "Errore: Non è stato configurato nessun server.",
+        errorDecodeError: "Errore: Non è stato possibile deserializzare i dati ricevuti dal backend.",
+        errorSerializationError: "Errore: Non è stato possibile serializzare i dati da inviare al backend."
     },
     // 🇬🇧
     en: {
@@ -245,12 +245,39 @@ export default {
         postUniq: "Unique posters",
         postPop: "Most active poster",
         filters: "Filters",
+
+        errorUserNotFound: "Error: User not found.",
+        errorUserWrongCredentials: "Error: Invalid username or password.",
+        errorUserNotAuthorized: "Error: You don'have the necessary permissions to acces this resource.",
+        errorUserNotAdmin: "Error: You are not the administrator.",
+        errorUserPreventSeppuku: "Error: You can't delete yourself from the user list!",
+        errorDeletionError: "Error: Something is preventing user elimination.", // ask balu?
+        errorNotFound: "Error: Resource not found.",
+        errorMissingFields: "Error: One ore more requested fields haven't been compiled.",
+        errorAlreadyExists: "Error: Resource already exists.",
+        errorEnumInvalid: "Error: Unknown data type.",
+        errorUnknownError: "Unknown error.",
+        errorNoJson: "Error: Sent a request without body.",
+        errorRepositoryNotFound: "Error: Repository not found.",
+        errorRepositoryNotOwner: "Error: You aren't the owner of this repository!",
+        errorRepositoryDepencencyFailure: "Error: Something is preventing repository elimination",
+        errorConditionNotFound: "Error: Specified an invalid condition.",
+        errorAlertNotFound: "Error: Alert not found.",
+        errorAlertNoName: "Error: Didn't specify alert name.",
+        errorAlertNoLimit: "Error: Didn't specify alert threshold.",
+        errorAlertNoWindow: "Error: Didn't specify alert window size.",
+        errorAlertNoEvaluation: "Error: Didn't specify evaluation mode.",
+        errorAlertDeletionFailure: "Error: Something is preventing alert elimination.",
+        errorViewNotAllowed: "Error: You are not allowed to make the request.", //Non so come scriverlo meglio
+        errorServerNotConfigured: "Error: Server not configured.",
+        errorDecodeError: "Error: Could not deserialize data recieved from backend.",
+        errorSerializationError: "Error: Could not serialize the data to be sent to backend."
     },
     // 🇫🇮
     fi: {
         appName: "N.E.S.T.",
         appFullName: "Poimimme Twiittien Tilastot",
-        welcomeToNest: "Tervetuloa N.E.S.T.:hen!", //Certo che il finlandese è proprio strano
+        welcomeToNest: "Tervetuloa N.E.S.T.:hen!", //Certo che il Finlandese è proprio strano
 
         server: "Valitse palvelin",
         baseURL: "Perus-URL",
@@ -348,5 +375,32 @@ export default {
         postUniq: "Ainutkertaiset käyttäjät",
         postPop: "Aktiivisimmat käyttäjät",
         filters: "Suodattimet",
+
+        errorUserNotFound: "Virhe: Käyttäjää ei löydy.",
+        errorUserWrongCredentials: "Virhe: Virheellinen käyttäjätunnus tai salasana.",
+        errorUserNotAuthorized: "Virhe: Sinulla ei ole tarvittavia oikeuksia käyttää tätä resurssia.",
+        errorUserNotAdmin: "Virhe: Et ole ylläpitäjä.",
+        errorUserPreventSeppuku: "Virhe: Et voi poistaa itseäsi käyttäjäluettelosta!",
+        errorDeletionError: "Virhe: Jokin estää käyttäjän poistamisen.", // ask balu?
+        errorNotFound: "Virhe: Resurssia ei löydy.",
+        errorMissingFields: "Virhe: Yhtä tai useampaa pyydettyä kenttää ei ole koottu.",
+        errorAlreadyExists: "Virhe: Resurssi on jo olemassa.",
+        errorEnumInvalid: "Virhe: Tuntematon tietotyyppi.",
+        errorUnknownError: "Tuntematon virhe.",
+        errorNoJson: "Virhe: Lähetetty pyyntö ilman runkoa.",
+        errorRepositoryNotFound: "Virhe: Arkistoa ei löydy.",
+        errorRepositoryNotOwner: "Virhe: Et ole arkiston omistaja!",
+        errorRepositoryDepencencyFailure: "Virhe: Jokin estää arkiston poistamisen.",
+        errorConditionNotFound: "Virhe: Määritettiin virheellinen ehto.",
+        errorAlertNotFound: "Virhe: Hälytystä ei löydy.",
+        errorAlertNoName: "Virhe: Ei määritetty hälytyksen nimeä.",
+        errorAlertNoLimit: "Virhe: Ei määritetty hälytyskynnystä.",
+        errorAlertNoWindow: "Virhe: Ei määritetty hälytysikkunan kokoa.",
+        errorAlertNoEvaluation: "Virhe: Ei määritetty arviointitilaa.",
+        errorAlertDeletionFailure: "Virhe: Jokin estää hälytyksen poistamisen.",
+        errorViewNotAllowed: "Virhe: Et saa esittää pyyntöä.",
+        errorServerNotConfigured: "Virhe: Palvelinta ei ole määritetty.",
+        errorDecodeError: "Virhe: Backendistä saatuja tietoja ei voitu deserialisoida.",
+        errorSerializationError: "Virhe: Backendiin lähetettävää dataa ei voitu serialisoida."
     },
 }
