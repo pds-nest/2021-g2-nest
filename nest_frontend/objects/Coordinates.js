@@ -2,6 +2,7 @@
  * A pair of coordinates, latitude `lat` and longitude `lng`.
  */
 import { LatLng } from "leaflet/dist/leaflet-src.esm"
+import { SerializationError } from "./Errors"
 
 
 export default class Coordinates {
@@ -24,11 +25,15 @@ export default class Coordinates {
      * @returns {Coordinates}
      */
     static fromCrawlerString(str) {
-        const match = /[{]([0-9.]+),([0-9.]+)[}]/.exec(str)
+        const match = /[{]([0-9.-]+),([0-9.-]+)[}]/.exec(str)
         if(!match) {
-            throw new Error(`Invalid location string: ${str}`)
+            throw new SerializationError(str)
         }
-        return new Coordinates(match[1], match[2])
+        return new Coordinates(Number(match[1]), Number(match[2]))
+    }
+
+    static fromLatLng(latlng) {
+        return new Coordinates(latlng.lat, latlng.lng)
     }
 
     /**

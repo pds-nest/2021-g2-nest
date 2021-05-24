@@ -34,7 +34,7 @@ export default class MapArea {
         return new MapArea(osmZoomLevels[zoom], center)
     }
 
-    static rawRegex = /^< (?<radius>[0-9.]+) (?<lat>[0-9.]+) (?<lng>[0-9.]+)$/
+    static rawRegex = /^< (?<radius>[0-9.]+) (?<lat>[0-9.-]+) (?<lng>[0-9.-]+)$/
 
     static fromRaw(data) {
         const match = this.rawRegex.exec(data)

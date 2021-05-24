@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useMemo, useState } from "react"
 import Style from "./BoxMap.module.css"
 import BoxFull from "./BoxFull"
 import { MapContainer, TileLayer } from "react-leaflet"
+import Coordinates from "../../objects/Coordinates"
 
 
 export default function BoxMap(
@@ -14,7 +15,7 @@ export default function BoxMap(
     const [map, setMap] = useState(null)
 
     const onMapMove = useCallback(
-        () => mapViewHook.setCenter(map.getCenter()),
+        () => mapViewHook.setCenter(Coordinates.fromLatLng(map.getCenter())),
         [mapViewHook, map],
     )
 
