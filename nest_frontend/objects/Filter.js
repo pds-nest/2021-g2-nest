@@ -8,6 +8,7 @@ import {
     faLocationArrow,
     faMapMarkerAlt, faRetweet,
 } from "@fortawesome/free-solid-svg-icons"
+import Coordinates from "./Coordinates"
 
 
 /**
@@ -184,7 +185,7 @@ export class FilterInsideMapArea extends FilterWithLocation {
             return false
         }
 
-        return this.mapArea.includes(tweet.location)
+        return this.mapArea.includes(Coordinates.fromCrawlerString(tweet.location))
     }
 
     display() {
