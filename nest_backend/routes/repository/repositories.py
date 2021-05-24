@@ -82,6 +82,8 @@ def page_repositories():
             evaluation_mode = ConditionMode(request.json['evaluation_mode'])
         except KeyError:
             return json_error("Unknown `type` specified.", GENERIC_ENUM_INVALID), 400
+        except Exception as e:
+            return json_error("Unknown error: " + str(e)), 400
         repository = Repository(name=name, owner_id=user.email, is_active=False, evaluation_mode=evaluation_mode)
         ext.session.add(repository)
         ext.session.commit()
