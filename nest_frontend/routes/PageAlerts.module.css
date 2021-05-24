@@ -3,7 +3,9 @@
 
     grid-template-areas:
         "a"
-        "b";
+        "b"
+        "c";
+    grid-template-rows: auto 1fr 1fr;
 
     grid-gap: 10px;
 
@@ -11,10 +13,14 @@
     height: 100%;
 }
 
-.YourAlerts {
+.Header {
     grid-area: a;
 }
 
-.CreateAlert {
+.YourAlerts {
     grid-area: b;
+}
+
+.CreateAlert {
+    grid-area: c;
 }

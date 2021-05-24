@@ -11,22 +11,15 @@ import ContextUser from "../contexts/ContextUser"
 
 export default function PageShare({ className, ...props }) {
     const { strings } = useContext(ContextLanguage)
-    const {user: loggedUser} = useContext(ContextUser)
+    const { user: loggedUser } = useContext(ContextUser)
     const { id } = useParams()
-    const {resources: users, running: usersBvRunning} = useBackendViewset(
-        "/api/v1/users/",
-        "email",
-        {
-            list: true,
-            create: false,
-            retrieve: false,
-            edit: false,
-            destroy: false,
-            command: false,
-            action: false,
-        }
-    )
-    const {resources: authorizations, createResource: createAuthorization, destroyResource: destroyAuthorization, running: authBvRunning} = useBackendViewset(
+
+    const {
+        resources: authorizations,
+        createResource: createAuthorization,
+        destroyResource: destroyAuthorization,
+        running: authBvRunning
+    } = useBackendViewset(
         `/api/v1/repositories/${id}/authorizations/`,
         "email",
         {
@@ -35,6 +28,23 @@ export default function PageShare({ className, ...props }) {
             retrieve: false,
             edit: false,
             destroy: true,
+            command: false,
+            action: false,
+        }
+    )
+
+    const {
+        resources: users,
+        running: usersBvRunning
+    } = useBackendViewset(
+        "/api/v1/users/",
+        "email",
+        {
+            list: true,
+            create: false,
+            retrieve: false,
+            edit: false,
+            destroy: false,
             command: false,
             action: false,
         }

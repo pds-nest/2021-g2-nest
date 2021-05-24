@@ -28,7 +28,6 @@ export default function Sidebar({ className, ...props }) {
                 <>
                     <ButtonSidebar to={"/dashboard"} icon={faHome}>{strings.dashboard}</ButtonSidebar>
                     <ButtonSidebar to={"/repositories"} icon={faFolder}>{strings.repositories}</ButtonSidebar>
-                    <ButtonSidebar to={"/alerts"} icon={faExclamationTriangle}>{strings.alerts}</ButtonSidebar>
                     <ButtonSidebar to={"/settings"} icon={faCog}>{strings.settings}</ButtonSidebar>
                 </>
                      :

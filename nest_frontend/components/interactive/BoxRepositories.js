@@ -11,6 +11,7 @@ import ContextUser from "../../contexts/ContextUser"
  *
  * @param repositories - The repositories to list.
  * @param view - Function with a single "id" parameter to call when the view repository button is clicked.
+ * @param alerts - Function with a single "id" parameter to call when the alerts button is clicked.
  * @param archive - Function with a single "id" parameter to call when the archive repository button is clicked.
  * @param edit - Function with a single "id" parameter to call when the edit repository button is clicked.
  * @param destroy - Function with a single "id" parameter to call when the delete repository button is clicked.
@@ -25,6 +26,7 @@ export default function BoxRepositories(
     {
         repositories,
         view,
+        alerts,
         share,
         archive,
         edit,
@@ -50,6 +52,7 @@ export default function BoxRepositories(
                 key={repo["id"]}
                 repo={repo}
                 view={view ? () => view(repo["id"]) : null}
+                alerts={alerts ? () => alerts(repo["id"]) : null}
                 share={(share && user["email"] === repo["owner"]["email"]) ? () => share(repo["id"]) : null}
                 archive={archive ? () => archive(repo["id"]) : null}
                 edit={edit ? () => edit(repo["id"]) : null}
