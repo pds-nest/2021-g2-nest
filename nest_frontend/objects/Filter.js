@@ -6,7 +6,7 @@ import {
     faHashtag,
     faImage,
     faLocationArrow,
-    faMapMarkerAlt,
+    faMapMarkerAlt, faRetweet,
 } from "@fortawesome/free-solid-svg-icons"
 
 
@@ -238,6 +238,28 @@ export class FilterWithImage extends Filter {
         return {
             color: "Grey",
             icon: faImage,
+            children: "",
+        }
+    }
+}
+
+
+/**
+ * Check if a tweet is a retweet.
+ */
+export class FilterIsRetweet extends Filter {
+    constructor(negate = false) {
+        super(negate)
+    }
+
+    check(tweet) {
+        return tweet.content.startsWith("RT")
+    }
+
+    display() {
+        return {
+            color: "Green",
+            icon: faRetweet,
             children: "",
         }
     }

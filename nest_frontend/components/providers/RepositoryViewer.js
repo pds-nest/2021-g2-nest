@@ -28,6 +28,7 @@ import useMapAreaState from "../../hooks/useMapAreaState"
 import BoxFilterDatetime from "../interactive/BoxFilterDatetime"
 import BoxFilterHasPlace from "../interactive/BoxFilterHasPlace"
 import BoxFilterHasImage from "../interactive/BoxFilterHasImage"
+import BoxFilterIsNotRetweet from "../interactive/BoxFilterIsNotRetweet"
 
 
 export default function RepositoryViewer({ id, className, ...props }) {
@@ -124,6 +125,7 @@ export default function RepositoryViewer({ id, className, ...props }) {
             {filterTab === "contains" ? <BoxFilterContains className={Style.AddFilter}/> : null}
             {filterTab === "hashtag" ? <BoxFilterHashtag className={Style.AddFilter}/> : null}
             {filterTab === "user" ? <BoxFilterUser className={Style.AddFilter}/> : null}
+            {filterTab === "retweet" ? <BoxFilterIsNotRetweet className={Style.AddFilter}/> : null}
             {filterTab === "image" ? <BoxFilterHasImage className={Style.AddFilter}/> : null}
             {filterTab === "time" ? <BoxFilterDatetime className={Style.AddFilter}/> : null}
             {filterTab === "place" ? <BoxFilterHasPlace className={Style.AddFilter}/> : null}

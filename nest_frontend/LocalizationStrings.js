@@ -29,6 +29,8 @@ export default {
         byZone: "area",
         byHashtag: "hashtag",
         byUser: "utente",
+        byRetweet: "retweet", // TODO: tradurre
+        isNotRetweetExplaination: "Nascondi i retweet.", // TODO: Tradurre
         byHasImage: "immagine",
         hasImageExplaination: "Mostra solo i tweet con immagine.",
         byTimePeriod: "arco di tempo",

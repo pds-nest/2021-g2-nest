@@ -7,7 +7,7 @@ import {
     faHashtag,
     faImage,
     faLocationArrow,
-    faMapMarkerAlt,
+    faMapMarkerAlt, faRetweet,
 } from "@fortawesome/free-solid-svg-icons"
 import ButtonPicker from "./ButtonPicker"
 import ContextRepositoryViewer from "../../contexts/ContextRepositoryViewer"
@@ -42,6 +42,12 @@ export default function PickerFilter({ ...props }) {
                 setTab={setFilterTab}
                 name={"user"}
                 icon={faAt}
+            />
+            <ButtonPicker
+                currentTab={filterTab}
+                setTab={setFilterTab}
+                name={"retweet"}
+                icon={faRetweet}
             />
             <ButtonPicker
                 currentTab={filterTab}
