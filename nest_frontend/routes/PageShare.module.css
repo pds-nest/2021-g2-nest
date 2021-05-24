@@ -4,8 +4,9 @@
     grid-template-areas:
         "a"
         "b"
-        "c";
-    grid-template-rows: auto 1fr 1fr;
+        "c"
+        "d";
+    grid-template-rows: auto 1fr 1fr auto;
     grid-template-columns: 1fr;
     grid-gap: 10px;
 
@@ -24,4 +25,8 @@
 
 .SharingWith {
     grid-area: c;
+}
+
+.Error {
+    grid-area: d;
 }

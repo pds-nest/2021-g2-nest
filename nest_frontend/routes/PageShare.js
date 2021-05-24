@@ -7,6 +7,7 @@ import BoxUserList from "../components/interactive/BoxUserList"
 import useBackendViewset from "../hooks/useBackendViewset"
 import { useParams } from "react-router"
 import ContextUser from "../contexts/ContextUser"
+import BoxAlert from "../components/base/BoxAlert"
 
 
 export default function PageShare({ className, ...props }) {
@@ -18,7 +19,8 @@ export default function PageShare({ className, ...props }) {
         resources: authorizations,
         createResource: createAuthorization,
         destroyResource: destroyAuthorization,
-        running: authBvRunning
+        running: authBvRunning,
+        error: authBvError,
     } = useBackendViewset(
         `/api/v1/repositories/${id}/authorizations/`,
         "email",
@@ -35,7 +37,8 @@ export default function PageShare({ className, ...props }) {
 
     const {
         resources: users,
-        running: usersBvRunning
+        running: usersBvRunning,
+        error: usersBvError,
     } = useBackendViewset(
         "/api/v1/users/",
         "email",
@@ -85,6 +88,12 @@ export default function PageShare({ className, ...props }) {
                 header={strings.sharingWith}
                 running={usersBvRunning && authBvRunning}
             />
+            {authBvError ?
+                <BoxAlert color={"Red"} className={Style.Error}>{strings[authBvError?.data?.code ?? "errorUnknownError"]}</BoxAlert>
+            : null}
+            {usersBvError ?
+                <BoxAlert color={"Red"} className={Style.Error}>{strings[usersBvError?.data?.code ?? "errorUnknownError"]}</BoxAlert>
+            : null}
         </div>
     )
 }
