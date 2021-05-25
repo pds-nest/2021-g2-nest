@@ -88,7 +88,7 @@ def page_alert(aid):
           schema: AlertParameterSchema
 
         responses:
-            '204':
+            '200':
                 description: The alert has been updated successfully.
                 content:
                     application/json:
@@ -124,7 +124,7 @@ def page_alert(aid):
           schema: AlertParameterSchema
 
         responses:
-            '204':
+            '200':
                 description: The alert has been updated successfully.
                 content:
                     application/json:
