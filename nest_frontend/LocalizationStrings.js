@@ -71,6 +71,11 @@ export default {
         alerts: "Allarmi",
         alertTitle: "I tuoi allarmi",
         alertCreate: "Crea un allarme",
+        alertName: "Nome allarme", // TODO: tradurre
+        createAlert: "Crea allarme", // TODO: tradurre
+        alertLimit: "Limite", // TODO: tradurre e migliorare?
+        alertWindow: "Finestra (in ore)", // TODO: tradurre
+
         notImplemented: "🚧 Non implementato.",
 
         settings: "Impostazioni",

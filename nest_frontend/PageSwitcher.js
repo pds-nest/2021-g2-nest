@@ -27,7 +27,7 @@ export default function PageSwitcher({ ...props }) {
             <Route path={"/repositories/:id/alerts/create"} exact={true}>
                 <PageRepositoryAlertsCreate/>
             </Route>
-            <Route path={"/repositories/:id/alerts"} exact={true}>
+            <Route path={"/repositories/:id/alerts/"} exact={true}>
                 <PageRepositoryAlerts/>
             </Route>
             <Route path={"/repositories/:id/share"} exact={true}>

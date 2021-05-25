@@ -52,7 +52,7 @@ export default function PageRepositoriesList() {
                         repositories={bv.resources.filter(r => r.is_active)}
                         view={pk => history.push(`/repositories/${pk}`)}
                         share={pk => history.push(`/repositories/${pk}/share`)}
-                        alerts={pk => history.push(`/repositories/${pk}/alerts`)}
+                        alerts={pk => history.push(`/repositories/${pk}/alerts/`)}
                         archive={archive}
                         edit={pk => history.push(`/repositories/${pk}/edit`)}
                     />
