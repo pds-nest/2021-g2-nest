@@ -40,7 +40,7 @@ export default class Coordinates {
      * @returns {string}
      */
     toString() {
-        return `${this.lat.toFixed(7)} ${this.lng.toFixed(7)}`
+        return `${this.lat} ${this.lng}`
     }
 
     /**
