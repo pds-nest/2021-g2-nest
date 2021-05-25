@@ -41,6 +41,9 @@ def page_repository_alerts(rid):
             - repository-related
     post:
         summary: Creates an alert and attaches it to the repository.
+        parameters:
+        - in: path
+          schema: IntegerParameterSchema
         security:
         - jwt: []
         requestBody:
