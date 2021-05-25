@@ -155,7 +155,8 @@ export default function RepositoryEditor({
                 <BoxConditions className={Style.Conditions}/>
                 <BoxRepositoryCreate
                     className={Style.CreateDialog}
-                    name={name}
+                    id={id}
+                    name={_name}
                     setName={setName}
                     evaluationMode={_evaluationMode}
                     setEvaluationMode={setEvaluationMode}
