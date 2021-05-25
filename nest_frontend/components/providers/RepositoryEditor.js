@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useState } from "react"
-import ContextRepositoryEditor from "../../contexts/ContextRepositoryEditor"
+import ContextConditionEditor from "../../contexts/ContextConditionEditor"
 import useArrayState from "../../hooks/useArrayState"
 import Style from "./RepositoryEditor.module.css"
 import BoxConditionLocation from "../interactive/BoxConditionLocation"
@@ -142,14 +142,9 @@ export default function RepositoryEditor({
     }
 
     return (
-        <ContextRepositoryEditor.Provider
+        <ContextConditionEditor.Provider
             value={{
-                id,
-                name: _name, setName,
                 conditions: _conditions, addCondition, appendRawCondition, removeRawCondition, spliceRawCondition,
-                evaluationMode: _evaluationMode, setEvaluationMode,
-                error, running,
-                revert, save,
             }}
         >
             <div className={classNames(Style.RepositoryEditor, className)}>
@@ -158,8 +153,18 @@ export default function RepositoryEditor({
                 <BoxConditionUser className={Style.SearchByUser}/>
                 <BoxConditionDatetime className={Style.SearchByTimePeriod}/>
                 <BoxConditions className={Style.Conditions}/>
-                <BoxRepositoryCreate running={running} className={Style.CreateDialog}/>
+                <BoxRepositoryCreate
+                    className={Style.CreateDialog}
+                    name={name}
+                    setName={setName}
+                    evaluationMode={_evaluationMode}
+                    setEvaluationMode={setEvaluationMode}
+                    running={running}
+                    error={error}
+                    revert={revert}
+                    save={save}
+                />
             </div>
-        </ContextRepositoryEditor.Provider>
+        </ContextConditionEditor.Provider>
     )
 }

@@ -15,24 +15,33 @@ import useStrings from "../../hooks/useStrings"
 /**
  * A {@link BoxFull} allowing the user to save the changes made in the current {@link RepositoryEditor}.
  *
+ * @param id - The id of the repository.
+ * @param name - The current name of the repository.
+ * @param setName - Function to change the name of the repository.
+ * @param evaluationMode - The current evaluation mode of the repository.
+ * @param setEvaluationMode - Function to change the current evaluation mode of the repository.
  * @param running - If a request is running, disabling the buttons.
+ * @param error - If a request error occoured, the error.
+ * @param revert - Function to cancel the changes made to the repository.
+ * @param save - Function to apply the changes made to the repository.
  * @param props - Additional props to pass to the box.
  * @returns {JSX.Element}
  * @constructor
  */
-export default function BoxRepositoryCreate({ running, ...props }) {
-    const {
+export default function BoxRepositoryCreate(
+    {
         id,
-        evaluationMode,
-        setEvaluationMode,
         name,
         setName,
-        save,
-        revert,
+        evaluationMode,
+        setEvaluationMode,
+        running,
         error,
-    } = useRepositoryEditor()
+        revert,
+        save,
+        ...props
+    }) {
 
-    const history = useHistory()
     const strings = useStrings()
 
     return (

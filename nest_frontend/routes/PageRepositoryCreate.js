@@ -17,7 +17,6 @@ export default function PageRepositoryCreate() {
                     {makeIcon(faPlus)} {strings.dashboardTitle}
                 </BoxHeader>
             }
-            {...props}
         >
             <RepositoryEditor/>
         </PageWithHeader>
