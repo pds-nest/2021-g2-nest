@@ -29,7 +29,7 @@ export default function BoxAlertCreate(
     const strings = useStrings()
 
     return (
-        <BoxFull header={strings.createRepo} {...props}>
+        <BoxFull header={strings.createAlert} {...props}>
             <FormLabelled
                 onSubmit={e => {
                     e.preventDefault()
