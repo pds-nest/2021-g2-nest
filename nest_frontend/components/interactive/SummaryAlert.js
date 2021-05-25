@@ -1,12 +1,10 @@
-import React, { useContext } from "react"
-import { faBell, faShare, faStar, faTrash, faUser } from "@fortawesome/free-solid-svg-icons"
+import React from "react"
+import { faBell, faTrash } from "@fortawesome/free-solid-svg-icons"
 import SummaryBase from "../base/summary/SummaryBase"
 import SummaryLeft from "../base/summary/SummaryLeft"
 import SummaryLabels from "../base/summary/SummaryLabels"
 import SummaryButton from "../base/summary/SummaryButton"
 import SummaryRight from "../base/summary/SummaryRight"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import ContextUser from "../../contexts/ContextUser"
 import useStrings from "../../hooks/useStrings"
 
 

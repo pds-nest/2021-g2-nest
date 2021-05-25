@@ -3,18 +3,10 @@ import BoxFull from "../base/BoxFull"
 import FormLabelled from "../base/FormLabelled"
 import FormLabel from "../base/formparts/FormLabel"
 import InputWithIcon from "../base/InputWithIcon"
-import {
-    faBackward, faBell,
-    faFolder,
-    faPencilAlt,
-    faPlus, faStopwatch,
-    faThermometerThreeQuarters,
-} from "@fortawesome/free-solid-svg-icons"
+import { faBell, faPlus, faStopwatch, faThermometerThreeQuarters } from "@fortawesome/free-solid-svg-icons"
 import Radio from "../base/Radio"
 import Button from "../base/Button"
-import useRepositoryEditor from "../../hooks/useRepositoryEditor"
 import FormAlert from "../base/formparts/FormAlert"
-import { useHistory } from "react-router"
 import useStrings from "../../hooks/useStrings"
 
 

@@ -6,7 +6,8 @@ import {
     faHashtag,
     faImage,
     faLocationArrow,
-    faMapMarkerAlt, faRetweet,
+    faMapMarkerAlt,
+    faRetweet,
 } from "@fortawesome/free-solid-svg-icons"
 import Coordinates from "./Coordinates"
 

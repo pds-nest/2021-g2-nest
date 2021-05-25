@@ -1,7 +1,6 @@
 import React, { useContext } from "react"
 import ContextLanguage from "../contexts/ContextLanguage"
 import BoxHeader from "../components/base/BoxHeader"
-import { useParams } from "react-router"
 import { faPlus } from "@fortawesome/free-solid-svg-icons"
 import PageWithHeader from "../components/base/layout/PageWithHeader"
 import makeIcon from "../utils/makeIcon"

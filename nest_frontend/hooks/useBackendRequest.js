@@ -1,7 +1,7 @@
 import { useCallback, useContext, useState } from "react"
 import ContextServer from "../contexts/ContextServer"
 import ContextUser from "../contexts/ContextUser"
-import { ServerNotConfiguredError, FetchAlreadyRunningError, DecodeError, ResultError } from "../objects/Errors"
+import { DecodeError, FetchAlreadyRunningError, ResultError, ServerNotConfiguredError } from "../objects/Errors"
 
 
 /**

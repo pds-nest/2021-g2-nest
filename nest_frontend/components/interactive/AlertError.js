@@ -1,6 +1,6 @@
 import React, { useMemo } from "react"
 import Alert from "../base/Alert"
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons"
 import {
     DecodeError,

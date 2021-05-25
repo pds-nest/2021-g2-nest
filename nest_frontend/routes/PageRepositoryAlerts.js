@@ -1,5 +1,4 @@
 import React, { useCallback, useContext } from "react"
-import BoxFull from "../components/base/BoxFull"
 import ContextLanguage from "../contexts/ContextLanguage"
 import BoxHeader from "../components/base/BoxHeader"
 import { useHistory, useParams } from "react-router"

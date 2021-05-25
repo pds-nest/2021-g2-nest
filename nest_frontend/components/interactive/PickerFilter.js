@@ -7,7 +7,8 @@ import {
     faHashtag,
     faImage,
     faLocationArrow,
-    faMapMarkerAlt, faRetweet,
+    faMapMarkerAlt,
+    faRetweet,
 } from "@fortawesome/free-solid-svg-icons"
 import ButtonPicker from "./ButtonPicker"
 import ContextRepositoryViewer from "../../contexts/ContextRepositoryViewer"
