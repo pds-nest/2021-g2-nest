@@ -11,7 +11,7 @@ import ButtonHeader from "../components/base/ButtonHeader"
 import BodyHorizontalHalves from "../components/base/layout/BodyHorizontalHalves"
 
 
-export default function PageRepositoriesList({ children, className, ...props }) {
+export default function PageRepositoriesList() {
     const bv = useBackendViewset("/api/v1/repositories/", "id")
     const history = useHistory()
     const { strings } = useContext(ContextLanguage)

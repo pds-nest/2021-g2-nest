@@ -11,7 +11,7 @@ import makeIcon from "../utils/makeIcon"
 import BodyFlex from "../components/base/layout/BodyFlex"
 
 
-export default function PageSettings({ children, className, ...props }) {
+export default function PageSettings() {
     const { strings } = useContext(ContextLanguage)
 
     return (

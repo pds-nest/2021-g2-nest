@@ -11,7 +11,7 @@ import AlertError from "../components/interactive/AlertError"
 import BodyHorizontalUpperGrow from "../components/base/layout/BodyHorizontalUpperGrow"
 
 
-export default function PageUsers({ children, className, ...props }) {
+export default function PageUsers() {
     const { strings } = useContext(ContextLanguage)
 
     const {createResource, running, resources, destroyResource, error} = useBackendViewset("/api/v1/users/", "email")

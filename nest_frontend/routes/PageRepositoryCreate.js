@@ -7,7 +7,7 @@ import makeIcon from "../utils/makeIcon"
 import { faPlus } from "@fortawesome/free-solid-svg-icons"
 
 
-export default function PageRepositoryCreate({ ...props }) {
+export default function PageRepositoryCreate() {
     const { strings } = useContext(ContextLanguage)
 
     return (

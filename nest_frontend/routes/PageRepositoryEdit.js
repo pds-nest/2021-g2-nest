@@ -11,7 +11,7 @@ import makeIcon from "../utils/makeIcon"
 import { faPencilAlt } from "@fortawesome/free-solid-svg-icons"
 
 
-export default function PageRepositoryEdit({ className, ...props }) {
+export default function PageRepositoryEdit() {
     const { strings } = useContext(ContextLanguage)
 
     const { id } = useParams()
@@ -19,10 +19,7 @@ export default function PageRepositoryEdit({ className, ...props }) {
     const repositoryRequest = useBackendImmediately(fetchDataAuth, "GET", `/api/v1/repositories/${id}`)
     const contents = renderContents(
         repositoryRequest,
-        data => {
-            console.debug("Data: ", data)
-            return <RepositoryEditor {...data}/>
-        },
+        data => <RepositoryEditor {...data}/>
     )
 
     return (
@@ -32,7 +29,6 @@ export default function PageRepositoryEdit({ className, ...props }) {
                     {makeIcon(faPencilAlt)} {strings.repoEdit}
                 </BoxHeader>
             }
-            {...props}
         >
             {contents}
         </PageWithHeader>

@@ -11,7 +11,7 @@ import PageWithHeader from "../components/base/layout/PageWithHeader"
 import BodyFlex from "../components/base/layout/BodyFlex"
 
 
-export default function PageLogin({ ...props }) {
+export default function PageLogin() {
     const {user} = useContext(ContextUser)
     const strings = useStrings()
 
@@ -26,7 +26,6 @@ export default function PageLogin({ ...props }) {
                     {strings.welcomeToNest}
                 </BoxHeader>
             }
-            {...props}
         >
             <BodyFlex>
                 <BoxSetServer/>

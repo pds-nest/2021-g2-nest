@@ -10,7 +10,7 @@ import BodyHorizontalHalves from "../components/base/layout/BodyHorizontalHalves
 import AlertError from "../components/interactive/AlertError"
 
 
-export default function PageShare({ className, ...props }) {
+export default function PageShare() {
     const strings = useStrings()
     const { user: loggedUser } = useContext(ContextUser)
     const { id } = useParams()

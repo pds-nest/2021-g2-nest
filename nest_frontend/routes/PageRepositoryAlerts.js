@@ -1,5 +1,4 @@
 import React, { useContext } from "react"
-import Style from "./PageRepositoryAlerts.module.css"
 import BoxFull from "../components/base/BoxFull"
 import ContextLanguage from "../contexts/ContextLanguage"
 import BoxHeader from "../components/base/BoxHeader"
@@ -10,7 +9,7 @@ import ButtonHeader from "../components/base/ButtonHeader"
 import makeIcon from "../utils/makeIcon"
 
 
-export default function PageRepositoryAlerts({ children, className, ...props }) {
+export default function PageRepositoryAlerts({ ...props }) {
     const { strings } = useContext(ContextLanguage)
     const { id } = useParams()
     const history = useHistory()
@@ -18,7 +17,7 @@ export default function PageRepositoryAlerts({ children, className, ...props }) 
     return (
         <PageWithHeader
             header={
-                <BoxHeader className={Style.Header}>
+                <BoxHeader>
                     {makeIcon(faBell)} {strings.alerts}
                 </BoxHeader>
             }
@@ -32,7 +31,7 @@ export default function PageRepositoryAlerts({ children, className, ...props }) 
                 </ButtonHeader>
             }
         >
-            <BoxFull header={strings.alertTitle} className={Style.YourAlerts}>
+            <BoxFull header={strings.alertTitle}>
                 {strings.notImplemented}
             </BoxFull>
         </PageWithHeader>
