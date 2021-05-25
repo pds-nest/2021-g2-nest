@@ -69,7 +69,7 @@ export default function BoxAlertCreate(
                         type={"number"}
                         icon={faThermometerThreeQuarters}
                         value={limit}
-                        onChange={e => setLimit(e.target.limit)}
+                        onChange={e => setLimit(e.target.value)}
                     />
                 </FormLabel>
                 <FormLabel htmlFor={"alert-window"} text={strings.alertWindow}>
@@ -78,7 +78,7 @@ export default function BoxAlertCreate(
                         type={"number"}
                         icon={faStopwatch}
                         value={windowSize}
-                        onChange={e => setWindowSize(e.target.limit)}
+                        onChange={e => setWindowSize(e.target.value)}
                     />
                 </FormLabel>
                 {error ?
