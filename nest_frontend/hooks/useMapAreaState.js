@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useMemo, useState } from "react"
 import Coordinates from "../objects/Coordinates"
 import MapArea from "../objects/MapArea"
 
@@ -9,7 +9,10 @@ import MapArea from "../objects/MapArea"
 export default function useMapAreaState() {
     const [zoom, setZoom] = useState(3)
     const [center, setCenter] = useState(new Coordinates(0, 0))
-    const mapArea = MapArea.fromZoomLevel(zoom, center)
+    const mapArea = useMemo(
+        () => MapArea.fromZoomLevel(zoom, center),
+        [zoom, center]
+    )
 
     return {
         zoom,
