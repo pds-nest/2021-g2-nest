@@ -27,8 +27,6 @@ export class Condition {
     }
 
     static fromRaw(data) {
-        console.debug("Trying to serialize condition: ", data)
-
         if(data.type === 0) return ConditionHashtag.fromRaw(data)
         else if(data.type === 2) return ConditionTime.fromRaw(data)
         else if(data.type === 3) return ConditionLocation.fromRaw(data)
