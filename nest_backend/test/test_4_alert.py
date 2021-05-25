@@ -22,32 +22,143 @@ class TestAlertsGetAllOfARepository:
         assert r.status_code == 200
         assert r.json["result"] == "success"
 
-'''
-class TestConditionPost:
-    def test_missing_type(self, flask_client: Client, user_headers):
-        r = flask_client.post(f'/api/v1/repositories/1/conditions', headers=user_headers,
+
+class TestAlertPost:
+    def test_missing_name(self, flask_client: Client, user_headers):
+        r = flask_client.post(f'/api/v1/repositories/1/alerts/', headers=user_headers,
                               json={})
         assert r.status_code == 400
         assert r.json["result"] == "failure"
 
+    def test_missing_limit(self, flask_client: Client, user_headers):
+        r = flask_client.post(f'/api/v1/repositories/1/alerts/', headers=user_headers,
+                              json={"name": "testalert"})
+        assert r.status_code == 400
+        assert r.json["result"] == "failure"
+
+    def test_missing_window_size(self, flask_client: Client, user_headers):
+        r = flask_client.post(f'/api/v1/repositories/1/alerts/', headers=user_headers,
+                              json={"name": "testalert", "limit": "1"})
+        assert r.status_code == 400
+        assert r.json["result"] == "failure"
+
+    def test_missing_evaluation_mode(self, flask_client: Client, user_headers):
+        r = flask_client.post(f'/api/v1/repositories/1/alerts/', headers=user_headers,
+                              json={
+                                  "conditions": [
+                                      {
+                                          "content": "pds2021",
+                                          "id": 0,
+                                          "type": 0
+                                      }
+                                  ],
+                                  "XXXevaluation_modeXXX": 0,
+                                  "limit": 0,
+                                  "name": "pds",
+                                  "repository_id": 1,
+                                  "window_size": 0
+                              })
+        assert r.status_code == 400
+        assert r.json["result"] == "failure"
+
+    def test_wrong_evaluation_mode(self, flask_client: Client, user_headers):
+        r = flask_client.post(f'/api/v1/repositories/1/alerts/', headers=user_headers,
+                              json={
+                                  "conditions": [
+                                      {
+                                          "content": "pds2021",
+                                          "id": 0,
+                                          "type": 0
+                                      }
+                                  ],
+                                  "evaluation_mode": 99,
+                                  "limit": 0,
+                                  "name": "pds",
+                                  "repository_id": 1,
+                                  "window_size": 0
+                              })
+        assert r.status_code == 400
+        assert r.json["result"] == "failure"
+
+    def test_missing_type(self, flask_client: Client, user_headers):
+        r = flask_client.post(f'/api/v1/repositories/1/alerts/', headers=user_headers,
+                              json={
+                                  "conditions": [
+                                      {
+                                          "content": "pds2021",
+                                          "id": 0,
+                                          "XXXtypeXXX": 99
+                                      }
+                                  ],
+                                  "evaluation_mode": 0,
+                                  "limit": 0,
+                                  "name": "pds",
+                                  "repository_id": 1,
+                                  "window_size": 0
+                              })
+        assert r.status_code == 400
+        assert r.json["result"] == "failure"
+
     def test_wrong_type(self, flask_client: Client, user_headers):
-        r = flask_client.post(f'/api/v1/repositories/1/conditions', headers=user_headers,
-                              json={"content": "string", "type": 99})
+        r = flask_client.post(f'/api/v1/repositories/1/alerts/', headers=user_headers,
+                              json={
+                                  "conditions": [
+                                      {
+                                          "content": "pds2021",
+                                          "id": 0,
+                                          "type": 99
+                                      }
+                                  ],
+                                  "evaluation_mode": 0,
+                                  "limit": 0,
+                                  "name": "pds",
+                                  "repository_id": 1,
+                                  "window_size": 0
+                              })
         assert r.status_code == 400
         assert r.json["result"] == "failure"
 
     def test_missing_content(self, flask_client: Client, user_headers):
-        r = flask_client.post(f'/api/v1/repositories/1/conditions', headers=user_headers,
-                              json={"type": 0})
+        r = flask_client.post(f'/api/v1/repositories/1/alerts/', headers=user_headers,
+                              json={
+                                  "conditions": [
+                                      {
+                                          "XXXcontentXXX": "pds2021",
+                                          "id": 0,
+                                          "type": 0
+                                      }
+                                  ],
+                                  "evaluation_mode": 0,
+                                  "limit": 0,
+                                  "name": "pds",
+                                  "repository_id": 1,
+                                  "window_size": 0
+                              })
         assert r.status_code == 400
         assert r.json["result"] == "failure"
 
     def test_for_success(self, flask_client: Client, user_headers):
-        r = flask_client.post(f'/api/v1/repositories/1/conditions', headers=user_headers,
-                              json={"content": "onlyForTest", "type": 0})
+        r = flask_client.post(f'/api/v1/repositories/1/alerts/', headers=user_headers,
+                              json={
+                                      "conditions": [
+                                        {
+                                          "content": "pds2021",
+                                          "id": 0,
+                                          "type": 0
+                                        }
+                                      ],
+                                      "evaluation_mode": 0,
+                                      "limit": 0,
+                                      "name": "pds",
+                                      "repository_id": 1,
+                                      "window_size": 0
+                                    })
         assert r.status_code == 201
         assert r.json["result"] == "success"
 
+
+
+'''
     # test del file condition
 
 
