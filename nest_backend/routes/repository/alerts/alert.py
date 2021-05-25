@@ -158,6 +158,9 @@ def page_alert(aid):
     if alert.repository not in user.owner_of:
         return json_error("You are not authorized to proceed.", REPOSITORY_NOT_OWNER), 403
     if request.method == "PATCH":
+        if request.json is None:
+            return json_error("Missing json content.", GENERIC_NO_JSON), 400
+
         if 'name' in request.json:
             alert.name = request.json['name']
         if 'limit' in request.json:
@@ -188,6 +191,9 @@ def page_alert(aid):
             return json_error("Something went wrong while deleting alert.", ALERT_DELETION_FAILURE), 500
         return json_success("Deletion completed."), 204
     elif request.method == "PUT":
+        if request.json is None:
+            return json_error("Missing json content.", GENERIC_NO_JSON), 400
+
         if not json_request_authorizer(request.json, alert):
             return json_error("Missing one or more parameters in alert json.", GENERIC_MISSING_FIELDS), 400
         alert.limit = request.json['limit']
