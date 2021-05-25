@@ -136,7 +136,7 @@ class Alert(Schema):
     id = fields.Integer(description="The alert id.")
     name = fields.String(description="The name of the alert.")
     limit = fields.Integer(description="The number of tweets in a time window.")
-    window_size = fields.Integer(description="The size of the time window.")
+    window_size = fields.Integer(description="The size of the time window (in hours).")
     repository_id = fields.Integer(description="The id of the related repository.")
     evaluation_mode = fields.Integer(description="How the conditions have to be evaluated.")
     conditions = fields.Nested(ConditionSchema, many=True)
