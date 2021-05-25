@@ -175,9 +175,16 @@ def page_alert(aid):
         return json_success(alert.to_json()), 200
     elif request.method == "DELETE":
         try:
+            for elem in alert.conditions:
+                condition = elem.condition
+                ext.session.delete(elem)
+                ext.session.commit()
+                if not condition.repository_id:
+                    ext.session.delete(condition)
+                    ext.session.commit()
             ext.session.delete(alert)
             ext.session.commit()
-        except Exception:
+        except Exception as e:
             return json_error("Something went wrong while deleting alert.", ALERT_DELETION_FAILURE), 500
         return json_success("Deletion completed."), 204
     elif request.method == "PUT":
