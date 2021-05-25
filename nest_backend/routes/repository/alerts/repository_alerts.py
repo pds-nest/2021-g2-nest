@@ -104,9 +104,21 @@ def page_repository_alerts(rid):
         ext.session.commit()
         if request.json['conditions'] is not None:
             for condition in request.json['conditions']:
-                c = Condition.query.filter_by(id=condition['id']).first()
-                if not c:
-                    return json_error("Could not locate condition.", CONDITION_NOT_FOUND), 404
+                if (type_ := condition.get("type")) is None:
+                    return json_error("Missing `type` parameter.", GENERIC_MISSING_FIELDS), 400
+                try:
+                    type_ = ConditionType(type_)
+                except KeyError:
+                    return json_error("Unknown `type` specified.", GENERIC_ENUM_INVALID), 400
+                except Exception as e:
+                    return json_error("Unknown error: " + str(e)), 400
+                if not (content := condition.get("content")):
+                    return json_error("Missing `content` parameter.", GENERIC_MISSING_FIELDS), 400
+                if type_ == ConditionType.hashtag:
+                    content = hashtag_validator(content)
+                c = Condition(content=content, type=type_, repository_id=rid)
+                ext.session.add(c)
+                ext.session.commit()
                 conn = MadeOf(aid=alert.id, cid=c.id)
                 ext.session.add(conn)
                 ext.session.commit()

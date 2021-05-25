@@ -9,7 +9,6 @@ from nest_backend.errors import *
 
 @cross_origin()
 @jwt_required()
-@repository_auth
 def page_alert(aid):
     """
     ---
@@ -76,7 +75,43 @@ def page_alert(aid):
         tags:
             - alert-related
     patch:
-        summary: Updates an alert and the boolops structure.
+        summary: Updates an alert.
+        security:
+        - jwt: []
+        requestBody:
+            required: true
+            content:
+                application/json:
+                    schema: Alert
+        parameters:
+        - in: path
+          schema: AlertParameterSchema
+
+        responses:
+            '204':
+                description: The alert has been updated successfully.
+                content:
+                    application/json:
+                        schema: Alert
+            '404':
+                description: Could not find the requested repository.
+                content:
+                    application/json:
+                        schema: Error
+            '403':
+                description: The user is not authorized.
+                content:
+                    application/json:
+                        schema: Error
+            '401':
+                description: The user is not logged in.
+                content:
+                    application/json:
+                        schema: Error
+        tags:
+            - alert-related
+    put:
+        summary: Overrides an alert and the conditions.
         security:
         - jwt: []
         requestBody:
@@ -137,7 +172,7 @@ def page_alert(aid):
             except Exception as e:
                 return json_error("Unknown error:" + str(e), GENERIC_UFO), 400
         ext.session.commit()
-        return json_success(alert.to_json()), 204
+        return json_success(alert.to_json()), 200
     elif request.method == "DELETE":
         try:
             ext.session.delete(alert)
@@ -147,7 +182,7 @@ def page_alert(aid):
         return json_success("Deletion completed."), 204
     elif request.method == "PUT":
         if not json_request_authorizer(request.json, alert):
-            return json_error("Missing one or more parameters in repository json.", GENERIC_MISSING_FIELDS), 400
+            return json_error("Missing one or more parameters in alert json.", GENERIC_MISSING_FIELDS), 400
         alert.limit = request.json['limit']
         alert.name = request.json['name']
         alert.window_size = request.json['window_size']
@@ -159,10 +194,6 @@ def page_alert(aid):
             except Exception as e:
                 return json_error("Unknown error:" + str(e), GENERIC_UFO), 400
         if request.json['conditions'] is not None:
-            # Possibile vulnearabilità! Un utente potrebbe aggiungere conditions non del suo repo!
-            for c in request.json['conditions']:
-                if c['id'] not in alert.repository.conditions:
-                    return json_error("Stop! You violated the law!", USER_NOT_AUTHORIZED), 403
             # Wow very pythonic so much wow
             # Obtain list of no longer needed connections
             to_be_deleted = [c.cid for c in alert.conditions if
@@ -174,7 +205,23 @@ def page_alert(aid):
                     ext.session.delete(conn)
                     ext.session.commit()
             for c in request.json['conditions']:
-                conn = MadeOf(cid=c['id'], aid=alert.id)
-                ext.session.add(conn)
-                ext.session.commit()
+                if not c.get("id"):
+                    if (type_ := c.get("type")) is None:
+                        return json_error("Missing `type` parameter.", GENERIC_MISSING_FIELDS), 400
+                    try:
+                        type_ = ConditionType(type_)
+                    except KeyError:
+                        return json_error("Unknown `type` specified.", GENERIC_ENUM_INVALID), 400
+                    except Exception as e:
+                        return json_error("Unknown error: " + str(e)), 400
+                    if not (content := c.get("content")):
+                        return json_error("Missing `content` parameter.", GENERIC_MISSING_FIELDS), 400
+                    if type_ == ConditionType.hashtag:
+                        content = hashtag_validator(content)
+                    con = Condition(content=content, type=type_, repository_id=alert.repository_id)
+                    ext.session.add(con)
+                    ext.session.commit()
+                    conn = MadeOf(aid=alert.id, cid=con.id)
+                    ext.session.add(conn)
+                    ext.session.commit()
         return json_success(alert.to_json()), 200

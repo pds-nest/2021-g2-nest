@@ -52,7 +52,7 @@ class IntegerParameterSchema(Schema):
 
 
 class AlertParameterSchema(Schema):
-    rid = fields.Integer(description="The target numeric id.")
+    aid = fields.Integer(description="The target numeric id.")
 
 
 class CreateUser(Schema):
