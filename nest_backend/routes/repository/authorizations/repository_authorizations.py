@@ -41,7 +41,7 @@ def page_repository_authorizations(rid):
         tags:
             - repository-related
     post:
-        summary: Creates a condition and attaches it to the repository.
+        summary: Creates an authorization.
         security:
         - jwt: []
         parameters:
