@@ -1,5 +1,5 @@
 import { useContext } from "react"
-import ContextRepositoryEditor from "../contexts/ContextRepositoryEditor"
+import ContextRepositoryEditor from "../contexts/ContextConditionEditor"
 
 
 /**

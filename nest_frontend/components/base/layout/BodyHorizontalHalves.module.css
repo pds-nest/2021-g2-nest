@@ -1,0 +1,24 @@
+.BodyHorizontalHalves {
+    display: grid;
+    grid-template-areas: "upper" "lower";
+    grid-template-rows: 1fr 1fr;
+    grid-gap: 10px;
+}
+
+.Upper {
+    grid-area: upper;
+}
+
+.Upper > * {
+    width: 100%;
+    height: 100%;
+}
+
+.Lower {
+    grid-area: lower;
+}
+
+.Lower > * {
+    width: 100%;
+    height: 100%;
+}

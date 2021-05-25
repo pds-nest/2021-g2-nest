@@ -1,6 +1,4 @@
 import React, { useContext } from "react"
-import Style from "./PageRepositoryCreate.module.css"
-import classNames from "classnames"
 import BoxHeader from "../components/base/BoxHeader"
 import RepositoryEditor from "../components/providers/RepositoryEditor"
 import useBackendImmediately from "../hooks/useBackendImmediately"
@@ -8,9 +6,12 @@ import ContextUser from "../contexts/ContextUser"
 import renderContents from "../utils/renderContents"
 import { useParams } from "react-router"
 import ContextLanguage from "../contexts/ContextLanguage"
+import PageWithHeader from "../components/base/layout/PageWithHeader"
+import makeIcon from "../utils/makeIcon"
+import { faPencilAlt } from "@fortawesome/free-solid-svg-icons"
 
 
-export default function PageRepositoryEdit({ className, ...props }) {
+export default function PageRepositoryEdit() {
     const { strings } = useContext(ContextLanguage)
 
     const { id } = useParams()
@@ -18,18 +19,18 @@ export default function PageRepositoryEdit({ className, ...props }) {
     const repositoryRequest = useBackendImmediately(fetchDataAuth, "GET", `/api/v1/repositories/${id}`)
     const contents = renderContents(
         repositoryRequest,
-        data => {
-            console.debug("Data: ", data)
-            return <RepositoryEditor className={Style.RepositoryEditor} {...data}/>
-        },
+        data => <RepositoryEditor {...data}/>
     )
 
     return (
-        <div className={classNames(Style.PageHome, className)} {...props}>
-            <BoxHeader className={Style.Header}>
-                {strings.repoEdit}
-            </BoxHeader>
+        <PageWithHeader
+            header={
+                <BoxHeader>
+                    {makeIcon(faPencilAlt)} {strings.repoEdit}
+                </BoxHeader>
+            }
+        >
             {contents}
-        </div>
+        </PageWithHeader>
     )
 }

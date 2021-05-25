@@ -3,7 +3,13 @@ import BoxFull from "../base/BoxFull"
 import FormLabelled from "../base/FormLabelled"
 import FormLabel from "../base/formparts/FormLabel"
 import InputWithIcon from "../base/InputWithIcon"
-import { faBackward, faFolder, faPencilAlt, faPlus } from "@fortawesome/free-solid-svg-icons"
+import {
+    faBackward, faBell,
+    faFolder,
+    faPencilAlt,
+    faPlus, faStopwatch,
+    faThermometerThreeQuarters,
+} from "@fortawesome/free-solid-svg-icons"
 import Radio from "../base/Radio"
 import Button from "../base/Button"
 import useRepositoryEditor from "../../hooks/useRepositoryEditor"
@@ -12,32 +18,18 @@ import { useHistory } from "react-router"
 import useStrings from "../../hooks/useStrings"
 
 
-/**
- * A {@link BoxFull} allowing the user to save the changes made in the current {@link RepositoryEditor}.
- *
- * @param id - The id of the repository.
- * @param name - The current name of the repository.
- * @param setName - Function to change the name of the repository.
- * @param evaluationMode - The current evaluation mode of the repository.
- * @param setEvaluationMode - Function to change the current evaluation mode of the repository.
- * @param running - If a request is running, disabling the buttons.
- * @param error - If a request error occoured, the error.
- * @param revert - Function to cancel the changes made to the repository.
- * @param save - Function to apply the changes made to the repository.
- * @param props - Additional props to pass to the box.
- * @returns {JSX.Element}
- * @constructor
- */
-export default function BoxRepositoryCreate(
+export default function BoxAlertCreate(
     {
-        id,
         name,
         setName,
         evaluationMode,
         setEvaluationMode,
+        limit,
+        setLimit,
+        windowSize,
+        setWindowSize,
         running,
         error,
-        revert,
         save,
         ...props
     }) {
@@ -52,10 +44,10 @@ export default function BoxRepositoryCreate(
                     save()
                 }}
             >
-                <FormLabel htmlFor={"repo-name"} text={strings.repoName}>
+                <FormLabel htmlFor={"alert-name"} text={strings.alertName}>
                     <InputWithIcon
-                        id={"repo-name"}
-                        icon={faFolder}
+                        id={"alert-name"}
+                        icon={faBell}
                         value={name}
                         onChange={e => setName(e.target.value)}
                     />
@@ -79,33 +71,29 @@ export default function BoxRepositoryCreate(
                         {strings.filterAND}
                     </label>
                 </FormLabel>
+                <FormLabel htmlFor={"alert-limit"} text={strings.alertLimit}>
+                    <InputWithIcon
+                        id={"alert-limit"}
+                        type={"number"}
+                        icon={faThermometerThreeQuarters}
+                        value={limit}
+                        onChange={e => setLimit(e.target.limit)}
+                    />
+                </FormLabel>
+                <FormLabel htmlFor={"alert-window"} text={strings.alertWindow}>
+                    <InputWithIcon
+                        id={"alert-window"}
+                        type={"number"}
+                        icon={faStopwatch}
+                        value={windowSize}
+                        onChange={e => setWindowSize(e.target.limit)}
+                    />
+                </FormLabel>
                 {error ?
                  <FormAlert color={"Red"}>
                      {strings[error.data.code]}
                  </FormAlert>
                        : null}
-                {id ?
-                 <>
-                     <Button
-                         style={{ "gridColumn": "1" }}
-                         icon={faBackward}
-                         color={"Red"}
-                         onClick={() => revert()}
-                         disabled={running}
-                     >
-                         {strings.rollback}
-                     </Button>
-                     <Button
-                         style={{ "gridColumn": "2" }}
-                         icon={faPencilAlt}
-                         color={"Green"}
-                         onClick={save}
-                         disabled={running}
-                     >
-                         {strings.save}
-                     </Button>
-                 </>
-                    :
                  <Button
                      style={{ "gridColumn": "1 / 3" }}
                      icon={faPlus}
@@ -113,10 +101,8 @@ export default function BoxRepositoryCreate(
                      onClick={save}
                      disabled={running}
                  >
-                     {strings.createRepo}
+                     {strings.createAlert}
                  </Button>
-                }
-
             </FormLabelled>
         </BoxFull>
     )

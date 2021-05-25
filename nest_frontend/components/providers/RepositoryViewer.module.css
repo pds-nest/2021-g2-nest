@@ -2,7 +2,6 @@
     display: grid;
 
     grid-template-areas:
-        "h h"
         "a b"
         "a c"
         "d e"
@@ -10,14 +9,10 @@
 
     grid-gap: 10px;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto 1fr auto auto;
+    grid-template-rows: auto 1fr auto auto;
 
     width: 100%;
     height: 100%;
-}
-
-.Header {
-    grid-area: h;
 }
 
 .Tweets {

@@ -2,7 +2,7 @@ import { createContext } from "react"
 
 
 /**
- * React Context representing containing all variables of a {@link RepositoryEditor}.
+ * React Context representing a list of {@link Condition}s as provided by {@link useArrayState}.
  *
  * It is `null` outside a RepositoryEditor.
  */

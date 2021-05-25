@@ -1,29 +1,45 @@
 import React, { useContext } from "react"
-import Style from "./PageUsers.module.css"
-import classNames from "classnames"
 import BoxHeader from "../components/base/BoxHeader"
 import BoxUserCreate from "../components/interactive/BoxUserCreate"
 import useBackendViewset from "../hooks/useBackendViewset"
 import BoxUserList from "../components/interactive/BoxUserList"
 import ContextLanguage from "../contexts/ContextLanguage"
-import Alert from "../components/base/Alert"
+import PageWithHeader from "../components/base/layout/PageWithHeader"
+import { faUserCog } from "@fortawesome/free-solid-svg-icons"
+import makeIcon from "../utils/makeIcon"
+import AlertError from "../components/interactive/AlertError"
+import BodyHorizontalUpperGrow from "../components/base/layout/BodyHorizontalUpperGrow"
 
 
-export default function PageUsers({ children, className, ...props }) {
+export default function PageUsers() {
     const { strings } = useContext(ContextLanguage)
 
-    const bv = useBackendViewset("/api/v1/users/", "email")
+    const {createResource, running, resources, destroyResource, error} = useBackendViewset("/api/v1/users/", "email")
 
     return (
-        <div className={classNames(Style.PageUsers, className)} {...props}>
-            <BoxHeader className={Style.Header}>
-                {strings.manageUsers}
-            </BoxHeader>
-            <BoxUserCreate className={Style.CreateUser} createUser={bv.createResource} running={bv.running}/>
-            <BoxUserList className={Style.UserList} users={bv.resources} destroyUser={bv.destroyResource} running={bv.running}/>
-            {bv.error ?
-                <Alert className={Style.Error} color={"red"}>{strings[bv.error?.data?.code ?? "errorUnknownError"]}</Alert>
-            : null}
-        </div>
+        <PageWithHeader
+            header={
+                <BoxHeader>
+                    {makeIcon(faUserCog)} {strings.manageUsers}
+                </BoxHeader>
+            }
+        >
+            <BodyHorizontalUpperGrow
+                upper={
+                    <BoxUserList
+                        users={resources}
+                        destroyUser={destroyResource}
+                        running={running}
+                    />
+                }
+                lower={
+                    <BoxUserCreate
+                        createUser={createResource}
+                        running={running}
+                    />
+                }
+                error={error ? <AlertError error={error}/> : null}
+            />
+        </PageWithHeader>
     )
 }

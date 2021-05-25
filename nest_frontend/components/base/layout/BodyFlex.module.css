@@ -1,9 +1,6 @@
-.PageLogin {
+.BodyFlex {
     display: flex;
     flex-direction: column;
-
+    align-items: stretch;
     gap: 10px;
-
-    width: 100%;
-    height: 100%;
 }

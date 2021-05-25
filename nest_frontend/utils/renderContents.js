@@ -4,6 +4,9 @@ import Alert from "../components/base/Alert"
 import Starting from "../components/base/Starting"
 
 
+/**
+ * @deprecated
+ */
 export default function renderContents(requestHookResults, renderFunction) {
     const { data, error, loading } = requestHookResults
 

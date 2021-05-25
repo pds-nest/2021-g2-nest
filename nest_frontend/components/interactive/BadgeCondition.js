@@ -1,5 +1,5 @@
 import React, { useContext } from "react"
-import ContextRepositoryEditor from "../../contexts/ContextRepositoryEditor"
+import ContextRepositoryEditor from "../../contexts/ContextConditionEditor"
 import Badge from "../base/Badge"
 
 

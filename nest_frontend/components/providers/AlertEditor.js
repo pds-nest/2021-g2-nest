@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useState } from "react"
+import React, { useCallback, useState } from "react"
 import ContextConditionEditor from "../../contexts/ContextConditionEditor"
 import useArrayState from "../../hooks/useArrayState"
 import Style from "./RepositoryEditor.module.css"
@@ -7,29 +7,25 @@ import BoxConditionHashtag from "../interactive/BoxConditionHashtag"
 import BoxConditionUser from "../interactive/BoxConditionUser"
 import BoxConditionDatetime from "../interactive/BoxConditionDatetime"
 import BoxConditions from "../interactive/BoxConditions"
-import BoxRepositoryCreate from "../interactive/BoxRepositoryCreate"
 import classNames from "classnames"
-import ContextUser from "../../contexts/ContextUser"
 import { Condition } from "../../objects/Condition"
 import useBackendViewset from "../../hooks/useBackendViewset"
-import { Redirect } from "react-router"
+import { Redirect, useParams } from "react-router"
+import BoxAlertCreate from "../interactive/BoxAlertCreate"
 
 
-export default function RepositoryEditor({
-                                             id = null,
-                                             name,
-                                             is_active: isActive,
-                                             start,
-                                             end,
-                                             conditions,
-                                             evaluation_mode: evaluationMode,
-                                             className,
-                                         }) {
-    /** The currently logged in user. */
-    const { user } = useContext(ContextUser)
+export default function AlertEditor({className}) {
+    /** The connected repository id. */
+    const {id: repoId} = useParams()
 
-    /** The repository name. */
-    const [_name, setName] = useState(name ?? "")
+    /** The alert name. */
+    const [_name, setName] = useState("")
+
+    /** The alert limit. */
+    const [limit, setLimit] = useState(10)
+
+    /** The window size. */
+    const [windowSize, setWindowSize] = useState(24)
 
     /** The conditions of the data gathering. */
     const {
@@ -38,21 +34,21 @@ export default function RepositoryEditor({
         appendValue: appendRawCondition,
         removeValue: removeRawCondition,
         spliceValue: spliceRawCondition,
-    } = useArrayState(conditions)
+    } = useArrayState([])
     const _conditions = rawConditions.map(cond => Condition.fromRaw(cond))
 
     /** The operator the conditions should be evaluated with. */
-    const [_evaluationMode, setEvaluationMode] = useState(evaluationMode ?? 0)
+    const [_evaluationMode, setEvaluationMode] = useState(0)
 
     /** The backend viewset to use to create / edit the repository. */
-    const {running, error, createResource, editResource} = useBackendViewset(
-        `/api/v1/repositories/`,
-        "id",
+    const {running, error, createResource} = useBackendViewset(
+        `/api/v1/repositories/${repoId}/alerts/`,
+        "name",
         {
             list: false,
             create: true,
             retrieve: false,
-            edit: true,
+            edit: false,
             destroy: false,
             command: false,
             action: false,
@@ -70,43 +66,19 @@ export default function RepositoryEditor({
     const save = useCallback(
         async () => {
             const body = {
-                "id": id,
+                "repository_id": repoId,
                 "name": _name,
-                "start": null,
-                "is_active": true,
-                "end": null,
-                "owner": user,
-                "spectators": null,
+                "window_size": windowSize,
+                "limit": limit,
                 "evaluation_mode": _evaluationMode,
                 "conditions": _conditions,
             }
 
-            if(!id) {
-                console.info("Creating new repository with body: ", body)
-                await createResource(body)
-            }
-            else {
-                console.info("Editing repository ", id, " with body: ", body)
-                await editResource(id, body)
-            }
+            console.info("Creating new alert with body: ", body)
+            await createResource(body)
             setSwitchPage(true)
         },
-        [id, createResource, editResource, _conditions, _evaluationMode, _name, user],
-    )
-
-
-    /**
-     * Cancel the changes made so far to the repository.
-     *
-     * @type {(function(): void)|*}
-     */
-    const revert = useCallback(
-        () => {
-            setName(name)
-            setRawConditions(conditions)
-            setEvaluationMode(evaluationMode)
-        },
-        [name, isActive, start, end, conditions, evaluationMode, setRawConditions],
+        [repoId, createResource, _conditions, _evaluationMode, _name, limit],
     )
 
     /**
@@ -138,7 +110,7 @@ export default function RepositoryEditor({
 
     // Hack to switch page on success
     if(!error && switchPage) {
-        return <Redirect to={"/repositories"}/>
+        return <Redirect to={`/repositories/${repoId}/alerts/`}/>
     }
 
     return (
@@ -153,16 +125,18 @@ export default function RepositoryEditor({
                 <BoxConditionUser className={Style.SearchByUser}/>
                 <BoxConditionDatetime className={Style.SearchByTimePeriod}/>
                 <BoxConditions className={Style.Conditions}/>
-                <BoxRepositoryCreate
+                <BoxAlertCreate
                     className={Style.CreateDialog}
-                    id={id}
                     name={_name}
                     setName={setName}
                     evaluationMode={_evaluationMode}
                     setEvaluationMode={setEvaluationMode}
+                    limit={limit}
+                    setLimit={setLimit}
+                    windowSize={windowSize}
+                    setWindowSize={setWindowSize}
                     running={running}
                     error={error}
-                    revert={revert}
                     save={save}
                 />
             </div>

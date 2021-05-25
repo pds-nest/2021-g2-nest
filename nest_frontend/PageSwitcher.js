@@ -9,15 +9,25 @@ import PageRepositoryEdit from "./routes/PageRepositoryEdit"
 import PageUsers from "./routes/PageUsers"
 import PageRepositoryAnalyze from "./routes/PageRepositoryAnalyze"
 import PageShare from "./routes/PageShare"
+import { faQuestionCircle } from "@fortawesome/free-solid-svg-icons"
+import makeIcon from "./utils/makeIcon"
+import useStrings from "./hooks/useStrings"
+import Alert from "./components/base/Alert"
+import PageRepositoryAlertsCreate from "./routes/PageRepositoryAlertsCreate"
 
 
 export default function PageSwitcher({ ...props }) {
+    const strings = useStrings()
+
     return (
         <Switch {...props}>
             <Route path={"/repositories/create"} exact={true}>
                 <PageRepositoryCreate/>
             </Route>
-            <Route path={"/repositories/:id/alerts"} exact={true}>
+            <Route path={"/repositories/:id/alerts/create"} exact={true}>
+                <PageRepositoryAlertsCreate/>
+            </Route>
+            <Route path={"/repositories/:id/alerts/"} exact={true}>
                 <PageRepositoryAlerts/>
             </Route>
             <Route path={"/repositories/:id/share"} exact={true}>
@@ -38,8 +48,11 @@ export default function PageSwitcher({ ...props }) {
             <Route path={"/settings"} exact={true}>
                 <PageSettings/>
             </Route>
-            <Route path={"/"}>
+            <Route path={"/"} exact={true}>
                 <PageLogin/>
+            </Route>
+            <Route>
+                <Alert color={"Red"}>{makeIcon(faQuestionCircle)} {strings.errorPageNotFound}</Alert>
             </Route>
         </Switch>
     )

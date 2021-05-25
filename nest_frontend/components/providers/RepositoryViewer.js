@@ -1,6 +1,5 @@
 import React, { useContext, useMemo, useState } from "react"
 import Style from "./RepositoryViewer.module.css"
-import classNames from "classnames"
 import ContextLanguage from "../../contexts/ContextLanguage"
 import useBackendResource from "../../hooks/useBackendResource"
 import useBackendViewset from "../../hooks/useBackendViewset"
@@ -9,7 +8,7 @@ import countTweetWords from "../../utils/countTweetWords"
 import BoxHeader from "../base/BoxHeader"
 import Loading from "../base/Loading"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faFolder, faFolderOpen, faTrash } from "@fortawesome/free-solid-svg-icons"
+import { faFolder, faFolderOpen, faPlus, faTrash } from "@fortawesome/free-solid-svg-icons"
 import BoxRepositoryTweets from "../interactive/BoxRepositoryTweets"
 import PickerVisualization from "../interactive/PickerVisualization"
 import BoxVisualizationWordcloud from "../interactive/BoxVisualizationWordcloud"
@@ -29,6 +28,9 @@ import BoxFilterDatetime from "../interactive/BoxFilterDatetime"
 import BoxFilterHasPlace from "../interactive/BoxFilterHasPlace"
 import BoxFilterHasImage from "../interactive/BoxFilterHasImage"
 import BoxFilterIsNotRetweet from "../interactive/BoxFilterIsNotRetweet"
+import PageWithHeader from "../base/layout/PageWithHeader"
+import ButtonHeader from "../base/ButtonHeader"
+import AlertError from "../interactive/AlertError"
 
 
 export default function RepositoryViewer({ id, className, ...props }) {
@@ -49,7 +51,11 @@ export default function RepositoryViewer({ id, className, ...props }) {
     const mapViewHook = useMapAreaState()
 
     // Repository
-    const repositoryBr = useBackendResource(
+    const {
+        resource: repository,
+        error: repositoryError,
+        firstLoad: repositoryFirstLoad,
+    } = useBackendResource(
         `/api/v1/repositories/${id}`,
         {
             retrieve: true,
@@ -58,11 +64,13 @@ export default function RepositoryViewer({ id, className, ...props }) {
             action: false,
         },
     )
-    const repository = repositoryBr.error ? null : repositoryBr.resource
-
 
     // Tweets
-    const rawTweetsBv = useBackendViewset(
+    const {
+        resources: tweets,
+        error: tweetsError,
+        firstLoad: tweetsFirstLoad,
+    } = useBackendViewset(
         `/api/v1/repositories/${id}/tweets/`,
         "snowflake",
         {
@@ -75,63 +83,73 @@ export default function RepositoryViewer({ id, className, ...props }) {
             action: false,
         },
     )
-    const rawTweets = rawTweetsBv.resources && rawTweetsBv.error ? [] : rawTweetsBv.resources
-
 
     // Filtering
-    let tweets = rawTweets
-    for(const filter of filters) {
-        tweets = tweets.filter(tweet => filter.exec(tweet))
-    }
-
+    const filteredTweets = useMemo(
+        () => {
+            let tempTweets = tweets
+            for(const filter of filters) {
+                tempTweets = tempTweets.filter(tweet => filter.exec(tweet))
+            }
+            return tempTweets
+        },
+        [tweets, filters]
+    )
 
     // Words
     const words = useMemo(
-        () => objectToWordcloudFormat(countTweetWords(tweets)),
-        [tweets],
+        () => objectToWordcloudFormat(countTweetWords(filteredTweets)),
+        [filteredTweets],
     )
 
-
-    let contents
-    if(!repositoryBr.firstLoad || !rawTweetsBv.firstLoad) {
-        contents = <>
-            <BoxHeader className={Style.Header}>
-                <Loading/>
+    // Page header
+    const header = useMemo(
+        () => (
+            <BoxHeader>
+                <FontAwesomeIcon icon={repository?.is_active ? faFolderOpen : faFolder}/> {repository?.name}
             </BoxHeader>
-        </>
-    }
-    else if(repository === null) {
-        contents = <>
-            <BoxHeader className={Style.Header}>
-                <FontAwesomeIcon icon={faTrash}/> <i>{strings.repoDeleted}</i>
-            </BoxHeader>
-        </>
-    }
-    else {
-        contents = <>
-            <BoxHeader className={Style.Header}>
-                <FontAwesomeIcon icon={repository.is_active ? faFolderOpen : faFolder}/> {repository.name}
-            </BoxHeader>
+        ),
+        [repository?.is_active, repository?.name]
+    )
 
-            <BoxRepositoryTweets className={Style.Tweets}/>
-            <PickerVisualization className={Style.VisualizationPicker}/>
-            {visualizationTab === "wordcloud" ? <BoxVisualizationWordcloud className={Style.Visualization}/> : null}
-            {visualizationTab === "chart" ? <BoxVisualizationChart className={Style.Visualization}/> : null}
-            {visualizationTab === "map" ? <BoxVisualizationMap className={Style.Visualization}/> : null}
-            {visualizationTab === "stats" ? <BoxVisualizationStats className={Style.Visualization}/> : null}
+    // Page contents
+    const contents = useMemo(
+        () => {
+            if(!repositoryFirstLoad || !tweetsFirstLoad) {
+                return <Loading/>
+            }
+            else if(repositoryError) {
+                return <AlertError error={repositoryError}/>
+            }
+            else if(tweetsError) {
+                return <AlertError error={tweetsError}/>
+            }
+            else {
+                return (
+                    <div className={Style.RepositoryViewer}>
+                        <BoxRepositoryTweets className={Style.Tweets}/>
+                        <PickerVisualization className={Style.VisualizationPicker}/>
+                        {visualizationTab === "wordcloud" ? <BoxVisualizationWordcloud className={Style.Visualization}/> : null}
+                        {visualizationTab === "chart" ? <BoxVisualizationChart className={Style.Visualization}/> : null}
+                        {visualizationTab === "map" ? <BoxVisualizationMap className={Style.Visualization}/> : null}
+                        {visualizationTab === "stats" ? <BoxVisualizationStats className={Style.Visualization}/> : null}
 
-            <BoxFilters className={Style.Filters}/>
-            <PickerFilter className={Style.FilterPicker}/>
-            {filterTab === "contains" ? <BoxFilterContains className={Style.AddFilter}/> : null}
-            {filterTab === "hashtag" ? <BoxFilterHashtag className={Style.AddFilter}/> : null}
-            {filterTab === "user" ? <BoxFilterUser className={Style.AddFilter}/> : null}
-            {filterTab === "retweet" ? <BoxFilterIsNotRetweet className={Style.AddFilter}/> : null}
-            {filterTab === "image" ? <BoxFilterHasImage className={Style.AddFilter}/> : null}
-            {filterTab === "time" ? <BoxFilterDatetime className={Style.AddFilter}/> : null}
-            {filterTab === "place" ? <BoxFilterHasPlace className={Style.AddFilter}/> : null}
-            {filterTab === "location" ? <BoxFilterLocation className={Style.AddFilter}/> : null}
-        </>
-    }
+                        <BoxFilters className={Style.Filters}/>
+                        <PickerFilter className={Style.FilterPicker}/>
+                        {filterTab === "contains" ? <BoxFilterContains className={Style.AddFilter}/> : null}
+                        {filterTab === "hashtag" ? <BoxFilterHashtag className={Style.AddFilter}/> : null}
+                        {filterTab === "user" ? <BoxFilterUser className={Style.AddFilter}/> : null}
+                        {filterTab === "retweet" ? <BoxFilterIsNotRetweet className={Style.AddFilter}/> : null}
+                        {filterTab === "image" ? <BoxFilterHasImage className={Style.AddFilter}/> : null}
+                        {filterTab === "time" ? <BoxFilterDatetime className={Style.AddFilter}/> : null}
+                        {filterTab === "place" ? <BoxFilterHasPlace className={Style.AddFilter}/> : null}
+                        {filterTab === "location" ? <BoxFilterLocation className={Style.AddFilter}/> : null}
+                    </div>
+                )
+            }
+        },
+        [repositoryFirstLoad, tweetsFirstLoad, visualizationTab, filterTab]
+    )
 
     return (
         <ContextRepositoryViewer.Provider
@@ -145,20 +163,16 @@ export default function RepositoryViewer({ id, className, ...props }) {
                 appendFilter,
                 spliceFilter,
                 removeFilter,
-                repositoryBr,
                 repository,
-                rawTweetsBv,
-                rawTweets,
-                tweets,
+                rawTweets: tweets,
+                tweets: filteredTweets,
                 words,
                 mapViewHook,
             }}
         >
-
-            <div className={classNames(Style.RepositoryViewer, className)} {...props}>
+            <PageWithHeader header={header}>
                 {contents}
-            </div>
-
+            </PageWithHeader>
         </ContextRepositoryViewer.Provider>
     )
 }
