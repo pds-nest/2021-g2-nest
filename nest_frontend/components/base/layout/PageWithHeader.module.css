@@ -1,0 +1,38 @@
+.PageWithHeader {
+    width: 100%;
+    height: 100%;
+
+    display: grid;
+    grid-template-areas:
+            "header button"
+            "body body";
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto 1fr;
+}
+
+.Header {
+    grid-area: header;
+    margin-bottom: 10px;
+}
+
+.Buttons {
+    grid-area: button;
+    margin-left: 10px;
+    margin-bottom: 10px;
+
+    display: flex;
+    flex-direction: row;
+}
+
+.Buttons > * {
+    flex-grow: 1;
+}
+
+.Body {
+    grid-area: body;
+}
+
+.Body > * {
+    width: 100%;
+    height: 100%;
+}

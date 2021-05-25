@@ -1,14 +1,13 @@
 import React, { useCallback, useContext } from "react"
-import classNames from "classnames"
 import BoxHeader from "../components/base/BoxHeader"
-import ContextLanguage from "../contexts/ContextLanguage"
-import Style from "./PageShare.module.css"
 import BoxUserList from "../components/interactive/BoxUserList"
 import useBackendViewset from "../hooks/useBackendViewset"
 import { useParams } from "react-router"
 import ContextUser from "../contexts/ContextUser"
-import Alert from "../components/base/Alert"
 import useStrings from "../hooks/useStrings"
+import PageWithHeader from "../components/base/layout/PageWithHeader"
+import BodyHorizontalHalves from "../components/base/layout/BodyHorizontalHalves"
+import AlertError from "../components/interactive/AlertError"
 
 
 export default function PageShare({ className, ...props }) {
@@ -71,30 +70,35 @@ export default function PageShare({ className, ...props }) {
     )
 
     return (
-        <div className={classNames(Style.PageShare, className)} {...props}>
-            <BoxHeader className={Style.Header}>
-                {strings.repoShare}
-            </BoxHeader>
-            <BoxUserList
-                className={Style.UserList}
-                users={users.filter(user => user["email"] !== loggedUser["email"] && !authorizations.map(a => a.email).includes(user.email))}
-                shareWithUser={shareWith}
-                header={strings.availableUsers}
-                running={usersBvRunning && authBvRunning}
+        <PageWithHeader
+            header={
+                <BoxHeader>
+                    {strings.repoShare}
+                </BoxHeader>
+            }
+        >
+            <BodyHorizontalHalves
+                upper={
+                    <BoxUserList
+                        users={users.filter(user => user["email"] !== loggedUser["email"] && !authorizations.map(a => a.email).includes(user.email))}
+                        shareWithUser={shareWith}
+                        header={strings.availableUsers}
+                        running={usersBvRunning || authBvRunning}
+                    />
+                }
+                lower={<>
+                    <BoxUserList
+                        users={users.filter(user => user["email"] === loggedUser["email"] || authorizations.map(a => a.email).includes(user.email))}
+                        unshareWithUser={unshareWith}
+                        header={strings.sharingWith}
+                        running={usersBvRunning || authBvRunning}
+                    />
+                </>}
+                error={<>
+                    {authBvError ? <AlertError error={authBvError}/> : null}
+                    {usersBvError ? <AlertError error={usersBvError}/> : null}
+                </>}
             />
-            <BoxUserList
-                className={Style.SharingWith}
-                users={users.filter(user => user["email"] === loggedUser["email"] || authorizations.map(a => a.email).includes(user.email))}
-                unshareWithUser={unshareWith}
-                header={strings.sharingWith}
-                running={usersBvRunning && authBvRunning}
-            />
-            {authBvError ?
-                <Alert color={"Red"} className={Style.Error}>{strings[authBvError?.data?.code ?? "errorUnknownError"]}</Alert>
-            : null}
-            {usersBvError ?
-                <Alert color={"Red"} className={Style.Error}>{strings[usersBvError?.data?.code ?? "errorUnknownError"]}</Alert>
-            : null}
-        </div>
+        </PageWithHeader>
     )
 }

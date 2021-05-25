@@ -2,10 +2,10 @@
     display: grid;
 
     grid-template-areas:
-        "a"
-        "b"
-        "c";
-    grid-template-rows: auto 1fr 1fr;
+        "a x"
+        "b b";
+    grid-template-columns: 4fr 1fr;
+    grid-template-rows: auto 1fr;
 
     grid-gap: 10px;
 
@@ -17,10 +17,19 @@
     grid-area: a;
 }
 
-.YourAlerts {
-    grid-area: b;
+.Buttons {
+    grid-area: x;
+
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
 }
 
-.CreateAlert {
-    grid-area: c;
+.Buttons > * {
+    box-shadow: none;
+    flex-grow: 1;
+}
+
+.YourAlerts {
+    grid-area: b;
 }

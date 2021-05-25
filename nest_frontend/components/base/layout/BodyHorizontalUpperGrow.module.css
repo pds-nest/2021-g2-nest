@@ -1,0 +1,29 @@
+.BodyHorizontalUpperGrow {
+    display: grid;
+    grid-template-areas: "upper" "lower" "error";
+    grid-template-rows: 1fr auto auto;
+}
+
+.Upper {
+    grid-area: upper;
+}
+
+.Upper > * {
+    width: 100%;
+    height: 100%;
+}
+
+.Lower {
+    grid-area: lower;
+    margin-top: 10px;
+}
+
+.Lower > * {
+    width: 100%;
+    height: 100%;
+}
+
+.Error {
+    grid-area: error;
+    margin-top: 10px;
+}

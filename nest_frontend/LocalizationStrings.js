@@ -141,7 +141,8 @@ export default {
         errorViewNotAllowed: "Errore: Non è permesso effettuare la richiesta.",
         errorServerNotConfigured: "Errore: Non è stato configurato nessun server.",
         errorDecodeError: "Errore: Non è stato possibile deserializzare i dati ricevuti dal backend.",
-        errorSerializationError: "Errore: Non è stato possibile serializzare i dati da inviare al backend."
+        errorSerializationError: "Errore: Non è stato possibile serializzare i dati da inviare al backend.",
+        errorPageNotFound: "Errore: Pagina non trovata.", // TODO: Tradurre
     },
     // 🇬🇧
     en: {

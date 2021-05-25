@@ -1,6 +1,4 @@
 import React, { useContext } from "react"
-import Style from "./PageLogin.module.css"
-import classNames from "classnames"
 import BoxSetServer from "../components/interactive/BoxSetServer"
 import BoxLogin from "../components/interactive/BoxLogin"
 import ContextUser from "../contexts/ContextUser"
@@ -9,9 +7,11 @@ import BoxHeader from "../components/base/BoxHeader"
 import useStrings from "../hooks/useStrings"
 import BoxFull from "../components/base/BoxFull"
 import SelectLanguage from "../components/interactive/SelectLanguage"
+import PageWithHeader from "../components/base/layout/PageWithHeader"
+import BodyFlex from "../components/base/layout/BodyFlex"
 
 
-export default function PageLogin({ className, ...props }) {
+export default function PageLogin({ ...props }) {
     const {user} = useContext(ContextUser)
     const strings = useStrings()
 
@@ -20,15 +20,21 @@ export default function PageLogin({ className, ...props }) {
     }
 
     return (
-        <div className={classNames(Style.PageLogin, className)} {...props}>
-            <BoxHeader>
-                {strings.welcomeToNest}
-            </BoxHeader>
-            <BoxSetServer/>
-            <BoxLogin/>
-            <BoxFull header={strings.changeLang}>
-                <SelectLanguage/>
-            </BoxFull>
-        </div>
+        <PageWithHeader
+            header={
+                <BoxHeader>
+                    {strings.welcomeToNest}
+                </BoxHeader>
+            }
+            {...props}
+        >
+            <BodyFlex>
+                <BoxSetServer/>
+                <BoxLogin/>
+                <BoxFull header={strings.changeLang}>
+                    <SelectLanguage/>
+                </BoxFull>
+            </BodyFlex>
+        </PageWithHeader>
     )
 }

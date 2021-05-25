@@ -4,7 +4,7 @@ import sw from "stopword"
 const stopwords = [...sw.it, ...sw.en, "rt"]
 
 
-export default function countTweetWords(tweets = {}) {
+export default function countTweetWords(tweets = []) {
     let words = {}
     for(const tweet of tweets) {
         if(!tweet.content) {
