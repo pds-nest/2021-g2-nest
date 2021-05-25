@@ -171,7 +171,7 @@ def page_alert(aid):
             try:
                 alert.evaluation_mode = ConditionMode(request.json['evaluation_mode'])
             except KeyError:
-                return json_error("Unknown `type` specified.", GENERIC_ENUM_INVALID), 400
+                return json_error("Unknown `evaluation_mode` specified.", GENERIC_ENUM_INVALID), 400
             except Exception as e:
                 return json_error("Unknown error:" + str(e), GENERIC_UFO), 400
         ext.session.commit()
@@ -203,7 +203,7 @@ def page_alert(aid):
             try:
                 alert.evaluation_mode = ConditionMode(mode)
             except KeyError:
-                return json_error("Unknown `type` specified.", GENERIC_ENUM_INVALID), 400
+                return json_error("Unknown `evaluation_mode` specified.", GENERIC_ENUM_INVALID), 400
             except Exception as e:
                 return json_error("Unknown error:" + str(e), GENERIC_UFO), 400
         if request.json['conditions'] is not None:
