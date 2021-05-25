@@ -245,6 +245,7 @@ class TestRepositoryPut:
                 "isAdmin": True,
                 "username": "string"
             },
+            "spectators": [],
             "start": "2021-05-14T12:12:29.827Z"
         })
         assert r.status_code == 200

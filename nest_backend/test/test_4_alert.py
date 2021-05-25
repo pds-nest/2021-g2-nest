@@ -8,17 +8,17 @@ from flask.testing import Client
 
 class TestAlertsGetAllOfARepository:
     def test_repository_not_found(self, flask_client: Client, user_headers):
-        r = flask_client.get(f'/api/v1/repositories/99/alerts', headers=user_headers)
+        r = flask_client.get(f'/api/v1/repositories/99/alerts/', headers=user_headers)
         assert r.status_code == 404
         assert r.json["result"] == "failure"
 
     def test_unauthorized_repository(self, flask_client: Client, admin_headers):
-        r = flask_client.get(f'/api/v1/repositories/1/alerts', headers=admin_headers)
+        r = flask_client.get(f'/api/v1/repositories/1/alerts/', headers=admin_headers)
         assert r.status_code == 403
         assert r.json["result"] == "failure"
 
     def test_get_all_alerts_of_a_repository(self, flask_client: Client, user_headers):
-        r = flask_client.get(f'/api/v1/repositories/1/alerts', headers=user_headers)
+        r = flask_client.get(f'/api/v1/repositories/1/alerts/', headers=user_headers)
         assert r.status_code == 200
         assert r.json["result"] == "success"
 

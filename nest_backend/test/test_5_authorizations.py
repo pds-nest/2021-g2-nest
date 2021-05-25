@@ -47,7 +47,7 @@ class TestAuthorizationsPut:
         r = flask_client.put(f'/api/v1/repositories/1/authorizations/', headers=user_headers, json={
             'email': 'admin@admin.com'
         })
-        assert r.status_code == 201
+        assert r.status_code == 200
         assert r.json["result"] == "success"
 
     def test_authorization_already_existed(self, flask_client: Client, user_headers):

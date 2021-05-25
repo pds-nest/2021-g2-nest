@@ -8,42 +8,42 @@ from flask.testing import Client
 
 class TestConditionGetAllOfARepository:
     def test_repository_not_found(self, flask_client: Client, user_headers):
-        r = flask_client.get(f'/api/v1/repositories/99/conditions', headers=user_headers)
+        r = flask_client.get(f'/api/v1/repositories/99/conditions/', headers=user_headers)
         assert r.status_code == 404
         assert r.json["result"] == "failure"
 
     def test__unauthorized_repository(self, flask_client: Client, admin_headers):
-        r = flask_client.get(f'/api/v1/repositories/1/conditions', headers=admin_headers)
+        r = flask_client.get(f'/api/v1/repositories/1/conditions/', headers=admin_headers)
         assert r.status_code == 403
         assert r.json["result"] == "failure"
 
     def test_get_all_conditions_of_a_repository(self, flask_client: Client, user_headers):
-        r = flask_client.get(f'/api/v1/repositories/1/conditions', headers=user_headers)
+        r = flask_client.get(f'/api/v1/repositories/1/conditions/', headers=user_headers)
         assert r.status_code == 200
         assert r.json["result"] == "success"
 
 
 class TestConditionPost:
     def test_missing_type(self, flask_client: Client, user_headers):
-        r = flask_client.post(f'/api/v1/repositories/1/conditions', headers=user_headers,
+        r = flask_client.post(f'/api/v1/repositories/1/conditions/', headers=user_headers,
                               json={})
         assert r.status_code == 400
         assert r.json["result"] == "failure"
 
     def test_wrong_type(self, flask_client: Client, user_headers):
-        r = flask_client.post(f'/api/v1/repositories/1/conditions', headers=user_headers,
+        r = flask_client.post(f'/api/v1/repositories/1/conditions/', headers=user_headers,
                               json={"content": "string", "type": 99})
         assert r.status_code == 400
         assert r.json["result"] == "failure"
 
     def test_missing_content(self, flask_client: Client, user_headers):
-        r = flask_client.post(f'/api/v1/repositories/1/conditions', headers=user_headers,
+        r = flask_client.post(f'/api/v1/repositories/1/conditions/', headers=user_headers,
                               json={"type": 0})
         assert r.status_code == 400
         assert r.json["result"] == "failure"
 
     def test_for_success(self, flask_client: Client, user_headers):
-        r = flask_client.post(f'/api/v1/repositories/1/conditions', headers=user_headers,
+        r = flask_client.post(f'/api/v1/repositories/1/conditions/', headers=user_headers,
                               json={"content": "onlyForTest", "type": 0})
         assert r.status_code == 201
         assert r.json["result"] == "success"
