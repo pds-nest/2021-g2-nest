@@ -29,8 +29,8 @@ export default {
         byZone: "area",
         byHashtag: "hashtag",
         byUser: "utente",
-        byRetweet: "retweet", // TODO: tradurre
-        isNotRetweetExplaination: "Nascondi i retweet.", // TODO: Tradurre
+        byRetweet: "retweet",
+        isNotRetweetExplaination: "Nascondi i retweet.",
         byHasImage: "immagine",
         hasImageExplaination: "Mostra solo i tweet con immagine.",
         byTimePeriod: "arco di tempo",
@@ -69,12 +69,12 @@ export default {
         sharingWith: "In condivisione con",
 
         alerts: "Allarmi",
-        alertTitle: "I tuoi allarmi",
+        alertTitle: "I tuoi allarmi associati a questa repository",
         alertCreate: "Crea un allarme",
-        alertName: "Nome allarme", // TODO: tradurre
-        createAlert: "Crea allarme", // TODO: tradurre
-        alertLimit: "Limite", // TODO: tradurre e migliorare?
-        alertWindow: "Finestra (in ore)", // TODO: tradurre
+        alertName: "Nome allarme",
+        createAlert: "Crea allarme",
+        alertLimit: "Limite", //TODO: Migliorare?
+        alertWindow: "Finestra (in ore)",
 
         notImplemented: "🚧 Non implementato.",
 
@@ -168,6 +168,8 @@ export default {
         byZone: "zone",
         byHashtag: "hashtag",
         byUser: "user",
+        byRetweet: "retweet",
+        isNotRetweetExplaination: "Hide retweets.",
         byHasImage: "image",
         hasImageExplaination: "Only show tweets with an image.",
         byTimePeriod: "time period",
@@ -205,8 +207,13 @@ export default {
         sharingWith: "Sharing with",
 
         alerts: "Alerts",
-        alertTitle: "Your alerts",
+        alertTitle: "Your alerts associated with this repository",
         alertCreate: "Create a new alert",
+        alertName: "Alert name",
+        createAlert: "Create alert",
+        alertLimit: "Threshold",
+        alertWindow: "Window size (in hours)",
+
         notImplemented: "🚧 Not implemented.",
 
         settings: "Settings",
@@ -277,7 +284,8 @@ export default {
         errorViewNotAllowed: "Error: You are not allowed to make the request.", //Non so come scriverlo meglio
         errorServerNotConfigured: "Error: Server not configured.",
         errorDecodeError: "Error: Could not deserialize data recieved from backend.",
-        errorSerializationError: "Error: Could not serialize the data to be sent to backend."
+        errorSerializationError: "Error: Could not serialize the data to be sent to backend.",
+        errorPageNotFound: "Error: Page not found.",
     },
     // 🇫🇮
     fi: {
@@ -298,6 +306,8 @@ export default {
         byZone: "vyöhykkeen mukaan",
         byHashtag: "hashtagin mukaan",
         byUser: "käyttäjän mukaan",
+        byRetweet: "uudelleentwiittaus", //Il finlandese è strano, parte 2
+        isNotRetweetExplaination: "Piilota uudelleentwiittaukset.",
         byHasImage: "kuva",
         hasImageExplaination: "Näytä vain twiitit, joissa on kuva.",
         byTimePeriod: "aikajakson mukaan",
@@ -335,8 +345,13 @@ export default {
         sharingWith: "Jakaminen seuraavien kanssa",
 
         alerts: "Hälytykset",
-        alertTitle: "Hälytyksesi",
+        alertTitle: "Tähän arkistoon liittyvät hälytyksesi",
         alertCreate: "Luo uusi hälytys",
+        alertName: "Hälytyksen nimi",
+        createAlert: "Luo hälytys",
+        alertLimit: "Kynnysarvo",
+        alertWindow: "Ikkunan koko (tunteina)",
+
         notImplemented: "🚧 Ei toteutettu.",
 
         settings: "Asetukset",
@@ -407,6 +422,7 @@ export default {
         errorViewNotAllowed: "Virhe: Et saa esittää pyyntöä.",
         errorServerNotConfigured: "Virhe: Palvelinta ei ole määritetty.",
         errorDecodeError: "Virhe: Backendistä saatuja tietoja ei voitu deserialisoida.",
-        errorSerializationError: "Virhe: Backendiin lähetettävää dataa ei voitu serialisoida."
+        errorSerializationError: "Virhe: Backendiin lähetettävää dataa ei voitu serialisoida.",
+        errorPageNotFound: "Virhe: sivua ei löydy.",
     },
 }
