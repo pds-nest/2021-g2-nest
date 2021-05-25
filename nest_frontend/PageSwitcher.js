@@ -13,6 +13,7 @@ import { faQuestionCircle } from "@fortawesome/free-solid-svg-icons"
 import makeIcon from "./utils/makeIcon"
 import useStrings from "./hooks/useStrings"
 import Alert from "./components/base/Alert"
+import PageRepositoryAlertsCreate from "./routes/PageRepositoryAlertsCreate"
 
 
 export default function PageSwitcher({ ...props }) {
@@ -22,6 +23,9 @@ export default function PageSwitcher({ ...props }) {
         <Switch {...props}>
             <Route path={"/repositories/create"} exact={true}>
                 <PageRepositoryCreate/>
+            </Route>
+            <Route path={"/repositories/:id/alerts/create"} exact={true}>
+                <PageRepositoryAlertsCreate/>
             </Route>
             <Route path={"/repositories/:id/alerts"} exact={true}>
                 <PageRepositoryAlerts/>

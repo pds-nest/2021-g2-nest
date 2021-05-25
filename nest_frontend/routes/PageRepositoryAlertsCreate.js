@@ -3,32 +3,37 @@ import BoxFull from "../components/base/BoxFull"
 import ContextLanguage from "../contexts/ContextLanguage"
 import BoxHeader from "../components/base/BoxHeader"
 import { useHistory, useParams } from "react-router"
-import { faBell, faPlus } from "@fortawesome/free-solid-svg-icons"
+import { faPlus } from "@fortawesome/free-solid-svg-icons"
 import PageWithHeader from "../components/base/layout/PageWithHeader"
-import ButtonHeader from "../components/base/ButtonHeader"
 import makeIcon from "../utils/makeIcon"
+import useBackendViewset from "../hooks/useBackendViewset"
 
 
-export default function PageRepositoryAlerts() {
+export default function PageRepositoryAlertsCreate() {
     const { strings } = useContext(ContextLanguage)
     const { id } = useParams()
     const history = useHistory()
+
+    const {createResource} = useBackendViewset(
+        `/api/v1/repositories/${id}/alerts/`,
+        "name",
+        {
+            list: false,
+            create: true,
+            retrieve: false,
+            edit: false,
+            destroy: false,
+            command: false,
+            action: false,
+        }
+    )
 
     return (
         <PageWithHeader
             header={
                 <BoxHeader>
-                    {makeIcon(faBell)} {strings.alerts}
+                    {makeIcon(faPlus)} {strings.alertCreate}
                 </BoxHeader>
-            }
-            buttons={
-                <ButtonHeader
-                    icon={faPlus}
-                    color={"Green"}
-                    onClick={() => history.push(`/repositories/${id}/alerts/create`)}
-                >
-                    {strings.alertCreate}
-                </ButtonHeader>
             }
         >
             <BoxFull header={strings.alertTitle}>
