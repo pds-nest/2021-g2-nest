@@ -4,7 +4,7 @@
 |------|-----|--------|----------|
 |      |     |        |          |
 
-Totale generale di tutti i componenti: h
+Totale generale di tutti i componenti: 12.0h
 
 
 # Log attività individuali dello Sprint 2
@@ -67,9 +67,16 @@ Chiara Calzolari - UI Designer
 
 | Data  | Durata | Attività |
 |-------|--------|----------|
-|     |    |        |
+| 17/05 | 3.0h | Traduzione UI
+| 17/05 | 1.5h | Traduzione UI
+| 18/05 | 1.5h | Traduzione UI
+| 20/05 | 1.0h | Traduzione UI
+| 22/05 | 1.0h | Traduzione UI
+| 24/05 | 2.0h | Traduzione UI
+| 24/05 | 1.0h | Traduzione UI
+| 25/05 | 1.0h | Traduzione UI
 |-------|--------|
-|totale| __._h |
+|totale| 12.0h |
 
 
 
