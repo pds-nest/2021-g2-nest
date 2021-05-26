@@ -31,7 +31,7 @@ export default function Sidebar({ className, ...props }) {
                 </>
                      :
                 <>
-                    <ButtonSidebar to={"/login"} icon={faKey}>{strings.login}</ButtonSidebar>
+                    <ButtonSidebar to={"/"} icon={faKey}>{strings.login}</ButtonSidebar>
                 </>
             }
             {
