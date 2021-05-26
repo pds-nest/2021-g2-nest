@@ -4,6 +4,7 @@ from nest_backend.database import *
 import tweepy as tw
 from datetime import datetime, timedelta
 import smtplib
+from nest_backend.app import app, extension_sqlalchemy
 
 ext.init_app(app=app)
 
@@ -24,12 +25,13 @@ def authenticate():
 def search_repo_conditions(repository_id):
     api = authenticate()
     geocode = "44.3591600,11.7132000,20km"
-
     repo = Repository.query.filter_by(id=repository_id).first()
     if repo is None:
         print("Non esiste una repository con questo id")
         return False
     conditions = [use for use in repo.conditions]
+    if len(conditions) == 0:
+        return False
     evaluation_mode = repo.evaluation_mode
     conditions_type = dict()
     # Dividing condition into condition types
@@ -234,7 +236,14 @@ def send_test_tweet():
     api = authenticate()
     api.update_status("Test")
 
+def search_all_repo():
+    active_repos = Repository.query.filter_by(is_active=True)
+    for repo_id in [active_repo.id for active_repo in active_repos]:
+        search_repo_conditions(repo_id)
+        is_repo_alert_triggered(repo_id)
+
 if __name__ == "__main__":
-    search_repo_conditions(16)
     with app.app_context():
-        ext.create_all(app=app)
+        search_all_repo()
+
+
