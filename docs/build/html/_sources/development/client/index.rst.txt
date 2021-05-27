@@ -8,3 +8,4 @@ Questi sono i documenti che ci sono stati forniti dal prof. Marcello Missiroli i
 - :download:`Sprint 1 <1-sprint-requirements.pdf>`
 - :download:`Sprint 2 <2-sprint-requirements.pdf>`
 - :download:`Sprint 3 <3-sprint-requirements.pdf>`
+- :download:`Report finale <3-report.pdf>`
