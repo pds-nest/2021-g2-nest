@@ -9,7 +9,7 @@ class TestAuthozitazionsGet:
         assert r.status_code == 200
         assert r.json["result"] == "success"
 
-    def test_get_non_existing_repository(self, flask_client: Client, admin_headers):
+    def test_repository_not_found(self, flask_client: Client, admin_headers):
         r = flask_client.get('/api/v1/repositories/99/authorizations/', headers=admin_headers)
         assert r.status_code == 404
         assert r.json["result"] == "failure"
@@ -66,7 +66,28 @@ class TestAuthorizationsPut:
         r = flask_client.put(f'/api/v1/repositories/1/authorizations/')
         assert r.status_code == 401
 
-    def test_get_non_existing_repository(self, flask_client: Client, admin_headers):
+    def test_repository_not_found(self, flask_client: Client, admin_headers):
         r = flask_client.post('/api/v1/repositories/99/authorizations/', headers=admin_headers)
+        assert r.status_code == 404
+        assert r.json["result"] == "failure"
+
+
+class TestAuthorizationsDelete:
+    def test_for_success(self, flask_client: Client, user_headers):
+        r = flask_client.delete(f'/api/v1/repositories/1/authorizations/user_test@nest.com', headers=user_headers)
+        assert r.status_code == 204
+        assert r.json["result"] == "success"
+
+    def test_user_not_logged(self, flask_client: Client):
+        r = flask_client.delete(f'/api/v1/repositories/1/authorizations/user_test@nest.com')
+        assert r.status_code == 401
+
+    def test_wrong_owner(self, flask_client: Client, admin_headers):
+        r = flask_client.delete(f'/api/v1/repositories/1/authorizations/user_test@nest.com', headers=admin_headers)
+        assert r.status_code == 403
+        assert r.json["result"] == "failure"
+
+    def test_repository_not_found(self, flask_client: Client, admin_headers):
+        r = flask_client.delete(f'/api/v1/repositories/99/authorizations/user_test@nest.com', headers=admin_headers)
         assert r.status_code == 404
         assert r.json["result"] == "failure"
