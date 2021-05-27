@@ -87,12 +87,23 @@
             
               <p class="caption"><span class="caption-text">Manuale utente</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Il progetto</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Il progetto</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#suddivisione-in-moduli">Suddivisione in moduli</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#screenshots">Screenshots</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installazione</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Guida sviluppatore</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../meta/index.html">Meta-documentazione</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Compendio del progetto</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../development/client/index.html">Feedback ricevuto dal cliente</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/stats/index.html">Statistiche di Gitinspector</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/log.html">Registro attività</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/tools.html">Strumenti utilizzati</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Documentazione autogenerata</span></p>
 <ul>
@@ -168,6 +179,31 @@
             
   <div class="section" id="il-progetto">
 <h1>Il progetto<a class="headerlink" href="#il-progetto" title="Link a questa intestazione">¶</a></h1>
+<p><strong>N.E.S.T.</strong> (Noi Estraiamo Statistiche Tweet) è un progetto realizzato nel 2021 per
+l”<strong>esame di Progetto del Software</strong> del corso di Informatica all’Unimore.</p>
+<div class="section" id="suddivisione-in-moduli">
+<h2>Suddivisione in moduli<a class="headerlink" href="#suddivisione-in-moduli" title="Link a questa intestazione">¶</a></h2>
+<p>Il progetto è composto da tre parti:</p>
+<dl class="simple">
+<dt><a class="reference internal" href="../crawler/index.html#module-nest_crawler" title="nest_crawler"><code class="xref py py-mod docutils literal notranslate"><span class="pre">nest_crawler</span></code></a></dt><dd><p>Un modulo scritto in <a class="reference external" href="https://www.python.org/">Python</a> usando <code class="xref py py-mod docutils literal notranslate"><span class="pre">tweepy</span></code> che recupera tweet attraverso la <a class="reference external" href="https://developer.twitter.com/en/docs/twitter-api">Twitter API</a> secondo le
+condizioni presenti all’interno del database e li salva per future elaborazioni.</p>
+</dd>
+<dt><a class="reference internal" href="../backend/index.html#module-nest_backend" title="nest_backend"><code class="xref py py-mod docutils literal notranslate"><span class="pre">nest_backend</span></code></a></dt><dd><p>Un web server scritto in <a class="reference external" href="https://www.python.org/">Python</a> usando il framework <a class="reference external" href="https://flask.palletsprojects.com/en/1.1.x/api/#module-flask" title="(in Flask v1.1.x)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">flask</span></code></a> che fornisce un’API HTTP per visualizzare e
+manipolare i dati dell’applicazione, gestendo autenticazione, autorizzazione e comunicazione con il database.</p>
+</dd>
+<dt><code class="xref js js-mod docutils literal notranslate"><span class="pre">nest_frontend</span></code></dt><dd><p>Una applicazione web scritta in <a class="reference external" href="https://reactjs.org/docs/introducing-jsx.html">JSX</a> usando il framework <code class="xref js js-mod docutils literal notranslate"><span class="pre">react</span></code> che comunica con il backend, mostrando
+all’utente i dati del backend in una formato immediatamente comprensibile.</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="screenshots">
+<h2>Screenshots<a class="headerlink" href="#screenshots" title="Link a questa intestazione">¶</a></h2>
+<img alt="../_images/frontendDashboard.png" src="../_images/frontendDashboard.png" />
+<img alt="../_images/frontendRepositoryCreate.png" src="../_images/frontendRepositoryCreate.png" />
+<img alt="../_images/frontendAnalysis.png" src="../_images/frontendAnalysis.png" />
+<img alt="../_images/frontendRepositoryShare.png" src="../_images/frontendRepositoryShare.png" />
+<img alt="../_images/frontendAlertCreate.png" src="../_images/frontendAlertCreate.png" />
+</div>
 </div>
 
 
