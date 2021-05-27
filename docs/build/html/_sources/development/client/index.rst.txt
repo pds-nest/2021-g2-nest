@@ -1,20 +1,10 @@
-Feedback ricevuto dal cliente
-=============================
+Documenti ricevuti dal cliente
+==============================
 
-Documenti
----------
+Questi sono i documenti che ci sono stati forniti dal prof. Marcello Missiroli in veste di cliente del progetto.
 
 - :download:`Descrizione iniziale del prodotto <0-initial.pdf>`
-
-Consegna degli Sprint
----------------------
-
-.. todo::
-
-    Aggiungere i documenti degli sprint mancanti!
-
 - :download:`Sprint 0 <0-sprint-requirements.pdf>`
-- :download:`Sprint 1`
-- :download:`Sprint 2`
-- :download:`Sprint 3`
-
+- :download:`Sprint 1 <1-sprint-requirements.pdf>`
+- :download:`Sprint 2 <2-sprint-requirements.pdf>`
+- :download:`Sprint 3 <3-sprint-requirements.pdf>`
