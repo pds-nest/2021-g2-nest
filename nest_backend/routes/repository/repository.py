@@ -203,6 +203,11 @@ def page_repository(rid):
             ext.session.commit()
             # Deleting conditions...
             for condition in repository.conditions:
+                for c in condition.tweets:
+                    ext.session.delete(c)
+                for c in condition.alerts:
+                    ext.session.delete(c)
+                ext.session.commit()
                 ext.session.delete(condition)
             ext.session.commit()
             # Deleting Alerts...
