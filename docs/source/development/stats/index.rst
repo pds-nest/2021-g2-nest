@@ -1,5 +1,16 @@
-Statistiche di Gitinspector
-===========================
+Statistiche
+===========
+
+Burndown chart
+--------------
+
+.. todo::
+
+    Inserire qui la burndown chart del progetto terminato!
+
+
+Gitinspector
+------------
 
 Queste statistiche sono state generate dal prof. Marcello Missiroli con
 `Gitinspector <https://github.com/ejwa/gitinspector>`_ al termine di ogni Sprint.
