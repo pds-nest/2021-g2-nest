@@ -207,4 +207,3 @@ class TestOneAlertOfARepository:
     def test_delete_alert_for_success(self, flask_client: Client, user_headers):
         r = flask_client.delete(f'/api/v1/alert/1', headers=user_headers)
         assert r.status_code == 204
-
