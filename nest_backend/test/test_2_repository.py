@@ -125,7 +125,7 @@ class TestRepositoryGet:
         assert r.status_code == 200
         assert r.json["result"] == "success"
 
-    def test_get_non_existing_repository(self, flask_client: Client, admin_headers):
+    def test_repository_not_found(self, flask_client: Client, admin_headers):
         r = flask_client.get(f'/api/v1/repositories/99', headers=admin_headers)
         assert r.status_code == 404
         assert r.json["result"] == "failure"
