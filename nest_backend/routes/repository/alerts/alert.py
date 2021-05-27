@@ -185,6 +185,9 @@ def page_alert(aid):
                 if not condition.repository_id:
                     ext.session.delete(condition)
                     ext.session.commit()
+            for notification in alert.notifications:
+                ext.session.delete(notification)
+                ext.session.commit()
             ext.session.delete(alert)
             ext.session.commit()
         except Exception as e:

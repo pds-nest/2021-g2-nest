@@ -1,13 +1,13 @@
-# Log riunioni collettive dello Sprint 2
+# Log riunioni collettive dello Sprint 3
 
 | Data | Ora | Durata | Attività |
 |------|-----|--------|----------|
 |      |     |        |          |
 
-Totale generale di tutti i componenti: 12.0h
+Totale generale di tutti i componenti: 12.5h
 
 
-# Log attività individuali dello Sprint 2
+# Log attività individuali dello Sprint 3
 
 
 
@@ -75,8 +75,9 @@ Chiara Calzolari - UI Designer
 | 24/05 | 2.0h | Traduzione UI
 | 24/05 | 1.0h | Traduzione UI
 | 25/05 | 1.0h | Traduzione UI
+| 27/05 | 0.5h | Traduzione UI
 |-------|--------|
-|totale| 12.0h |
+|totale| 12.5h |
 
 
 
