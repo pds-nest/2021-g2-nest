@@ -16,6 +16,9 @@ export default {
         appFullName: "Noi Estraiamo Statistiche Tweet",
         welcomeToNest: "Benvenuto a N.E.S.T.!",
 
+        resolutionTooSmall: "Per visualizzare correttamente questa applicazione è richiesto uno schermo con risoluzione 1366x768 o superiore.", // TODO: Tradurre
+        ignore: "Visualizza comunque", // TODO: Tradurre
+
         server: "Scegli un server",
         baseURL: "Base URL",
         notLoggedIn: "Accesso non effettuato",

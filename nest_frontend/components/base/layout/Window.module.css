@@ -1,0 +1,9 @@
+.Window {
+    width: 100vw;
+    height: 100vh;
+
+    color: var(--fg-primary);
+    background-color: var(--bg-primary);
+
+    padding: 10px;
+}
