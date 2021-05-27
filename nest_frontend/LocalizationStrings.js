@@ -16,8 +16,8 @@ export default {
         appFullName: "Noi Estraiamo Statistiche Tweet",
         welcomeToNest: "Benvenuto a N.E.S.T.!",
 
-        resolutionTooSmall: "Per visualizzare correttamente questa applicazione è richiesto uno schermo con risoluzione 1366x768 o superiore.", // TODO: Tradurre
-        ignore: "Visualizza comunque", // TODO: Tradurre
+        resolutionTooSmall: "Per visualizzare correttamente questa applicazione è richiesto uno schermo con risoluzione 1366x768 o superiore.",
+        ignore: "Visualizza comunque",
 
         server: "Scegli un server",
         baseURL: "Base URL",
@@ -150,13 +150,16 @@ export default {
         errorServerNotConfigured: "Errore: Non è stato configurato nessun server.",
         errorDecodeError: "Errore: Non è stato possibile deserializzare i dati ricevuti dal backend.",
         errorSerializationError: "Errore: Non è stato possibile serializzare i dati da inviare al backend.",
-        errorPageNotFound: "Errore: Pagina non trovata.", // TODO: Tradurre
+        errorPageNotFound: "Errore: Pagina non trovata.",
     },
     // 🇬🇧
     en: {
         appName: "N.E.S.T.",
         appFullName: "We Extract Statistics from Tweets",
         welcomeToNest: "Welcome to N.E.S.T.!",
+
+        resolutionTooSmall: "To correctly visualize this application, a screen with resolution 1366x768 or higher is required.",
+        ignore: "View anyway",
 
         server: "Choose a server",
         baseURL: "Base URL",
@@ -296,6 +299,9 @@ export default {
         appFullName: "Poimimme Twiittien Tilastot",
         welcomeToNest: "Tervetuloa N.E.S.T.:hen!", //Certo che il Finlandese è proprio strano
 
+        resolutionTooSmall: "Tämän sovelluksen asianmukainen katselu edellyttää näyttöä, jonka resoluutio on vähintään 1366x768.",
+        ignore: "Näytä joka tapauksessa",
+
         server: "Valitse palvelin",
         baseURL: "Perus-URL",
         notLoggedIn: "Ei kirjautunut sisään",
@@ -309,7 +315,7 @@ export default {
         byZone: "vyöhykkeen mukaan",
         byHashtag: "hashtagin mukaan",
         byUser: "käyttäjän mukaan",
-        byRetweet: "uudelleentwiittaus", //Il finlandese è strano, parte 2
+        byRetweet: "uudelleentwiittauksen mukaan",
         isNotRetweetExplaination: "Piilota uudelleentwiittaukset.",
         byHasImage: "kuva",
         hasImageExplaination: "Näytä vain twiitit, joissa on kuva.",
