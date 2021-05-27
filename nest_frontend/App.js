@@ -1,5 +1,4 @@
 import React from "react"
-import Layout from "./components/interactive/Layout"
 import { BrowserRouter } from "react-router-dom"
 import GlobalTheme from "./components/providers/GlobalTheme"
 import GlobalServer from "./components/providers/GlobalServer"
@@ -7,6 +6,10 @@ import GlobalUser from "./components/providers/GlobalUser"
 import PageSwitcher from "./PageSwitcher"
 import GlobalLanguage from "./components/providers/GlobalLanguage"
 import ErrorBoundary from "./components/boundaries/ErrorBoundary"
+import Sidebar from "./components/interactive/Sidebar"
+import WebsiteWithSidebar from "./components/base/layout/WebsiteWithSidebar"
+import Window from "./components/base/layout/Window"
+import RequireSize from "./components/base/RequireSize"
 
 
 /**
@@ -22,11 +25,17 @@ export default function App() {
                 <GlobalUser>
                     <GlobalTheme>
                         <BrowserRouter>
-                            <Layout>
-                                <ErrorBoundary>
-                                    <PageSwitcher/>
-                                </ErrorBoundary>
-                            </Layout>
+                            <Window>
+                                <RequireSize width={1366} height={768}>
+                                    <WebsiteWithSidebar
+                                        sidebar={<Sidebar/>}
+                                    >
+                                        <ErrorBoundary>
+                                            <PageSwitcher/>
+                                        </ErrorBoundary>
+                                    </WebsiteWithSidebar>
+                                </RequireSize>
+                            </Window>
                         </BrowserRouter>
                     </GlobalTheme>
                 </GlobalUser>

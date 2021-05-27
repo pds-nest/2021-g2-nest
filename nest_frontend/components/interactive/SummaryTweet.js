@@ -31,7 +31,7 @@ export default function SummaryTweet({ tweet, ...props }) {
             <SummaryLeft
                 icon={icon}
                 title={`@${tweet["poster"]}`}
-                subtitle={new Date(tweet["insert_time"]).toLocaleString()}
+                subtitle={tweet["post_time"] ? new Date(tweet["post_time"]).toLocaleString() : null}
                 onClick={() => window.open(`https://twitter.com/${tweet["poster"]}/status/${tweet["snowflake"]}`)}
             />
             <SummaryText>

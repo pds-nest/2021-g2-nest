@@ -3,7 +3,7 @@
     flex-direction: column;
     gap: 25px;
 
-    width: 100%;
+    width: 250px;
     height: 100%;
 
     background-color: var(--bg-light);
