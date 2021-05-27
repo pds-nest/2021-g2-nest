@@ -1,7 +1,8 @@
 Statistiche di Gitinspector
 ===========================
 
-Queste statistiche sono state generate dal prof. Missiroli con `Gitinspector <https://github.com/ejwa/gitinspector>`_.
+Queste statistiche sono state generate dal prof. Marcello Missiroli con
+`Gitinspector <https://github.com/ejwa/gitinspector>`_ al termine di ogni Sprint.
 
 .. note::
 
