@@ -48,7 +48,7 @@ def page_repository_tweets(rid):
         return json_error("Could not find repository", REPOSITORY_NOT_FOUND), 404
     user = find_user(get_jwt_identity())
 
-    if user.email != repository.owner_id and user.email not in [a.email for a in Repository.authorizations]:
+    if user.email != repository.owner_id and user.email not in [a.email for a in repository.authorizations]:
         return json_error("You are not authorized.", USER_NOT_AUTHORIZED), 403
 
     if request.method == "GET":
