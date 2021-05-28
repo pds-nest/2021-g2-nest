@@ -24,7 +24,7 @@ class TestUserGetAll:
         assert r.json["result"] == "success"
 
     def test_for_failure(self, flask_client: Client, user_headers):
-        r = flask_client.get(f'/api/v1/users/', headers=user_headers)
+        r = flask_client.patch(f'/api/v1/users/', headers=user_headers)
         assert r.json["result"] == "failure"
 
 

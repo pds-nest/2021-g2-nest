@@ -12,8 +12,8 @@ class TestConditionGetAllOfARepository:
         assert r.status_code == 404
         assert r.json["result"] == "failure"
 
-    def test__unauthorized_repository(self, flask_client: Client, admin_headers):
-        r = flask_client.get(f'/api/v1/repositories/1/conditions/', headers=admin_headers)
+    def test__unauthorized_user(self, flask_client: Client, user_headers):
+        r = flask_client.get(f'/api/v1/repositories/2/conditions/', headers=user_headers)
         assert r.status_code == 403
         assert r.json["result"] == "failure"
 

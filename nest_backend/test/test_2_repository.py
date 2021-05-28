@@ -213,8 +213,8 @@ class TestRepositoryPut:
         assert r.status_code == 404
         assert r.json["result"] == "failure"
 
-    def test_for_success(self, flask_client: Client, admin_headers):
-        r = flask_client.put(f'/api/v1/repositories/1', headers=admin_headers, json={
+    def test_for_success(self, flask_client: Client, user_headers):
+        r = flask_client.put(f'/api/v1/repositories/1', headers=user_headers, json={
             "conditions": [
                 {
                     "content": "string",
