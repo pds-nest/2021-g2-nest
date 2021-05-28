@@ -1,23 +1,27 @@
 from nest_backend.database import *
-from nest_crawler.authentication import authenticate
+import authentication
 from datetime import datetime, timedelta
 import tweepy as tw
+from associate_condition_tweet import associate_condition_tweet
 
 def search_repo_conditions(repository_id):
-    api = authenticate()
-    geocode = "44.3591600,11.7132000,20km"
+
+    api = authentication.authenticate()
     repo = Repository.query.filter_by(id=repository_id).first()
+
     if repo is None:
         print("Non esiste una repository con questo id")
         return False
     conditions = [use for use in repo.conditions]
     if len(conditions) == 0:
         return False
+
+    print(f"Searching tweets from repo: {repo.name}")
     evaluation_mode = repo.evaluation_mode
     conditions_type = dict()
+
     # Dividing condition into condition types
     for condition in conditions:
-        # print(condition.id)
         if condition.type not in conditions_type.keys():
             conditions_type[condition.type] = [condition]
         else:
@@ -32,9 +36,12 @@ def search_repo_conditions(repository_id):
     for types in conditions_type.keys():
         print(types, ":", conditions_type[types])
     coordinates_string = ""
+    # Adding to the query string the hashtag conditions
     if ConditionType.hashtag in conditions_type.keys():
         for condition_content in conditions_type[ConditionType.hashtag]:
             queryString += ("#" + condition_content.content + " " + queryConjunction + " ")
+
+    # Adding to the coordinates string the coordinates condition
     if ConditionType.coordinates in conditions_type.keys():
         if evaluation_mode == ConditionMode.all_and:
             if len(conditions_type[ConditionType.coordinates]) == 1:
@@ -56,7 +63,6 @@ def search_repo_conditions(repository_id):
                             image_url_list = image_url_list[:-1]
                         else:
                             image_url_list = None
-
                         tweetDB = Tweet(snowflake=tweet.id, content=tweet.text,
                                         location=tweet.geo['coordinates'] if tweet.geo is not None else None,
                                         place=tweet.place.full_name if tweet.place is not None else None,
@@ -72,17 +78,21 @@ def search_repo_conditions(repository_id):
                         composed = Composed(rid=repository_id, snowflake=tweet.id)
                         ext.session.add(composed)
                         ext.session.commit()
+    # Adding to the query string the user condition
     if ConditionType.user in conditions_type.keys():
         for condition_content in conditions_type[ConditionType.user]:
             queryString += ("from:" + condition_content.content + " " + queryConjunction + " ")
+    # Adding to the query string the time condition
     if ConditionType.time in conditions_type.keys():
         for condition_content in conditions_type[ConditionType.time]:
             if condition_content.content[0] == '<':
                 queryString += ("until:" + condition_content.content[2:] + " " + queryConjunction + " ")
             elif condition_content.content[0] == '>':
                 queryString += ("since:" + condition_content.content[2:] + " " + queryConjunction + " ")
+    # End of query string
     queryString = queryString[:-len(queryConjunction) - 1]
     print(queryString)
+
     if evaluation_mode == ConditionMode.all_or:
         if queryString != "":
             for tweet in tw.Cursor(method=api.search, q=queryString).items(10):
@@ -109,43 +119,25 @@ def search_repo_conditions(repository_id):
             ext.session.add(tweetDB)
             ext.session.commit()
         if evaluation_mode == ConditionMode.all_or:
-            if ConditionType.hashtag in conditions_type.keys():
-                for condition_content in conditions_type[ConditionType.hashtag]:
-                    if condition_content.content in [hashtag['text'] for hashtag in tweet.entities['hashtags']]:
-                        if not Contains.query.filter_by(snowflake=str(tweet.id), cid=condition_content.id).all():
-                            condition_associated = Contains(cid=condition_content.id, snowflake=tweet.id)
-                            ext.session.add(condition_associated)
-                            ext.session.commit()
-            if ConditionType.user in conditions_type.keys():
-                for condition_content in conditions_type[ConditionType.user]:
-                    if condition_content.content == tweet.author.screen_name:
-                        if not Contains.query.filter_by(snowflake=str(tweet.id), cid=condition_content.id).all():
-                            condition_associated = Contains(cid=condition_content.id, snowflake=tweet.id)
-                            ext.session.add(condition_associated)
-                            ext.session.commit()
-
-            if ConditionType.time in conditions_type.keys():
-                for condition_content in conditions_type[ConditionType.time]:
-                    condition_date_time = datetime.fromisoformat(condition_content.content[2:])
-                    if condition_content.content[0] == '<':
-                        if tweet.created_at < condition_date_time:
-                            if not Contains.query.filter_by(snowflake=str(tweet.id), cid=condition_content.id).all():
-                                condition_associated = Contains(cid=condition_content.id, snowflake=tweet.id)
-                                ext.session.add(condition_associated)
-                                ext.session.commit()
-                    elif condition_content.content[0] == '>':
-                        if tweet.created_at > condition_date_time:
-                            if not Contains.query.filter_by(snowflake=str(tweet.id), cid=condition_content.id).all():
-                                condition_associated = Contains(cid=condition_content.id, snowflake=tweet.id)
-                                ext.session.add(condition_associated)
-                                ext.session.commit()
+            associate_condition_tweet(conditions_type, tweet)
         elif evaluation_mode == ConditionMode.all_and:
             for condition in conditions:
                 if not Contains.query.filter_by(snowflake=str(tweet.id), cid=condition.id).all():
                     condition_associated = Contains(cid=condition.id, snowflake=tweet.id)
                     ext.session.add(condition_associated)
                     ext.session.commit()
+        alerts = [alert for alert in repo.alerts]
+        for alert in alerts:
+            alert_conditions = [condition.condition for condition in alert.conditions]
+            alert_conditions_type = dict()
+            for condition in alert_conditions:
+                if condition.type not in alert_conditions_type.keys():
+                    alert_conditions_type[condition.type] = [condition]
+                else:
+                    alert_conditions_type[condition.type].append(condition)
+            associate_condition_tweet(alert_conditions_type, tweet)
         if not Composed.query.filter_by(snowflake=str(tweet.id), rid=repository_id).all():
             composed = Composed(rid=repository_id, snowflake=tweet.id)
             ext.session.add(composed)
             ext.session.commit()
+    print(f"Done searching tweets from repo: {repo.name}")
