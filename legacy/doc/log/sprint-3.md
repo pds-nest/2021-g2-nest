@@ -4,7 +4,7 @@
 |------|-----|--------|----------|
 |      |     |        |          |
 
-Totale generale di tutti i componenti: 12.5h
+Totale generale di tutti i componenti: 39.5h
 
 
 # Log attività individuali dello Sprint 3
@@ -83,8 +83,10 @@ Chiara Calzolari - UI Designer
 | 24/05 | 1.0h | Traduzione UI
 | 25/05 | 1.0h | Traduzione UI
 | 27/05 | 0.5h | Traduzione UI
+| 28/05 | 2.0h | Configurazione ambiente di sviluppo
+| 28/05 | 3.0h | Creazione video-demo
 |-------|--------|
-|totale| 12.5h |
+|totale| 17.5h |
 
 
 
