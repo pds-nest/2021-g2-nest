@@ -1,11 +1,6 @@
 Sprint 0: 04 Apr - 18 Apr
 =========================
 
-.. todo::
-
-    Inserire informazioni generali sullo sprint, come inizio e fine.
-
-
 Consegna
 --------
 
@@ -15,28 +10,28 @@ La seguente documentazione è stata fornita dal cliente durante questo sprint:
 - :download:`Sprint 0 <0-sprint-requirements.pdf>`
 
 
-Goal
-----
+Definition of ready
+-------------------
 
-.. todo::
+Il	team	ha	definito	lo	stato	di	Ready	di	una	User	Story in	base	ai	seguenti	criteri:
 
-    Inserire qui lo sprint goal.
-
-
-Backlog
--------
-
-.. todo::
-
-    Mostrare qui lo sprint backlog di Taiga.
+    • La	User	Story	è stata	compresa	ed	accettata	da	tutti	i	membri
+    • I tester	hanno	confermato	la	possibilità	di poterla	testare
+    • Il	Product	Owner ha	la	visione necessaria per	definirne	la	priorità
+    • Il	Team	è	in	grado	di	stimarla
+    • La	User	Story	è	indipendente o	dipendente	da	altre	a	priorità	maggiore
 
 
 Definition of done
 ------------------
 
-.. todo::
+La	definizione	di	Done	è	stata	concordata	da	tutto	il	team	con	il	Product	Owner,	ed	è	stata	così
+definita:
 
-    Inserire qui la definition of done dello sprint.
+    • Sviluppo	completo	della	funzionalità	richiesta
+    • Definizione	e	superamento	dei	test
+    • Bozza	della	documentazione	della	funzionalità
+    • Merge	dei	sorgenti	nel	branch	‘Main’ di GitLab
 
 
 Registro attività
@@ -340,7 +335,7 @@ Risultati della partita di Scrumble
       - Are the game mechanics linear and repeatable?
       - Opinions from the participants
 
-     * - Practice
+    * - Practice
       - Q5
       - 1 = 0 to 3 stories 2 = 4 to 6  3 = 7 to 9 4 = 10 to 12 5 = 13 to 15
       - 5
@@ -366,7 +361,7 @@ Risultati della partita di Scrumble
       - Do team members efficiently estimate during sprint planning?
       - Uniformity in evaluating the size and the priority of user stories
 
-     * - Cooperation
+    * - Cooperation
       - Q7
       - 1 = never speaks with the other players 5 = talks friendly to anyone in every situation
       - 4
@@ -379,7 +374,7 @@ Risultati della partita di Scrumble
       - Do team members know each other better?
       - Level of players' serenity throughout the game
 
-     * - Cooperation
+    * - Cooperation
       - Q8
       - 1 = never puts effort in doing something 5 = every time is willing to understand what is going on
       - 4
@@ -405,7 +400,7 @@ Risultati della partita di Scrumble
       - Do team member consult each other about a topic?
       - Sharing of ideas
 
-     * - Motivation
+    * - Motivation
       - Q10
       - 1 = not involved by the game 5 = always makes sure everyone is on point
       - 3
