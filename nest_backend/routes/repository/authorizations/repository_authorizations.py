@@ -4,7 +4,7 @@ from nest_backend.gestione import repository_auth, json_error, json_success, fin
 from nest_backend.database import ext, User, Authorization, Repository
 from flask_cors import cross_origin
 from nest_backend.gestione import hashtag_validator
-import nest_backend.errors  as errors
+import nest_backend.errors as errors
 
 
 @cross_origin()
