@@ -4,7 +4,7 @@
 |------|-----|--------|----------|
 |      |     |        |          |
 
-Totale generale di tutti i componenti: 12.5h
+Totale generale di tutti i componenti: 39.5h
 
 
 # Log attività individuali dello Sprint 3
@@ -33,9 +33,16 @@ Lorenzo Balugani - DB & Backend Developer
 
 | Data  | Durata | Attività |
 |-------|--------|----------|
-|     |    |        |
+|17/5     |4h    |Bugfixing, supporto alla localizzazione degli errori        |
+|18/5|2.0h|Bugfixing|
+|20/5|3.0h|API autorizzazioni, refactoring|
+|21/5|2.0h|Gestione tweet, rappresentazione tweet|
+|24/5|2.0h|Bugfixing|
+|25/5|4.0h|Docs, refactoring|
+|27/5|3.0h|Bugfixing|
+|28/5|6.0h|Bugfixing
 |-------|--------|
-|totale| __._h |
+|totale| 22.0h |
 
 
 Stefano Pigozzi - Sysadmin & Frontend Developer
@@ -76,8 +83,10 @@ Chiara Calzolari - UI Designer
 | 24/05 | 1.0h | Traduzione UI
 | 25/05 | 1.0h | Traduzione UI
 | 27/05 | 0.5h | Traduzione UI
+| 28/05 | 2.0h | Configurazione ambiente di sviluppo
+| 28/05 | 3.0h | Creazione video-demo
 |-------|--------|
-|totale| 12.5h |
+|totale| 17.5h |
 
 
 
