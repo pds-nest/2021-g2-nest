@@ -32,6 +32,8 @@
 ``.routes`` - Percorsi API
 --------------------------
 
-.. automodule:: nest_backend.database.routes
-   :imported-members:
+.. note::
+
+    La documentazione dei percorsi API è gestita da Swagger UI, disponibile a ``/docs`` una volta che il webserver
+    del backend è avviato.
 

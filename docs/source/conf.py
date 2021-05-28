@@ -74,8 +74,6 @@ html_theme_options = {
 html_static_path = ['_static']
 
 
-
-
 # -- Intersphinx options -----------------------------------------------------
 
 intersphinx_mapping = {
@@ -93,6 +91,12 @@ intersphinx_mapping = {
 }
 
 
+# -- Setup function ----------------------------------------------------------
+
+def setup(app):
+    app.add_css_file('custom.css')
+
+
 # -- Extension configuration -------------------------------------------------
 
 todo_include_todos = True
@@ -105,6 +109,5 @@ autodoc_default_options = {
     'member-order': 'bysource',
     'special-members': '__init__',
     'undoc-members': True,
-    'show-inheritance': True,
+    'show-inheritance': False,
 }
-
