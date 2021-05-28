@@ -5,7 +5,15 @@ from nest_backend.gestione import *
 import datetime
 from flask_cors import cross_origin
 from nest_backend.errors import *
+import nest_backend.app
 from nest_crawler.repo_search import search_repo_conditions
+
+import threading
+
+
+def tweet_importer(rid):
+    with nest_backend.app.app.app_context():
+        search_repo_conditions(rid)
 
 
 @cross_origin()
@@ -107,7 +115,8 @@ def page_repositories():
         repository.start = datetime.datetime.now()
         ext.session.commit()
         try:
-            search_repo_conditions(repository.id)
+            thread = threading.Thread(target=tweet_importer, args=(repository.id,))
+            thread.start()
         except Exception:
             return json_success(repository.to_json()), 201
         return json_success(repository.to_json()), 201
