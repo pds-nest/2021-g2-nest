@@ -1,6 +1,11 @@
 Sprint 0: 04 Apr - 18 Apr
 =========================
 
+.. todo::
+
+    Inserire informazioni generali sullo sprint, come inizio e fine.
+
+
 Consegna
 --------
 
@@ -13,25 +18,25 @@ La seguente documentazione è stata fornita dal cliente durante questo sprint:
 Definition of ready
 -------------------
 
-Il	team	ha	definito	lo	stato	di	Ready	di	una	User	Story in	base	ai	seguenti	criteri:
+Il team ha definito lo stato di Ready di una User Story in base ai seguenti criteri:
 
-    • La	User	Story	è stata	compresa	ed	accettata	da	tutti	i	membri
-    • I tester	hanno	confermato	la	possibilità	di poterla	testare
-    • Il	Product	Owner ha	la	visione necessaria per	definirne	la	priorità
-    • Il	Team	è	in	grado	di	stimarla
-    • La	User	Story	è	indipendente o	dipendente	da	altre	a	priorità	maggiore
+    • La User Story è stata compresa ed accettata da tutti i membri
+    • I tester hanno confermato la possibilità di poterla testare
+    • Il Product Owner ha la visione necessaria per definirne la priorità
+    • Il Team è in grado di stimarla
+    • La User Story è indipendente o dipendente da altre a priorità maggiore
 
 
 Definition of done
 ------------------
 
-La	definizione	di	Done	è	stata	concordata	da	tutto	il	team	con	il	Product	Owner,	ed	è	stata	così
+La definizione di Done è stata concordata da tutto il team con il Product Owner, ed è stata così
 definita:
 
-    • Sviluppo	completo	della	funzionalità	richiesta
-    • Definizione	e	superamento	dei	test
-    • Bozza	della	documentazione	della	funzionalità
-    • Merge	dei	sorgenti	nel	branch	‘Main’ di GitLab
+    • Sviluppo completo della funzionalità richiesta
+    • Definizione e superamento dei test
+    • Bozza della documentazione della funzionalità
+    • Merge dei sorgenti nel branch ‘Main’ di GitLab
 
 
 Registro attività
@@ -267,217 +272,192 @@ Lorenzo Balugani
 Risultati della partita di Scrumble
 -----------------------------------
 
-.. list-table::
-    :header-rows: 1
+#. :Goal: Learn
+   :Question: Do team members understand the Scrum roles?
+   :Metric: Knowledge of Scrum roles by questions
+   :Evaluation: :1: no idea of the Scrum roles
+                :5: perfect knowledge of the roles and their jobs
+   :Chiara: 4
+   :Giorgio: 4
+   :Giovanni: 4
+   :Stefano P.: 4
+   :Lorenzo: 5
+   :Stefano G.: 5
+   :Flavia: 4
 
-    * - GOAL
-      - QUESTIONS
-      - EVALUATION
-      - Chiara
-      - Giorgio
-      - Giovanni
-      - Stefano P.
-      - Lorenzo
-      - Stefano G.
-      - Flavia
-      - QUESTION
-      - METRIC
+#. :Goal: Learn
+   :Question: Do team members feel they learned the process?
+   :Metric: Opinions from the participants
+   :Evaluation: :1: couldn't repeat the game
+                :5: could play the game as a Scrum Master by himself
+   :Chiara: 3
+   :Giorgio: 3
+   :Giovanni: 4
+   :Stefano P.: 5
+   :Lorenzo: 3
+   :Stefano G.: 3
+   :Flavia: 3
 
-    * - Learn
-      - Q1
-      - 1 = no idea of the Scrum roles 5 = perfect knowledge of the roles and their jobs
-      - 4
-      - 4
-      - 4
-      - 4
-      - 5
-      - 5
-      - 4
-      - Do team members understand the Scrum roles?
-      - Knowledge of Scrum roles by questions
+#. :Goal: Learn
+   :Question: Does everyone keep up with the other players?
+   :Metric: Check during every sprint retrospective if every one is on point
+   :Evaluation: :1: totally lost
+                :5: leads the game driving the other players
+   :Chiara: 3
+   :Giorgio: 4
+   :Giovanni: 4
+   :Stefano P.: 4
+   :Lorenzo: 5
+   :Stefano G.: 5
+   :Flavia: 5
 
-    * - Learn
-      - Q2
-      - 1 = couldn't repeat the game 5 = could play the game as a Scrum Master by himself
-      - 3
-      - 3
-      - 4
-      - 5
-      - 3
-      - 3
-      - 3
-      - Do team members feel they learned the process?
-      - Opinions from the participants
+#. :Goal: Practice
+   :Question: Are the game mechanics linear and repeatable?
+   :Metric: Opinions from the participants
+   :Evaluation: :1: feels the game is unrepeatable
+                :5: feels the game could be played in any situation
+   :Chiara: 1
+   :Giorgio: 2
+   :Giovanni: 1
+   :Stefano P.: 1
+   :Lorenzo: 1
+   :Stefano G.: 2
+   :Flavia: 1
 
-    * - Learn
-      - Q3
-      - 1 = totally lost 5 = leads the game driving the other players
-      - 3
-      - 4
-      - 4
-      - 4
-      - 5
-      - 5
-      - 5
-      - Does everyone keep up with the other players?
-      - Check during every sprint retrospective if every one is on point
+#. :Goal: Practice
+   :Question: Do team success in completing the game?
+   :Metric: Number of User Stories completed
+   :Evaluation: :1: 0 to 3 stories
+                :2: 4 to 6
+                :3: 7 to 9
+                :4: 10 to 12
+                :5: 13 to 15
+   :Chiara: 5
+   :Giorgio: 5
+   :Giovanni: 5
+   :Stefano P.: 5
+   :Lorenzo: 5
+   :Stefano G.: 5
+   :Flavia: 5
 
-    * - Practice
-      - Q4
-      - 1 =  feels the game is unrepeatable 5 =  feels the game could be played in any situation
-      - 1
-      - 2
-      - 1
-      - 1
-      - 1
-      - 2
-      - 1
-      - Are the game mechanics linear and repeatable?
-      - Opinions from the participants
+#. :Goal: Practice
+   :Question: Do team members efficiently estimate during sprint planning?
+   :Metric: Uniformity in evaluating the size and the priority of user stories
+   :Evaluation: :1: abnormal difference from the other players
+                :5: coherent and uniform with the group most of the time
+   :Chiara: 5
+   :Giorgio: 4
+   :Giovanni: 5
+   :Stefano P.: 4
+   :Lorenzo: 5
 
-    * - Practice
-      - Q5
-      - 1 = 0 to 3 stories 2 = 4 to 6  3 = 7 to 9 4 = 10 to 12 5 = 13 to 15
-      - 5
-      - 5
-      - 5
-      - 5
-      - 5
-      - 5
-      - 5
-      - Do team success in completing the game?
-      - Number of User Stories completed
+#. :Goal: Cooperation
+   :Question: Do team members know each other better?
+   :Metric: Level of players' serenity throughout the game
+   :Evaluation: :1: never speaks with the other players
+                :5: talks friendly to anyone in every situation
+   :Chiara: 4
+   :Giorgio: 5
+   :Giovanni: 5
+   :Stefano P.: 5
+   :Lorenzo: 5
+   :Stefano G.: 5
+   :Flavia: 4
 
-    * - Practice
-      - Q6 (Only Dev. Team)
-      - 1 = abnormal difference from the other players 5 = coherent and uniform with the group most of the time
-      - 5
-      - 4
-      - 5
-      - 4
-      - 5
-      - /
-      - /
-      - Do team members efficiently estimate during sprint planning?
-      - Uniformity in evaluating the size and the priority of user stories
+#. :Goal: Cooperation
+   :Question: Does the game let all players cooperate?
+   :Metric: Contribution of every player during the game
+   :Evaluation: :1: never puts effort in doing something
+                :5: every time is willing to understand what is going on
+   :Chiara: 4
+   :Giorgio: 3
+   :Giovanni: 3
+   :Stefano P.: 2
+   :Lorenzo: 3
+   :Stefano G.: 4
+   :Flavia: 3
 
-    * - Cooperation
-      - Q7
-      - 1 = never speaks with the other players 5 = talks friendly to anyone in every situation
-      - 4
-      - 5
-      - 5
-      - 5
-      - 5
-      - 5
-      - 4
-      - Do team members know each other better?
-      - Level of players' serenity throughout the game
+#. :Goal: Cooperation
+   :Question: Do team member consult each other about a topic?
+   :Metric: Sharing of ideas
+   :Evaluation: :1: never asks for an opinion
+                :5: wants to discuss about every topic
+   :Chiara: 5
+   :Giorgio: 5
+   :Giovanni: 5
+   :Stefano P.: 3
+   :Lorenzo: 5
+   :Stefano G.: 4
+   :Flavia: 5
 
-    * - Cooperation
-      - Q8
-      - 1 = never puts effort in doing something 5 = every time is willing to understand what is going on
-      - 4
-      - 3
-      - 3
-      - 2
-      - 3
-      - 4
-      - 3
-      - Does the game let all players cooperate?
-      - Contribution of every player during the game
+#. :Goal: Motivation
+   :Question: Do team members encourage collegues in need?
+   :Metric: Players explain something other players don't understand
+   :Evaluation: :1: not involved by the game
+                :5: always makes sure everyone is on point
+   :Chiara: 3
+   :Giorgio: 5
+   :Giovanni: 5
+   :Stefano P.: 4
+   :Lorenzo: 5
+   :Stefano G.: 4
+   :Flavia: 4
 
-    * - Cooperation
-      - Q9
-      - 1 = never asks for an opinion 5 =  wants to discuss about every topic
-      - 5
-      - 5
-      - 5
-      - 3
-      - 5
-      - 4
-      - 5
-      - Do team member consult each other about a topic?
-      - Sharing of ideas
+#. :Goal: Motivation
+   :Question: Does PO help the team?
+   :Metric: Quality of PO's advices to get better in the next sprints
+   :Evaluation: :1: poor/absent advices
+                :5: wise and helpful suggestions when is required
+   :Stefano G.: 4
 
-    * - Motivation
-      - Q10
-      - 1 = not involved by the game 5 = always makes sure everyone is on point
-      - 3
-      - 5
-      - 5
-      - 4
-      - 5
-      - 4
-      - 4
-      - Do team members encourage collegues in need?
-      - Players explain something other players don't understand
+#. :Goal: Motivation
+   :Question: Does the team come up with good ideas?
+   :Metric: Effectiveness of sprint retrospective
+   :Evaluation: :1: doesn't express opinions during retrospective
+                :5: feels the retrospective fundamental to express opinions
+   :Chiara: 4
+   :Giorgio: 5
+   :Giovanni: 5
+   :Stefano P.: 5
+   :Lorenzo: 5
+   :Stefano G.: 5
+   :Flavia: 5
 
-    * - Motivation
-      - Q11 (Only for PO)
-      - 1 = poor/absent advices 5 = wise and helpful suggestions when is required
-      - /
-      - /
-      - /
-      - /
-      - /
-      - 4
-      - /
-      - Does PO help the team?
-      - Quality of PO's advices to get better in the next sprints
+#. :Goal: Problem Solving
+   :Question: Do team members behave well when facing a problem?
+   :Metric: Level of the technical debt at the end of the game
+   :Evaluation: On the game board, if the debt pawn is on the lowest stage,the evaluation is 5, for every higher stage it decreases by 1
+   :Chiara: 5
+   :Giorgio: 5
+   :Giovanni: 5
+   :Stefano P.: 5
+   :Lorenzo: 5
+   :Stefano G.: 5
+   :Flavia: 5
 
-    * - Motivation
-      - Q12
-      - 1 = doesn't express opinions during retrospective 5 = feels the retrospective fundamental to express opinions
-      - 4
-      - 5
-      - 5
-      - 5
-      - 5
-      - 5
-      - 5
-      - Does the team come up with good ideas?
-      - Effectiveness of sprint retrospective
+#. :Goal: Problem Solving
+   :Question: Does team organize their tasks properly?
+   :Metric: Average of tasks left at the end of each sprint
+   :Evaluation: :1: 21+ average tasks left
+                :2: 16-20 average tasks left
+                :3: 11-15 average tasks left
+                :4: 6-10 average tasks left
+                :5: 0-5 average tasks left
+   :Chiara: 5
+   :Giorgio: 5
+   :Giovanni: 5
+   :Stefano P.: 5
+   :Lorenzo: 5
 
-    * - Problem Solving
-      - Q13
-      - On the game board, if the debt pawn is on the lowest stage,the evaluation is 5, for every higher stage it decreases by 1
-      - 5
-      - 5
-      - 5
-      - 5
-      - 5
-      - 5
-      - 5
-      - Do team members behave well when facing a problem?
-      - Level of the technical debt at the end of the game
-
-    * - Problem Solving
-      - Q14 (Only Dev. Team)
-      - Calculate the average of tasks left for each sprint: 1 = 21+ 2 = 16-20 3 = 11-15 4 = 6-10 5 = 0-5
-      - 5
-      - 5
-      - 5
-      - 5
-      - 5
-      - /
-      - /
-      - Does team organize their tasks properly?
-      - Average of tasks left at the end of each sprint
-
-    * - Problem Solving
-      - Q15 (Only for PO)
-      - Same evaluation as Q14 for the PO
-      - /
-      - /
-      - /
-      - /
-      - /
-      - 5
-      - /
-      - Does PO plan efficiently the Sprint Backlog?
-      - Average of tasks left at the end of each sprint
-
+#. :Goal: Problem Solving
+   :Question: Does PO plan efficiently the Sprint Backlog?
+   :Metric: Average of tasks left at the end of each sprint
+   :Evaluation: :1: 21+ average tasks left
+                :2: 16-20 average tasks left
+                :3: 11-15 average tasks left
+                :4: 6-10 average tasks left
+                :5: 0-5 average tasks left
+   :Stefano G.: 5
 
 
 
