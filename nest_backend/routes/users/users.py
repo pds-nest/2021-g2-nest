@@ -29,7 +29,7 @@ def page_users():
                     application/json:
                         schema: Error
         tags:
-            - admin-only
+            - user-related
     post:
         summary: Creates a user.
         security:
@@ -65,8 +65,6 @@ def page_users():
     """
     user = find_user(get_jwt_identity())
     if request.method == "GET":
-        if not user.isAdmin:
-            return json_error("User is not admin. Thou art not authorized", USER_NOT_ADMIN), 403
         users = User.query.all()
         return json_success([user.to_json() for user in users]), 200
     if request.method == "POST":

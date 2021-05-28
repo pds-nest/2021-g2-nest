@@ -112,7 +112,7 @@ def page_repository_authorizations(rid):
             - repository-related
     """
 
-    repository = Repository.query.filter_by(id=rid).first()
+    repository = Repository.query.filter_by(id=rid, is_deleted=False).first()
     if not repository:
         return json_error("Could not find repository", REPOSITORY_NOT_FOUND), 404
     user = find_user(get_jwt_identity())
