@@ -4,42 +4,46 @@ N.E.S.T.
 Benvenuto alla documentazione di N.E.S.T.!
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Manuale utente
+    :maxdepth: 2
+    :caption: Manuale utente
 
-   about/index
-   installation/index
-
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Guida sviluppatore
-
-   meta/index
+    guide/about
+    guide/installation
 
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Compendio del progetto
+    :maxdepth: 2
+    :caption: Relazione sul progetto
 
-   development/client/index
-   development/stats/index
-   development/log
-   development/tools
+    development/goals
+    development/process
+    development/tools
+    development/sprint0/index
+    development/sprint1/index
+    development/sprint2/index
+    development/sprint3/index
+    development/artifacts
+    development/conclusions
+    development/suggestions
 
 
 .. toctree::
-   :caption: Documentazione autogenerata
+    :caption: Documentazione tecnica
 
-   backend/index
-   crawler/index
-   frontend/index
+    code/meta/index
+    code/backend/index
+    code/crawler/index
+    code/frontend/index
 
 
+Cose rimaste da fare
+--------------------
 
-Collegamenti utili
-==================
+.. todolist::
+
+
+Altri collegamenti
+------------------
 
 * :ref:`genindex`
 * :ref:`modindex`
-* :ref:`search`

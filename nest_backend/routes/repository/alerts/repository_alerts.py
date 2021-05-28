@@ -71,7 +71,7 @@ def page_repository_alerts(rid):
             - alert-related
     """
 
-    repository = Repository.query.filter_by(id=rid).first()
+    repository = Repository.query.filter_by(id=rid, is_deleted=False).first()
     if not repository:
         return json_error("Could not find repository", REPOSITORY_NOT_FOUND), 404
     user = find_user(get_jwt_identity())
@@ -116,7 +116,7 @@ def page_repository_alerts(rid):
                     return json_error("Missing `content` parameter.", GENERIC_MISSING_FIELDS), 400
                 if type_ == ConditionType.hashtag:
                     content = hashtag_validator(content)
-                c = Condition(content=content, type=type_, repository_id=rid)
+                c = Condition(content=content, type=type_)
                 ext.session.add(c)
                 ext.session.commit()
                 conn = MadeOf(aid=alert.id, cid=c.id)

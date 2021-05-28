@@ -106,7 +106,7 @@ def page_condition(cid):
     """
     condition = Condition.query.filter_by(id=cid).first()
     user = find_user(get_jwt_identity())
-    if not condition:
+    if not condition or condition.repository.is_deleted:
         return json_error("Could not find the condition.", CONDITION_NOT_FOUND), 404
     if condition.repository not in [a.repository for a in user.authorizations] + user.owner_of and not user.isAdmin:
         return json_error("You lack the authorization to proceed, pal.", USER_NOT_AUTHORIZED), 403

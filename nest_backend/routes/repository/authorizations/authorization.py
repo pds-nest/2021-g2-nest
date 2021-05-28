@@ -39,7 +39,7 @@ def page_authorization(rid, email):
         tags:
             - repository-related
     """
-    repository = Repository.query.filter_by(id=rid).first()
+    repository = Repository.query.filter_by(id=rid, is_deleted=False).first()
     user = find_user(get_jwt_identity())
     if not repository:
         return json_error("Could not find the repository.", REPOSITORY_NOT_FOUND), 404

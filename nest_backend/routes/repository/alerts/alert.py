@@ -149,7 +149,7 @@ def page_alert(aid):
     """
     user = find_user(get_jwt_identity())
     alert = Alert.query.filter_by(id=aid).first()
-    if not alert:
+    if not alert or alert.repository.is_deleted:
         return json_error("Could not find alert.", ALERT_NOT_FOUND), 404
     if alert.repository not in [a.repository for a in user.authorizations] + user.owner_of:
         return json_error("You are not authorized to proceed.", USER_NOT_AUTHORIZED), 403

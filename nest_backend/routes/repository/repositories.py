@@ -5,6 +5,7 @@ from nest_backend.gestione import *
 import datetime
 from flask_cors import cross_origin
 from nest_backend.errors import *
+from nest_crawler.repo_search import search_repo_conditions
 
 
 @cross_origin()
@@ -62,7 +63,7 @@ def page_repositories():
     user = find_user(get_jwt_identity())
     if request.method == "GET":
         owner = Repository.query.filter_by(owner_id=user.email)
-        spectator = Authorization.query.filter_by(email=user.email).join(Repository)
+        spectator = Authorization.query.filter_by(email=user.email).join(Repository).filter_by(is_deleted=False)
         if request.args.get("onlyActive"):
             owner = owner.filter_by(is_active=True)
             spectator = spectator.filter(Repository.is_active)
@@ -71,7 +72,7 @@ def page_repositories():
             spectator = spectator.filter(not Repository.is_active)
         owner = owner.all()
         spectator = spectator.all()
-        return json_success([r.to_json() for r in owner] + [r.repository.to_json() for r in spectator])
+        return json_success([r.to_json() for r in owner if not r.is_deleted] + [r.repository.to_json() for r in spectator if not r.repository.is_deleted])
     elif request.method == "POST":
         # Users will be tolerated if they change parameters they're not supposed to touch. We'll ignore them for now.
         if not request.json.get("name") or not request.json.get("conditions") or not str(
@@ -88,7 +89,8 @@ def page_repositories():
         ext.session.add(repository)
         ext.session.commit()
         conditions = [c for c in repository.conditions if c.id not in [a['id'] for a in request.json['conditions'] if
-                                                                   a['id'] in [b.id for b in repository.conditions]]]
+                                                                       a['id'] in [b.id for b in
+                                                                                   repository.conditions]]]
         for c in conditions:
             ext.session.delete(c)
             ext.session.commit()
@@ -104,4 +106,8 @@ def page_repositories():
         repository.is_active = True
         repository.start = datetime.datetime.now()
         ext.session.commit()
+        try:
+            search_repo_conditions(repository.id)
+        except Exception:
+            return json_success(repository.to_json()), 201
         return json_success(repository.to_json()), 201

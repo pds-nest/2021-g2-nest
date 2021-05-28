@@ -154,7 +154,7 @@ def page_repository(rid):
             - repository-related
     """
     user = find_user(get_jwt_identity())
-    repository = Repository.query.filter_by(id=rid).first()
+    repository = Repository.query.filter_by(id=rid, is_deleted=False).first()
     if not repository:
         return json_error("Could not find repository.", REPOSITORY_NOT_FOUND), 404
     if request.method == "GET":
@@ -181,45 +181,7 @@ def page_repository(rid):
         if repository.owner_id != user.email and not user.isAdmin:
             return json_error("You are not the owner of this repository.", REPOSITORY_NOT_OWNER), 403
         try:
-            # Deleting Tweets...
-            tweets = [t.tweet for t in repository.tweets]
-            for tweet in tweets:
-                if len(tweet.repositories) < 2:
-                    # Delete Tweets if only attached to this repo
-                    for conn in tweet.repositories:
-                        ext.session.delete(conn)
-                    for conn in tweet.conditions:
-                        ext.session.delete(conn)
-                    ext.session.delete(tweet)
-                    ext.session.commit()
-                else:
-                    conns = [conn for conn in tweet.repositories if conn.rid == rid]
-                    for conn in conns:
-                        ext.session.delete(conn)
-            ext.session.commit()
-            # Deleting authorizations...
-            for auth in repository.authorizations:
-                ext.session.delete(auth)
-            ext.session.commit()
-            # Deleting conditions...
-            for condition in repository.conditions:
-                ext.session.delete(condition)
-            ext.session.commit()
-            # Deleting Alerts...
-            for alert in repository.alerts:
-                for elem in alert.conditions:
-                    condition = elem.condition
-                    ext.session.delete(elem)
-                    ext.session.commit()
-                    if not condition.repository_id:
-                        ext.session.delete(condition)
-                        ext.session.commit()
-                for notification in alert.notifications:
-                    ext.session.delete(notification)
-                    ext.session.commit()
-                ext.session.delete(alert)
-                ext.session.commit()
-            ext.session.delete(repository)
+            repository.is_deleted = True
             ext.session.commit()
         except Exception as e:
             ext.session.rollback()
@@ -239,9 +201,18 @@ def page_repository(rid):
         ext.session.commit()
         ids = [c['id'] for c in request.json['conditions'] if c['id']]
         # Delete no longer needed conditions.
-        for c in repository.conditions:
-            if c.id not in ids:
-                ext.session.delete(c)
+        try:
+            for c in repository.conditions:
+                if c.id not in ids:
+                    for t in c.tweets:
+                        ext.session.delete(t)
+                    for a in c.alerts:
+                        ext.session.delete(a)
+                    ext.session.commit()
+                    ext.session.delete(c)
+                    ext.session.commit()
+        except Exception as e:
+            return json_error("Could not delete conditions.", GENERIC_UFO), 500
         # Create brand new conditions
         for c in request.json['conditions']:
             if not c['id']:

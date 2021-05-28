@@ -1,5 +1,5 @@
 from nest_backend.database import *
-from authentication import authenticate
+from .authentication import authenticate
 from datetime import datetime, timedelta
 import tweepy as tw
 from associate_condition_tweet import associate_condition_tweet

@@ -15,6 +15,7 @@ class Repository(ext.Model):
     start = ext.Column(ext.DateTime, nullable=True)
     end = ext.Column(ext.DateTime, nullable=True)
     is_active = ext.Column(ext.Boolean, nullable=False, default=False)
+    is_deleted = ext.Column(ext.Boolean, nullable=False, default=False)
     evaluation_mode = ext.Column(ext.Enum(ConditionMode), default=ConditionMode.all_or)
 
     # Foreign Keys
