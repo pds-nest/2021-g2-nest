@@ -4,7 +4,7 @@ from flask_jwt_extended import jwt_required, get_jwt_identity
 from nest_backend.gestione import *
 import datetime
 from flask_cors import cross_origin
-from nest_backend.errors import *
+import nest_backend.errors as errors
 from nest_crawler.repo_search import search_repo_conditions
 
 import threading
@@ -85,12 +85,12 @@ def page_repositories():
         # Users will be tolerated if they change parameters they're not supposed to touch. We'll ignore them for now.
         if not request.json.get("name") or not request.json.get("conditions") or not str(
                 request.json.get("evaluation_mode")):
-            return json_error("Missing arguments.", GENERIC_MISSING_FIELDS), 400
+            return json_error("Missing arguments.", errors.GENERIC_MISSING_FIELDS), 400
         name = request.json.get("name")
         try:
             evaluation_mode = ConditionMode(request.json['evaluation_mode'])
         except KeyError:
-            return json_error("Unknown `type` specified.", GENERIC_ENUM_INVALID), 400
+            return json_error("Unknown `type` specified.", errors.GENERIC_ENUM_INVALID), 400
         except Exception as e:
             return json_error("Unknown error: " + str(e)), 400
         repository = Repository(name=name, owner_id=user.email, is_active=False, evaluation_mode=evaluation_mode)
@@ -108,7 +108,7 @@ def page_repositories():
                 try:
                     type_ = ConditionType(c['type'])
                 except KeyError:
-                    return json_error("Unknown `type` specified.", GENERIC_ENUM_INVALID), 400
+                    return json_error("Unknown `type` specified.", errors.GENERIC_ENUM_INVALID), 400
                 ext.session.add(Condition(type=type_, content=c['content'], repository_id=repository.id))
                 ext.session.commit()
         repository.is_active = True
