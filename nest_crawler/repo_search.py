@@ -1,5 +1,5 @@
 from nest_backend.database import *
-from .authentication import authenticate
+from nest_crawler.authentication import authenticate
 from datetime import datetime, timedelta
 import tweepy as tw
 

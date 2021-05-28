@@ -1,6 +1,6 @@
 from nest_backend.database import *
 from nest_backend.app import app, extension_sqlalchemy
-from repo_search import search_repo_conditions
+from nest_crawler.repo_search import search_repo_conditions
 from alert_trigger import is_repo_alert_triggered
 
 ext.init_app(app=app)
