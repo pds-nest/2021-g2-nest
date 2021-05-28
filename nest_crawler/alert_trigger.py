@@ -45,6 +45,7 @@ def send_notification_email(alert):
     for condition in alert.conditions:
         conditions_string += condition.condition.content + ','
     conditions_string = conditions_string[:-1]
+    smtpObj = None
     try:
         smtpObj = smtplib.SMTP('localhost')
         smtpObj.sendmail("alert@nest.com", owner_repo.email, "Alert triggered")

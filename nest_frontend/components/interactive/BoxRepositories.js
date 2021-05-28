@@ -50,11 +50,11 @@ export default function BoxRepositories(
                 key={repo["id"]}
                 repo={repo}
                 view={view ? () => view(repo["id"]) : null}
-                alerts={alerts ? () => alerts(repo["id"]) : null}
+                alerts={(alerts && user["email"] === repo["owner"]["email"]) ? () => alerts(repo["id"]) : null}
                 share={(share && user["email"] === repo["owner"]["email"]) ? () => share(repo["id"]) : null}
-                archive={archive ? () => archive(repo["id"]) : null}
-                edit={edit ? () => edit(repo["id"]) : null}
-                destroy={destroy ? () => destroy(repo["id"]) : null}
+                archive={(archive && user["email"] === repo["owner"]["email"]) ? () => archive(repo["id"]) : null}
+                edit={(edit && user["email"] === repo["owner"]["email"]) ? () => edit(repo["id"]) : null}
+                destroy={(destroy && user["email"] === repo["owner"]["email"]) ? () => destroy(repo["id"]) : null}
                 running={running}
             />
         ))

@@ -159,9 +159,9 @@ def page_repository(rid):
         return json_error("Could not find repository.", REPOSITORY_NOT_FOUND), 404
     if request.method == "GET":
         return json_success(repository.to_json()), 200
+    if user.email != repository.owner_id:
+        return json_error("You are not the owner of this repository.", REPOSITORY_NOT_OWNER), 403
     elif request.method == "PATCH":
-        if repository.owner_id != user.email:
-            return json_error("You are not the owner of this repository.", REPOSITORY_NOT_OWNER), 403
         if 'name' in request.json:
             repository.name = request.json['name']
         if 'close' in request.json and not repository.end and repository.is_active:
@@ -178,8 +178,6 @@ def page_repository(rid):
         ext.session.commit()
         return json_success(repository.to_json()), 204
     elif request.method == "DELETE":
-        if repository.owner_id != user.email and not user.isAdmin:
-            return json_error("You are not the owner of this repository.", REPOSITORY_NOT_OWNER), 403
         try:
             repository.is_deleted = True
             ext.session.commit()

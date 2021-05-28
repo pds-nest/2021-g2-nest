@@ -1,8 +1,9 @@
 from nest_backend.database import *
-import authentication
+import nest_crawler.authentication as authentication
 from datetime import datetime, timedelta
 import tweepy as tw
-from associate_condition_tweet import associate_condition_tweet
+from nest_crawler.associate_condition_tweet import associate_condition_tweet
+
 
 def search_repo_conditions(repository_id):
 

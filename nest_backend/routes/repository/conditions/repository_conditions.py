@@ -78,14 +78,14 @@ def page_repository_conditions(rid):
         return json_error("Could not find repository", REPOSITORY_NOT_FOUND), 404
     user = find_user(get_jwt_identity())
 
-    if user.email != repository.owner_id:
-        return json_error("You are not authorized.", REPOSITORY_NOT_OWNER), 403
-
     if request.method == "GET":
         try:
             return json_success([u.to_json() for u in repository.conditions])
         except Exception as e:
             return json_error("Unknown error:" + str(e), GENERIC_UFO), 400
+
+    if user.email != repository.owner_id:
+        return json_error("You are not authorized.", REPOSITORY_NOT_OWNER), 403
 
     if request.method == "POST":
         if request.json is None:

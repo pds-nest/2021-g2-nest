@@ -128,10 +128,17 @@ def page_user(email):
             return json_error("User is not admin.", USER_NOT_ADMIN), 403
         if user == target:
             return json_error("The user cant delete himself. Its a sin.", USER_PREVENT_SEPPUKU), 406
+        repos = target.owner_of
+        for repository in repos:
+            repository.owner_id = user.email
+            repository.is_active = False
+        for authorization in target.authorizations:
+            ext.session.delete(authorization)
+        ext.session.commit()
         ext.session.delete(target)
         try:
             ext.session.commit()
-        except Exception:
+        except Exception as e:
             ext.session.rollback()
             return json_error("Could not delete the user.", USER_DELETION_ERROR), 500
         return json_success(""), 204  # "The user has been deleted."
