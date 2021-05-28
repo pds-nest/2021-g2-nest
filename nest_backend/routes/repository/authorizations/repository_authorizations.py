@@ -4,7 +4,7 @@ from nest_backend.gestione import repository_auth, json_error, json_success, fin
 from nest_backend.database import ext, User, Authorization, Repository
 from flask_cors import cross_origin
 from nest_backend.gestione import hashtag_validator
-from nest_backend.errors import *
+import nest_backend.errors  as errors
 
 
 @cross_origin()
@@ -114,24 +114,24 @@ def page_repository_authorizations(rid):
 
     repository = Repository.query.filter_by(id=rid, is_deleted=False).first()
     if not repository:
-        return json_error("Could not find repository", REPOSITORY_NOT_FOUND), 404
+        return json_error("Could not find repository", errors.REPOSITORY_NOT_FOUND), 404
     user = find_user(get_jwt_identity())
     if user.email != repository.owner_id:
-        return json_error("You are not authorized.", REPOSITORY_NOT_OWNER), 403
+        return json_error("You are not authorized.", errors.REPOSITORY_NOT_OWNER), 403
     if request.method == "GET":
         try:
             return json_success([a.to_json() for a in repository.authorizations])
         except Exception as e:
-            return json_error("Unknown error:" + str(e), GENERIC_UFO), 400
+            return json_error("Unknown error:" + str(e), errors.GENERIC_UFO), 400
     if request.json is None:
-        return json_error("Missing json content.", GENERIC_NO_JSON), 400
+        return json_error("Missing json content.", errors.GENERIC_NO_JSON), 400
     if not request.json.get("email"):
-        return json_error("Missing user email.", GENERIC_MISSING_FIELDS), 400
+        return json_error("Missing user email.", errors.GENERIC_MISSING_FIELDS), 400
     target = User.query.filter_by(email=request.json.get('email')).first()
     if not target:
-        return json_error("User could not be located", USER_NOT_FOUND), 400
+        return json_error("User could not be located", errors.USER_NOT_FOUND), 400
     if target == user:
-        return json_error("Owner cannot be a spectator", GENERIC_ALREADY_EXISTS), 406
+        return json_error("Owner cannot be a spectator", errors.GENERIC_ALREADY_EXISTS), 406
     if request.method == "POST":
         authorization = Authorization(email=request.json.get('email'), rid=repository.id)
         ext.session.add(authorization)
