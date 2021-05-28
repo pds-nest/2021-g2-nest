@@ -33,9 +33,16 @@ Lorenzo Balugani - DB & Backend Developer
 
 | Data  | Durata | Attività |
 |-------|--------|----------|
-|     |    |        |
+|17/5     |4h    |Bugfixing, supporto alla localizzazione degli errori        |
+|18/5|2.0h|Bugfixing|
+|20/5|3.0h|API autorizzazioni, refactoring|
+|21/5|2.0h|Gestione tweet, rappresentazione tweet|
+|24/5|2.0h|Bugfixing|
+|25/5|4.0h|Docs, refactoring|
+|27/5|3.0h|Bugfixing|
+|28/5|6.0h|Bugfixing
 |-------|--------|
-|totale| __._h |
+|totale| 22.0h |
 
 
 Stefano Pigozzi - Sysadmin & Frontend Developer
