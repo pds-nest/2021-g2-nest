@@ -50,3 +50,9 @@ def is_coordinate_inside_bounding_box(latitude, longitude, radius, tweet_latitud
     dLongitude = dLatitude * cos(radians(latitude))
     if (latitude - dLatitude < tweet_latitude < latitude+dLatitude) and (longitude-dLongitude < tweet_longitude < longitude+dLongitude):
         return True
+
+
+__all__ = (
+    "associate_condition_tweet",
+    "is_coordinate_inside_bounding_box",
+)

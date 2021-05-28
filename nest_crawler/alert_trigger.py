@@ -1,7 +1,8 @@
 from datetime import datetime, timedelta
 from nest_backend.database import *
-from authentication import authenticate
+from .authentication import authenticate
 import smtplib
+
 
 def is_repo_alert_triggered(repository_id):
     repo = Repository.query.filter_by(id=repository_id).first()
@@ -56,6 +57,7 @@ def send_notification_email(alert):
         if smtpObj is not None:
             smtpObj.close()
 
+
 def send_notification_tweet(alert):
     api = authenticate()
     conditions_string = ''
@@ -65,3 +67,9 @@ def send_notification_tweet(alert):
     print(conditions_string)
     api.update_status(f"L'alert {alert.name} è stato attivato! C'è stato un incremento di popolarità negli argomenti di ricerca {conditions_string}")
 
+
+__all__ = (
+    "is_repo_alert_triggered",
+    "send_notification_email",
+    "send_notification_tweet",
+)
