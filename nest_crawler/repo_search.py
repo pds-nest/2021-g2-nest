@@ -1,18 +1,22 @@
 from nest_backend.database import *
-from .authentication import authenticate
+import authentication
 from datetime import datetime, timedelta
 import tweepy as tw
 from associate_condition_tweet import associate_condition_tweet
 
 def search_repo_conditions(repository_id):
-    api = authenticate()
+
+    api = authentication.authenticate()
     repo = Repository.query.filter_by(id=repository_id).first()
+
     if repo is None:
         print("Non esiste una repository con questo id")
         return False
     conditions = [use for use in repo.conditions]
     if len(conditions) == 0:
         return False
+
+    print(f"Searching tweets from repo: {repo.name}")
     evaluation_mode = repo.evaluation_mode
     conditions_type = dict()
 
@@ -136,3 +140,4 @@ def search_repo_conditions(repository_id):
             composed = Composed(rid=repository_id, snowflake=tweet.id)
             ext.session.add(composed)
             ext.session.commit()
+    print(f"Done searching tweets from repo: {repo.name}")
