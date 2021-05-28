@@ -32,7 +32,7 @@ export default function BoxLoggedIn({ ...props }) {
                     <Button
                         color={"Red"} onClick={() => {
                         logout()
-                        history.push("/login")
+                        history.push("/")
                     }} icon={faSignOutAlt}
                     >{strings.logout}</Button>
                 </div>
