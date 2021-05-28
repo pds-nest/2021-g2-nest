@@ -5,13 +5,13 @@ from nest_backend.gestione import *
 import datetime
 from flask_cors import cross_origin
 from nest_backend.errors import *
-import nest_backend.app
 from nest_crawler.repo_search import search_repo_conditions
 
 import threading
 
 
 def tweet_importer(rid):
+    import nest_backend.app
     with nest_backend.app.app.app_context():
         search_repo_conditions(rid)
 
