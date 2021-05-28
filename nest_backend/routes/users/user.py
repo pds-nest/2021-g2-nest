@@ -3,7 +3,7 @@ from nest_backend.database import *
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from nest_backend.gestione import *
 from flask_cors import cross_origin
-from nest_backend.errors import *
+import nest_backend.errors as errors
 
 
 @cross_origin()
@@ -118,16 +118,16 @@ def page_user(email):
     user = find_user(get_jwt_identity())
     target = find_user(email)
     if not target:
-        return json_error("Could not locate the user.", USER_NOT_FOUND), 404
+        return json_error("Could not locate the user.", errors.USER_NOT_FOUND), 404
     if request.method == "GET":
         if not email == user.email and not user.isAdmin:
-            return json_error("Thou art not authorized.", USER_NOT_AUTHORIZED), 403
+            return json_error("Thou art not authorized.", errors.USER_NOT_AUTHORIZED), 403
         return json_success(target.to_json())
     elif request.method == "DELETE":
         if not user.isAdmin:
-            return json_error("User is not admin.", USER_NOT_ADMIN), 403
+            return json_error("User is not admin.", errors.USER_NOT_ADMIN), 403
         if user == target:
-            return json_error("The user cant delete himself. Its a sin.", USER_PREVENT_SEPPUKU), 406
+            return json_error("The user cant delete himself. Its a sin.", errors.USER_PREVENT_SEPPUKU), 406
         repos = target.owner_of
         for repository in repos:
             repository.owner_id = user.email
@@ -140,11 +140,11 @@ def page_user(email):
             ext.session.commit()
         except Exception as e:
             ext.session.rollback()
-            return json_error("Could not delete the user.", USER_DELETION_ERROR), 500
+            return json_error("Could not delete the user.", errors.USER_DELETION_ERROR), 500
         return json_success(""), 204  # "The user has been deleted."
     elif request.method == "PATCH":
         if not email == user.email and not user.isAdmin:
-            return json_error("Thou art not authorized.", USER_NOT_AUTHORIZED), 403
+            return json_error("Thou art not authorized.", errors.USER_NOT_AUTHORIZED), 403
         target = find_user(email)
         if request.json.get("username"):
             target.username = request.json.get("username")

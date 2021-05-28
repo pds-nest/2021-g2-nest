@@ -5,7 +5,7 @@ from nest_backend.gestione import repository_auth, json_error, json_success, Con
 from nest_backend.database import ext
 from flask_cors import cross_origin
 from nest_backend.gestione import hashtag_validator
-from nest_backend.errors import *
+import nest_backend.errors as errors
 
 
 @cross_origin()
@@ -75,34 +75,34 @@ def page_repository_conditions(rid):
 
     repository = Repository.query.filter_by(id=rid, is_deleted=False).first()
     if not repository:
-        return json_error("Could not find repository", REPOSITORY_NOT_FOUND), 404
+        return json_error("Could not find repository", errors.REPOSITORY_NOT_FOUND), 404
     user = find_user(get_jwt_identity())
 
     if request.method == "GET":
         try:
             return json_success([u.to_json() for u in repository.conditions])
         except Exception as e:
-            return json_error("Unknown error:" + str(e), GENERIC_UFO), 400
+            return json_error("Unknown error:" + str(e), errors.GENERIC_UFO), 400
 
     if user.email != repository.owner_id:
-        return json_error("You are not authorized.", REPOSITORY_NOT_OWNER), 403
+        return json_error("You are not authorized.", errors.REPOSITORY_NOT_OWNER), 403
 
     if request.method == "POST":
         if request.json is None:
-            return json_error("Missing json content.", GENERIC_NO_JSON), 400
+            return json_error("Missing json content.", errors.GENERIC_NO_JSON), 400
 
         if (type_ := request.json.get("type")) is None:
-            return json_error("Missing `type` parameter.", GENERIC_MISSING_FIELDS), 400
+            return json_error("Missing `type` parameter.", errors.GENERIC_MISSING_FIELDS), 400
 
         try:
             type_ = ConditionType(type_)
         except KeyError:
-            return json_error("Unknown `type` specified.", GENERIC_ENUM_INVALID), 400
+            return json_error("Unknown `type` specified.", errors.GENERIC_ENUM_INVALID), 400
         except Exception as e:
             return json_error("Unknown error: " + str(e)), 400
 
         if not (content := request.json.get("content")):
-            return json_error("Missing `content` parameter.", GENERIC_MISSING_FIELDS), 400
+            return json_error("Missing `content` parameter.", errors.GENERIC_MISSING_FIELDS), 400
         if type_ == ConditionType.hashtag:
             content = hashtag_validator(content)
         condition = Condition(content=content, type=type_, repository_id=rid)

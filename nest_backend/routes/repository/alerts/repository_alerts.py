@@ -3,7 +3,7 @@ from nest_backend.database import *
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from nest_backend.gestione import *
 from flask_cors import cross_origin
-from nest_backend.errors import *
+import nest_backend.errors as errors
 
 
 @cross_origin()
@@ -73,30 +73,30 @@ def page_repository_alerts(rid):
 
     repository = Repository.query.filter_by(id=rid, is_deleted=False).first()
     if not repository:
-        return json_error("Could not find repository", REPOSITORY_NOT_FOUND), 404
+        return json_error("Could not find repository", errors.REPOSITORY_NOT_FOUND), 404
     user = find_user(get_jwt_identity())
     if user.email != repository.owner_id:
-        return json_error("You are not authorized.", REPOSITORY_NOT_OWNER), 403
+        return json_error("You are not authorized.", errors.REPOSITORY_NOT_OWNER), 403
 
     if request.method == "GET":
         return json_success([alert.to_json() for alert in repository.alerts])
 
     if request.method == "POST":
         if 'name' not in request.json:
-            return json_error("Missing name.", ALERT_NO_NAME), 400
+            return json_error("Missing name.", errors.ALERT_NO_NAME), 400
         if 'limit' not in request.json:
-            return json_error('Missing limit', ALERT_NO_LIMIT), 400
+            return json_error('Missing limit', errors.ALERT_NO_LIMIT), 400
         if 'window_size' not in request.json:
-            return json_error('Missing window size', ALERT_NO_WINDOW), 400
+            return json_error('Missing window size', errors.ALERT_NO_WINDOW), 400
         if (mode := request.json.get("evaluation_mode")) is not None:
             try:
                 mode = ConditionMode(mode)
             except KeyError:
-                return json_error("Unknown `type` specified.", GENERIC_ENUM_INVALID), 400
+                return json_error("Unknown `type` specified.", errors.GENERIC_ENUM_INVALID), 400
             except Exception as e:
-                return json_error("Unknown error:" + str(e), GENERIC_UFO), 400
+                return json_error("Unknown error:" + str(e), errors.GENERIC_UFO), 400
         else:
-            return json_error("Evaluation mode was not provided.", ALERT_NO_EVALUATION), 400
+            return json_error("Evaluation mode was not provided.", errors.ALERT_NO_EVALUATION), 400
 
         alert = Alert(name=request.json['name'], limit=request.json['limit'], window_size=request.json['window_size'],
                       repository_id=rid, evaluation_mode=mode)
@@ -105,15 +105,15 @@ def page_repository_alerts(rid):
         if request.json['conditions'] is not None:
             for condition in request.json['conditions']:
                 if (type_ := condition.get("type")) is None:
-                    return json_error("Missing `type` parameter.", GENERIC_MISSING_FIELDS), 400
+                    return json_error("Missing `type` parameter.", errors.GENERIC_MISSING_FIELDS), 400
                 try:
                     type_ = ConditionType(type_)
                 except KeyError:
-                    return json_error("Unknown `type` specified.", GENERIC_ENUM_INVALID), 400
+                    return json_error("Unknown `type` specified.", errors.GENERIC_ENUM_INVALID), 400
                 except Exception as e:
                     return json_error("Unknown error: " + str(e)), 400
                 if not (content := condition.get("content")):
-                    return json_error("Missing `content` parameter.", GENERIC_MISSING_FIELDS), 400
+                    return json_error("Missing `content` parameter.", errors.GENERIC_MISSING_FIELDS), 400
                 if type_ == ConditionType.hashtag:
                     content = hashtag_validator(content)
                 c = Condition(content=content, type=type_)

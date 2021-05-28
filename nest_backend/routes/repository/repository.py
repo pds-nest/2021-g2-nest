@@ -4,7 +4,7 @@ from flask_jwt_extended import jwt_required, get_jwt_identity
 from nest_backend.gestione import *
 from flask_cors import cross_origin
 import datetime
-from nest_backend.errors import *
+import nest_backend.errors as errors
 
 
 @cross_origin()
@@ -156,11 +156,11 @@ def page_repository(rid):
     user = find_user(get_jwt_identity())
     repository = Repository.query.filter_by(id=rid, is_deleted=False).first()
     if not repository:
-        return json_error("Could not find repository.", REPOSITORY_NOT_FOUND), 404
+        return json_error("Could not find repository.", errors.REPOSITORY_NOT_FOUND), 404
     if request.method == "GET":
         return json_success(repository.to_json()), 200
     if user.email != repository.owner_id:
-        return json_error("You are not the owner of this repository.", REPOSITORY_NOT_OWNER), 403
+        return json_error("You are not the owner of this repository.", errors.REPOSITORY_NOT_OWNER), 403
     elif request.method == "PATCH":
         if 'name' in request.json:
             repository.name = request.json['name']
@@ -173,7 +173,7 @@ def page_repository(rid):
             try:
                 evaluation_mode = ConditionMode(request.json['evaluation_mode'])
             except KeyError:
-                return json_error("Unknown `type` specified.", GENERIC_ENUM_INVALID), 400
+                return json_error("Unknown `type` specified.", errors.GENERIC_ENUM_INVALID), 400
             repository.evaluation_mode = evaluation_mode
         ext.session.commit()
         return json_success(repository.to_json()), 204
@@ -183,16 +183,16 @@ def page_repository(rid):
             ext.session.commit()
         except Exception as e:
             ext.session.rollback()
-            return json_error("Cant delete repository because of dependencies.", REPOSITORY_DEPENDENCY_FAILURE), 500
+            return json_error("Cant delete repository because of dependencies.", errors.REPOSITORY_DEPENDENCY_FAILURE), 500
         return json_success("Success"), 204
     elif request.method == "PUT":
         if not json_request_authorizer(request.json, repository):
-            return json_error("Missing one or more parameters in repository json.", GENERIC_MISSING_FIELDS), 400
+            return json_error("Missing one or more parameters in repository json.", errors.GENERIC_MISSING_FIELDS), 400
         # Users will be tolerated if they change parameters they're not supposed to touch. We'll ignore them for now.
         try:
             evaluation_mode = ConditionMode(request.json['evaluation_mode'])
         except KeyError:
-            return json_error("Unknown `type` specified.", GENERIC_ENUM_INVALID), 400
+            return json_error("Unknown `type` specified.", errors.GENERIC_ENUM_INVALID), 400
         repository.evaluation_mode = evaluation_mode
         repository.name = request.json['name']
         repository.is_active = request.json['is_active']
@@ -210,14 +210,14 @@ def page_repository(rid):
                     ext.session.delete(c)
                     ext.session.commit()
         except Exception as e:
-            return json_error("Could not delete conditions.", GENERIC_UFO), 500
+            return json_error("Could not delete conditions.", errors.GENERIC_UFO), 500
         # Create brand new conditions
         for c in request.json['conditions']:
             if not c['id']:
                 try:
                     type_ = ConditionType(c['type'])
                 except KeyError:
-                    return json_error("Unknown `type` specified.", GENERIC_ENUM_INVALID), 400
+                    return json_error("Unknown `type` specified.", errors.GENERIC_ENUM_INVALID), 400
                 content = c['content']
                 if type_ == ConditionType.hashtag:
                     content = hashtag_validator(content)

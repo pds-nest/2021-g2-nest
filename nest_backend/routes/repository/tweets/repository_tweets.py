@@ -5,7 +5,7 @@ from nest_backend.gestione import repository_auth, json_error, json_success, Con
 from nest_backend.database import ext
 from flask_cors import cross_origin
 from nest_backend.gestione import hashtag_validator
-from nest_backend.errors import *
+import nest_backend.errors as errors
 
 
 @cross_origin()
@@ -45,11 +45,11 @@ def page_repository_tweets(rid):
 
     repository = Repository.query.filter_by(id=rid, is_deleted=False).first()
     if not repository:
-        return json_error("Could not find repository", REPOSITORY_NOT_FOUND), 404
+        return json_error("Could not find repository", errors.REPOSITORY_NOT_FOUND), 404
     user = find_user(get_jwt_identity())
 
     if user.email != repository.owner_id and user.email not in [a.email for a in repository.authorizations]:
-        return json_error("You are not authorized.", USER_NOT_AUTHORIZED), 403
+        return json_error("You are not authorized.", errors.USER_NOT_AUTHORIZED), 403
 
     if request.method == "GET":
         return json_success([t.tweet.to_json() for t in repository.tweets])

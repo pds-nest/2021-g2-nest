@@ -3,7 +3,7 @@ from nest_backend.database import *
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from nest_backend.gestione import *
 from flask_cors import cross_origin
-from nest_backend.errors import *
+import nest_backend.errors as errors
 
 
 @cross_origin()
@@ -42,12 +42,12 @@ def page_authorization(rid, email):
     repository = Repository.query.filter_by(id=rid, is_deleted=False).first()
     user = find_user(get_jwt_identity())
     if not repository:
-        return json_error("Could not find the repository.", REPOSITORY_NOT_FOUND), 404
+        return json_error("Could not find the repository.", errors.REPOSITORY_NOT_FOUND), 404
     if user != repository.owner:
-        return json_error("You are not authorized.", USER_NOT_AUTHORIZED), 403
+        return json_error("You are not authorized.", errors.USER_NOT_AUTHORIZED), 403
     authorization = Authorization.query.filter_by(rid=rid, email=email).first()
     if not authorization:
-        return json_error("Could not find the authorization", AUTHORIZATION_NOT_FOUND), 404
+        return json_error("Could not find the authorization", errors.AUTHORIZATION_NOT_FOUND), 404
     if request.method == "DELETE":
         ext.session.delete(authorization)
         ext.session.commit()
