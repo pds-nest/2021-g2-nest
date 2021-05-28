@@ -72,7 +72,7 @@ def page_repositories():
             spectator = spectator.filter(not Repository.is_active)
         owner = owner.all()
         spectator = spectator.all()
-        return json_success([r.to_json() for r in owner if not r.is_deleted] + [r.repository.to_json() for r in spectator if not r.is_deleted])
+        return json_success([r.to_json() for r in owner if not r.is_deleted] + [r.repository.to_json() for r in spectator if not r.repository.is_deleted])
     elif request.method == "POST":
         # Users will be tolerated if they change parameters they're not supposed to touch. We'll ignore them for now.
         if not request.json.get("name") or not request.json.get("conditions") or not str(
