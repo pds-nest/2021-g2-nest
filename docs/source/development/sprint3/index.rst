@@ -81,12 +81,24 @@ Stefano Goldoni
       - Durata
       - Attività
     * -
-      -
+      - 14h
       - Totale
 
-    * -
-      -
-      -
+    * - 21/05
+      - 2.0h
+      - Analisi strumenti di test frontend
+    * - 24/05
+      - 3.0h
+      - Inizio test alerts
+    * - 25/05
+      - 2.5h
+      - Test alerts
+    * - 26/05
+      - 3.0h
+      - Test
+    * - 28/05
+      - 3.5h
+      - Test, refactory in base a Sonarqube
 
 
 Flavia Cocca
@@ -117,12 +129,42 @@ Chiara Calzolari
       - Durata
       - Attività
     * -
-      -
+      - 17h 30m
       - Totale
 
-    * -
-      -
-      -
+    * - 17/05
+      - 3.0h
+      - Traduzione UI
+    * - 17/05
+      - 1.5h
+      - Traduzione UI
+    * - 18/05
+      - 1.5h
+      - Traduzione UI
+    * - 20/05
+      - 1.0h
+      - Traduzione UI
+    * - 22/05
+      - 1.0h
+      - Traduzione UI
+    * - 24/05
+      - 2.0h
+      - Traduzione UI
+    * - 24/05
+      - 1.0h
+      - Traduzione UI
+    * - 25/05
+      - 1.0h
+      - Traduzione UI
+    * - 27/05
+      - 0.5h
+      - Traduzione UI
+    * - 28/05
+      - 2.0h
+      - Configurazione ambiente di sviluppo
+    * - 28/05
+      - 3.0h
+      - Creazione video-demo
 
 
 Stefano Pigozzi
@@ -189,12 +231,33 @@ Lorenzo Balugani
       - Durata
       - Attività
     * -
-      -
+      - 22h
       - Totale
 
-    * -
-      -
-      -
+    * - 17/05
+      - 4h
+      - Bugfixing, supporto alla localizzazione degli errori
+    * - 18/05
+      - 3h
+      - Bugfixing
+    * - 20/05
+      - 3h
+      - API autorizzazioni, refactoring
+    * - 21/05
+      - 2h
+      - Gestione tweet, rappresentazione tweet
+    * - 24/05
+      - 2h
+      - Bugfixing
+    * - 25/05
+      - 4h
+      - Docs, refactoring
+    * - 27/05
+      - 3h
+      - Bugfixing
+    * - 28/05
+      - 6h
+      - Bugfixing
 
 
 Statistiche
