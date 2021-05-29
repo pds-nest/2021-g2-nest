@@ -39,4 +39,4 @@
 
 Si allega una stampa dell'interfaccia swagger:
 
-- :download: N.E.S.T_Swagger.pdf
+- :download:`Schermata di swagger <N.E.S.T_Swagger.pdf>`
