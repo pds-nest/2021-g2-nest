@@ -23,10 +23,15 @@ Tutto ciò è visibile dai task completati:
 Grooming session
 ----------------
 
-Sono state definite le nuove User Stories da inserire nel progetto sulla base delle nuove richieste pervenute dal cliente: analisi statistica più dettagliata, postare su Twitter, traduzione dell'interfaccia in inglese.
-La richiesta relativa alle ricerche basate sulla geolocalizzazione, come già comunicato al cliente, non è stata inserita per motivi tecnici legati alle features delle API 1.1 che non permettono di eseguire query sui campi di posizione geografica.
-Le nuove User Stories sono state valutate tramite il metodo dello Scrum Poker, durante il quale ogni membro ha espresso la sua valutazione.
-Tutte le nuove richieste sono state accettate dal Product Owner e sono pronte ad essere inserite nello sprint di sviluppo in partenza.
+Sono state definite le nuove **User Stories** da inserire nel progetto sulla base delle nuove richieste pervenute dal cliente:
+
+- analisi statistica più dettagliata
+- postare su Twitter
+- traduzione dell'interfaccia in inglese.
+
+| La richiesta relativa alle *ricerche basate sulla geolocalizzazione*, come già comunicato al cliente, non è stata inserita per motivi tecnici legati alle features delle **API 1.1** che non permettono di eseguire query sui campi di posizione geografica.
+| Le nuove User Stories sono state valutate tramite il metodo dello Scrum Poker, durante il quale ogni membro ha espresso la sua valutazione.
+| Tutte le nuove richieste sono state accettate dal Product Owner e sono pronte ad essere inserite nello sprint di sviluppo in partenza.
 
 
 
@@ -42,9 +47,10 @@ Backlog
 
 
 Definition of Ready
-------------------
+-------------------
 
 Il team ha definito lo stato di Ready di una User Story in base ai seguenti criteri:
+
 * La User Story è stata compresa ed accettata da tutti i membri
 * I tester hanno confermato la possibilità di poterla testare
 * Il Product Owner ha la visione necessaria per definirne la priorità
@@ -55,10 +61,11 @@ Definition of Done
 ------------------
 
 La definizione di Done è stata concordata da tutto il team con il Product Owner, ed è stata così definita:
+
 * Sviluppo completo della funzionalità richiesta
 * Definizione e superamento dei test
 * Bozza della documentazione della funzionalità
-* Merge dei sorgenti nel branch ‘Main’ di GitLab
+* Merge dei sorgenti nel branch ``main`` di GitLab
 
 
 Registro attività
