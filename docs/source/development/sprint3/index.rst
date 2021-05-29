@@ -372,9 +372,7 @@ Gitinspector
 Retrospettiva finale
 --------------------
 
-.. todo::
-
-    Inserire qui la Retrospettiva finale.
+- :download:`Retrospettiva finale <RetrospectiveSprint3.pdf>`
 
 
 Schermata finale di SonarQube
