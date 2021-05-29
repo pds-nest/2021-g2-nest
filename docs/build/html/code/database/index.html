@@ -95,12 +95,8 @@
 <p class="caption"><span class="caption-text">Relazione sul progetto</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../development/goals.html">Introduzione</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../development/process.html">Processo di sviluppo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../development/tools.html">Strumenti utilizzati</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../development/sprint0/index.html">Sprint 0: 04 Apr - 18 Apr</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../development/sprint1/index.html">Sprint 1: 19 Apr - 02 Mag</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../development/sprint2/index.html">Sprint 2: 03 Mag - 16 Mag</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../development/sprint3/index.html">Sprint 3: 17 Mag - 30 Mag</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development/process.html">Processo di sviluppo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../development/artifacts.html">Artefatti</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../development/conclusions.html">Conclusioni</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../development/suggestions.html">Suggerimenti relativi al corso</a></li>
@@ -184,12 +180,12 @@
 <dl class="py class">
 <dt id="Alert">
 <em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">Alert</span></code><a class="headerlink" href="#Alert" title="Link a questa definizione">¶</a></dt>
-<dd><p>Un alert è un allarme impostato da un utente che si «attiva» quando un numero di tweet che rispetta certe condizioni
-(poste in and oppure or) supera una certa soglia, indicata dall’utente.</p>
-<p>Ogni volta che l’alert si attiva, viene creata una «notifica», ovvero una entry nella tabella Notifications.
-Questo permette di tenere conto del numero di volte in cui l’alert viene triggerato.</p>
+<dd><p>Un alert è un allarme impostato da un utente che si &quot;attiva&quot; quando un numero di tweet che rispetta certe condizioni
+(poste in and oppure or) supera una certa soglia, indicata dall'utente.</p>
+<p>Ogni volta che l'alert si attiva, viene creata una &quot;notifica&quot;, ovvero una entry nella tabella Notifications.
+Questo permette di tenere conto del numero di volte in cui l'alert viene triggerato.</p>
 <p>Gli alert sono legati al repository di appartenenza, e quando uno di essi viene allertato viene inviata una mail
-all’admin e pubblicato un tweet sull’account Twitter usato per le analisi.</p>
+all'admin e pubblicato un tweet sull'account Twitter usato per le analisi.</p>
 <p>La tabella alert contiene le seguenti colonne:</p>
 <table class="docutils align-left">
 <colgroup>
@@ -203,13 +199,13 @@ all’admin e pubblicato un tweet sull’account Twitter usato per le analisi.</
 </thead>
 <tbody>
 <tr class="row-even"><th class="stub"><p>id (INTEGER, PK)</p></th>
-<td><p>l’identificativo dell’alert</p></td>
+<td><p>l'identificativo dell'alert</p></td>
 </tr>
 <tr class="row-odd"><th class="stub"><p>name (VARCHAR, NOT NULL)</p></th>
-<td><p>il nome dell’alert</p></td>
+<td><p>il nome dell'alert</p></td>
 </tr>
 <tr class="row-even"><th class="stub"><p>limit (INTEGER, NOT NULL)</p></th>
-<td><p>il numero di tweet che innescano l’alert</p></td>
+<td><p>il numero di tweet che innescano l'alert</p></td>
 </tr>
 <tr class="row-odd"><th class="stub"><p>window_size (INTEGER, NOT NULL)</p></th>
 <td><p>numero di ore in cui il limit può venire superato</p></td>
@@ -227,7 +223,7 @@ all’admin e pubblicato un tweet sull’account Twitter usato per le analisi.</
 <dl class="py class">
 <dt id="Authorization">
 <em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">Authorization</span></code><a class="headerlink" href="#Authorization" title="Link a questa definizione">¶</a></dt>
-<dd><p>Una autorizzazione è un’entità che rappresenta il permesso, concesso dal creatore del repository ad un altro utente,
+<dd><p>Una autorizzazione è un'entità che rappresenta il permesso, concesso dal creatore del repository ad un altro utente,
 di ispezionare il contenuto di un repo e di eseguire analisi su di esso.</p>
 <p>La tabella authorization contiene le seguenti colonne:</p>
 <table class="docutils align-left">
@@ -245,7 +241,7 @@ di ispezionare il contenuto di un repo e di eseguire analisi su di esso.</p>
 <td><p>id del repository</p></td>
 </tr>
 <tr class="row-odd"><th class="stub"><p>email (VARCHAR, PK, FK)</p></th>
-<td><p>email dell’utente</p></td>
+<td><p>email dell'utente</p></td>
 </tr>
 </tbody>
 </table>
@@ -254,7 +250,7 @@ di ispezionare il contenuto di un repo e di eseguire analisi su di esso.</p>
 <dl class="py class">
 <dt id="Composed">
 <em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">Composed</span></code><a class="headerlink" href="#Composed" title="Link a questa definizione">¶</a></dt>
-<dd><p>Composed è una tabella le cui righe indicano l’appartenenza di un Tweet ad un certo repository.</p>
+<dd><p>Composed è una tabella le cui righe indicano l'appartenenza di un Tweet ad un certo repository.</p>
 <p>La tabella Composed contiene le seguenti colonne:</p>
 <table class="docutils align-left">
 <colgroup>
@@ -360,7 +356,7 @@ coordinate</p></li>
 </thead>
 <tbody>
 <tr class="row-even"><th class="stub"><p>aid (INTEGER, PK, FK)</p></th>
-<td><p>id dell’alert</p></td>
+<td><p>id dell'alert</p></td>
 </tr>
 <tr class="row-odd"><th class="stub"><p>cid (INTEGER, PK, FK)</p></th>
 <td><p>id della condition</p></td>
@@ -372,8 +368,8 @@ coordinate</p></li>
 <dl class="py class">
 <dt id="Notification">
 <em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">Notification</span></code><a class="headerlink" href="#Notification" title="Link a questa definizione">¶</a></dt>
-<dd><p>Una notification è un’entità che consente di tenere traccia del momento in cui un certo alert si è attivato
-per l’ultima volta.</p>
+<dd><p>Una notification è un'entità che consente di tenere traccia del momento in cui un certo alert si è attivato
+per l'ultima volta.</p>
 <p>La tabella notification contiene le seguenti colonne:</p>
 <table class="docutils align-left">
 <colgroup>
@@ -402,7 +398,7 @@ per l’ultima volta.</p>
 <dl class="py class">
 <dt id="Repository">
 <em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">Repository</span></code><a class="headerlink" href="#Repository" title="Link a questa definizione">¶</a></dt>
-<dd><p>Un repository è un «contenitore» di tweet, a cui sono legati alert, autorizzazioni di lettura e condizioni.</p>
+<dd><p>Un repository è un &quot;contenitore&quot; di tweet, a cui sono legati alert, autorizzazioni di lettura e condizioni.</p>
 <p>Le condizioni possono essere messe in and oppure or, inoltre un repository può venire archiviato prima divenire
 eliminato. Quando un repository non è archiviato, questo viene riempito di tweet su base oraria, cosa che non
 accade se viene archiviato.</p>
@@ -440,7 +436,7 @@ accade se viene archiviato.</p>
 <td><p>email del proprietario</p></td>
 </tr>
 <tr class="row-odd"><th class="stub"><p>is_deleted (BOOLEAN, NOT NULL)</p></th>
-<td><p>flag per segnalare se l’oggetto è eliminato o meno</p></td>
+<td><p>flag per segnalare se l'oggetto è eliminato o meno</p></td>
 </tr>
 </tbody>
 </table>
@@ -449,9 +445,9 @@ accade se viene archiviato.</p>
 <dl class="py class">
 <dt id="Tweet">
 <em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">Tweet</span></code><a class="headerlink" href="#Tweet" title="Link a questa definizione">¶</a></dt>
-<dd><p>Un tweet è un’entità che viene raccolta dal componente crawler, e quando viene inserita nella base di dati viene
-legata ad un repository e alle condition che contiene. Un tweet contiene informazioni relativamente a chi l’ha
-creato, eventuali immagini, il tempo di creazione, il tempo di inserimento nel db e l’opzionale posizione legata
+<dd><p>Un tweet è un'entità che viene raccolta dal componente crawler, e quando viene inserita nella base di dati viene
+legata ad un repository e alle condition che contiene. Un tweet contiene informazioni relativamente a chi l'ha
+creato, eventuali immagini, il tempo di creazione, il tempo di inserimento nel db e l'opzionale posizione legata
 al tweet.</p>
 <p>La tabella tweet contiene le seguenti colonne:</p>
 <table class="docutils align-left">
@@ -478,16 +474,16 @@ al tweet.</p>
 <td><p>riservato per sviluppi futuri</p></td>
 </tr>
 <tr class="row-even"><th class="stub"><p>poster (VARCHAR)</p></th>
-<td><p>informazioni sull’utente che ha creato il tweet</p></td>
+<td><p>informazioni sull'utente che ha creato il tweet</p></td>
 </tr>
 <tr class="row-odd"><th class="stub"><p>insert_time (TIMESTAMP, NOT NULL)</p></th>
-<td><p>timestamp dell’inserimento del tweet</p></td>
+<td><p>timestamp dell'inserimento del tweet</p></td>
 </tr>
 <tr class="row-even"><th class="stub"><p>image_url (VARCHAR)</p></th>
 <td><p>link alle immagini, se presenti</p></td>
 </tr>
 <tr class="row-odd"><th class="stub"><p>post_time (TIMESTAMP)</p></th>
-<td><p>timestamp relativo all’invio del tweet</p></td>
+<td><p>timestamp relativo all'invio del tweet</p></td>
 </tr>
 </tbody>
 </table>
@@ -496,8 +492,8 @@ al tweet.</p>
 <dl class="py class">
 <dt id="User">
 <em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">User</span></code><a class="headerlink" href="#User" title="Link a questa definizione">¶</a></dt>
-<dd><p>Uno user è l’utilizzatore della piattaforma.</p>
-<p>E” presente di default un utente admin, il quale può creare nuovi utenti.</p>
+<dd><p>Uno user è l'utilizzatore della piattaforma.</p>
+<p>E' presente di default un utente admin, il quale può creare nuovi utenti.</p>
 <p>La tabella user contiene le seguenti colonne:</p>
 <table class="docutils align-left">
 <colgroup>
@@ -511,16 +507,16 @@ al tweet.</p>
 </thead>
 <tbody>
 <tr class="row-even"><th class="stub"><p>email (VARCHAR, PK)</p></th>
-<td><p>email dell’utente</p></td>
+<td><p>email dell'utente</p></td>
 </tr>
 <tr class="row-odd"><th class="stub"><p>username (VARCHAR, NOT NULL)</p></th>
-<td><p>username dell’utente</p></td>
+<td><p>username dell'utente</p></td>
 </tr>
 <tr class="row-even"><th class="stub"><p>password (BYTEARRAY, NOT NULL)</p></th>
-<td><p>sale della password, codificata usando l’algoritmo bcrypt</p></td>
+<td><p>sale della password, codificata usando l'algoritmo bcrypt</p></td>
 </tr>
 <tr class="row-odd"><th class="stub"><p>isAdmin (BOOLEAN, NOT NULL)</p></th>
-<td><p>true se l’utente è admin</p></td>
+<td><p>true se l'utente è admin</p></td>
 </tr>
 </tbody>
 </table>

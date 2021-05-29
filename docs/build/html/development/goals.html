@@ -40,7 +40,7 @@
     
     <link rel="index" title="Indice" href="../genindex.html" />
     <link rel="search" title="Cerca" href="../search.html" />
-    <link rel="next" title="Processo di sviluppo" href="process.html" />
+    <link rel="next" title="Strumenti utilizzati" href="tools.html" />
     <link rel="prev" title="Aggiornamento" href="../guide/updating.html" /> 
 </head>
 
@@ -100,16 +100,12 @@
 <li class="toctree-l2"><a class="reference internal" href="#caratteristiche-degli-utenti">Caratteristiche degli utenti</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#glossario">Glossario</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#macro-funzionalita">Macro-funzionalità</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#casi-d-uso">Casi d’uso</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#casi-d-uso">Casi d'uso</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#backlog-generale">Backlog generale</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="process.html">Processo di sviluppo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tools.html">Strumenti utilizzati</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sprint0/index.html">Sprint 0: 04 Apr - 18 Apr</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sprint1/index.html">Sprint 1: 19 Apr - 02 Mag</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sprint2/index.html">Sprint 2: 03 Mag - 16 Mag</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sprint3/index.html">Sprint 3: 17 Mag - 30 Mag</a></li>
+<li class="toctree-l1"><a class="reference internal" href="process.html">Processo di sviluppo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="artifacts.html">Artefatti</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusioni</a></li>
 <li class="toctree-l1"><a class="reference internal" href="suggestions.html">Suggerimenti relativi al corso</a></li>
@@ -192,7 +188,7 @@
 <h1>Introduzione<a class="headerlink" href="#introduzione" title="Link a questa intestazione">¶</a></h1>
 <div class="section" id="obiettivo">
 <h2>Obiettivo<a class="headerlink" href="#obiettivo" title="Link a questa intestazione">¶</a></h2>
-<p>L’obiettivo del progetto è la creazione di un software per fornire l’aggregazione e l’analisi di <a class="reference external" href="https://help.twitter.com/it/using-twitter#tweets">Tweet</a>, in modo da
+<p>L'obiettivo del progetto è la creazione di un software per fornire l'aggregazione e l'analisi di <a class="reference external" href="https://help.twitter.com/it/using-twitter#tweets">Tweet</a>, in modo da
 rilevare eventi <em>macroscopici</em>, <em>locali</em> o più semplicemente filtrarli in base a delle <em>keyword</em>.</p>
 <p>Il prodotto sarà utilizzato dal cliente e da un piccolo gruppo di suoi dipendenti per effettuare ricerche statistiche.</p>
 <p>Il software andrà ad integrarsi direttamente con <a class="reference external" href="https://twitter.com/">Twitter</a>, da cui verranno raccolti dati e su cui verranno pubblicate
@@ -201,11 +197,11 @@ allerte su di essi.</p>
 <div class="section" id="campo-di-applicazione">
 <h2>Campo di applicazione<a class="headerlink" href="#campo-di-applicazione" title="Link a questa intestazione">¶</a></h2>
 <p>Il software trova utilizzo principalmente in <strong>ambito statistico</strong>, essendo il suo scopo quello di raccogliere dati e
-permettere di analizzarli tramite un’interfaccia grafica.</p>
+permettere di analizzarli tramite un'interfaccia grafica.</p>
 </div>
 <div class="section" id="caratteristiche-degli-utenti">
 <h2>Caratteristiche degli utenti<a class="headerlink" href="#caratteristiche-degli-utenti" title="Link a questa intestazione">¶</a></h2>
-<p>Il software potrà essere utilizzato da utenti con una discreta esperienza nell’analisi di dati ma senza particolari
+<p>Il software potrà essere utilizzato da utenti con una discreta esperienza nell'analisi di dati ma senza particolari
 conoscenze informatiche.</p>
 </div>
 <div class="section" id="glossario">
@@ -218,14 +214,14 @@ contato in fase di allertamento utente.</p>
 </dd>
 <dt>Filtro</dt><dd><p>Predicato logico che deve essere soddisfatto da un tweet per essere visualizzato in fase di analisi dati.</p>
 </dd>
-<dt>Allarme</dt><dd><p>Notifica inviata all’utente attraverso un mezzo telematico, come email oppure un tweet.</p>
+<dt>Allarme</dt><dd><p>Notifica inviata all'utente attraverso un mezzo telematico, come email oppure un tweet.</p>
 </dd>
-<dt>Utente</dt><dd><p>Utilizzatore del software con un proprio account creato dall’amministratore della piattaforma.</p>
+<dt>Utente</dt><dd><p>Utilizzatore del software con un proprio account creato dall'amministratore della piattaforma.</p>
 <p>In particolare, la piattaforma prevederà due tipologie di utenti:</p>
 <dl class="simple">
 <dt>Utente regolare</dt><dd><p>Potranno eseguire attività di creazione, analisi, condivisione, archiviazione ed eliminazione dei propri repository.</p>
 </dd>
-<dt>Utente amministratore</dt><dd><p>Potrà effettuare tutte le attività dell’utente regolare, e in aggiunta potrà creare ed eliminare nuovi utenti
+<dt>Utente amministratore</dt><dd><p>Potrà effettuare tutte le attività dell'utente regolare, e in aggiunta potrà creare ed eliminare nuovi utenti
 regolari.</p>
 </dd>
 </dl>
@@ -241,18 +237,18 @@ regolari.</p>
 <li><p>in base alla loro <a class="reference external" href="https://help.twitter.com/en/safety-and-security/tweet-location-settings">posizione geografica</a> (ove presente)</p></li>
 <li><p>in base alla loro data di pubblicazione</p></li>
 </ul>
-<p>Selezionate le condizioni, l’utente potrà creare una <strong>repository</strong>: una cartella in cui verranno raccolti i tweet
+<p>Selezionate le condizioni, l'utente potrà creare una <strong>repository</strong>: una cartella in cui verranno raccolti i tweet
 soddisfacenti le condizioni richieste.</p>
-<p>Una volta raccolti, i tweet di una repository potranno essere <strong>analizzati</strong> in qualsiasi momento: durante l’analisi,
+<p>Una volta raccolti, i tweet di una repository potranno essere <strong>analizzati</strong> in qualsiasi momento: durante l'analisi,
 saranno mostrate statistiche e grafici relativi ai tweet.</p>
 <p>La raccolta potrà essere interrotta in qualsiasi momento <strong>archiviando</strong> il repository.</p>
 <p>Sarà possibile <strong>condividere</strong> una repository con altri utenti della piattaforma, permettendo loro di analizzarla.</p>
-<p>Infine, l’utente potrà configurare una repository in modo che gli invii una <strong>allerta</strong> qualora vengano raccolti un dato
+<p>Infine, l'utente potrà configurare una repository in modo che gli invii una <strong>allerta</strong> qualora vengano raccolti un dato
 numero di tweet in una certa <em>finestra temporale</em>.</p>
 </div>
 <div class="section" id="casi-d-uso">
-<h2>Casi d’uso<a class="headerlink" href="#casi-d-uso" title="Link a questa intestazione">¶</a></h2>
-<p>N.E.S.T. prevede tre tipologie di <em>agenti</em> («utenti» UML): <strong>utente</strong>, <strong>amministratore</strong> e <strong>sistema</strong>.</p>
+<h2>Casi d'uso<a class="headerlink" href="#casi-d-uso" title="Link a questa intestazione">¶</a></h2>
+<p>N.E.S.T. prevede tre tipologie di <em>agenti</em> (&quot;utenti&quot; UML): <strong>utente</strong>, <strong>amministratore</strong> e <strong>sistema</strong>.</p>
 <img alt="../_images/Utenti.png" src="../_images/Utenti.png" />
 <p>I principali casi d’uso individuati durante la progettazione di N.E.S.T. sono:</p>
 <ul>
@@ -265,10 +261,10 @@ numero di tweet in una certa <em>finestra temporale</em>.</p>
 <li><p>La gestione delle Allerte sia dal punto di vista dell’Utente che del Sistema:</p>
 <a class="reference internal image-reference" href="../_images/CasiUso3.PNG"><img alt="../_images/CasiUso3.PNG" src="../_images/CasiUso3.PNG" style="width: 800px;" /></a>
 </li>
-<li><p>La gestione della raccolta da parte dell’utente:</p>
+<li><p>La gestione della raccolta da parte dell'utente:</p>
 <a class="reference internal image-reference" href="../_images/CasiUso4.PNG"><img alt="../_images/CasiUso4.PNG" src="../_images/CasiUso4.PNG" style="width: 400px;" /></a>
 </li>
-<li><p>La gestione di un repository da parte dell’utente:</p>
+<li><p>La gestione di un repository da parte dell'utente:</p>
 <a class="reference internal image-reference" href="../_images/CasiUso5.PNG"><img alt="../_images/CasiUso5.PNG" src="../_images/CasiUso5.PNG" style="width: 400px;" /></a>
 </li>
 <li><p>La visualizzazione di un repository:</p>
@@ -298,7 +294,7 @@ Gli elementi dal bordo grigio sono le epiche:</p>
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="process.html" class="btn btn-neutral float-right" title="Processo di sviluppo" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="tools.html" class="btn btn-neutral float-right" title="Strumenti utilizzati" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
         <a href="../guide/updating.html" class="btn btn-neutral float-left" title="Aggiornamento" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 

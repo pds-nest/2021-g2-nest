@@ -101,6 +101,7 @@ def setup(app):
 
 todo_include_todos = True
 todo_emit_warnings = True
+smartquotes = False
 
 # -- Automodule settings -----------------------------------------------------
 

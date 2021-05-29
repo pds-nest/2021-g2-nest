@@ -99,12 +99,8 @@
 <p class="caption"><span class="caption-text">Relazione sul progetto</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../development/goals.html">Introduzione</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../development/process.html">Processo di sviluppo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../development/tools.html">Strumenti utilizzati</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../development/sprint0/index.html">Sprint 0: 04 Apr - 18 Apr</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../development/sprint1/index.html">Sprint 1: 19 Apr - 02 Mag</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../development/sprint2/index.html">Sprint 2: 03 Mag - 16 Mag</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../development/sprint3/index.html">Sprint 3: 17 Mag - 30 Mag</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../development/process.html">Processo di sviluppo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../development/artifacts.html">Artefatti</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../development/conclusions.html">Conclusioni</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../development/suggestions.html">Suggerimenti relativi al corso</a></li>
@@ -186,19 +182,19 @@
   <div class="section" id="il-progetto-in-breve">
 <h1>Il progetto in breve<a class="headerlink" href="#il-progetto-in-breve" title="Link a questa intestazione">¶</a></h1>
 <p><strong>N.E.S.T.</strong> (Noi Estraiamo Statistiche Tweet) è un progetto realizzato nel 2021 per
-l”<strong>esame di Progetto del Software</strong> del corso di Informatica all’Unimore.</p>
+l'<strong>esame di Progetto del Software</strong> del corso di Informatica all'Unimore.</p>
 <div class="section" id="suddivisione-in-moduli">
 <h2>Suddivisione in moduli<a class="headerlink" href="#suddivisione-in-moduli" title="Link a questa intestazione">¶</a></h2>
 <p>Il progetto è composto da tre parti:</p>
 <dl class="simple">
 <dt><a class="reference internal" href="../code/crawler/index.html#module-nest_crawler" title="nest_crawler"><code class="xref py py-mod docutils literal notranslate"><span class="pre">nest_crawler</span></code></a></dt><dd><p>Un modulo scritto in <a class="reference external" href="https://www.python.org/">Python</a> usando <code class="xref py py-mod docutils literal notranslate"><span class="pre">tweepy</span></code> che recupera tweet attraverso la <a class="reference external" href="https://developer.twitter.com/en/docs/twitter-api">Twitter API</a> secondo le
-condizioni presenti all’interno del database e li salva per future elaborazioni.</p>
+condizioni presenti all'interno del database e li salva per future elaborazioni.</p>
 </dd>
-<dt><a class="reference internal" href="../code/backend/index.html#module-nest_backend" title="nest_backend"><code class="xref py py-mod docutils literal notranslate"><span class="pre">nest_backend</span></code></a></dt><dd><p>Un web server scritto in <a class="reference external" href="https://www.python.org/">Python</a> usando il framework <a class="reference external" href="https://flask.palletsprojects.com/en/1.1.x/api/#module-flask" title="(in Flask v1.1.x)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">flask</span></code></a> che fornisce un’API HTTP per visualizzare e
-manipolare i dati dell’applicazione, gestendo autenticazione, autorizzazione e comunicazione con il database.</p>
+<dt><a class="reference internal" href="../code/backend/index.html#module-nest_backend" title="nest_backend"><code class="xref py py-mod docutils literal notranslate"><span class="pre">nest_backend</span></code></a></dt><dd><p>Un web server scritto in <a class="reference external" href="https://www.python.org/">Python</a> usando il framework <a class="reference external" href="https://flask.palletsprojects.com/en/1.1.x/api/#module-flask" title="(in Flask v1.1.x)"><code class="xref py py-mod docutils literal notranslate"><span class="pre">flask</span></code></a> che fornisce un'API HTTP per visualizzare e
+manipolare i dati dell'applicazione, gestendo autenticazione, autorizzazione e comunicazione con il database.</p>
 </dd>
 <dt><code class="xref js js-mod docutils literal notranslate"><span class="pre">nest_frontend</span></code></dt><dd><p>Una applicazione web scritta in <a class="reference external" href="https://reactjs.org/docs/introducing-jsx.html">JSX</a> usando il framework <code class="xref js js-mod docutils literal notranslate"><span class="pre">react</span></code> che comunica con il backend, mostrando
-all’utente i dati del backend in una formato immediatamente comprensibile.</p>
+all'utente i dati del backend in una formato immediatamente comprensibile.</p>
 </dd>
 </dl>
 </div>

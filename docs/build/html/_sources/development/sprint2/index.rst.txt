@@ -6,31 +6,28 @@ Consegna
 
 La seguente documentazione è stata fornita dal cliente durante questo sprint:
 
-- :download:`Sprint 2 <2-sprint-requirements.pdf>`
+- :download:`2-sprint-requirements.pdf`
 
 
 Goal
 ----
-Il **goal** del secondo sprint è stato la creazione, cancellazione e modifica dei repository, ovvero permettere agli utenti
-di creare repo partendo da una ricerca che rispetta determinate condizioni.
 
-Tutto ciò è visibile dai task completati:
-
-..  image:: Sprint2Task.png
-     :width: 390
-
+Il **goal** del secondo Sprint è stato la creazione, cancellazione e modifica dei repository, ovvero permettere
+agli utenti di creare repository partendo da una ricerca che rispetta determinate condizioni.
 
 
 Backlog
--------
+^^^^^^^
 
-.. image:: BacklogSprint2.png
+.. image:: 2-backlog.png
     :width: 400
 
-**Burndown Chart**
 
-.. image:: Chart2.png
-    :width: 600
+Task completati
+^^^^^^^^^^^^^^^
+
+..  image:: 2-tasks.png
+     :width: 400
 
 
 Definition of Ready
@@ -38,22 +35,62 @@ Definition of Ready
 
 Il team ha definito lo stato di Ready di una User Story in base ai seguenti criteri:
 
-* La User Story è stata compresa ed accettata da tutti i membri
-* I tester hanno confermato la possibilità di poterla testare
-* Il Product Owner ha la visione necessaria per definirne la priorità
-* Il Team è in grado di stimarla
-* La User Story è indipendente o dipendente da altre a priorità maggiore
+- La User Story è stata compresa ed accettata da tutti i membri
+- I tester hanno confermato la possibilità di poterla testare
+- Il Product Owner ha la visione necessaria per definirne la priorità
+- Il Team è in grado di stimarla
+- La User Story è indipendente o dipendente da altre a priorità maggiore
+
 
 Definition of Done
 ------------------
 
 La definizione di Done è stata concordata da tutto il team con il Product Owner, ed è stata così definita:
 
-* Sviluppo completo della funzionalità richiesta
-* Definizione e superamento dei test
-* Bozza della documentazione della funzionalità
-* Merge dei sorgenti nel branch ``main`` di GitLab
+- Sviluppo completo della funzionalità richiesta
+- Definizione e superamento dei test
+- Bozza della documentazione della funzionalità
+- Merge dei sorgenti nel branch ``main`` di GitLab
 
+
+Statistiche
+-----------
+
+Burndown chart
+^^^^^^^^^^^^^^
+
+Questa è la burndown chart relativa allo Sprint 2:
+
+.. image:: 2-burndown.png
+
+
+Gitinspector
+^^^^^^^^^^^^
+
+Questa statistica è stata generata dal prof. Marcello Missiroli con
+`Gitinspector`_ al termine dello Sprint.
+
+- :download:`2-stats.html` (relativa al codice)
+- :download:`2D-stats.html` (relativa a parte della documentazione)
+
+
+.. _Gitinspector: https://github.com/ejwa/gitinspector
+
+
+Sprint Retrospective
+--------------------
+
+La Sprint Retrospective è disponibile al seguente link:
+
+- :download:`2-retrospective.pdf`
+
+
+Sprint Review
+-------------
+
+Il video di Sprint Review è disponibile al seguente link:
+
+- https://drive.google.com/file/d/1x1kub-bpVJrwmGrn5LLU8ecqcbxFaoKg/view
 
 
 Registro attività
@@ -82,6 +119,16 @@ Riunioni collettive
 
 Attività individuali
 ^^^^^^^^^^^^^^^^^^^^
+
+.. hint::
+
+    Per vedere più in dettaglio il lavoro di sviluppo effettuato da ogni membro del gruppo, si suggerisce di
+    visualizzare il log di Git:
+
+    .. code-block:: console
+
+        $ git log
+
 
 Stefano Goldoni
 """""""""""""""
@@ -423,32 +470,3 @@ Lorenzo Balugani
     * - 2021-05-14
       - 1h
       - Bugfixing
-
-
-Statistiche
------------
-
-Gitinspector
-^^^^^^^^^^^^^
-
-Questa statistica è stata generata dal prof. Marcello Missiroli con
-`Gitinspector`_ al termine dello Sprint.
-
-- :download:`Sprint 2 (codice) <2-stats.html>`
-- :download:`Sprint 2 (documentazione) <2D-stats.html>`
-
-
-.. _Gitinspector: https://github.com/ejwa/gitinspector
-
-
-Sprint retrospective
---------------------
-- :download:`Sprint 2 Retrospective <RetrospectiveSprint2.pdf>`
-
-
-Sprint review
--------------
-
-Il video di sprint review è disponibile al seguente link:
-
-- https://drive.google.com/file/d/1x1kub-bpVJrwmGrn5LLU8ecqcbxFaoKg/view?usp=sharing

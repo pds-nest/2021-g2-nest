@@ -6,8 +6,8 @@ Consegna
 
 La seguente documentazione è stata fornita dal cliente durante questo sprint:
 
-- :download:`Sprint 3 <3-sprint-requirements.pdf>`
-- :download:`Report finale <3-report.pdf>`
+- :download:`3-sprint-requirements.pdf`
+- :download:`3-report.pdf`
 
 
 Goal
@@ -15,35 +15,40 @@ Goal
 
 Il **goal** del terzo Sprint è stato far funzionare il crawler, gli alert e completare tutte i task rimanenti.
 
-Tutto ciò è visibile dai task completati:
 
-..  image:: Task3.png
+Backlog
+^^^^^^^
+
+.. image:: 3-backlog.png
+    :width: 400
+
+
+Task completati
+^^^^^^^^^^^^^^^
+
+..  image:: 3-tasks.png
      :width: 400
+
 
 Grooming session
 ----------------
 
-Sono state definite le nuove **User Stories** da inserire nel progetto sulla base delle nuove richieste pervenute dal cliente:
+Sono state definite le nuove **User Stories** da inserire nel progetto sulla base delle nuove richieste
+pervenute dal cliente:
 
 - analisi statistica più dettagliata
 - postare su Twitter
 - traduzione dell'interfaccia in inglese.
 
-| La richiesta relativa alle *ricerche basate sulla geolocalizzazione*, come già comunicato al cliente, non è stata inserita per motivi tecnici legati alle features delle **API 1.1** che non permettono di eseguire query sui campi di posizione geografica.
-| Le nuove User Stories sono state valutate tramite il metodo dello Scrum Poker, durante il quale ogni membro ha espresso la sua valutazione.
-| Tutte le nuove richieste sono state accettate dal Product Owner e sono pronte ad essere inserite nello sprint di sviluppo in partenza.
+La richiesta relativa alle *ricerche basate sulla geolocalizzazione*, come già comunicato al cliente, non è stata
+completata interamente per motivi tecnici legati a limitazioni sulle features delle **API 1.1 di Twitter** che non
+permettono di eseguire query su campi di posizione geografica.
 
+Le nuove User Stories sono state valutate tramite Scrum Poker, durante il quale ogni membro ha espresso
+la sua valutazione.
 
-
-Backlog
--------
-.. image:: Backlog3.png
-    :width: 400
-
-**Burndown Chart**
-
-.. image:: Chart3.png
-    :width: 600
+Tutte le nuove richieste sono state accettate dal Product Owner e sono pronte ad essere inserite nello sprint di
+sviluppo in partenza.
 
 
 Definition of Ready
@@ -51,21 +56,56 @@ Definition of Ready
 
 Il team ha definito lo stato di Ready di una User Story in base ai seguenti criteri:
 
-* La User Story è stata compresa ed accettata da tutti i membri
-* I tester hanno confermato la possibilità di poterla testare
-* Il Product Owner ha la visione necessaria per definirne la priorità
-* Il Team è in grado di stimarla
-* La User Story è indipendente o dipendente da altre a priorità maggiore
+- La User Story è stata compresa ed accettata da tutti i membri
+- I tester hanno confermato la possibilità di poterla testare
+- Il Product Owner ha la visione necessaria per definirne la priorità
+- Il Team è in grado di stimarla
+- La User Story è indipendente o dipendente da altre a priorità maggiore
 
 Definition of Done
 ------------------
 
 La definizione di Done è stata concordata da tutto il team con il Product Owner, ed è stata così definita:
 
-* Sviluppo completo della funzionalità richiesta
-* Definizione e superamento dei test
-* Bozza della documentazione della funzionalità
-* Merge dei sorgenti nel branch ``main`` di GitLab
+- Sviluppo completo della funzionalità richiesta
+- Definizione e superamento dei test
+- Bozza della documentazione della funzionalità
+- Merge dei sorgenti nel branch ``main`` di GitLab
+
+
+Statistiche
+-----------
+
+Gitinspector
+^^^^^^^^^^^^
+
+.. note::
+
+    La statistica dello sprint 3 non è ancora stata generata dal prof. Marcello Missiroli.
+
+
+Schermata finale di SonarQube
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+La schermata finale di SonarQube è visibile a questo link:
+
+- :download:`3-sonarqube.pdf`
+
+
+Final Retrospective
+-------------------
+
+.. todo::
+
+    Inserire qui la Retrospettiva finale.
+
+
+Demo
+----
+
+Il video di Demo è disponibile al seguente link:
+
+- https://drive.google.com/file/d/15o70Ffe51CNj8LTKHC9dGiqRVnbv9UpZ/view
 
 
 Registro attività
@@ -96,10 +136,6 @@ Riunioni collettive
     * - 29/05
       - 1.5 h
       - sprint retrospective
-
-    * -
-      -
-      -
 
 
 Attività individuali
@@ -235,6 +271,8 @@ Chiara Calzolari
 Stefano Pigozzi
 """""""""""""""
 
+.. todo:: Inserire activity log di Stefano Pigozzi relativo allo Sprint 3.
+
 .. list-table::
     :header-rows: 2
 
@@ -297,12 +335,10 @@ Giovanni Anniballi
       - Aggiornamento documentazione, aggiunti ulteriori test seguendo i suggerimenti di SQ
 
 
-
-
-
-
 Giorgio Minoccari
 """""""""""""""""
+
+.. todo:: Inserire activity log di Giorgio Minoccari relativo allo Sprint 3.
 
 .. list-table::
     :header-rows: 2
@@ -356,33 +392,3 @@ Lorenzo Balugani
     * - 28/05
       - 6h
       - Bugfixing
-
-
-Statistiche
------------
-
-Gitinspector
-^^^^^^^^^^^^^
-
-.. todo::
-
-    Il prof. Marcello Missiroli non ha ancora generato la statistica dello Sprint 3.
-
-
-Retrospettiva finale
---------------------
-
-.. todo::
-
-    Inserire qui la Retrospettiva finale.
-
-
-Schermata finale di SonarQube
------------------------------
-
-- :download:`Schermata finale Sonarqube <sonarqube.pdf>`
-
-Demo
-----
-
-- https://drive.google.com/file/d/15o70Ffe51CNj8LTKHC9dGiqRVnbv9UpZ/view?usp=sharing

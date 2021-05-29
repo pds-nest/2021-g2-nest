@@ -6,8 +6,8 @@ Consegna
 
 La seguente documentazione è stata fornita dal cliente durante questo sprint:
 
-- :download:`Descrizione iniziale del prodotto <0-initial.pdf>`
-- :download:`Sprint 0 <0-sprint-requirements.pdf>`
+- :download:`0-initial.pdf`
+- :download:`0-sprint-requirements.pdf`
 
 
 Definition of Ready
@@ -15,11 +15,11 @@ Definition of Ready
 
 Il team ha definito lo stato di Ready di una User Story in base ai seguenti criteri:
 
-* La User Story è stata compresa ed accettata da tutti i membri
-* I tester hanno confermato la possibilità di poterla testare
-* Il Product Owner ha la visione necessaria per definirne la priorità
-* Il Team è in grado di stimarla
-* La User Story è indipendente o dipendente da altre a priorità maggiore
+- La User Story è stata compresa ed accettata da tutti i membri
+- I tester hanno confermato la possibilità di poterla testare
+- Il Product Owner ha la visione necessaria per definirne la priorità
+- Il Team è in grado di stimarla
+- La User Story è indipendente o dipendente da altre a priorità maggiore
 
 
 Definition of Done
@@ -28,10 +28,49 @@ Definition of Done
 La definizione di Done è stata concordata da tutto il team con il Product Owner, ed è stata così
 definita:
 
-* Sviluppo completo della funzionalità richiesta
-* Definizione e superamento dei test
-* Bozza della documentazione della funzionalità
-* Merge dei sorgenti nel branch ``main`` del repository Git
+- Sviluppo completo della funzionalità richiesta
+- Definizione e superamento dei test
+- Bozza della documentazione della funzionalità
+- Merge dei sorgenti nel branch ``main`` del repository Git
+
+
+Statistiche
+-----------
+
+Gitinspector
+^^^^^^^^^^^^^
+
+Questa statistica è stata generata dal prof. Marcello Missiroli con
+`Gitinspector`_ al termine dello Sprint.
+
+- :download:`0-stats.html`
+
+
+.. _Gitinspector: https://github.com/ejwa/gitinspector
+
+
+Sprint Retrospective
+--------------------
+
+La Sprint Retrospective è disponibile al seguente link:
+
+- :download:`0-retrospective.pdf`
+
+
+Sprint Review
+-------------
+
+Il video di Sprint Review è disponibile al seguente link:
+
+- https://drive.google.com/file/d/12worWEcx-uf2UP4_lnEOovHZpvR77MsG/view
+
+
+Artefatti
+---------
+
+In questo sprint è stato realizzato un documento con i risultati dell'analisi effettuata per realizzare il software:
+
+- :download:`0-result.pdf`
 
 
 Registro attività
@@ -80,6 +119,16 @@ Riunioni collettive
 
 Attività individuali
 ^^^^^^^^^^^^^^^^^^^^
+
+.. hint::
+
+    Per vedere più in dettaglio il lavoro di sviluppo effettuato da ogni membro del gruppo, si suggerisce di
+    visualizzare il log di Git:
+
+    .. code-block:: console
+
+        $ git log
+
 
 Stefano Goldoni
 """""""""""""""
@@ -453,41 +502,3 @@ Risultati della partita di Scrumble
                 :4: 6-10 average tasks left
                 :5: 0-5 average tasks left
    :Stefano G.: 5
-
-
-Statistiche
------------
-
-Gitinspector
-^^^^^^^^^^^^^
-
-Questa statistica è stata generata dal prof. Marcello Missiroli con
-`Gitinspector`_ al termine dello Sprint.
-
-- :download:`0-stats.html`
-
-
-.. _Gitinspector: https://github.com/ejwa/gitinspector
-
-
-Sprint Retrospective
---------------------
-
-
-- :download:`Sprint 0 Retrospective <sprint-0_retrospective.pdf>`
-
-
-Sprint review
--------------
-
-Il video di sprint review è disponibile al seguente link:
-
-- https://drive.google.com/file/d/12worWEcx-uf2UP4_lnEOovHZpvR77MsG/view
-
-
-Artefatti
----------
-
-In questo sprint è stato realizzato il seguente documento:
-
-- :download:`Documento generale dello Sprint 0 <0-result.pdf>`

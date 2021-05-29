@@ -4,7 +4,7 @@ N.E.S.T.
 Benvenuto alla documentazione di N.E.S.T.!
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 4
     :caption: Manuale utente
 
     guide/about
@@ -13,23 +13,19 @@ Benvenuto alla documentazione di N.E.S.T.!
 
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 4
     :caption: Relazione sul progetto
 
     development/goals
-    development/process
     development/tools
-    development/sprint0/index
-    development/sprint1/index
-    development/sprint2/index
-    development/sprint3/index
+    development/process
     development/artifacts
     development/conclusions
     development/suggestions
 
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 4
     :caption: Documentazione tecnica
 
     code/meta/index

@@ -95,12 +95,8 @@
 <p class="caption"><span class="caption-text">Relazione sul progetto</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="goals.html">Introduzione</a></li>
-<li class="toctree-l1"><a class="reference internal" href="process.html">Processo di sviluppo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="tools.html">Strumenti utilizzati</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sprint0/index.html">Sprint 0: 04 Apr - 18 Apr</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sprint1/index.html">Sprint 1: 19 Apr - 02 Mag</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sprint2/index.html">Sprint 2: 03 Mag - 16 Mag</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sprint3/index.html">Sprint 3: 17 Mag - 30 Mag</a></li>
+<li class="toctree-l1"><a class="reference internal" href="process.html">Processo di sviluppo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="artifacts.html">Artefatti</a></li>
 <li class="toctree-l1"><a class="reference internal" href="conclusions.html">Conclusioni</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Suggerimenti relativi al corso</a></li>
@@ -181,24 +177,55 @@
             
   <div class="section" id="suggerimenti-relativi-al-corso">
 <h1>Suggerimenti relativi al corso<a class="headerlink" href="#suggerimenti-relativi-al-corso" title="Link a questa intestazione">¶</a></h1>
+<ul class="simple">
+<li><p>Il team concorda sull'<strong>utilità del progetto</strong> poiché permette di utilizzare le nozioni viste a lezione nella pratica,
+facendo quindi esperienza sulle varie metodologie da adottare e le varie problematiche in cui si può incorrere.</p></li>
+<li><p>Il team concorda nel dire che <strong>il progetto è eccessivamente corposo</strong>:</p>
 <ul>
-<li><p>Il <em>team</em> concorda <strong>sull’utilità del progetto</strong> poiché permette di utlizzare le nozioni  viste a lezione praticamente (le varie metodologie da adottare e le problematiche in cui si può incorrere).</p></li>
-<li><p>Il <em>team</em> concorda nel dire che <strong>il progetto è eccessivamente corposo</strong>:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>Tecnicamente a 6 cfu dovrebbero corrispondere circa 125 ore di lavoro, mentre questo progetto ne ha richieste molte di più.</p></li>
-<li><p>Suggeriamo quindi di alleggerire il carico di lavoro, e renderlo più proporzionale ai crediti assegnati.</p></li>
+<li><p>Tecnicamente a 6 CFU dovrebbero corrispondere circa 125 ore di lavoro, mentre questo progetto ne ha richieste molte di più.</p></li>
+<li><p>Suggeriamo quindi di <strong>alleggerire significativamente il carico di lavoro</strong>, e renderlo più proporzionato ai
+crediti previsti.</p></li>
 </ul>
-</div></blockquote>
 </li>
-<li><p>Il <em>team</em> suggerisce di <strong>utilizzare GitHub al posto di Gitlab</strong>, poiché più comodo e funzionale.</p></li>
-<li><p>Il <em>team</em> concorda nel dire che  sarebbe molto utile la <strong>partecipazione diretta del prof</strong> durante le prime fasi di progetto, all’inizio del lavoro, per instradare il gruppo nella giusta direzione ed evitare l’effetto «salto nel buio»:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p>Sarebbe stato piacevole avere una buona spiegazione delle regole dello Scrumble</p></li>
-<li><p>Avere qualche lezione più specifica sui tool da utilizzare (sonarqube ecc..)</p></li>
+<li><p>Il team suggerisce di lasciare agli studenti <strong>scelta completamente libera sugli strumenti da adottare</strong>, in quanto si
+sono verificati svariati problemi con quelli previsti dal corso:</p>
+<ul>
+<li><p>Le istanze di Taiga, GitLab e SonarQube ospitate dall'Università si sono dimostrate inaffidabili,
+portando il team a dover ospitare le proprie e quindi a perderci una fetta significativa del proprio tempo.</p>
+<ul>
+<li><p>CAS è supportato solo su Debian, e lo script di installazione esegue operazioni con effetti collaterali sul
+Docker del sistema host.</p></li>
+<li><p>L'installazione di Taiga tramite Docker Compose ha richiesto 5 ore, in quanto una race condition presente nel
+file <code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code> impediva al software di raggiungere il database.</p></li>
+<li><p>L'installazione e manutenzione di GitLab ha richiesto 5 ore, e richiede competenze di amministrazione di sistema
+avanzate che sono oltre il livello dello studente medio del terzo anno di Informatica.</p></li>
 </ul>
-</div></blockquote>
+</li>
+<li><p>Taiga, per quanto funzionale, è un po' acerbo a livello di User Experience, il che ha portato a svariati grattacapi
+durante il suo utilizzo da parte del team.</p>
+<ul>
+<li><p>Inoltre, è in parte superfluo: quasi tutte le funzionalità che fornisce sono già implementate sui sistemi di issues
+di GitHub e GitLab.</p></li>
+</ul>
+</li>
+<li><p>Utilizzare GitLab invece che il più popolare GitHub impedisce di sfruttare la licenza gratuita o <a class="reference external" href="https://education.github.com/pack">universitaria</a> di
+numerosi strumenti di Continuous Integration e Deployment, quali <a class="reference external" href="https://github.com/features/actions">GitHub Actions</a>, <a class="reference external" href="https://readthedocs.org/">Read the Docs</a> e <a class="reference external" href="https://render.com/">Render</a>.</p></li>
+<li><p>SonarQube, per quanto semplice da installare, è molto complesso da utilizzare: il team ha necessitato di parecchie
+ore per capirne il funzionamento.</p>
+<ul>
+<li><p>È forse anche superfluo: tutte le issues che ha segnalato erano già state segnalate in precedenza dal sistema di
+linting di IntelliJ IDEA Ultimate.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Il team concorda nel dire che sarebbe molto utile la <strong>partecipazione diretta del prof</strong> durante le prime fasi di
+progetto, all'inizio del lavoro, per instradare il gruppo nella giusta direzione ed evitare l'effetto &quot;salto nel buio&quot;:</p>
+<ul>
+<li><p>Sarebbe stato piacevole avere una spiegazione più dettagliata delle regole dello Scrumble, e soprattutto sul come
+giocarlo a distanza.</p></li>
+<li><p>Sarebbero state utili lezioni più specifica sui tool da utilizzare, come SonarQube.</p></li>
+</ul>
 </li>
 </ul>
 </div>

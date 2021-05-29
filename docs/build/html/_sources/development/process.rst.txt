@@ -1,71 +1,35 @@
-
 Processo di sviluppo
 ====================
 
-- Lo sviluppo è stato suddiviso in **4 sprint**, ciascuno della durata di *2 settimane*
+Ruoli
+-----
 
-Sprint 0 - dal 5 Aprile al 18 Aprile
-------------------------------------
+Per lavorare più efficientemente, ci siamo assegnati uno o più "ruoli" in base alle nostre competenze.
 
-- `Diari dei partecipanti dello sprint 0`_
+:Stefano Goldoni: Product Owner, Tester
+:Flavia Cocca: Scrum Master, UI Designer, Documentazione
+:Chiara Calzolari: UI Designer, Translator
+:Stefano Pigozzi: Frontend Developer, Sysadmin
+:Giovanni Anniballi: Lead Tester
+:Giorgio Minoccari: Analyst, Crawler Developer
+:Lorenzo Balugani: Database Architect, Backend Developer
 
-.. _Diari dei partecipanti dello sprint 0: http://localhost:63342/N.E.S.T./Modulo%20unico/docs/build/html/development/sprint0/index.html#registro-attivita
 
-- `Retrospettiva dello sprint 0`_
+Sprint
+------
 
-.. _Retrospettiva dello sprint 0: http://localhost:63342/N.E.S.T./Modulo%20unico/docs/build/html/development/sprint0/index.html#retrospettiva-finale
+Lo sviluppo si è svolto in **4 Sprint** dalla durata di **2 settimane ciascuno**.
 
-Sprint 1 - dal 19 Aprile al 2 Maggio
-------------------------------------
+.. toctree::
+    :maxdepth: 1
 
-Burndown dello sprint 1
-^^^^^^^^^^^^^^^^^^^^^^^
-.. image:: Burndown1.png
-    :width: 600
+    sprint0/index
+    sprint1/index
+    sprint2/index
+    sprint3/index
 
-- `Diari dei partecipanti dello sprint 1`_
 
-.. _Diari dei partecipanti dello sprint 1: http://localhost:63342/N.E.S.T./Modulo%20unico/docs/build/html/development/sprint1/index.html#registro-attivita
+Burndown chart complessiva
+--------------------------
 
-- `Retrospettiva dello sprint 1`_
-
-.. _Retrospettiva dello sprint 1: http://localhost:63342/N.E.S.T./Modulo%20unico/docs/build/html/development/sprint1/index.html#retrospettiva-finale
-
-Sprint 2 - dal 3 Maggio al 16 Maggio
-------------------------------------
-Burndown dello sprint 2
-^^^^^^^^^^^^^^^^^^^^^^^
-.. image:: Burndown2.png
-    :width: 600
-
-- `Diari dei partecipanti dello sprint 2`_
-
-.. _Diari dei partecipanti dello sprint 2: http://localhost:63342/N.E.S.T./Modulo%20unico/docs/build/html/development/sprint2/index.html#registro-attivita
-
-- `Retrospettiva dello sprint 2`_
-
-.. _Retrospettiva dello sprint 2: http://localhost:63342/N.E.S.T./Modulo%20unico/docs/build/html/development/sprint2/index.html#retrospettiva-finale
-
-Sprint 3 - dal 19 Maggio al 30 Maggio
--------------------------------------
-Burndown dello sprint 3
-^^^^^^^^^^^^^^^^^^^^^^^
-.. image:: Burndown3.png
-    :width: 600
-
-- `Diari dei partecipanti dello sprint 3`_
-
-.. _Diari dei partecipanti dello sprint 3: http://localhost:63342/N.E.S.T./Modulo%20unico/docs/build/html/development/sprint3/index.html#registro-attivita
-
-- `Retrospettiva dello sprint 3`_
-
-.. _Retrospettiva dello sprint 3: http://localhost:63342/N.E.S.T./Modulo%20unico/docs/build/html/development/sprint3/index.html#retrospettiva-finale
-
-In generale
------------
-Burndown totale
-^^^^^^^^^^^^^^^
 .. image:: Burndown4.png
-    :width: 600
-
-
