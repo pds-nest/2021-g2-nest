@@ -283,9 +283,7 @@ Retrospettiva finale
 Schermata finale di SonarQube
 -----------------------------
 
-.. todo::
-
-    Inserire qui uno screenshot della schermata finale di SonarQube.
+- :download:`Schermata finale Sonarqube <sonarqube.pdf>`
 
 Demo
 ----
