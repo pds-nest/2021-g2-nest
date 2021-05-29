@@ -2,6 +2,7 @@ from datetime import datetime, timedelta
 from nest_backend.database import *
 from authentication import authenticate
 import smtplib
+import tweepy as tw
 
 def is_repo_alert_triggered(repository_id):
     repo = Repository.query.filter_by(id=repository_id).first()
@@ -35,7 +36,7 @@ def is_repo_alert_triggered(repository_id):
             ext.session.commit()
             print("alert triggered")
             alerts_triggered.append(alert)
-            send_notification_email(alert)
+            #send_notification_email(alert)
             send_notification_tweet(alert)
 
 
@@ -47,14 +48,11 @@ def send_notification_email(alert):
     conditions_string = conditions_string[:-1]
     smtpObj = None
     try:
-        smtpObj = smtplib.SMTP('localhost')
-        smtpObj.sendmail("alert@nest.com", owner_repo.email, "Alert triggered")
-        print("Successfully sent email")
+        with smtplib.SMTP(host='localhost') as smtpObj:
+            smtpObj.sendmail("alert@nest.com", owner_repo.email, "Alert triggered")
+            print("Successfully sent email")
     except smtplib.SMTPException:
         print("Error: unable to send email")
-    finally:
-        if smtpObj is not None:
-            smtpObj.close()
 
 def send_notification_tweet(alert):
     api = authenticate()
@@ -63,5 +61,8 @@ def send_notification_tweet(alert):
         conditions_string += condition.condition.content + ','
     conditions_string = conditions_string[:-1]
     print(conditions_string)
-    api.update_status(f"L'alert {alert.name} è stato attivato! C'è stato un incremento di popolarità negli argomenti di ricerca {conditions_string}")
+    try:
+        api.update_status(f"L'alert {alert.name} è stato attivato! C'è stato un incremento di popolarità negli argomenti di ricerca {conditions_string}")
+    except tw.errors.Forbidden:
+        print("Il tweet e' gia' stato pubblicato")
 

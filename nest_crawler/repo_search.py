@@ -19,6 +19,12 @@ def search_repo_conditions(repository_id):
 
     print(f"Searching tweets from repo: {repo.name}")
     evaluation_mode = repo.evaluation_mode
+
+    # tweets_repo = [tweet.tweet for tweet in repo.tweets]
+    # tweets_repo.sort(key=lambda x: x.snowflake)
+    #
+    # latest_tweet_id = int(tweets_repo[-1].snowflake) if len(tweets_repo) > 0 else 0
+
     conditions_type = dict()
 
     # Dividing condition into condition types
@@ -54,8 +60,8 @@ def search_repo_conditions(repository_id):
             for condition_content in conditions_type[ConditionType.coordinates]:
                 coordinates_tweet = condition_content.content.split()
                 coordinates_string = coordinates_tweet[2] + "," + coordinates_tweet[3] + "," + str(float(coordinates_tweet[1])/1000) + "km"
-                print(coordinates_string)
-                for tweet in tw.Cursor(method=api.search, q="", geocode=coordinates_string).items(10):
+                print(f"Le coordinate di questa condizione sono: {coordinates_string}")
+                for tweet in tw.Cursor(method=api.search, q="", geocode=coordinates_string).items(100):
                     if not Tweet.query.filter_by(snowflake=str(tweet.id)).all():
                         image_url_list = ''
                         if 'media' in tweet.entities.keys():
@@ -92,17 +98,17 @@ def search_repo_conditions(repository_id):
                 queryString += ("since:" + condition_content.content[2:] + " " + queryConjunction + " ")
     # End of query string
     queryString = queryString[:-len(queryConjunction) - 1]
-    print(queryString)
+    print(f"La stringa di query finale e':{queryString}")
 
     if evaluation_mode == ConditionMode.all_or:
         if queryString != "":
-            for tweet in tw.Cursor(method=api.search, q=queryString).items(10):
+            for tweet in tw.Cursor(method=api.search, q=queryString).items(100):
                 tweetsFound.append(tweet)
-                print(tweet.user.name + ' : ' + tweet.text + ' : ' + tweet.geo if tweet.geo is not None else '')
+                print(tweet.user.name + ' : ' + tweet.text + ' : ' + (tweet.geo if tweet.geo is not None else ''))
     elif evaluation_mode == ConditionMode.all_and:
-        for tweet in tw.Cursor(method=api.search, q=queryString, geocode=coordinates_string).items(10):
+        for tweet in tw.Cursor(method=api.search, q=queryString, geocode=coordinates_string).items(100):
             tweetsFound.append(tweet)
-            print(tweet.user.name + ' : ' + tweet.text + ' : ' + str(tweet.geo))
+            print(tweet.user.name + ' : ' + tweet.text + ' : ' + (tweet.geo if tweet.geo is not None else ''))
     for tweet in tweetsFound:
         if not Tweet.query.filter_by(snowflake=str(tweet.id)).all():
             image_url_list = ''
