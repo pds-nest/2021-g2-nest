@@ -382,7 +382,6 @@ Schermata finale di SonarQube
 
 - :download:`Schermata finale Sonarqube <sonarqube.pdf>`
 
-Demo
-----
+
 
 - https://drive.google.com/file/d/15o70Ffe51CNj8LTKHC9dGiqRVnbv9UpZ/view?usp=sharing

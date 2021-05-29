@@ -1,9 +1,6 @@
 Introduzione
 ============
 
-.. todo::
-    Lasciamo il tempo al futuro?
-
 Obiettivo
 ---------
 
@@ -59,10 +56,6 @@ Utente
     Utente amministratore
         Potrà effettuare tutte le attività dell'utente regolare, e in aggiunta potrà creare ed eliminare nuovi utenti
         regolari.
-
-
-.. todo::
-    Estendere il glossario qualora vengano incontrati altri termini.
 
 
 Macro-funzionalità
