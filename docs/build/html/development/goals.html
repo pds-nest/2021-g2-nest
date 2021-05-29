@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Obiettivo del progetto &mdash; N.E.S.T. 0.1.0 documentazione</title>
+  <title>Introduzione &mdash; N.E.S.T. 0.1.0 documentazione</title>
   
 
   
@@ -93,8 +93,13 @@
 </ul>
 <p class="caption"><span class="caption-text">Relazione sul progetto</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Obiettivo del progetto</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#scope">Scope</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Introduzione</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#obiettivo">Obiettivo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#campo-di-applicazione">Campo di applicazione</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#caratteristiche-degli-utenti">Caratteristiche degli utenti</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#glossario">Glossario</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#macro-funzionalita">Macro-funzionalità</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#database">Database</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#casi-d-uso">Casi d’uso</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#backlog-generale">Backlog generale</a></li>
 </ul>
@@ -163,7 +168,7 @@
     
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Obiettivo del progetto</li>
+      <li>Introduzione</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -182,32 +187,122 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="obiettivo-del-progetto">
-<h1>Obiettivo del progetto<a class="headerlink" href="#obiettivo-del-progetto" title="Link a questa intestazione">¶</a></h1>
+  <div class="section" id="introduzione">
+<h1>Introduzione<a class="headerlink" href="#introduzione" title="Link a questa intestazione">¶</a></h1>
 <div class="admonition-todo admonition" id="id1">
 <p class="admonition-title">Da fare</p>
-<p>Scrivere l’obiettivo generale del progetto.</p>
+<p>Lasciamo il tempo al futuro?</p>
 </div>
-<div class="section" id="scope">
-<h2>Scope<a class="headerlink" href="#scope" title="Link a questa intestazione">¶</a></h2>
+<div class="section" id="obiettivo">
+<h2>Obiettivo<a class="headerlink" href="#obiettivo" title="Link a questa intestazione">¶</a></h2>
+<p>L’obiettivo del progetto è la creazione di un software per fornire l’aggregazione e l’analisi di <a class="reference external" href="https://help.twitter.com/it/using-twitter#tweets">Tweet</a>, in modo da
+rilevare eventi <em>macroscopici</em>, <em>locali</em> o più semplicemente filtrarli in base a delle <em>keyword</em>.</p>
+<p>Il prodotto sarà utilizzato dal cliente e da un piccolo gruppo di suoi dipendenti per effettuare ricerche statistiche.</p>
+<p>Il software andrà ad integrarsi direttamente con <a class="reference external" href="https://twitter.com/">Twitter</a>, da cui verranno raccolti dati e su cui verranno pubblicate
+allerte su di essi.</p>
+</div>
+<div class="section" id="campo-di-applicazione">
+<h2>Campo di applicazione<a class="headerlink" href="#campo-di-applicazione" title="Link a questa intestazione">¶</a></h2>
+<p>Il software trova utilizzo principalmente in <strong>ambito statistico</strong>, essendo il suo scopo quello di raccogliere dati e
+permettere di analizzarli tramite un’interfaccia grafica.</p>
+</div>
+<div class="section" id="caratteristiche-degli-utenti">
+<h2>Caratteristiche degli utenti<a class="headerlink" href="#caratteristiche-degli-utenti" title="Link a questa intestazione">¶</a></h2>
+<p>Il software potrà essere utilizzato da utenti con una discreta esperienza nell’analisi di dati ma senza particolari
+conoscenze informatiche.</p>
+</div>
+<div class="section" id="glossario">
+<h2>Glossario<a class="headerlink" href="#glossario" title="Link a questa intestazione">¶</a></h2>
+<dl>
+<dt>Repository</dt><dd><p>Raccolta di tweet che soddisfano determinate condizioni.</p>
+</dd>
+<dt>Condizione</dt><dd><p>Predicato logico che deve essere soddisfatto da un tweet per essere raccolto in fase di raccolta dati, o per essere
+contato in fase di allertamento utente.</p>
+</dd>
+<dt>Filtro</dt><dd><p>Predicato logico che deve essere soddisfatto da un tweet per essere visualizzato in fase di analisi dati.</p>
+</dd>
+<dt>Allarme</dt><dd><p>Notifica inviata all’utente attraverso un mezzo telematico, come email oppure un tweet.</p>
+</dd>
+<dt>Utente</dt><dd><p>Utilizzatore del software con un proprio account creato dall’amministratore della piattaforma.</p>
+<p>In particolare, la piattaforma prevederà due tipologie di utenti:</p>
+<dl class="simple">
+<dt>Utente regolare</dt><dd><p>Potranno eseguire attività di creazione, analisi, condivisione, archiviazione ed eliminazione dei propri repository.</p>
+</dd>
+<dt>Utente amministratore</dt><dd><p>Potrà effettuare tutte le attività dell’utente regolare, e in aggiunta potrà creare ed eliminare nuovi utenti
+regolari.</p>
+</dd>
+</dl>
+</dd>
+</dl>
 <div class="admonition-todo admonition" id="id2">
 <p class="admonition-title">Da fare</p>
-<p>Scrivere lo scope del progetto.</p>
+<p>Estendere il glossario qualora vengano incontrati altri termini.</p>
+</div>
+</div>
+<div class="section" id="macro-funzionalita">
+<h2>Macro-funzionalità<a class="headerlink" href="#macro-funzionalita" title="Link a questa intestazione">¶</a></h2>
+<p>Il software permetterà di selezionare <strong>condizioni</strong> con cui scegliere quali tweet raccogliere:</p>
+<ul class="simple">
+<li><p>in base ai loro <a class="reference external" href="https://help.twitter.com/it/using-twitter/how-to-use-hashtags">hashtag</a></p></li>
+<li><p>in base al loro autore</p></li>
+<li><p>in base alla loro <a class="reference external" href="https://help.twitter.com/en/safety-and-security/tweet-location-settings">posizione geografica</a> (ove presente)</p></li>
+<li><p>in base alla loro data di pubblicazione</p></li>
+</ul>
+<p>Selezionate le condizioni, l’utente potrà creare una <strong>repository</strong>: una cartella in cui verranno raccolti i tweet
+soddisfacenti le condizioni richieste.</p>
+<p>Una volta raccolti, i tweet di una repository potranno essere <strong>analizzati</strong> in qualsiasi momento: durante l’analisi,
+saranno mostrate statistiche e grafici relativi ai tweet.</p>
+<p>La raccolta potrà essere interrotta in qualsiasi momento <strong>archiviando</strong> il repository.</p>
+<p>Sarà possibile <strong>condividere</strong> una repository con altri utenti della piattaforma, permettendo loro di analizzarla.</p>
+<p>Infine, l’utente potrà configurare una repository in modo che gli invii una <strong>allerta</strong> qualora vengano raccolti un dato
+numero di tweet in una certa <em>finestra temporale</em>.</p>
+</div>
+<div class="section" id="database">
+<h2>Database<a class="headerlink" href="#database" title="Link a questa intestazione">¶</a></h2>
+<div class="admonition-todo admonition" id="id3">
+<p class="admonition-title">Da fare</p>
+<p>inserire schema database + glossario aggiornato</p>
 </div>
 </div>
 <div class="section" id="casi-d-uso">
 <h2>Casi d’uso<a class="headerlink" href="#casi-d-uso" title="Link a questa intestazione">¶</a></h2>
-<div class="admonition-todo admonition" id="id3">
-<p class="admonition-title">Da fare</p>
-<p>Scrivere i casi d’uso del progetto.</p>
-</div>
+<p>N.E.S.T. prevede tre tipologie di <em>agenti</em> («utenti» UML): <strong>utente</strong>, <strong>amministratore</strong> e <strong>sistema</strong>.</p>
+<img alt="../_images/Utenti.png" src="../_images/Utenti.png" />
+<p>I principali casi d’uso individuati durante la progettazione di N.E.S.T. sono:</p>
+<ul>
+<li><p>La gestione degli utenti da parte di un Amministratore:</p>
+<img alt="../_images/CasiUso1.PNG" src="../_images/CasiUso1.PNG" />
+</li>
+<li><p>La gestione del login da parte di un Utente:</p>
+<img alt="../_images/CasiUso2.PNG" src="../_images/CasiUso2.PNG" />
+</li>
+<li><p>La gestione delle Allerte sia dal punto di vista dell’Utente che del Sistema:</p>
+<img alt="../_images/CasiUso3.PNG" src="../_images/CasiUso3.PNG" />
+</li>
+<li><p>La gestione della raccolta da parte dell’utente:</p>
+<img alt="../_images/CasiUso4.PNG" src="../_images/CasiUso4.PNG" />
+</li>
+<li><p>La gestione di un repository da parte dell’utente:</p>
+<img alt="../_images/CasiUso5.PNG" src="../_images/CasiUso5.PNG" />
+</li>
+<li><p>La visualizzazione di un repository:</p>
+<img alt="../_images/CasiUso6.PNG" src="../_images/CasiUso6.PNG" />
+</li>
+</ul>
 </div>
 <div class="section" id="backlog-generale">
 <h2>Backlog generale<a class="headerlink" href="#backlog-generale" title="Link a questa intestazione">¶</a></h2>
-<div class="admonition-todo admonition" id="id4">
-<p class="admonition-title">Da fare</p>
-<p>Elencare qui tutte le user story del backlog, senza specificare lo sprint in cui sono state realizzate.</p>
+<p>Si riporta qui di seguito il Backlog definito ad inizio progetto, prima dell’avvio dello sviluppo.
+Gli elementi dal bordo grigio sono le epiche:</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Alcune user story sono state rimosse in seguito al feedback ricevuto durante il primo sprint!</p>
 </div>
+<img alt="../_images/Backlog1.PNG" src="../_images/Backlog1.PNG" />
+<img alt="../_images/Backlog2.PNG" src="../_images/Backlog2.PNG" />
+<img alt="../_images/Backlog3.PNG" src="../_images/Backlog3.PNG" />
+<img alt="../_images/Backlog4.PNG" src="../_images/Backlog4.PNG" />
+<img alt="../_images/Backlog5.PNG" src="../_images/Backlog5.PNG" />
 </div>
 </div>
 
