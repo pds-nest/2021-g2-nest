@@ -470,14 +470,17 @@ Questa statistica è stata generata dal prof. Marcello Missiroli con
 .. _Gitinspector: https://github.com/ejwa/gitinspector
 
 
+Sprint review
+-------------
+
+Il video di sprint review è disponibile al seguente link:
+
+- https://drive.google.com/file/d/12worWEcx-uf2UP4_lnEOovHZpvR77MsG/view
+
+
 Artefatti
 ---------
 
 In questo sprint è stato realizzato il seguente documento:
 
 - :download:`Documento generale dello Sprint 0 <0-result.pdf>`
-
-Inoltre, è stato prodotto il seguente video:
-
-- `video di sprint review <https://drive.google.com/file/d/12worWEcx-uf2UP4_lnEOovHZpvR77MsG/view>`_
-
