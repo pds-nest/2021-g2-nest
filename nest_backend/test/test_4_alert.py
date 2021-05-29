@@ -170,6 +170,7 @@ class TestAlertGet:
         assert r.json["result"] == "success"
 
 
+class TestAlertPatch:
     def test_patch_alert_no_json(self, flask_client: Client, user_headers):
         r = flask_client.patch(f'/api/v1/alert/1', headers=user_headers)
         assert r.status_code == 400
@@ -194,6 +195,31 @@ class TestAlertGet:
 
 
 class TestAlertPut:
+    def test_for_success(self, flask_client: Client, user_headers):
+        r = flask_client.put(f'/api/v1/alert/2', headers=user_headers, json={
+            "conditions": [
+                {
+                    "content": "string",
+                    "id": 0,
+                    "type": 0
+                }
+            ],
+            "evaluation_mode": 0,
+            "id": 0,
+            "limit": 0,
+            "name": "string",
+            "notifications": [
+                {
+                    "id": 0,
+                    "ora": "2021-05-29T11:32:38.664Z",
+                    "repository_id": 0
+                }
+            ],
+            "repository_id": 0,
+            "window_size": 0
+        })
+        assert r.status_code == 200
+
     def test_put_alert_no_json(self, flask_client: Client, user_headers):
         r = flask_client.put(f'/api/v1/alert/2', headers=user_headers)
         assert r.status_code == 400
