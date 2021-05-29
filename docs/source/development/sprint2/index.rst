@@ -1,11 +1,6 @@
 Sprint 2: 03 Mag - 16 Mag
 =========================
 
-.. todo::
-
-    Inserire informazioni generali sullo sprint, come inizio e fine.
-
-
 Consegna
 --------
 
@@ -16,26 +11,47 @@ La seguente documentazione è stata fornita dal cliente durante questo sprint:
 
 Goal
 ----
+Il **goal** del secondo sprint è stato la creazione, cancellazione e modifica dei repository, ovvero permettere agli utenti
+di creare repo partendo da una ricerca che rispetta determinate condizioni.
 
-.. todo::
+Tutto ciò è visibile dai task completati:
 
-    Inserire qui lo sprint goal.
+..  image:: Sprint2Task.png
+     :width: 390
+
 
 
 Backlog
 -------
 
-.. todo::
+.. image:: BacklogSprint2.png
+    :width: 400
 
-    Mostrare qui lo sprint backlog di Taiga.
+**Burndown Chart**
+
+.. image:: Chart2.png
+    :width: 600
 
 
-Definition of done
+Definition of Ready
 ------------------
 
-.. todo::
+Il team ha definito lo stato di Ready di una User Story in base ai seguenti criteri:
+* La User Story è stata compresa ed accettata da tutti i membri
+* I tester hanno confermato la possibilità di poterla testare
+* Il Product Owner ha la visione necessaria per definirne la priorità
+* Il Team è in grado di stimarla
+* La User Story è indipendente o dipendente da altre a priorità maggiore
 
-    Inserire qui la definition of done dello sprint.
+Definition of Done
+------------------
+
+La definizione di Done è stata concordata da tutto il team con il Product Owner, ed è stata così definita:
+* Sviluppo completo della funzionalità richiesta
+* Definizione e superamento dei test
+* Bozza della documentazione della funzionalità
+* Merge dei sorgenti nel branch ‘Main’ di GitLab
+
 
 
 Registro attività
@@ -423,9 +439,14 @@ Questa statistica è stata generata dal prof. Marcello Missiroli con
 .. _Gitinspector: https://github.com/ejwa/gitinspector
 
 
+Sprint retrospective
+--------------------
+- :download:`Sprint 2 Retrospective <RetrospectiveSprint2.pdf>`
+
+
 Sprint review
 -------------
 
-.. todo::
+Il video di sprint review è disponibile al seguente link:
 
-    Inserire un link alla sprint review.
+- https://drive.google.com/file/d/1x1kub-bpVJrwmGrn5LLU8ecqcbxFaoKg/view?usp=sharing
