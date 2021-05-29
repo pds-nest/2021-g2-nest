@@ -95,9 +95,7 @@ La schermata finale di SonarQube è visibile a questo link:
 Final Retrospective
 -------------------
 
-.. todo::
-
-    Inserire qui la Retrospettiva finale.
+- :download:`Retrospettiva finale <RetrospectiveSprint3.pdf>`
 
 
 Demo
