@@ -9,6 +9,4 @@ Artefatti
 Demo
 ----
 
-.. todo::
-
-    Inserire un link al video della demo.
+- https://drive.google.com/file/d/15o70Ffe51CNj8LTKHC9dGiqRVnbv9UpZ/view?usp=sharing

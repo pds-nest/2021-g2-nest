@@ -15,7 +15,7 @@ import isString from "is-string"
  */
 export default function GlobalServer({ children }) {
     // TODO: Set this using an envvar
-    const [server, setServer] = useLocalStorageState("server", "http://127.0.0.1:5000")
+    const [server, setServer] = useLocalStorageState("server", "https://api.nest.steffo.eu")
 
     /**
      * Fetch JSON data from the API.
