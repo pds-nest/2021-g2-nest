@@ -58,10 +58,6 @@ Utente
         regolari.
 
 
-.. todo::
-    Estendere il glossario qualora vengano incontrati altri termini.
-
-
 Macro-funzionalità
 ------------------
 
