@@ -13,6 +13,7 @@
   
   <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
 
   
   
@@ -90,7 +91,7 @@
 </ul>
 <p class="caption"><span class="caption-text">Relazione sul progetto</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="development/goals.html">Obiettivo del progetto</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development/goals.html">Introduzione</a></li>
 <li class="toctree-l1"><a class="reference internal" href="development/process.html">Processo di sviluppo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="development/tools.html">Strumenti utilizzati</a></li>
 <li class="toctree-l1"><a class="reference internal" href="development/sprint0/index.html">Sprint 0: 04 Apr - 18 Apr</a></li>
@@ -104,6 +105,7 @@
 <p class="caption"><span class="caption-text">Documentazione tecnica</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="code/meta/index.html">Meta-documentazione</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code/database/index.html">Struttura del database</a></li>
 <li class="toctree-l1"><a class="reference internal" href="code/backend/index.html"><code class="docutils literal notranslate"><span class="pre">nest_backend</span></code> - Web API in Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="code/crawler/index.html"><code class="docutils literal notranslate"><span class="pre">nest_crawler</span></code> - Crawler in Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="code/frontend/index.html"><code class="docutils literal notranslate"><span class="pre">nest_frontend</span></code> - Interfaccia utente in React</a></li>
@@ -232,8 +234,12 @@
 </li>
       <li><a href="code/backend/index.html#nest_backend.database.tables.MadeOf.aid">aid (nest_backend.database.tables.MadeOf attributo)</a>
 </li>
-      <li><a href="code/backend/index.html#nest_backend.database.tables.Alert">Alert (classe in nest_backend.database.tables)</a>
+      <li><a href="code/database/index.html#Alert">Alert (classe built-in)</a>
+
+      <ul>
+        <li><a href="code/backend/index.html#nest_backend.database.tables.Alert">(classe in nest_backend.database.tables)</a>
 </li>
+      </ul></li>
       <li><a href="code/backend/index.html#nest_backend.database.tables.MadeOf.alert">alert (nest_backend.database.tables.MadeOf attributo)</a>
 
       <ul>
@@ -256,10 +262,20 @@
 </li>
       <li><a href="code/backend/index.html#nest_backend.database.tables.OperationType.assign">assign (nest_backend.database.tables.OperationType attributo)</a>
 </li>
+      <li><a href="code/crawler/index.html#nest_crawler.associate_condition_tweet">associate_condition_tweet() (nel modulo nest_crawler)</a>
+</li>
       <li><a href="code/backend/index.html#nest_backend.gestione.authenticate">authenticate() (nel modulo nest_backend.gestione)</a>
+
+      <ul>
+        <li><a href="code/crawler/index.html#nest_crawler.authenticate">(nel modulo nest_crawler)</a>
 </li>
-      <li><a href="code/backend/index.html#nest_backend.database.tables.Authorization">Authorization (classe in nest_backend.database.tables)</a>
+      </ul></li>
+      <li><a href="code/database/index.html#Authorization">Authorization (classe built-in)</a>
+
+      <ul>
+        <li><a href="code/backend/index.html#nest_backend.database.tables.Authorization">(classe in nest_backend.database.tables)</a>
 </li>
+      </ul></li>
       <li><a href="code/backend/index.html#nest_backend.database.tables.Repository.authorizations">authorizations (nest_backend.database.tables.Repository attributo)</a>
 
       <ul>
@@ -278,10 +294,18 @@
         <li><a href="code/backend/index.html#nest_backend.database.tables.MadeOf.cid">(nest_backend.database.tables.MadeOf attributo)</a>
 </li>
       </ul></li>
-      <li><a href="code/backend/index.html#nest_backend.database.tables.Composed">Composed (classe in nest_backend.database.tables)</a>
+      <li><a href="code/database/index.html#Composed">Composed (classe built-in)</a>
+
+      <ul>
+        <li><a href="code/backend/index.html#nest_backend.database.tables.Composed">(classe in nest_backend.database.tables)</a>
 </li>
-      <li><a href="code/backend/index.html#nest_backend.database.tables.Condition">Condition (classe in nest_backend.database.tables)</a>
+      </ul></li>
+      <li><a href="code/database/index.html#Condition">Condition (classe built-in)</a>
+
+      <ul>
+        <li><a href="code/backend/index.html#nest_backend.database.tables.Condition">(classe in nest_backend.database.tables)</a>
 </li>
+      </ul></li>
       <li><a href="code/backend/index.html#nest_backend.database.tables.Contains.condition">condition (nest_backend.database.tables.Contains attributo)</a>
 
       <ul>
@@ -302,8 +326,12 @@
       </ul></li>
       <li><a href="code/backend/index.html#nest_backend.database.tables.ConditionType">ConditionType (classe in nest_backend.database.tables)</a>
 </li>
-      <li><a href="code/backend/index.html#nest_backend.database.tables.Contains">Contains (classe in nest_backend.database.tables)</a>
+      <li><a href="code/database/index.html#Contains">Contains (classe built-in)</a>
+
+      <ul>
+        <li><a href="code/backend/index.html#nest_backend.database.tables.Contains">(classe in nest_backend.database.tables)</a>
 </li>
+      </ul></li>
       <li><a href="code/backend/index.html#nest_backend.database.tables.Condition.content">content (nest_backend.database.tables.Condition attributo)</a>
 
       <ul>
@@ -380,15 +408,21 @@
         <li><a href="code/backend/index.html#nest_backend.database.tables.Repository.id">(nest_backend.database.tables.Repository attributo)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="code/backend/index.html#nest_backend.gestione.identity">identity() (nel modulo nest_backend.gestione)</a>
 </li>
       <li><a href="code/backend/index.html#nest_backend.database.tables.Tweet.image_url">image_url (nest_backend.database.tables.Tweet attributo)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="code/backend/index.html#nest_backend.database.tables.Tweet.insert_time">insert_time (nest_backend.database.tables.Tweet attributo)</a>
 </li>
       <li><a href="code/backend/index.html#nest_backend.database.tables.Repository.is_active">is_active (nest_backend.database.tables.Repository attributo)</a>
+</li>
+      <li><a href="code/crawler/index.html#nest_crawler.is_coordinate_inside_bounding_box">is_coordinate_inside_bounding_box() (nel modulo nest_crawler)</a>
+</li>
+      <li><a href="code/backend/index.html#nest_backend.database.tables.Repository.is_deleted">is_deleted (nest_backend.database.tables.Repository attributo)</a>
+</li>
+      <li><a href="code/crawler/index.html#nest_crawler.is_repo_alert_triggered">is_repo_alert_triggered() (nel modulo nest_crawler)</a>
 </li>
       <li><a href="code/backend/index.html#nest_backend.database.tables.User.isAdmin">isAdmin (nest_backend.database.tables.User attributo)</a>
 </li>
@@ -428,8 +462,12 @@
 <h2 id="M">M</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="code/backend/index.html#nest_backend.database.tables.MadeOf">MadeOf (classe in nest_backend.database.tables)</a>
+      <li><a href="code/database/index.html#MadeOf">MadeOf (classe built-in)</a>
+
+      <ul>
+        <li><a href="code/backend/index.html#nest_backend.database.tables.MadeOf">(classe in nest_backend.database.tables)</a>
 </li>
+      </ul></li>
       <li>
     modulo
 
@@ -503,8 +541,12 @@
         <li><a href="code/crawler/index.html#module-nest_crawler">modulo</a>
 </li>
       </ul></li>
-      <li><a href="code/backend/index.html#nest_backend.database.tables.Notification">Notification (classe in nest_backend.database.tables)</a>
+      <li><a href="code/database/index.html#Notification">Notification (classe built-in)</a>
+
+      <ul>
+        <li><a href="code/backend/index.html#nest_backend.database.tables.Notification">(classe in nest_backend.database.tables)</a>
 </li>
+      </ul></li>
       <li><a href="code/backend/index.html#nest_backend.database.tables.Alert.notifications">notifications (nest_backend.database.tables.Alert attributo)</a>
 </li>
   </ul></td>
@@ -553,8 +595,12 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="code/backend/index.html#nest_backend.database.tables.Tweet.repositories">repositories (nest_backend.database.tables.Tweet attributo)</a>
 </li>
-      <li><a href="code/backend/index.html#nest_backend.database.tables.Repository">Repository (classe in nest_backend.database.tables)</a>
+      <li><a href="code/database/index.html#Repository">Repository (classe built-in)</a>
+
+      <ul>
+        <li><a href="code/backend/index.html#nest_backend.database.tables.Repository">(classe in nest_backend.database.tables)</a>
 </li>
+      </ul></li>
       <li><a href="code/backend/index.html#nest_backend.database.tables.Alert.repository">repository (nest_backend.database.tables.Alert attributo)</a>
 
       <ul>
@@ -587,6 +633,14 @@
 <h2 id="S">S</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="code/crawler/index.html#nest_crawler.search_repo_conditions">search_repo_conditions() (nel modulo nest_crawler)</a>
+</li>
+      <li><a href="code/crawler/index.html#nest_crawler.send_notification_email">send_notification_email() (nel modulo nest_crawler)</a>
+</li>
+      <li><a href="code/crawler/index.html#nest_crawler.send_notification_tweet">send_notification_tweet() (nel modulo nest_crawler)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="code/backend/index.html#nest_backend.database.tables.Composed.snowflake">snowflake (nest_backend.database.tables.Composed attributo)</a>
 
       <ul>
@@ -595,8 +649,6 @@
         <li><a href="code/backend/index.html#nest_backend.database.tables.Tweet.snowflake">(nest_backend.database.tables.Tweet attributo)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="code/backend/index.html#nest_backend.database.tables.Repository.start">start (nest_backend.database.tables.Repository attributo)</a>
 </li>
   </ul></td>
@@ -625,8 +677,12 @@
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="code/backend/index.html#nest_backend.database.tables.Tweet">Tweet (classe in nest_backend.database.tables)</a>
+      <li><a href="code/database/index.html#Tweet">Tweet (classe built-in)</a>
+
+      <ul>
+        <li><a href="code/backend/index.html#nest_backend.database.tables.Tweet">(classe in nest_backend.database.tables)</a>
 </li>
+      </ul></li>
       <li><a href="code/backend/index.html#nest_backend.database.tables.Composed.tweet">tweet (nest_backend.database.tables.Composed attributo)</a>
 
       <ul>
@@ -647,16 +703,20 @@
 <h2 id="U">U</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="code/backend/index.html#nest_backend.database.tables.User">User (classe in nest_backend.database.tables)</a>
+      <li><a href="code/database/index.html#User">User (classe built-in)</a>
+
+      <ul>
+        <li><a href="code/backend/index.html#nest_backend.database.tables.User">(classe in nest_backend.database.tables)</a>
 </li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="code/backend/index.html#nest_backend.database.tables.Authorization.user">user (nest_backend.database.tables.Authorization attributo)</a>
 
       <ul>
         <li><a href="code/backend/index.html#nest_backend.database.tables.ConditionType.user">(nest_backend.database.tables.ConditionType attributo)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="code/backend/index.html#nest_backend.database.tables.User.username">username (nest_backend.database.tables.User attributo)</a>
 </li>
   </ul></td>

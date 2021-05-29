@@ -1,11 +1,6 @@
 Sprint 1: 19 Apr - 02 Mag
 =========================
 
-.. todo::
-
-    Inserire informazioni generali sullo sprint, come inizio e fine.
-
-
 Consegna
 --------
 
@@ -17,25 +12,47 @@ La seguente documentazione è stata fornita dal cliente durante questo sprint:
 Goal
 ----
 
-.. todo::
+Il **goal** per questo sprint è stato costruire una codebase facilmente mantenibile e modulare, che potesse accomodare grossi
+cambiamenti nei sottomoduli senza impattare gli altri:
 
-    Inserire qui lo sprint goal.
+- Dal punto di vista del **backend**: l'obiettivo è stato predisporre la struttura del database e creare le api calls per illogin degli utenti e la creazione dei repository
+- Dal punto di vista del **frontend**: creare la struttura con le componenti importate da figma e implementare le schermate principali
 
+Tutto ciò è visibile dai task completati:
+
+..  image:: Sprint1Task.png
+     :width: 400
 
 Backlog
 -------
 
-.. todo::
+.. image:: BacklogSprint1.png
+    :width: 400
 
-    Mostrare qui lo sprint backlog di Taiga.
+**Burndown Chart**
+
+.. image:: Chart1.png
+    :width: 600
 
 
-Definition of done
+Definition of Ready
 ------------------
 
-.. todo::
+Il team ha definito lo stato di Ready di una User Story in base ai seguenti criteri:
+* La User Story è stata compresa ed accettata da tutti i membri
+* I tester hanno confermato la possibilità di poterla testare
+* Il Product Owner ha la visione necessaria per definirne la priorità
+* Il Team è in grado di stimarla
+* La User Story è indipendente o dipendente da altre a priorità maggiore
 
-    Inserire qui la definition of done dello sprint.
+Definition of Done
+------------------
+
+La definizione di Done è stata concordata da tutto il team con il Product Owner, ed è stata così definita:
+* Sviluppo completo della funzionalità richiesta
+* Definizione e superamento dei test
+* Bozza della documentazione della funzionalità
+* Merge dei sorgenti nel branch ‘Main’ di GitLab
 
 
 Registro attività
@@ -486,10 +503,19 @@ Questa statistica è stata generata dal prof. Marcello Missiroli con
 .. _Gitinspector: https://github.com/ejwa/gitinspector
 
 
+Sprint retrospective
+--------------------
+- :download:`Sprint 1 Retrospective <1-retrospective.pdf>`
+
 Sprint review
 -------------
 
-.. todo::
+Il video di sprint review è disponibile al seguente link:
 
-    Inserire un link alla sprint review.
+- https://drive.google.com/drive/folders/1dsis_cGCRnVgZAkZjEVIZKt4NndkycaF?usp=sharing
 
+
+Artefatti
+---------
+- :download:`Valutazion SM Debito Tecnico <ValutazioneSMDebitoTecnico.md>`
+- :download:`Valutazione PO User Stories <valutazionePO__US_realizzate_o_rifiutate.md>`

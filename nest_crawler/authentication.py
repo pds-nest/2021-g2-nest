@@ -13,3 +13,8 @@ def authenticate():
     api = tw.API(auth, wait_on_rate_limit=True)
     # client = tw.Client(b_t, c_k, c_s, a_t, a_t_s, wait_on_rate_limit=True);
     return api
+
+
+__all__ = (
+    "authenticate",
+)

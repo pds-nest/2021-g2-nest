@@ -1,8 +1,9 @@
 from datetime import datetime, timedelta
 from nest_backend.database import *
-from authentication import authenticate
+from .authentication import authenticate
 import smtplib
 import tweepy as tw
+
 
 def is_repo_alert_triggered(repository_id):
     repo = Repository.query.filter_by(id=repository_id).first()
@@ -54,6 +55,7 @@ def send_notification_email(alert):
     except smtplib.SMTPException:
         print("Error: unable to send email")
 
+
 def send_notification_tweet(alert):
     api = authenticate()
     conditions_string = ''
@@ -66,3 +68,9 @@ def send_notification_tweet(alert):
     except tw.errors.Forbidden:
         print("Il tweet e' gia' stato pubblicato")
 
+
+__all__ = (
+    "is_repo_alert_triggered",
+    "send_notification_email",
+    "send_notification_tweet",
+)

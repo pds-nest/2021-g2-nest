@@ -157,12 +157,7 @@ class TestAlertPost:
         assert r.json["result"] == "success"
 
 
-
-
-    # test del file alert
-
-
-class TestOneAlertOfARepository:
+class TestAlertGet:
     def test_alert_not_found(self, flask_client: Client, user_headers):
         r = flask_client.get(f'/api/v1/alert/99', headers=user_headers)
         assert r.status_code == 404
@@ -174,7 +169,8 @@ class TestOneAlertOfARepository:
         assert r.status_code == 200
         assert r.json["result"] == "success"
 
-    # test PATCH
+
+class TestAlertPatch:
     def test_patch_alert_no_json(self, flask_client: Client, user_headers):
         r = flask_client.patch(f'/api/v1/alert/1', headers=user_headers)
         assert r.status_code == 400
@@ -197,13 +193,150 @@ class TestOneAlertOfARepository:
         assert r.status_code == 200
         assert r.json["result"] == "success"
 
-    # test PUT
+
+class TestAlertPut:
+    def test_for_success(self, flask_client: Client, user_headers):
+        r = flask_client.put(f'/api/v1/alert/2', headers=user_headers, json={
+            "conditions": [
+                {
+                    "content": "string",
+                    "id": 0,
+                    "type": 0
+                }
+            ],
+            "evaluation_mode": 0,
+            "id": 0,
+            "limit": 0,
+            "name": "string",
+            "notifications": [
+                {
+                    "id": 0,
+                    "ora": "2021-05-29T11:32:38.664Z",
+                    "repository_id": 0
+                }
+            ],
+            "repository_id": 0,
+            "window_size": 0
+        })
+        assert r.status_code == 200
+
     def test_put_alert_no_json(self, flask_client: Client, user_headers):
-        r = flask_client.patch(f'/api/v1/alert/2', headers=user_headers)
+        r = flask_client.put(f'/api/v1/alert/2', headers=user_headers)
         assert r.status_code == 400
         assert r.json["result"] == "failure"
 
-    # test DELETE
+    def test_put_alert_wrong_evaluation_mode(self, flask_client: Client, user_headers):
+        r = flask_client.put(f'/api/v1/alert/2', headers=user_headers,
+                             json={
+                                 "conditions": [
+                                     {
+                                         "content": "string",
+                                         "id": 0,
+                                         "type": 0
+                                     }
+                                 ],
+                                 "evaluation_mode": 99,
+                                 "id": 0,
+                                 "limit": 0,
+                                 "name": "string",
+                                 "notifications": [
+                                     {
+                                         "id": 0,
+                                         "ora": "2021-05-28T18:23:22.324Z",
+                                         "repository_id": 0
+                                     }
+                                 ],
+                                 "repository_id": 0,
+                                 "window_size": 0
+                             })
+        assert r.status_code == 400
+        assert r.json["result"] == "failure"
+
+    def test_put_alert_empty_conditions_type(self, flask_client: Client, user_headers):
+        r = flask_client.put(f'/api/v1/alert/2', headers=user_headers,
+                             json={
+                                 "conditions": [
+                                     {
+                                         "content": "string",
+                                         "id": 0
+                                     }
+                                 ],
+                                 "evaluation_mode": 0,
+                                 "id": 0,
+                                 "limit": 0,
+                                 "name": "string",
+                                 "notifications": [
+                                     {
+                                         "id": 0,
+                                         "ora": "2021-05-28T18:23:22.324Z",
+                                         "repository_id": 0
+                                     }
+                                 ],
+                                 "repository_id": 0,
+                                 "window_size": 0
+                             })
+        assert r.status_code == 400
+        assert r.json["result"] == "failure"
+
+    def test_put_alert_wrong_conditions_type(self, flask_client: Client, user_headers):
+        r = flask_client.put(f'/api/v1/alert/2', headers=user_headers,
+                             json={
+                                 "conditions": [
+                                     {
+                                         "content": "string",
+                                         "id": 0,
+                                         "type": 99
+                                     }
+                                 ],
+                                 "evaluation_mode": 0,
+                                 "id": 0,
+                                 "limit": 0,
+                                 "name": "string",
+                                 "notifications": [
+                                     {
+                                         "id": 0,
+                                         "ora": "2021-05-28T18:23:22.324Z",
+                                         "repository_id": 0
+                                     }
+                                 ],
+                                 "repository_id": 0,
+                                 "window_size": 0
+                             })
+        assert r.status_code == 400
+        assert r.json["result"] == "failure"
+
+    def test_put_alert_missing_conditions_content(self, flask_client: Client, user_headers):
+        r = flask_client.put(f'/api/v1/alert/2', headers=user_headers,
+                             json={
+                                 "conditions": [
+                                     {
+                                         "id": 0,
+                                         "type": 99
+                                     }
+                                 ],
+                                 "evaluation_mode": 0,
+                                 "id": 0,
+                                 "limit": 0,
+                                 "name": "string",
+                                 "notifications": [
+                                     {
+                                         "id": 0,
+                                         "ora": "2021-05-28T18:23:22.324Z",
+                                         "repository_id": 0
+                                     }
+                                 ],
+                                 "repository_id": 0,
+                                 "window_size": 0
+                             })
+        assert r.status_code == 400
+        assert r.json["result"] == "failure"
+
+
+class TestAlertDelete:
     def test_delete_alert_for_success(self, flask_client: Client, user_headers):
         r = flask_client.delete(f'/api/v1/alert/1', headers=user_headers)
         assert r.status_code == 204
+
+    def test_error_500(self, flask_client: Client, user_headers):
+        r = flask_client.delete(f'/api/v99/alert/1', headers=user_headers)
+        assert r.status_code == 500

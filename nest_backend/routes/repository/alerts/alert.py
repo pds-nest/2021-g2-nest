@@ -4,7 +4,7 @@ from flask_jwt_extended import jwt_required, get_jwt_identity
 from nest_backend.gestione import *
 from flask_cors import cross_origin
 import datetime
-from nest_backend.errors import *
+import nest_backend.errors as errors
 
 
 @cross_origin()
@@ -150,16 +150,16 @@ def page_alert(aid):
     user = find_user(get_jwt_identity())
     alert = Alert.query.filter_by(id=aid).first()
     if not alert or alert.repository.is_deleted:
-        return json_error("Could not find alert.", ALERT_NOT_FOUND), 404
+        return json_error("Could not find alert.", errors.ALERT_NOT_FOUND), 404
     if alert.repository not in [a.repository for a in user.authorizations] + user.owner_of:
-        return json_error("You are not authorized to proceed.", USER_NOT_AUTHORIZED), 403
+        return json_error("You are not authorized to proceed.", errors.USER_NOT_AUTHORIZED), 403
     if request.method == "GET":
         return json_success(alert.to_json()), 200
     if alert.repository not in user.owner_of:
-        return json_error("You are not authorized to proceed.", REPOSITORY_NOT_OWNER), 403
+        return json_error("You are not authorized to proceed.", errors.REPOSITORY_NOT_OWNER), 403
     if request.method == "PATCH":
         if request.json is None:
-            return json_error("Missing json content.", GENERIC_NO_JSON), 400
+            return json_error("Missing json content.", errors.GENERIC_NO_JSON), 400
 
         if 'name' in request.json:
             alert.name = request.json['name']
@@ -171,9 +171,9 @@ def page_alert(aid):
             try:
                 alert.evaluation_mode = ConditionMode(request.json['evaluation_mode'])
             except KeyError:
-                return json_error("Unknown `evaluation_mode` specified.", GENERIC_ENUM_INVALID), 400
+                return json_error("Unknown `evaluation_mode` specified.", errors.GENERIC_ENUM_INVALID), 400
             except Exception as e:
-                return json_error("Unknown error:" + str(e), GENERIC_UFO), 400
+                return json_error("Unknown error:" + str(e), errors.GENERIC_UFO), 400
         ext.session.commit()
         return json_success(alert.to_json()), 200
     elif request.method == "DELETE":
@@ -191,14 +191,14 @@ def page_alert(aid):
             ext.session.delete(alert)
             ext.session.commit()
         except Exception as e:
-            return json_error("Something went wrong while deleting alert.", ALERT_DELETION_FAILURE), 500
+            return json_error("Something went wrong while deleting alert.", errors.ALERT_DELETION_FAILURE), 500
         return json_success("Deletion completed."), 204
     elif request.method == "PUT":
         if request.json is None:
-            return json_error("Missing json content.", GENERIC_NO_JSON), 400
+            return json_error("Missing json content.", errors.GENERIC_NO_JSON), 400
 
         if not json_request_authorizer(request.json, alert):
-            return json_error("Missing one or more parameters in alert json.", GENERIC_MISSING_FIELDS), 400
+            return json_error("Missing one or more parameters in alert json.", errors.GENERIC_MISSING_FIELDS), 400
         alert.limit = request.json['limit']
         alert.name = request.json['name']
         alert.window_size = request.json['window_size']
@@ -206,9 +206,9 @@ def page_alert(aid):
             try:
                 alert.evaluation_mode = ConditionMode(mode)
             except KeyError:
-                return json_error("Unknown `evaluation_mode` specified.", GENERIC_ENUM_INVALID), 400
+                return json_error("Unknown `evaluation_mode` specified.", errors.GENERIC_ENUM_INVALID), 400
             except Exception as e:
-                return json_error("Unknown error:" + str(e), GENERIC_UFO), 400
+                return json_error("Unknown error:" + str(e), errors.GENERIC_UFO), 400
         if request.json['conditions'] is not None:
             # Wow very pythonic so much wow
             # Obtain list of no longer needed connections
@@ -223,15 +223,15 @@ def page_alert(aid):
             for c in request.json['conditions']:
                 if not c.get("id"):
                     if (type_ := c.get("type")) is None:
-                        return json_error("Missing `type` parameter.", GENERIC_MISSING_FIELDS), 400
+                        return json_error("Missing `type` parameter.", errors.GENERIC_MISSING_FIELDS), 400
                     try:
                         type_ = ConditionType(type_)
                     except KeyError:
-                        return json_error("Unknown `type` specified.", GENERIC_ENUM_INVALID), 400
+                        return json_error("Unknown `type` specified.", errors.GENERIC_ENUM_INVALID), 400
                     except Exception as e:
                         return json_error("Unknown error: " + str(e)), 400
                     if not (content := c.get("content")):
-                        return json_error("Missing `content` parameter.", GENERIC_MISSING_FIELDS), 400
+                        return json_error("Missing `content` parameter.", errors.GENERIC_MISSING_FIELDS), 400
                     if type_ == ConditionType.hashtag:
                         content = hashtag_validator(content)
                     con = Condition(content=content, type=type_, repository_id=alert.repository_id)

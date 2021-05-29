@@ -130,6 +130,11 @@ class TestRepositoryGet:
         assert r.status_code == 404
         assert r.json["result"] == "failure"
 
+    def test_wrong_request_type(self, flask_client: Client, admin_headers):
+        r = flask_client.put(f'/api/v1/repositories/99', headers=admin_headers)
+        assert r.status_code == 404
+        assert r.json["result"] == "failure"
+
     def test_user__not_logged(self, flask_client: Client, ):
         r = flask_client.get(f'/api/v1/repositories/1')
         assert r.status_code == 401
@@ -168,6 +173,10 @@ class TestRepositoryPatch:
                                })
         assert r.status_code == 204
 
+    def test_error_500(self, flask_client: Client, user_headers):
+        r = flask_client.patch(f'/api/v99/repositories/1', headers=user_headers)
+        assert r.status_code == 500
+
 
 class TestRepositoryDelete:
     def test_wrong_owner(self, flask_client: Client, user_headers):
@@ -198,8 +207,7 @@ class TestRepositoryPut:
         assert r.status_code == 401
 
     def test_bad_request(self, flask_client: Client, user_headers):
-        r = flask_client.put(f'/api/v1/repositories/1', headers=user_headers,
-            json={
+        r = flask_client.put(f'/api/v1/repositories/1', headers=user_headers, json={
                 "name": "string",
                 "close": "string",
                 "open": "string",
@@ -213,8 +221,8 @@ class TestRepositoryPut:
         assert r.status_code == 404
         assert r.json["result"] == "failure"
 
-    def test_for_success(self, flask_client: Client, admin_headers):
-        r = flask_client.put(f'/api/v1/repositories/1', headers=admin_headers, json={
+    def test_for_success(self, flask_client: Client, user_headers):
+        r = flask_client.put(f'/api/v1/repositories/1', headers=user_headers, json={
             "conditions": [
                 {
                     "content": "string",
@@ -236,3 +244,7 @@ class TestRepositoryPut:
             "start": "2021-05-14T12:12:29.827Z"
         })
         assert r.status_code == 200
+
+    def test_error_500(self, flask_client: Client, user_headers):
+        r = flask_client.put(f'/api/v99/repositories/1', headers=user_headers)
+        assert r.status_code == 500

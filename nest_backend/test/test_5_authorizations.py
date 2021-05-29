@@ -74,9 +74,8 @@ class TestAuthorizationsPut:
 
 class TestAuthorizationsDelete:
     def test_for_success(self, flask_client: Client, user_headers):
-        r = flask_client.delete(f'/api/v1/repositories/1/authorizations/user_test@nest.com', headers=user_headers)
+        r = flask_client.delete(f'/api/v1/repositories/1/authorizations/admin@admin.com', headers=user_headers)
         assert r.status_code == 204
-        assert r.json["result"] == "success"
 
     def test_user_not_logged(self, flask_client: Client):
         r = flask_client.delete(f'/api/v1/repositories/1/authorizations/user_test@nest.com')

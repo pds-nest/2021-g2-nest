@@ -1,0 +1,7 @@
+dl > dd > dl {
+    margin-bottom: 0 !important;
+}
+
+li > dl {
+    margin-bottom: 24px !important;
+}

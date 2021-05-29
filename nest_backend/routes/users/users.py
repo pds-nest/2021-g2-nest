@@ -3,7 +3,7 @@ from nest_backend.database import *
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from nest_backend.gestione import *
 from flask_cors import cross_origin
-from nest_backend.errors import *
+import nest_backend.errors as errors
 
 
 @cross_origin()
@@ -69,11 +69,11 @@ def page_users():
         return json_success([user.to_json() for user in users]), 200
     if request.method == "POST":
         if not user.isAdmin:
-            return json_error("User is not admin. Thou art not authorized.", USER_NOT_ADMIN), 403
+            return json_error("User is not admin. Thou art not authorized.", errors.USER_NOT_ADMIN), 403
         if not request.json.get("email") or not request.json.get("password") or not request.json.get("username"):
-            return json_error("Missing required fields.", GENERIC_MISSING_FIELDS), 400
+            return json_error("Missing required fields.", errors.GENERIC_MISSING_FIELDS), 400
         if User.query.filter_by(email=request.json.get("email")).first():
-            return json_error("User already exists.", GENERIC_ALREADY_EXISTS), 406
+            return json_error("User already exists.", errors.GENERIC_ALREADY_EXISTS), 406
         new_user = User(email=request.json.get("email"), password=gen_password(request.json.get("password")),
                         username=request.json.get("username"))
         ext.session.add(new_user)

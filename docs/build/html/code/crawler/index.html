@@ -13,6 +13,7 @@
   
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
 
   
   
@@ -92,7 +93,7 @@
 </ul>
 <p class="caption"><span class="caption-text">Relazione sul progetto</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../development/goals.html">Obiettivo del progetto</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../development/goals.html">Introduzione</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../development/process.html">Processo di sviluppo</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../development/tools.html">Strumenti utilizzati</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../development/sprint0/index.html">Sprint 0: 04 Apr - 18 Apr</a></li>
@@ -106,6 +107,7 @@
 <p class="caption"><span class="caption-text">Documentazione tecnica</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../meta/index.html">Meta-documentazione</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../database/index.html">Struttura del database</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../backend/index.html"><code class="docutils literal notranslate"><span class="pre">nest_backend</span></code> - Web API in Python</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">nest_crawler</span></code> - Crawler in Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../frontend/index.html"><code class="docutils literal notranslate"><span class="pre">nest_frontend</span></code> - Interfaccia utente in React</a></li>
@@ -178,6 +180,41 @@
             
   <div class="section" id="module-nest_crawler">
 <span id="nest-crawler-crawler-in-python"></span><h1><code class="docutils literal notranslate"><span class="pre">nest_crawler</span></code> - Crawler in Python<a class="headerlink" href="#module-nest_crawler" title="Link a questa intestazione">¶</a></h1>
+<dl class="py function">
+<dt id="nest_crawler.associate_condition_tweet">
+<code class="sig-prename descclassname"><span class="pre">nest_crawler.</span></code><code class="sig-name descname"><span class="pre">associate_condition_tweet</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">conditions_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tweet</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nest_crawler.associate_condition_tweet" title="Link a questa definizione">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="nest_crawler.authenticate">
+<code class="sig-prename descclassname"><span class="pre">nest_crawler.</span></code><code class="sig-name descname"><span class="pre">authenticate</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#nest_crawler.authenticate" title="Link a questa definizione">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="nest_crawler.is_coordinate_inside_bounding_box">
+<code class="sig-prename descclassname"><span class="pre">nest_crawler.</span></code><code class="sig-name descname"><span class="pre">is_coordinate_inside_bounding_box</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">latitude</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">longitude</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tweet_latitude</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tweet_longitude</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nest_crawler.is_coordinate_inside_bounding_box" title="Link a questa definizione">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="nest_crawler.is_repo_alert_triggered">
+<code class="sig-prename descclassname"><span class="pre">nest_crawler.</span></code><code class="sig-name descname"><span class="pre">is_repo_alert_triggered</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">repository_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nest_crawler.is_repo_alert_triggered" title="Link a questa definizione">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="nest_crawler.search_repo_conditions">
+<code class="sig-prename descclassname"><span class="pre">nest_crawler.</span></code><code class="sig-name descname"><span class="pre">search_repo_conditions</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">repository_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nest_crawler.search_repo_conditions" title="Link a questa definizione">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="nest_crawler.send_notification_email">
+<code class="sig-prename descclassname"><span class="pre">nest_crawler.</span></code><code class="sig-name descname"><span class="pre">send_notification_email</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alert</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nest_crawler.send_notification_email" title="Link a questa definizione">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="nest_crawler.send_notification_tweet">
+<code class="sig-prename descclassname"><span class="pre">nest_crawler.</span></code><code class="sig-name descname"><span class="pre">send_notification_tweet</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">alert</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#nest_crawler.send_notification_tweet" title="Link a questa definizione">¶</a></dt>
+<dd></dd></dl>
+
 </div>
 
 
