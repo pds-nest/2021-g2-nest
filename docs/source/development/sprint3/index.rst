@@ -269,8 +269,6 @@ Chiara Calzolari
 Stefano Pigozzi
 """""""""""""""
 
-.. todo:: Inserire activity log di Stefano Pigozzi relativo allo Sprint 3.
-
 .. list-table::
     :header-rows: 2
 
@@ -278,12 +276,147 @@ Stefano Pigozzi
       - Durata
       - Attività
     * -
-      -
+      - 50h 41m
       - Totale
 
-    * -
-      -
-      -
+    * - 2021-05-17
+      - 25m
+      - Riunione
+    * - 2021-05-17
+      - 19m
+      - Riunione
+    * - 2021-05-17
+      - 2h
+      - Sviluppo
+    * - 2021-05-17
+      - 1h 7m
+      - Bugfixing
+    * - 2021-05-17
+      - 7m
+      - User Interface
+    * - 2021-05-18
+      - 55m
+      - Sviluppo
+    * - 2021-05-18
+      - 14m
+      - Configurazione GitLab
+    * - 2021-05-18
+      - 1h 52m
+      - Documentazione
+    * - 2021-05-18
+      - 22m
+      - Sviluppo
+    * - 2021-05-18
+      - 21m
+      - User Interface
+    * - 2021-05-18
+      - 34m
+      - Sviluppo
+    * - 2021-05-18
+      - 40m
+      - Sviluppo
+    * - 2021-05-18
+      - 29m
+      - Sviluppo
+    * - 2021-05-18
+      - 1h 8m
+      - Sviluppo
+    * - 2021-05-19
+      - 36m
+      - Sviluppo
+    * - 2021-05-19
+      - 2h 40m
+      - Sviluppo
+    * - 2021-05-19
+      - 44m
+      - Sviluppo
+    * - 2021-05-19
+      - 19m
+      - Sviluppo
+    * - 2021-05-20
+      - 1h 26m
+      - Sviluppo
+    * - 2021-05-20
+      - 2h 59m
+      - Sviluppo
+    * - 2021-05-20
+      - 53m
+      - Sviluppo
+    * - 2021-05-20
+      - 18m
+      - Sviluppo
+    * - 2021-05-21
+      - 4h 32m
+      - Sviluppo
+    * - 2021-05-22
+      - 2h 28m
+      - Sviluppo
+    * - 2021-05-23
+      - 1h 12m
+      - Documentazione
+    * - 2021-05-23
+      - 1h 2m
+      - Sviluppo
+    * - 2021-05-23
+      - 1h 13m
+      - Sviluppo
+    * - 2021-05-23
+      - 16m
+      - Code review
+    * - 2021-05-24
+      - 10m
+      - Sviluppo
+    * - 2021-05-24
+      - 1h 46m
+      - Sviluppo
+    * - 2021-05-24
+      - 5m
+      - Project Management
+    * - 2021-05-24
+      - 3m
+      - Sviluppo
+    * - 2021-05-24
+      - 54m
+      - Sviluppo
+    * - 2021-05-25
+      - 2h 13m
+      - Sviluppo
+    * - 2021-05-25
+      - 2h 12m
+      - Sviluppo
+    * - 2021-05-27
+      - 19m
+      - Sviluppo
+    * - 2021-05-27
+      - 34m
+      - Documentazione
+    * - 2021-05-27
+      - 1h 46m
+      - Documentazione
+    * - 2021-05-27
+      - 33m
+      - Documentazione
+    * - 2021-05-27
+      - 1h 34m
+      - Documentazione
+    * - 2021-05-28
+      - 1h
+      - Documentazione
+    * - 2021-05-28
+      - 1h 30m
+      - Documentazione
+    * - 2021-05-28
+      - 7m
+      - Code review
+    * - 2021-05-29
+      - 1h 38m
+      - Documentazione
+    * - 2021-05-29
+      - 2h 39m
+      - Documentazione
+    * - 2021-05-29
+      - 27m
+      - Deployment
 
 
 Giovanni Anniballi
