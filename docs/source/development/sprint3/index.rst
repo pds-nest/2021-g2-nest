@@ -20,6 +20,15 @@ Tutto ciò è visibile dai task completati:
 ..  image:: Task3.png
      :width: 400
 
+Grooming session
+----------------
+
+Sono state definite le nuove User Stories da inserire nel progetto sulla base delle nuove richieste pervenute dal cliente: analisi statistica più dettagliata, postare su Twitter, traduzione dell'interfaccia in inglese.
+La richiesta relativa alle ricerche basate sulla geolocalizzazione, come già comunicato al cliente, non è stata inserita per motivi tecnici legati alle features delle API 1.1 che non permettono di eseguire query sui campi di posizione geografica.
+Le nuove User Stories sono state valutate tramite il metodo dello Scrum Poker, durante il quale ogni membro ha espresso la sua valutazione.
+Tutte le nuove richieste sono state accettate dal Product Owner e sono pronte ad essere inserite nello sprint di sviluppo in partenza.
+
+
 
 Backlog
 -------
