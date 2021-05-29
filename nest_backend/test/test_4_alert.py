@@ -157,12 +157,7 @@ class TestAlertPost:
         assert r.json["result"] == "success"
 
 
-
-
-    # test del file alert
-
-
-class TestOneAlertOfARepository:
+class TestAlertGet:
     def test_alert_not_found(self, flask_client: Client, user_headers):
         r = flask_client.get(f'/api/v1/alert/99', headers=user_headers)
         assert r.status_code == 404
@@ -174,7 +169,7 @@ class TestOneAlertOfARepository:
         assert r.status_code == 200
         assert r.json["result"] == "success"
 
-    # test PATCH
+
     def test_patch_alert_no_json(self, flask_client: Client, user_headers):
         r = flask_client.patch(f'/api/v1/alert/1', headers=user_headers)
         assert r.status_code == 400
@@ -197,7 +192,8 @@ class TestOneAlertOfARepository:
         assert r.status_code == 200
         assert r.json["result"] == "success"
 
-    # test PUT
+
+class TestAlertPut:
     def test_put_alert_no_json(self, flask_client: Client, user_headers):
         r = flask_client.put(f'/api/v1/alert/2', headers=user_headers)
         assert r.status_code == 400
@@ -309,7 +305,12 @@ class TestOneAlertOfARepository:
         assert r.status_code == 400
         assert r.json["result"] == "failure"
 
-    # test DELETE
+
+class TestAlertDelete:
     def test_delete_alert_for_success(self, flask_client: Client, user_headers):
         r = flask_client.delete(f'/api/v1/alert/1', headers=user_headers)
         assert r.status_code == 204
+
+    def test_error_500(self, flask_client: Client, user_headers):
+        r = flask_client.delete(f'/api/v99/alert/1', headers=user_headers)
+        assert r.status_code == 500
