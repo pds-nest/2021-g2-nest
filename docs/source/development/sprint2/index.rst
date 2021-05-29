@@ -52,7 +52,7 @@ La definizione di Done è stata concordata da tutto il team con il Product Owner
 * Sviluppo completo della funzionalità richiesta
 * Definizione e superamento dei test
 * Bozza della documentazione della funzionalità
-* Merge dei sorgenti nel branch ‘Main’ di GitLab
+* Merge dei sorgenti nel branch ``main`` di GitLab
 
 
 

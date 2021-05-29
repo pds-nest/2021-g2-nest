@@ -23,10 +23,15 @@ Tutto ciò è visibile dai task completati:
 Grooming session
 ----------------
 
-Sono state definite le nuove User Stories da inserire nel progetto sulla base delle nuove richieste pervenute dal cliente: analisi statistica più dettagliata, postare su Twitter, traduzione dell'interfaccia in inglese.
-La richiesta relativa alle ricerche basate sulla geolocalizzazione, come già comunicato al cliente, non è stata inserita per motivi tecnici legati alle features delle API 1.1 che non permettono di eseguire query sui campi di posizione geografica.
-Le nuove User Stories sono state valutate tramite il metodo dello Scrum Poker, durante il quale ogni membro ha espresso la sua valutazione.
-Tutte le nuove richieste sono state accettate dal Product Owner e sono pronte ad essere inserite nello sprint di sviluppo in partenza.
+Sono state definite le nuove **User Stories** da inserire nel progetto sulla base delle nuove richieste pervenute dal cliente:
+
+- analisi statistica più dettagliata
+- postare su Twitter
+- traduzione dell'interfaccia in inglese.
+
+| La richiesta relativa alle *ricerche basate sulla geolocalizzazione*, come già comunicato al cliente, non è stata inserita per motivi tecnici legati alle features delle **API 1.1** che non permettono di eseguire query sui campi di posizione geografica.
+| Le nuove User Stories sono state valutate tramite il metodo dello Scrum Poker, durante il quale ogni membro ha espresso la sua valutazione.
+| Tutte le nuove richieste sono state accettate dal Product Owner e sono pronte ad essere inserite nello sprint di sviluppo in partenza.
 
 
 
@@ -60,7 +65,7 @@ La definizione di Done è stata concordata da tutto il team con il Product Owner
 * Sviluppo completo della funzionalità richiesta
 * Definizione e superamento dei test
 * Bozza della documentazione della funzionalità
-* Merge dei sorgenti nel branch ‘Main’ di GitLab
+* Merge dei sorgenti nel branch ``main`` di GitLab
 
 
 Registro attività
@@ -135,13 +140,44 @@ Flavia Cocca
       - Durata
       - Attività
     * -
-      -
+      - 14h
       - Totale
 
-    * -
-      -
-      -
+    * - 20/05
+      - 2.0h
+      - Trasferimento documenti in nuova documentazione
 
+    * - 21/05
+      - 1.0h
+      - Studio Sphinx
+
+    * - 23/05
+      - 1.0h
+      - Studio sintassi rST
+
+    * - 24/05
+      - 1.0h
+      - Documentazione
+
+    * - 25/05
+      - 1.0h
+      - Documentazione
+
+    * - 26/05
+      - 1.0h
+      - Documentazione
+
+    * - 27/05
+      - 1.0h
+      - Documentazione
+
+    * - 28/05
+      - 3.0h
+      - Documentazione
+
+    * - 29/05
+      - 3.0h
+      - Documentazione
 
 Chiara Calzolari
 """"""""""""""""
@@ -219,12 +255,45 @@ Giovanni Anniballi
       - Durata
       - Attività
     * -
-      -
+      - 18h
       - Totale
 
-    * -
-      -
-      -
+    * - 17/05
+      - 1h
+      - Ricontrollo generale codice, fix piccoli typo
+
+    * - 18/05
+      - 1h
+      - Aggiornati files di log e refactoring documentazione
+
+
+    * - 21/05
+      - 2h
+      - Studio Jest, valutazione di test sul frontend
+
+    * - 24/05
+      - 3h
+      - Primi test sulle autorizzazioni
+
+    * - 26/05
+      - 2h
+      - Fix ai test
+
+    * - 27/05
+      - 2h
+      - Test autorizzazioni completati, fix
+
+    * - 28/05
+      - 4h
+      - Fix test malfunzionanti, refactoring test
+
+    * - 29/05
+      - 3h
+      - Aggiornamento documentazione, aggiunti ulteriori test seguendo i suggerimenti di SQ
+
+
+
+
 
 
 Giorgio Minoccari
