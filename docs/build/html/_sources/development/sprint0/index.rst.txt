@@ -1,11 +1,6 @@
 Sprint 0: 04 Apr - 18 Apr
 =========================
 
-.. todo::
-
-    Inserire informazioni generali sullo sprint, come inizio e fine.
-
-
 Consegna
 --------
 
@@ -15,7 +10,7 @@ La seguente documentazione è stata fornita dal cliente durante questo sprint:
 - :download:`Sprint 0 <0-sprint-requirements.pdf>`
 
 
-Definition of ready
+Definition of Ready
 -------------------
 
 Il team ha definito lo stato di Ready di una User Story in base ai seguenti criteri:
@@ -27,7 +22,7 @@ Il team ha definito lo stato di Ready di una User Story in base ai seguenti crit
 * La User Story è indipendente o dipendente da altre a priorità maggiore
 
 
-Definition of done
+Definition of Done
 ------------------
 
 La definizione di Done è stata concordata da tutto il team con il Product Owner, ed è stata così
@@ -36,7 +31,7 @@ definita:
 * Sviluppo completo della funzionalità richiesta
 * Definizione e superamento dei test
 * Bozza della documentazione della funzionalità
-* Merge dei sorgenti nel branch ‘Main’ di GitLab
+* Merge dei sorgenti nel branch ``main`` del repository Git
 
 
 Registro attività
