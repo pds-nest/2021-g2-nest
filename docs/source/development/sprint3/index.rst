@@ -83,16 +83,21 @@ Riunioni collettive
     :header-rows: 2
 
     * - Data
-      - Ora
       - Durata
       - Attività
     * -
-      -
-      - TODO
+      - 3.5h
       - Totale
 
+    * - 17/05
+      - 2.0 h
+      - Grooming session nuove richieste cliente
+
+    * - 29/05
+      - 1.5 h
+      - sprint retrospective
+
     * -
-      -
       -
       -
 
