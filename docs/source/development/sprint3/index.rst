@@ -248,7 +248,7 @@ Giovanni Anniballi
       - Durata
       - Attività
     * -
-      -
+      - 18h
       - Totale
 
     * - 17/05
