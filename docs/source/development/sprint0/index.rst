@@ -455,8 +455,6 @@ Risultati della partita di Scrumble
    :Stefano G.: 5
 
 
-
-
 Statistiche
 -----------
 
@@ -466,7 +464,20 @@ Gitinspector
 Questa statistica è stata generata dal prof. Marcello Missiroli con
 `Gitinspector`_ al termine dello Sprint.
 
-- :download:`Sprint 0 <0-stats.html>`
+- :download:`0-stats.html`
 
 
 .. _Gitinspector: https://github.com/ejwa/gitinspector
+
+
+Artefatti
+---------
+
+In questo sprint è stato realizzato il seguente documento:
+
+- :download:`Documento generale dello Sprint 0 <0-result.pdf>`
+
+Inoltre, è stato prodotto il seguente video:
+
+- `video di sprint review <https://drive.google.com/file/d/12worWEcx-uf2UP4_lnEOovHZpvR77MsG/view>`_
+

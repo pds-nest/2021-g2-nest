@@ -40,6 +40,10 @@ Nello sviluppo di N.E.S.T. sono stati usati i seguenti strumenti software:
         È accessibile al seguente indirizzo: https://sonarqube.steffo.eu/
 
 
+`Figma`_
+
+    Applicazione web centralizzata per la creazione collaborativa di interfacce grafiche moderne.
+
 `Discord`_
 
     Piattaforma centralizzata di messaggistica istantanea e chiamate vocali utilizzata per la comunicazione sincrona
@@ -51,4 +55,5 @@ Nello sviluppo di N.E.S.T. sono stati usati i seguenti strumenti software:
 .. _GitLab: https://about.gitlab.com/
 .. _Taiga: https://www.taiga.io/
 .. _SonarQube: https://www.sonarqube.org/
+.. _Figma: https://www.figma.com/
 .. _Discord: https://discord.com/
