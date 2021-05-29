@@ -470,6 +470,13 @@ Questa statistica è stata generata dal prof. Marcello Missiroli con
 .. _Gitinspector: https://github.com/ejwa/gitinspector
 
 
+Sprint Retrospective
+--------------------
+
+
+- :download:`Sprint 0 Retrospective <sprint-0_retrospective.pdf>`
+
+
 Sprint review
 -------------
 

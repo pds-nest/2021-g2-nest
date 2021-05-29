@@ -1,11 +1,6 @@
 Sprint 1: 19 Apr - 02 Mag
 =========================
 
-.. todo::
-
-    Inserire informazioni generali sullo sprint, come inizio e fine.
-
-
 Consegna
 --------
 
@@ -17,18 +12,27 @@ La seguente documentazione è stata fornita dal cliente durante questo sprint:
 Goal
 ----
 
-.. todo::
+Il **goal** per questo sprint è stato costruire una codebase facilmente mantenibile e modulare, che potesse accomodare grossi
+cambiamenti nei sottomoduli senza impattare gli altri:
 
-    Inserire qui lo sprint goal.
+- Dal punto di vista del **backend**: l'obiettivo è stato predisporre la struttura del database e creare le api calls per illogin degli utenti e la creazione dei repository
+- Dal punto di vista del **frontend**: creare la struttura con le componenti importate da figma e implementare le schermate principali
 
+Tutto ciò è visibile dai task completati:
+
+..  image:: Sprint1Task.png
+     :width: 400
 
 Backlog
 -------
 
-.. todo::
+.. image:: BacklogSprint1.png
+    :width: 400
 
-    Mostrare qui lo sprint backlog di Taiga.
+**Burndown Chart**
 
+.. image:: Chart1.png
+    :width: 600
 
 Definition of done
 ------------------
@@ -488,12 +492,17 @@ Questa statistica è stata generata dal prof. Marcello Missiroli con
 
 Sprint retrospective
 --------------------
-
+- :download:`Sprint 1 Retrospective <1-retrospective.pdf>`
 
 Sprint review
 -------------
 
-.. todo::
+Il video di sprint review è disponibile al seguente link:
 
-    Inserire un link alla sprint review.
+- https://drive.google.com/drive/folders/1dsis_cGCRnVgZAkZjEVIZKt4NndkycaF?usp=sharing
 
+
+Artefatti
+---------
+- :download:`Valutazion SM Debito Tecnico <ValutazioneSMDebitoTecnico.md>`
+- :download:`Valutazione PO User Stories <valutazionePO__US_realizzate_o_rifiutate.md>`

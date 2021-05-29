@@ -1,11 +1,6 @@
 Sprint 3: 17 Mag - 30 Mag
 =========================
 
-.. todo::
-
-    Inserire informazioni generali sullo sprint, come inizio e fine.
-
-
 Consegna
 --------
 
@@ -18,17 +13,23 @@ La seguente documentazione è stata fornita dal cliente durante questo sprint:
 Goal
 ----
 
-.. todo::
+Il **goal** del terzo Sprint è stato far funzionare il crawler, gli alert e completare tutte i task rimanenti.
 
-    Inserire qui lo sprint goal.
+Tutto ciò è visibile dai task completati:
+
+..  image:: Task3.png
+     :width: 400
 
 
 Backlog
 -------
+.. image:: Backlog3.png
+    :width: 400
 
-.. todo::
+**Burndown Chart**
 
-    Mostrare qui lo sprint backlog di Taiga.
+.. image:: Chart3.png
+    :width: 600
 
 
 Definition of done
@@ -285,3 +286,8 @@ Schermata finale di SonarQube
 .. todo::
 
     Inserire qui uno screenshot della schermata finale di SonarQube.
+
+Demo
+----
+
+- https://drive.google.com/file/d/15o70Ffe51CNj8LTKHC9dGiqRVnbv9UpZ/view?usp=sharing
