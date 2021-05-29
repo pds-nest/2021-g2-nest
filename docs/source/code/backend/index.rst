@@ -37,3 +37,6 @@
     La documentazione dei percorsi API è gestita da Swagger UI, disponibile a ``/docs`` una volta che il webserver
     del backend è avviato.
 
+Si allega una stampa dell'interfaccia swagger:
+
+- :download: N.E.S.T_Swagger.pdf
