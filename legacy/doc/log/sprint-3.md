@@ -15,9 +15,13 @@ Stefano Goldoni - Product Owner & Tester
 
 | Data  | Durata | Attività |
 |-------|--------|----------|
-|     |    |        |
+|21/05 |2.0h |analisi strumenti di test frontend
+|24/05 |3.0h |inizio test alerts
+|25/05 |2.5h |test alerts
+|26/05 |3.0h |test
+|28/05 |3.5h |test, refactory in base a sonarqube 
 |-------|--------|
-|totale| __._h |
+|totale| 14.0h |
 
 
 Flavia Cocca - Scrum Master & UI Designer
