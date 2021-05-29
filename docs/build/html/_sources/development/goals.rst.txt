@@ -1,9 +1,6 @@
 Introduzione
 ============
 
-.. todo::
-    Lasciamo il tempo al futuro?
-
 Obiettivo
 ---------
 
