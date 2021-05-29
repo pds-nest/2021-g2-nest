@@ -38,9 +38,5 @@ In generale:
 
 .. todo::
 
-    Descrivere genericamente il processo di sviluppo seguito, includendo:
-
-        burndown complessivo, diari dei partecipanti e/o diario di gruppo,
-        retrospettiva finale"
-
-    Visto che i diari e la retrospettiva li abbiamo già altrove, suggerirei di metterci solo un link usando ``:ref:``.
+    Mi dicono che qui non funzionano alcune robe, mettere a posto
+    Also, fixare i link interni
