@@ -31,6 +31,7 @@ Benvenuto alla documentazione di N.E.S.T.!
     :caption: Documentazione tecnica
 
     code/meta/index
+    code/database/index
     code/backend/index
     code/crawler/index
     code/frontend/index

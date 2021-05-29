@@ -92,11 +92,6 @@ numero di tweet in una certa *finestra temporale*.
 .. _posizione geografica: https://help.twitter.com/en/safety-and-security/tweet-location-settings
 
 
-Database
---------
-
-.. todo:: inserire schema database + glossario aggiornato
-
 Casi d'uso
 ----------
 
@@ -109,26 +104,32 @@ I principali casi d’uso individuati durante la progettazione di N.E.S.T. sono:
 - La gestione degli utenti da parte di un Amministratore:
 
   .. image:: CasiUso1.PNG
+      :width: 400
 
 - La gestione del login da parte di un Utente:
 
   .. image:: CasiUso2.PNG
+      :width: 400
 
 - La gestione delle Allerte sia dal punto di vista dell’Utente che del Sistema:
 
   .. image:: CasiUso3.PNG
+      :width: 800
 
 - La gestione della raccolta da parte dell'utente:
 
   .. image:: CasiUso4.PNG
+      :width: 400
 
 - La gestione di un repository da parte dell'utente:
 
   .. image:: CasiUso5.PNG
+      :width: 400
 
 - La visualizzazione di un repository:
 
   .. image:: CasiUso6.PNG
+      :width: 400
 
 
 Backlog generale
