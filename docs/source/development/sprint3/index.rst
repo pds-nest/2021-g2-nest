@@ -111,13 +111,44 @@ Flavia Cocca
       - Durata
       - Attività
     * -
-      -
+      - 14h
       - Totale
 
-    * -
-      -
-      -
+    * - 20/05
+      - 2.0h
+      - Trasferimento documenti in nuova documentazione
 
+    * - 21/05
+      - 1.0h
+      - Studio Sphinx
+
+    * - 23/05
+      - 1.0h
+      - Studio sintassi rST
+
+    * - 24/05
+      - 1.0h
+      - Documentazione
+
+    * - 25/05
+      - 1.0h
+      - Documentazione
+
+    * - 26/05
+      - 1.0h
+      - Documentazione
+
+    * - 27/05
+      - 1.0h
+      - Documentazione
+
+    * - 28/05
+      - 3.0h
+      - Documentazione
+
+    * - 29/05
+      - 3.0h
+      - Documentazione
 
 Chiara Calzolari
 """"""""""""""""
@@ -198,9 +229,42 @@ Giovanni Anniballi
       -
       - Totale
 
-    * -
-      -
-      -
+    * - 17/05
+      - 1h
+      - Ricontrollo generale codice, fix piccoli typo
+
+    * - 18/05
+      - 1h
+      - Aggiornati files di log e refactoring documentazione
+
+
+    * - 21/05
+      - 2h
+      - Studio Jest, valutazione di test sul frontend
+
+    * - 24/05
+      - 3h
+      - Primi test sulle autorizzazioni
+
+    * - 26/05
+      - 2h
+      - Fix ai test
+
+    * - 27/05
+      - 2h
+      - Test autorizzazioni completati, fix
+
+    * - 28/05
+      - 4h
+      - Fix test malfunzionanti, refactoring test
+
+    * - 29/05
+      - 3h
+      - Aggiornamento documentazione, aggiunti ulteriori test seguendo i suggerimenti di SQ
+
+
+
+
 
 
 Giorgio Minoccari
