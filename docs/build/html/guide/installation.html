@@ -101,6 +101,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#compilare-il-frontend">Compilare il frontend</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#creare-un-servizio-systemd-per-il-frontend">Creare un servizio SystemD per il frontend</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#creare-un-servizio-systemd-per-il-crawler">Creare un servizio SystemD per il crawler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configurare-il-crawler">Configurare il crawler</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#creare-un-timer-systemd-per-il-crawler">Creare un timer SystemD per il crawler</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#configurare-apache-come-reverse-proxy">Configurare Apache come reverse proxy</a></li>
 </ul>
@@ -210,6 +211,8 @@
 <li><p><a class="reference external" href="https://python-poetry.org/">Poetry ^1.0</a></p></li>
 <li><p><a class="reference external" href="https://nodejs.org/">NodeJS ^16.0</a></p></li>
 <li><p><a class="reference external" href="https://www.npmjs.com/">npm ^7.13.0</a></p></li>
+<li><p>Un mail server (interno o esterno) che supporti
+l”<a class="reference external" href="https://it.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol">SMTP</a></p></li>
 </ul>
 </div>
 <div class="section" id="creare-un-nuovo-utente">
@@ -409,16 +412,117 @@ WantedBy=multi-user.target
 </div>
 <div class="section" id="creare-un-servizio-systemd-per-il-crawler">
 <h2>Creare un servizio SystemD per il crawler<a class="headerlink" href="#creare-un-servizio-systemd-per-il-crawler" title="Link a questa intestazione">¶</a></h2>
-<div class="admonition-todo admonition" id="id1">
-<p class="admonition-title">Da fare</p>
-<p>Scrivere una guida all’installazione di un servizio SystemD per il crawler.</p>
+<p>Perchè i repository vengano popolati di Tweet, è necessario configurare il crawler come servizio di <em>SystemD</em>:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">root:~# </span>systemctl edit --force --full nest-crawler
+</pre></div>
+</div>
+<p>All’interno del file, inserire le seguenti direttive:</p>
+<div class="highlight-systemd notranslate"><div class="highlight"><pre><span></span>[Unit]
+Description=N.E.S.T. Crawler
+Wants=network-online.target nest-backend.service
+After=network-online.target nss-lookup.target nest-backend.service
+
+[Service]
+Type=exec
+Environment=FLASK_CONFIG=../config.py
+User=nest
+Group=nest
+WorkingDirectory=/srv/nest/g2-progetto
+# Si sostituisca a questo il percorso del virtualenv creato in precedenza da Poetry
+#         ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+ExecStart=/srv/nest/.cache/pypoetry/virtualenvs/nest-7C2fm2VD-py3.9/bin/python -m nest_crawler
+
+[Install]
+WantedBy=multi-user.target
+</pre></div>
+</div>
+</div>
+<div class="section" id="configurare-il-crawler">
+<h2>Configurare il crawler<a class="headerlink" href="#configurare-il-crawler" title="Link a questa intestazione">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>Per utilizzare gli API di Twitter, è necessario essere approvati dal supporto tecnico di Twitter.</p>
+<p>È dunque necessario <a class="reference external" href="https://developer.twitter.com/en/apply-for-access">fare richiesta</a>, e sarà possibile
+procedere con l’installazione solo una volta ricevute le credenziali per l’utilizzo.</p>
+</div>
+<p>Per impostare le variabili di ambiente richieste dal crawler, si suggerisce di creare un <em>file di override</em> di SystemD:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">root:~# </span>systemctl edit nest-crawler
+</pre></div>
+</div>
+<p>All’interno del file, inserire le seguenti direttive:</p>
+<div class="highlight-systemd notranslate"><div class="highlight"><pre><span></span>[Service]
+
+# Sostituire a questi caratteri la Consumer Key ricevuta da Twitter
+#               ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+Environment=C_K=0000000000000000000000000
+
+
+# Sostituire a questi caratteri il Consumer Secret ricevuto da Twitter
+#               ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+Environment=C_S=00000000000000000000000000000000000000000000000000
+
+# Sostituire a questi caratteri l&#39;Access Token ricevuto da Twitter
+#               ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+Environment=A_T=00000000000000000000000000000000000000000000000000
+
+# Sostituire a questi caratteri l&#39;Access Token Secret ricevuto da Twitter
+#                 ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+Environment=A_T_S=000000000000000000000000000000000000000000000
+
+# Sostituire con l&#39;indirizzo del proprio SMTP mail server
+#                     ↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+Environment=SMTP_HOST=mail.gandi.net
+
+# Sostituire con le proprie credenziali dell&#39;SMTP mail server
+#                         ↓↓↓↓↓↓↓↓↓↓↓↓
+Environment=SMTP_USERNAME=bot@ryg.one
+#                         ↓↓↓↓↓↓↓↓
+Environment=SMTP_PASSWORD=password
+
+# Sostituire con l&#39;email da cui si desidera che vengano inviate le allerte
+#                           ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+Environment=SMTP_FROM_EMAIL=nest-bot@ryg.one
+</pre></div>
+</div>
+<p>Ora, si verifichi che il servizio si avvii correttamente eseguendolo manualmente con:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">root:~# </span>systemctl start nest-crawler
+</pre></div>
+</div>
+<p>Nel log di sistema non dovrebbe comparire nessun errore:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">root:~# </span>journalctl nest-crawler
+</pre></div>
 </div>
 </div>
 <div class="section" id="creare-un-timer-systemd-per-il-crawler">
 <h2>Creare un timer SystemD per il crawler<a class="headerlink" href="#creare-un-timer-systemd-per-il-crawler" title="Link a questa intestazione">¶</a></h2>
-<div class="admonition-todo admonition" id="id2">
-<p class="admonition-title">Da fare</p>
-<p>Scrivere una guida all’esecuzione ripetuta del crawler attraverso un timer SystemD.</p>
+<p>Per fare in modo che il crawler venga eseguito periodicamente, si suggerisce di configurare un timer SystemD:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">root:~# </span>systemctl edit --force --full nest-crawler.timer
+</pre></div>
+</div>
+<p>Si inseriscano all’interno del file le seguenti direttive:</p>
+<div class="highlight-systemd notranslate"><div class="highlight"><pre><span></span>[Unit]
+Description=Run nest-crawler every 60 minutes
+
+[Timer]
+OnBootSec=60min
+OnUnitActiveSec=60min
+Unit=nest-crawler.service
+
+[Install]
+WantedBy=timers.target
+</pre></div>
+</div>
+<p>Ora, si verifichi che il timer si avvii correttamente eseguendolo manualmente con:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">root:~# </span>systemctl start nest-crawler.timer
+</pre></div>
+</div>
+<p>Nello stato del timer non dovrebbe comparire nessun errore:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">root:~# </span>systemctl status nest-crawler.timer
+</pre></div>
+</div>
+<p>Si abiliti il timer, in modo che venga automaticamente avviato al riavvio del sistema:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">root:~# </span>systemctl <span class="nb">enable</span> nest-crawler.timer
+</pre></div>
 </div>
 </div>
 <div class="section" id="configurare-apache-come-reverse-proxy">

@@ -1,11 +1,6 @@
 Sprint 3: 17 Mag - 30 Mag
 =========================
 
-.. todo::
-
-    Inserire informazioni generali sullo sprint, come inizio e fine.
-
-
 Consegna
 --------
 
@@ -18,25 +13,59 @@ La seguente documentazione è stata fornita dal cliente durante questo sprint:
 Goal
 ----
 
-.. todo::
+Il **goal** del terzo Sprint è stato far funzionare il crawler, gli alert e completare tutte i task rimanenti.
 
-    Inserire qui lo sprint goal.
+Tutto ciò è visibile dai task completati:
+
+..  image:: Task3.png
+     :width: 400
+
+Grooming session
+----------------
+
+Sono state definite le nuove **User Stories** da inserire nel progetto sulla base delle nuove richieste pervenute dal cliente:
+
+- analisi statistica più dettagliata
+- postare su Twitter
+- traduzione dell'interfaccia in inglese.
+
+| La richiesta relativa alle *ricerche basate sulla geolocalizzazione*, come già comunicato al cliente, non è stata inserita per motivi tecnici legati alle features delle **API 1.1** che non permettono di eseguire query sui campi di posizione geografica.
+| Le nuove User Stories sono state valutate tramite il metodo dello Scrum Poker, durante il quale ogni membro ha espresso la sua valutazione.
+| Tutte le nuove richieste sono state accettate dal Product Owner e sono pronte ad essere inserite nello sprint di sviluppo in partenza.
+
 
 
 Backlog
 -------
+.. image:: Backlog3.png
+    :width: 400
 
-.. todo::
+**Burndown Chart**
 
-    Mostrare qui lo sprint backlog di Taiga.
+.. image:: Chart3.png
+    :width: 600
 
 
-Definition of done
+Definition of Ready
+-------------------
+
+Il team ha definito lo stato di Ready di una User Story in base ai seguenti criteri:
+
+* La User Story è stata compresa ed accettata da tutti i membri
+* I tester hanno confermato la possibilità di poterla testare
+* Il Product Owner ha la visione necessaria per definirne la priorità
+* Il Team è in grado di stimarla
+* La User Story è indipendente o dipendente da altre a priorità maggiore
+
+Definition of Done
 ------------------
 
-.. todo::
+La definizione di Done è stata concordata da tutto il team con il Product Owner, ed è stata così definita:
 
-    Inserire qui la definition of done dello sprint.
+* Sviluppo completo della funzionalità richiesta
+* Definizione e superamento dei test
+* Bozza della documentazione della funzionalità
+* Merge dei sorgenti nel branch ``main`` di GitLab
 
 
 Registro attività
@@ -81,12 +110,24 @@ Stefano Goldoni
       - Durata
       - Attività
     * -
-      -
+      - 14h
       - Totale
 
-    * -
-      -
-      -
+    * - 21/05
+      - 2.0h
+      - Analisi strumenti di test frontend
+    * - 24/05
+      - 3.0h
+      - Inizio test alerts
+    * - 25/05
+      - 2.5h
+      - Test alerts
+    * - 26/05
+      - 3.0h
+      - Test
+    * - 28/05
+      - 3.5h
+      - Test, refactory in base a Sonarqube
 
 
 Flavia Cocca
@@ -99,13 +140,44 @@ Flavia Cocca
       - Durata
       - Attività
     * -
-      -
+      - 14h
       - Totale
 
-    * -
-      -
-      -
+    * - 20/05
+      - 2.0h
+      - Trasferimento documenti in nuova documentazione
 
+    * - 21/05
+      - 1.0h
+      - Studio Sphinx
+
+    * - 23/05
+      - 1.0h
+      - Studio sintassi rST
+
+    * - 24/05
+      - 1.0h
+      - Documentazione
+
+    * - 25/05
+      - 1.0h
+      - Documentazione
+
+    * - 26/05
+      - 1.0h
+      - Documentazione
+
+    * - 27/05
+      - 1.0h
+      - Documentazione
+
+    * - 28/05
+      - 3.0h
+      - Documentazione
+
+    * - 29/05
+      - 3.0h
+      - Documentazione
 
 Chiara Calzolari
 """"""""""""""""
@@ -117,12 +189,42 @@ Chiara Calzolari
       - Durata
       - Attività
     * -
-      -
+      - 17h 30m
       - Totale
 
-    * -
-      -
-      -
+    * - 17/05
+      - 3.0h
+      - Traduzione UI
+    * - 17/05
+      - 1.5h
+      - Traduzione UI
+    * - 18/05
+      - 1.5h
+      - Traduzione UI
+    * - 20/05
+      - 1.0h
+      - Traduzione UI
+    * - 22/05
+      - 1.0h
+      - Traduzione UI
+    * - 24/05
+      - 2.0h
+      - Traduzione UI
+    * - 24/05
+      - 1.0h
+      - Traduzione UI
+    * - 25/05
+      - 1.0h
+      - Traduzione UI
+    * - 27/05
+      - 0.5h
+      - Traduzione UI
+    * - 28/05
+      - 2.0h
+      - Configurazione ambiente di sviluppo
+    * - 28/05
+      - 3.0h
+      - Creazione video-demo
 
 
 Stefano Pigozzi
@@ -153,12 +255,45 @@ Giovanni Anniballi
       - Durata
       - Attività
     * -
-      -
+      - 18h
       - Totale
 
-    * -
-      -
-      -
+    * - 17/05
+      - 1h
+      - Ricontrollo generale codice, fix piccoli typo
+
+    * - 18/05
+      - 1h
+      - Aggiornati files di log e refactoring documentazione
+
+
+    * - 21/05
+      - 2h
+      - Studio Jest, valutazione di test sul frontend
+
+    * - 24/05
+      - 3h
+      - Primi test sulle autorizzazioni
+
+    * - 26/05
+      - 2h
+      - Fix ai test
+
+    * - 27/05
+      - 2h
+      - Test autorizzazioni completati, fix
+
+    * - 28/05
+      - 4h
+      - Fix test malfunzionanti, refactoring test
+
+    * - 29/05
+      - 3h
+      - Aggiornamento documentazione, aggiunti ulteriori test seguendo i suggerimenti di SQ
+
+
+
+
 
 
 Giorgio Minoccari
@@ -189,12 +324,33 @@ Lorenzo Balugani
       - Durata
       - Attività
     * -
-      -
+      - 22h
       - Totale
 
-    * -
-      -
-      -
+    * - 17/05
+      - 4h
+      - Bugfixing, supporto alla localizzazione degli errori
+    * - 18/05
+      - 3h
+      - Bugfixing
+    * - 20/05
+      - 3h
+      - API autorizzazioni, refactoring
+    * - 21/05
+      - 2h
+      - Gestione tweet, rappresentazione tweet
+    * - 24/05
+      - 2h
+      - Bugfixing
+    * - 25/05
+      - 4h
+      - Docs, refactoring
+    * - 27/05
+      - 3h
+      - Bugfixing
+    * - 28/05
+      - 6h
+      - Bugfixing
 
 
 Statistiche
@@ -219,6 +375,9 @@ Retrospettiva finale
 Schermata finale di SonarQube
 -----------------------------
 
-.. todo::
+- :download:`Schermata finale Sonarqube <sonarqube.pdf>`
 
-    Inserire qui uno screenshot della schermata finale di SonarQube.
+Demo
+----
+
+- https://drive.google.com/file/d/15o70Ffe51CNj8LTKHC9dGiqRVnbv9UpZ/view?usp=sharing

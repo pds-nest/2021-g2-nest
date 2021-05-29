@@ -9,6 +9,7 @@ Benvenuto alla documentazione di N.E.S.T.!
 
     guide/about
     guide/installation
+    guide/updating
 
 
 .. toctree::
@@ -28,6 +29,7 @@ Benvenuto alla documentazione di N.E.S.T.!
 
 
 .. toctree::
+    :maxdepth: 2
     :caption: Documentazione tecnica
 
     code/meta/index
@@ -35,12 +37,6 @@ Benvenuto alla documentazione di N.E.S.T.!
     code/backend/index
     code/crawler/index
     code/frontend/index
-
-
-.. toctree::
-    :hidden:
-
-    development/clientinterview
 
 
 Cose rimaste da fare

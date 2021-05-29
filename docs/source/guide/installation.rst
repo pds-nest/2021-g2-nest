@@ -19,6 +19,8 @@ Per installare ed eseguire N.E.S.T., è necessario:
 - `Poetry ^1.0 <https://python-poetry.org/>`_
 - `NodeJS ^16.0 <https://nodejs.org/>`_
 - `npm ^7.13.0 <https://www.npmjs.com/>`_
+- Un mail server (interno o esterno) che supporti
+  l'`SMTP <https://it.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol>`_
 
 
 Creare un nuovo utente
@@ -280,17 +282,143 @@ Si abiliti il servizio, in modo che venga automaticamente avviato al riavvio del
 Creare un servizio SystemD per il crawler
 -----------------------------------------
 
-.. todo::
+Perchè i repository vengano popolati di Tweet, è necessario configurare il crawler come servizio di *SystemD*:
 
-    Scrivere una guida all'installazione di un servizio SystemD per il crawler.
+.. code-block:: console
+
+    root:~# systemctl edit --force --full nest-crawler
+
+All'interno del file, inserire le seguenti direttive:
+
+.. code-block:: systemd
+
+    [Unit]
+    Description=N.E.S.T. Crawler
+    Wants=network-online.target nest-backend.service
+    After=network-online.target nss-lookup.target nest-backend.service
+
+    [Service]
+    Type=exec
+    Environment=FLASK_CONFIG=../config.py
+    User=nest
+    Group=nest
+    WorkingDirectory=/srv/nest/g2-progetto
+    # Si sostituisca a questo il percorso del virtualenv creato in precedenza da Poetry
+    #         ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+    ExecStart=/srv/nest/.cache/pypoetry/virtualenvs/nest-7C2fm2VD-py3.9/bin/python -m nest_crawler
+
+    [Install]
+    WantedBy=multi-user.target
+
+
+Configurare il crawler
+----------------------
+
+.. note::
+
+    Per utilizzare gli API di Twitter, è necessario essere approvati dal supporto tecnico di Twitter.
+
+    È dunque necessario `fare richiesta <https://developer.twitter.com/en/apply-for-access>`_, e sarà possibile
+    procedere con l'installazione solo una volta ricevute le credenziali per l'utilizzo.
+
+Per impostare le variabili di ambiente richieste dal crawler, si suggerisce di creare un *file di override* di SystemD:
+
+.. code-block:: console
+
+    root:~# systemctl edit nest-crawler
+
+All'interno del file, inserire le seguenti direttive:
+
+.. code-block:: systemd
+
+    [Service]
+
+    # Sostituire a questi caratteri la Consumer Key ricevuta da Twitter
+    #               ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+    Environment=C_K=0000000000000000000000000
+
+
+    # Sostituire a questi caratteri il Consumer Secret ricevuto da Twitter
+    #               ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+    Environment=C_S=00000000000000000000000000000000000000000000000000
+
+    # Sostituire a questi caratteri l'Access Token ricevuto da Twitter
+    #               ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+    Environment=A_T=00000000000000000000000000000000000000000000000000
+
+    # Sostituire a questi caratteri l'Access Token Secret ricevuto da Twitter
+    #                 ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+    Environment=A_T_S=000000000000000000000000000000000000000000000
+
+    # Sostituire con l'indirizzo del proprio SMTP mail server
+    #                     ↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+    Environment=SMTP_HOST=mail.gandi.net
+
+    # Sostituire con le proprie credenziali dell'SMTP mail server
+    #                         ↓↓↓↓↓↓↓↓↓↓↓↓
+    Environment=SMTP_USERNAME=bot@ryg.one
+    #                         ↓↓↓↓↓↓↓↓
+    Environment=SMTP_PASSWORD=password
+
+    # Sostituire con l'email da cui si desidera che vengano inviate le allerte
+    #                           ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
+    Environment=SMTP_FROM_EMAIL=nest-bot@ryg.one
+
+
+Ora, si verifichi che il servizio si avvii correttamente eseguendolo manualmente con:
+
+.. code-block:: console
+
+    root:~# systemctl start nest-crawler
+
+Nel log di sistema non dovrebbe comparire nessun errore:
+
+.. code-block:: console
+
+    root:~# journalctl nest-crawler
 
 
 Creare un timer SystemD per il crawler
 -----------------------------------------
 
-.. todo::
+Per fare in modo che il crawler venga eseguito periodicamente, si suggerisce di configurare un timer SystemD:
 
-    Scrivere una guida all'esecuzione ripetuta del crawler attraverso un timer SystemD.
+.. code-block:: console
+
+    root:~# systemctl edit --force --full nest-crawler.timer
+
+Si inseriscano all'interno del file le seguenti direttive:
+
+.. code-block:: systemd
+
+    [Unit]
+    Description=Run nest-crawler every 60 minutes
+
+    [Timer]
+    OnBootSec=60min
+    OnUnitActiveSec=60min
+    Unit=nest-crawler.service
+
+    [Install]
+    WantedBy=timers.target
+
+Ora, si verifichi che il timer si avvii correttamente eseguendolo manualmente con:
+
+.. code-block:: console
+
+    root:~# systemctl start nest-crawler.timer
+
+Nello stato del timer non dovrebbe comparire nessun errore:
+
+.. code-block:: console
+
+    root:~# systemctl status nest-crawler.timer
+
+Si abiliti il timer, in modo che venga automaticamente avviato al riavvio del sistema:
+
+.. code-block:: console
+
+    root:~# systemctl enable nest-crawler.timer
 
 
 Configurare Apache come reverse proxy
