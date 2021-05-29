@@ -36,9 +36,10 @@ Backlog
 
 
 Definition of Ready
-------------------
+-------------------
 
 Il team ha definito lo stato di Ready di una User Story in base ai seguenti criteri:
+
 * La User Story è stata compresa ed accettata da tutti i membri
 * I tester hanno confermato la possibilità di poterla testare
 * Il Product Owner ha la visione necessaria per definirne la priorità
@@ -49,6 +50,7 @@ Definition of Done
 ------------------
 
 La definizione di Done è stata concordata da tutto il team con il Product Owner, ed è stata così definita:
+
 * Sviluppo completo della funzionalità richiesta
 * Definizione e superamento dei test
 * Bozza della documentazione della funzionalità
