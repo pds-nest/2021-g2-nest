@@ -18,7 +18,7 @@ Sprint 1 - dal 19 Aprile al 2 Maggio
 Burndown dello sprint 1
 
 .. image:: Burndown1.png
-          :width: 400
+    :width: 400
 
 `Diari dei partecipanti dello sprint 1`_
 
@@ -31,8 +31,9 @@ Burndown dello sprint 1
 Sprint 2 - dal 3 Maggio al 16 Maggio
 
 Burndown dello sprint 2
+
 .. image:: Burndown2.png
-:width: 400
+        :width: 400
 
 `Diari dei partecipanti dello sprint 2`_
 
@@ -45,8 +46,9 @@ Burndown dello sprint 2
 Sprint 3 - dal 19 Maggio al 30 Maggio
 
 Burndown dello sprint 3
+
 .. image:: Burndown3.png
-:width: 400
+        :width: 400
 
 `Diari dei partecipanti dello sprint 3`_
 
@@ -58,13 +60,7 @@ Burndown dello sprint 3
 
 In generale:
 
-
 Burndown totale
 
 .. image:: Burndown4.png
-          :width: 400
-
-.. todo::
-
-    Mi dicono che qui non funzionano alcune robe, mettere a posto
-    Also, fixare i link interni
+    :width: 400
