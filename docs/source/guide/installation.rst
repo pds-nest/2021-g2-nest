@@ -394,11 +394,11 @@ Si inseriscano all'interno del file le seguenti direttive:
 .. code-block:: systemd
 
     [Unit]
-    Description=Run nest-crawler every 60 minutes
+    Description=Run nest-crawler every 5 minutes
 
     [Timer]
-    OnBootSec=60min
-    OnUnitActiveSec=60min
+    OnBootSec=5min
+    OnUnitActiveSec=5min
     Unit=nest-crawler.service
 
     [Install]
