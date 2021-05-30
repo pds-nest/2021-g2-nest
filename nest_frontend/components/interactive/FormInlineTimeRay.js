@@ -37,19 +37,21 @@ export default function FormInlineTimeRay(
 ) {
     const [isBefore, setBefore] = useState(false)
     const [value, setValue] = useState("")
+    const [disabled, setDisabled] = useState(true)
 
     const _onSubmit = event => {
         event.preventDefault()
         if(!value) {
             return
         }
-        console.debug(value)
         submit(new TimeRay(isBefore, new Date(value)))
         setValue("")
     }
 
     const _onChange = event => {
-        setValue(validate(event.target.value.toUpperCase().replace(INVALID_CHARACTERS, "")))
+        const newValue = validate(event.target.value.toUpperCase().replace(INVALID_CHARACTERS, ""))
+        setValue(newValue)
+        setDisabled(!value || isNaN(new Date(newValue).getDate()))
     }
 
     return (
@@ -71,7 +73,7 @@ export default function FormInlineTimeRay(
                 icon={buttonIcon}
                 color={buttonColor}
                 onClick={_onSubmit}
-                disabled={!value}
+                disabled={disabled}
             />
         </FormInline>
     )
