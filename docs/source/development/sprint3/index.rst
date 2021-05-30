@@ -469,8 +469,6 @@ Giovanni Anniballi
 Giorgio Minoccari
 """""""""""""""""
 
-.. todo:: Inserire activity log di Giorgio Minoccari relativo allo Sprint 3.
-
 .. list-table::
     :header-rows: 2
 
@@ -478,12 +476,33 @@ Giorgio Minoccari
       - Durata
       - Attività
     * -
-      -
+      - 22h
       - Totale
 
-    * -
-      -
-      -
+    * - 17/05
+      - 4h
+      - Aggiunta associazione tra singoli tweet e condizioni che ne hanno scaturito il download
+    * - 18/05
+      - 3h
+      - Aggiunto salvataggio delle immagini presenti nei tweet e data in cui sono stati postati
+    * - 20/05
+      - 3h
+      - Ristrutturazione del crawler in uno script lanciabile separatamente su tutte le repository
+    * - 21/05
+      - 2h
+      - Aggiunta degli alert e delle azioni che vengono svolte quando scatta il trigger
+    * - 24/05
+      - 2h
+      - Bugfixing
+    * - 25/05
+      - 4h
+      - Refactoring di sicurezza
+    * - 27/05
+      - 3h
+      - Refactor struttura per poter associare le condizioni degli allarmi ai singoli tweet
+    * - 28/05
+      - 6h
+      - Completamento generale e bugfixing
 
 
 Lorenzo Balugani
