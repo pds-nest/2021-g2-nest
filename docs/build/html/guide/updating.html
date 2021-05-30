@@ -181,6 +181,15 @@
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">nest:g2-progetto$ </span>git pull
 </pre></div>
 </div>
+<p>Si aggiornino poi tutte le dipendenze:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">nest:g2-progetto$ </span>poetry install
+<span class="gp">nest:g2-progetto$ </span>npm install
+</pre></div>
+</div>
+<p>Si ricompili il frontend:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">nest:g2-progetto$ </span>npm build
+</pre></div>
+</div>
 <p>In seguito, si riavviino tutti i servizi di N.E.S.T.:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">root:~# </span>systemctl restart nest-frontend nest-backend nest-crawler nest-crawler.timer
 </pre></div>
