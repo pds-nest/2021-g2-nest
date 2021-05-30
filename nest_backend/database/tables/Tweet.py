@@ -21,5 +21,5 @@ class Tweet(ext.Model):
 
     def to_json(self):
         return {"snowflake": self.snowflake, "content": self.content, "location": self.location, "poster": self.poster,
-                "place": self.place, "insert_time": self.insert_time.isoformat(), "post_time": self.post_time,
+                "place": self.place, "insert_time": self.insert_time.isoformat(), "post_time": self.post_time.isoformat(),
                 "image_url": self.image_url, "conditions": [c.condition.to_json() for c in self.conditions]}

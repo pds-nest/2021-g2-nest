@@ -211,7 +211,8 @@ export class FilterInsideTimeRay extends Filter {
     }
 
     check(tweet) {
-        return this.datetime < new Date(tweet["insert_time"])
+        console.debug(this.timeRay.date, tweet["post_time"])
+        return this.timeRay.includes(new Date(tweet["post_time"]))
     }
 
     display() {

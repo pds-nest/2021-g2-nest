@@ -15,7 +15,7 @@ export default function BoxAlerts({ alerts, destroy, running, ...props }) {
             }
 
             return alerts.map(alert => (
-                <SummaryAlert alert={alert} destroy={() => destroy(alert["id"])} running={running}/>
+                <SummaryAlert alert={alert} destroy={() => destroy(alert["id"])} key={alert["id"]} running={running}/>
             ))
         },
         [alerts, running, destroy]
