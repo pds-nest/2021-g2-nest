@@ -4,7 +4,6 @@ from .authentication import authenticate
 import smtplib
 import os
 import tweepy as tw
-import datetime
 
 
 MESSAGE = "❗ {alert_name}: la soglia di allerta è stata superata alle {now}!"
@@ -55,7 +54,7 @@ def send_notification_email(alert):
             smtpObj.login(os.environ["SMTP_USERNAME"], os.environ["SMTP_PASSWORD"])
             smtpObj.sendmail(os.environ["SMTP_FROM_EMAIL"],
                              alert.repository.owner.email,
-                             MESSAGE.format(alert_name=alert.name, now=datetime.datetime.now().isoformat()))
+                             MESSAGE.format(alert_name=alert.name, now=datetime.now().isoformat()))
             print("Successfully sent email")
     except smtplib.SMTPException:
         print("Error: unable to send email")
@@ -69,7 +68,7 @@ def send_notification_tweet(alert):
     conditions_string = conditions_string[:-1]
     print(conditions_string)
     try:
-        api.update_status(MESSAGE.format(alert_name=alert.name, now=datetime.datetime.now().isoformat()))
+        api.update_status(MESSAGE.format(alert_name=alert.name, now=datetime.now().isoformat()))
     except tw.errors.Forbidden:
         print("Il tweet e' gia' stato pubblicato")
 
