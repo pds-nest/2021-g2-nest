@@ -39,7 +39,7 @@ Il team ha definito lo stato di Ready di una User Story in base ai seguenti crit
 - I tester hanno confermato la possibilità di poterla testare
 - Il Product Owner ha la visione necessaria per definirne la priorità
 - Il Team è in grado di stimarla
-- La User Story è indipendente o dipendente da altre a priorità maggiore
+- La User Story è indipendente o dipendente da altre a priorità maggiore
 
 
 Definition of Done

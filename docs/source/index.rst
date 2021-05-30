@@ -35,12 +35,6 @@ Benvenuto alla documentazione di N.E.S.T.!
     code/frontend/index
 
 
-Cose rimaste da fare
---------------------
-
-.. todolist::
-
-
 Altri collegamenti
 ------------------
 

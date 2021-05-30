@@ -4,15 +4,21 @@ Processo di sviluppo
 Ruoli
 -----
 
-Per lavorare più efficientemente, ci siamo assegnati uno o più "ruoli" in base alle nostre competenze.
+Per lavorare più efficientemente, si è assegnato uno o più "ruoli" a ogni membro del team in base alle proprie
+competenze.
 
 :Stefano Goldoni: Product Owner, Tester
-:Flavia Cocca: Scrum Master, UI Designer, Documentazione
+:Flavia Cocca: Scrum Master, UI Designer
 :Chiara Calzolari: UI Designer, Translator
 :Stefano Pigozzi: Frontend Developer, Sysadmin
 :Giovanni Anniballi: Lead Tester
 :Giorgio Minoccari: Analyst, Crawler Developer
 :Lorenzo Balugani: Database Architect, Backend Developer
+
+Questi ruoli sono stati usati in maniera **flessibile**; è capitato infatti moltissime volte che un membro con un ruolo
+ne aiutasse un altro con un ruolo diverso: ad esempio, è successo che i Developer aiutassero i Tester indicando loro
+particolarità specifiche dei linguaggi di programmazione utilizzati, oppure che gli UI Designer aiutassero nella
+scrittura della documentazione.
 
 
 Sprint
