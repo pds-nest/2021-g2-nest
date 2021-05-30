@@ -30,16 +30,16 @@ def is_repo_alert_triggered(repository_id):
                 conditions_tweet.update([tweet.tweet for tweet in condition.tweets])
             alert_tweets = alert_tweets.intersection(conditions_tweet)
         end_time = datetime.now()
-        window_size_hours = timedelta(hours = alert.window_size)
+        window_size_hours = timedelta(hours=alert.window_size)
         last_notification_time = min([notification.ora for notification in alert.notifications] if len(alert.notifications)>0 else [end_time - window_size_hours])
         start_time = max(end_time - window_size_hours, last_notification_time)
         alert_tweets = [tweet for tweet in alert_tweets if (end_time > tweet.insert_time > start_time)]
-        print(f"I tweet corrispondenti sono:{len(alert_tweets)}")
+        print(f"I tweet corrispondenti sono: {len(alert_tweets)}")
         if len(alert_tweets) >= alert.limit:
             alert_notification = Notification(ora=str(datetime.now()), alert_id=alert.id)
             ext.session.add(alert_notification)
             ext.session.commit()
-            print("alert triggered")
+            print("Alert triggered!")
             alerts_triggered.append(alert)
             send_notification_email(alert)
             send_notification_tweet(alert)
@@ -62,11 +62,6 @@ def send_notification_email(alert):
 
 def send_notification_tweet(alert):
     api = authenticate()
-    conditions_string = ''
-    for condition in alert.conditions:
-        conditions_string += condition.condition.content + ','
-    conditions_string = conditions_string[:-1]
-    print(conditions_string)
     try:
         api.update_status(MESSAGE.format(alert_name=alert.name, now=datetime.now().isoformat()))
     except tw.errors.Forbidden:
@@ -74,6 +69,7 @@ def send_notification_tweet(alert):
 
 
 __all__ = (
+    "MESSAGE",
     "is_repo_alert_triggered",
     "send_notification_email",
     "send_notification_tweet",
