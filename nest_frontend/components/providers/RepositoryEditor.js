@@ -19,9 +19,9 @@ export default function RepositoryEditor({
                                              id = null,
                                              name,
                                              is_active: isActive,
-                                             start,
-                                             end,
-                                             conditions,
+                                             start = null,
+                                             end = null,
+                                             conditions = [],
                                              evaluation_mode: evaluationMode,
                                              className,
                                          }) {
