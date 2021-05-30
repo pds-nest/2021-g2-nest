@@ -19,9 +19,11 @@ Per installare ed eseguire N.E.S.T., è necessario:
 - `Poetry ^1.0 <https://python-poetry.org/>`_
 - `NodeJS ^16.0 <https://nodejs.org/>`_
 - `npm ^7.13.0 <https://www.npmjs.com/>`_
-- Un mail server (interno o esterno) che supporti
-  l'`SMTP <https://it.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol>`_
+- Un server `SMTP`_ (interno o esterno) che supporti `STARTTLS`_ sulla porta 587
 
+
+.. _SMTP: https://it.wikipedia.org/wiki/Simple_Mail_Transfer_Protocol
+.. _STARTTLS: https://en.wikipedia.org/wiki/Opportunistic_TLS
 
 Creare un nuovo utente
 ----------------------
