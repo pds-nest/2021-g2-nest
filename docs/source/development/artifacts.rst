@@ -1,10 +1,21 @@
 Artefatti
 =========
 
-.. todo::
+Gran parte degli artefatti sono stati elencati nei singoli sprint.
 
-    Non ho idea di cosa bisogna scrivere qui.
+Vengono di seguito elencati alcuni artefatti che non sono stati precedentemente elencati:
 
+Diagrammi UML
+-------------
+
+Per la realizzazione dei diagrammi UML, utili nelle fasi iniziali di progettazione di N.E.S.T., è stato utilizzato DrawIO (oggi diagrams.net). Si allega il file con il progetto UML.
+
+- :download:`Diagrammi UML <ProgettoDelSoftware.drawio>`
+
+| Dopo aver scaricato il file, recarsi su https://app.diagrams.net/
+| e tramite il menù
+|   File -> Open from -> Device...
+| caricare il file appena scaricato.
 
 Demo
 ----
