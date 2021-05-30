@@ -32,14 +32,14 @@ export default function RepositoryEditor({
     const [_name, setName] = useState(name ?? "")
 
     /** The conditions of the data gathering. */
+    const parsedConditions = conditions.map(cond => Condition.fromRaw(cond))
     const {
-        value: rawConditions,
+        value: _conditions,
         setValue: setRawConditions,
         appendValue: appendRawCondition,
         removeValue: removeRawCondition,
         spliceValue: spliceRawCondition,
-    } = useArrayState(conditions)
-    const _conditions = rawConditions.map(cond => Condition.fromRaw(cond))
+    } = useArrayState(parsedConditions)
 
     /** The operator the conditions should be evaluated with. */
     const [_evaluationMode, setEvaluationMode] = useState(evaluationMode ?? 0)
