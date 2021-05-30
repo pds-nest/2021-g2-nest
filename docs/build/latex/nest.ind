@@ -1,0 +1,314 @@
+\begin{sphinxtheindex}
+\let\bigletter\sphinxstyleindexlettergroup
+\let\spxpagem \sphinxstyleindexpagemain
+\let\spxentry \sphinxstyleindexentry
+\let\spxextra \sphinxstyleindexextra
+
+  \bigletter {\sphinxsymbolsname}
+  \item \spxentry{\_\_init\_\_()}\spxextra{nest\_backend.database.tables.Alert metodo}, 
+		\hyperpage{76}
+  \item \spxentry{\_\_init\_\_()}\spxextra{nest\_backend.database.tables.Authorization metodo}, 
+		\hyperpage{76}
+  \item \spxentry{\_\_init\_\_()}\spxextra{nest\_backend.database.tables.Composed metodo}, 
+		\hyperpage{77}
+  \item \spxentry{\_\_init\_\_()}\spxextra{nest\_backend.database.tables.Condition metodo}, 
+		\hyperpage{77}
+  \item \spxentry{\_\_init\_\_()}\spxextra{nest\_backend.database.tables.Contains metodo}, 
+		\hyperpage{77}
+  \item \spxentry{\_\_init\_\_()}\spxextra{nest\_backend.database.tables.MadeOf metodo}, 
+		\hyperpage{79}
+  \item \spxentry{\_\_init\_\_()}\spxextra{nest\_backend.database.tables.Notification metodo}, 
+		\hyperpage{78}
+  \item \spxentry{\_\_init\_\_()}\spxextra{nest\_backend.database.tables.Repository metodo}, 
+		\hyperpage{78}
+  \item \spxentry{\_\_init\_\_()}\spxextra{nest\_backend.database.tables.Tweet metodo}, 
+		\hyperpage{79}
+  \item \spxentry{\_\_init\_\_()}\spxextra{nest\_backend.database.tables.User metodo}, 
+		\hyperpage{79}
+
+  \indexspace
+  \bigletter A
+  \item \spxentry{admin\_or\_403()}\spxextra{nel modulo nest\_backend.gestione}, \hyperpage{75}
+  \item \spxentry{aid}\spxextra{nest\_backend.database.tables.MadeOf attributo}, \hyperpage{79}
+  \item \spxentry{Alert}\spxextra{classe built\sphinxhyphen{}in}, \hyperpage{71}
+  \item \spxentry{Alert}\spxextra{classe in nest\_backend.database.tables}, \hyperpage{76}
+  \item \spxentry{alert}\spxextra{nest\_backend.database.tables.MadeOf attributo}, \hyperpage{79}
+  \item \spxentry{alert}\spxextra{nest\_backend.database.tables.Notification attributo}, 
+		\hyperpage{78}
+  \item \spxentry{alert\_id}\spxextra{nest\_backend.database.tables.Notification attributo}, 
+		\hyperpage{78}
+  \item \spxentry{alerts}\spxextra{nest\_backend.database.tables.Condition attributo}, 
+		\hyperpage{77}
+  \item \spxentry{alerts}\spxextra{nest\_backend.database.tables.Repository attributo}, 
+		\hyperpage{78}
+  \item \spxentry{all\_and}\spxextra{nest\_backend.database.tables.ConditionMode attributo}, 
+		\hyperpage{80}
+  \item \spxentry{all\_or}\spxextra{nest\_backend.database.tables.ConditionMode attributo}, 
+		\hyperpage{80}
+  \item \spxentry{assign}\spxextra{nest\_backend.database.tables.OperationType attributo}, 
+		\hyperpage{80}
+  \item \spxentry{associate\_condition\_tweet()}\spxextra{nel modulo nest\_crawler}, \hyperpage{81}
+  \item \spxentry{authenticate()}\spxextra{nel modulo nest\_backend.gestione}, \hyperpage{75}
+  \item \spxentry{authenticate()}\spxextra{nel modulo nest\_crawler}, \hyperpage{81}
+  \item \spxentry{Authorization}\spxextra{classe built\sphinxhyphen{}in}, \hyperpage{71}
+  \item \spxentry{Authorization}\spxextra{classe in nest\_backend.database.tables}, \hyperpage{76}
+  \item \spxentry{authorizations}\spxextra{nest\_backend.database.tables.Repository attributo}, 
+		\hyperpage{78}
+  \item \spxentry{authorizations}\spxextra{nest\_backend.database.tables.User attributo}, 
+		\hyperpage{79}
+
+  \indexspace
+  \bigletter B
+  \item \spxentry{BackendCommunicationError()}\spxextra{classe}, \hyperpage{83}
+
+  \indexspace
+  \bigletter C
+  \item \spxentry{cid}\spxextra{nest\_backend.database.tables.Contains attributo}, \hyperpage{77}
+  \item \spxentry{cid}\spxextra{nest\_backend.database.tables.MadeOf attributo}, \hyperpage{79}
+  \item \spxentry{Composed}\spxextra{classe built\sphinxhyphen{}in}, \hyperpage{71}
+  \item \spxentry{Composed}\spxextra{classe in nest\_backend.database.tables}, \hyperpage{76}
+  \item \spxentry{Condition}\spxextra{classe built\sphinxhyphen{}in}, \hyperpage{72}
+  \item \spxentry{Condition}\spxextra{classe in nest\_backend.database.tables}, \hyperpage{77}
+  \item \spxentry{condition}\spxextra{nest\_backend.database.tables.Contains attributo}, 
+		\hyperpage{77}
+  \item \spxentry{condition}\spxextra{nest\_backend.database.tables.MadeOf attributo}, 
+		\hyperpage{79}
+  \item \spxentry{Condition()}\spxextra{classe}, \hyperpage{83}
+  \item \spxentry{ConditionHashtag()}\spxextra{classe}, \hyperpage{83}
+  \item \spxentry{ConditionLocation()}\spxextra{classe}, \hyperpage{83}
+  \item \spxentry{ConditionMode}\spxextra{classe in nest\_backend.database.tables}, \hyperpage{80}
+  \item \spxentry{conditions}\spxextra{nest\_backend.database.tables.Alert attributo}, 
+		\hyperpage{76}
+  \item \spxentry{conditions}\spxextra{nest\_backend.database.tables.Repository attributo}, 
+		\hyperpage{78}
+  \item \spxentry{conditions}\spxextra{nest\_backend.database.tables.Tweet attributo}, 
+		\hyperpage{79}
+  \item \spxentry{ConditionTime()}\spxextra{classe}, \hyperpage{83}
+  \item \spxentry{ConditionType}\spxextra{classe in nest\_backend.database.tables}, \hyperpage{79}
+  \item \spxentry{ConditionUser()}\spxextra{classe}, \hyperpage{83}
+  \item \spxentry{Contains}\spxextra{classe built\sphinxhyphen{}in}, \hyperpage{72}
+  \item \spxentry{Contains}\spxextra{classe in nest\_backend.database.tables}, \hyperpage{77}
+  \item \spxentry{content}\spxextra{nest\_backend.database.tables.Condition attributo}, 
+		\hyperpage{77}
+  \item \spxentry{content}\spxextra{nest\_backend.database.tables.Tweet attributo}, \hyperpage{78}
+  \item \spxentry{coordinates}\spxextra{nest\_backend.database.tables.ConditionType attributo}, 
+		\hyperpage{80}
+
+  \indexspace
+  \bigletter D
+  \item \spxentry{DecodeError()}\spxextra{classe}, \hyperpage{84}
+
+  \indexspace
+  \bigletter E
+  \item \spxentry{email}\spxextra{nest\_backend.database.tables.Authorization attributo}, 
+		\hyperpage{76}
+  \item \spxentry{email}\spxextra{nest\_backend.database.tables.User attributo}, \hyperpage{79}
+  \item \spxentry{end}\spxextra{nest\_backend.database.tables.Repository attributo}, \hyperpage{78}
+  \item \spxentry{error\_handler()}\spxextra{nel modulo nest\_backend.gestione}, \hyperpage{75}
+  \item \spxentry{evaluation\_mode}\spxextra{nest\_backend.database.tables.Alert attributo}, 
+		\hyperpage{76}
+  \item \spxentry{evaluation\_mode}\spxextra{nest\_backend.database.tables.Repository attributo}, 
+		\hyperpage{78}
+
+  \indexspace
+  \bigletter F
+  \item \spxentry{FetchAlreadyRunningError()}\spxextra{classe}, \hyperpage{84}
+  \item \spxentry{FetchError()}\spxextra{classe}, \hyperpage{84}
+  \item \spxentry{Filter()}\spxextra{classe}, \hyperpage{84}
+  \item \spxentry{FilterContains()}\spxextra{classe}, \hyperpage{84}
+  \item \spxentry{FilterHashtag()}\spxextra{classe}, \hyperpage{84}
+  \item \spxentry{FilterInsideMapArea()}\spxextra{classe}, \hyperpage{84}
+  \item \spxentry{FilterInsideTimeRay()}\spxextra{classe}, \hyperpage{84}
+  \item \spxentry{FilterIsRetweet()}\spxextra{classe}, \hyperpage{84}
+  \item \spxentry{FilterPoster()}\spxextra{classe}, \hyperpage{84}
+  \item \spxentry{FilterWithImage()}\spxextra{classe}, \hyperpage{84}
+  \item \spxentry{FilterWithLocation()}\spxextra{classe}, \hyperpage{84}
+  \item \spxentry{FilterWithPlace()}\spxextra{classe}, \hyperpage{84}
+  \item \spxentry{find\_user()}\spxextra{nel modulo nest\_backend.gestione}, \hyperpage{75}
+
+  \indexspace
+  \bigletter G
+  \item \spxentry{gen\_password()}\spxextra{nel modulo nest\_backend.gestione}, \hyperpage{75}
+
+  \indexspace
+  \bigletter H
+  \item \spxentry{hashtag}\spxextra{nest\_backend.database.tables.ConditionType attributo}, 
+		\hyperpage{80}
+  \item \spxentry{hashtag\_validator()}\spxextra{nel modulo nest\_backend.gestione}, \hyperpage{75}
+
+  \indexspace
+  \bigletter I
+  \item \spxentry{id}\spxextra{nest\_backend.database.tables.Alert attributo}, \hyperpage{76}
+  \item \spxentry{id}\spxextra{nest\_backend.database.tables.Condition attributo}, \hyperpage{77}
+  \item \spxentry{id}\spxextra{nest\_backend.database.tables.Notification attributo}, 
+		\hyperpage{77}
+  \item \spxentry{id}\spxextra{nest\_backend.database.tables.Repository attributo}, \hyperpage{78}
+  \item \spxentry{identity()}\spxextra{nel modulo nest\_backend.gestione}, \hyperpage{75}
+  \item \spxentry{image\_url}\spxextra{nest\_backend.database.tables.Tweet attributo}, 
+		\hyperpage{79}
+  \item \spxentry{insert\_time}\spxextra{nest\_backend.database.tables.Tweet attributo}, 
+		\hyperpage{79}
+  \item \spxentry{is\_active}\spxextra{nest\_backend.database.tables.Repository attributo}, 
+		\hyperpage{78}
+  \item \spxentry{is\_coordinate\_inside\_bounding\_box()}\spxextra{nel modulo nest\_crawler}, 
+		\hyperpage{81}
+  \item \spxentry{is\_deleted}\spxextra{nest\_backend.database.tables.Repository attributo}, 
+		\hyperpage{78}
+  \item \spxentry{is\_repo\_alert\_triggered()}\spxextra{nel modulo nest\_crawler}, \hyperpage{81}
+  \item \spxentry{isAdmin}\spxextra{nest\_backend.database.tables.User attributo}, \hyperpage{79}
+
+  \indexspace
+  \bigletter J
+  \item \spxentry{json\_error()}\spxextra{nel modulo nest\_backend.gestione}, \hyperpage{75}
+  \item \spxentry{json\_request\_authorizer()}\spxextra{nel modulo nest\_backend.gestione}, 
+		\hyperpage{75}
+  \item \spxentry{json\_success()}\spxextra{nel modulo nest\_backend.gestione}, \hyperpage{75}
+
+  \indexspace
+  \bigletter L
+  \item \spxentry{limit}\spxextra{nest\_backend.database.tables.Alert attributo}, \hyperpage{76}
+  \item \spxentry{location}\spxextra{nest\_backend.database.tables.ConditionType attributo}, 
+		\hyperpage{80}
+  \item \spxentry{location}\spxextra{nest\_backend.database.tables.Tweet attributo}, \hyperpage{78}
+
+  \indexspace
+  \bigletter M
+  \item \spxentry{MadeOf}\spxextra{classe built\sphinxhyphen{}in}, \hyperpage{72}
+  \item \spxentry{MadeOf}\spxextra{classe in nest\_backend.database.tables}, \hyperpage{79}
+  \item \spxentry{modulo}
+    \subitem \spxentry{nest\_backend}, \hyperpage{75}
+    \subitem \spxentry{nest\_backend.database}, \hyperpage{76}
+    \subitem \spxentry{nest\_backend.database.base}, \hyperpage{76}
+    \subitem \spxentry{nest\_backend.database.tables}, \hyperpage{76}
+    \subitem \spxentry{nest\_backend.gestione}, \hyperpage{75}
+    \subitem \spxentry{nest\_crawler}, \hyperpage{81}
+
+  \indexspace
+  \bigletter N
+  \item \spxentry{name}\spxextra{nest\_backend.database.tables.Alert attributo}, \hyperpage{76}
+  \item \spxentry{name}\spxextra{nest\_backend.database.tables.Repository attributo}, 
+		\hyperpage{78}
+  \item \spxentry{nest\_backend}
+    \subitem \spxentry{modulo}, \hyperpage{75}
+  \item \spxentry{nest\_backend.database}
+    \subitem \spxentry{modulo}, \hyperpage{76}
+  \item \spxentry{nest\_backend.database.base}
+    \subitem \spxentry{modulo}, \hyperpage{76}
+  \item \spxentry{nest\_backend.database.tables}
+    \subitem \spxentry{modulo}, \hyperpage{76}
+  \item \spxentry{nest\_backend.gestione}
+    \subitem \spxentry{modulo}, \hyperpage{75}
+  \item \spxentry{nest\_crawler}
+    \subitem \spxentry{modulo}, \hyperpage{81}
+  \item \spxentry{Notification}\spxextra{classe built\sphinxhyphen{}in}, \hyperpage{72}
+  \item \spxentry{Notification}\spxextra{classe in nest\_backend.database.tables}, \hyperpage{77}
+  \item \spxentry{notifications}\spxextra{nest\_backend.database.tables.Alert attributo}, 
+		\hyperpage{76}
+  \item \spxentry{NotImplementedError()}\spxextra{classe}, \hyperpage{83}
+
+  \indexspace
+  \bigletter O
+  \item \spxentry{OperationType}\spxextra{classe in nest\_backend.database.tables}, \hyperpage{80}
+  \item \spxentry{ora}\spxextra{nest\_backend.database.tables.Notification attributo}, 
+		\hyperpage{78}
+  \item \spxentry{owner}\spxextra{nest\_backend.database.tables.Repository attributo}, 
+		\hyperpage{78}
+  \item \spxentry{owner\_id}\spxextra{nest\_backend.database.tables.Repository attributo}, 
+		\hyperpage{78}
+  \item \spxentry{owner\_of}\spxextra{nest\_backend.database.tables.User attributo}, \hyperpage{79}
+
+  \indexspace
+  \bigletter P
+  \item \spxentry{password}\spxextra{nest\_backend.database.tables.User attributo}, \hyperpage{79}
+  \item \spxentry{place}\spxextra{nest\_backend.database.tables.ConditionType attributo}, 
+		\hyperpage{80}
+  \item \spxentry{place}\spxextra{nest\_backend.database.tables.Tweet attributo}, \hyperpage{78}
+  \item \spxentry{post\_time}\spxextra{nest\_backend.database.tables.Tweet attributo}, 
+		\hyperpage{79}
+  \item \spxentry{poster}\spxextra{nest\_backend.database.tables.Tweet attributo}, \hyperpage{78}
+
+  \indexspace
+  \bigletter R
+  \item \spxentry{repositories}\spxextra{nest\_backend.database.tables.Tweet attributo}, 
+		\hyperpage{79}
+  \item \spxentry{Repository}\spxextra{classe built\sphinxhyphen{}in}, \hyperpage{72}
+  \item \spxentry{Repository}\spxextra{classe in nest\_backend.database.tables}, \hyperpage{78}
+  \item \spxentry{repository}\spxextra{nest\_backend.database.tables.Alert attributo}, 
+		\hyperpage{76}
+  \item \spxentry{repository}\spxextra{nest\_backend.database.tables.Authorization attributo}, 
+		\hyperpage{76}
+  \item \spxentry{repository}\spxextra{nest\_backend.database.tables.Composed attributo}, 
+		\hyperpage{77}
+  \item \spxentry{repository}\spxextra{nest\_backend.database.tables.Condition attributo}, 
+		\hyperpage{77}
+  \item \spxentry{repository\_auth()}\spxextra{nel modulo nest\_backend.gestione}, \hyperpage{75}
+  \item \spxentry{repository\_id}\spxextra{nest\_backend.database.tables.Alert attributo}, 
+		\hyperpage{76}
+  \item \spxentry{repository\_id}\spxextra{nest\_backend.database.tables.Condition attributo}, 
+		\hyperpage{77}
+  \item \spxentry{ResultError()}\spxextra{classe}, \hyperpage{84}
+  \item \spxentry{rid}\spxextra{nest\_backend.database.tables.Authorization attributo}, 
+		\hyperpage{76}
+  \item \spxentry{rid}\spxextra{nest\_backend.database.tables.Composed attributo}, \hyperpage{77}
+
+  \indexspace
+  \bigletter S
+  \item \spxentry{search\_repo\_conditions()}\spxextra{nel modulo nest\_crawler}, \hyperpage{81}
+  \item \spxentry{send\_notification\_email()}\spxextra{nel modulo nest\_crawler}, \hyperpage{81}
+  \item \spxentry{send\_notification\_tweet()}\spxextra{nel modulo nest\_crawler}, \hyperpage{81}
+  \item \spxentry{SerializationError()}\spxextra{classe}, \hyperpage{84}
+  \item \spxentry{ServerNotConfiguredError()}\spxextra{classe}, \hyperpage{83}
+  \item \spxentry{snowflake}\spxextra{nest\_backend.database.tables.Composed attributo}, 
+		\hyperpage{77}
+  \item \spxentry{snowflake}\spxextra{nest\_backend.database.tables.Contains attributo}, 
+		\hyperpage{77}
+  \item \spxentry{snowflake}\spxextra{nest\_backend.database.tables.Tweet attributo}, 
+		\hyperpage{78}
+  \item \spxentry{start}\spxextra{nest\_backend.database.tables.Repository attributo}, 
+		\hyperpage{78}
+
+  \indexspace
+  \bigletter T
+  \item \spxentry{time}\spxextra{nest\_backend.database.tables.ConditionType attributo}, 
+		\hyperpage{80}
+  \item \spxentry{to\_json()}\spxextra{nest\_backend.database.tables.Alert metodo}, \hyperpage{76}
+  \item \spxentry{to\_json()}\spxextra{nest\_backend.database.tables.Authorization metodo}, 
+		\hyperpage{76}
+  \item \spxentry{to\_json()}\spxextra{nest\_backend.database.tables.Condition metodo}, 
+		\hyperpage{77}
+  \item \spxentry{to\_json()}\spxextra{nest\_backend.database.tables.Notification metodo}, 
+		\hyperpage{78}
+  \item \spxentry{to\_json()}\spxextra{nest\_backend.database.tables.Repository metodo}, 
+		\hyperpage{78}
+  \item \spxentry{to\_json()}\spxextra{nest\_backend.database.tables.Tweet metodo}, \hyperpage{79}
+  \item \spxentry{to\_json()}\spxextra{nest\_backend.database.tables.User metodo}, \hyperpage{79}
+  \item \spxentry{Tweet}\spxextra{classe built\sphinxhyphen{}in}, \hyperpage{73}
+  \item \spxentry{Tweet}\spxextra{classe in nest\_backend.database.tables}, \hyperpage{78}
+  \item \spxentry{tweet}\spxextra{nest\_backend.database.tables.Composed attributo}, \hyperpage{77}
+  \item \spxentry{tweet}\spxextra{nest\_backend.database.tables.Contains attributo}, \hyperpage{77}
+  \item \spxentry{tweets}\spxextra{nest\_backend.database.tables.Condition attributo}, 
+		\hyperpage{77}
+  \item \spxentry{tweets}\spxextra{nest\_backend.database.tables.Repository attributo}, 
+		\hyperpage{78}
+  \item \spxentry{type}\spxextra{nest\_backend.database.tables.Condition attributo}, \hyperpage{77}
+
+  \indexspace
+  \bigletter U
+  \item \spxentry{User}\spxextra{classe built\sphinxhyphen{}in}, \hyperpage{73}
+  \item \spxentry{User}\spxextra{classe in nest\_backend.database.tables}, \hyperpage{79}
+  \item \spxentry{user}\spxextra{nest\_backend.database.tables.Authorization attributo}, 
+		\hyperpage{76}
+  \item \spxentry{user}\spxextra{nest\_backend.database.tables.ConditionType attributo}, 
+		\hyperpage{80}
+  \item \spxentry{username}\spxextra{nest\_backend.database.tables.User attributo}, \hyperpage{79}
+
+  \indexspace
+  \bigletter V
+  \item \spxentry{ViewNotAllowedError()}\spxextra{classe}, \hyperpage{83}
+
+  \indexspace
+  \bigletter W
+  \item \spxentry{window\_size}\spxextra{nest\_backend.database.tables.Alert attributo}, 
+		\hyperpage{76}
+
+\end{sphinxtheindex}

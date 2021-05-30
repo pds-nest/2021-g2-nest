@@ -1,0 +1,147 @@
+\babel@toc {italian}{}
+\babel@toc {italian}{}
+\contentsline {chapter}{\numberline {1}Il progetto in breve}{3}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Suddivisione in moduli}{3}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Screenshots}{4}{section.1.2}%
+\contentsline {chapter}{\numberline {2}Installazione}{7}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Prerequisiti}{7}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Creare un nuovo utente}{8}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Scaricare il codice sorgente}{8}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Creare il database}{8}{section.2.4}%
+\contentsline {section}{\numberline {2.5}Creare un file di configurazione per il backend}{8}{section.2.5}%
+\contentsline {section}{\numberline {2.6}Installare le dipendenze Python}{9}{section.2.6}%
+\contentsline {section}{\numberline {2.7}Installare le dipendenze NodeJS}{9}{section.2.7}%
+\contentsline {section}{\numberline {2.8}Creare un servizio SystemD per il backend}{9}{section.2.8}%
+\contentsline {section}{\numberline {2.9}Compilare il frontend}{10}{section.2.9}%
+\contentsline {section}{\numberline {2.10}Creare un servizio SystemD per il frontend}{10}{section.2.10}%
+\contentsline {section}{\numberline {2.11}Creare un servizio SystemD per il crawler}{12}{section.2.11}%
+\contentsline {section}{\numberline {2.12}Configurare il crawler}{12}{section.2.12}%
+\contentsline {section}{\numberline {2.13}Creare un timer SystemD per il crawler}{13}{section.2.13}%
+\contentsline {section}{\numberline {2.14}Configurare Apache come reverse proxy}{14}{section.2.14}%
+\contentsline {chapter}{\numberline {3}Aggiornamento}{15}{chapter.3}%
+\contentsline {chapter}{\numberline {4}Introduzione}{17}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Obiettivo}{17}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Campo di applicazione}{17}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Caratteristiche degli utenti}{17}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Glossario}{18}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Macro\sphinxhyphen {}funzionalità}{18}{section.4.5}%
+\contentsline {section}{\numberline {4.6}Casi d\textquotesingle {}uso}{18}{section.4.6}%
+\contentsline {section}{\numberline {4.7}Backlog generale}{23}{section.4.7}%
+\contentsline {chapter}{\numberline {5}Strumenti utilizzati}{27}{chapter.5}%
+\contentsline {chapter}{\numberline {6}Processo di sviluppo}{29}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Ruoli}{29}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Sprint}{29}{section.6.2}%
+\contentsline {subsection}{\numberline {6.2.1}Sprint 0: 04 Apr \sphinxhyphen {} 18 Apr}{30}{subsection.6.2.1}%
+\contentsline {subsubsection}{\numberline {6.2.1.1}Consegna}{30}{subsubsection.6.2.1.1}%
+\contentsline {subsubsection}{\numberline {6.2.1.2}Definition of Ready}{30}{subsubsection.6.2.1.2}%
+\contentsline {subsubsection}{\numberline {6.2.1.3}Definition of Done}{30}{subsubsection.6.2.1.3}%
+\contentsline {subsubsection}{\numberline {6.2.1.4}Statistiche}{30}{subsubsection.6.2.1.4}%
+\contentsline {paragraph}{Gitinspector}{30}{paragraph*.3}%
+\contentsline {subsubsection}{\numberline {6.2.1.5}Sprint Retrospective}{30}{subsubsection.6.2.1.5}%
+\contentsline {subsubsection}{\numberline {6.2.1.6}Sprint Review}{31}{subsubsection.6.2.1.6}%
+\contentsline {subsubsection}{\numberline {6.2.1.7}Artefatti}{31}{subsubsection.6.2.1.7}%
+\contentsline {subsubsection}{\numberline {6.2.1.8}Registro attività}{31}{subsubsection.6.2.1.8}%
+\contentsline {paragraph}{Riunioni collettive}{31}{paragraph*.4}%
+\contentsline {paragraph}{Attività individuali}{31}{paragraph*.5}%
+\contentsline {subparagraph}{Stefano Goldoni}{31}{subparagraph*.6}%
+\contentsline {subparagraph}{Flavia Cocca}{32}{subparagraph*.7}%
+\contentsline {subparagraph}{Chiara Calzolari}{32}{subparagraph*.8}%
+\contentsline {subparagraph}{Stefano Pigozzi}{32}{subparagraph*.9}%
+\contentsline {subparagraph}{Giovanni Anniballi}{33}{subparagraph*.10}%
+\contentsline {subparagraph}{Giorgio Minoccari}{33}{subparagraph*.11}%
+\contentsline {subparagraph}{Lorenzo Balugani}{33}{subparagraph*.12}%
+\contentsline {subsubsection}{\numberline {6.2.1.9}Risultati della partita di Scrumble}{33}{subsubsection.6.2.1.9}%
+\contentsline {subsection}{\numberline {6.2.2}Sprint 1: 19 Apr \sphinxhyphen {} 02 Mag}{38}{subsection.6.2.2}%
+\contentsline {subsubsection}{\numberline {6.2.2.1}Consegna}{38}{subsubsection.6.2.2.1}%
+\contentsline {subsubsection}{\numberline {6.2.2.2}Goal}{38}{subsubsection.6.2.2.2}%
+\contentsline {paragraph}{Backlog}{39}{paragraph*.13}%
+\contentsline {paragraph}{Task completati}{40}{paragraph*.14}%
+\contentsline {subsubsection}{\numberline {6.2.2.3}Definition of Ready}{40}{subsubsection.6.2.2.3}%
+\contentsline {subsubsection}{\numberline {6.2.2.4}Definition of Done}{40}{subsubsection.6.2.2.4}%
+\contentsline {subsubsection}{\numberline {6.2.2.5}Statistiche}{40}{subsubsection.6.2.2.5}%
+\contentsline {paragraph}{Burndown chart}{40}{paragraph*.15}%
+\contentsline {paragraph}{Gitinspector}{41}{paragraph*.16}%
+\contentsline {subsubsection}{\numberline {6.2.2.6}Sprint Retrospective}{41}{subsubsection.6.2.2.6}%
+\contentsline {subsubsection}{\numberline {6.2.2.7}Sprint Review}{41}{subsubsection.6.2.2.7}%
+\contentsline {subsubsection}{\numberline {6.2.2.8}Valutazione sul debito tecnico}{41}{subsubsection.6.2.2.8}%
+\contentsline {subsubsection}{\numberline {6.2.2.9}Valutazione sulle User Stories}{42}{subsubsection.6.2.2.9}%
+\contentsline {subsubsection}{\numberline {6.2.2.10}Registro attività}{42}{subsubsection.6.2.2.10}%
+\contentsline {paragraph}{Riunioni collettive}{42}{paragraph*.17}%
+\contentsline {paragraph}{Attività individuali}{42}{paragraph*.18}%
+\contentsline {subparagraph}{Stefano Goldoni}{43}{subparagraph*.19}%
+\contentsline {subparagraph}{Flavia Cocca}{43}{subparagraph*.20}%
+\contentsline {subparagraph}{Chiara Calzolari}{43}{subparagraph*.21}%
+\contentsline {subparagraph}{Stefano Pigozzi}{44}{subparagraph*.22}%
+\contentsline {subparagraph}{Giovanni Anniballi}{45}{subparagraph*.23}%
+\contentsline {subparagraph}{Giorgio Minoccari}{46}{subparagraph*.24}%
+\contentsline {subparagraph}{Lorenzo Balugani}{46}{subparagraph*.25}%
+\contentsline {subsection}{\numberline {6.2.3}Sprint 2: 03 Mag \sphinxhyphen {} 16 Mag}{47}{subsection.6.2.3}%
+\contentsline {subsubsection}{\numberline {6.2.3.1}Consegna}{47}{subsubsection.6.2.3.1}%
+\contentsline {subsubsection}{\numberline {6.2.3.2}Goal}{47}{subsubsection.6.2.3.2}%
+\contentsline {paragraph}{Backlog}{48}{paragraph*.26}%
+\contentsline {paragraph}{Task completati}{49}{paragraph*.27}%
+\contentsline {subsubsection}{\numberline {6.2.3.3}Definition of Ready}{50}{subsubsection.6.2.3.3}%
+\contentsline {subsubsection}{\numberline {6.2.3.4}Definition of Done}{50}{subsubsection.6.2.3.4}%
+\contentsline {subsubsection}{\numberline {6.2.3.5}Statistiche}{50}{subsubsection.6.2.3.5}%
+\contentsline {paragraph}{Burndown chart}{50}{paragraph*.28}%
+\contentsline {paragraph}{Gitinspector}{50}{paragraph*.29}%
+\contentsline {subsubsection}{\numberline {6.2.3.6}Sprint Retrospective}{51}{subsubsection.6.2.3.6}%
+\contentsline {subsubsection}{\numberline {6.2.3.7}Sprint Review}{51}{subsubsection.6.2.3.7}%
+\contentsline {subsubsection}{\numberline {6.2.3.8}Registro attività}{51}{subsubsection.6.2.3.8}%
+\contentsline {paragraph}{Riunioni collettive}{51}{paragraph*.30}%
+\contentsline {paragraph}{Attività individuali}{51}{paragraph*.31}%
+\contentsline {subparagraph}{Stefano Goldoni}{51}{subparagraph*.32}%
+\contentsline {subparagraph}{Flavia Cocca}{52}{subparagraph*.33}%
+\contentsline {subparagraph}{Stefano Pigozzi}{52}{subparagraph*.34}%
+\contentsline {subparagraph}{Chiara Calzolari}{53}{subparagraph*.35}%
+\contentsline {subparagraph}{Giovanni Anniballi}{53}{subparagraph*.36}%
+\contentsline {subparagraph}{Giorgio Minoccari}{54}{subparagraph*.37}%
+\contentsline {subparagraph}{Lorenzo Balugani}{54}{subparagraph*.38}%
+\contentsline {subsection}{\numberline {6.2.4}Sprint 3: 17 Mag \sphinxhyphen {} 30 Mag}{54}{subsection.6.2.4}%
+\contentsline {subsubsection}{\numberline {6.2.4.1}Consegna}{54}{subsubsection.6.2.4.1}%
+\contentsline {subsubsection}{\numberline {6.2.4.2}Goal}{54}{subsubsection.6.2.4.2}%
+\contentsline {paragraph}{Backlog}{55}{paragraph*.39}%
+\contentsline {paragraph}{Task completati}{56}{paragraph*.40}%
+\contentsline {subsubsection}{\numberline {6.2.4.3}Grooming session}{56}{subsubsection.6.2.4.3}%
+\contentsline {subsubsection}{\numberline {6.2.4.4}Definition of Ready}{57}{subsubsection.6.2.4.4}%
+\contentsline {subsubsection}{\numberline {6.2.4.5}Definition of Done}{57}{subsubsection.6.2.4.5}%
+\contentsline {subsubsection}{\numberline {6.2.4.6}Statistiche}{57}{subsubsection.6.2.4.6}%
+\contentsline {paragraph}{Gitinspector}{57}{paragraph*.41}%
+\contentsline {paragraph}{Schermata finale di SonarQube}{57}{paragraph*.42}%
+\contentsline {subsubsection}{\numberline {6.2.4.7}Final Retrospective}{57}{subsubsection.6.2.4.7}%
+\contentsline {subsubsection}{\numberline {6.2.4.8}Demo}{58}{subsubsection.6.2.4.8}%
+\contentsline {subsubsection}{\numberline {6.2.4.9}Registro attività}{58}{subsubsection.6.2.4.9}%
+\contentsline {paragraph}{Riunioni collettive}{58}{paragraph*.43}%
+\contentsline {paragraph}{Attività individuali}{58}{paragraph*.44}%
+\contentsline {subparagraph}{Stefano Goldoni}{58}{subparagraph*.45}%
+\contentsline {subparagraph}{Flavia Cocca}{58}{subparagraph*.46}%
+\contentsline {subparagraph}{Chiara Calzolari}{59}{subparagraph*.47}%
+\contentsline {subparagraph}{Stefano Pigozzi}{59}{subparagraph*.48}%
+\contentsline {subparagraph}{Giovanni Anniballi}{60}{subparagraph*.49}%
+\contentsline {subparagraph}{Giorgio Minoccari}{60}{subparagraph*.50}%
+\contentsline {subparagraph}{Lorenzo Balugani}{61}{subparagraph*.51}%
+\contentsline {section}{\numberline {6.3}Burndown chart complessiva}{61}{section.6.3}%
+\contentsline {chapter}{\numberline {7}Artefatti}{63}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Diagrammi UML}{63}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Demo}{63}{section.7.2}%
+\contentsline {subsection}{\numberline {7.2.1}Video}{63}{subsection.7.2.1}%
+\contentsline {subsection}{\numberline {7.2.2}Interattiva}{64}{subsection.7.2.2}%
+\contentsline {chapter}{\numberline {8}Conclusioni}{65}{chapter.8}%
+\contentsline {chapter}{\numberline {9}Suggerimenti relativi al corso}{67}{chapter.9}%
+\contentsline {chapter}{\numberline {10}Meta\sphinxhyphen {}documentazione}{69}{chapter.10}%
+\contentsline {section}{\numberline {10.1}Compilazione con IntelliJ IDEA}{69}{section.10.1}%
+\contentsline {section}{\numberline {10.2}Compilazione con GNU Make}{69}{section.10.2}%
+\contentsline {section}{\numberline {10.3}Compilazione con Windows Powershell}{70}{section.10.3}%
+\contentsline {chapter}{\numberline {11}Struttura del database}{71}{chapter.11}%
+\contentsline {chapter}{\numberline {12}\sphinxstyleliteralintitle {\sphinxupquote {nest\_backend}} \sphinxhyphen {} Web API in Python}{75}{chapter.12}%
+\contentsline {section}{\numberline {12.1}\sphinxstyleliteralintitle {\sphinxupquote {.gestione}} \sphinxhyphen {} Metodi di utility}{75}{section.12.1}%
+\contentsline {section}{\numberline {12.2}\sphinxstyleliteralintitle {\sphinxupquote {.database}} \sphinxhyphen {} Database}{76}{section.12.2}%
+\contentsline {subsection}{\numberline {12.2.1}\sphinxstyleliteralintitle {\sphinxupquote {.base}} \sphinxhyphen {} Estensione flask}{76}{subsection.12.2.1}%
+\contentsline {subsection}{\numberline {12.2.2}\sphinxstyleliteralintitle {\sphinxupquote {.tables}} \sphinxhyphen {} Tabelle}{76}{subsection.12.2.2}%
+\contentsline {section}{\numberline {12.3}\sphinxstyleliteralintitle {\sphinxupquote {.routes}} \sphinxhyphen {} Percorsi API}{80}{section.12.3}%
+\contentsline {chapter}{\numberline {13}\sphinxstyleliteralintitle {\sphinxupquote {nest\_crawler}} \sphinxhyphen {} Crawler in Python}{81}{chapter.13}%
+\contentsline {chapter}{\numberline {14}\sphinxstyleliteralintitle {\sphinxupquote {nest\_frontend}} \sphinxhyphen {} Interfaccia utente in React}{83}{chapter.14}%
+\contentsline {section}{\numberline {14.1}\sphinxstyleliteralintitle {\sphinxupquote {.objects}} \sphinxhyphen {} Oggetti vari di utility}{83}{section.14.1}%
+\contentsline {chapter}{\numberline {15}Altri collegamenti}{85}{chapter.15}%
+\contentsline {chapter}{Indice del modulo Python}{87}{section*.208}%
+\contentsline {chapter}{Indice}{89}{section*.209}%
