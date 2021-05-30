@@ -2,7 +2,12 @@ from datetime import datetime, timedelta
 from nest_backend.database import *
 from .authentication import authenticate
 import smtplib
+import os
 import tweepy as tw
+import datetime
+
+
+MESSAGE = "❗ {alert_name}: la soglia di allerta è stata superata alle {now}!"
 
 
 def is_repo_alert_triggered(repository_id):
@@ -37,20 +42,20 @@ def is_repo_alert_triggered(repository_id):
             ext.session.commit()
             print("alert triggered")
             alerts_triggered.append(alert)
-            #send_notification_email(alert)
+            send_notification_email(alert)
             send_notification_tweet(alert)
 
 
 def send_notification_email(alert):
-    owner_repo = alert.repository.owner
-    conditions_string = ''
-    for condition in alert.conditions:
-        conditions_string += condition.condition.content + ','
-    conditions_string = conditions_string[:-1]
-    smtpObj = None
     try:
-        with smtplib.SMTP(host='localhost') as smtpObj:
-            smtpObj.sendmail("alert@nest.com", owner_repo.email, "Alert triggered")
+        with smtplib.SMTP_SSL(host=os.environ["SMTP_HOST"], port=587) as smtpObj:
+            smtpObj.ehlo()
+            smtpObj.starttls()
+            smtpObj.ehlo()
+            smtpObj.login(os.environ["SMTP_USERNAME"], os.environ["SMTP_PASSWORD"])
+            smtpObj.sendmail(os.environ["SMTP_FROM_EMAIL"],
+                             alert.repository.owner.email,
+                             MESSAGE.format(alert_name=alert.name, now=datetime.datetime.now().isoformat()))
             print("Successfully sent email")
     except smtplib.SMTPException:
         print("Error: unable to send email")
@@ -64,7 +69,7 @@ def send_notification_tweet(alert):
     conditions_string = conditions_string[:-1]
     print(conditions_string)
     try:
-        api.update_status(f"L'alert {alert.name} è stato attivato! C'è stato un incremento di popolarità negli argomenti di ricerca {conditions_string}")
+        api.update_status(MESSAGE.format(alert_name=alert.name, now=datetime.datetime.now().isoformat()))
     except tw.errors.Forbidden:
         print("Il tweet e' gia' stato pubblicato")
 
