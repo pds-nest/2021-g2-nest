@@ -3,7 +3,7 @@ import FormInlineText from "./FormInlineText"
 import { faAt } from "@fortawesome/free-solid-svg-icons"
 
 
-const INVALID_CHARACTERS = /[^a-zA-Z0-9]/g
+const INVALID_CHARACTERS = /[^a-zA-Z0-9_]/g
 
 
 /**
