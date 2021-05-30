@@ -48,7 +48,7 @@ def is_repo_alert_triggered(repository_id):
 
 def send_notification_email(alert):
     try:
-        with smtplib.SMTP_SSL(host=os.environ["SMTP_HOST"], port=587) as smtpObj:
+        with smtplib.SMTP(host=os.environ["SMTP_HOST"], port=587) as smtpObj:
             smtpObj.ehlo()
             smtpObj.starttls()
             smtpObj.ehlo()
