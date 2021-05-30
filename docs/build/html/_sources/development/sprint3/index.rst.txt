@@ -109,10 +109,6 @@ Il video di Demo è disponibile al seguente link:
 Registro attività
 -----------------
 
-.. todo::
-
-    Compilare il registro attività dello sprint 3.
-
 
 Riunioni collettive
 ^^^^^^^^^^^^^^^^^^^

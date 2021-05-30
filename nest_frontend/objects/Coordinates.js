@@ -65,7 +65,7 @@ export default class Coordinates {
     /**
      * Transform this object in a 2-ple.
      *
-     * @returns {[Number, Number]}
+     * @returns {Array}
      */
     toArray() {
         return [this.lat, this.lng]

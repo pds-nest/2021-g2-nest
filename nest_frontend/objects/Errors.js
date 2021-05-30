@@ -104,6 +104,9 @@ export class ResultError extends FetchError {
 }
 
 
+/**
+ * Error thrown when a string couldn't be serialized into an object.
+ */
 export class SerializationError {
     invalidString
 

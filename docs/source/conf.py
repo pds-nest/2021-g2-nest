@@ -34,6 +34,7 @@ extensions = [
     "sphinx.ext.intersphinx",
     "sphinx.ext.todo",
     "sphinx.ext.autosectionlabel",
+    "sphinx_js"
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -102,6 +103,8 @@ def setup(app):
 todo_include_todos = True
 todo_emit_warnings = True
 smartquotes = False
+js_source_path = "../../nest_frontend"
+jsdoc_config_path = "../../conf.json"
 
 # -- Automodule settings -----------------------------------------------------
 

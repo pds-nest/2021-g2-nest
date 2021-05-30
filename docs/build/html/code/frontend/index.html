@@ -106,7 +106,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../database/index.html">Struttura del database</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../backend/index.html"><code class="docutils literal notranslate"><span class="pre">nest_backend</span></code> - Web API in Python</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../crawler/index.html"><code class="docutils literal notranslate"><span class="pre">nest_crawler</span></code> - Crawler in Python</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">nest_frontend</span></code> - Interfaccia utente in React</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#"><code class="docutils literal notranslate"><span class="pre">nest_frontend</span></code> - Interfaccia utente in React</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#objects-oggetti-vari-di-utility"><code class="docutils literal notranslate"><span class="pre">.objects</span></code> - Oggetti vari di utility</a></li>
+</ul>
+</li>
 </ul>
 
             
@@ -176,6 +179,170 @@
             
   <div class="section" id="nest-frontend-interfaccia-utente-in-react">
 <h1><code class="docutils literal notranslate"><span class="pre">nest_frontend</span></code> - Interfaccia utente in React<a class="headerlink" href="#nest-frontend-interfaccia-utente-in-react" title="Link a questa intestazione">¶</a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Avvertimento</p>
+<p><a class="reference external" href="https://jsdoc.app/">JSDoc</a> non sembra essere in grado di gestire correttamente il lato frontend del progetto.</p>
+<p>Per maggiori dettagli sul funzionamento dei vari componenti, si suggerisce di guardare le <strong>docstring presenti nel
+codice sorgente</strong>.</p>
+<p>Seguono sotto le uniche classi che JSDoc è stato in grado di gestire (anche se vengono mostrate solo
+parzialmente).</p>
+</div>
+<div class="section" id="objects-oggetti-vari-di-utility">
+<h2><code class="docutils literal notranslate"><span class="pre">.objects</span></code> - Oggetti vari di utility<a class="headerlink" href="#objects-oggetti-vari-di-utility" title="Link a questa intestazione">¶</a></h2>
+<dl class="js class">
+<dt id="Condition">
+<em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">Condition</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Condition" title="Link a questa definizione">¶</a></dt>
+<dd><p>Condition class for an undefined/unknown condition.</p>
+<p>See [the Condition spec](<a class="reference external" href="https://gitlab.steffo.eu/nest/g2-progetto/-/wikis/sprint-2/Specifica-delle-Conditions">https://gitlab.steffo.eu/nest/g2-progetto/-/wikis/sprint-2/Specifica-delle-Conditions</a>).</p>
+</dd></dl>
+
+<dl class="js class">
+<dt id="ConditionHashtag">
+<em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">ConditionHashtag</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ConditionHashtag" title="Link a questa definizione">¶</a></dt>
+<dd><p>Require a tweet to contain a specific hashtag to be gathered.</p>
+</dd></dl>
+
+<dl class="js class">
+<dt id="ConditionUser">
+<em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">ConditionUser</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ConditionUser" title="Link a questa definizione">¶</a></dt>
+<dd><p>Require a tweet to be posted by a certain user to be gathered.</p>
+</dd></dl>
+
+<dl class="js class">
+<dt id="ConditionTime">
+<em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">ConditionTime</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ConditionTime" title="Link a questa definizione">¶</a></dt>
+<dd><p>Require a tweet to be posted before or after a certain time to be gathered.</p>
+</dd></dl>
+
+<dl class="js class">
+<dt id="ConditionLocation">
+<em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">ConditionLocation</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ConditionLocation" title="Link a questa definizione">¶</a></dt>
+<dd><p>Require a tweet to have coordinates associated and to be posted within the <a class="reference external" href="mailto:{&#37;&#52;&#48;link">{<span>&#64;</span>link</a> MapArea}.</p>
+</dd></dl>
+
+<dl class="js class">
+<dt id="NotImplementedError">
+<em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">NotImplementedError</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#NotImplementedError" title="Link a questa definizione">¶</a></dt>
+<dd><p>Error thrown when a function is not implemented in the current class/instance.</p>
+</dd></dl>
+
+<dl class="js class">
+<dt id="BackendCommunicationError">
+<em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">BackendCommunicationError</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#BackendCommunicationError" title="Link a questa definizione">¶</a></dt>
+<dd><p>An error in the N.E.S.T. frontend-backend communication.</p>
+</dd></dl>
+
+<dl class="js class">
+<dt id="ViewNotAllowedError">
+<em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">ViewNotAllowedError</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ViewNotAllowedError" title="Link a questa definizione">¶</a></dt>
+<dd><p>Error thrown when trying to access a backend view which doesn't exist or isn't allowed in the used hook.</p>
+</dd></dl>
+
+<dl class="js class">
+<dt id="ServerNotConfiguredError">
+<em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">ServerNotConfiguredError</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ServerNotConfiguredError" title="Link a questa definizione">¶</a></dt>
+<dd><p>Error thrown when trying to access a backend view when outside a <a class="reference external" href="mailto:{&#37;&#52;&#48;link">{<span>&#64;</span>link</a> ContextServer}.</p>
+</dd></dl>
+
+<dl class="js class">
+<dt id="FetchAlreadyRunningError">
+<em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">FetchAlreadyRunningError</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#FetchAlreadyRunningError" title="Link a questa definizione">¶</a></dt>
+<dd><p>Error thrown when trying to access a backend view while another access is ongoing.</p>
+<p>This is not allowed due to potential race conditions.</p>
+</dd></dl>
+
+<dl class="js class">
+<dt id="FetchError">
+<em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">FetchError</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#FetchError" title="Link a questa definizione">¶</a></dt>
+<dd><p>Abstract class for <a class="reference external" href="mailto:{&#37;&#52;&#48;link">{<span>&#64;</span>link</a> DecodeError} and <a class="reference external" href="mailto:{&#37;&#52;&#48;link">{<span>&#64;</span>link</a> ResultError}.</p>
+</dd></dl>
+
+<dl class="js class">
+<dt id="DecodeError">
+<em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">DecodeError</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#DecodeError" title="Link a questa definizione">¶</a></dt>
+<dd><p>Error thrown when the frontend can't parse the data received from the backend.</p>
+</dd></dl>
+
+<dl class="js class">
+<dt id="ResultError">
+<em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">ResultError</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ResultError" title="Link a questa definizione">¶</a></dt>
+<dd><p>Error thrown when the backend returns a falsy <cite>&quot;result&quot;</cite> value.</p>
+</dd></dl>
+
+<dl class="js class">
+<dt id="SerializationError">
+<em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">SerializationError</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#SerializationError" title="Link a questa definizione">¶</a></dt>
+<dd><p>Error thrown when a string couldn't be serialized into an object.</p>
+</dd></dl>
+
+<dl class="js class">
+<dt id="Filter">
+<em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">Filter</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">negate=false</span></em><span class="sig-paren">)</span><a class="headerlink" href="#Filter" title="Link a questa definizione">¶</a></dt>
+<dd><p>A filter applicable in the Analysis mode.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parametri</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>negate</strong> -- If the filter output should be reversed.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="js class">
+<dt id="FilterContains">
+<em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">FilterContains</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#FilterContains" title="Link a questa definizione">¶</a></dt>
+<dd><p>Checks if a tweet contains a string.</p>
+</dd></dl>
+
+<dl class="js class">
+<dt id="FilterHashtag">
+<em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">FilterHashtag</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#FilterHashtag" title="Link a questa definizione">¶</a></dt>
+<dd><p>Check if a tweet contains an hashtag.</p>
+</dd></dl>
+
+<dl class="js class">
+<dt id="FilterPoster">
+<em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">FilterPoster</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#FilterPoster" title="Link a questa definizione">¶</a></dt>
+<dd><p>Check if a tweet was posted by a certain user.</p>
+</dd></dl>
+
+<dl class="js class">
+<dt id="FilterWithLocation">
+<em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">FilterWithLocation</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#FilterWithLocation" title="Link a questa definizione">¶</a></dt>
+<dd><p>Check if a tweet contains <cite>location</cite> metadata.</p>
+</dd></dl>
+
+<dl class="js class">
+<dt id="FilterWithPlace">
+<em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">FilterWithPlace</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#FilterWithPlace" title="Link a questa definizione">¶</a></dt>
+<dd><p>Check if a tweet contains <cite>place</cite> metadata.</p>
+</dd></dl>
+
+<dl class="js class">
+<dt id="FilterInsideMapArea">
+<em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">FilterInsideMapArea</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#FilterInsideMapArea" title="Link a questa definizione">¶</a></dt>
+<dd><p>Check if a tweet's <cite>location</cite> is inside a <a class="reference external" href="mailto:{&#37;&#52;&#48;link">{<span>&#64;</span>link</a> MapArea}.</p>
+</dd></dl>
+
+<dl class="js class">
+<dt id="FilterInsideTimeRay">
+<em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">FilterInsideTimeRay</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#FilterInsideTimeRay" title="Link a questa definizione">¶</a></dt>
+<dd><p>Check if a tweet's <cite>post_time</cite> is inside a <a class="reference external" href="mailto:{&#37;&#52;&#48;link">{<span>&#64;</span>link</a> TimeRay}.</p>
+</dd></dl>
+
+<dl class="js class">
+<dt id="FilterWithImage">
+<em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">FilterWithImage</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#FilterWithImage" title="Link a questa definizione">¶</a></dt>
+<dd><p>Check if a tweet has an associated <cite>image_url</cite>.</p>
+</dd></dl>
+
+<dl class="js class">
+<dt id="FilterIsRetweet">
+<em class="property"><span class="pre">class</span> </em><code class="sig-name descname"><span class="pre">FilterIsRetweet</span></code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#FilterIsRetweet" title="Link a questa definizione">¶</a></dt>
+<dd><p>Check if a tweet is a retweet.</p>
+</dd></dl>
+
+</div>
 </div>
 
 

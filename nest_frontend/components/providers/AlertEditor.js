@@ -60,8 +60,6 @@ export default function AlertEditor({className}) {
 
     /**
      * Save the current changes, creating or editing it as needed.
-     *
-     * @type {(function(): Promise<void>)|*}
      */
     const save = useCallback(
         async () => {
@@ -83,8 +81,6 @@ export default function AlertEditor({className}) {
 
     /**
      * Try to add a new condition, logging a message to the console if something goes wrong.
-     *
-     * @type {(function(): void)|*}
      */
     const addCondition = useCallback(
         (newCond) => {

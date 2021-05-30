@@ -1,0 +1,8 @@
+{
+    "tags": {
+        "allowUnknownTags": true
+    },
+    "opts": {
+        "recurse": true
+    }
+}

@@ -64,8 +64,6 @@ export default function RepositoryEditor({
 
     /**
      * Save the current changes, creating or editing it as needed.
-     *
-     * @type {(function(): Promise<void>)|*}
      */
     const save = useCallback(
         async () => {
@@ -97,8 +95,6 @@ export default function RepositoryEditor({
 
     /**
      * Cancel the changes made so far to the repository.
-     *
-     * @type {(function(): void)|*}
      */
     const revert = useCallback(
         () => {
@@ -111,8 +107,6 @@ export default function RepositoryEditor({
 
     /**
      * Try to add a new condition, logging a message to the console if something goes wrong.
-     *
-     * @type {(function(): void)|*}
      */
     const addCondition = useCallback(
         (newCond) => {
